@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+
+.content {
+    height: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 200px;
+}
+
+
+.paragraph_misions {
+    font-family: 'Rubik', sans-serif;
+}
+
+.content_two {
+    width: 55%;
+    font-family: 'Rubik', sans-serif;
+}
+
+
+.paragraph_bold {
+    font-weight: bold;
+    font-family: 'Rubik', sans-serif;
+}
+
+.paragraph_fontsize {
+    font-family: 'Rubik', sans-serif;
+    font-size: 18px;
+}
+
+.list {
+    position: relative;
+    right: 20px;
+}
+
+.lis {
+    color: rgb(0, 136, 255);
+}
+
+.paragraph {
+    font-family: 'Rubik', sans-serif;
+    color: black;
+}
+
+@media (max-width: 600px) {
+    .content {
+        height: 100vh;
+        text-align: center;
+    }
+}
