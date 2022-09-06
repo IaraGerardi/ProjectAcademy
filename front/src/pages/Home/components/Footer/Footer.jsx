@@ -53,14 +53,18 @@ function Footer() {
 
           <div className='cont-emoji'>
             <div className='emoji-foot'>
-              <img className='emoji' src={facebook} alt="facebook" />
+
+            <a href="https://www.facebook.com/people/Valtech-Digital-Argentina/100066766578674/"> <img className='emoji' src={facebook}></img> </a>
             </div>
+          
             <div className='emoji-foot'>
-              <img className='emoji' src={instagram} alt="instagram" />
+            <a href="https://www.instagram.com/valtech_argentina/?hl=es"> <img className='emoji' src={instagram}></img> </a>
             </div>
+          
             <div className='emoji-foot'>
-              <img className='emoji' src={linkedin} alt="linkedin" />
+            <a href="https://ar.linkedin.com/company/valtech"> <img className='emoji' src={linkedin}></img> </a>
             </div>
+
 
           </div>
 
