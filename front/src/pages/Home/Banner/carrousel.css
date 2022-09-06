@@ -1,0 +1,47 @@
+.carrouselItem, .carrouselItem img, .contenido, .botonesCarrousel{
+    width:98.8vw;
+    height: 90vh;
+}
+.carrouselItem img{
+    object-fit: cover;
+}
+.carrouselItem, .carrouselItem img{
+    overflow: hidden;
+}
+.contenido{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    justify-content: space-around;
+    align-items: center;
+    color: white;
+    background-color: rgba(121, 121, 121, 0.247);
+}
+.carrousel{
+    display: flex;
+}
+.botonesCarrousel{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+}
+.flecha{
+    display: flex;
+    padding: 10px;
+    margin: 20px;
+    border-radius: 40px;
+    border: 0.5px solid rgba(0, 0, 0, 0.678);
+    background-color: rgba(255, 255, 255, 0.42);
+    z-index: 4;
+}
+.contenido h2{
+    font-size: 50px;
+}
+.contenido p{
+    font-size: 30px;
+}
+.contenido h2, .contenido p{
+    margin: 0 75px 0 75px;
+    /* border: 1px solid black; */
+}
