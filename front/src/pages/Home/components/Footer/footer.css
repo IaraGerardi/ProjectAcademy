@@ -1,0 +1,71 @@
+  
+  .footer {
+    width: 100%;
+    height: 314px;
+    background: #2E384D;
+    display: flex;
+    justify-content: space-around
+  }
+  
+  
+  .content-footer {
+    padding: 25px 0px;
+  }
+  
+  
+  .title-foot {
+    color: #1EC5BB;
+    font-family: sans-serif 'Rubik';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 24px;
+    margin: 0px 10px;
+    ;
+  
+  }
+  
+  
+  .parraf-footer {
+    color: white;
+    font-family: sans-serif 'Rubik';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 16px;
+    margin: 15px 10px;
+  }
+  
+  
+  
+  .cont-emoji {
+    height: 50px;
+    width: 100%;
+    display: flex;
+  }
+  
+  .emoji-foot {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 32px;
+    width: 32px;
+    border-radius: 50%;
+    margin: 0px 10px 0px 0px;
+    background: #0BA4A0;
+  }
+  
+  .emoji {
+    height: 15px;
+    width: 15px;
+  }
+  
+  .logo-foot {
+    color: white;
+  }
+  
+  .contacto {
+    display: flex;
+  }
+  
+ 
