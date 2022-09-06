@@ -1,4 +1,4 @@
-.carrouselItem, .carrouselItem img, .contenido, .botonesCarrousel{
+.carrouselItem, .carrouselItem img, .contentItemBanner, .buttonsBanner{
     width:98.8vw;
     height: 50vh;
 }
@@ -8,7 +8,7 @@
 .carrouselItem, .carrouselItem img{
     overflow: hidden;
 }
-.contenido{
+.contentItemBanner{
     display: flex;
     flex-direction: column;
     position: absolute;
@@ -17,16 +17,16 @@
     color: white;
     background-color: rgba(121, 121, 121, 0.247);
 }
-.carrousel{
+.banner{
     display: flex;
 }
-.botonesCarrousel{
+.buttonsBanner{
     display: flex;
     justify-content: space-between;
     align-items: center;
     position: absolute;
 }
-.flecha{
+.arrow{
     display: flex;
     padding: 10px;
     margin: 20px;
@@ -35,12 +35,12 @@
     background-color: rgba(255, 255, 255, 0.42);
     z-index: 4;
 }
-.contenido h2{
+.contentItemBanner h2{
     font-size: 50px;
 }
-.contenido p{
+.contentItemBanner p{
     font-size: 30px;
 }
-.contenido h2, .contenido p{
+.contentItemBanner h2, .contentItemBanner p{
     margin: 0 75px 0 75px;
 }
