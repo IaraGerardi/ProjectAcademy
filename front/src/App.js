@@ -1,6 +1,6 @@
 
 import './App.css';
-import { Carrousel } from './components/Banner/carrousel';
+import { Carrousel } from './pages/Home/components/Banner/carrousel';
 
 function App() {
   return (
