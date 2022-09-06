@@ -1,3 +1,4 @@
+
 .App {
   text-align: center;
 }
@@ -32,11 +33,48 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
 }
-.HomeScreen{
+
+.HomeScreen {
   width: 100%;
   height: 100vh;
+}
+
+
+.cont-experience {
+  height: 270px;
+  width: 100%;
+  background-color: #DADEEB;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.text-transform {
+  font-size: 2em;
+  font-family: sans-serif 'Rubik';
+  color: #2E384D;
+  font-weight: 500;
+  margin: 0px;
+}
+
+.text-experience {
+  font-size: 2.8em;
+  font-weight: 700;
+  font-family: sans-serif 'Rubik';
+  color: #2E384D;
+  margin: 0px;
+}
+
+
+.cont-text{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
