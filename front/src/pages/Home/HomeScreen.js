@@ -1,5 +1,5 @@
-import Mission from "../Mission/Mission";
 import Proposal from "./Proposal/Propuesta";
+import Mission from "./components/Mission/Mission"
 
 
 function HomeScreen() {
