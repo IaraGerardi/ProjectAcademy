@@ -1,12 +1,14 @@
 
 import Footer from "./components/Footer/Footer";
 import Mission from "./components/Mission/Mission"
- import Proposal from "./components/Proposal/Propuesta"
+import Proposal from "./components/Proposal/Propuesta"
+import {Header} from './components/header/Header'
 
 function HomeScreen() {
   return (
     <div className="HomeScreen">
-     <Proposal/>
+      <Header />
+      <Proposal/>
       <Mission/>
       <Footer/>
     </div>

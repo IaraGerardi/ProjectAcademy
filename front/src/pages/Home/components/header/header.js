@@ -1,11 +1,14 @@
 import React from 'react'
 import logo from '../../assets/vnegro 1.png'
-export const header = () => {
+import './header.css'
+
+
+export const Header = () => {
   return (
-    <nav>
-        <ul>
-          <li><img src={logo} /></li>
-          <li><button>Ingresa a tu portal</button></li>
+    <nav className='navHome'>
+        <ul className='ulHome'>
+          <li className='liHome'><img src={logo} alt='logo' /></li>
+          <li className='liHome'><button className='btnHeader'><p className='pHeader'>Ingresa a tu portal</p></button></li>
         </ul>
     </nav>
   )
