@@ -4,7 +4,7 @@ import Mission from "./components/Mission/Mission"
 
 function HomeScreen() {
   return (
-    <div>
+    <div className="HomeScreen">
      <Proposal/>
       <Mission/>
     </div>

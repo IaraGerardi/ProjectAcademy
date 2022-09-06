@@ -1,4 +1,4 @@
-
+import './Proposal.css';
 function Proposal() {
   return (
     <div className="containerProposal">
