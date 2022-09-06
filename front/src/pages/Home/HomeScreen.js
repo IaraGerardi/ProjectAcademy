@@ -1,11 +1,11 @@
-import Proposal from "./Proposal/Propuesta";
-import Mission from "./components/Mission/Mission"
 
+import Mission from "./components/Mission/Mission"
+ import Proposal from "./components/Proposal/Propuesta"
 
 function HomeScreen() {
   return (
     <div>
-      <Proposal/>
+     <Proposal/>
       <Mission/>
     </div>
   )
