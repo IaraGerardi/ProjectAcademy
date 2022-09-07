@@ -8,6 +8,10 @@
     width: 100%;
     height: 553px;
     background-color: #DADEEB;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 
   .pError{
@@ -16,6 +20,7 @@
     font-size: 32px;
     line-height: 32px;
     color: #2E384D;
+    padding: 10px;
   }
 
   .pError2{
@@ -24,6 +29,7 @@
     font-size: 24px;
     line-height: 32px;
     color: #2E384D;
+    padding: 10px;
   }
 
   .spanError{
