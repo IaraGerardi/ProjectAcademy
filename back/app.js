@@ -6,6 +6,7 @@ const sequelize = require('./database/db.js');
 const ModelOrientador = require('./database/models/ModelOrientador.js');
 const ModelOrientado = require('./database/models/ModelOrientado.js');
 const ModelNovedades = require('./database/models/ModelNovedades.js');
+const ModelAdmin = require('./database/models/ModelAdmin.js');
 require('./database/associations.js');
 
 

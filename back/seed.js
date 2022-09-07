@@ -1,5 +1,6 @@
 const { ModelOrientado, ModelOrientador } = require('./database/associations.js');
 const ModelNovedades = require('./database/models/ModelNovedades.js');
+const ModelAdmin = require('./database/models/ModelAdmin.js');
 const sequelize = require('./database/db.js');
 
 const orientadores = [
@@ -255,6 +256,88 @@ const novedades = [{
     titulo: "Falling in Love Again",
     content: "ultrices posuere cubilia curae duis faucibus accumsan odio curabitur convallis duis consequat dui",
     link: "https://dailymotion.com/nunc.html?egestas=mauris&metus=lacinia&aenean=sapien&fermentum=quis&donec=libero&ut=nullam&mauris=sit&eget=amet&massa=turpis&tempor=elementum&convallis=ligula&nulla=vehicula&neque=consequat&libero=morbi&convallis=a&eget=ipsum&eleifend=integer&luctus=a&ultricies=nibh&eu=in&nibh=quis&quisque=justo&id=maecenas&justo=rhoncus&sit=aliquam&amet=lacus&sapien=morbi&dignissim=quis&vestibulum=tortor&vestibulum=id&ante=nulla&ipsum=ultrices&primis=aliquet&in=maecenas&faucibus=leo&orci=odio&luctus=condimentum&et=id&ultrices=luctus&posuere=nec&cubilia=molestie&curae=sed&nulla=justo&dapibus=pellentesque&dolor=viverra&vel=pede&est=ac&donec=diam&odio=cras&justo=pellentesque&sollicitudin=volutpat&ut=dui&suscipit=maecenas&a=tristique&feugiat=est&et=et&eros=tempus&vestibulum=semper&ac=est&est=quam&lacinia=pharetra&nisi=magna&venenatis=ac&tristique=consequat&fusce=metus&congue=sapien&diam=ut&id=nunc&ornare=vestibulum&imperdiet=ante&sapien=ipsum&urna=primis&pretium=in&nisl=faucibus&ut=orci&volutpat=luctus"
+  }];
+
+const admin = [{
+    user: "mtristram0",
+    password: "RsIPLl1HtdqA",
+    name: "Mac",
+    lastname: "Tristram",
+    email: "mtristram0@wikispaces.com",
+    phone: "(637) 1115961",
+    linkedin: "mtristram0"
+  }, {
+    user: "aharman1",
+    password: "ObDaKqa5yJ",
+    name: "Angelico",
+    lastname: "Harman",
+    email: "aharman1@paginegialle.it",
+    phone: "(128) 9890351",
+    linkedin: "aharman1"
+  }, {
+    user: "alovat2",
+    password: "Q1eIslRbsm",
+    name: "Ashlee",
+    lastname: "Lovat",
+    email: "alovat2@youtu.be",
+    phone: "(664) 4444120",
+    linkedin: "alovat2"
+  }, {
+    user: "awalasik3",
+    password: "CR2O5C",
+    name: "Anatol",
+    lastname: "Walasik",
+    email: "awalasik3@zdnet.com",
+    phone: "(337) 7481127",
+    linkedin: "awalasik3"
+  }, {
+    user: "jsmithen4",
+    password: "8PDpkCLhK",
+    name: "Joanne",
+    lastname: "Smithen",
+    email: "jsmithen4@facebook.com",
+    phone: "(422) 3530206",
+    linkedin: "jsmithen4"
+  }, {
+    user: "kportinari5",
+    password: "31FHlRMMKBn",
+    name: "Kirbee",
+    lastname: "Portinari",
+    email: "kportinari5@psu.edu",
+    phone: "(749) 2864755",
+    linkedin: "kportinari5"
+  }, {
+    user: "afaircliffe6",
+    password: "12lDl1Y",
+    name: "Alix",
+    lastname: "Faircliffe",
+    email: "afaircliffe6@wunderground.com",
+    phone: "(594) 7285246",
+    linkedin: "afaircliffe6"
+  }, {
+    user: "emenary7",
+    password: "KdLh095L2",
+    name: "Egbert",
+    lastname: "Menary",
+    email: "emenary7@marriott.com",
+    phone: "(928) 7038187",
+    linkedin: "emenary7"
+  }, {
+    user: "tcoggan8",
+    password: "c9kn2YqIqU",
+    name: "Trude",
+    lastname: "Coggan",
+    email: "tcoggan8@smh.com.au",
+    phone: "(384) 3469737",
+    linkedin: "tcoggan8"
+  }, {
+    user: "mphillps9",
+    password: "Zz02pag",
+    name: "Murray",
+    lastname: "Phillps",
+    email: "mphillps9@eepurl.com",
+    phone: "(429) 6522993",
+    linkedin: "mphillps9"
   }]
 
 const añadir = async () => {
@@ -264,7 +347,7 @@ const añadir = async () => {
         orientadores.forEach((orientadores) => ModelOrientador.create(orientadores));
         orientados.forEach((orientados) => ModelOrientado.create(orientados));
         novedades.forEach((novedades) => ModelNovedades.create(novedades));
-
+        admin.forEach((admin) => ModelAdmin.create(admin));
     }
     catch(error){
         console.log(error);
