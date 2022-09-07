@@ -1,5 +1,6 @@
 const { ModelOrientado, ModelOrientador } = require('./database/associations.js');
 const sequelize = require('./database/db.js');
+const ModelAdmin = require('./database/models/ModelAdmin.js');
 
 const orientadores = [
     { name: 'Cristian', lastname: 'Vera', email: 'cristianvera@academy.com', age: 47 },
@@ -214,6 +215,14 @@ const orientados = [{
     OrientadoreId: null
 }]
 
+
+const admins = [
+    {user: 'admin1', password: 'admin1', name: 'Felipe', lastname: 'Anselmo', email: 'filipanselmo@admin.com', phone: '(495) 918-2532', linkedin: 'www.linkedin/dementira'},
+    {user: 'admin2', password: 'admin2', name: 'Michael', lastname: 'Jackson', email: 'imnotdead@volviamiplaneta.com', phone: '0303-456', linkedin: 'www.linkedin/shanana'},
+    {user: 'admin3', password: 'admin3', name: 'Lord', lastname: 'Voldemort', email: 'hewhomust@notbenamed.com', phone: '495) 918-2532', linkedin: 'www.linkedin/dementira'}
+
+]
+
 const añadir = async () => {
     try {
         
@@ -221,6 +230,7 @@ const añadir = async () => {
         console.log('Conexion establecida'); //Descomentar uno por uno para que ande. Buscar error porque no anda todo junto (Creo que es necesario poner el await, solo que no se donde)
         orientadores.forEach((orientadores) => ModelOrientador.create(orientadores));
         orientados.forEach((orientados) => ModelOrientado.create(orientados));
+        admins.forEach((admins) => ModelAdmin.create(admins));
     }
     catch(error){
         console.log(error);

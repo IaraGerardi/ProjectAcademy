@@ -3,8 +3,11 @@ const app = express();
 const path = require('path');
 const dotenv = require('dotenv');
 const sequelize = require('./database/db.js');
+//Requerimos Modelos para que se creen en la base de datos de manera fácil y rápida
 const ModelOrientador = require('./database/models/ModelOrientador.js');
 const ModelOrientado = require('./database/models/ModelOrientado.js');
+const ModelAdmin = require('./database/models/ModelAdmin.js');
+
 require('./database/associations.js')
 
 
@@ -19,16 +22,8 @@ app.use(express.json());
 //carpeta para archivos publicos
 app.use(express.static(path.join(__dirname, 'public')));
 
-//Aviso de conección a la base de datos
+//Aviso de conexión a la base de datos
 
-app.get('/', () =>{
-    ModelOrientador.create({
-        name: 'Javier',
-        lastname: 'Acevedo',
-        email: "jracevedo@academy.com",
-        age: 43
-    })
-})
 
 app.listen(PORT, () => {
     console.log(`SERVER UP running in http://localhost:${PORT}`);
