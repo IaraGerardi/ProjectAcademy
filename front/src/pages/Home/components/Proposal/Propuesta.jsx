@@ -7,20 +7,20 @@ function Proposal() {
             <p>Programas de desarrollo profesional y descubrimiento.</p>
        </div>
         <div className="boxsProposalChildren">
-            <div className="proposalBox1">
+            <div className="proposalBox ">
               <h3>Orientación vocacional</h3>
-              <p>Te entrenamos enla toma de decision tu trayecto profesional.</p>
-              <button>Mas informacion</button>
+              <p>Te entrenamos en la toma de decision tu trayecto profesional.</p>
+              <button className='btnInfo'>Mas informacion</button>
             </div>
-            <div className="proposalBox2">
+            <div className="proposalBox ">
               <h3>Re-orientacion vocacional</h3>
               <p>Reinversion personal, laboral y profesional.</p>
-              <button>Mas informacion</button>
+              <button className='btnInfo'>Mas informacion</button>
             </div>
-            <div className="proposalBox3">
+            <div className="proposalBox ">
               <h3>Espacios de aprendizaje</h3>
               <p>Aprende a pensar desde otra logica.</p>
-              <button>Mas informacion</button>
+              <button className='btnInfo'>Mas informacion</button>
             </div>
         </div>
     </div>

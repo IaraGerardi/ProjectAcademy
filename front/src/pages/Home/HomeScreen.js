@@ -10,8 +10,9 @@ function HomeScreen() {
     <div className="HomeScreen">
       <Header />
       <Banner />
-      <Proposal />
       <Mission />
+      <Proposal />
+    
 
       <div className="cont-experience">
           <p className="text-transform">Viví tu transformación personal.</p>
