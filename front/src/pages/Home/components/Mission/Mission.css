@@ -6,11 +6,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 150px;
+    
 }
 .content_two {
-    width: 60%;
-    height: 80%;
+    width: 766px;
+    height: 190px;
     font-family: 'Rubik', sans-serif;
     display: flex;
     flex-direction: column;
@@ -22,6 +22,7 @@
 
 .paragraph_misions {
     font-family: 'Rubik', sans-serif;
+    color: #2E384D;
 }
 
 
@@ -29,16 +30,19 @@
 .paragraph_bold {
     font-weight: bold;
     font-family: 'Rubik', sans-serif;
+    color: #2E384D;
 }
 
 .paragraph_fontsize {
     font-family: 'Rubik', sans-serif;
     font-size: 18px;
+    font-weight: 400;
+    line-height: 24px;
+    color: #2E384D;
 }
 
-.list {
-    
-    margin-left: 40px;
+.list{
+    padding-left: 15px;
 }
 
 .lis {
@@ -48,7 +52,10 @@
 
 .paragraph {
     font-family: 'Rubik', sans-serif;
-    color: black;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 24px;
+    color: #2E384D;
 }
 
 @media (max-width: 600px) {
