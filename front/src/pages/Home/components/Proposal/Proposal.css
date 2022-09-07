@@ -43,12 +43,12 @@ padding-top: 30px;
     color: #2E384D;
     background-color: #fff; 
     border-radius: 8px;
- 
     width: 284px;
     height: 240px;
     border: 1px solid #DADEEB;
     padding-left: 10px;
     padding-top: 10px;
+    padding-bottom: 30px;
     display: flex;
     flex-direction: column;
 
@@ -60,11 +60,16 @@ padding-top: 30px;
     font-size: 24px;
 
 }
-.proposalBox p{
+
+.pProposal{
     width:80%;
     font-weight: 400;
     font-size: 16px;
+    height: 100px;
+    padding-top: 5px;
+    
 }
+
 .btnInfo{
     width: 184px;
     height: 32px;
