@@ -61,6 +61,10 @@ padding-top: 30px;
 
 }
 
+.pProposalMain{
+    width: 100%;
+}
+
 .pProposal{
     width:80%;
     font-weight: 400;
@@ -85,7 +89,7 @@ padding-top: 30px;
 }
 
 
-/* media query */
+/* Media query */
 
 @media (max-width: 916px){
 
@@ -94,9 +98,25 @@ padding-top: 30px;
         justify-content: center;
         width: 100%;
         left: 0;
+        gap:0;
+        
     }
 
     .boxProposalText{
         width: 100%;
     }
+
+    .proposalBox{
+        margin: 15px;
+    }
+   
 }
+
+@media (max-width: 340px){
+
+    .proposalBox{
+        margin-top: 30px;
+    }
+
+}
+

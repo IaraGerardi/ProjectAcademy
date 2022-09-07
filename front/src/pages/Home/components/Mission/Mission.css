@@ -6,15 +6,15 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    
+
 }
 .content_two {
     width: 766px;
-    height: 190px;
+    
     font-family: 'Rubik', sans-serif;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    
 }
 .content_two h1,p{
  padding-bottom: 8px;
@@ -31,6 +31,7 @@
     font-weight: bold;
     font-family: 'Rubik', sans-serif;
     color: #2E384D;
+    padding: 20px 0 20px 0;
 }
 
 .paragraph_fontsize {
@@ -58,9 +59,29 @@
     color: #2E384D;
 }
 
-@media (max-width: 600px) {
-    .content {
-        height: 100vh;
-        text-align: center;
+ /*  Media query */
+
+ @media (max-width: 500px){
+    .content{
+        height: auto;
+        padding: 10px;
+        
+        
     }
-}
+    .content_two {
+        
+        margin-top: 20px;
+    }
+
+    .paragraph_misions{
+        font-size: 24px;
+    }
+
+    .paragraph{
+        font-size: 16px;
+    }
+
+    .paragraph_fontsize{
+        font-size: 16px;
+    }
+ }

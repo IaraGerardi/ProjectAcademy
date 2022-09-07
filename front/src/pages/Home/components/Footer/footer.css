@@ -67,5 +67,17 @@
   .contacto {
     display: flex;
   }
+
+ /*  Media query */
+
+ @media (max-width: 600px){
+    .footer{
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      align-items: center;
+      height: auto;
+    }
+ }
   
  

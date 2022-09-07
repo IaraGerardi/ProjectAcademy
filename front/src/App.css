@@ -76,3 +76,19 @@
   justify-content: center;
   align-items: center;
 }
+
+
+/* Media query */
+
+@media (max-width: 600px){
+
+  .text-transform{
+    font-size: 24px;
+    text-align:center;
+  }
+
+  .text-experience{
+    font-size: 32px;
+    text-align: center;
+  }
+}

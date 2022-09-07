@@ -4,7 +4,7 @@ function Proposal() {
     <div className="containerProposal">
        <div className="boxProposalText">
             <h2>¿Cual es nuestra propuesta?</h2>
-            <p className='pProposal'>Programas de desarrollo profesional y descubrimiento.</p>
+            <p className='pProposalMain'>Programas de desarrollo profesional y descubrimiento.</p>
        </div>
         <div className="boxsProposalChildren">
             <div className="proposalBox ">

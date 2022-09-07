@@ -36,3 +36,21 @@
     color: #1EC5BB;
     font-weight: 700;
   }
+
+  /* Media query */
+
+  @media (max-width: 600px){
+    .imgError{
+      width: 300px;
+    }
+
+    .pError{
+      font-size: 20px;
+      text-align: center;
+    }
+
+    .pError2{
+      font-size: 16px;
+    
+    }
+  }
