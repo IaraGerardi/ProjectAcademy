@@ -52,12 +52,6 @@ ModelOrientado.init({
     },
     phone:{
         type: DataTypes.STRING(50),
-        validate: {
-            isInt: {
-                args: true,
-                msg: 'Debe ser en numeros'
-            },
-        }
     },
     program:{
         type: DataTypes.STRING,
@@ -76,21 +70,7 @@ ModelOrientado.init({
         }
     },
     age:{
-        type: DataTypes.INTEGER,
-        validate: {
-            isInt: {
-                args: true,
-                msg: 'Debe ser en numeros'
-            },
-            min: {
-                args: 18,
-                msg: 'Debe ser mayor a 18 años'
-            },
-            max: {
-                args: 120,
-                msg: 'Debe ser una edad real'
-            }
-        }
+        type: DataTypes.DATE,
     },
     school:{
         type: DataTypes.STRING,

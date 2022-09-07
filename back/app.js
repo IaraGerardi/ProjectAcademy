@@ -5,6 +5,7 @@ const dotenv = require('dotenv');
 const sequelize = require('./database/db.js');
 const ModelOrientador = require('./database/models/ModelOrientador.js');
 const ModelOrientado = require('./database/models/ModelOrientado.js');
+require('./database/associations.js')
 
 
 
@@ -35,7 +36,6 @@ app.listen(PORT, () => {
         sequelize.authenticate();
         //true = rompe y crea la base de datos - false = queda inactivo
         sequelize.sync({force: true});
-        console.log("The table for the User model was just (re)created!");
         console.log(`Database conected`);
     } catch (error) {
         console.log(error);

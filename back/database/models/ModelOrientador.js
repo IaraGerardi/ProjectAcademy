@@ -52,25 +52,11 @@ ModelOrientador.init({
         }
     },
     age:{
-        type: DataTypes.INTEGER,
-        validate: {
-            isInt: {
-                args: true,
-                msg: 'Debe ser en numeros'
-            },
-            min: {
-                args: 18,
-                msg: 'Debe ser mayor a 18 años'
-            },
-            max: {
-                args: 120,
-                msg: 'Debe ser una edad real'
-            }
-        }
+        type: DataTypes.DATE,
     }
 }, {
     sequelize, 
-    modelName: "Orientadore",
+    modelName: "Orientadores",
     timestamps: false
 });
 
