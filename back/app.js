@@ -4,6 +4,8 @@ const path = require('path');
 const dotenv = require('dotenv');
 const sequelize = require('./database/db.js');
 const ModelOrientador = require('./database/models/ModelOrientador.js');
+const ModelOrientado = require('./database/models/ModelOrientado.js');
+
 
 
 dotenv.config({path: './env/.env'})
@@ -20,7 +22,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', () =>{
     ModelOrientador.create({
-        name: 'Javier Raul',
+        name: 'Javier',
         lastname: 'Acevedo',
         email: "jracevedo@academy.com",
         age: 43

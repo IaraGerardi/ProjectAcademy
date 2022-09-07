@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../db.js');
 
-class ModelOrientador extends Model { }
+class ModelOrientado extends Model { }
 
-ModelOrientador.init({
+ModelOrientado.init({
     name:{
         type: DataTypes.STRING,
         allowNull: { //No permite que el campo sea "null"
@@ -22,7 +22,6 @@ ModelOrientador.init({
             }
         }
     },
-
     lastname:{
         type: DataTypes.STRING,
         allowNull: { //No permite que el campo sea "null"
@@ -51,6 +50,31 @@ ModelOrientador.init({
             }
         }
     },
+    phone:{
+        type: DataTypes.STRING(50),
+        validate: {
+            isInt: {
+                args: true,
+                msg: 'Debe ser en numeros'
+            },
+        }
+    },
+    program:{
+        type: DataTypes.STRING,
+
+    },
+    photoProfile:{
+        type: DataTypes.STRING
+    },
+    dni:{
+        type: DataTypes.STRING(50),
+        validate: {
+            isInt: {
+                args: true,
+                msg: 'Debe ser en numeros'
+            },
+        }
+    },
     age:{
         type: DataTypes.INTEGER,
         validate: {
@@ -67,14 +91,21 @@ ModelOrientador.init({
                 msg: 'Debe ser una edad real'
             }
         }
+    },
+    school:{
+        type: DataTypes.STRING,
+    },
+    address:{
+        type: DataTypes.STRING,
+    },
+    //Porque se acerca a la institucion
+    why:{
+        type: DataTypes.STRING,
     }
 }, {
     sequelize, 
-    modelName: "Orientadore",
+    modelName: "Orientado",
     timestamps: false
 });
 
-module.exports = ModelOrientador;
-
-/* // the defined model is the class itself
-console.log(User === sequelize.models.User); // true */
+module.exports = ModelOrientado;
