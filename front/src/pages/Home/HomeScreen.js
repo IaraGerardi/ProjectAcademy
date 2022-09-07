@@ -4,11 +4,13 @@ import { Header } from "./components/header/Header";
 import Mission from "./components/Mission/Mission"
 import Proposal from "./components/Proposal/Propuesta"
 import {Banner} from './components/Banner/banner'
+import {Error} from './components/error/Error'
 
 function HomeScreen() {
   return (
     <div className="HomeScreen">
       <Header />
+      <Error />
       <Banner />
       <Proposal />
       <Mission />
