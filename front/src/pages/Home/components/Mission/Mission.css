@@ -37,11 +37,12 @@
 }
 
 .list {
-    list-style-type: disc;
+    
     margin-left: 40px;
 }
 
 .lis {
+    list-style-type: disc;
     color: rgb(0, 136, 255);
 }
 
