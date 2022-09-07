@@ -1,8 +1,11 @@
 const express = require('express');
 const app = express();
-const db = require('./database/db.js');
 const path = require('path');
 const dotenv = require('dotenv');
+const sequelize = require('./database/db.js');
+const ModelOrientador = require('./database/models/ModelOrientador.js');
+
+
 dotenv.config({path: './env/.env'})
 const PORT = (process.env.PORT || '3000');
 
@@ -14,14 +17,25 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
 //Aviso de conección a la base de datos
-try {
-    db.authenticate();
-    //true = rompe y crea la base de datos - false queda inactivo
-    //db.sync({force: false});
-    console.log(`Database conected`);
-} catch (error) {
-    console.log(error);
-} 
+
+app.get('/', () =>{
+    ModelOrientador.create({
+        name: 'Javier Raul',
+        lastname: 'Acevedo',
+        email: "jracevedo@academy.com",
+        age: 43
+    })
+})
+
 app.listen(PORT, () => {
     console.log(`SERVER UP running in http://localhost:${PORT}`);
+    try {
+        sequelize.authenticate();
+        //true = rompe y crea la base de datos - false = queda inactivo
+        sequelize.sync({force: true});
+        console.log("The table for the User model was just (re)created!");
+        console.log(`Database conected`);
+    } catch (error) {
+        console.log(error);
+    } 
 });
