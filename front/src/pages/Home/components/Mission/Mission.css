@@ -1,22 +1,29 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
 
-.content {
+.content{
+    width: 100%;
     height: 350px;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 200px;
+    margin-top: 150px;
 }
-
+.content_two {
+    width: 60%;
+    height: 80%;
+    font-family: 'Rubik', sans-serif;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.content_two h1,p{
+ margin-bottom: 8px;
+}
 
 .paragraph_misions {
     font-family: 'Rubik', sans-serif;
 }
 
-.content_two {
-    width: 55%;
-    font-family: 'Rubik', sans-serif;
-}
 
 
 .paragraph_bold {
@@ -30,8 +37,8 @@
 }
 
 .list {
-    position: relative;
-    right: 20px;
+    list-style-type: disc;
+    margin-left: 40px;
 }
 
 .lis {
