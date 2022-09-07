@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const db = require('./database/db.js');
 const path = require('path');
 const dotenv = require('dotenv');
 dotenv.config({path: './env/.env'})
@@ -13,14 +14,14 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
 //Aviso de conección a la base de datos
-/* try {
+try {
     db.authenticate();
     //true = rompe y crea la base de datos - false queda inactivo
-    //sequelize.sync({force: false});
-    console.log(`Sql conected`);
+    //db.sync({force: false});
+    console.log(`Database conected`);
 } catch (error) {
     console.log(error);
-} */
+} 
 app.listen(PORT, () => {
     console.log(`SERVER UP running in http://localhost:${PORT}`);
 });
