@@ -1,16 +1,29 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../db.js');
 
-class ModelOrientado extends Model { }
+class ModelAdmin extends Model { }
 
-ModelOrientado.init({
-    name:{
+ModelAdmin.init({
+    user: {
         type: DataTypes.STRING,
         allowNull: { //No permite que el campo sea "null"
             args: false,
             msg: 'El campo no puede estar vacío'
         }, 
-
+    },
+    password: {
+        type: DataTypes.STRING,
+        allowNull: { //No permite que el campo sea "null"
+            args: false,
+            msg: 'El campo no puede estar vacío'
+        }, 
+    },
+    name: {
+        type: DataTypes.STRING,
+        allowNull: { //No permite que el campo sea "null"
+            args: false,
+            msg: 'El campo no puede estar vacío'
+        }, 
         validate: {  //Validaciones de la base de datos
             isAlpha: { //isAlpha solo deja usar letras
                 args: true,
@@ -28,7 +41,6 @@ ModelOrientado.init({
             args: false,
             msg: 'El campo no puede estar vacío'
         }, 
-
         validate: {  //Validaciones de la base de datos
             isAlpha: { //isAlpha solo deja usar letras
                 args: true,
@@ -40,7 +52,6 @@ ModelOrientado.init({
             }
         }
     },
-
     email:{
         type: DataTypes.STRING,
         validate: {
@@ -53,39 +64,14 @@ ModelOrientado.init({
     phone:{
         type: DataTypes.STRING(50),
     },
-    program:{
-        type: DataTypes.STRING,
-
-    },
-    photoProfile:{
-        type: DataTypes.STRING
-    },
-    dni:{
-        type: DataTypes.STRING(50),
-        validate: {
-            isInt: {
-                args: true,
-                msg: 'Debe ser en numeros'
-            },
-        }
-    },
-    age:{
-        type: DataTypes.DATE,
-    },
-    school:{
-        type: DataTypes.STRING,
-    },
-    address:{
-        type: DataTypes.STRING,
-    },
-    //Porque se acerca a la institucion
-    why:{
-        type: DataTypes.STRING,
+    linkedin:{
+        type: DataTypes.STRING(50)
     }
-}, {
+},
+{
     sequelize, 
-    modelName: "Orientado",
-    //timestamps: false
+    modelName: "admins",
+    timestamps: false
 });
 
-module.exports = ModelOrientado;
+module.exports = ModelAdmin;
