@@ -83,3 +83,20 @@ padding-top: 30px;
     background-color: #fff;
     justify-self: flex-end; /* no puedo tirar los btones abajo  */
 }
+
+
+/* media query */
+
+@media (max-width: 916px){
+
+    .boxsProposalChildren{
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 100%;
+        left: 0;
+    }
+
+    .boxProposalText{
+        width: 100%;
+    }
+}
