@@ -3,6 +3,7 @@ const app = express();
 const path = require('path');
 const dotenv = require('dotenv');
 const sequelize = require('./database/db.js');
+//Requerimos Modelos para que se creen en la base de datos de manera fácil y rápida
 const ModelOrientador = require('./database/models/ModelOrientador.js');
 const ModelOrientado = require('./database/models/ModelOrientado.js');
 const ModelNovedades = require('./database/models/ModelNovedades.js');
