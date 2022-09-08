@@ -19,7 +19,7 @@ function Sidebar() {
                 {/* Fin de Logo V_camp */}
 
                 <Link className="navegar" to="/inicio">
-                    <div className='cont-nav-lateral here'>
+                    <div className='cont-nav-lateral'>
                         <div className='cont-logo-lateral'>
                             <img src={inicio} alt="inicio" />
                             <p className='lateral'>Inicio</p>
