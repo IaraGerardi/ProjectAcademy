@@ -3,6 +3,7 @@ const app = express();
 const path = require('path');
 const dotenv = require('dotenv');
 const sequelize = require('./database/db.js');
+const routerAdmin = require ("./routes/adminRouter.js");
 //Requerimos Modelos para que se creen en la base de datos de manera fácil y rápida
 const ModelOrientador = require('./database/models/ModelOrientador.js');
 const ModelOrientado = require('./database/models/ModelOrientado.js');
@@ -21,7 +22,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 //carpeta para archivos publicos
 app.use(express.static(path.join(__dirname, 'public')));
-
+//
+app.use('/', routerAdmin);
 //Aviso de conexión a la base de datos
 
 app.listen(PORT, () => {
@@ -29,7 +31,7 @@ app.listen(PORT, () => {
     try {
         sequelize.authenticate();
         //true = rompe y crea la base de datos - false = queda inactivo
-        sequelize.sync({force: true});
+        sequelize.sync({force: false});
         console.log(`Database conected`);
     } catch (error) {
         console.log(error);

@@ -9,3 +9,7 @@ const getAllNovedades = async (req, res) => {
         res.json({message: error.message})
     }
 }
+
+module.exports = {
+    getAllNovedades
+}

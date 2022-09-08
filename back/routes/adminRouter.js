@@ -1,6 +1,10 @@
 const express = require ("express");
-const router = express.Router();
+const routerAdmin = express.Router();
 const { getAllOrientados } = require ("../controllers/orientadoController.js");
+const { getAllNovedades } = require("../controllers/novedadesController.js");
 
 // Rutas de la vista privada del Admin
-router.get('/admin/inicio', getAllOrientados);
+routerAdmin.get('/admin/orientados', getAllOrientados);
+routerAdmin.get('/admin/novedades', getAllNovedades)
+
+module.exports = routerAdmin;
