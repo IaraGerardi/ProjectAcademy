@@ -1,7 +1,4 @@
-* {
-    margin: 0;
-    padding: 0;
-  }
+
   
   .HeaderIniciado {
     display: flex;
@@ -9,9 +6,12 @@
   }
   
   .menu-lateral {
-    height: 100vh;
+    height: 100%;
     width: 234px;
     border-right: 1px solid rgb(217, 217, 217);
+    margin: 0px;
+    position: absolute;
+    
   }
   
   .cont-logo-menu {
@@ -52,7 +52,6 @@
   
   .lateral {
     margin: 0px 5px;
-  
   }
   
   
@@ -63,10 +62,9 @@
   }
   
   
-  
-  
   .header-inicio {
-    width: 100%;
+    margin-left: 234px;
+    width: 90%;
     height: 111px;
     background-color: #2E384D;
     display: flex;
