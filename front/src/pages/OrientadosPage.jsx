@@ -2,6 +2,8 @@ import HeaderInicio from "../Header-MenuLateral/HeaderInicio";
 import Sidebar from "../Header-MenuLateral/Sidebar";
 import "../css/orientados.css"
 import buscador from "../icons/logo-buscador.svg"
+import Userscv from "../BoxUserscd/Userscv";
+import axios from "axios";
 
 function Orientados() {
     return (
@@ -21,7 +23,10 @@ function Orientados() {
 
             <img className="logo-buscador" src={buscador} alt="logo buscador" />
 
-
+<div className="boxusers">
+    
+    <Userscv/>
+</div>
 
 
         </div >

@@ -1,0 +1,45 @@
+.boxtwo {
+    width: 300px;
+    height: 120px;
+    display: inline-block;
+    margin: 10px;
+    border-radius: 10px;
+    border: 1px solid gray;
+    overflow: hidden;
+}
+
+li {
+    list-style: none;
+}
+
+.ImgUsers{
+width: 50px;
+height: 50px;
+}
+
+
+.boxflex{
+    display: flex;
+    align-items: center;
+    /* background-color: rgb(192, 166, 20); */
+    width: 300px;
+    height: 120px;
+    
+    justify-content: space-around;
+}
+
+.boxtree{
+    /* background-color: aqua; */
+    display: flex;
+    justify-content: space-between;
+}
+
+.classicon{
+    margin-bottom: 80px;
+    margin-left: 35px;
+}
+
+.usericon{
+    width: 20px;
+    height: 20px;
+}
