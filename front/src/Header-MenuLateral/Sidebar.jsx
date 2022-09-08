@@ -7,9 +7,9 @@ import { Link } from "react-router-dom"
 
 import "../css/menu-header.css"
 
-function MenuLateralHeader({ Pagina }) {
+function Sidebar() {
     return (
-        <div className="HeaderIniciado">
+        <div>
 
             <div className='menu-lateral'>
                 <div className='cont-logo-menu'>
@@ -52,20 +52,8 @@ function MenuLateralHeader({ Pagina }) {
 
 
 
-            <div className='header-inicio'>
-
-                {/* Esto habría que hacerlo dinamico y traiga la info de back */}
-
-                <p className='Title-inicio'>{Pagina}</p>
-
-                <div className='usuario-inicio'></div>
-
-                {/* <img className='usuario-inicio' src="" alt="usuario" /> */}
-
-            </div>
-
         </div>
     );
 }
 
-export default MenuLateralHeader;
+export default Sidebar;

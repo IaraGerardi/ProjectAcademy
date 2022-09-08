@@ -1,4 +1,4 @@
-import MenuLateralHeader from "../Header-MenuLateral/MenuLateralHeader";
+import MenuLateralHeader from "../Header-MenuLateral/Sidebar";
 
 
 function Inicio() {
