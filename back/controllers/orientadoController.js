@@ -5,7 +5,7 @@ en caso de no funcionar probar llamando al modelo
 desde "../database/models/ModelOrientado.js*/
 
 
-const getAllOrientados = async (req, res) => {
+exports.getAllOrientados = async (req, res) => {
     try {
         const orientados = await ModelOrientado.findAll();
         res.json(orientados)
