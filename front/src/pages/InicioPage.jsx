@@ -1,11 +1,20 @@
-import MenuLateralHeader from "../Header-MenuLateral/Sidebar";
+import HeaderInicio from "../Header-MenuLateral/HeaderInicio.jsx";
+import MenuLateralHeader from "../Header-MenuLateral/Sidebar.jsx";
 
 
 function Inicio() {
   return (
     <div>
-       <MenuLateralHeader 
-            Pagina="Inicio"/>
+
+
+      <div className="HeaderIniciado">
+
+        <MenuLateralHeader />
+        <HeaderInicio/>
+
+
+      </div>
+
     </div>
 
 
