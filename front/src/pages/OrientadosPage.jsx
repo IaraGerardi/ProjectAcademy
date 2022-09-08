@@ -3,7 +3,8 @@ import Sidebar from "../Header-MenuLateral/Sidebar";
 import "../css/orientados.css"
 import buscador from "../icons/logo-buscador.svg"
 import Userscv from "../BoxUserscd/Userscv";
-import axios from "axios";
+import { Link } from "react-router-dom";
+
 
 function Orientados() {
     return (
@@ -15,7 +16,12 @@ function Orientados() {
             <div className="cont-ingresar-orientado">
                 <p className="text-new-user">Nuevos usuarios a orientar</p>
 
-                <button className="btn-ingresar-orientado">Ingresar orientado</button>
+
+                <Link className="navegar" to="/nuevoOrientado">
+                    <button className="btn-ingresar-orientado">Ingresar orientado</button>
+                </Link>
+
+
             </div>
 
 
@@ -23,10 +29,9 @@ function Orientados() {
 
             <img className="logo-buscador" src={buscador} alt="logo buscador" />
 
-<div className="boxusers">
-    
-    <Userscv/>
-</div>
+            <div className="cont-users">
+                <Userscv />
+            </div>
 
 
         </div >

@@ -20,7 +20,7 @@ function Userscv() {
   }, []);
 
   return (
-    <div>
+    <div className="box-cont">
       {/* <h1>Nuevos Orientados</h1> */}
       <ul>
         {newusers.length === 0 && <p>Cargando</p>}
@@ -33,24 +33,24 @@ function Userscv() {
               <div className="boxtwo">
 
                 <div className="boxtree">
-                <li key={i}>
-                <div className="boxflex">
-                    
-                  <div>
-                 {/* <img className="ImgUsers" src="https://assets.stickpng.com/images/585e4beacb11b227491c3399.png" alt="" /> */}
-                 </div>
+                  <li key={i}>
+                    <div className="boxflex">
 
-                <div>
-                  <h4>{Usersapi.name}</h4>
-                  <p>{Usersapi.username}</p>
-                </div>
+                      <div>
+                        <img className="ImgUsers" src="https://assets.stickpng.com/images/585e4beacb11b227491c3399.png" alt="" />
+                      </div>
 
-                
-                {/* <div className="classicon"><img className="usericon" src={require('../usuarios/img/user.png')} alt="usuario" /></div> */}
+                      <div>
+                        <h4>{Usersapi.name}</h4>
+                        <p>{Usersapi.username}</p>
+                      </div>
 
 
-                </div>
-                </li>
+                      {/* <div className="classicon"><img className="usericon" src={require('../usuarios/img/user.png')} alt="usuario" /></div> */}
+
+
+                    </div>
+                  </li>
                 </div>
               </div>
             </>
