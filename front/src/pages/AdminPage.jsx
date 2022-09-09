@@ -1,31 +1,28 @@
-import "../css/AdminPage.css"
+import "../css/AdminPage.css";
 import Sidebar from "../Header-MenuLateral/Sidebar";
 import HeaderInicio from "../Header-MenuLateral/HeaderInicio";
 
-
 function AdminPage() {
-    return (
-        <div>
+  return (
+    <>
 
-<div className="box">
+    <div className="contentcd">
+    <div className="contentcdmenu">
+        <Sidebar/>
+    </div>
     
-
-    <div className="box1"><Sidebar/></div>
-    {/* <div className="box2"> <HeaderInicio/></div> */}
-    <div className='boxtres'>
-        <div className='boxcuatro'><HeaderInicio/></div>
-        <div><h1>HOLA SOY SEBAS HINCHA DEL CICLON :p</h1></div>
+    <div className="contentcdheader">
+        <div className="contentcdheaderone">
+            <HeaderInicio/>
+        </div>
+        <div>HOLA area de trabajo </div>
+    </div>
+    
     </div>
 
-    {/* <div>
-    <div>hola</div>
-    </div> */}
-</div>
 
-
-
-        </div>
-    );
+    </>
+  );
 }
 
 export default AdminPage;
