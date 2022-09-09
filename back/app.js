@@ -4,6 +4,7 @@ const path = require('path');
 const dotenv = require('dotenv');
 const sequelize = require('./database/db.js');
 const cookieParser = require('cookie-parser')
+const cors = require('cors');
 const routerAdmin = require ("./routes/adminRouter.js");
 const routerLogin = require ("./routes/loginRouter.js");
 //Requerimos Modelos para que se creen en la base de datos de manera fácil y rápida
@@ -17,7 +18,12 @@ require('./database/associations.js');
 
 dotenv.config({path: './env/.env'})
 const PORT = (process.env.PORT || '3000');
-
+//Para poder utilizar cors
+app.use(cors({
+    credentials:true,
+    origin:["http://localhost:3000"],
+    methods:["GET","POST","PUT","DELETE"]
+  }));
 //Para poder utilizar json
 app.use(express.json());
 //Para traer datos como objetos(req.params / req.body)
