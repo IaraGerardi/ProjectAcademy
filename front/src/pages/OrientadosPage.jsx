@@ -8,33 +8,42 @@ import { Link } from "react-router-dom";
 
 function Orientados() {
     return (
-        <div>
-            <Sidebar />
-            <HeaderInicio />
+        <>
+            <div className="cont-major">
+
+                <div className="menu-sa"><Sidebar /></div>
+
+                <div className="header-sa">
+                    <div className="sa-header-children"><HeaderInicio /></div>
+
+                    <div className="sa-seccion">
+
+                        <div className="cont-ingresar-orientado">
+                            <p className="text-new-user">Nuevos usuarios a orientar</p>
 
 
-            <div className="cont-ingresar-orientado">
-                <p className="text-new-user">Nuevos usuarios a orientar</p>
+                            <Link className="navegar" to="/nuevoOrientado">
+                                <button className="btn-ingresar-orientado">Ingresar orientado</button>
+                            </Link>
+                        </div>
 
 
-                <Link className="navegar" to="/nuevoOrientado">
-                    <button className="btn-ingresar-orientado">Ingresar orientado</button>
-                </Link>
+                        <input className="buscador-orientado" type="text" placeholder="Buscar orientado por nombre y apellido" />
 
+                        <img className="logo-buscador" src={buscador} alt="logo buscador" />
+
+                        <div className="cont-users">
+                            <Userscv />
+                        </div>
+
+
+                    </div>
+                </div>
 
             </div>
 
 
-            <input className="buscador-orientado" type="text" placeholder="Buscar orientado por nombre y apellido" />
-
-            <img className="logo-buscador" src={buscador} alt="logo buscador" />
-
-            <div className="cont-users">
-                <Userscv />
-            </div>
-
-
-        </div >
+        </>
     );
 }
 

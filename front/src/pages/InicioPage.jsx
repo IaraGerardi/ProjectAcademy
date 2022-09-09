@@ -4,16 +4,27 @@ import Sidebar from "../Header-MenuLateral/Sidebar.jsx";
 
 function Inicio() {
   return (
-    <div>
+    <>
+            <div className="cont-major">
 
-      <Sidebar />
-      <HeaderInicio />
+                <div className="menu-sa"><Sidebar /></div>
+
+                <div className="header-sa">
+                    <div className="sa-header-children"><HeaderInicio /></div>
+
+                    <div className="sa-seccion">
 
 
 
 
 
-    </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </>
 
 
   );

@@ -1,6 +1,6 @@
 .text-new-user {
     font-size: 24px;
-    font-weight: 400;
+    font-weight: 600;
     line-height: 32px;
     font-family: sans-serif 'Rubik';
     color: #2E384D;
@@ -11,7 +11,7 @@
     justify-content: space-around;
     margin: 40px 0px;
     position: relative;
-    left: 170px;
+    left: 220px;
     width: 70%;
 }
 
@@ -22,6 +22,7 @@
     background-color: #0BA4A0;
     color: white;
     border: none;
+    margin-left: 300px;
     font-weight: 600;
     font-size: 13px;
     transition: 500ms;
@@ -64,6 +65,6 @@
 
 .cont-users {
     position: relative;
-    left: 255px;
+    left: 270px;
     top: 50px;
 }
