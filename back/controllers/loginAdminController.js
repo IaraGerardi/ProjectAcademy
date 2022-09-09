@@ -76,7 +76,7 @@ exports.adminLogin = async (req, res) => {
                     expires: new Date(Date.now() + process.env.JWT_COOKIE_EXPIRES * 24 * 60 * 60 * 1000),
                     httpOnly: true
                 }
-                res.cookie('jwt', token, cookiesOptions) // cookieoptions me tira que expires es invalido, revisar más adelante (Solucionado colocando "JWT_COOKIE_EXPIRES =" en el .env)
+                res.cookie('jwt', token, cookiesOptions) // cookieOptions me tira que expires es invalido, revisar más adelante (Solucionado colocando "JWT_COOKIE_EXPIRES =" en el .env)
                 res.json({
                     alert: true,
                     alertTitle: "Conexión exitosa",
@@ -99,11 +99,11 @@ exports.isAuthenticated = async (req, res, next) => {
     if (req.cookies.jwt) {
         try {
             const decodificada = await promisify(jwt.verify)(req.cookies.jwt, process.env.JWT_SECRETO)
-            const user = await UserModel.findAll({
+            const admin = await ModelAdmin.findAll({
                 where: { id: decodificada.id }
             })
-            if (!user) { return next() }
-            req.user = user[0]
+            if (!admin) { return next() }
+            req.admin = admin[0]
             return next()
 
         } catch (error) {
@@ -111,7 +111,11 @@ exports.isAuthenticated = async (req, res, next) => {
             return next()
         }
     } else {
-            console.log("Akkkksd")
-            res.json({mensaje: 'hola kevin no puedo pasar'})
+            res.json({mensaje: 'Usuario no logueado, porfavor inicie sesion'})
     }
+}
+
+exports.logout = (req, res) => {
+    res.clearCookie('jwt')
+    res.json("Usuario deslogueado")
 }
