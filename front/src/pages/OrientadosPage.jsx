@@ -18,9 +18,6 @@ function Orientados() {
 
                     <div className="sa-seccion">
 
-
-                        <div>hola cris</div>
-
                         <div className="cont-ingresar-orientado">
                             <p className="text-new-user">Nuevos usuarios a orientar</p>
 
