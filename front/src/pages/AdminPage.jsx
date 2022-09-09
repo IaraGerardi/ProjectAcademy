@@ -5,20 +5,22 @@ import HeaderInicio from "../Header-MenuLateral/HeaderInicio";
 function AdminPage() {
   return (
     <>
+      <div className="cont-major">
 
-    <div className="contentcd">
-    <div className="contentcdmenu">
-        <Sidebar/>
-    </div>
-    
-    <div className="contentcdheader">
-        <div className="contentcdheaderone">
-            <HeaderInicio/>
+        <div className="menu-sa"><Sidebar /></div>
+
+        <div className="header-sa">
+          <div className="sa-header-children"><HeaderInicio /></div>
+
+          <div className="sa-seccion">
+
+
+
+
+          </div>
         </div>
-        <div>HOLA area de trabajo </div>
-    </div>
-    
-    </div>
+
+      </div>
 
 
     </>

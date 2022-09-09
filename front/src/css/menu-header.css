@@ -1,3 +1,29 @@
+
+.cont-major {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+}
+
+.menu-sa {
+  height: 100vh;
+  width:260px;
+  overflow: hidden;
+}
+
+.header-sa {
+  width: 100%;
+  height: 100vh;
+}
+
+.sa-header-children{
+  width: 100%;
+  height: auto;
+  background-color: red;
+}
+
+
+
 .HeaderIniciado {
   display: flex;
   flex-direction: row;
@@ -5,11 +31,8 @@
 
 .menu-lateral {
   height: 100%;
-  width: 234px;
+  width: 100%;
   border-right: 1px solid rgb(217, 217, 217);
-  margin: 0px;
-  position: absolute;
-
 }
 
 .cont-logo-menu {
@@ -20,7 +43,6 @@
   align-items: center;
 
 }
-
 
 .cont-nav-lateral {
   height: 65px;
@@ -61,8 +83,7 @@
 
 
 .header-inicio {
-  margin-left: 234px;
-  width: 90%;
+  width: 100%;
   height: 111px;
   background-color: #2E384D;
   display: flex;
@@ -91,4 +112,4 @@
   position: relative;
   left: 280px;
   height: 400px;
-}
+} 

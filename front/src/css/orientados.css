@@ -10,9 +10,7 @@
     display: flex;
     justify-content: space-around;
     margin: 40px 0px;
-    position: relative;
-    left: 220px;
-    width: 70%;
+    width: 100%;
 }
 
 .btn-ingresar-orientado {
@@ -36,12 +34,11 @@
 }
 
 .buscador-orientado {
+    margin-left: 100px;
     border: rgb(201, 200, 200) solid 1px;
     width: 656px;
     height: 48px;
     border-radius: 8px;
-    position: relative;
-    left: 280px;
     box-shadow: 0px 0px 10px rgba(135, 152, 173, 0.1);
     z-index: 0;
     padding-left: 25px;
@@ -57,14 +54,16 @@
 .logo-buscador {
     position: relative;
     z-index: 1;
-    left: 240px;
-    top: 7px;
+    right: 50px;
+    top: 10px;
 }
 
 
 
 .cont-users {
-    position: relative;
-    left: 270px;
-    top: 50px;
+    margin: 50px 100px;
+
+
 }
+
+
