@@ -8,28 +8,31 @@ function Userscv() {
   console.log(newusers);
 
   //PEDIDO ASINCRONO
+
   useEffect(() => {
-    const obtenerUserscv = async () => {
-      const url = "https://jsonplaceholder.typicode.com/users";
+    const getOrientados = async () => {
+      try {
+        const res = await axios.get("http://localhost:8000/admin/orientados")
+        setNewusers(res.data);
+        console.log(res.data)
 
-      const result = await axios.get(url);
-
-      setNewusers(result.data);
-    };
-    obtenerUserscv();
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    getOrientados();
   }, []);
 
+
   return (
+
     <div className="box-cont">
-      {/* <h1>Nuevos Orientados</h1> */}
       <ul>
         {newusers.length === 0 && <p>Cargando</p>}
         {newusers.map((Usersapi, i) => {
           return (
+
             <>
-
-              {/* // <div className="box"> */}
-
               <div className="boxtwo">
 
                 <div className="boxtree">
@@ -41,8 +44,8 @@ function Userscv() {
                       </div>
 
                       <div>
-                        <h4>{Usersapi.name}</h4>
-                        <p>{Usersapi.username}</p>
+                        <h4>{Usersapi.name} {Usersapi.lastname}</h4>
+                        <p>{Usersapi.school}</p>
                       </div>
 
 
