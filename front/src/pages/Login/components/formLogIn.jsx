@@ -1,25 +1,75 @@
+import { useState } from "react";
+import Icon from "../../global-components/Svg-icon";
+
 function FormLogIn() {
+    const [form, setForm] = useState({})
+    const [verifyEmail, setVerifyEmail] = useState(null)
+    const [verifyPassword, setVerifyPassword] = useState(null)
+
+
+    const verifyForm = () =>{
+        console.log('verifyForm');
+        // verificaciones email, no se puede mandar vacio
+        form.emailLog == null ||  form.emailLog === "" ?  setVerifyEmail("El email no puede estar vacio") : 
+        /\S+@\S+\.\S+/.test(form.emailLog) === false ? setVerifyEmail("El email no tiene el formato correcto") :
+        setVerifyEmail(null);
+        // Verificaciones password, no se puede enviar vacio ni con menos de 8 caracteres
+        form.passwordLog == null || form.passwordLog === ""  ? setVerifyPassword("La contraseña no puede estar vacia") :
+        form.passwordLog.length < 8 ? setVerifyPassword("La contraseña tiene que tener 8 caracteres")
+        : setVerifyPassword(null);
+    }
+
+    const handleChange = (e) => {
+        setForm({
+            ...form,
+            [e.target.id]: e.target.value,
+        })
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        verifyForm();
+    }
+
     return (
-        <form method="POST">
-            <div className="emailLogContainer">
-                <label for="emailLog">Email</label>
-                <input
-                    type="email"
-                    id="emailLog"
-                    name="emailLog"
-                    // onChange={verifyLogIn}
-                    placeholder="Ingresa tu email" />
-            </div>
-            <div className="passwordLogContainer">
-                <label for='passwordLog'>Contraseña</label>
-                <input
-                    type="password"
-                    id="passwordLog"
-                    name="passwordLog"
-                    // onChange={verifyLogIn}
-                    placeholder="Ingresa tu contraseña" />
-            </div>
-            <input type="submit" value="Ingresar" />
+        <form method="POST" onSubmit={handleSubmit}>
+            <label htmlFor="emailLog">Email</label>
+            <input
+                className={verifyEmail != null ? "errorInput" : "inputLogIn"}
+                type="email"
+                id="emailLog"
+                name="emailLog"
+                onChange={handleChange}
+                placeholder="Ingresa tu email" />
+            {verifyEmail != null ?
+                <div className="errorContainer">
+                    <Icon
+                        classname="errorLogIn"
+                        type="exclamationMark"
+                        width="24" height="24" />
+                    <span>{verifyEmail}</span>
+                </div>
+                : null
+            }
+            <label htmlFor='passwordLog'>Contraseña</label>
+            <input
+                className={verifyPassword != null ? "errorInput" : "inputLogIn"}
+                type="password"
+                id="passwordLog"
+                name="passwordLog"
+                onChange={handleChange}
+                placeholder="Ingresa tu contraseña" />
+            {verifyPassword != null ?
+                <div className="errorContainer">
+                    <Icon
+                        classname="errorLogIn"
+                        type="exclamationMark"
+                        width="24" height="24" />
+                    <span>{verifyPassword}</span>
+                </div>
+                : null
+            }
+            <input type="submit" value="Ingresar" className="inputLogIn"/>
         </form>
     );
 }
