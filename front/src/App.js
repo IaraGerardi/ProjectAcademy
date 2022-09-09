@@ -6,6 +6,7 @@ import { Route, Routes } from 'react-router-dom';
 import Inicio from './pages/InicioPage';
 import Orientados from './pages/OrientadosPage';
 import Eventos from './pages/EventPage';
+import AdminPage from './pages/AdminPage';
 
 // Fin Importación Páginas
 
@@ -19,6 +20,7 @@ function App() {
         <Route path='/inicio' element={<Inicio />} />
         <Route path='/orientados' element={<Orientados />} />
         <Route path='/eventos' element={<Eventos />} />
+        <Route path='/admin' element={<AdminPage/>} />
       </Routes>
 
     </div>

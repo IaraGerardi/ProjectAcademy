@@ -1,0 +1,43 @@
+.box{
+    background-color: gold;
+    height: 650px;
+    display: flex;
+    overflow: hidden;
+    }
+    
+    .box1{
+      width: 250px;
+      height: 100vh;
+      background-color: red;
+      border: 1px solid black;
+      
+      }
+    
+    
+    .box2{
+    width: 100%;
+    height: 100px;
+    background-color: red;
+    border: 1px solid black;
+    
+    }
+    
+    .box3{
+      width: 100px;
+      height: 100px;
+      background-color: red;
+      border: 1px solid black;
+      
+      }
+    
+    
+      .boxtres{
+        background-color: green;
+        width: 100%;
+      }
+    
+      .boxcuatro{
+        width: 100%;
+        height: auto;
+        background-color: aqua;
+      }
