@@ -12,14 +12,13 @@ function FormLogIn() {
     const navigate = useNavigate();
 
     const verifyForm = () => {
-        console.log('verifyForm');
-        // verificaciones email, no se puede mandar vacio
+        // verificaciones email, no se puede mandar vacio y tiene que estar con cierto formato
         form.emailLog == null || form.emailLog === "" ? setVerifyEmail("El email no puede estar vacio") :
-            /\S+@\S+\.\S+/.test(form.emailLog) === false ? setVerifyEmail("El email no tiene el formato correcto") :
+            /\S+@\S+\.\S+/.test(form.emailLog) === false ? setVerifyEmail("El email tiene un formato incorrecto") :
                 setVerifyEmail(null);
-        // Verificaciones password, no se puede enviar vacio ni con menos de 8 caracteres
+        // Verificaciones password, no se puede enviar vacio ni con menos de 6 caracteres
         form.passwordLog == null || form.passwordLog === "" ? setVerifyPassword("La contraseña no puede estar vacia") :
-            form.passwordLog.length < 6 ? setVerifyPassword("La contraseña tiene que tener 8 caracteres")
+            form.passwordLog.length < 6 ? setVerifyPassword("La contraseña debe tener mas de 6 caracteres")
                 : setVerifyPassword(null);
     }
 
@@ -40,23 +39,16 @@ function FormLogIn() {
                     if (response.data.si) {
                         localStorage.setItem("usuario", JSON.stringify(response.data));
                         navigate('/inicio')
+                    } else {
+                        if (response.data.alertMessage === "Email incorrecto") {
+                            setVerifyEmail("Email incorrecto")
+                        } else if (response.data.alertMessage === "Password incorrecta") {
+                            setVerifyPassword("Contraseña incorrecta")
+                        }
                     }
                 })
         }
     }
-
-    // const getPosts = async () => {
-    //     await axios.get(URI, {withCredentials:true}).then(result=>{
-    //       if(result.data.mensaje) {
-    //         console.log("miau")
-    //         navigate('/login')
-    //       } else {
-    //         console.log(result.data)
-    //         setPosts(result.data);
-    //       }
-    //     })
-    //     /* setPosts(res.data); */
-    //   }
 
     return (
         <form method="POST" onSubmit={handleSubmit}>
