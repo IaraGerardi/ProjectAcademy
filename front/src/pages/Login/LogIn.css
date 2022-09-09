@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+/*Estilos generales*/
+.loginAdmin {
+    display: flex;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.2);
+    font-family: 'Rubik', sans-serif;
+}
+
+.loginAdmin .imagesContainer,
+.loginAdmin .formContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (max-width: 1100px) {
+    .loginAdmin {
+        flex-direction: column;
+    }
+
+    .loginAdmin .imagesContainer,
+    .loginAdmin .formContainer {
+        width: 100vw;
+        height: 50vh;
+    }
+}
+
+/*Imagenes*/
+@media (min-width:1101px){
+    .imagesContainer {
+        width: 40vw;
+    }
+    .loginAdmin .formContainer {
+        width: 60vw;
+    }
+}
+
+.imagesContainer {
+    background: #DADEEB;
+}
+
+#vCampLogo {
+    width: 200px;
+    height: 50px;
+}
+
+#LogInImage {
+    width: 390px;
+    height: 390px;
+}
+
+/*Formulario*/
+
+.loginAdmin form {
+    display: flex;
+    flex-direction: column;
+}
+
+#emailLog,
+#passwordLog {
+    width: 320px;
+    margin: 5px;
+}
+
+.loginAdmin .formContainer input {
+    height: 40px;
+    padding: 8px;
+    border-radius: 8px;
+    margin: 5px;
+}
+.loginAdmin label{
+    margin: 5px;
+}
+.inputLogIn{
+    border: 0.3px solid rgb(130, 130, 130);
+}
+.loginAdmin input[type=submit] {
+    font-weight: 500;
+    font-size: 16px;
+    color: white;
+    background-color: #0BA4A0;
+    width: 185px;
+}
+
+/*Estilos error*/
+.errorInput {
+    border: 1px solid #d20000;
+}
+
+.errorContainer {
+    display: flex;
+    align-items: center;
+}
+
+.errorContainer span {
+    margin: 5px;
+    color: #d20000;
+}
+
+.errorLogIn {
+    width: 15px;
+    height: 15px;
+    fill: #d20000;
+    margin: 5px;
+}
