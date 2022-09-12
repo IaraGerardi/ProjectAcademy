@@ -85,7 +85,9 @@ exports.adminLogin = async (req, res) => {
                     showConfirmButton: false,
                     timer: 800,
                     ruta: '',
-                    si:'si'
+                    si:'si',
+                    token: token,
+                    cookiesOptions: cookiesOptions
                 });
             }
         }
