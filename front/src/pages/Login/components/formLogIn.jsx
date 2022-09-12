@@ -35,9 +35,8 @@ function FormLogIn() {
         if (verifyEmail === null && verifyPassword === null) {
             await axios.post(`${URI}`, form, { withCredentials: true })
                 .then((response) => {
-                    console.log(response.data)
                     if (response.data.si) {
-                        localStorage.setItem("usuario", JSON.stringify(response.data));
+                        localStorage.setItem("usuario", JSON.stringify(response.data.admin));
                         navigate('/inicio')
                     } else {
                         if (response.data.alertMessage === "Email incorrecto") {
