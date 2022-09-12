@@ -84,6 +84,9 @@ ModelOrientado.init({
     },
     avatar:{
         type: DataTypes.STRING,
+    },
+    password:{
+        type: DataTypes.STRING,
     }
 }, {
     sequelize, 
