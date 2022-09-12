@@ -2,10 +2,10 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import "./Userscvcss.css";
 
-function Userscv() {
+function Userscv () {
   const [newusers, setNewusers] = useState([]);
 
-  console.log(newusers);
+  // console.log(newusers);
 
   //PEDIDO ASINCRONO
 

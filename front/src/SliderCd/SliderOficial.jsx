@@ -12,8 +12,8 @@ function SliderOficial() {
   // este es un pedido asincronico
   useEffect(() => {
     const ObtenerNotice = async () => {
-      const url = "https://jsonplaceholder.typicode.com/users";
-      const result = await axios.get(url);
+    const url = "http://localhost:8000/admin/novedades";
+    const result = await axios.get(url);
       // console.log(result.data);
 
       setNotice(result.data);
@@ -64,15 +64,17 @@ function SliderOficial() {
           {/* <div className='card-top'> */}
 
           <div className="textouno">
-            <h2>{data.name}</h2>
+            <h2>{data.titulo}</h2>
           </div>
 
           <div className="textodos">
-            <p>{data.username}</p>
+            <p>{data.content}</p>
+          
+
           </div>
 
           <div className="textotres">
-            <button>Ver másggfgf </button>
+           <button><a href={data.link}></a></button>
           </div>
         </div>
       ))}
