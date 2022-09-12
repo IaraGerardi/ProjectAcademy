@@ -87,7 +87,8 @@ exports.adminLogin = async (req, res) => {
                     ruta: '',
                     si:'si',
                     token: token,
-                    cookiesOptions: cookiesOptions
+                    cookiesOptions: cookiesOptions,
+                    admin: admin[0]
                 });
             }
         }
