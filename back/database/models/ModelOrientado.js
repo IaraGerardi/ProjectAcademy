@@ -22,18 +22,16 @@ ModelOrientado.init({
             }
         }
     },
+    password:{
+        type: DataTypes.STRING,
+    },
     lastname:{
         type: DataTypes.STRING,
         allowNull: { //No permite que el campo sea "null"
             args: false,
             msg: 'El campo no puede estar vacío'
         }, 
-
         validate: {  //Validaciones de la base de datos
-            isAlpha: { //isAlpha solo deja usar letras
-                args: true,
-                msg: 'Solo debe contener letras'
-            },
             len: { //len establece el minimo y maximo de caracteres
                 args: [2,100],
                 msg: 'Debe contener minimo 2 caracteres'
@@ -83,9 +81,6 @@ ModelOrientado.init({
         type: DataTypes.STRING,
     },
     avatar:{
-        type: DataTypes.STRING,
-    },
-    password:{
         type: DataTypes.STRING,
     }
 }, {

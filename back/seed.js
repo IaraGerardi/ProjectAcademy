@@ -221,7 +221,7 @@ const orientados = [{
   }, {
     "name": "Lief",
     "password": "RxhBSB1",
-    "lastname": "O'Hannigan",
+    "lastname": "Hannigan",
     "email": "lohanniganh@aboutads.info",
     "phone": "9151929118",
     "photoProfile": "default.png",
