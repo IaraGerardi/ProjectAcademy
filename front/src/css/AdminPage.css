@@ -21,3 +21,43 @@
   width: 100%;
   height: 120px;
 }
+
+.sectionFlex {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.titlecdboton {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 100px;
+}
+
+.sectioncdusers {
+  border: 1px solid black;
+  height: 200px;
+  width: 100%;
+}
+
+.sectioncdnovedad {
+  width: 100%;
+  height: 45vh;
+}
+
+.sectionflex {
+  width: 30%;
+  height: 310px;
+}
+
+.boxbuttoncd {
+  text-align: center;
+  height: 40px;
+  width: 200px;
+  border-bottom: 5px solid rgb(43, 202, 255);
+}
+
+.novedades {
+  margin-left: 160px;
+}

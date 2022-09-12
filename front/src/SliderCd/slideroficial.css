@@ -1,0 +1,60 @@
+.slick-slide > div {
+  margin: 0 10px;
+}
+.slick-list {
+  margin: 0 -10px;
+}
+
+.card {
+  border: 2px solid rgb(105, 105, 105);
+  border-radius: 8px;
+  overflow: hidden;
+  height: 240px;
+  color: wheat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* box-shadow: 1px 1px 1px  rgb(68, 68, 68); */
+}
+.card-top h1 {
+  display: flex;
+  justify-content: center;
+}
+
+.boxcard {
+  margin-top: 100px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+}
+
+.textouno {
+  color: black;
+  margin-top: 15px;
+  width: 100%;
+  overflow: hidden;
+  height: 100px;
+  margin-left: 5px;
+}
+
+.textodos {
+  color: gray;
+  width: 100%;
+  overflow: hidden;
+  height: 80px;
+  margin-left: 5px;
+}
+
+.textotres {
+  width: 80%;
+  overflow: hidden;
+  height: auto;
+  margin-left: 5px;
+}
+
+.sliderone {
+  width: 1000px;
+  height: 300px;
+  margin-left: 150px;
+  margin-top: 10px;
+}
