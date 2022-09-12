@@ -12,6 +12,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-bottom: 50px;
   }
 
   .pError{
@@ -35,6 +36,15 @@
   .spanError{
     color: #1EC5BB;
     font-weight: 700;
+  }
+
+  .spanError:hover{
+    color: rgb(7, 140, 193);
+    
+  }
+
+  .linkError{
+    text-decoration: none;
   }
 
   /* Media query */
