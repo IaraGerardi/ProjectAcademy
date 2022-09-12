@@ -9,6 +9,7 @@ import Eventos from './pages/EventPage';
 import AdminPage from './pages/AdminPage';
 import LogIn from './pages/Login/LogInScreen';
 import {Error} from './pages/Home/components/error/Error'
+import ProfileAdminScreen from './pages/ProfileAdmin/ProfileAdminScreen';
 
 // Fin Importación Páginas
 
@@ -18,6 +19,7 @@ function App() {
       <Routes>
         <Route path='/' element={<HomeScreen />} />
         <Route path='/inicio' element={<Inicio />} />
+        <Route path='/profile' element={<ProfileAdminScreen/>} />
         <Route path='/logIn' element={<LogIn />} />
         <Route path='/orientados' element={<Orientados />} />
         <Route path='/eventos' element={<Eventos />} />
