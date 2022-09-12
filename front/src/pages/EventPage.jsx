@@ -3,8 +3,8 @@ import Sidebar from "../Header-MenuLateral/Sidebar.jsx";
 
 
 function Eventos() {
-  return (
-    <>
+    return (
+        <>
             <div className="cont-major">
 
                 <div className="menu-sa"><Sidebar /></div>
@@ -13,7 +13,6 @@ function Eventos() {
                     <div className="sa-header-children"><HeaderInicio /></div>
 
                     <div className="sa-seccion">
-
 
 
 
@@ -26,7 +25,7 @@ function Eventos() {
         </>
 
 
-  );
+    );
 }
 
 export default Eventos;

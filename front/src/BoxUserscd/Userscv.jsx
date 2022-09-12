@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import "./Userscvcss.css";
 
+
+
 function Userscv () {
   const [newusers, setNewusers] = useState([]);
 
@@ -34,11 +36,12 @@ function Userscv () {
                   <li key={i}>
                     <div className="boxflex">
                       <div>
-                        <img
+                        <img className="ImgUsers" src="" alt="" />
+                        {/* <img
                           className="ImgUsers"
-                          src="https://assets.stickpng.com/images/585e4beacb11b227491c3399.png"
-                          alt=""
-                        />
+                          src=
+                          alt="Foto Usuario"
+                        /> */}
                       </div>
 
                       <div>

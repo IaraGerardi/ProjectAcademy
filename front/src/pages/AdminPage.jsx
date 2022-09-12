@@ -1,7 +1,7 @@
 import "../css/AdminPage.css";
 import Sidebar from "../Header-MenuLateral/Sidebar";
 import HeaderInicio from "../Header-MenuLateral/HeaderInicio";
-// import Userscv from "../BoxUserscd/Userscv";
+import Userscv from "../BoxUserscd/Userscv";
 import SliderOficial from "../SliderCd/SliderOficial";
 import { Link } from "react-router-dom";
 
@@ -33,7 +33,7 @@ function AdminPage() {
                 </div>
               </div>
               <div className="sectioncdusers">
-                {/* <Userscv /> */}
+                <Userscv />
               </div>
               <div className="sectioncdnovedad">
                 <h2 className="novedades">Novedades</h2>
