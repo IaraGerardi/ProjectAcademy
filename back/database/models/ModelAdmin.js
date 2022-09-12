@@ -66,6 +66,9 @@ ModelAdmin.init({
     },
     linkedin:{
         type: DataTypes.STRING(50)
+    },
+    avatar:{
+        type: DataTypes.STRING,
     }
 },
 {

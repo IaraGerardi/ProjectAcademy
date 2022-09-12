@@ -53,6 +53,9 @@ ModelOrientador.init({
     },
     age:{
         type: DataTypes.DATE,
+    },
+    avatar:{
+        type: DataTypes.STRING,
     }
 }, {
     sequelize, 

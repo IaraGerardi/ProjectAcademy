@@ -4,217 +4,237 @@ const ModelAdmin = require('./database/models/ModelAdmin.js');
 const sequelize = require('./database/db.js');
 
 const orientadores = [
-    { name: 'Cristian', lastname: 'Vera', email: 'cristianvera@academy.com', age: 47 },
-    { name: 'Macarena', lastname: 'Leiva', email: 'macaleiva@academy.com', age: 40 },
-    { name: 'Ezequiel', lastname: 'Rodriguez', email: 'ezerodriguez@academy.com', age: 48 },
-    { name: 'Gonzalo', lastname: 'Cataldo', email: 'gonzacataldo@academy.com', age: 37 },
-    { name: 'Iara', lastname: 'Gerardi', email: 'gerardiiara@academy.com', age: 39 },
-    { name: 'Sebastian', lastname: 'Avila', email: 'avilaseba@academy.com', age: 42 },
-    { name: 'Ayelen', lastname: 'Maidana', email: 'ayemaidana@academy.com', age: 36 },
-    { name: 'Maximiliano', lastname: 'Portel', email: 'maxportel@academy.com', age: 45 },
+    { name: 'Cristian', lastname: 'Vera', email: 'cristianvera@academy.com', age: 47,avatar:'cristianVera.png' },
+    { name: 'Macarena', lastname: 'Leiva', email: 'macaleiva@academy.com', age: 40,avatar:'macarenaLeiva.png' },
+    { name: 'Ezequiel', lastname: 'Rodriguez', email: 'ezerodriguez@academy.com', age: 48,avatar:'ezequielRodriguez.png' },
+    { name: 'Gonzalo', lastname: 'Cataldo', email: 'gonzacataldo@academy.com', age: 37,avatar:'gonzaloCataldo.png' },
+    { name: 'Iara', lastname: 'Gerardi', email: 'gerardiiara@academy.com', age: 39,avatar:'iaraGerardi.png' },
+    { name: 'Sebastian', lastname: 'Avila', email: 'avilaseba@academy.com', age: 42,avatar:'sebastianAvila.png' },
+    { name: 'Ayelen', lastname: 'Maidana', email: 'ayemaidana@academy.com', age: 36,avatar:'ayelenMaidana.png' },
+    { name: 'Maximiliano', lastname: 'Portel', email: 'maxportel@academy.com', age: 45,avatar:'maximilianoBeraud.png' },
 ];
 
 const orientados = [{
-    name: "Purcell",
-    lastname: "MacConnechie",
-    email: "pmacconnechie0@sogou.com",
-    phone: "+380 (478) 588-4037",
-    dni: 65100915,
-    age: "7/18/1996",
-    school: "Ilene",
-    address: "1 5th Court",
-    OrientadoreId: 7
-}, {
-    name: "Ailey",
-    lastname: "Fouldes",
-    email: "afouldes1@virginia.edu",
-    phone: "+62 (662) 457-2062",
-    dni: 37405345,
-    age: "9/16/2000",
-    school: "Hovde",
-    address: "146 Rusk Way",
-    OrientadoreId: 8
-}, {
-    name: "Foster",
-    lastname: "Lowy",
-    email: "flowy2@google.pl",
-    phone: "+351 (284) 486-7837",
-    dni: 35340973,
-    age: "12/13/1998",
-    school: "Fremont",
-    address: "4612 Farmco Court",
-    OrientadoreId: 4
-}, {
-    name: "Penelopa",
-    lastname: "Rikkard",
-    email: "prikkard3@dailymotion.com",
-    phone: "+967 (744) 618-3749",
-    dni: 76001228,
-    age: "8/18/1994",
-    school: "Namekagon",
-    address: "0 Melvin Junction",
-    OrientadoreId: 8
-}, {
-    name: "Maryellen",
-    lastname: "Brehault",
-    email: "mbrehault4@oracle.com",
-    phone: "+54 (117) 986-5175",
-    dni: 74956566,
-    age: "9/30/1991",
-    school: "Mosinee",
-    address: "07659 Ludington Road",
-    OrientadoreId: 1
-}, {
-    name: "Timi",
-    lastname: "Vlasyuk",
-    email: "tvlasyuk5@elpais.com",
-    phone: "+55 (462) 168-4059",
-    dni: 70440665,
-    age: "9/23/1994",
-    school: "Lerdahl",
-    address: "7960 Mayfield Circle",
-    OrientadoreId: 8
-}, {
-    name: "Shanna",
-    lastname: "Candlin",
-    email: "scandlin6@bigcartel.com",
-    phone: "+30 (191) 567-8147",
-    dni: 59650881,
-    age: "9/19/1995",
-    school: "Hovde",
-    address: "5865 Hayes Way",
-    OrientadoreId: 6
-}, {
-    name: "Alonso",
-    lastname: "Creasy",
-    email: "acreasy7@examiner.com",
-    phone: "+62 (661) 940-9903",
-    dni: 47890017,
-    age: "3/28/1989",
-    school: "Mosinee",
-    address: "628 Loeprich Road",
-    OrientadoreId: 6
-}, {
-    name: "Cordie",
-    lastname: "Jaggard",
-    email: "cjaggard8@cisco.com",
-    phone: "+58 (656) 789-7715",
-    dni: 53027642,
-    age: "2/28/1998",
-    school: "Anzinger",
-    address: "7 Dunning Place",
-    OrientadoreId: 5
-}, {
-    name: "Ambrosi",
-    lastname: "Lauret",
-    email: "alauret9@fda.gov",
-    phone: "+86 (354) 353-0116",
-    dni: 54951077,
-    age: "9/13/1987",
-    school: "Union",
-    address: "1 Ridgeway Trail",
-    OrientadoreId: 6
-}, {
-    name: "Aylmar",
-    lastname: "Fourcade",
-    email: "afourcadea@sourceforge.net",
-    phone: "+30 (585) 839-9583",
-    dni: 57520932,
-    age: "12/24/1988",
-    school: "Blaine",
-    address: "163 Pond Center",
-    OrientadoreId: 1
-}, {
-    name: "Allie",
-    lastname: "Streater",
-    email: "astreaterb@cargocollective.com",
-    phone: "+62 (998) 308-2360",
-    dni: 32848581,
-    age: "11/16/2003",
-    school: "Dapin",
-    address: "62783 Ilene Circle",
-    OrientadoreId: 5
-}, {
-    name: "Juieta",
-    lastname: "Davidov",
-    email: "jdavidovc@squarespace.com",
-    phone: "+62 (983) 580-8341",
-    dni: 79625877,
-    age: "6/25/2003",
-    school: "Heffernan",
-    address: "38 Kings Terrace",
-    OrientadoreId: 1
-}, {
-    name: "Timothea",
-    lastname: "Sheal",
-    email: "tsheald@archive.org",
-    phone: "+86 (131) 198-5143",
-    dni: 75968078,
-    age: "1/26/2000",
-    school: "Eliot",
-    address: "86 Kim Crossing",
-    OrientadoreId: 7
-}, {
-    name: "Olympie",
-    lastname: "Kearley",
-    email: "okearleye@blogspot.com",
-    phone: "+30 (422) 218-2299",
-    dni: 31938566,
-    age: "12/7/1985",
-    school: "Coleman",
-    address: "39187 Welch Center",
-    OrientadoreId: 3
-}, {
-    name: "Dorris",
-    lastname: "Witter",
-    email: "dwitterf@unicef.org",
-    phone: "+850 (210) 235-5853",
-    dni: 55910142,
-    age: "11/21/1998",
-    school: "Bashford",
-    address: "7862 1st Point",
-    OrientadoreId: 5
-}, {
-    name: "Erhard",
-    lastname: "Gariff",
-    email: "egariffg@economist.com",
-    phone: "+51 (489) 982-4089",
-    dni: 49477476,
-    age: "9/8/1997",
-    school: "Stone Corner",
-    address: "341 Sauthoff Court",
-    OrientadoreId: 7
-}, {
-    name: "Trudie",
-    lastname: "Ayling",
-    email: "taylingh@freewebs.com",
-    phone: "+86 (808) 514-4813",
-    dni: 62661324,
-    age: "4/21/1989",
-    school: "Dovetail",
-    address: "29 Cordelia Street",
-    OrientadoreId: null
-}, {
-    name: "Beatrice",
-    lastname: "Bucky",
-    email: "bbuckyi@unesco.org",
-    phone: "+1 (683) 774-5426",
-    dni: 43683836,
-    age: "5/24/1988",
-    school: "Donald",
-    address: "14450 Blackbird Trail",
-    OrientadoreId: null
-}, {
-    name: "Ottilie",
-    lastname: "Compston",
-    email: "ocompstonj@ow.ly",
-    phone: "+241 (495) 918-2532",
-    dni: 66395573,
-    age: "12/16/1994",
-    school: "Havey",
-    address: "664 Parkside Park",
-    OrientadoreId: null
-}];
+    "name": "Rubia",
+    "lastname": "Bravington",
+    "email": "rbravington0@cdbaby.com",
+    "phone": "6487728549",
+    "photoProfile": "default.png",
+    "dni": 39780850,
+    "age": "1998-01-15",
+    "school": "Eastlawn",
+    "address": "0 Hollow Ridge Center",
+    "orientadoreId": 3
+  }, {
+    "name": "Thebault",
+    "lastname": "Daughtery",
+    "email": "tdaughtery1@bloglines.com",
+    "phone": "3922698657",
+    "photoProfile": "default.png",
+    "dni": 35914905,
+    "age": "1997-03-05",
+    "school": "Bartillon",
+    "address": "3 New Castle Avenue",
+    "orientadoreId": 8
+  }, {
+    "name": "Reuven",
+    "lastname": "Braisted",
+    "email": "rbraisted2@furl.net",
+    "phone": "6332352485",
+    "photoProfile": "default.png",
+    "dni": 28843708,
+    "age": "1986-09-24",
+    "school": "Oriole",
+    "address": "882 Bonner Alley",
+    "orientadoreId": 4
+  }, {
+    "name": "Rayshell",
+    "lastname": "Baff",
+    "email": "rbaff3@mapquest.com",
+    "phone": "8717251294",
+    "photoProfile": "default.png",
+    "dni": 26876088,
+    "age": "1991-05-15",
+    "school": "Sachs",
+    "address": "999 Buena Vista Street",
+    "orientadoreId": 5
+  }, {
+    "name": "Brendis",
+    "lastname": "Knighton",
+    "email": "bknighton4@fastcompany.com",
+    "phone": "7189381254",
+    "photoProfile": "default.png",
+    "dni": 30566799,
+    "age": "1997-10-24",
+    "school": "Northwestern",
+    "address": "3409 Towne Junction",
+    "orientadoreId": 8
+  }, {
+    "name": "Roberto",
+    "lastname": "Elgar",
+    "email": "relgar5@home.pl",
+    "phone": "2762523622",
+    "photoProfile": "default.png",
+    "dni": 29836156,
+    "age": "1986-02-16",
+    "school": "Texas",
+    "address": "99 Oxford Court",
+    "orientadoreId": 1
+  }, {
+    "name": "Christi",
+    "lastname": "Napier",
+    "email": "cnapier6@networkadvertising.org",
+    "phone": "3378445344",
+    "photoProfile": "default.png",
+    "dni": 39856232,
+    "age": "2000-07-06",
+    "school": "Michigan",
+    "address": "9 Di Loreto Junction",
+    "orientadoreId": 5
+  }, {
+    "name": "Binky",
+    "lastname": "Hutsby",
+    "email": "bhutsby7@washingtonpost.com",
+    "phone": "4899136404",
+    "photoProfile": "default.png",
+    "dni": 37304342,
+    "age": "1980-06-27",
+    "school": "Drewry",
+    "address": "21 Mayer Terrace",
+    "orientadoreId": 3
+  }, {
+    "name": "Shayne",
+    "lastname": "Matieu",
+    "email": "smatieu8@illinois.edu",
+    "phone": "8755239983",
+    "photoProfile": "default.png",
+    "dni": 46226397,
+    "age": "2000-06-01",
+    "school": "Dawn",
+    "address": "01 Dwight Hill",
+    "orientadoreId": 5
+  }, {
+    "name": "Fairlie",
+    "lastname": "Lanigan",
+    "email": "flanigan9@printfriendly.com",
+    "phone": "1592801909",
+    "photoProfile": "default.png",
+    "dni": 20784337,
+    "age": "1978-06-19",
+    "school": "Oxford",
+    "address": "5 Meadow Valley Place",
+    "orientadoreId": 6
+  }, {
+    "name": "Winston",
+    "lastname": "Rubie",
+    "email": "wrubiea@i2i.jp",
+    "phone": "7717400489",
+    "photoProfile": "default.png",
+    "dni": 23154679,
+    "age": "1996-08-21",
+    "school": "Hudson",
+    "address": "38238 Esker Street",
+    "orientadoreId": 8
+  }, {
+    "name": "Marijn",
+    "lastname": "Zuppa",
+    "email": "mzuppab@illinois.edu",
+    "phone": "4789184295",
+    "photoProfile": "default.png",
+    "dni": 33312405,
+    "age": "1984-04-12",
+    "school": "Dovetail",
+    "address": "86 Darwin Circle",
+    "orientadoreId": 7
+  }, {
+    "name": "Marve",
+    "lastname": "Blindt",
+    "email": "mblindtc@hexun.com",
+    "phone": "4067638427",
+    "photoProfile": "default.png",
+    "dni": 46143097,
+    "age": "1975-12-29",
+    "school": "Fallview",
+    "address": "5 Montana Terrace",
+    "orientadoreId": 1
+  }, {
+    "name": "Virge",
+    "lastname": "Hamerton",
+    "email": "vhamertond@aol.com",
+    "phone": "7497982031",
+    "photoProfile": "default.png",
+    "dni": 44371739,
+    "age": "1990-01-15",
+    "school": "Melvin",
+    "address": "7 Westport Way",
+    "orientadoreId": 5
+  }, {
+    "name": "Eryn",
+    "lastname": "Stave",
+    "email": "estavee@1688.com",
+    "phone": "4069612771",
+    "photoProfile": "default.png",
+    "dni": 37524793,
+    "age": "1981-07-31",
+    "school": "Northwestern",
+    "address": "35801 Evergreen Drive",
+    "orientadoreId": 4
+  }, {
+    "name": "Lezlie",
+    "lastname": "Beseke",
+    "email": "lbesekef@about.me",
+    "phone": "8403256015",
+    "photoProfile": "default.png",
+    "dni": 41470994,
+    "age": "1975-09-15",
+    "school": "Ohio",
+    "address": "35 Macpherson Lane",
+    "orientadoreId": 5
+  }, {
+    "name": "Dasi",
+    "lastname": "Carriage",
+    "email": "dcarriageg@miitbeian.gov.cn",
+    "phone": "2103636184",
+    "photoProfile": "default.png",
+    "dni": 48457374,
+    "age": "1989-08-26",
+    "school": "Bay",
+    "address": "3 Buell Park",
+    "orientadoreId": 4
+  }, {
+    "name": "Emilie",
+    "lastname": "Waterhowse",
+    "email": "ewaterhowseh@nba.com",
+    "phone": "3018104282",
+    "photoProfile": "default.png",
+    "dni": 30059179,
+    "age": "1976-02-09",
+    "school": "Kings",
+    "address": "35082 Moland Way",
+    "orientadoreId": null
+  }, {
+    "name": "Kristen",
+    "lastname": "Wagen",
+    "email": "kwageni@about.com",
+    "phone": "3947664193",
+    "photoProfile": "default.png",
+    "dni": 44412342,
+    "age": "1990-05-12",
+    "school": "Melby",
+    "address": "08 Onsgard Park",
+    "orientadoreId": null
+  }, {
+    "name": "Cornall",
+    "lastname": "Spurrior",
+    "email": "cspurriorj@discovery.com",
+    "phone": "4333280560",
+    "photoProfile": "default.png",
+    "dni": 25965699,
+    "age": "1990-04-30",
+    "school": "Superior",
+    "address": "849 Gina Trail",
+    "orientadoreId": null
+  }];
 
 const novedades = [{
     titulo: "Mr. Average",
@@ -259,12 +279,12 @@ const novedades = [{
   }];
 
   const admin = [
-    {user: 'admin1', password: 'admin1', name: 'Felipe', lastname: 'Anselmo', email: 'filipanselmo@admin.com', phone: '(495) 918-2532', linkedin: 'www.linkedin/dementira'},
-    {user: 'admin2', password: 'admin2', name: 'Michael', lastname: 'Jackson', email: 'imnotdead@volviamiplaneta.com', phone: '0303-456', linkedin: 'www.linkedin/shanana'},
-    {user: 'admin3', password: 'admin3', name: 'Lord', lastname: 'Voldemort', email: 'hewhomust@notbenamed.com', phone: '495) 918-2532', linkedin: 'www.linkedin/dementira'}
+    {user: 'admin1', password: 'admin1', name: 'Felipe', lastname: 'Anselmo', email: 'filipanselmo@admin.com', phone: '(495) 918-2532', linkedin: 'www.linkedin/dementira',avatar:'admin1.png'},
+    {user: 'admin2', password: 'admin2', name: 'Michael', lastname: 'Jackson', email: 'imnotdead@volviamiplaneta.com', phone: '0303-456', linkedin: 'www.linkedin/shanana',avatar:'admin2.png'},
+    {user: 'admin3', password: 'admin3', name: 'Lord', lastname: 'Voldemort', email: 'hewhomust@notbenamed.com', phone: '495) 918-2532', linkedin: 'www.linkedin/dementira',avatar:'admin3.png'}
 ]
 
-const añadir = async () => {
+const addAll = async () => {
     try {
         sequelize.sync({ force: false });
         console.log('Conexion establecida'); //Descomentar uno por uno para que ande. Buscar error porque no anda todo junto (Creo que es necesario poner el await, solo que no se donde)
@@ -277,4 +297,4 @@ const añadir = async () => {
         console.log(error);
     }
 }
-añadir()
+addAll()

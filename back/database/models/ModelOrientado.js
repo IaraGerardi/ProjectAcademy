@@ -81,6 +81,9 @@ ModelOrientado.init({
     //Porque se acerca a la institucion
     why:{
         type: DataTypes.STRING,
+    },
+    avatar:{
+        type: DataTypes.STRING,
     }
 }, {
     sequelize, 
