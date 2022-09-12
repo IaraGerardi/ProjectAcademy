@@ -3,7 +3,6 @@ import axios from "axios";
 import "./Userscvcss.css";
 
 
-
 function Userscv () {
   const [newusers, setNewusers] = useState([]);
 
@@ -36,7 +35,7 @@ function Userscv () {
                   <li key={i}>
                     <div className="boxflex">
                       <div>
-                        <img className="ImgUsers" src="" alt="" />
+                        <img className="ImgUsers" src={require(`../img-back/orientados/${Usersapi.photoProfile}`)} alt="" />
                         {/* <img
                           className="ImgUsers"
                           src=
