@@ -2,7 +2,7 @@
 import { useEffect , useState } from 'react'
 
 import axios from 'axios';
-import './CardProfile.css';
+/* import './CardProfile.css'; */
 
 function CardProfile() {
     const usuario = localStorage.getItem('usuario')//base de datos pequeña del navegador y .getItem trae un elemento del local storage
@@ -34,18 +34,18 @@ function CardProfile() {
   return ( // hay etiquetas que tienen clses de tailwind las dejo ahi para que si nos ponemos de acuerdo podamos usarlo.
     <div className="containerCardProfile">
 
-       <p className='pProfile'>Mi perfil</p>
+       <p className='pProfile ml-10 mt-5'>Mi perfil</p>
 
-       <div className='containerAdminProfile w-3/6 h-3/5 p-8 bg-white flex flex-row rounded-lg'>
+       <div className='containerAdminProfile w-4/6 h-3/5 p-8 m-10 bg-white flex flex-row rounded-lg border '>
                 <div className="boxImgAdminProfile w-5/12 flex justify-center">
                        <img className="imgAdmin w-36 h-36 mt-8 rounded-full" src={require(`../../../img-back/admins/${parseado.avatar}`)} alt="" />
                 </div>
 
                 
-                <div className="boxDataAdminProfile w-7/12 pl-5 flex flex-col gap-8 border-l border-inherit">
+                <div className="boxDataAdminProfile w-7/12 pl-5 flex flex-col gap-4 border-l border-inherit">
                         <div className="AdminName py-4 ">
                             <h2 className='font-bold text-xl'> {admin.name}</h2>
-                            <span className='text-slate-400'>Administradora</span>
+                            <span className='text-slate-400'>Administrador</span>
                         </div>
                 
                         <div className="emailAdminProfile">
