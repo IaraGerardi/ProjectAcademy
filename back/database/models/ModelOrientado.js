@@ -22,9 +22,11 @@ ModelOrientado.init({
             }
         }
     },
+
     password:{
         type: DataTypes.STRING,
     },
+    
     lastname:{
         type: DataTypes.STRING,
         allowNull: { //No permite que el campo sea "null"
