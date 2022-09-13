@@ -1,21 +1,24 @@
 
-import { useEffect, useState } from 'react'
+import { useEffect , useState } from 'react'
 
 import axios from 'axios';
 import './CardProfile.css';
 
 function CardProfile() {
+    const usuario = localStorage.getItem('usuario')//base de datos pequeña del navegador y .getItem trae un elemento del local storage
+    const parseado = JSON.parse(usuario)// pasando el item a json
+
      const [admin,setAdmin]=useState([]);//estado donde voy a guardar el objeto del admin  y luego obtener sus datos a traves de la notacion de puntos
      
-     const URI=`http://localhost:8000/admin/profile/1`;
+     const URI=`http://localhost:8000/admin/profile`;
+
+
 
     const getAdminProfile= async()=>{
         try{
-            const resAdmin = await axios.get (URI)
+            const resAdmin = await axios.get(`${URI}/${parseado.id}`,{withCredentials:true})//trae uri y le agrega /gdsaiukyhds y lo guarda
             setAdmin(resAdmin.data); 
           
-           
-           
 
         }catch(error){// en caso de fallar 
             console.log (error)
@@ -25,6 +28,7 @@ function CardProfile() {
        
         getAdminProfile(); 
       },[])
+
   console.log(localStorage)
 
   return ( // hay etiquetas que tienen clses de tailwind las dejo ahi para que si nos ponemos de acuerdo podamos usarlo.
@@ -34,7 +38,7 @@ function CardProfile() {
 
        <div className='containerAdminProfile w-3/6 h-3/5 p-8 bg-white flex flex-row rounded-lg'>
                 <div className="boxImgAdminProfile w-5/12 flex justify-center">
-                       <img className="imgAdmin w-36 h-36 mt-8 rounded-full" src={require(`../../../img-back/admins/${admin.avatar}`)} alt="" />
+                       <img className="imgAdmin w-36 h-36 mt-8 rounded-full" src={require(`../../../img-back/admins/${parseado.avatar}`)} alt="" />
                 </div>
 
                 
