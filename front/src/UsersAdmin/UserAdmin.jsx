@@ -25,12 +25,12 @@ function UserAdmin() {
     <div className="box-cont">
       <div className="box-center">
         <ul>
-          {newusers.length === 0 && <p>Cargando...</p>}
+          {/* {newusers.length === 0 && <p>Cargando...</p>} */}
           {newusers.map((usersapi) => (
             
-              <>
-                <div className="boxtwo">
-                  <li key={usersapi.name}>
+           
+                <div className="boxtwo"  key={usersapi.name}>
+                  <li>
                     <div className="boxflex">
                       <div>
                         <img
@@ -56,7 +56,7 @@ function UserAdmin() {
                     </div>
                   </li>
                 </div>
-              </>
+              
             
           ))}
         </ul>
