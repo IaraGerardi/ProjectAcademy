@@ -12,8 +12,8 @@ function SliderOficial() {
   // este es un pedido asincronico
   useEffect(() => {
     const ObtenerNotice = async () => {
-    const url = "http://localhost:8000/admin/novedades";
-    const result = await axios.get(url);
+      const url = "http://localhost:8000/admin/novedades";
+      const result = await axios.get(url);
       // console.log(result.data);
 
       setNotice(result.data);
@@ -69,12 +69,12 @@ function SliderOficial() {
 
           <div className="textodos">
             <p>{data.content}</p>
-          
-
           </div>
 
           <div className="textotres">
-           <div className="botoneffectcd"><a href={data.link}>Ver mas</a></div>
+            <div className="botoneffectcd">
+              <a href={data.link}>Ver mas</a>
+            </div>
           </div>
         </div>
       ))}

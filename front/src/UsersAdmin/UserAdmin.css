@@ -1,6 +1,5 @@
-
-.box-center{
-    width: 105%;
+.box-center {
+  width: 105%;
 }
 
 .boxtwo {
@@ -11,20 +10,17 @@
 }
 
 .boxflex {
-    display: flex;
-    width: 100%;
-    justify-content: space-around;
-  }
-
-
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+}
 
 li {
   list-style: none;
 }
 
-.ImgUsers{
+.ImgUsers {
   width: 60px;
   height: 60px;
   background-color: antiquewhite;
 }
-
