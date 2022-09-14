@@ -1,11 +1,16 @@
 import React from "react";
 import axios from "axios";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom"
+
+import LogoPerfil from "../icons/logo-perfil.svg"
+import cerrarSesion from "../icons/logo-cerrar.svg"
 
 
 function HeaderInicio() {
 
     const [infoAdmin, setInfoAdmin] = useState([]);
+    const [active, setActive] = useState(false);
 
     const usuario = localStorage.getItem('usuario')
     const parseado = JSON.parse(usuario)
@@ -33,23 +38,23 @@ function HeaderInicio() {
 
                 <p className='Title-inicio'>Bienvenido {parseado.name}</p>
 
-                <img className="usuario-inicio" src={require(`../img-back/admins/${parseado.avatar}`)} />
+
+                <img className="usuario-inicio" src={require(`../img-back/admins/${parseado.avatar}`)} onClick={() => setActive(!active)} />
 
             </div>
 
+
+
+            <div className={`sesion ${active ? 'mostrar-sesion' : 'ocultar-sesion'}`}>
+                <Link to="/profile"><img  className="logo-perfil" src={LogoPerfil}/> Mi perfil</Link>
+                <Link to="/"><img className="logo-perfil"  src={cerrarSesion}/> Cerrar Sesión</Link>
+            </div>
+
         </div>
-
-        // <div className='header-inicio'>
-        //     <li></li>
-
-        //     <p className='Title-inicio'>Bienvenido {resPhotoAdmin.name}</p>
-
-        //     <img className="usuario-inicio" src={require(`../img-back/orientados/${resPhotoAdmin[1]}`)} alt="Foto perfil admin" /> 
-
-        // </div>
 
     )
 
 }
 
 export default HeaderInicio;
+
