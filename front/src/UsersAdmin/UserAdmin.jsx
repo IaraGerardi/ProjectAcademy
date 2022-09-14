@@ -48,10 +48,15 @@ function UserAdmin() {
                       </div>
 
                       <div className="mt--10">
+                      {usersapi.OrientadoreId != null ?
+                      <div className="mt--10">
                       <Icon
                         classname=""
                         type="userIcon"
                         width="24" height="24" />
+                      </div>
+                      : null
+          }
                       </div>
                     </div>
                   </li>

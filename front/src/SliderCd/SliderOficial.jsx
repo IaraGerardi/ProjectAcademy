@@ -60,8 +60,7 @@ function SliderOficial() {
   return (
     <Slider className="sliderone" {...settings}>
       {notice.map((data) => (
-        <div className="card">
-          {/* <div className='card-top'> */}
+        <div key={data.id} className="card">
 
           <div className="textouno">
             <h2>{data.titulo}</h2>
