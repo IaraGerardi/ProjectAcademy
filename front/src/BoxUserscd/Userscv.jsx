@@ -29,7 +29,7 @@ function Userscv() {
             <>
               <div className="boxtwo">
                 <div className="boxtree">
-                  <li key={i}>
+                  <li className="lista" key={i}>
                     <div className="boxflex">
                       <div>
                         <img
@@ -53,7 +53,9 @@ function Userscv() {
           );
         })}
       </ul>
+      
     </div>
+  
   );
 }
 

@@ -1,5 +1,4 @@
 .contentcd {
-  background-color: gold;
   height: 100vh;
   display: flex;
 }
@@ -7,7 +6,6 @@
 .contentcdmenu {
   width: 250px;
   height: 100vh;
-  background-color: green;
 }
 
 /* .contentcdheader {
@@ -32,7 +30,6 @@
   display: flex;
   align-items: center;
   height: 80px;
-  background-color: rgb(57, 57, 179);
 }
 
 .seccionnoio{
@@ -40,7 +37,6 @@
   display: flex;
   justify-content: space-between;
   margin-left: 60px;
-  background-color: gold;
 }
 
 .sectioncdusers {
@@ -60,7 +56,6 @@
 .sectioncdnovedad {
   width: 100%;
   height: 45vh;
-  background-color: gold;
   display: flex;
   
 }
@@ -69,7 +64,6 @@
   margin: 10px;
   width: 80%;
   height: auto;
-  background-color: rebeccapurple;
   margin-left: 60px;
   display: flex;
 }
