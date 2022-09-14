@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import "./Userscvcss.css";
+import "./UserAdmin.css";
 
 
-function Userscv () {
+function UserAdmin () {
   const [newusers, setNewusers] = useState([]);
 
   // console.log(newusers);
@@ -14,7 +14,7 @@ function Userscv () {
     const getOrientados = async () => {
       try {
         const res = await axios.get("http://localhost:8000/admin/orientados");
-        setNewusers(res.data);
+        setNewusers(res.data.slice(-6));
   
         console.log(res.data);
       } catch (error) {
@@ -68,4 +68,4 @@ function Userscv () {
   );
 }
 
-export default Userscv;
+export default UserAdmin;

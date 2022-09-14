@@ -1,9 +1,9 @@
 import "../css/AdminPage.css";
 import Sidebar from "../Header-MenuLateral/Sidebar";
 import HeaderInicio from "../Header-MenuLateral/HeaderInicio";
-import Userscv from "../BoxUserscd/Userscv";
 import SliderOficial from "../SliderCd/SliderOficial";
 import { Link } from "react-router-dom";
+import UserAdmin from "../UsersAdmin/UserAdmin";
 
 function AdminPage() {
   return (
@@ -34,7 +34,9 @@ function AdminPage() {
               </div>
               <div className="sectioncdusers">
                 
-                <div className="sectioncdusersinicio"><Userscv /></div>
+                <div className="sectioncdusersinicio">
+                  <UserAdmin/>
+                </div>
                 
               </div>
               <div className="sectioncdnovedad">
