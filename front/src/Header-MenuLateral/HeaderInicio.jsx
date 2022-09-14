@@ -29,25 +29,42 @@ function HeaderInicio() {
         getAdmin();
     }, []);
 
+
+
+    useEffect(() => {
+        const getLogout = async () => {
+            try {
+                const resLogout = await axios.get(`http://localhost:8000/logout`);
+                setInfoAdmin(resLogout.data);
+                console.log(resLogout.data);
+                
+            } catch (error) {
+                console.log(error);
+            }
+        };
+        getLogout();
+    }, []);
+
+
+
     return (
         <div className='header-inicio'>
 
-
             <div className='header-inicio'>
 
-
                 <p className='Title-inicio'>Bienvenido {parseado.name}</p>
-
 
                 <img className="usuario-inicio" src={require(`../img-back/admins/${parseado.avatar}`)} onClick={() => setActive(!active)} />
 
             </div>
 
-
-
             <div className={`sesion ${active ? 'mostrar-sesion' : 'ocultar-sesion'}`}>
                 <Link to="/profile"><img  className="logo-perfil" src={LogoPerfil}/> Mi perfil</Link>
-                <Link to="/"><img className="logo-perfil"  src={cerrarSesion}/> Cerrar Sesión</Link>
+
+
+                <Link to="/"><img className="logo-perfil" src={cerrarSesion}/> Cerrar Sesión</Link>
+
+
             </div>
 
         </div>
