@@ -8,18 +8,18 @@ function Proposal() {
        </div>
         <div className="boxsProposalChildren">
             <div className="proposalBox ">
-              <h3>Orientación vocacional</h3>
+              <h3 className='font-bold'>Orientación vocacional</h3>
               <p className='pProposal'>Te entrenamos en la toma de decision tu trayecto profesional.</p>
               <button className='btnInfo'>Mas informacion</button>
             </div>
             <div className="proposalBox ">
-              <h3>Re-orientacion vocacional</h3>
+              <h3 className='font-bold'>Re-orientación vocacional</h3>
               <p className='pProposal'>Reinversion personal, laboral y profesional.</p>
               <button className='btnInfo'>Mas informacion</button>
             </div>
             <div className="proposalBox ">
-              <h3>Espacios de aprendizaje</h3>
-              <p className='pProposal'>Aprende a pensar desde otra logica.</p>
+              <h3 className='font-bold'>Espacios de aprendizaje</h3>
+              <p className='pProposal '>Aprende a pensar desde otra logica.</p>
               <button className='btnInfo'>Mas informacion</button>
             </div>
         </div>

@@ -34,11 +34,11 @@ function CardProfile() {
   return ( // hay etiquetas que tienen clses de tailwind las dejo ahi para que si nos ponemos de acuerdo podamos usarlo.
     <div className="containerCardProfile">
 
-       <p className='pProfile ml-10 mt-5'>Mi perfil</p>
+       <p className='pProfile ml-10 mt-8  font-medium text-slate-600'>Mi perfil</p>
 
-       <div className='containerAdminProfile w-4/6 h-3/5 p-8 m-10 bg-white flex flex-row rounded-lg border '>
+       <div className='containerAdminProfile w-4/6 h-3/5 p-8 ml-10 mt-4 bg-white flex flex-row rounded-lg border '>
                 <div className="boxImgAdminProfile w-5/12 flex justify-center">
-                       <img className="imgAdmin w-36 h-36 mt-8 rounded-full" src={require(`../../../img-back/admins/${parseado.avatar}`)} alt="" />
+                       <img className="imgAdmin w-36 h-36  rounded-full" src={require(`../../../img-back/admins/${parseado.avatar}`)} alt="" />
                 </div>
 
                 
