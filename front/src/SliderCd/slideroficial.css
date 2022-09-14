@@ -14,6 +14,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100px;
   /* box-shadow: 1px 1px 1px  rgb(68, 68, 68); */
 }
 .card-top h1 {
@@ -51,9 +52,8 @@
 }
 
 .sliderone {
-  width: 1000px;
-  height: 300px;
-  margin-left: 150px;
+  width: 100%;
+  height: 240px;
   margin-top: 10px;
 }
 

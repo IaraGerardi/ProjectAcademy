@@ -10,11 +10,11 @@
   background-color: green;
 }
 
-.contentcdheader {
+/* .contentcdheader {
   background-color: aqua;
-  width: 100%;
+  width: 80%;
   height: 100vh;
-}
+} */
 
 .contentcdheaderone {
   background-color: rgb(240, 240, 240);
@@ -30,9 +30,17 @@
 
 .titlecdboton {
   display: flex;
-  justify-content: space-around;
   align-items: center;
-  height: 100px;
+  height: 80px;
+  background-color: rgb(57, 57, 179);
+}
+
+.seccionnoio{
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  margin-left: 60px;
+  background-color: gold;
 }
 
 .sectioncdusers {
@@ -44,26 +52,34 @@
 }
 
 .sectioncdusersinicio{
-  width: 80%;
-
+  width: 100%;
 }
+
+/* carrusel */
 
 .sectioncdnovedad {
   width: 100%;
   height: 45vh;
+  background-color: gold;
+  display: flex;
   
 }
 
 .sectionflex {
-  width: 30%;
-  height: 310px;
+  margin: 10px;
+  width: 80%;
+  height: auto;
+  background-color: rebeccapurple;
+  margin-left: 60px;
+  display: flex;
 }
 
 .boxbuttoncd {
   text-align: center;
   height: 40px;
   width: 200px;
-  border-bottom: 5px solid rgb(43, 202, 255);
+  border-bottom: 5px solid rgb(30, 199, 255);
+ 
 }
 
 .novedades {

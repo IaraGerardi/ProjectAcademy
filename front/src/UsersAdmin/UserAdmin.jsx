@@ -21,15 +21,17 @@ function UserAdmin() {
 
   return (
     <div className="box-cont">
+        <div className="box-center">
       <ul>
         {newusers.length === 0 && <p>Cargando...</p>}
         {newusers.map((Usersapi, i) => {
           return (
             <>
               <div className="boxtwo">
-                <div className="boxtree">
                   <li key={i}>
                     <div className="boxflex">
+
+                    
                       <div>
                         <img
                           className="ImgUsers"
@@ -44,14 +46,17 @@ function UserAdmin() {
                         </h4>
                         <p>{Usersapi.school}</p>
                       </div>
+
+                      <div>img</div>
+
                     </div>
                   </li>
-                </div>
               </div>
             </>
           );
         })}
       </ul>
+      </div>
     </div>
   );
 }

@@ -4,11 +4,11 @@
   display: inline-block;
   margin: 10px;
   border-radius: 10px;
-  border: 1px solid rgb(220, 220, 220);
+  border: 2px solid rgb(220, 220, 220);
   overflow: hidden;
-  -webkit-box-shadow: 1px 3px 8px -2px rgba(176, 176, 176, 1);
+  /* -webkit-box-shadow: 1px 3px 8px -2px rgba(176, 176, 176, 1);
   -moz-box-shadow: 1px 3px 8px -2px rgba(176, 176, 176, 1);
-  box-shadow: 1px 3px 8px -2px rgba(176, 176, 176, 1);
+  box-shadow: 1px 3px 8px -2px rgba(176, 176, 176, 1); */
 }
 
 li {
@@ -20,6 +20,7 @@ li {
   height: 60px;
   margin-bottom: 20px;
   margin-left: 5px;
+  border-radius: 100px;
 }
 
 .boxflex {
