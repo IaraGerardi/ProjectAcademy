@@ -33,16 +33,14 @@
   margin-top: 15px;
   width: 100%;
   overflow: hidden;
-  height: 100px;
-  margin-left: 5px;
+  height: 50px;
 }
 
 .textodos {
   color: gray;
   width: 100%;
   overflow: hidden;
-  height: 80px;
-  margin-left: 5px;
+  height: 130px;
 }
 
 .textotres {
@@ -57,4 +55,9 @@
   height: 300px;
   margin-left: 150px;
   margin-top: 10px;
+}
+
+.botoneffectcd{
+  width: 60px;
+  border-bottom: 10px solid yellow;
 }

@@ -33,7 +33,9 @@ function AdminPage() {
                 </div>
               </div>
               <div className="sectioncdusers">
-                <Userscv />
+                
+                <div className="sectioncdusersinicio"><Userscv /></div>
+                
               </div>
               <div className="sectioncdnovedad">
                 <h2 className="novedades">Novedades</h2>

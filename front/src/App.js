@@ -3,7 +3,7 @@ import HomeScreen from './pages/Home/HomeScreen';
 import { Route, Routes } from 'react-router-dom';
 
 // Importación Páginas
-import Inicio from './pages/InicioPage';
+// import Inicio from './pages/InicioPage';
 import Orientados from './pages/OrientadosPage';
 import Eventos from './pages/EventPage';
 import AdminPage from './pages/AdminPage';
@@ -18,7 +18,7 @@ function App() {
     <div className="App">
       <Routes>
         <Route path='/' element={<HomeScreen />} />
-        <Route path='/inicio' element={<Inicio />} />
+        <Route path='/inicio' element={<AdminPage/>} />
         <Route path='/profile' element={<ProfileAdminScreen/>} />
         <Route path='/logIn' element={<LogIn />} />
         <Route path='/orientados' element={<Orientados />} />

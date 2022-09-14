@@ -36,14 +36,22 @@
 }
 
 .sectioncdusers {
-  border: 1px solid black;
-  height: 200px;
+  height: 250px;
   width: 100%;
+  display: flex;
+  justify-content: center;
+  
+}
+
+.sectioncdusersinicio{
+  width: 80%;
+
 }
 
 .sectioncdnovedad {
   width: 100%;
   height: 45vh;
+  
 }
 
 .sectionflex {

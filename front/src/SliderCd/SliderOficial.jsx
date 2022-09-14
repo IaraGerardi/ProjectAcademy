@@ -74,7 +74,7 @@ function SliderOficial() {
           </div>
 
           <div className="textotres">
-           <button><a href={data.link}></a></button>
+           <div className="botoneffectcd"><a href={data.link}>Ver mas</a></div>
           </div>
         </div>
       ))}

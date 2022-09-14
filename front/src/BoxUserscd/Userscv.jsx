@@ -14,7 +14,8 @@ function Userscv () {
     const getOrientados = async () => {
       try {
         const res = await axios.get("http://localhost:8000/admin/orientados");
-        setNewusers(res.data);
+        setNewusers(res.data.slice(-6));
+  
         console.log(res.data);
       } catch (error) {
         console.log(error);
@@ -26,6 +27,8 @@ function Userscv () {
   return (
     <div className="box-cont">
       <ul>
+        {/* {newusers.length === 0 && <p>Cargando...</p>}
+        {newusers.map((Usersapi, i) => { */}
         {newusers.length === 0 && <p>Cargando...</p>}
         {newusers.map((Usersapi, i) => {
           return (
