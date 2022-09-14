@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import "./UserAdmin.css";
+import Icon from "../pages/global-components/Svg-icon";
+
 
 function UserAdmin() {
   const [newusers, setNewusers] = useState([]);
@@ -24,39 +26,39 @@ function UserAdmin() {
       <div className="box-center">
         <ul>
           {newusers.length === 0 && <p>Cargando...</p>}
-          {newusers.map((Usersapi, i) => {
-            return (
+          {newusers.map((usersapi) => (
+            
               <>
                 <div className="boxtwo">
-                  <li key={i}>
+                  <li key={usersapi.name}>
                     <div className="boxflex">
                       <div>
                         <img
                           className="ImgUsers"
-                          src={require(`../img-back/orientados/${Usersapi.photoProfile}`)}
+                          src={require(`../img-back/orientados/${usersapi.photoProfile}`)}
                           alt=""
                         />
                       </div>
 
                       <div>
                         <h4>
-                          {Usersapi.name} {Usersapi.lastname}
+                          {usersapi.name} {usersapi.lastname}
                         </h4>
-                        <p>{Usersapi.school}</p>
+                        <p>{usersapi.school}</p>
                       </div>
 
                       <div className="mt--10">
-                        <img
-                          className="w-6 h-6"
-                          src={require("./img/user.png")}
-                        />
+                      <Icon
+                        classname=""
+                        type="userIcon"
+                        width="24" height="24" />
                       </div>
                     </div>
                   </li>
                 </div>
               </>
-            );
-          })}
+            
+          ))}
         </ul>
       </div>
     </div>
