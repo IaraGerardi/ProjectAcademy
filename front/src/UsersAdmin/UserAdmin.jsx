@@ -21,17 +21,15 @@ function UserAdmin() {
 
   return (
     <div className="box-cont">
-        <div className="box-center">
-      <ul>
-        {newusers.length === 0 && <p>Cargando...</p>}
-        {newusers.map((Usersapi, i) => {
-          return (
-            <>
-              <div className="boxtwo">
+      <div className="box-center">
+        <ul>
+          {newusers.length === 0 && <p>Cargando...</p>}
+          {newusers.map((Usersapi, i) => {
+            return (
+              <>
+                <div className="boxtwo">
                   <li key={i}>
                     <div className="boxflex">
-
-                    
                       <div>
                         <img
                           className="ImgUsers"
@@ -47,15 +45,19 @@ function UserAdmin() {
                         <p>{Usersapi.school}</p>
                       </div>
 
-                      <div>img</div>
-
+                      <div className="mt--10">
+                        <img
+                          className="w-6 h-6"
+                          src={require("./img/user.png")}
+                        />
+                      </div>
                     </div>
                   </li>
-              </div>
-            </>
-          );
-        })}
-      </ul>
+                </div>
+              </>
+            );
+          })}
+        </ul>
       </div>
     </div>
   );

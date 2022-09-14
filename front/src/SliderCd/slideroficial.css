@@ -56,6 +56,8 @@
 }
 
 .botoneffectcd {
-  width: 60px;
+  color: black;
+  height: 22px;
+  width: 70px;
   border-bottom: 10px solid yellow;
 }

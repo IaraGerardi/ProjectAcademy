@@ -20,10 +20,10 @@ function AdminPage() {
         >
           <HeaderInicio />
 
-          <div className=" h-4/5">
+          <div className=" h-3/5">
             <div className=" h-1/6  items-center">
               <div className="flex items-center w-9/12 ml-20 justify-between h-full">
-                <div className="text-3xl">Nuevos orientados</div>
+                <div className="bordercd text-3xl">Nuevos orientados</div>
 
                 <div>
                   <Link className="navegar" to="/nuevoOrientado">
@@ -45,17 +45,22 @@ function AdminPage() {
 
             <div className="items-center mt-1">
               <div className="flex items-center w-9/12 ml-20 justify-between h-auto overflow-hidden">
-                <div>
-                  <div><Link className="navegar" to="/nuevoOrientado">Ver más orientados</Link></div>
+                <div className="orientadoscd">
+                  <div>
+                    <Link className="navegar" to="/nuevoOrientado">
+                      Ver más orientados
+                    </Link>
+                  </div>
                 </div>
               </div>
             </div>
 
-
             <div className=" h-3/1 items-center mt-4">
               <div className="flex items-center w-9/12 ml-20 justify-between h-auto overflow-hidden">
                 <div>
-                  <div><h1 className="text-3xl ">Novedades</h1></div>
+                  <div>
+                    <h1 className="text-3xl ">Novedades</h1>
+                  </div>
                 </div>
               </div>
             </div>

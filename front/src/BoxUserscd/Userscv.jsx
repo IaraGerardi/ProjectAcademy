@@ -53,9 +53,7 @@ function Userscv() {
           );
         })}
       </ul>
-      
     </div>
-  
   );
 }
 
