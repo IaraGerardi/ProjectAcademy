@@ -14,7 +14,7 @@ function LogIn(){
                 <img className="w-96 h-96" id="logInImage" src={LogInIcon} alt="icon"/>
             </div>
             <div className="formContainer flex flex-col justify-center">
-                <h2>Ingresá a tu portal</h2>
+                <h2 className="text-3xl font-medium">Ingresá a tu portal</h2>
                 <FormLogIn/>
             </div>
         </div>

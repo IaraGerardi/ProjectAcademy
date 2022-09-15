@@ -66,21 +66,10 @@
     margin: 10px;
 }
 
-.inputLogIn {
-    border: 0.3px solid rgb(130, 130, 130);
-}
-
 .loginAdmin input[type=submit] {
     font-weight: 500;
     font-size: 16px;
     color: white;
     background-color: #0BA4A0;
     border: none;
-}
-
-.errorLogIn {
-    width: 15px;
-    height: 15px;
-    fill: #d20000;
-    margin: 5px;
 }
