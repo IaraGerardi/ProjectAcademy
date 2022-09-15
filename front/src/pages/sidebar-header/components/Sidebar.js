@@ -1,9 +1,9 @@
 import React from 'react'
-import './sidebar.css'
-import logo from '../sidebar-header/icons/logo-valtech.svg'
-import inicio from '../sidebar-header/icons/logo-inicio.svg'
-import orientado from '../sidebar-header/icons/logo-orientado.svg'
-import calendar from '../sidebar-header/icons/logo-calendar.svg'
+import '../style/sidebar.css'
+import logo from '../icons/logo-valtech.svg'
+import inicio from '../icons/logo-inicio.svg'
+import orientado from '../icons/logo-orientado.svg'
+import calendar from '../icons/logo-calendar.svg'
 
 export const Sidebar = () => {
   return (

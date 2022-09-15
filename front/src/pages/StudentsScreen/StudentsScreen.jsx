@@ -1,7 +1,7 @@
 
 
 import HeaderInicio from "../sidebar-header/components/HeaderInicio";
-import Sidebar from "../sidebar-header/components/Sidebar";
+import Sidebar from "../sidebar-header/components/Sidebar.jsx";
 import "./orientados.css"
 import buscador from "../sidebar-header/icons/logo-buscador.svg"
 import Userscv from "../global-components/BoxUserscd/Userscv";

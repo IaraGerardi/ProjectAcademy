@@ -1,5 +1,5 @@
 import React from 'react'
-import { Sidebar } from './Sidebar'
+import { Sidebar } from '../sidebar-header/components/Sidebar'
 
 export const EventScreen = () => {
   return (

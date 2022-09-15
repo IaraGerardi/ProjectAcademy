@@ -1,5 +1,5 @@
 import "../sidebar-header/style/AdminPage.css";
-import Sidebar from "../sidebar-header/components/Sidebar";
+import Sidebar from "../sidebar-header/components/Sidebar.jsx";
 import HeaderInicio from "../sidebar-header/components/HeaderInicio";
 
 import SliderOficial from "./SliderCd/SliderOficial"
