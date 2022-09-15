@@ -22,10 +22,6 @@
 
 }
 
-
-
-
-
 .HeaderIniciado {
   display: flex;
   flex-direction: row;
@@ -102,7 +98,7 @@
 .Title-inicio {
   color: white;
   font-size: 1.8em;
-  padding-right: 400px;
+  
   font-family: sans-serif 'Rubik';
 }
 

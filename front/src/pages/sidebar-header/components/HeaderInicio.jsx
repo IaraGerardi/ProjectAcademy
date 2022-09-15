@@ -48,7 +48,7 @@ function HeaderInicio() {
 
 
     return (
-        <div className='header-inicio'>
+        <>
 
             <div className='header-inicio'>
 
@@ -66,8 +66,8 @@ function HeaderInicio() {
                 
 
             </div>
-
-        </div>
+            </>
+        
 
     )
 
