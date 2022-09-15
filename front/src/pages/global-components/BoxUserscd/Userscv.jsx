@@ -34,7 +34,7 @@ function Userscv() {
                       <div>
                         <img
                           className="ImgUsers"
-                          src={require(`../../../img-back/${Usersapi.photoProfile}`)}
+                          src={require(`../../../img-back/orientados/${Usersapi.photoProfile}`)}
                           alt=""
                         />
                       </div>
