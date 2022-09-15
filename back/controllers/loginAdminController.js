@@ -15,7 +15,8 @@ exports.adminLogin = async (req, res) => {
                 alertIcon: 'info',
                 showConfirmButton: true,
                 timer: false,
-                ruta: 'login'
+                ruta: 'login',
+                input: emailLog && passwordLog
             })
         } else if (!emailLog) {
             res.json({
@@ -25,7 +26,8 @@ exports.adminLogin = async (req, res) => {
                 alertIcon: 'info',
                 showConfirmButton: true,
                 timer: false,
-                ruta: 'login'
+                ruta: 'login',
+                input: emailLog
             })
         } else if(!passwordLog) {
             res.json({
@@ -35,7 +37,8 @@ exports.adminLogin = async (req, res) => {
                 alertIcon: 'info',
                 showConfirmButton: true,
                 timer: false,
-                ruta: 'login'
+                ruta: 'login',
+                input: passwordLog
             })
         } else {
             const admin = await ModelAdmin.findAll({
@@ -50,7 +53,8 @@ exports.adminLogin = async (req, res) => {
                     alertIcon: 'error',
                     showConfirmButton: true,
                     timer: false,
-                    ruta: 'login'
+                    ruta: 'login',
+                    input: emailLog
                 })
             } else if(passwordLog !== admin[0].password){
                 console.log(admin)
@@ -60,11 +64,12 @@ exports.adminLogin = async (req, res) => {
                 res.json({
                     alert: true,
                     alertTitle: "Error",
-                    alertMessage: "Password incorrecta",
+                    alertMessage: "Contraseña incorrecta",
                     alertIcon: 'error',
                     showConfirmButton: true,
                     timer: false,
-                    ruta: 'login'
+                    ruta: 'login',
+                    input: passwordLog
                 })
             }else {
                 const id = admin[0].id
