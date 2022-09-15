@@ -1,26 +1,47 @@
 import { useState } from "react";
-import Icon from "../../global-components/Svg-icon";
 import { useNavigate } from "react-router-dom";
+import Input from "./inputForm";
 import axios from "axios";
 
 function FormLogIn() {
-    const [form, setForm] = useState({})
-    const [verifyEmail, setVerifyEmail] = useState(null)
-    const [verifyPassword, setVerifyPassword] = useState(null)
-
     const URI = "http://localhost:8000/login"
     const navigate = useNavigate();
 
-    const verifyForm = () => {
-        // verificaciones email, no se puede mandar vacio y tiene que estar con cierto formato
-        form.emailLog == null || form.emailLog === "" ? setVerifyEmail("El email no puede estar vacio") :
+    const [form, setForm] = useState({
+        emailLog: null,
+        passwordLog: null,
+    })
+    const [verifyEmail, setVerifyEmail] = useState(null)
+    const [verifyPassword, setVerifyPassword] = useState(null)
+    // const [verifyForm, setVerifyForm] = useState({
+    //     emailLog: null,
+    //     passwordLog: null,
+    // })
+
+    const verifyFunctionn = () => {
+        // Verificaciones email, no puede estar vacio ni tener un formato incorrecto
+        form.emailLog === null || form.emailLog === "" ? setVerifyEmail("El email no puede estar vacio") :
             /\S+@\S+\.\S+/.test(form.emailLog) === false ? setVerifyEmail("El email tiene un formato incorrecto") :
-                setVerifyEmail(null);
+                setVerifyEmail(true);
         // Verificaciones password, no se puede enviar vacio ni con menos de 6 caracteres
         form.passwordLog == null || form.passwordLog === "" ? setVerifyPassword("La contraseña no puede estar vacia") :
-            form.passwordLog.length < 6 ? setVerifyPassword("La contraseña debe tener mas de 6 caracteres")
-                : setVerifyPassword(null);
+        form.passwordLog.length < 6 ? setVerifyPassword("La contraseña debe tener mas de 6 caracteres")
+            : setVerifyPassword(null);
     }
+    /*const verifyLogIn = (id) => {
+        form[id] === null || form[id] === "" ? setVerifyForm({
+            ...verifyForm,
+            [id]: "El campo no puede estar vacio",
+        }) :
+            id === "emailLog" && (/\S+@\S+\.\S+/.test(form.emailLog) === false) ? setVerifyForm({
+                ...verifyForm,
+                emailLog: "El email tiene un formato incorrecto",
+            }) :
+                setVerifyForm({
+                    ...verifyForm,
+                    [id]: true
+                })
+    }*/
 
     const handleChange = (e) => {
         setForm({
@@ -29,65 +50,43 @@ function FormLogIn() {
         })
     }
 
+    /*function verifyFunction() {
+        verifyLogIn("emailLog");
+        verifyLogIn("passwordLog");
+    }*/
+
     const handleSubmit = async (e) => {
         e.preventDefault();
-        verifyForm();
-        if (verifyEmail === null && verifyPassword === null) {
-            await axios.post(`${URI}`, form, { withCredentials: true })
-                .then((response) => {
-                    if (response.data.si) {
-                        localStorage.setItem("usuario", JSON.stringify(response.data.admin));
-                        navigate('/inicio')
-                    } else {
-                        if (response.data.alertMessage === "Email incorrecto") {
-                            setVerifyEmail("Email incorrecto")
-                        } else if (response.data.alertMessage === "Password incorrecta") {
-                            setVerifyPassword("Contraseña incorrecta")
-                        }
-                    }
-                })
-        }
+        verifyFunctionn(); // Lo ejecuta para ver si no hay errores y corta la funcion, cuando no hay errores (despues de que si los haya habido) desaparece el error peeeero no ejecuta el resto
+        /* if (verifyForm.emailLog === true && verifyForm.passwordLog === true) {
+             await axios.post(`${URI}`, form, { withCredentials: true })
+                 .then((response) => {
+                     console.log(response)
+                     if (response.data.si) {
+                         localStorage.setItem("usuario", JSON.stringify(response.data.admin));
+                         navigate('/inicio')
+                     } else {
+                         setVerifyForm({
+                             ...verifyForm,
+                             [response.data.input]: response.data.alertMessage,
+                         })
+                     }
+                 })
+         }*/
     }
 
+    console.log(form);
+    // console.log(verifyForm);
+
     return (
-        <form method="POST" onSubmit={handleSubmit}>
-            <label htmlFor="emailLog">Email</label>
-            <input
-                className={verifyEmail != null ? "errorInput" : "inputLogIn"}
-                type="email"
-                id="emailLog"
-                name="emailLog"
-                onChange={handleChange}
-                placeholder="Ingresa tu email" />
-            {verifyEmail != null ?
-                <div className="errorContainer">
-                    <Icon
-                        classname="errorLogIn"
-                        type="exclamationMark"
-                        width="24" height="24" />
-                    <span>{verifyEmail}</span>
-                </div>
-                : null
-            }
-            <label htmlFor='passwordLog'>Contraseña</label>
-            <input
-                className={verifyPassword != null ? "errorInput" : "inputLogIn"}
-                type="password"
-                id="passwordLog"
-                name="passwordLog"
-                onChange={handleChange}
-                placeholder="Ingresa tu contraseña" />
-            {verifyPassword != null ?
-                <div className="errorContainer">
-                    <Icon
-                        classname="errorLogIn"
-                        type="exclamationMark"
-                        width="24" height="24" />
-                    <span>{verifyPassword}</span>
-                </div>
-                : null
-            }
-            <input type="submit" value="Ingresar" className="inputLogIn" />
+        <form className="flex flex-col" method="POST" onSubmit={handleSubmit}>
+            <Input
+                id="emailLog" type="email" label="Email" placeholder="Ingresa tu email"
+                verifyInput={verifyEmail} handleChange={handleChange} />
+            <Input
+                id="passwordLog" type="password" label="Contraseña" placeholder="Ingresa tu contraseña"
+                verifyInput={verifyPassword} handleChange={handleChange} />
+            <input type="submit" value="Ingresar" className="w-44 inputLogIn" />
         </form>
     );
 }
