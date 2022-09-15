@@ -21,7 +21,7 @@ function Sidebar() {
                 <Link className="navegar" to="/inicio">
                     <div className='cont-nav-lateral'>
                         <div className='cont-logo-lateral'>
-                            <img src={inicio} alt="inicio" />
+                            <img className="logo-lateral" src={inicio} alt="inicio" />
                             <p className='lateral'>Inicio</p>
                         </div>
                     </div>
@@ -30,7 +30,7 @@ function Sidebar() {
                 <Link className="navegar" to="/orientados">
                     <div className='cont-nav-lateral'>
                         <div className='cont-logo-lateral'>
-                            <img src={orientado} alt="orientados" />
+                            <img className="logo-lateral" src={orientado} alt="orientados" />
                             <p className='lateral'>Orientados</p>
                         </div>
                     </div>
@@ -39,7 +39,7 @@ function Sidebar() {
                 <Link className="navegar" to="/eventos">
                     <div className='cont-nav-lateral'>
                         <div className='cont-logo-lateral'>
-                            <img src={calendar} alt="calendar" />
+                            <img className="logo-lateral" src={calendar} alt="calendar" />
                             <p className='lateral'>Eventos</p>
                         </div>
                     </div>
