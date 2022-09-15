@@ -17,7 +17,7 @@ function AdminPage() {
         </div>
         
         <div className="h-30 w-full overflow-hidden">
-        <HeaderInicio />
+        <HeaderInicio propNamePage="Bienvenido/a"/>
       
 
           <div className="boxMainAdminHome">

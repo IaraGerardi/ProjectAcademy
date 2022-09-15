@@ -6,9 +6,9 @@ import { Link, useNavigate } from "react-router-dom"
 import LogoPerfil from "../icons/logo-perfil.svg"
 import cerrarSesion from "../icons/logo-cerrar.svg"
 
+import "../style/header.css"
 
-
-function HeaderInicio() {
+function HeaderInicio({propNamePage}) {
 
     const [infoAdmin, setInfoAdmin] = useState([]);
     const [active, setActive] = useState(false);
@@ -50,11 +50,12 @@ function HeaderInicio() {
     return (
         <>
 
-            <div className='header-inicio'>
+            <div className='boxMainHeader '>
+            <p className='p-header'>
+            {propNamePage==="Bienvenido/a" ? `${propNamePage} ${parseado.name}`: propNamePage}</p>
+               
 
-                <p className='Title-inicio'>Bienvenido {parseado.name}</p>
-
-                <img className="usuario-inicio" src={require(`../../../img-back/admins/${parseado.avatar}`)} onClick={() => setActive(!active)} alt={parseado.name} />
+                <img className="img-header" src={require(`../../../img-back/admins/${parseado.avatar}`)} onClick={() => setActive(!active)} alt={parseado.name} />
 
             </div>
 
