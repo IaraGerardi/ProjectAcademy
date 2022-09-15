@@ -36,7 +36,7 @@ function UserAdmin() {
                         <img
                           className="ImgUsers"
                           src={require(`../../../img-back/orientados/${usersapi.photoProfile}`)}
-                          alt=""
+                          alt="default"
                         />
                       </div>
 

@@ -59,10 +59,10 @@ function HeaderInicio() {
             </div>
 
             <div className={`sesion ${active ? 'mostrar-sesion' : 'ocultar-sesion'}`}>
-                <Link to="/profile"><img  className="logo-perfil" src={LogoPerfil}/> Mi perfil</Link>
+                <Link to="/profile"><img  className="logo-perfil" src={LogoPerfil} alt='icon-profile'/> Mi perfil</Link>
 
 
-                <Link to="/"><img className="logo-perfil" src={cerrarSesion}/><button onClick={()=>{getLogout()}}>Cerrar sesión</button></Link>
+                <Link to="/"><img className="logo-perfil" src={cerrarSesion} alt='icon-logout' /><button onClick={()=>{getLogout()}}>Cerrar sesión</button></Link>
                 
 
             </div>
