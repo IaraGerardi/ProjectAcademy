@@ -4,90 +4,163 @@ const sequelize = require('../db.js');
 class ModelOrientado extends Model { }
 
 ModelOrientado.init({
-    name:{
+    name: {
         type: DataTypes.STRING,
-        allowNull: { //No permite que el campo sea "null"
-            args: false,
-            msg: 'El campo no puede estar vacío'
-        }, 
-
+        allowNull: false, //No permite que el campo sea "null"
         validate: {  //Validaciones de la base de datos
+            notNull: {
+                msg: 'Debe ingresar el nombre' //mensaje al ser nulo
+            },
             isAlpha: { //isAlpha solo deja usar letras
                 args: true,
-                msg: 'Solo debe contener letras'
+                msg: 'El campo nombre solo debe contener letras'
             },
             len: { //len establece el minimo y maximo de caracteres
-                args: [2,100],
-                msg: 'Debe contener minimo 2 caracteres'
+                args: [2, 500],
+                msg: 'Comprueba el nombre que desea ingresar'
             }
         }
     },
-
-    password:{
+    password: {
         type: DataTypes.STRING,
-    },
-    
-    lastname:{
-        type: DataTypes.STRING,
-        allowNull: { //No permite que el campo sea "null"
-            args: false,
-            msg: 'El campo no puede estar vacío'
-        }, 
-        validate: {  //Validaciones de la base de datos
+        allowNull: false,
+        validate: {
+            notNull: {
+                msg: 'Ingrese contraseña'
+            },
             len: { //len establece el minimo y maximo de caracteres
-                args: [2,100],
-                msg: 'Debe contener minimo 2 caracteres'
+                args: [4, 500],
+                msg: 'Debe haber un minimo de 8 caracteres'
             }
         }
     },
 
-    email:{
+    lastname: {
         type: DataTypes.STRING,
+        allowNull: false,
+        validate: {  //Validaciones de la base de datos
+            notNull: {
+                msg: 'El campo apellido está vacio'
+            },
+            len: { //len establece el minimo y maximo de caracteres
+                args: [2, 100],
+                msg: 'El apellido debe contener minimo 2 caracteres'
+            }
+        }
+    },
+
+    email: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        unique:{ //Esto es para darle un mensaje personalizado. Al final declaramos las columnas unicas
+            name: 'email',
+            msg: 'El email ya está siendo utilizado'
+        },
         validate: {
-            isEmail:{
+            notNull: {
+                msg: 'El campo email está vacio'
+            },
+            isEmail: {
                 args: true,
-                msg: 'Debe ser un correo valido'
+                msg: 'Debe ser un email válido'
             }
         }
     },
-    phone:{
+
+    phone: {
         type: DataTypes.STRING(50),
+        allowNull: false,
+        validate: {  //Validaciones de la base de datos
+            notNull: {
+                msg: 'El campo telefono está vacio'
+            },
+            len: { //len establece el minimo y maximo de caracteres
+                args: [8, 50],
+                msg: 'Faltan numeros en el telefono'
+            }
+        }
     },
-    program:{
+    program: {
         type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+            notNull: {
+                msg: 'Indique el programa'
+            },
+        }
 
     },
-    photoProfile:{
-        type: DataTypes.STRING
-    },
-    dni:{
-        type: DataTypes.STRING(50),
+    photoProfile: {
+        type: DataTypes.STRING,
+        allowNull: false,
         validate: {
+            notNull: {
+                msg: 'Ingrese una foto de perfil'
+            },
+        }
+    },
+    dni: {
+        type: DataTypes.STRING(50),
+        allowNull: false,
+        unique: { //Esto es para darle un mensaje personalizado. Al final declaramos las columnas unicas
+            name: 'dni',
+            msg: 'El DNI ya está siendo utilizado'
+        },
+        validate: {
+            notNull: {
+                msg: 'Ingrese D.N.I.'
+            },
             isInt: {
                 args: true,
-                msg: 'Debe ser en numeros'
+                msg: 'Ingrese "numero" de DNI'
             },
         }
     },
-    age:{
+    age: {
         type: DataTypes.DATE,
+        allowNull: false,
+        validate: {
+            notNull: {
+                msg: 'Ingrese edad del orientado'
+            },
+        }
     },
-    school:{
+    school: {
         type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+            notNull: {
+                msg: 'Ingrese nombre de la escuela'
+            },
+        }
     },
-    address:{
+    address: {
         type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+            notNull: {
+                msg: 'Ingrese direccion del orientado'
+            },
+        }
     },
-    //Porque se acerca a la institucion
-    why:{
+    why: {//Porque se acerca a la institucion
         type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+            notNull: {
+                msg: 'Ingrese motivo por el cual se acercó el orientado'
+            },
+        }
     },
-    avatar:{
-        type: DataTypes.STRING,
-    }
 }, {
-    sequelize, 
+    sequelize,
     modelName: "Orientado",
+    indexes: [ //declaramos cuales columnas van a ser unicas y le damos el argumento true.
+        {
+            unique: true,
+            fields: ['email', 'dni']
+        }
+    ]
     //timestamps: false
 });
 
