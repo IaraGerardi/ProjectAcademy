@@ -107,13 +107,12 @@
 }
 
 .usuario-inicio {
-  background-color: gray;
+ 
   height: 50px;
   width: 50px;
   border-radius: 100%;
   cursor: pointer;
 }
-
 
 
 .sesion {
@@ -176,6 +175,21 @@
 
 @media (max-width: 940px) {
 
+  .Title-inicio {
+    width: 100%;
+    padding: 0px 0px 0px 15px;
+    font-size: 25px;
+  }
+
+  .usuario-inicio {
+    margin: 0px 25px 0px 0px;
+    height: 50px;
+    width: 50px;
+    border-radius: 100%;
+    cursor: pointer;
+  }
+
+
   .lateral {
     padding: 0px 8px;
     font-size: 12px;
@@ -198,9 +212,19 @@
 
   .Title-inicio {
     width: 100%;
-    padding-left: 15px;
+    padding: 0px 0px 0px 15px;
     font-size: 25px;
   }
+
+
+  .usuario-inicio {
+    margin: 0px 25px 0px 0px;
+    height: 50px;
+    width: 50px;
+    border-radius: 100%;
+    cursor: pointer;
+  }
+
 
 
   .lateral {
