@@ -1,6 +1,13 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../db.js');
 
+
+/* TENER EN CUENTA DESCOMENTAR LOS NOT NULL
+DE PROGRAMA Y WHY. SE SACARON PARA QUE 
+LAS SEEDS QUE TENEMOS FUNCIONEN YA QUE 
+ NO TIENEN ESOS ATRIBUTOS */
+
+
 class ModelOrientado extends Model { }
 
 ModelOrientado.init({
@@ -52,7 +59,7 @@ ModelOrientado.init({
     email: {
         type: DataTypes.STRING,
         allowNull: false,
-        unique:{ //Esto es para darle un mensaje personalizado. Al final declaramos las columnas unicas
+        unique: { //Esto es para darle un mensaje personalizado. Al final declaramos las columnas unicas
             name: 'email',
             msg: 'El email ya está siendo utilizado'
         },
@@ -82,12 +89,12 @@ ModelOrientado.init({
     },
     program: {
         type: DataTypes.STRING,
-        allowNull: false,
+        /* allowNull: false,
         validate: {
             notNull: {
                 msg: 'Indique el programa'
             },
-        }
+        } */
 
     },
     photoProfile: {
@@ -145,12 +152,12 @@ ModelOrientado.init({
     },
     why: {//Porque se acerca a la institucion
         type: DataTypes.STRING,
-        allowNull: false,
+        /* allowNull: false,
         validate: {
             notNull: {
                 msg: 'Ingrese motivo por el cual se acercó el orientado'
             },
-        }
+        } */
     },
 }, {
     sequelize,
