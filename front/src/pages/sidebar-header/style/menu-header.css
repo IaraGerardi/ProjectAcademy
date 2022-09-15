@@ -115,15 +115,6 @@
 }
 
 
-.boxusers {
-  width: 80%;
-  position: relative;
-  left: 280px;
-  height: 400px;
-}
-
-
-
 
 .sesion {
   width: 200px;
@@ -172,11 +163,11 @@
   .lateral {
     padding: 0px 8px;
     font-size: 15px;
-  
+
   }
 
 
-  .logo-lateral{
+  .logo-lateral {
     height: 20px;
 
   }
@@ -188,11 +179,11 @@
   .lateral {
     padding: 0px 8px;
     font-size: 12px;
-  
+
   }
 
 
-  .logo-lateral{
+  .logo-lateral {
     height: 18px;
 
   }
@@ -204,9 +195,17 @@
 
 @media (max-width: 819px) {
 
+
+  .Title-inicio {
+    width: 100%;
+    padding-left: 15px;
+    font-size: 25px;
+  }
+
+
   .lateral {
     display: none;
-  
+
   }
 
 
@@ -214,12 +213,12 @@
     width: 100%;
     display: flex;
     flex-direction: row;
-   
+
     align-items: center;
   }
 
 
-  .logo-lateral{
+  .logo-lateral {
     height: 30px;
   }
 }

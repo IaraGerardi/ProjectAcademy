@@ -1,10 +1,10 @@
 
 
-import HeaderInicio from "./sidebar-header/components/HeaderInicio";
-import Sidebar from "./sidebar-header/components/Sidebar";
-import "./sidebar-header/style/orientados.css"
-import buscador from "./sidebar-header/icons/logo-buscador.svg"
-import Userscv from "./global-components/BoxUserscd/Userscv";
+import HeaderInicio from "../sidebar-header/components/HeaderInicio";
+import Sidebar from "../sidebar-header/components/Sidebar";
+import "./orientados.css"
+import buscador from "../sidebar-header/icons/logo-buscador.svg"
+import Userscv from "../global-components/BoxUserscd/Userscv";
 import { Link } from "react-router-dom";
 
 
@@ -29,10 +29,12 @@ function Orientados() {
                             </Link>
                         </div>
 
+                        <div className="cont-buscador-orientado">
 
-                        <input className="buscador-orientado" type="text" placeholder="Buscar orientado por nombre y apellido" />
+                            <input className="buscador-orientado" type="text" placeholder="Buscar orientado por nombre y apellido" />
 
-                        <img className="logo-buscador" src={buscador} alt="logo buscador" />
+                            <img className="logo-buscador" src={buscador} alt="logo buscador" />
+                        </div>
 
                         <div className="cont-users">
                             <Userscv />

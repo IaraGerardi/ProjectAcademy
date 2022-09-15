@@ -4,7 +4,7 @@ import { Route, Routes } from 'react-router-dom';
 
 // Importación Páginas
 // import Inicio from './pages/InicioPage';
-import Orientados from './pages/OrientadosPage';
+import Orientados from './pages/StudentsScreen/StudentsScreen';
 import Eventos from './pages/EventPage';
 import AdminPage from './pages/adminHome/AdminPage';
 import LogIn from './pages/Login/LogInScreen';
