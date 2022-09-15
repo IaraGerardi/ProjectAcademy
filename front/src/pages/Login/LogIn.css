@@ -2,22 +2,11 @@
 
 /*Estilos generales*/
 .loginAdmin {
-    display: flex;
     height: 100vh;
     font-family: 'Rubik', sans-serif;
 }
 
-.loginAdmin .imagesContainer,
-.loginAdmin .formContainer {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.loginAdmin .imagesContainer {
-    align-items: center;
-}
-
+/* Containers en desktop */
 @media (max-width: 900px) {
     #vCampLogo{
         position: absolute;
@@ -29,65 +18,45 @@
         height: 100vh;
         align-items: center;
     }
-
     #logInImage {
         opacity: 0.3;
     }
-
     .loginAdmin .formContainer {
         position: absolute;
         background-color: rgba(240, 255, 255, 0.077);
     }
-
     .loginAdmin {
         flex-direction: column;
     }
 }
 
-/*Imagenes*/
+/* Containers en tablet/mobile */
 @media (min-width:901px) {
     .loginAdmin .formContainer {
         align-items: left;
     }
-
     .loginAdmin .imagesContainer {
         width: 40vw;
     }
-
     .loginAdmin .formContainer {
         padding-left: 50px;
         width: 60vw;
     }
 }
 
+/*Imagenes*/
 .loginAdmin .imagesContainer {
     background: #DADEEB;
 }
 
 #vCampLogo {
     width: 200px;
-    height: 50px;
-}
-
-#LogInImage {
-    width: 390px;
-    height: 390px;
+    height: 50px; 
 }
 
 /*Formulario*/
-
-.loginAdmin form {
-    display: flex;
-    flex-direction: column;
-}
-
 .loginAdmin h2 {
     padding: 10px;
-}
-
-#emailLog,
-#passwordLog {
-    width: 320px;
 }
 
 .loginAdmin .formContainer input {
@@ -95,10 +64,6 @@
     padding: 8px;
     border-radius: 8px;
     margin: 10px;
-}
-
-.loginAdmin label {
-    padding: 10px;
 }
 
 .inputLogIn {
@@ -110,23 +75,7 @@
     font-size: 16px;
     color: white;
     background-color: #0BA4A0;
-    width: 185px;
     border: none;
-}
-
-/*Estilos error*/
-.errorInput {
-    border: 1px solid #d20000;
-}
-
-.errorContainer {
-    display: flex;
-    align-items: center;
-    margin-left: 10px;
-}
-
-.errorContainer span {
-    color: #d20000;
 }
 
 .errorLogIn {
