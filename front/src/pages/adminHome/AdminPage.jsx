@@ -15,9 +15,9 @@ function AdminPage() {
         <div className="h-full w-1/6 overflow-hidden">
           <Sidebar />
         </div>
-
+        
         <div className="h-30 w-full overflow-hidden">
-          <HeaderInicio />
+        <HeaderInicio />
       
 
           <div className="boxMainAdminHome">

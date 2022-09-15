@@ -5,11 +5,11 @@ import { Route, Routes } from 'react-router-dom';
 // Importación Páginas
 // import Inicio from './pages/InicioPage';
 import Orientados from './pages/StudentsScreen/StudentsScreen';
-import Eventos from './pages/EventPage';
 import AdminPage from './pages/adminHome/AdminPage';
 import LogIn from './pages/Login/LogInScreen';
 import {Error} from './pages/Home/components/error/Error'
 import ProfileAdminScreen from './pages/ProfileAdmin/ProfileAdminScreen';
+import { EventScreen } from './pages/eventScreen/EventScreen';
 
 // Fin Importación Páginas
 
@@ -22,7 +22,7 @@ function App() {
         <Route path='/profile' element={<ProfileAdminScreen/>} />
         <Route path='/logIn' element={<LogIn />} />
         <Route path='/orientados' element={<Orientados />} />
-        <Route path='/eventos' element={<Eventos />} />
+        <Route path='/eventos' element={<EventScreen />} />
         <Route path='*' element={<Error />} />
       </Routes>
     </div>
