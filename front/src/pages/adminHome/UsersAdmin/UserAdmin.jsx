@@ -22,9 +22,9 @@ function UserAdmin() {
   }, []);
 
   return (
-    <div className="box-cont">
+    
       <div className="box-center">
-        <ul>
+        <ul className="ulUserAdmin">
           {/* {newusers.length === 0 && <p>Cargando...</p>} */}
           {newusers.map((usersapi) => (
             
@@ -66,7 +66,7 @@ function UserAdmin() {
           ))}
         </ul>
       </div>
-    </div>
+    
   );
 }
 
