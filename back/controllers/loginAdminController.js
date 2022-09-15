@@ -119,6 +119,6 @@ exports.isAuthenticated = async (req, res, next) => {
 }
 
 exports.logout = (req, res) => {
-    res.clearCookie('jwt')
-    res.json("Usuario deslogueado")
+    res.clearCookie('jwt').send('cookie limpiada')
+
 }
