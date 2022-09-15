@@ -1,5 +1,5 @@
-import HeaderInicio from "../../Header-MenuLateral/HeaderInicio"
-import Sidebar from "../../Header-MenuLateral/Sidebar"
+import HeaderInicio from "../sidebar-header/components/HeaderInicio"
+import Sidebar from "../sidebar-header/components/Sidebar"
 import CardProfile from "./componentes-Profile/CardProfile";
 
 

@@ -54,15 +54,15 @@ function HeaderInicio() {
 
                 <p className='Title-inicio'>Bienvenido {parseado.name}</p>
 
-                <img className="usuario-inicio" src={require(`../img-back/admins/${parseado.avatar}`)} onClick={() => setActive(!active)} />
+                <img className="usuario-inicio" src={require(`../../../img-back/admins/${parseado.avatar}`)} onClick={() => setActive(!active)} alt={parseado.name} />
 
             </div>
 
             <div className={`sesion ${active ? 'mostrar-sesion' : 'ocultar-sesion'}`}>
-                <Link to="/profile"><img  className="logo-perfil" src={LogoPerfil}/> Mi perfil</Link>
+                <Link to="/profile"><img  className="logo-perfil" src={LogoPerfil} alt={parseado.name} /> Mi perfil</Link>
 
 
-                <Link to="/"><img className="logo-perfil" src={cerrarSesion}/> Cerrar Sesión</Link>
+                <Link to="/"><img className="logo-perfil" src={cerrarSesion} alt={parseado.name} /> Cerrar Sesión</Link>
 
 
             </div>

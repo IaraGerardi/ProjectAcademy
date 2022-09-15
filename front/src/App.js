@@ -6,7 +6,7 @@ import { Route, Routes } from 'react-router-dom';
 // import Inicio from './pages/InicioPage';
 import Orientados from './pages/OrientadosPage';
 import Eventos from './pages/EventPage';
-import AdminPage from './pages/AdminPage';
+import AdminPage from './pages/adminHome/AdminPage';
 import LogIn from './pages/Login/LogInScreen';
 import {Error} from './pages/Home/components/error/Error'
 import ProfileAdminScreen from './pages/ProfileAdmin/ProfileAdminScreen';
@@ -23,7 +23,6 @@ function App() {
         <Route path='/logIn' element={<LogIn />} />
         <Route path='/orientados' element={<Orientados />} />
         <Route path='/eventos' element={<Eventos />} />
-        <Route path='/admin' element={<AdminPage />} />
         <Route path='*' element={<Error />} />
       </Routes>
     </div>

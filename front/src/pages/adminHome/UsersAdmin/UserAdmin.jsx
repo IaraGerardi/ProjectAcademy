@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import "./UserAdmin.css";
-import Icon from "../pages/global-components/Svg-icon";
+import Icon from "../../global-components/Svg-icon";
 
 
 function UserAdmin() {
@@ -35,7 +35,7 @@ function UserAdmin() {
                       <div>
                         <img
                           className="ImgUsers"
-                          src={require(`../img-back/orientados/${usersapi.photoProfile}`)}
+                          src={require(`../../../img-back/orientados/${usersapi.photoProfile}`)}
                           alt=""
                         />
                       </div>

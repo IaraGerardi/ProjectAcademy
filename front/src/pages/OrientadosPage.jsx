@@ -1,10 +1,10 @@
 
 
-import HeaderInicio from "../Header-MenuLateral/HeaderInicio";
-import Sidebar from "../Header-MenuLateral/Sidebar";
-import "../css/orientados.css"
-import buscador from "../icons/logo-buscador.svg"
-import Userscv from "../BoxUserscd/Userscv";
+import HeaderInicio from "./sidebar-header/components/HeaderInicio";
+import Sidebar from "./sidebar-header/components/Sidebar";
+import "./sidebar-header/style/orientados.css"
+import buscador from "./sidebar-header/icons/logo-buscador.svg"
+import Userscv from "./global-components/BoxUserscd/Userscv";
 import { Link } from "react-router-dom";
 
 

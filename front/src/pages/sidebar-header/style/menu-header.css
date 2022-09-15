@@ -23,6 +23,8 @@
 
 
 
+
+
 .HeaderIniciado {
   display: flex;
   flex-direction: row;
@@ -46,13 +48,19 @@
 .cont-nav-lateral {
   height: 65px;
   width: 100%;
-  transition: 700ms;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  transition: 400ms;
 }
 
-.cont-nav-lateral:hover {
-  background-color: #3cf4e8;
-  transition: 2s;
+.cont-nav-lateral:hover{
+  background-color: #1ec5ba24 ;
+  border-left: 4px solid #1EC5BB;
+  transition: 0.5s;
   cursor: pointer;
+  color: #1EC5BB;
 
 }
 
@@ -64,14 +72,19 @@
 }
 
 .cont-logo-lateral {
-  padding: 15px 35px;
+  width: 100%;
   display: flex;
-  align-items: flex-end;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 30px;
 }
 
 .lateral {
-  margin: 0px 5px;
+  padding: 0px 8px;
+
 }
+
 
 
 .navegar {

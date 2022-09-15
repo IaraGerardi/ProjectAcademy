@@ -5,7 +5,7 @@ import inicio from "../icons/logo-inicio.svg"
 import orientado from "../icons/logo-orientado.svg"
 import { Link } from "react-router-dom"
 
-import "../css/menu-header.css"
+import "../style/menu-header.css"
 
 function Sidebar() {
     return (

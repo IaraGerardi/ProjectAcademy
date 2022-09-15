@@ -1,10 +1,11 @@
-import "../css/AdminPage.css";
-import Sidebar from "../Header-MenuLateral/Sidebar";
-import HeaderInicio from "../Header-MenuLateral/HeaderInicio";
+import "../sidebar-header/style/AdminPage.css";
+import Sidebar from "../sidebar-header/components/Sidebar";
+import HeaderInicio from "../sidebar-header/components/HeaderInicio";
 
-import SliderOficial from "../SliderCd/SliderOficial";
+import SliderOficial from "./SliderCd/SliderOficial"
 import { Link } from "react-router-dom";
-import UserAdmin from "../UsersAdmin/UserAdmin";
+import UserAdmin from "./UsersAdmin/UserAdmin";
+
 
 function AdminPage() {
   return (

@@ -24,17 +24,17 @@ function Userscv() {
     <div className="box-cont">
       <ul>
         {newusers.length === 0 && <p>Cargando...</p>}
-        {newusers.map((Usersapi, i) => {
+        {newusers.map((Usersapi) => {
           return (
             <>
               <div className="boxtwo">
                 <div className="boxtree">
-                  <li className="lista" key={i}>
+                  <li className="lista" key={Usersapi.id}>
                     <div className="boxflex">
                       <div>
                         <img
                           className="ImgUsers"
-                          src={require(`../img-back/orientados/${Usersapi.photoProfile}`)}
+                          src={require(`../../../img-back/${Usersapi.photoProfile}`)}
                           alt=""
                         />
                       </div>

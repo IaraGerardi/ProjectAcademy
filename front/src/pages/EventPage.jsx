@@ -1,5 +1,5 @@
-import HeaderInicio from "../Header-MenuLateral/HeaderInicio.jsx";
-import Sidebar from "../Header-MenuLateral/Sidebar.jsx";
+import HeaderInicio from "./sidebar-header/components/HeaderInicio";
+import Sidebar from "./sidebar-header/components/Sidebar";
 
 
 function Eventos() {
