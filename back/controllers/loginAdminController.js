@@ -16,7 +16,6 @@ exports.adminLogin = async (req, res) => {
                 showConfirmButton: true,
                 timer: false,
                 ruta: 'login',
-                input: emailLog && passwordLog
             })
         } else if (!emailLog) {
             res.json({
@@ -27,7 +26,7 @@ exports.adminLogin = async (req, res) => {
                 showConfirmButton: true,
                 timer: false,
                 ruta: 'login',
-                input: emailLog
+                input: "emailLog"
             })
         } else if(!passwordLog) {
             res.json({
@@ -38,7 +37,7 @@ exports.adminLogin = async (req, res) => {
                 showConfirmButton: true,
                 timer: false,
                 ruta: 'login',
-                input: passwordLog
+                input: "passwordLog"
             })
         } else {
             const admin = await ModelAdmin.findAll({
@@ -54,7 +53,7 @@ exports.adminLogin = async (req, res) => {
                     showConfirmButton: true,
                     timer: false,
                     ruta: 'login',
-                    input: emailLog
+                    input: "emailLog"
                 })
             } else if(passwordLog !== admin[0].password){
                 console.log(admin)
@@ -69,7 +68,7 @@ exports.adminLogin = async (req, res) => {
                     showConfirmButton: true,
                     timer: false,
                     ruta: 'login',
-                    input: passwordLog
+                    input: "passwordLog"
                 })
             }else {
                 const id = admin[0].id
