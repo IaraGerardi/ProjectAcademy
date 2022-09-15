@@ -26,10 +26,9 @@ function Userscv() {
         {newusers.length === 0 && <p>Cargando...</p>}
         {newusers.map((Usersapi) => {
           return (
-            <>
-              <div className="boxtwo">
+              <div className="boxtwo" key={Usersapi.id} >
                 <div className="boxtree">
-                  <li className="lista" key={Usersapi.id}>
+                  <li className="lista" >
                     <div className="boxflex">
                       <div>
                         <img
@@ -49,7 +48,6 @@ function Userscv() {
                   </li>
                 </div>
               </div>
-            </>
           );
         })}
       </ul>
