@@ -10,20 +10,16 @@ export function Banner() {
 
     const itemLess = () => { item < 1 ? setItem(news.length - 1) : setItem(item - 1) }
     const itemPlus = () => { item >= news.length - 1 ? setItem(0) : setItem(item + 1) }
-    // let timer = setInterval(sumarItem, 2000);
+    // let timer = setInterval(itemPlus, 3000);
 
     return (
         <div className="banner">
             <div className="buttonsBanner">
                 <div onClick={itemLess} className="arrow left">
-                    <Icon type="leftArrow"
-                        width="20"
-                        height="20" />
+                    <Icon classname="w-5 h-5" type="leftArrow" width="24" height="24" />
                 </div>
                 <div onClick={itemPlus} className="arrow right">
-                    <Icon type="rightArrow"
-                        width="20"
-                        height="20" />
+                    <Icon classname="w-5 h-5" type="rightArrow" width="24" height="24" />
                 </div>
             </div>
             <ul className="bannerUL">{bannerItems[item]}</ul>
