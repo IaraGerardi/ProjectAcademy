@@ -36,13 +36,13 @@ function CardProfile() {
 
        <p className='pProfile ml-10 mt-8  font-medium text-slate-600'>Mi perfil</p>
 
-       <div className='containerAdminProfile w-4/6 h-3/5 p-8 ml-10 mt-4 bg-white flex flex-row rounded-lg border '>
+       <div className='containerAdminProfile w-5/6 p-4 ml-8 mt-2 flex flex-col bg-white rounded-lg  border lg:w-4/6 lg:h-3/5 lg:p-8 lg:ml-10 lg:mt-4  lg:flex-row  '>
                 <div className="boxImgAdminProfile w-5/12 flex justify-center">
-                       <img className="imgAdmin w-36 h-36  rounded-full" src={require(`../../../img-back/admins/${parseado.avatar}`)} alt="" />
+                       <img className="imgAdmin w-20 h-20  lg:w-36 lg:h-36 rounded-full" src={require(`../../../img-back/admins/${parseado.avatar}`)} alt="" />
                 </div>
 
                 
-                <div className="boxDataAdminProfile w-7/12 pl-5 flex flex-col gap-4 border-l border-inherit">
+                <div className="boxDataAdminProfile w-7/12 pl-5 flex flex-col gap-4 lg:border-l lg:border-inherit  ">
                         <div className="AdminName py-4 ">
                             <h2 className='font-bold text-xl'> {admin.name}</h2>
                             <span className='text-slate-400'>Administrador</span>
