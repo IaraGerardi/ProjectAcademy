@@ -50,6 +50,10 @@
     
 }
 
+.linkSidebar{
+    width: 100%;
+}
+
 @media (max-width: 970px){
     .pSidebar{
         display: none;
