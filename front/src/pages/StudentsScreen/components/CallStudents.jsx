@@ -5,13 +5,9 @@ import buscador from "../../sidebar-header/icons/logo-buscador.svg"
 
 function CallStudents() {
 
-
     const [orientados, setOrientados] = useState([]);
     const [tablaOrientados, setTablaOrientados] = useState([]);
     const [busqueda, setBusqueda] = useState("");
-
-
-
 
 
     useEffect(() => {
@@ -31,12 +27,10 @@ function CallStudents() {
     }, []);
 
 
-
     const handleChange = e => {
         setBusqueda(e.target.value);
         filtrar(e.target.value);
     }
-
 
 
     const filtrar = (terminoBusqueda) => {
@@ -53,7 +47,6 @@ function CallStudents() {
 
     return (
         <>
-
             <div className="cont-buscador-orientado">
 
                 <input
@@ -70,7 +63,7 @@ function CallStudents() {
             <div className="cont-students">
 
                 <ul>
-                    {orientados.length === 0 && <p>Cargando...</p>}
+                    {orientados.length === 0 && <p>No se encontró la búsqueda.</p>}
                     {orientados.map((usuario) => {
                         return (
                             <div className="box-students" key={usuario.id} >
@@ -98,7 +91,6 @@ function CallStudents() {
                 </ul >
             </div >
         </>
-
     );
 }
 

@@ -1,50 +1,50 @@
 
 import HeaderInicio from "../sidebar-header/components/HeaderInicio.jsx";
-import { Sidebar } from "../sidebar-header/components/Sidebar.js";
+import { Sidebar } from "../sidebar-header/components/Sidebar";
 import "./orientados.css"
-import buscador from "../sidebar-header/icons/logo-buscador.svg"
 import CallStudents from "./components/CallStudents";
 import { Link } from "react-router-dom";
-import {useEffect, useState} from "react"
+
 
 
 function StudentsScreen() {
 
     return (
         <>
-            <div className="h-screen flex">
-                <div className="h-full w-1/6 overflow-hidden">
-                    <Sidebar />
-                </div>
 
-                <div className="h-30 w-full overflow-hidden">
+            <div className="container-P w-full flex"> {/*  containedor padre tamaño igual a app */}
+
+                <Sidebar /> {/* hijo 1 izquierdo sticky */}
+
+                <div className="container-derecho header-sa">{/*  hijo2 derecho  column */}
                     <HeaderInicio propNamePage="Orientados" />
 
+                    <div>
 
-                    <div className="cont-ingresar-orientado">
-                        <p className="text-new-user">Nuevos usuarios a orientar</p>
+                        <div className="cont-ingresar-orientado">
+                            <p className="text-new-user">Nuevos usuarios a orientar</p>
 
 
-                        <Link className="navegar" to="/nuevoOrientado">
-                            <button className="btn-ingresar-orientado">Ingresar orientado</button>
-                        </Link>
+                            <Link className="navegar" to="/nuevoOrientado">
+                                <button className="btn-ingresar-orientado">Ingresar orientado</button>
+                            </Link>
+                        </div>
+
+
+                        <div className="cont-users">
+                            <CallStudents />
+                        </div>
+
+
                     </div>
 
-                    {/* <div className="cont-buscador-orientado">
-
-                        <input className="buscador-orientado" type="text" placeholder="Buscar orientado por nombre y apellido" />
-
-                        <img className="logo-buscador" src={buscador} alt="logo buscador" />
-                    </div> */}
-
-                    <div className="cont-users">
-                        <CallStudents />
-                    </div>
 
 
                 </div>
 
             </div>
+
+
 
 
         </>
