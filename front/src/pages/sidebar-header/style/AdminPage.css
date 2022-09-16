@@ -74,11 +74,17 @@
 .bordercd {
   text-align: center;
   align-items: center;
-  height: 50px;
+  height: 40px;
   border-bottom: 6px solid rgb(28, 192, 252);
 }
 
 .orientadoscd {
   height: 23px;
   border-bottom: 10px solid yellow;
+}
+
+.BoxNovedadescd{
+  height: 35px;
+
+  border-bottom: 10px solid rgb(131, 230, 255);
 }

@@ -30,26 +30,31 @@ function UserAdmin() {
             
            
                 <div className="boxtwo"  key={usersapi.name}>
-                  <li>
-                    <div className="boxflex">
-                      <div>
+                  {/* <li >
+                    <div className="boxflex "> */}
+                      
+                      
+                      <div className="boximagepi flex">
                         <img
                           className="ImgUsers"
                           src={require(`../../../img-back/orientados/${usersapi.photoProfile}`)}
                           alt="default"
                         />
-                      </div>
-
-                      <div>
-                        <h4>
+                    
+                    <div className="padmin">
+                        <p className="pname">
                           {usersapi.name} {usersapi.lastname}
-                        </h4>
-                        <p>{usersapi.school}</p>
-                      </div>
+                        </p>
+                        <p className="pschools">{usersapi.school}</p>
+                      
+                        </div>
+                        </div>
+                    
 
-                      <div className="mt--10">
+                      
+                      
                       {usersapi.OrientadoreId != null ?
-                      <div className="mt--10">
+                      <div className="iconcd">
                       <Icon
                         classname=""
                         type="userIcon"
@@ -57,10 +62,9 @@ function UserAdmin() {
                       </div>
                       : null
           }
-                      </div>
                     </div>
-                  </li>
-                </div>
+                //   </li>
+                // </div>
               
             
           ))}

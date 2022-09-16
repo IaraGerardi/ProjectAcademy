@@ -62,7 +62,7 @@ function SliderOficial() {
       {notice.map((data) => (
         <div key={data.id} className="card">
 
-          <div className="textouno">
+          <div className="textouno text-2xl font-bold">
             <h2>{data.titulo}</h2>
           </div>
 

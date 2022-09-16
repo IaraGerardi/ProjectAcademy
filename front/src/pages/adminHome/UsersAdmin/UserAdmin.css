@@ -1,24 +1,24 @@
-
 .box-center {
   width: 100%;
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
 }
 
 .boxtwo {
-  
-  width: 320px;
+  border: 1px solid black;
+  width: 312px;
   height: 96px;
   border-radius: 8px;
+  margin: 5px;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-around;
 }
 
 .boxflex {
   display: flex;
+
   width: 100%;
-  justify-content: space-around;
 }
 
 li {
@@ -31,19 +31,15 @@ li {
   background-color: antiquewhite;
 }
 
-
-.ulUserAdmin{
-  width: 100vw;
+.ulUserAdmin {
+  width: 90%;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  margin-top: 40px;
-
+  margin-left: 80px;
 }
 
-.boxBtnHome{
+.boxBtnHome {
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -51,7 +47,27 @@ li {
   align-items: center;
 }
 
+.iconcd{
+  margin-bottom: 50px;
+  padding: 5px;
+}
 
+.padmin{
+  display: flex;
+  flex-direction: column;
+}
 
+.pname{
+  margin-left: 5px;
+  font-weight: 500;
+  line-height: 24px;
+  font-size: 16px;
+}
+
+.pschools{
+  margin-left: 5px;
+  font-size: 14px;
+ color: #8798AD;
+}
 
 
