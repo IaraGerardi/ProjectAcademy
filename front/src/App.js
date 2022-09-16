@@ -9,7 +9,7 @@ import AdminPage from './pages/adminHome/AdminPage';
 import LogIn from './pages/Login/LogInScreen';
 import {Error} from './pages/Home/components/error/Error'
 import ProfileAdminScreen from './pages/ProfileAdmin/ProfileAdminScreen';
-import { EventScreen } from './pages/eventScreen/EventScreen';
+import { EventScreen } from './pages/Events/EventScreen';
 
 // Fin Importación Páginas
 
