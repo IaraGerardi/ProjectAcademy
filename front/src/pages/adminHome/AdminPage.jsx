@@ -2,164 +2,88 @@ import "../sidebar-header/style/AdminPage.css";
 import { Sidebar } from "../sidebar-header/components/Sidebar.js";
 import HeaderInicio from "../sidebar-header/components/HeaderInicio";
 
-import SliderOficial from "./SliderCd/SliderOficial"
+import SliderOficial from "./SliderCd/SliderOficial";
 import { Link } from "react-router-dom";
 import UserAdmin from "./UsersAdmin/UserAdmin";
 
-
 function AdminPage() {
   return (
-    
-    <div className="container-P w-full flex"> {/*  containedor padre tamaño igual a app */}
-               
-    <Sidebar/>{/* hijo 1 izquierdo sticky */}
-
-    <div className="container-derecho header-sa">{/*  hijo2 derecho  column */}
-        <HeaderInicio  propNamePage="Bienvenido/a"/>
+    <div className="container-P w-full flex">
+      {" "}
+      {/*  containedor padre tamaño igual a app */}
+      <Sidebar />
+      {/* hijo 1 izquierdo sticky */}
+      <div className="container-derecho header-sa">
+        {/*  hijo2 derecho  column */}
+        <HeaderInicio propNamePage="Bienvenido/a" />
 
         <div>
-            <div>
+          <div>
+            {/*------------------  */}
+            <div className="h-screen flex">
+              <div className="h-30 w-full overflow-hidden">
+                <div className="boxMainAdminHome mt-2">
+                  <div className=" h-3/5">
+                    <div className=" h-1/6  items-center">
+                      <div className="flex items-center w-9/12 ml-20 justify-between h-full">
+                        <div className="bordercd text-2xl">
+                          Nuevos orientados
+                        </div>
 
-                 {/*------------------  */}
-      <div className="h-screen flex">
-       
-        
-        <div className="h-30 w-full overflow-hidden">
-      
+                        <div>
+                          <Link className="navegar" to="/nuevoOrientado">
+                            <button className="btn-ingresar-orientado mr-2">
+                              Ingresar orientado
+                            </button>
+                          </Link>
+                        </div>
+                      </div>
+                    </div>
 
-          <div className="boxMainAdminHome mt-2">
-          <div className=" h-3/5">
-            <div className=" h-1/6  items-center">
-              <div className="flex items-center w-9/12 ml-20 justify-between h-full">
-                <div className="bordercd text-2xl">Nuevos orientados</div>
+                    <div className="mt-3">
+                      <UserAdmin />
+                    </div>
 
-                <div>
-                  <Link className="navegar" to="/nuevoOrientado">
-                    <button className="btn-ingresar-orientado mr-2">
-                      Ingresar orientado
-                    </button>
-                  </Link>
-                </div>
-              </div>
-            </div>
+                    <div className="items-center mt-1">
+                      <div className="flex items-center w-9/12 ml-20 justify-between h-auto overflow-hidden">
+                        <div className="orientadoscd">
+                          <div>
+                            <Link className="navegar" to="/nuevoOrientado">
+                              Ver más orientados
+                            </Link>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
 
-            
-                <div className="mt-3">
-                  <UserAdmin />
-                </div>
-            
+                    <div className=" h-3/1 items-center mt-4">
+                      <div className="flex items-center w-9/12 ml-20 justify-between h-auto overflow-hidden">
+                        <div>
+                          <div>
+                            <h1 className="BoxNovedadescd text-3xl text-bold">
+                              Novedades
+                            </h1>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
 
-            <div className="items-center mt-1">
-              <div className="flex items-center w-9/12 ml-20 justify-between h-auto overflow-hidden">
-                <div className="orientadoscd">
-                  <div>
-                    <Link className="navegar" to="/nuevoOrientado">
-                      Ver más orientados
-                    </Link>
+                    <div className="boxMainSlider">
+                      <div className=" h-3/4 items-center  mt-6/12">
+                        <div className="flex items-center  w-9/12 ml-20 justify-between h-auto">
+                          <SliderOficial />
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-
-            <div className=" h-3/1 items-center mt-4">
-              <div className="flex items-center w-9/12 ml-20 justify-between h-auto overflow-hidden">
-                <div>
-                  <div>
-                    <h1 className="BoxNovedadescd text-3xl text-bold">Novedades</h1>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-          <div className="boxMainSlider">
-            <div className=" h-3/4 items-center  mt-6/12">
-              <div className="flex items-center  w-9/12 ml-20 justify-between h-auto">
-                <SliderOficial />
-              </div>
-            </div>
-          </div>  
           </div>
         </div>
       </div>
-      </div>
-
-            </div>
-        </div>
-        
-
-        
     </div>
-
-    </div>
-  )
+  );
 }
-  
-    
-/*     
-      <div className="h-screen flex">
-        <div className="h-full w-1/6 overflow-hidden">
-          <Sidebar />
-        </div>
-        
-        <div className="h-30 w-full overflow-hidden">
-        <HeaderInicio propNamePage="Bienvenido/a"/>
-      
-
-          <div className="boxMainAdminHome">
-          <div className=" h-3/5">
-            <div className=" h-1/6  items-center">
-              <div className="flex items-center w-9/12 ml-20 justify-between h-full">
-                <div className="bordercd text-3xl">Nuevos orientados</div>
-
-                <div>
-                  <Link className="navegar" to="/nuevoOrientado">
-                    <button className="btn-ingresar-orientado mr-2">
-                      Ingresar orientado
-                    </button>
-                  </Link>
-                </div>
-              </div>
-            </div>
-
-            
-                <div>
-                  <UserAdmin />
-                </div>
-            
-
-            <div className="items-center mt-1">
-              <div className="flex items-center w-9/12 ml-20 justify-between h-auto overflow-hidden">
-                <div className="orientadoscd">
-                  <div>
-                    <Link className="navegar" to="/nuevoOrientado">
-                      Ver más orientados
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className=" h-3/1 items-center mt-4">
-              <div className="flex items-center w-9/12 ml-20 justify-between h-auto overflow-hidden">
-                <div>
-                  <div>
-                    <h1 className="text-3xl ">Novedades</h1>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-          <div className="boxMainSlider">
-            <div className=" h-3/4 items-center  mt-6/12">
-              <div className="flex items-center  w-9/12 ml-20 justify-between h-auto">
-                <SliderOficial />
-              </div>
-            </div>
-          </div>  
-          </div>
-        </div>
-      </div>
-      </div> */
-      
 
 export default AdminPage;

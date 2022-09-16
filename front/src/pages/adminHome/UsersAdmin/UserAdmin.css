@@ -47,27 +47,25 @@ li {
   align-items: center;
 }
 
-.iconcd{
+.iconcd {
   margin-bottom: 50px;
   padding: 5px;
 }
 
-.padmin{
+.padmin {
   display: flex;
   flex-direction: column;
 }
 
-.pname{
+.pname {
   margin-left: 5px;
   font-weight: 500;
   line-height: 24px;
   font-size: 16px;
 }
 
-.pschools{
+.pschools {
   margin-left: 5px;
   font-size: 14px;
- color: #8798AD;
+  color: #8798ad;
 }
-
-
