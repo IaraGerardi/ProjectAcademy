@@ -3,8 +3,9 @@
     top: 0;
     width:15%;
     height: 100vh;
-   display: flex;
-   flex-direction: column;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid rgba(228, 232, 240, 1);
 }
 
 .ulSidebar{
@@ -31,10 +32,33 @@
     color: #1EC5BB;
 }
 
+.pSidebar{
+    padding: 8px;
+}
 
 .iconSidebar{
     width: 24px;
     height: 24px;
     margin-left: 20px;
 }
+
+@media (max-width: 970px){
+    .pSidebar{
+        display: none;
+    }
+
+    .iconSidebar{
+        margin-left: 0;
+        
+    }
+
+    .liSidebar{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+
 

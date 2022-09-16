@@ -64,3 +64,10 @@
 .ocultar-sesion {
   display: none;
 }
+
+@media (max-width: 970px){
+  .p-header{
+    font-size: 24px;
+    padding: 10px;
+  }
+}
