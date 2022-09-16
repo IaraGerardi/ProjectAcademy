@@ -21,11 +21,12 @@ function AdminPage() {
           <div>
             {/*------------------  */}
             <div className="h-screen flex">
-              <div className="h-30 w-full overflow-hidden">
+              <div className="h-30 w-full">
                 <div className="boxMainAdminHome mt-2">
                   <div className=" h-3/5">
-                    <div className=" h-1/6  items-center">
-                      <div className="flex items-center w-9/12 ml-20 justify-between h-full">
+
+                    <div className="boxcentral h-1/6  items-center">
+                      <div className=" boxcentraltwo flex items-center w-9/12 ml-20 justify-between h-full">
                         <div className="bordercd text-2xl">
                           Nuevos orientados
                         </div>
@@ -40,12 +41,12 @@ function AdminPage() {
                       </div>
                     </div>
 
-                    <div className="mt-3">
+                    <div className=" admintbloque mt-3">
                       <UserAdmin />
                     </div>
 
                     <div className="items-center mt-1">
-                      <div className="flex items-center w-9/12 ml-20 justify-between h-auto overflow-hidden">
+                      <div className="flex items-center w-9/12 ml-20 justify-between h-auto ">
                         <div className="orientadoscd">
                           <div>
                             <Link className="navegar" to="/nuevoOrientado">
@@ -57,7 +58,7 @@ function AdminPage() {
                     </div>
 
                     <div className=" h-3/1 items-center mt-4">
-                      <div className="flex items-center w-9/12 ml-20 justify-between h-auto overflow-hidden">
+                      <div className="flex items-center w-9/12 ml-20 justify-between h-auto ">
                         <div>
                           <div>
                             <h1 className="BoxNovedadescd text-3xl text-bold">

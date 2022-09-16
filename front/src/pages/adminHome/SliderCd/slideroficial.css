@@ -69,3 +69,17 @@
   width: 70px;
   border-bottom: 10px solid yellow;
 }
+
+@media (max-width: 600px) {
+  .sliderone {
+    margin-left: -25px;
+    
+  }
+  .slick-prev:before,
+  .slick-next:before {
+    display: none !important;
+  }
+ ::before{
+  display: none;
+ }
+}
