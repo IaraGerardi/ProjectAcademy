@@ -34,7 +34,6 @@
 }
 
 .cont-buscador-orientado {
-    /* width: 50%; */
     width: 656px;
     height: 48px;
     border: solid 1px rgb(227, 227, 227);
@@ -62,9 +61,6 @@
 }
 
 .logo-buscador {
-    /* position: relative;
-    left: 705px;
-    bottom: 34px; */
     height: 25px;
 }
 

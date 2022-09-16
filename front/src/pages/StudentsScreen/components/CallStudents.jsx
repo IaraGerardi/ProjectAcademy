@@ -1,15 +1,25 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import "../call-students.css"
+import buscador from "../../sidebar-header/icons/logo-buscador.svg"
 
 function CallStudents() {
-    const [newusers, setNewusers] = useState([]);
+
+
+    const [orientados, setOrientados] = useState([]);
+    const [tablaOrientados, setTablaOrientados] = useState([]);
+    const [busqueda, setBusqueda] = useState("");
+
+
+
+
 
     useEffect(() => {
         const getOrientados = async () => {
             try {
                 const res = await axios.get("http://localhost:8000/admin/orientados");
-                setNewusers(res.data);
+                setOrientados(res.data);
+                setTablaOrientados(res.data)
 
                 console.log(res.data);
             } catch (error) {
@@ -20,39 +30,75 @@ function CallStudents() {
         getOrientados();
     }, []);
 
+
+
+    const handleChange = e => {
+        setBusqueda(e.target.value);
+        filtrar(e.target.value);
+    }
+
+
+
+    const filtrar = (terminoBusqueda) => {
+        var resultadosBusqueda = tablaOrientados.filter((elemento) => {
+            if (elemento.name.toString().toLowerCase().includes(terminoBusqueda.toLowerCase())
+                || elemento.lastname.toString().toLowerCase().includes(terminoBusqueda.toLowerCase())
+            ) {
+                return elemento;
+            }
+        })
+        setOrientados(resultadosBusqueda);
+    }
+
+
     return (
-        <div className="cont-students">
+        <>
 
-            <ul>
-                {newusers.length === 0 && <p>Cargando...</p>}
-                {newusers.map((Usersapi) => {
-                    return (
-                        <div className="box-students" key={Usersapi.id} >
+            <div className="cont-buscador-orientado">
 
+                <input
+                    className="buscador-orientado"
+                    type="text"
+                    placeholder="Buscar orientado por nombre y apellido"
+                    value={busqueda}
+                    onChange={handleChange}
+                />
 
+                <img className="logo-buscador" src={buscador} alt="logo buscador" />
+            </div>
 
-                            <div className="content-students">
+            <div className="cont-students">
 
-                                <img
-                                    className="ImgUsers"
-                                    src={require(`../../../img-back/orientados/${Usersapi.photoProfile}`)}
-                                    alt="Foto perfil orientado"
-                                />
-                                <div>
+                <ul>
+                    {orientados.length === 0 && <p>Cargando...</p>}
+                    {orientados.map((usuario) => {
+                        return (
+                            <div className="box-students" key={usuario.id} >
 
-                                    <h4>
-                                        {Usersapi.name} {Usersapi.lastname}
-                                    </h4>
-                                    <p>{Usersapi.school}</p>
+                                <div className="content-students">
+
+                                    <img
+                                        className="ImgUsers"
+                                        src={require(`../../../img-back/orientados/${usuario.photoProfile}`)}
+                                        alt="Foto perfil orientado"
+                                    />
+                                    <div>
+
+                                        <h4>
+                                            {usuario.name} {usuario.lastname}
+                                        </h4>
+                                        <p>{usuario.school}</p>
+                                    </div>
+
                                 </div>
-
                             </div>
-                        </div>
 
-                    );
-                })}
-            </ul >
-        </div >
+                        );
+                    })}
+                </ul >
+            </div >
+        </>
+
     );
 }
 
