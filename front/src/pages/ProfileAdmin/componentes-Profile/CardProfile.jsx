@@ -5,6 +5,7 @@ import axios from 'axios';
 /* import './CardProfile.css'; */
 
 function CardProfile() {
+
     const usuario = localStorage.getItem('usuario')//base de datos pequeña del navegador y .getItem trae un elemento del local storage
     const parseado = JSON.parse(usuario)// pasando el item a json
 
@@ -30,7 +31,7 @@ function CardProfile() {
     
         getAdminProfile(); 
       
-      },[URI,parseado.id])   
+      },[URI,parseado.id])   //parametros que el useffect tiene que recibir.
 
   console.log(localStorage)
 
