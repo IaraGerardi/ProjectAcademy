@@ -13,21 +13,24 @@ function CardProfile() {
      const URI=`http://localhost:8000/admin/profile`;
 
 
+     useEffect( ()=>{ // la a ejecutar la funcion luego de renderizar la pantalla y no todo el tiempo
 
-    const getAdminProfile= async()=>{
-        try{
-            const resAdmin = await axios.get(`${URI}/${parseado.id}`,{withCredentials:true})//trae uri y le agrega /gdsaiukyhds y lo guarda
-            setAdmin(resAdmin.data); 
-          
+            const getAdminProfile= async()=>{
+                try{
+                    const resAdmin = await axios.get(`${URI}/${parseado.id}`,{withCredentials:true})//trae uri y le agrega /gdsaiukyhds y lo guarda
+                    setAdmin(resAdmin.data); 
+                
 
-        }catch(error){// en caso de fallar 
-            console.log (error)
-        }
-    }
-    useEffect( ()=>{ // la a ejecutar la funcion luego de renderizar la pantalla y no todo el tiempo
-       
+                }catch(error){// en caso de fallar 
+                    console.log (error)
+                }
+            }
+
+    
+    
         getAdminProfile(); 
-      },[])
+      
+      },[URI,parseado.id])   
 
   console.log(localStorage)
 
@@ -36,13 +39,13 @@ function CardProfile() {
 
        <p className='pProfile ml-10 mt-8  font-medium text-slate-600'>Mi perfil</p>
 
-       <div className='containerAdminProfile w-5/6 p-4 ml-8 mt-2 flex flex-col bg-white rounded-lg  border lg:w-4/6 lg:h-3/5 lg:p-8 lg:ml-10 lg:mt-4  lg:flex-row  '>
+       <div className='containerAdminProfile w-5/6 p-4 ml-8 mt-2 flex flex-col bg-white rounded-lg  border md:flex-row lg:w-4/6 lg:h-3/5 lg:p-8 lg:ml-10 lg:mt-4  lg:flex-row  '>
                 <div className="boxImgAdminProfile w-5/12 flex justify-center">
-                       <img className="imgAdmin w-20 h-20  lg:w-36 lg:h-36 rounded-full" src={require(`../../../img-back/admins/${parseado.avatar}`)} alt="" />
+                       <img className="imgAdmin w-20 h-20 md:w-28 md:h-28 lg:w-36 lg:h-36 rounded-full" src={require(`../../../img-back/admins/${parseado.avatar}`)} alt="" />
                 </div>
 
                 
-                <div className="boxDataAdminProfile w-7/12 pl-5 flex flex-col gap-4 lg:border-l lg:border-inherit  ">
+                <div className="boxDataAdminProfile w-7/12 pl-5 flex flex-col gap-4 md:border-l lg:border-l lg:border-inherit  ">
                         <div className="AdminName py-4 ">
                             <h2 className='font-bold text-xl'> {admin.name}</h2>
                             <span className='text-slate-400'>Administrador</span>
