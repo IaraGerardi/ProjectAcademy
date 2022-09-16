@@ -10,7 +10,7 @@ export const Sidebar = () => {
     
 
         <div className='boxMainSidebar'>
-            <div className='cont-logo-menu'>
+            <div className='sidebarLogo'>
                 <img className='logo-menu' src={logo} alt="logo menu" />
             </div>
 

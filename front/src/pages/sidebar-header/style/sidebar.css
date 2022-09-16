@@ -42,6 +42,14 @@
     margin-left: 20px;
 }
 
+.sidebarLogo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 111px;
+    
+}
+
 @media (max-width: 970px){
     .pSidebar{
         display: none;
