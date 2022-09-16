@@ -1,22 +1,22 @@
 
-
-import HeaderInicio from "../sidebar-header/components/HeaderInicio";
-import Sidebar from "../sidebar-header/components/Sidebar.jsx";
+import HeaderInicio from "../sidebar-header/components/HeaderInicio.jsx";
+import { Sidebar } from "../sidebar-header/components/Sidebar.js";
 import "./orientados.css"
 import buscador from "../sidebar-header/icons/logo-buscador.svg"
-import Userscv from "../global-components/BoxUserscd/Userscv";
+import CallStudents from "./components/CallStudents";
 import { Link } from "react-router-dom";
 
 
-function Orientados() {
+function StudentsScreen() {
     return (
         <>
-            <div className="cont-major">
-
-                <div className="menu-sa"><Sidebar /></div>
-
-                <div className="header-sa">
-                    <div className="sa-header-children"><HeaderInicio /></div>
+            <div className="h-screen flex">
+        <div className="h-full w-1/6 overflow-hidden">
+          <Sidebar />
+        </div>
+        
+        <div className="h-30 w-full overflow-hidden">
+        <HeaderInicio propNamePage="Bienvenido/a"/>
 
                     <div className="sa-seccion">
 
@@ -37,7 +37,7 @@ function Orientados() {
                         </div>
 
                         <div className="cont-users">
-                            <Userscv />
+                            <CallStudents />
                         </div>
 
 
@@ -51,4 +51,4 @@ function Orientados() {
     );
 }
 
-export default Orientados;
+export default StudentsScreen;
