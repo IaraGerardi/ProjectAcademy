@@ -1,8 +1,16 @@
 import InputLabel from "../componentes-nuevoOrientado/InputLabel"
+import Select from 'react-select';
 
 
+function FormOrientado({propOnClickCancel}) {
 
-function FormOrientado() {
+  const options = [
+    { value: 'programa1', label: 'Orientación vocacional ' },
+    { value: 'programa2', label: 'Reorientación vocacional' },
+    { value: 'programa3', label: 'Taller de matemáticas' },
+    { value: 'programa4', label: 'Métodos de estudio' },
+  ]
+  
   return (
     <>
     <form action="" className=" flex flex-col gap-4"> {/* abre formulario de alta de oreintado , tiene 4 divs hijos */}
@@ -14,7 +22,13 @@ function FormOrientado() {
          <InputLabel labelName="Nombre" inputType="text" propInputName="name" placeholderName="ingresar nombre"/>
          <InputLabel labelName="Apellido" inputType="text" propInputName="lastname" placeholderName="ingresar Apellido"/>
          <InputLabel labelName="Email" inputType="email" propInputName="email" placeholderName="ingresar email"/>
-         {/*  falta input select program */}
+         <div>
+          <label htmlFor="" className="font-medium text-slate-600">Programa</label>
+         <Select 
+         placeholder="seleccionar opcion"
+         options={options}
+         />
+         </div>
         </div>
 
         <div className="container-personalInfo"> {/* div2 datos personales */}
@@ -41,7 +55,7 @@ function FormOrientado() {
 
         <div> {/* div4 botones form */}
         <button className=" w-32 bg-blue-600 " type="submit">Ingresar Orientado</button>
-              <button  className=" w-32 bg-gray-600 " type="reset">Cancelar ingreso</button>
+              <button  className=" w-32 bg-gray-600 " onClick={propOnClickCancel}>Cancelar ingreso</button>
         </div>
        
     </form>

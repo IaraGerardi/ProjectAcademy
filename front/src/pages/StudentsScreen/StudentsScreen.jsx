@@ -43,7 +43,7 @@ function StudentsScreen() {
                                 <div className="cont-users">
                                     <CallStudents /> {/*Buscador y Llamado de usuarios*/}
                                 </div>
-                            </> : <FormOrientado />}
+                            </> : <FormOrientado propOnClickCancel={handleRenderForm}/>}
 
                     </div>
                 </div>
