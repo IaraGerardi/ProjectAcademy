@@ -22,7 +22,6 @@
     background-color: #0BA4A0;
     color: white;
     border: none;
-
     font-weight: 600;
     font-size: 13px;
     transition: 500ms;
@@ -35,3 +34,43 @@
 
 }
 
+@media (max-width: 800px) {
+
+    .text-new-user {
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 32px;
+        font-family: sans-serif 'Rubik';
+        color: #2E384D;
+        height: 35px;
+        border-bottom: 10px solid #E9F9F8;
+    }
+
+    .btn-ingresar-orientado {
+        width: 144px;
+        height: 40px;
+        border-radius: 8px;
+        background-color: #0BA4A0;
+        color: white;
+        border: none;
+        font-weight: 600;
+        font-size: 13px;
+        transition: 500ms;
+    }
+
+}
+
+
+
+
+@media (max-width: 560px) {
+
+    .cont-ingresar-orientado {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+
+}

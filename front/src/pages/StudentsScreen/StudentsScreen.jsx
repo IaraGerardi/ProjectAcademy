@@ -11,14 +11,14 @@ import FormOrientado from "../StudentsScreen/componentes-nuevoOrientado/FormOrie
 
 function StudentsScreen() {
 
-     const  [renderformOrientado,setRenderFormOrientado]=useState(false);
+    const [renderformOrientado, setRenderFormOrientado] = useState(false);
 
-     const handleRenderForm=()=>{
-    
-        if(renderformOrientado===false){
+    const handleRenderForm = () => {
+
+        if (renderformOrientado === false) {
             setRenderFormOrientado(true);
         }
-     }
+    }
 
     return (
         <>
@@ -31,24 +31,19 @@ function StudentsScreen() {
 
                     <div>
 
-                        {renderformOrientado===false ?
-                         <>
-                         <div className="cont-ingresar-orientado">
-                            <p className="text-new-user">Nuevos usuarios a orientar</p>
+                        {renderformOrientado === false ?
+                            <>
+                                <div className="cont-ingresar-orientado">
+                                    <p className="text-new-user">Nuevos usuarios a orientar</p>
+                                    <button className="btn-ingresar-orientado" onClick={handleRenderForm}>Ingresar orientado</button>
+
+                                </div> {/*Texto y Boton que redirije a la Página de ingresar orientados.*/}
 
 
-                       
-                                <button className="btn-ingresar-orientado" onClick={handleRenderForm}>Ingresar orientado</button>
-                          
-                        </div> {/*Texto y Boton que redirije a la Página de ingresar orientados.*/}
-
-
-                        <div className="cont-users">
-                            <CallStudents /> {/*Buscador y Llamado de usuarios*/}
-                        </div>
-                        </> : <FormOrientado/>}
-                    
-                        
+                                <div className="cont-users">
+                                    <CallStudents /> {/*Buscador y Llamado de usuarios*/}
+                                </div>
+                            </> : <FormOrientado />}
 
                     </div>
                 </div>

@@ -1,0 +1,80 @@
+.text-referent {
+    font-size: 1.6em;
+    color: #2E384D;
+    font-family: sans-serif 'Rubik';
+    font-weight: 600;
+    padding-bottom: 20px;
+}
+
+.cont-student {
+    width: 76%;
+    height: 222px;
+    border-radius: 10px;
+    display: flex;
+    -webkit-box-shadow: 5px 5px 17px -2px rgba(181, 181, 181, 0.895);
+    -moz-box-shadow: 5px 5px 17px -2px rgba(181, 181, 181, 0.895);
+    box-shadow: 5px 5px 17px -2px rgba(181, 181, 181, 0.895);
+}
+
+.cont-image-profile {
+    display: flex;
+    height: 222px;
+    width: 250px;
+    justify-content: center;
+    align-items: center;
+}
+
+hr {
+    margin-top: 28px;
+    height: 170px;
+    width: 1px;
+    background-color: rgb(228, 228, 228);
+}
+
+.image-profile-student {
+    height: 130px;
+    width: 130px;
+    border-radius: 100%;
+}
+
+
+.name-student {
+    font-weight: 500;
+    font-size: 1.6em;
+    line-height: 32px;
+    color: black;
+}
+
+.text-orientado {
+    color: rgb(192, 192, 192);
+}
+
+.text-gray {
+    color: rgb(156, 156, 156);
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.cont-info-student {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    padding: 20px;
+}
+
+.numero {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 70px 0px 0px 80px;
+}
+
+
+.caja{
+    height: 500px;
+    width: 500px;
+    background-color: red;
+}
