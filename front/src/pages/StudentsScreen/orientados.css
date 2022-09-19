@@ -4,6 +4,8 @@
     line-height: 32px;
     font-family: sans-serif 'Rubik';
     color: #2E384D;
+    height: 35px;
+    border-bottom: 10px solid #E9F9F8;
 }
 
 .cont-ingresar-orientado {

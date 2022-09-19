@@ -11,7 +11,6 @@ function StudentsScreen() {
 
     return (
         <>
-
             <div className="container-P w-full flex"> {/*  containedor padre tamaño igual a app */}
 
                 <Sidebar /> {/* hijo 1 izquierdo sticky */}
@@ -28,25 +27,16 @@ function StudentsScreen() {
                             <Link className="navegar" to="/nuevoOrientado">
                                 <button className="btn-ingresar-orientado">Ingresar orientado</button>
                             </Link>
-                        </div>
+                        </div> {/*Texto y Boton que redirije a la Página de ingresar orientados.*/}
 
 
                         <div className="cont-users">
-                            <CallStudents />
+                            <CallStudents /> {/*Buscador y Llamado de usuarios*/}
                         </div>
 
-
                     </div>
-
-
-
                 </div>
-
             </div>
-
-
-
-
         </>
     );
 }

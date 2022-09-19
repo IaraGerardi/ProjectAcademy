@@ -10,7 +10,7 @@ function CallStudents() {
     const [busqueda, setBusqueda] = useState("");
 
 
-    useEffect(() => {
+    useEffect(() => { {/*Pedido a la Api*/}
         const getOrientados = async () => {
             try {
                 const res = await axios.get("http://localhost:8000/admin/orientados");
@@ -33,7 +33,7 @@ function CallStudents() {
     }
 
 
-    const filtrar = (terminoBusqueda) => {
+    const filtrar = (terminoBusqueda) => { {/*Filtra el nombre o apellido del orientado*/}
         var resultadosBusqueda = tablaOrientados.filter((elemento) => {
             if (elemento.name.toString().toLowerCase().includes(terminoBusqueda.toLowerCase())
                 || elemento.lastname.toString().toLowerCase().includes(terminoBusqueda.toLowerCase())
@@ -44,10 +44,8 @@ function CallStudents() {
         setOrientados(resultadosBusqueda);
     }
 
-
     return (
         <>
-
             <div className="cont-search-orientado">
                 <input
                     className="search-orientado"
@@ -56,13 +54,12 @@ function CallStudents() {
                     value={busqueda}
                     onChange={handleChange}
                 />
-
                 <img className="logo-buscador" src={buscador} alt="logo buscador" />
-            </div>
+            </div> {/*Input Buscador*/}
 
             <div className="cont-students">
 
-                <ul>
+                <ul> {/*Llamado a la Api*/}
                     {orientados.length === 0 && <p>No se encontró la búsqueda.</p>}
                     {orientados.map((usuario) => {
                         return (
@@ -85,7 +82,6 @@ function CallStudents() {
 
                                 </div>
                             </div>
-
                         );
                     })}
                 </ul >
