@@ -22,11 +22,12 @@ function FormOrientado({propOnClickCancel}) {
          <InputLabel labelName="Nombre" inputType="text" propInputName="name" placeholderName="ingresar nombre"/>
          <InputLabel labelName="Apellido" inputType="text" propInputName="lastname" placeholderName="ingresar Apellido"/>
          <InputLabel labelName="Email" inputType="email" propInputName="email" placeholderName="ingresar email"/>
+
          <div>
           <label htmlFor="" className="font-medium text-slate-600">Programa</label>
-         <Select 
+         <Select /* componente de react select esta importado arriba */
          placeholder="seleccionar opcion"
-         options={options}
+         options={options} /* trae un array de objetos con las opciones */
          />
          </div>
         </div>
