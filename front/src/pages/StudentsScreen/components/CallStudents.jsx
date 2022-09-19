@@ -47,10 +47,10 @@ function CallStudents() {
 
     return (
         <>
-            <div className="cont-buscador-orientado">
 
+            <div className="cont-search-orientado">
                 <input
-                    className="buscador-orientado"
+                    className="search-orientado"
                     type="text"
                     placeholder="Buscar orientado por nombre y apellido"
                     value={busqueda}
