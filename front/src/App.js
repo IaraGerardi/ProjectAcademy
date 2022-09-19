@@ -12,6 +12,7 @@ import {Error} from './pages/Home/components/error/Error'
 import ProfileAdminScreen from './pages/ProfileAdmin/ProfileAdminScreen';
 import { EventScreen } from './pages/Events/EventScreen';
 
+
 // Fin Importación Páginas
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
         <Route path='/orientados' element={<Orientados />} />
         <Route path='/assign' element={<Assign/>} />
         <Route path='/eventos' element={<EventScreen />} />
+
         <Route path='*' element={<Error />} />
       </Routes>
     </div>
