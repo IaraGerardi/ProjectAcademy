@@ -4,6 +4,7 @@ import { Route, Routes } from 'react-router-dom';
 
 // Importación Páginas
 // import Inicio from './pages/InicioPage';
+import Assign from './pages/Assign/Assign';
 import Orientados from './pages/StudentsScreen/StudentsScreen';
 import AdminPage from './pages/adminHome/AdminPage';
 import LogIn from './pages/Login/LogInScreen';
@@ -22,6 +23,7 @@ function App() {
         <Route path='/profile' element={<ProfileAdminScreen/>} />
         <Route path='/logIn' element={<LogIn />} />
         <Route path='/orientados' element={<Orientados />} />
+        <Route path='/assign' element={<Assign/>} />
         <Route path='/eventos' element={<EventScreen />} />
         <Route path='*' element={<Error />} />
       </Routes>
