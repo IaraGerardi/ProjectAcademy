@@ -7,6 +7,9 @@ import axios from "axios";
 
 function Assign() {
     const [orientado, setOrientado] = useState([]);
+    const [orientadores, setOrientadores] = useState([]);
+
+
 
     useEffect(() => {
         const getOrientados = async () => {
@@ -20,6 +23,26 @@ function Assign() {
         };
         getOrientados();
     }, []);
+
+
+
+
+
+    useEffect(() => {
+        const getOrientados = async () => {
+            try {
+                const res = await axios.get("http://localhost:8000/admin/orientados/:id/orientador");
+                setOrientadores(res.data); /* LLama 1 usuario */
+                console.log(res.data)
+            } catch (error) {
+                console.log(error);
+            }
+        };
+        getOrientados();
+    }, []);
+
+
+
 
     return (
 
@@ -86,9 +109,18 @@ function Assign() {
                                     );
                                 })}
                             </ul >
+                            <p className="text-referent two"> Selección de un Orientador Referente  </p>
 
-                            
-                            <input type="text" name="" id="" />
+
+                            <label for="Seleccionar Orientador">Referente</label> <br />
+                            <select className="select-teach" name="Seleccionar Orientador" id="">
+                                <option value="Seleccionar Orientador">Seleccionar orientador</option>
+                                {orientadores.length === 0 && <p>No se completo la búsqueda.</p>}
+                                {orientadores.map((usuario) => (  
+                                    <option key={usuario.id} value="Seleccionar Orientador">{usuario.name} {usuario.lastname}</option>
+                                ))}
+                            </select>
+
                         </div>
 
                     </div>

@@ -6,6 +6,10 @@
     padding-bottom: 20px;
 }
 
+.two {
+    margin-top: 50px;
+}
+
 .cont-student {
     width: 76%;
     height: 222px;
@@ -73,8 +77,69 @@ hr {
 }
 
 
-.caja{
+.select-teach{
+    width: 20%;
+    height: 35px;
+    color: rgb(146, 146, 146);
+    border-radius: 8px;
+    border: solid 1px rgb(189, 188, 188);
+    font-weight: 600;
+    font-family: sans-serif 'Rubik';
+}
+
+
+.select-teach:focus {
+    outline: none
+  }
+
+
+.caja {
     height: 500px;
     width: 500px;
     background-color: red;
+}
+
+
+@media (max-width: 925px) {
+
+    .image-profile-student {
+        height: 90px;
+        width: 90px;
+        border-radius: 100%;
+    }
+
+}
+
+
+
+@media (max-width: 860px) {
+    .cont-student {
+        width: 76%;
+        height: 422px;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        -webkit-box-shadow: 5px 5px 17px -2px rgba(181, 181, 181, 0.895);
+        -moz-box-shadow: 5px 5px 17px -2px rgba(181, 181, 181, 0.895);
+        box-shadow: 5px 5px 17px -2px rgba(181, 181, 181, 0.895);
+    }
+
+
+    hr {
+        margin-top: 28px;
+        height: 1px;
+        width: 170px;
+        background-color: rgb(228, 228, 228);
+    }
+
+    .numero {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        padding: 70px 0px 0px 50px;
+    }
+
+
 }
