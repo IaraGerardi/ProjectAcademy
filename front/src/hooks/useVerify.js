@@ -13,6 +13,10 @@ function useVerify(formValues) {
                 ...prevVerifyMessages,
                 [id]: "El email tiene un formato incorrecto",
             })) :
+            type === "age" && (value < 0 || value.length > 3) ? setVerifyMessages(prevVerifyMessages => ({
+                ...prevVerifyMessages,
+                [id]: "Ingrese una edad valida",
+            })) :
                 setVerifyMessages(prevVerifyMessages => ({
                     ...prevVerifyMessages,
                     [id]: true,
