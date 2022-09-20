@@ -1,0 +1,25 @@
+.btnUpload{
+ 
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor:crosshair;
+
+}   
+
+.imgProfile{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.imgProfile:hover{
+    opacity:0.8;
+    cursor:pointer;
+}
+

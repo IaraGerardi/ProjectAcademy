@@ -1,5 +1,6 @@
 import InputLabel from "../componentes-nuevoOrientado/InputLabel"
 import Select from 'react-select';
+import { UploadImg } from "./UploadImg";
 
 
 function FormOrientado() {
@@ -10,15 +11,19 @@ function FormOrientado() {
     { value: 'programa3', label: 'Taller de matemáticas' },
     { value: 'programa4', label: 'Métodos de estudio' },
   ]
+
+  
   
   return (
     <>
-    <form action="" className=" flex flex-col gap-4"> {/* abre formulario de alta de oreintado , tiene 4 divs hijos */}
+    <form  action="" className=" flex flex-col gap-4"> {/* abre formulario de alta de oreintado , tiene 4 divs hijos */}
 
         <div className="container-basicInfo "> {/* div1 info basica */}
          <h2>01.Informacion básica</h2>{/*  a cada uno de los InputLabel recibe los 4 props  */}
-
-         {/* falta input imagen  */}
+          
+          {/*  input imagen  */}
+          <UploadImg />
+         
          <InputLabel labelName="Nombre" inputType="text" propInputName="name" placeholderName="ingresar nombre"/>
          <InputLabel labelName="Apellido" inputType="text" propInputName="lastname" placeholderName="ingresar Apellido"/>
          <InputLabel labelName="Email" inputType="email" propInputName="email" placeholderName="ingresar email"/>
