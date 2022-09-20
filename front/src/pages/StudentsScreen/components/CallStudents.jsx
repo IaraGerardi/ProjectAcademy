@@ -1,8 +1,9 @@
-import { useEffect, useState, useParams } from "react";
+import { useEffect, useState} from "react";
 import axios from "axios";
 import "../call-students.css"
 import buscador from "../../sidebar-header/icons/logo-buscador.svg"
 import { Link } from "react-router-dom";
+import "../orientados.css"
 
 function CallStudents() {
 
@@ -71,12 +72,12 @@ function CallStudents() {
                         return (
                           
                             
-                            <Link to={`/orientados/${usuario.id}`}>
+                           
 
-                                <div className="box-students" key={usuario.id} >
-
+                                <li className="box-students" key={usuario.id} >
+                                 <Link to={`/orientados/${usuario.id}`}>
                                     <div className="content-students">
-
+                                      
                                         <img
                                             className="ImgUsers"
                                             src={require(`../../../img-back/orientados/${usuario.photoProfile}`)}
@@ -91,7 +92,9 @@ function CallStudents() {
                                         </div>
 
                                     </div>
-                                </div> </Link>
+                                    </Link>
+                                </li> 
+                               
                         );
                     })}
                 </ul >

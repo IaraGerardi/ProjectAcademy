@@ -12,10 +12,10 @@ function NewUsers() {
     </div> {/*Texto y Boton que redirije a la Página de ingresar orientados.*/}
 
 
-<div className="cont-users">
-    <CallStudents /> {/*Buscador y Llamado de usuarios*/}
-</div>
-</>
+    <div className="cont-users">
+        <CallStudents /> {/*Buscador y Llamado de usuarios*/}
+    </div>
+    </>
   )
 }
 

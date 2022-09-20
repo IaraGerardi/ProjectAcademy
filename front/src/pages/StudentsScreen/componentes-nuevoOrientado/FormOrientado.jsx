@@ -60,7 +60,7 @@ function FormOrientado() {
 
 
         <div> {/* div4 botones form */}
-        <button className=" w-32 bg-blue-600 " type="submit">Ingresar Orientado</button>
+                <button className=" w-32 bg-blue-600 " type="submit">Ingresar Orientado</button>
               <button  className=" w-32 bg-gray-600 "/*  onClick={propOnClickCancel} */>Cancelar ingreso</button>
         </div>
        

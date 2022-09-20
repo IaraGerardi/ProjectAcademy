@@ -1,22 +1,24 @@
-import CallStudents from "./CallStudents";
-import {Link} from "react-router-dom";
 
-function NewUsers() {
-  return (
-    <>
-    <div className="cont-ingresar-orientado">
-        <p className="text-new-user">Nuevos usuarios a orientar</p>
-        <Link to="/orientados/nuevo">
-            <button className="btn-ingresar-orientado" /* onClick={handleRenderForm} */>Ingresar orientado</button>
-        </Link>
-    </div> {/*Texto y Boton que redirije a la Página de ingresar orientados.*/}
+import {Outlet} from "react-router-dom";
+import { Sidebar } from "../sidebar-header/components/Sidebar.js";
+import HeaderInicio from "../sidebar-header/components/HeaderInicio";
 
 
-<div className="cont-users">
-    <CallStudents /> {/*Buscador y Llamado de usuarios*/}
-</div>
-</>
-  )
-}
+function StudentsScreen() {
 
-export default NewUsers;
+    return (
+        <>
+            <div className="container-P w-full flex"> {/*  containedor padre tamaño igual a app */}        
+                    <Sidebar /> {/* hijo 1 izquierdo sticky */}            
+                        <div className="container-derecho header-sa">{/*  hijo2 derecho  column */}           
+                                 <HeaderInicio propNamePage="Orientados" />
+                            <div>
+                            
+                                
+                            <Outlet/>
+                            </div>
+                </div>
+            </div>
+        </>
+    );
+}export default StudentsScreen;
