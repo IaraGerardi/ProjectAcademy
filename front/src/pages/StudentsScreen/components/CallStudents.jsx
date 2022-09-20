@@ -1,16 +1,19 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useParams } from "react";
 import axios from "axios";
 import "../call-students.css"
 import buscador from "../../sidebar-header/icons/logo-buscador.svg"
+import { Link } from "react-router-dom";
 
 function CallStudents() {
+
 
     const [orientados, setOrientados] = useState([]);
     const [tablaOrientados, setTablaOrientados] = useState([]);
     const [busqueda, setBusqueda] = useState("");
 
 
-    useEffect(() => { {/*Pedido a la Api*/}
+    useEffect(() => {
+        {/*Pedido a la Api*/ }
         const getOrientados = async () => {
             try {
                 const res = await axios.get("http://localhost:8000/admin/orientados");
@@ -27,13 +30,16 @@ function CallStudents() {
     }, []);
 
 
+
+
     const handleChange = e => {
         setBusqueda(e.target.value);
         filtrar(e.target.value);
     }
 
 
-    const filtrar = (terminoBusqueda) => { {/*Filtra el nombre o apellido del orientado*/}
+    const filtrar = (terminoBusqueda) => {
+        {/*Filtra el nombre o apellido del orientado*/ }
         var resultadosBusqueda = tablaOrientados.filter((elemento) => {
             if (elemento.name.toString().toLowerCase().includes(terminoBusqueda.toLowerCase())
                 || elemento.lastname.toString().toLowerCase().includes(terminoBusqueda.toLowerCase())
@@ -63,25 +69,29 @@ function CallStudents() {
                     {orientados.length === 0 && <p>No se encontró la búsqueda.</p>}
                     {orientados.map((usuario) => {
                         return (
-                            <div className="box-students" key={usuario.id} >
+                          
+                            
+                            <Link to={`/orientados/${usuario.id}`}>
 
-                                <div className="content-students">
+                                <div className="box-students" key={usuario.id} >
 
-                                    <img
-                                        className="ImgUsers"
-                                        src={require(`../../../img-back/orientados/${usuario.photoProfile}`)}
-                                        alt="Foto perfil orientado"
-                                    />
-                                    <div>
+                                    <div className="content-students">
 
-                                        <h4>
-                                            {usuario.name} {usuario.lastname}
-                                        </h4>
-                                        <p>{usuario.school}</p>
+                                        <img
+                                            className="ImgUsers"
+                                            src={require(`../../../img-back/orientados/${usuario.photoProfile}`)}
+                                            alt="Foto perfil orientado"
+                                        />
+                                        <div>
+
+                                            <h4>
+                                                {usuario.name} {usuario.lastname}
+                                            </h4>
+                                            <p>{usuario.school}</p>
+                                        </div>
+
                                     </div>
-
-                                </div>
-                            </div>
+                                </div> </Link>
                         );
                     })}
                 </ul >

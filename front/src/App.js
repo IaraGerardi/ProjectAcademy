@@ -25,7 +25,7 @@ function App() {
           <Route path="nuevo" element={<FormOrientado/>}/>
           <Route path="newUsers" element={<NewUsers/>}/>
         </Route>
-        <Route path='/assign' element={<Assign/>} />
+        <Route path='/orientados/:id' element={<Assign/>} />
         <Route path='/eventos' element={<EventScreen />} />
         <Route path='*' element={<Error />} />
       </Routes>
