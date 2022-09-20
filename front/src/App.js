@@ -1,7 +1,6 @@
 import './App.css';
 import HomeScreen from './pages/Home/HomeScreen';
-import { Route, Routes } from 'react-router-dom';
-
+import { Route, Routes} from 'react-router-dom';
 // Importación Páginas
 // import Inicio from './pages/InicioPage';
 import Assign from './pages/Assign/Assign';
@@ -11,10 +10,9 @@ import LogIn from './pages/Login/LogInScreen';
 import {Error} from './pages/Home/components/error/Error'
 import ProfileAdminScreen from './pages/ProfileAdmin/ProfileAdminScreen';
 import { EventScreen } from './pages/Events/EventScreen';
-
-
+import FormOrientado from './pages/StudentsScreen/componentes-nuevoOrientado/FormOrientado';
+import NewUsers from './pages/StudentsScreen/components/NewUsers';
 // Fin Importación Páginas
-
 function App() {
   return (
     <div className="App">
@@ -23,13 +21,15 @@ function App() {
         <Route path='/inicio' element={<AdminPage/>} />
         <Route path='/profile' element={<ProfileAdminScreen/>} />
         <Route path='/logIn' element={<LogIn />} />
-        <Route path='/orientados' element={<Orientados />} />
-        <Route path='/orientados/:id' element={<Assign/>} />
+        <Route path='/orientados/*' element={<Orientados />} >
+          <Route path="nuevo" element={<FormOrientado/>}/>
+          <Route path="newUsers" element={<NewUsers/>}/>
+        </Route>
+        <Route path='/assign' element={<Assign/>} />
         <Route path='/eventos' element={<EventScreen />} />
         <Route path='*' element={<Error />} />
       </Routes>
     </div>
   );
 }
-
 export default App;

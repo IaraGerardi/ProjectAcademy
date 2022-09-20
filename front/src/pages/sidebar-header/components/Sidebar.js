@@ -21,7 +21,7 @@ export const Sidebar = () => {
                     <p className='pSidebar'>Inicio</p>
                 </li>
                 </Link>
-                <Link to='/orientados' className='linkSidebar'><li className='liSidebar'>                     
+                <Link to='/orientados/newUsers' className='linkSidebar'><li className='liSidebar'>                     
                     <img className="iconSidebar" src={orientado} alt="orientados" />
                     <p className='pSidebar'>Orientados</p>
                 </li>

@@ -2,7 +2,7 @@ import InputLabel from "../componentes-nuevoOrientado/InputLabel"
 import Select from 'react-select';
 
 
-function FormOrientado({propOnClickCancel}) {
+function FormOrientado() {
 
   const options = [
     { value: 'programa1', label: 'Orientación vocacional ' },
@@ -56,7 +56,7 @@ function FormOrientado({propOnClickCancel}) {
 
         <div> {/* div4 botones form */}
         <button className=" w-32 bg-blue-600 " type="submit">Ingresar Orientado</button>
-              <button  className=" w-32 bg-gray-600 " onClick={propOnClickCancel}>Cancelar ingreso</button>
+              <button  className=" w-32 bg-gray-600 "/*  onClick={propOnClickCancel} */>Cancelar ingreso</button>
         </div>
        
     </form>
