@@ -15,9 +15,9 @@
     height: 222px;
     border-radius: 10px;
     display: flex;
-    -webkit-box-shadow: 5px 5px 17px -2px rgba(181, 181, 181, 0.895);
-    -moz-box-shadow: 5px 5px 17px -2px rgba(181, 181, 181, 0.895);
-    box-shadow: 5px 5px 17px -2px rgba(181, 181, 181, 0.895);
+    -webkit-box-shadow: 0px 0px 17px 0px rgba(161,161,161,1);
+-moz-box-shadow: 0px 0px 17px 0px rgba(161,161,161,1);
+box-shadow: 0px 0px 17px 0px rgba(161,161,161,1);
 }
 
 .cont-image-profile {
@@ -77,7 +77,7 @@ hr {
 }
 
 
-.select-teach{
+.select-teach {
     width: 20%;
     height: 35px;
     color: rgb(146, 146, 146);
@@ -85,12 +85,13 @@ hr {
     border: solid 1px rgb(189, 188, 188);
     font-weight: 600;
     font-family: sans-serif 'Rubik';
+    margin-bottom: 15px;
 }
 
 
 .select-teach:focus {
     outline: none
-  }
+}
 
 
 .caja {

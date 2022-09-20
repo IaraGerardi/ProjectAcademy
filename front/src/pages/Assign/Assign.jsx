@@ -98,11 +98,9 @@ function Assign() {
 
                                 </div>
 
-                            </div> 
-
+                            </div>
 
                             <p className="text-referent two"> Selección de un Orientador Referente  </p>
-
 
                             <label for="Seleccionar Orientador">Referente</label> <br />
                             <select className="select-teach" name="orientador" id="orientador">
@@ -112,6 +110,42 @@ function Assign() {
                                     <option key={usuario.id} value="Seleccionar Orientador">{usuario.name} {usuario.lastname}</option>
                                 ))}
                             </select>
+
+                      
+                            <div className="cont-student">
+
+                                <div className="cont-image-profile">
+                                    <img className="image-profile-student"
+                   /*                       src={require(`../../img-back/orientados/${orientado.photoProfile}`)}  */
+                                        alt="Foto-perfil de Orientado" />
+                                </div>
+
+                                <hr />
+
+                                <div className="cont-info-student">
+
+                                    <div>
+                                        <div>
+                          
+                                        
+                                        </div>
+                                   
+                                      
+                                       
+          
+                                    </div>
+
+                                    <div className="numero">
+                                        <span className="text-gray">TELÉFONO</span>
+                                        <p>{orientadores.phone}</p>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+
 
                         </div>
 
