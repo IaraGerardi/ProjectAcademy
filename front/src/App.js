@@ -24,9 +24,8 @@ function App() {
         <Route path='/profile' element={<ProfileAdminScreen/>} />
         <Route path='/logIn' element={<LogIn />} />
         <Route path='/orientados' element={<Orientados />} />
-        <Route path='/assign' element={<Assign/>} />
+        <Route path='/orientados/:id' element={<Assign/>} />
         <Route path='/eventos' element={<EventScreen />} />
-
         <Route path='*' element={<Error />} />
       </Routes>
     </div>

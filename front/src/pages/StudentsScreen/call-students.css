@@ -1,5 +1,6 @@
 .cont-students {
     display: flex;
+  
 }
 
 .box-students {
@@ -10,6 +11,14 @@
     margin-inline-end: 27px;
     border-radius: 10px;
     border: 2px solid rgb(176, 176, 176);
+    cursor: pointer;
+    transition: 500ms;
+}
+
+.box-students:hover {
+    width: 305px;
+    height: 105px;
+    transition: 500ms;
 }
 
 
@@ -24,6 +33,7 @@
     justify-content: space-evenly;
     align-items: center;
     padding: 0px 55px 0px 0px;
+    
 }
 
 .ImgUsers {
