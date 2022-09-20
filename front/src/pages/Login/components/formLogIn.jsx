@@ -63,7 +63,7 @@ function FormLogIn() {
                 /*console.log("isVerified adentro del .then:")
                 console.log(isVerified)*/
                 if (response.data.si) {
-                    localStorage.setItem("usuario", JSON.stringify(response.data.admin.id));
+                    localStorage.setItem("usuario", JSON.stringify(response.data.admin));
                     navigate('/inicio');
                     // En esta parte tengo problemas, tanto el estado como el isVerified tienen valores desactualizados dentro de la funcion, eso causa que si hay algun error tenga que hacer click dos veces en el boton submit para que el else if funcione
                 } else if (isVerified) {
