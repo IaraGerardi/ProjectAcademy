@@ -17,9 +17,9 @@ function Footer() {
         <div className='content-footer'>
 
           <img className='logo-foot' src={lotoFoot} alt="Logo valtech" />
-          <p className='parraf-footer'>Conocé nuestra historia</p>
-          <p className='parraf-footer'>Próposito V_camp</p>
-          <p className='parraf-footer'>Ingresá a tu portal</p>
+          <p className='parraf-footer cursor-pointer'>Conocé nuestra historia</p>
+          <p className='parraf-footer cursor-pointer'>Próposito V_camp</p>
+          <p className='parraf-footer cursor-pointer'>Ingresá a tu portal</p>
 
         </div>
 
@@ -27,11 +27,11 @@ function Footer() {
         <div className='content-footer'>
 
           <span className='title-foot'>Programas</span>
-          <p className='parraf-footer'>Orientación vocacional</p>
-          <p className='parraf-footer'>Re-orientación vocacional</p>
-          <p className='parraf-footer'>Taller de Matemáticas</p>
-          <p className='parraf-footer'>Método de estudio</p>
-          <p className='parraf-footer'>Taller de autoconfianza</p>
+          <p className='parraf-footer cursor-pointer'>Orientación vocacional</p>
+          <p className='parraf-footer cursor-pointer'>Re-orientación vocacional</p>
+          <p className='parraf-footer cursor-pointer'>Taller de Matemáticas</p>
+          <p className='parraf-footer cursor-pointer'>Método de estudio</p>
+          <p className='parraf-footer cursor-pointer'>Taller de autoconfianza</p>
 
         </div>
 
@@ -52,17 +52,17 @@ function Footer() {
 
 
           <div className='cont-emoji'>
-            <div className='emoji-foot'>
+            <div className='emoji-foot cursor-pointer'>
 
-            <a href="https://www.facebook.com/people/Valtech-Digital-Argentina/100066766578674/"> <img className='emoji' src={facebook}></img> </a>
+            <a href="https://www.facebook.com/people/Valtech-Digital-Argentina/100066766578674/" target="_blank" rel="noopener noreferrer"> <img className='emoji' src={facebook}></img> </a>
             </div>
           
-            <div className='emoji-foot'>
-            <a href="https://www.instagram.com/valtech_argentina/?hl=es"> <img className='emoji' src={instagram}></img> </a>
+            <div className='emoji-foot cursor-pointer'>
+            <a href="https://www.instagram.com/valtech_argentina/?hl=es" target="_blank" rel="noopener noreferrer"> <img className='emoji' src={instagram}></img> </a>
             </div>
           
-            <div className='emoji-foot'>
-            <a href="https://ar.linkedin.com/company/valtech"> <img className='emoji' src={linkedin}></img> </a>
+            <div className='emoji-foot cursor-pointer'>
+            <a href="https://ar.linkedin.com/company/valtech" target="_blank" rel="noopener noreferrer"> <img className='emoji' src={linkedin}></img> </a>
             </div>
 
 

@@ -56,7 +56,7 @@ function HeaderInicio({ propNamePage }) {
                     {propNamePage === "Bienvenido/a" ? `${propNamePage} ${parseado.name}` : propNamePage}</p>
 
 
-                <img className="img-header" src={require(`../../../img-back/admins/${parseado.avatar}`)} onClick={() => setActive(!active)} alt={parseado.name} />
+                <img className="img-header cursor-pointer" src={require(`../../../img-back/admins/${parseado.avatar}`)} onClick={() => setActive(!active)} alt={parseado.name} />
 
             </div>
 

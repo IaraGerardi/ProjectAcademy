@@ -15,10 +15,10 @@ export function Banner() {
     return (
         <div className="banner">
             <div className="buttonsBanner">
-                <div onClick={itemLess} className="arrow left">
+                <div onClick={itemLess} className="arrow left cursor-pointer">
                     <Icon classname="w-5 h-5" type="leftArrow" width="24" height="24" />
                 </div>
-                <div onClick={itemPlus} className="arrow right">
+                <div onClick={itemPlus} className="arrow right cursor-pointer">
                     <Icon classname="w-5 h-5" type="rightArrow" width="24" height="24" />
                 </div>
             </div>
