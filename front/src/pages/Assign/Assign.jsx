@@ -5,6 +5,9 @@ import "./assign.css"
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import Select from "react-select";
+
+
 
 
 function Assign() {
@@ -19,28 +22,76 @@ function Assign() {
         const getOrientados = async () => {
             try {
                 const res = await axios.get(`http://localhost:8000/admin/orientados/${idParams}`);
-                setOrientado(res.data); /* LLama 1 usuario */
-
-            } catch (error) {
-                console.log(error);
-            }
-        };
-        getOrientados();
-    },);
-
-
-    useEffect(() => {
-        const getOrientados = async () => {
-            try {
-                const res = await axios.get("http://localhost:8000/admin/orientados/:id/orientador");
-                setOrientadores(res.data);
-                console.log(res.data)
+                setOrientado(res.data); /* LLama 1 Orientado */
+                console.log(res.data.photoProfile)
             } catch (error) {
                 console.log(error);
             }
         };
         getOrientados();
     }, []);
+
+
+    useEffect(() => {
+        const getOrientadores = async () => {
+            try {
+                const res = await axios.get("http://localhost:8000/admin/orientados/:id/orientador");
+                setOrientadores(res.data); /* LLama Orientadores */
+                console.log(res.data)
+            } catch (error) {
+                console.log(error);
+            }
+        };
+        getOrientadores();
+    }, []);
+
+
+    const [selectSuppliers, setSelectedSuppliers] = useState();
+
+
+    const handleSelectChange = ({ value }) => {
+        console.log(value)
+        setSelectedSuppliers(value);
+    }
+
+
+
+
+    const selectOrientador = orientadores.map((orientador) => {
+        return (<div className="cont-student">
+            <div className="cont-image-profile">
+                <img className="image-profile-student"
+                    //  src={require(`../../img-back/orientadores${orientador.avatar}`)} 
+                    alt="Foto-perfil de Orientado" />
+
+            </div>
+
+            <hr />
+
+            <div className="cont-info-student">
+
+                <div>
+                    <div>
+                        <p className="name-student">{orientador.name} {orientador.lastname}</p>
+                        <span className="text-orientado">Orientado</span>
+                    </div>
+
+                    <div>
+                        <span className="text-gray">MAIL</span>
+                        <p>{orientador.email}</p>
+                    </div>
+
+                </div>
+
+                <div className="numero">
+                    <span className="text-gray">TELÉFONO</span>
+                    <p>{orientador.phone}</p>
+                </div>
+
+            </div>
+
+        </div>)
+    });
 
 
     return (
@@ -64,6 +115,7 @@ function Assign() {
                                     <img className="image-profile-student"
                                         //  src={require(`../../img-back/orientados/${orientado.photoProfile}`)} 
                                         alt="Foto-perfil de Orientado" />
+
                                 </div>
 
                                 <hr />
@@ -102,47 +154,25 @@ function Assign() {
 
                             <p className="text-referent two"> Selección de un Orientador Referente  </p>
 
-                            <label for="Seleccionar Orientador">Referente</label> <br />
-                            <select className="select-teach" name="orientador" id="orientador">
-                                <option value="Seleccionar Orientador">Seleccionar orientador</option>
+                            <span>Referente</span>
 
-                                {orientadores.map((usuario) => (
-                                    <option key={usuario.id} value="Seleccionar Orientador">{usuario.name} {usuario.lastname}</option>
-                                ))}
-                            </select>
+                            <Select
+                                className="selector-teacher"
+                                // options={suppliers}
+                                defaultValue={{ label: "Seleccionar Orientador", value: "default" }}
+                                options={orientadores.map(orientador => ({ label: `${orientador.name} ${orientador.lastname}`, value: orientador.id })
+                                )}
+                                onChange={handleSelectChange}
+                            />
 
-                      
-                            <div className="cont-student">
+                            {/*<h1>orientador: {selectSuppliers}</h1> */}
 
-                                <div className="cont-image-profile">
-                                    <img className="image-profile-student"
-                   /*                       src={require(`../../img-back/orientados/${orientado.photoProfile}`)}  */
-                                        alt="Foto-perfil de Orientado" />
-                                </div>
 
-                                <hr />
 
-                                <div className="cont-info-student">
+                            <ul>
+                                {selectOrientador[selectSuppliers - 1]}
+                            </ul>
 
-                                    <div>
-                                        <div>
-                          
-                                        
-                                        </div>
-                                   
-                                      
-                                       
-          
-                                    </div>
-
-                                    <div className="numero">
-                                        <span className="text-gray">TELÉFONO</span>
-                                        <p>{orientadores.phone}</p>
-                                    </div>
-
-                                </div>
-
-                            </div>
 
 
 

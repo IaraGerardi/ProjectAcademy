@@ -101,6 +101,18 @@ hr {
 }
 
 
+
+.selector-teacher{
+    width: 30%;
+    margin-bottom: 15px;
+    border-radius: px;
+}
+
+
+
+
+
+
 @media (max-width: 925px) {
 
     .image-profile-student {
