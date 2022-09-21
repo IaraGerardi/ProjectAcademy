@@ -61,13 +61,16 @@ const orientadores = async (req,res)=>{
 }
 
 const orientadorToOrientado = async (req, res) => {
+    const orientador = req.body.orientador
     await ModelOrientado.update({
-        OrientadoreId: req.body.orientador
+        OrientadoreId: orientador
     }, {
         where: {
             id: req.params.id
         }
     })
+    console.log(`ID del orientador enviado:${orientador}`)
+    res.json(`ID del orientador enviado:${orientador}`)
 }
 
 module.exports = {

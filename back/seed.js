@@ -4,14 +4,14 @@ const ModelAdmin = require('./database/models/ModelAdmin.js');
 const sequelize = require('./database/db.js');
 
 const orientadores = [
-    { name: 'Cristian', lastname: 'Vera', email: 'cristianvera@academy.com', age: 47,avatar:'cristianVera.png' },
-    { name: 'Macarena', lastname: 'Leiva', email: 'macaleiva@academy.com', age: 40,avatar:'macarenaLeiva.png' },
-    { name: 'Ezequiel', lastname: 'Rodriguez', email: 'ezerodriguez@academy.com', age: 48,avatar:'ezequielRodriguez.png' },
-    { name: 'Gonzalo', lastname: 'Cataldo', email: 'gonzacataldo@academy.com', age: 37,avatar:'gonzaloCataldo.png' },
-    { name: 'Iara', lastname: 'Gerardi', email: 'gerardiiara@academy.com', age: 39,avatar:'iaraGerardi.png' },
-    { name: 'Sebastian', lastname: 'Avila', email: 'avilaseba@academy.com', age: 42,avatar:'sebastianAvila.png' },
-    { name: 'Ayelen', lastname: 'Maidana', email: 'ayemaidana@academy.com', age: 36,avatar:'ayelenMaidana.png' },
-    { name: 'Maximiliano', lastname: 'Portel', email: 'maxportel@academy.com', age: 45,avatar:'maximilianoBeraud.png' },
+    { name: 'Cristian', lastname: 'Vera', email: 'cristianvera@academy.com', age: 47,avatar:'cristianVera.png',phone:'1122993324'},
+    { name: 'Macarena', lastname: 'Leiva', email: 'macaleiva@academy.com', age: 40,avatar:'macarenaLeiva.png',phone:'1122993324'},
+    { name: 'Ezequiel', lastname: 'Rodriguez', email: 'ezerodriguez@academy.com', age: 48,avatar:'ezequielRodriguez.png',phone:'1122993324'},
+    { name: 'Gonzalo', lastname: 'Cataldo', email: 'gonzacataldo@academy.com', age: 37,avatar:'gonzaloCataldo.png',phone:'1122993324'},
+    { name: 'Iara', lastname: 'Gerardi', email: 'gerardiiara@academy.com', age: 39,avatar:'iaraGerardi.png',phone:'1122993324'},
+    { name: 'Sebastian', lastname: 'Avila', email: 'avilaseba@academy.com', age: 42,avatar:'sebastianAvila.png',phone:'1122993324'},
+    { name: 'Ayelen', lastname: 'Maidana', email: 'ayemaidana@academy.com', age: 36,avatar:'ayelenMaidana.png',phone:'1122993324'},
+    { name: 'Maximiliano', lastname: 'Portel', email: 'maxportel@academy.com', age: 45,avatar:'maximilianoBeraud.png',phone:'1122993324'},
 ];
 
 const orientados = [{
