@@ -18,7 +18,8 @@ const getAllOrientados = async (req, res) => {
 const createOrientado = async (req, res) => {
     const { name, lastname, email, phone, program } = req.body;
     const { dni, age, school, address, why } = req.body;
-    const photoProfile = req.files[0] ? req.files[0].filename : null
+   /*  const photoProfile = req.files[0] ? req.files[0].filename : null */
+   const photoProfile = req.files ? req.files.filename : 'default.png'
     const password = await bcryptjs.hash(req.body.password, 10);
 
     try {

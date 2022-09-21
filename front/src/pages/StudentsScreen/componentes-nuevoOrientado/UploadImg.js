@@ -48,6 +48,7 @@ export const UploadImg = () => {
           type="file"
           style={{ display: "none" }}
           ref={fileInputRef}
+          name="photoProfile"
           accept="image/*"
           onChange={(event) => {
             const file = event.target.files[0];

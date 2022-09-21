@@ -2,6 +2,7 @@ import InputLabel from "../componentes-nuevoOrientado/InputLabel";
 import Select from "react-select";
 import React, { useState } from "react";
 import axios from "axios";
+/* import { UploadImg } from "./UploadImg"; */
 
 const url = "http://localhost:8000/admin/create";
 
@@ -11,7 +12,7 @@ function FormOrientado() {
   const [lastname, setLastname] = useState("");
   const [email, setEmail] = useState("");
 
-  // const [select, setSelect] = useState("");
+  /* const [photoProfile, setphotoProfile] = useState(); */
   const [program, setProgram] = useState("");
 
   const [phone, setPhone] = useState("");
@@ -33,12 +34,12 @@ function FormOrientado() {
         email: email,
         phone: phone,
         program: program,
-        // photoProfile: photoProfile,
+       /*  photoProfile: photoProfile, */
         dni: dni,
         age: age,
         school: school,
         address: address,
-
+       
         // apellido: apellido,
         // email: email,
         // select: select,
@@ -64,11 +65,12 @@ function FormOrientado() {
   ];
 
   // set value for default selection
-  const [selectedValue, setSelectedValue] = useState(3);
+/*   const [selectedValue, setSelectedValue] = useState(); */
 
   // handle onChange event of the dropdown
   const handleChange = (e) => {
-    setSelectedValue(e.value);
+    console.log(e.target.value)
+    setProgram(e.target.value);
   };
 
   return (
@@ -77,6 +79,7 @@ function FormOrientado() {
         method="POST"
         className=" flex flex-col gap-4"
         onSubmit={handleSubmit}
+        encType="multipart/form-data"
       >
         {" "}
         {/* abre formulario de alta de oreintado , tiene 4 divs hijos */}
@@ -86,6 +89,7 @@ function FormOrientado() {
           <h2>01.Informacion básica 1</h2>
           {/*  a cada uno de los InputLabel recibe los 4 props  */}
           {/* falta input imagen  */}
+         
           <InputLabel
             labelName="Nombre"
             inputType="text"
@@ -99,7 +103,7 @@ function FormOrientado() {
             inputType="text"
             propInputName="lastname"
             placeholderName="ingresar Apellido"
-            propInputValue={password}
+            propInputValue={lastname}
             propsOnchange={(e) => setLastname(e.target.value)}
           />
           <InputLabel
@@ -117,7 +121,7 @@ function FormOrientado() {
             </label>
             <Select
               placeholder="Select Option"
-              value={options.filter((obj) => obj.value === selectedValue)} // set selected value
+              value={options.filter((obj) => obj.value === setProgram)} // set selected value
               options={options} // set list of the data
               onChange={handleChange} // assign onChange function
             />
