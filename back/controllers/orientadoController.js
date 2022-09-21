@@ -55,6 +55,16 @@ const orientadoById = async (req, res) => {
     res.json(orientado)
 }
 
+const orientadoAndOrientador = async (req, res) => {
+    const orientado = await ModelOrientado.findOne(
+        {
+            where: {
+                id: req.params.id
+            }
+        })
+    res.json(orientado)
+}
+
 const getAllOrientadores = async (req,res)=>{
     const orientadores = await ModelOrientador.findAll();
     res.json(orientadores)
@@ -78,5 +88,6 @@ module.exports = {
     getAllOrientados,
     orientadorToOrientado,
     orientadoById,
-    getAllOrientadores
+    getAllOrientadores,
+    orientadoAndOrientador
 }
