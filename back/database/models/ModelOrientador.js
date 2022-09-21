@@ -56,6 +56,9 @@ ModelOrientador.init({
     },
     avatar:{
         type: DataTypes.STRING,
+    },
+    phone:{
+        type: DataTypes.INTEGER,
     }
 }, {
     sequelize, 
