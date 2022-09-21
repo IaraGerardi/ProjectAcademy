@@ -7,35 +7,48 @@ const url = "http://localhost:8000/admin/create";
 
 function FormOrientado() {
   // ESTADOS DEL FORMULARIO DE SUS RESPECTIVOS INPUT
-  const [nombre, setNombre] = useState("");
-  const [apellido, setApellido] = useState("");
+  const [name, setName] = useState("");
+  const [lastname, setLastname] = useState("");
   const [email, setEmail] = useState("");
 
-  const [select, setSelect] = useState("");
+  // const [select, setSelect] = useState("");
+  const [program, setProgram] = useState("");
 
-  const [telefono, setTelefono] = useState("");
-  const [edad, setEdad] = useState("");
-  const [colegio, setColegio] = useState("");
-  const [domicilio, setDomicilio] = useState("");
+  const [phone, setPhone] = useState("");
+  const [age, setAge] = useState("");
+  const [school, setSchool] = useState("");
+  const [address, setAddress] = useState("");
 
-  const [usuario, setUsuario] = useState("");
-  const [contraseña, setContraseña] = useState("");
-  const [nuevacontraseña, setNuevacontraseña] = useState("");
+  const [dni, setDni] = useState("");
+  const [password, setPassword] = useState("");
+  // const [nuevacontraseña, setNuevacontraseña] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const resp = await axios.post(url, {
-        apellido: apellido,
+        name: name,
+        password: password,
+        lastname: lastname,
         email: email,
-        select: select,
-        telefono: telefono,
-        edad: edad,
-        colegio: colegio,
-        domicilio: domicilio,
-        usuario: usuario,
-        contraseña: contraseña,
-        nuevacontraseña: nuevacontraseña,
+        phone: phone,
+        program: program,
+        // photoProfile: photoProfile,
+        dni: dni,
+        age: age,
+        school: school,
+        address: address,
+
+        // apellido: apellido,
+        // email: email,
+        // select: select,
+        // telefono: telefono,
+        // edad: edad,
+        // colegio: colegio,
+        // domicilio: domicilio,
+        // usuario: usuario,
+        // contraseña: contraseña,
+        // nuevacontraseña: nuevacontraseña,
       });
       console.log(resp.data);
     } catch (error) {
@@ -44,11 +57,19 @@ function FormOrientado() {
   };
 
   const options = [
-    { value: "programa1", label: "Orientación vocacional " },
-    { value: "programa2", label: "Reorientación vocacional" },
-    { value: "programa3", label: "Taller de matemáticas" },
-    { value: "programa4", label: "Métodos de estudio" },
+    { value: "Orientación vocacional", label: "Orientación vocacional" },
+    { value: "Reorientación vocacional", label: "Reorientación vocacional" },
+    { value: "Taller de matemáticas", label: "Taller de matemáticas" },
+    { value: "Métodos de estudio", label: "Métodos de estudio" },
   ];
+
+  // set value for default selection
+  const [selectedValue, setSelectedValue] = useState(3);
+
+  // handle onChange event of the dropdown
+  const handleChange = (e) => {
+    setSelectedValue(e.value);
+  };
 
   return (
     <>
@@ -62,7 +83,7 @@ function FormOrientado() {
         <div className="container-basicInfo ">
           {" "}
           {/* div1 info basica */}
-          <h2>01.Informacion básica</h2>
+          <h2>01.Informacion básica 1</h2>
           {/*  a cada uno de los InputLabel recibe los 4 props  */}
           {/* falta input imagen  */}
           <InputLabel
@@ -70,16 +91,16 @@ function FormOrientado() {
             inputType="text"
             propInputName="name"
             placeholderName="ingresar nombre"
-            propInputValue={nombre}
-            propsOnchange={(e) => setNombre(e.target.value)}
+            propInputValue={name}
+            propsOnchange={(e) => setName(e.target.value)}
           />
           <InputLabel
             labelName="Apellido"
             inputType="text"
             propInputName="lastname"
             placeholderName="ingresar Apellido"
-            propInputValue={apellido}
-            propsOnchange={(e) => setApellido(e.target.value)}
+            propInputValue={password}
+            propsOnchange={(e) => setLastname(e.target.value)}
           />
           <InputLabel
             labelName="Email"
@@ -89,15 +110,16 @@ function FormOrientado() {
             propInputValue={email}
             propsOnchange={(e) => setEmail(e.target.value)}
           />
+          {/*------ select input ------------- */}
           <div>
             <label htmlFor="" className="font-medium text-slate-600">
               Programa
             </label>
-            <Select /* componente de react select esta importado arriba */
-              placeholder="seleccionar opcion"
-              options={options} /* trae un array de objetos con las opciones */
-              propInputValue={select}
-              onChange={(e) => setSelect(e.target.value)}
+            <Select
+              placeholder="Select Option"
+              value={options.filter((obj) => obj.value === selectedValue)} // set selected value
+              options={options} // set list of the data
+              onChange={handleChange} // assign onChange function
             />
           </div>
         </div>
@@ -111,32 +133,32 @@ function FormOrientado() {
             inputType="phone"
             propInputName="tel"
             placeholderName="ingresar telefono"
-            propInputValue={telefono}
-            propsOnchange={(e) => setTelefono(e.target.value)}
+            propInputValue={phone}
+            propsOnchange={(e) => setPhone(e.target.value)}
           />
           <InputLabel
             labelName="Edad"
             inputType="number"
             propInputName="age"
             placeholderName="ingresar edad"
-            propInputValue={edad}
-            propsOnchange={(e) => setEdad(e.target.value)}
+            propInputValue={age}
+            propsOnchange={(e) => setAge(e.target.value)}
           />
           <InputLabel
             labelName="Colegio"
             inputType="text"
             propInputName="school"
             placeholderName="ingresar colegio"
-            propInputValue={colegio}
-            propsOnchange={(e) => setColegio(e.target.value)}
+            propInputValue={school}
+            propsOnchange={(e) => setSchool(e.target.value)}
           />
           <InputLabel
             labelName="Domicilio"
             inputType="text"
             propInputName="address"
             placeholderName="ingresar domicilio"
-            propInputValue={domicilio}
-            propsOnchange={(e) => setDomicilio(e.target.value)}
+            propInputValue={address}
+            propsOnchange={(e) => setAddress(e.target.value)}
           />
           <div className="containerInputLabel flex flex-col gap-2">
             <label className="font-medium text-slate-600">
@@ -161,25 +183,25 @@ function FormOrientado() {
             inputType="text"
             propInputName="dni"
             placeholderName="ingresar DNI del orientado"
-            propInputValue={usuario}
-            propsOnchange={(e) => setUsuario(e.target.value)}
+            propInputValue={dni}
+            propsOnchange={(e) => setDni(e.target.value)}
           />
           <InputLabel
             labelName="Nueva contraseña"
             inputType="password"
             propInputName="password"
             placeholderName="ingresar contraseña"
-            propInputValue={contraseña}
-            propsOnchange={(e) => setContraseña(e.target.value)}
+            propInputValue={password}
+            propsOnchange={(e) => setPassword(e.target.value)}
           />
-          <InputLabel
+          {/* <InputLabel
             labelName="Repetir contraseña"
             inputType="password"
             propInputName="passwordrepeat"
             placeholderName="Repetir contraseña"
             propInputValue={nuevacontraseña}
             propsOnchange={(e) => setNuevacontraseña(e.target.value)}
-          />
+          /> */}
         </div>
         <div>
           {" "}
