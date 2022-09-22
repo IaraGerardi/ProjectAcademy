@@ -44,7 +44,7 @@ app.listen(PORT, () => {
         sequelize.authenticate();
         //true = rompe y crea la base de datos - false = queda inactivo
         //sequelize.sync({force: true});
-        console.log(`Database conected`);
+        console.log(`Database connected`);
     } catch (error) {
         console.log(error);
     }
