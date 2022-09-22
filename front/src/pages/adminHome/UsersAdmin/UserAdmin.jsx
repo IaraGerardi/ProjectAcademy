@@ -42,7 +42,7 @@ function UserAdmin() {
 
             {usersapi.OrientadoreId != null ? (
               <div className="iconcd">
-                <Icon classname="" type="userIcon" width="24" height="24" />
+                <Icon classname="" type="userIcon" width="17" height="24" />
               </div>
             ) : null}
           </div>
