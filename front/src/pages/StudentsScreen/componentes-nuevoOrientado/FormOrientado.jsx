@@ -69,8 +69,9 @@ function FormOrientado() {
 
   // handle onChange event of the dropdown
   const handleChange = (e) => {
-    console.log(e.target.value)
-    setProgram(e.target.value);
+    
+    setProgram(e.value);
+    
   };
 
   return (
@@ -121,7 +122,7 @@ function FormOrientado() {
             </label>
             <Select
               placeholder="Select Option"
-              value={options.filter((obj) => obj.value === setProgram)} // set selected value
+              value={options.filter((obj) => obj.value=== program)} // set selected value
               options={options} // set list of the data
               onChange={handleChange} // assign onChange function
             />
@@ -142,7 +143,7 @@ function FormOrientado() {
           />
           <InputLabel
             labelName="Edad"
-            inputType="number"
+            inputType="date"
             propInputName="age"
             placeholderName="ingresar edad"
             propInputValue={age}
