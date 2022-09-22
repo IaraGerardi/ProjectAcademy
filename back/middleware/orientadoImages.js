@@ -1,5 +1,6 @@
 const multer = require("multer")
 const path = require("path")
+const { nextTick } = require("process")
 
 
 const storage = multer.diskStorage({//Configuraciones. Como almaneca las imagenes
@@ -28,12 +29,12 @@ const upload = multer({
     }, 
 }).single('photoProfile'); //Permite subir 1 sola foto(req.file en vez de req.files[0]). Además pasamos el nombre del input utilizado
 
-const photoProfileCheck = (req, res) => {
+const photoProfileCheck = (req, res, next) => {
     upload(req, res, err => {
         if(err){
             return res.json(err);
         }
-        res.json('La imagen fue subida exitosamente'); //Si todo sale bien.
+        next() //Una vez que todo salió bien, continua con el resto de código(Ej: crearOrientador)
     });
 }
 
