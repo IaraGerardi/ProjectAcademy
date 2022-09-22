@@ -27,8 +27,9 @@ function AdminPage() {
 
                     <div className="boxcentral h-1/6  items-center">
                       <div className=" boxcentraltwo flex items-center w-9/12 ml-20 justify-between h-full">
-                        <div className="bordercd text-2xl">
-                          Nuevos orientados
+                        <div className="text-1xl text-center font-semibold">
+                          <div>Nuevos orientados</div>
+                          <div className="nuevosorientados bg-cyan-400 h-1 mt-2 w-48" ></div>
                         </div>
 
                         <div>
@@ -41,7 +42,7 @@ function AdminPage() {
                       </div>
                     </div>
 
-                    <div className=" admintbloque mt-3">
+                    <div className="Adminbloque mt-3">
                       <UserAdmin />
                     </div>
 
@@ -58,7 +59,7 @@ function AdminPage() {
                     </div>
 
                     <div className=" h-3/1 items-center mt-4">
-                      <div className="flex items-center w-9/12 ml-20 justify-between h-auto ">
+                      <div className="flex items-center w-8/12 ml-20 justify-between h-auto ">
                         <div>
                           <div>
                             <h1 className="BoxNovedadescd text-3xl text-bold">
@@ -71,7 +72,7 @@ function AdminPage() {
 
                     <div className="boxMainSlider">
                       <div className=" h-3/4 items-center  mt-6/12">
-                        <div className="flex items-center  w-9/12 ml-20 justify-between h-auto">
+                        <div className="flex items-center  w-9/12 ml-20 justify-between h-auto contentslider">
                           <SliderOficial />
                         </div>
                       </div>

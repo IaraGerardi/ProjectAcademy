@@ -4,7 +4,7 @@
 }
 
 .boxtwo {
-  border: 1px solid black;
+  border: 1px solid rgb(0, 0, 0);
   width: 312px;
   height: 96px;
   border-radius: 8px;
@@ -68,4 +68,11 @@ li {
   margin-left: 5px;
   font-size: 14px;
   color: #8798ad;
+}
+
+@media (max-width: 600px) {
+  .boxtwo{
+    width: 100%;
+  }
+  
 }
