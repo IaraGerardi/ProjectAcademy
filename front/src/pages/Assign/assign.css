@@ -131,16 +131,6 @@ hr {
 
 
 
-
-
-
-
-
-
-
-
-
-
 @media (max-width: 925px) {
 
     .image-profile-student {
@@ -213,11 +203,43 @@ hr {
 
 @media (max-width: 653px) {
 
-    .cont-number {
 
+
+    .image-profile-student {
+        margin-top: 20px;
+        height: 100px;
+        width: 100px;
+        border-radius: 100%;
+    }
+
+
+    .name-student {
+        font-weight: 500;
+        font-size: 1.2em;
+        line-height: 32px;
+        color: black;
+        padding: 0;
+    }
+
+
+
+    .cont-info-student {
+        display: flex;
+        flex-direction: column;
         justify-content: flex-start;
         align-items: flex-start;
-        padding: 70px 0px 50px 20px;
+        height: 100%;
+        width: 100%;
+        padding: 0px 20px 20px 20px;
+    }
+
+
+    .cont-number {
+        display: flex;
+        flex-direction: column;
+        padding: 0px;
+        margin: 0px;
+
     }
 
 
