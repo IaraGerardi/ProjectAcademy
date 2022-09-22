@@ -4,7 +4,6 @@ const { getAllOrientados, createOrientado, orientadoById, getAllOrientadores, or
 const { getAllNovedades } = require("../controllers/novedadesController.js");
 const { isAuthenticated } = require("../controllers/loginAdminController.js"); //Autenticacion para que solo puedan ingresar usuarios logueados (admins)
 const { getAllAdminsProfiles, getAdminProfile } = require("../controllers/profileAdminController.js");
-const userImage = require("../middleware/orientadoImages.js");
 const photoProfileCheck = require("../middleware/orientadoImages.js");
 
 //Rutas de la vista privada del Admin

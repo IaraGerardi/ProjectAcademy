@@ -16,19 +16,16 @@ const getAllOrientados = async (req, res) => {
 }
 
 const createOrientado = async (req, res) => {
-    const { name, lastname, email, phone, program } = req.body;
+    const { name, lastname, email, phone, program, password} = req.body;
     const { dni, age, school, address, why } = req.body;
-   /*  const photoProfile = req.files[0] ? req.files[0].filename : null */
-   const photoProfile = req.files ? req.files.filename : 'default.png'
-    const password = await bcryptjs.hash(req.body.password, 10);
-
+    
     try {
         const user = await ModelOrientado.create({
             name, //Cuando el nombre de la propiedad es la misma no es necesario poner name: name.
             lastname,
             email,
             program,
-            photoProfile,
+            photoProfile: req.file ? req.file.filename : null,
 
             phone,
             age,
@@ -37,7 +34,7 @@ const createOrientado = async (req, res) => {
             why,
 
             dni,
-            password
+            password: await bcryptjs.hash(password, 10)
         });
         res.json(user)
     } catch (error) {
