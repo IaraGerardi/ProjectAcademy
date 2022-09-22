@@ -99,7 +99,7 @@
     display: flex;
     margin-right: 100px;
   }
- 
+
   .btn-ingresar-orientado {
     margin-top: 10px;
     margin-left: 7px;
@@ -111,16 +111,24 @@
   .orientadoscd {
     margin-left: -25px;
   }
-  .nuevosorientados{
+  .nuevosorientados {
     width: 160px;
   }
-  .Adminbloque{
+  .Adminbloque {
     overflow: hidden;
     width: 100%;
     display: flex;
   }
- .contentslider{
-  margin-left: 100px;
-  width: 80%;
- }
+  .contentslider {
+    width: 90%;
+  }
+  .boxMainSlider {
+    margin-left: -10px;
+    width: 100%;
+    height: 240px;
+    overflow: hidden;
+  }
+  .slick-list {
+    width: 100%;
+  }
 }
