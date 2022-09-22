@@ -4,6 +4,8 @@ import React, { useState } from "react";
 import axios from "axios";
 import '../call-students.css';
 import { UploadImg } from "./UploadImg";
+import { useNavigate } from "react-router-dom";
+
 /* import { UploadImg } from "./UploadImg"; */
 
 const url = "http://localhost:8000/admin/create";
@@ -26,6 +28,8 @@ function FormOrientado() {
   const [password, setPassword] = useState("");
   // const [nuevacontraseña, setNuevacontraseña] = useState("");
 
+  const navegate=useNavigate();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -42,18 +46,10 @@ function FormOrientado() {
         school: school,
         address: address,
        
-        // apellido: apellido,
-        // email: email,
-        // select: select,
-        // telefono: telefono,
-        // edad: edad,
-        // colegio: colegio,
-        // domicilio: domicilio,
-        // usuario: usuario,
-        // contraseña: contraseña,
-        // nuevacontraseña: nuevacontraseña,
+   
       });
       console.log(resp.data);
+      navegate("/orientados/StudentInfo");
     } catch (error) {
       console.log(error.response);
     }
@@ -71,9 +67,7 @@ function FormOrientado() {
 
   // handle onChange event of the dropdown
   const handleChange = (e) => {
-    
     setProgram(e.value);
-    
   };
 
   return (
