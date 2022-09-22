@@ -5,17 +5,20 @@ const { getAllNovedades } = require("../controllers/novedadesController.js");
 const { isAuthenticated } = require("../controllers/loginAdminController.js"); //Autenticacion para que solo puedan ingresar usuarios logueados (admins)
 const { getAllAdminsProfiles, getAdminProfile } = require("../controllers/profileAdminController.js");
 const userImage = require("../middleware/orientadoImages.js");
+const photoProfileCheck = require("../middleware/orientadoImages.js");
 
-// Rutas de la vista privada del Admin
+//Rutas de la vista privada del Admin
 routerAdmin.get('/admin/orientados', getAllOrientados);
 routerAdmin.get('/admin/novedades', getAllNovedades);
 
-//Rutas para obtener profiles
+//Rutas para obtener profiles de admins
 routerAdmin.get('/admin/profile', getAllAdminsProfiles);
 routerAdmin.get('/admin/profile/:id', getAdminProfile);
 
 //Ruta para crear Orientados
-routerAdmin.post('/admin/create', userImage.any(), createOrientado);
+
+routerAdmin.post('/admin/create', photoProfileCheck ,createOrientado);
+/* routerAdmin.post('/upload', photoProfileCheck); */
 
 //Ruta para mostrar al Orientado que esta en la ID
 routerAdmin.get('/admin/orientados/:id', orientadoById)
