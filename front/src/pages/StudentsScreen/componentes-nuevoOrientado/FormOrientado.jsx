@@ -205,14 +205,14 @@ function FormOrientado() {
             propInputValue={password}
             propsOnchange={(e) => setPassword(e.target.value)}
           />
-          {/* <InputLabel
+           <InputLabel
             labelName="Repetir contraseña"
             inputType="password"
             propInputName="passwordrepeat"
             placeholderName="Repetir contraseña"
-            propInputValue={nuevacontraseña}
-            propsOnchange={(e) => setNuevacontraseña(e.target.value)}
-          /> */}
+            /* propInputValue={nuevacontraseña} */
+          /*   propsOnchange={(e) => setNuevacontraseña(e.target.value)} */
+          /> 
         </div>
         <div className="mt-10">
           {/* div4 botones form */}
