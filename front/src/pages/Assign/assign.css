@@ -15,9 +15,9 @@
     height: 222px;
     border-radius: 10px;
     display: flex;
-    -webkit-box-shadow: 0px 0px 17px 0px rgba(161,161,161,1);
--moz-box-shadow: 0px 0px 17px 0px rgba(161,161,161,1);
-box-shadow: 0px 0px 17px 0px rgba(161,161,161,1);
+    -webkit-box-shadow: 0px 0px 17px 0px rgba(161, 161, 161, 1);
+    -moz-box-shadow: 0px 0px 17px 0px rgba(161, 161, 161, 1);
+    box-shadow: 0px 0px 17px 0px rgba(161, 161, 161, 1);
 }
 
 .cont-image-profile {
@@ -68,12 +68,12 @@ hr {
     padding: 20px;
 }
 
-.numero {
+.cont-number {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
-    padding: 70px 0px 0px 80px;
+    padding: 70px 0px 0px 50px;
 }
 
 
@@ -102,11 +102,39 @@ hr {
 
 
 
-.selector-teacher{
-    width: 30%;
+.selector-teacher {
+    width: 300px;
+
     margin-bottom: 15px;
     border-radius: px;
 }
+
+
+
+.btn-asignar {
+    margin-top: 40px;
+    width: 200px;
+    height: 40px;
+    border-radius: 8px;
+    background-color: #0BA4A0;
+    color: white;
+    font-weight: 500;
+    font-size: 16px;
+    transition: 500ms;
+}
+
+.btn-asignar:hover {
+    transition: 500ms;
+    background-color: #058b87;
+
+}
+
+
+
+
+
+
+
 
 
 
@@ -138,6 +166,13 @@ hr {
         box-shadow: 5px 5px 17px -2px rgba(181, 181, 181, 0.895);
     }
 
+    .image-profile-student {
+        margin-top: 20px;
+        height: 130px;
+        width: 130px;
+        border-radius: 100%;
+    }
+
 
     hr {
         margin-top: 28px;
@@ -146,12 +181,43 @@ hr {
         background-color: rgb(228, 228, 228);
     }
 
-    .numero {
+    .cont-info-student {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        height: 100%;
+        width: 100%;
+        padding: 20px;
+    }
+
+
+    .cont-number {
         display: flex;
         flex-direction: column;
-        justify-content: flex-start;
+        justify-content: space-between;
         align-items: flex-start;
         padding: 70px 0px 0px 50px;
+    }
+
+    .name-student {
+        font-weight: 500;
+        font-size: 1.4em;
+        line-height: 32px;
+        color: black;
+    }
+
+}
+
+
+
+
+@media (max-width: 653px) {
+
+    .cont-number {
+
+        justify-content: flex-start;
+        align-items: flex-start;
+        padding: 70px 0px 50px 20px;
     }
 
 

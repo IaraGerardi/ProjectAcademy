@@ -6,16 +6,16 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import Select from "react-select";
+import Boton from "./components/boton";
 
 
-
+const putUri = "http://localhost:8000/admin/orientados/:id/orientadorToOrientado";
 
 function Assign() {
     const [orientado, setOrientado] = useState({});
     const [orientadores, setOrientadores] = useState([]);
     const Params = useParams();
     const idParams = Params.id; //Tiene que tener el mismo nombre que en la ruta  en este caso"id"
-
 
 
     useEffect(() => {
@@ -35,7 +35,7 @@ function Assign() {
     useEffect(() => {
         const getOrientadores = async () => {
             try {
-                const res = await axios.get("http://localhost:8000/admin/orientados/:id/orientador");
+                const res = await axios.get("http://localhost:8000/admin/orientadores");
                 setOrientadores(res.data); /* LLama Orientadores */
                 console.log(res.data)
             } catch (error) {
@@ -46,21 +46,29 @@ function Assign() {
     }, []);
 
 
-    const [selectSuppliers, setSelectedSuppliers] = useState();
+    const [valorOrientador, setValorOrientador] = useState();
 
-
+    /*Captura el valor (abajo le paso el valor del ID)*/
     const handleSelectChange = ({ value }) => {
+
         console.log(value)
-        setSelectedSuppliers(value);
+        setValorOrientador(value);
+    }
+
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        await axios.put(putUri, {OrientadoreId: valorOrientador})
+        console.log(putUri)
     }
 
 
 
-
     const selectOrientador = orientadores.map((orientador) => {
+        /*Recorre la api y retorna la card del orientador*/
         return (<div className="cont-student">
             <div className="cont-image-profile">
                 <img className="image-profile-student"
+                    src="https://img.blogs.es/anexom/wp-content/uploads/2021/12/perfil-1024x754.jpg"
                     //  src={require(`../../img-back/orientadores${orientador.avatar}`)} 
                     alt="Foto-perfil de Orientado" />
 
@@ -73,7 +81,7 @@ function Assign() {
                 <div>
                     <div>
                         <p className="name-student">{orientador.name} {orientador.lastname}</p>
-                        <span className="text-orientado">Orientado</span>
+                        <span className="text-orientado">Orientador/a</span>
                     </div>
 
                     <div>
@@ -83,7 +91,7 @@ function Assign() {
 
                 </div>
 
-                <div className="numero">
+                <div className="cont-number">
                     <span className="text-gray">TELÉFONO</span>
                     <p>{orientador.phone}</p>
                 </div>
@@ -109,10 +117,11 @@ function Assign() {
 
                             <p className="text-referent">Asignación de Orientador Referente</p>
 
-                            <div className="cont-student">
+                            <div className="cont-student"> {/*Card de Orientado*/}
 
                                 <div className="cont-image-profile">
                                     <img className="image-profile-student"
+                                        // src="https://img.blogs.es/anexom/wp-content/uploads/2021/12/perfil-1024x754.jpg"
                                         //  src={require(`../../img-back/orientados/${orientado.photoProfile}`)} 
                                         alt="Foto-perfil de Orientado" />
 
@@ -140,7 +149,7 @@ function Assign() {
 
                                     </div>
 
-                                    <div className="numero">
+                                    <div className="cont-number">
                                         <span className="text-gray">TELÉFONO</span>
                                         <p>{orientado.phone}</p>
 
@@ -156,26 +165,42 @@ function Assign() {
 
                             <span>Referente</span>
 
-                            <Select
-                                className="selector-teacher"
-                                // options={suppliers}
-                                defaultValue={{ label: "Seleccionar Orientador", value: "default" }}
-                                options={orientadores.map(orientador => ({ label: `${orientador.name} ${orientador.lastname}`, value: orientador.id })
-                                )}
-                                onChange={handleSelectChange}
-                            />
-
-                            {/*<h1>orientador: {selectSuppliers}</h1> */}
+                            {/*Input selector*/}
 
 
 
-                            <ul>
-                                {selectOrientador[selectSuppliers - 1]}
-                            </ul>
+                            {/*<h1>orientador: {valorOrientador}</h1> */}
 
 
 
 
+
+                            <form onSubmit={handleSubmit} method="PUT">
+
+                                <Select
+                                    inputId="orientador"
+                                    name="orientador"
+                                    className="selector-teacher"
+                                    defaultValue={{ label: "Seleccionar Orientador", value: "default" }}
+                                    options={orientadores.map(orientador => ({ label: `${orientador.name} ${orientador.lastname}`, value: orientador.id, name: "orientador", id: "orientador" })
+                                    )}
+                                    onChange={handleSelectChange}
+                                />
+
+                                <ul>
+                                    {selectOrientador[valorOrientador - 1]} {/*LLama a la card del orientador y le pasa el valor del id -1*/}
+                                </ul>
+
+                                {/*Botón reutilizable para enviar y modificar orientador*/}
+
+                                <input type="submit" value="Asignar orientador/a" className="btn-asignar" />
+
+                                {/* <Boton
+                                    Evento=""
+                                    ClaseBtn="btn-asignar"
+                                    NombreBtn="Asignar orientador/a"
+                                /> */}
+                            </form>
 
                         </div>
 
