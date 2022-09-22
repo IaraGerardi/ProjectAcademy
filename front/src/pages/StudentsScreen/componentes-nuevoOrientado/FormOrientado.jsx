@@ -3,6 +3,7 @@ import Select from "react-select";
 import React, { useState } from "react";
 import axios from "axios";
 import '../call-students.css';
+import { UploadImg } from "./UploadImg";
 /* import { UploadImg } from "./UploadImg"; */
 
 const url = "http://localhost:8000/admin/create";
@@ -91,6 +92,8 @@ function FormOrientado() {
           <h2 className="text-2xl font-medium text-slate-700">01.Informacion básica 1</h2>
           {/*  a cada uno de los InputLabel recibe los 4 props  */}
           {/* falta input imagen  */}
+          <UploadImg />
+
           <div className=" cajaInputsDatosP flex flex-col flex-wrap h-40">
           <InputLabel
             labelName="Nombre"
