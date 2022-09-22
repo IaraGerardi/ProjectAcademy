@@ -52,7 +52,7 @@ function FormOrientado() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     verifyForm();
-    /*try {
+    try {
       const resp = await axios.post(url, {
         name: name,
         password: password,
@@ -60,19 +60,16 @@ function FormOrientado() {
         email: email,
         phone: phone,
         program: program,
-        photoProfile: photoProfile, 
+        /*photoProfile: photoProfile,*/ 
         dni: dni,
         age: age,
         school: school,
-        address: address,
+        address: address, });
 
-
-      });
-      console.log(resp.data);
       navegate("/orientados/StudentInfo");
     } catch (error) {
       console.log(error.response);
-    }*/
+    }
   };
 
   // Opciones del select
@@ -88,7 +85,8 @@ function FormOrientado() {
     setProgram(e.value);
   };
 
-  // Funciones para darle un formato al nombre y apellido
+  // Funcion para darle un formato al nombre y apellido
+
   const handleNameChange = (e) => {
     let value = e.target.value;
     let arrVar = value.split(" ");
@@ -98,21 +96,12 @@ function FormOrientado() {
     }
 
     const nameVar = arrVar.join(" ");
-    setName(nameVar)
-  };
 
-
-  const handleLastnameChange = (e) => {
-    let value = e.target.value;
-    let arrVar = value.split(" ");
-
-    for (let i = 0; i < arrVar.length; i++) {
-      arrVar[i] = arrVar[i].charAt(0).toUpperCase() + arrVar[i].slice(1);
+    if (e.target.name === "name") {
+      setName(nameVar)
+    } else if(e.target.name === "lastname"){
+      setLastname(nameVar)
     }
-
-    const nameVar = arrVar.join(" ");
-   console.log(e.target.name)
-    setLastname(nameVar)
   };
 
   return (
@@ -140,7 +129,7 @@ function FormOrientado() {
               propInputName="name"
               placeholderName="ingresar nombre"
               propInputValue={name}
-              propsOnchange={(e) => setName(e.target.value)}
+              propsOnchange={handleNameChange}
               verifyInput={verifyMessages.name ? verifyMessages.name :
                 // verifyMessages.name === true ? backMessages.name : 
                 null}
@@ -151,7 +140,7 @@ function FormOrientado() {
               propInputName="lastname"
               placeholderName="ingresar Apellido"
               propInputValue={lastname}
-              propsOnchange={(e) => setLastname(e.target.value)}
+              propsOnchange={handleNameChange}
               verifyInput={verifyMessages.lastname ? verifyMessages.lastname :
                 // verifyMessages.lastname === true ? backMessages.lastname : 
                 null}
