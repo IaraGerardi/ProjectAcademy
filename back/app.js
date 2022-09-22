@@ -12,6 +12,7 @@ const ModelOrientador = require('./database/models/ModelOrientador.js');
 const ModelOrientado = require('./database/models/ModelOrientado.js');
 const ModelNovedades = require('./database/models/ModelNovedades.js');
 const ModelAdmin = require('./database/models/ModelAdmin.js');
+const ModelEvento = require('./database/models/ModelEvento.js');
 require('./database/associations.js');
 
 
