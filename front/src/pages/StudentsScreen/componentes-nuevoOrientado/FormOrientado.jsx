@@ -2,6 +2,7 @@ import InputLabel from "../componentes-nuevoOrientado/InputLabel";
 import Select from "react-select";
 import React, { useState } from "react";
 import axios from "axios";
+import '../call-students.css';
 /* import { UploadImg } from "./UploadImg"; */
 
 const url = "http://localhost:8000/admin/create";
@@ -75,22 +76,22 @@ function FormOrientado() {
   };
 
   return (
-    <>
+    <div className="cotainerForm ml-8 mt-10 mb-10">
       <form
         method="POST"
         className=" flex flex-col gap-4"
         onSubmit={handleSubmit}
         encType="multipart/form-data"
       >
-        {" "}
+
         {/* abre formulario de alta de oreintado , tiene 4 divs hijos */}
         <div className="container-basicInfo ">
-          {" "}
+        
           {/* div1 info basica */}
-          <h2>01.Informacion básica 1</h2>
+          <h2 className="text-2xl font-medium text-slate-700">01.Informacion básica 1</h2>
           {/*  a cada uno de los InputLabel recibe los 4 props  */}
           {/* falta input imagen  */}
-         
+          <div className=" cajaInputsDatosP flex flex-col flex-wrap h-40">
           <InputLabel
             labelName="Nombre"
             inputType="text"
@@ -125,46 +126,51 @@ function FormOrientado() {
               value={options.filter((obj) => obj.value=== program)} // set selected value
               options={options} // set list of the data
               onChange={handleChange} // assign onChange function
+              className="w-64 rounded-lg "
             />
           </div>
+          </div>
         </div>
-        <div className="container-personalInfo">
+        <div className="container-personalInfo  text-slate-700">
           {" "}
           {/* div2 datos personales */}
-          <h2>02.Datos personales</h2>
+          <h2 className="text-2xl font-medium">02.Datos personales</h2>
           {/*  a cada uno de los InputLabel recibe los 4 props  */}
-          <InputLabel
-            labelName="Telefono"
-            inputType="phone"
-            propInputName="tel"
-            placeholderName="ingresar telefono"
-            propInputValue={phone}
-            propsOnchange={(e) => setPhone(e.target.value)}
-          />
-          <InputLabel
-            labelName="Edad"
-            inputType="date"
-            propInputName="age"
-            placeholderName="ingresar edad"
-            propInputValue={age}
-            propsOnchange={(e) => setAge(e.target.value)}
-          />
-          <InputLabel
-            labelName="Colegio"
-            inputType="text"
-            propInputName="school"
-            placeholderName="ingresar colegio"
-            propInputValue={school}
-            propsOnchange={(e) => setSchool(e.target.value)}
-          />
-          <InputLabel
-            labelName="Domicilio"
-            inputType="text"
-            propInputName="address"
-            placeholderName="ingresar domicilio"
-            propInputValue={address}
-            propsOnchange={(e) => setAddress(e.target.value)}
-          />
+          <div className=" cajaInputsDatosP flex flex-col flex-wrap h-40">
+                <InputLabel
+                labelName="Telefono"
+                inputType="phone"
+                propInputName="tel"
+                placeholderName="ingresar telefono"
+                propInputValue={phone}
+                propsOnchange={(e) => setPhone(e.target.value)}
+              />
+                <InputLabel
+                labelName="Colegio"
+                inputType="text"
+                propInputName="school"
+                placeholderName="ingresar colegio"
+                propInputValue={school}
+                propsOnchange={(e) => setSchool(e.target.value)}
+              />
+              <InputLabel
+                labelName="Edad"
+                inputType="date"
+                propInputName="age"
+                placeholderName="ingresar edad"
+                propInputValue={age}
+                propsOnchange={(e) => setAge(e.target.value)}
+              />
+            
+              <InputLabel
+                labelName="Domicilio"
+                inputType="text"
+                propInputName="address"
+                placeholderName="ingresar domicilio"
+                propInputValue={address}
+                propsOnchange={(e) => setAddress(e.target.value)}
+              />
+          </div>
           <div className="containerInputLabel flex flex-col gap-2">
             <label className="font-medium text-slate-600">
               ¿Porque se acercó a nuestra institución?
@@ -174,14 +180,14 @@ function FormOrientado() {
               cols="40"
               name="why"
               placeholder="Escribe un comentario."
-              className=" rounded-lg border border-slate-300"
+              className=" rounded-lg border border-slate-300 w-2/4 placeholder:pl-2"
             />
           </div>
         </div>
         <div className="container-crateUsernamePassword">
           {" "}
           {/* div3 crear usuario y contraseña */}
-          <h2>03.Crear usuario y contraseña</h2>
+          <h2 className="text-2xl font-medium text-slate-700">03.Crear usuario y contraseña</h2>
           {/*  a cada uno de los InputLabel recibe los 4 props  */}
           <InputLabel
             labelName="Usuario"
@@ -208,20 +214,19 @@ function FormOrientado() {
             propsOnchange={(e) => setNuevacontraseña(e.target.value)}
           /> */}
         </div>
-        <div>
-          {" "}
+        <div className="mt-10">
           {/* div4 botones form */}
-          <button className=" w-32 bg-blue-600 " type="submit">
+          <button className=" w-44 h-10 bg-celesteValtech rounded-lg text-base text-white font-medium " type="submit">
             Ingresar Orientado
           </button>
           <button
-            className=" w-32 bg-gray-600 " /*  onClick={propOnClickCancel} */
+            className=" w-32 text-sm underline " /*  onClick={propOnClickCancel} */
           >
             Cancelar ingreso
           </button>
         </div>
       </form>
-    </>
+    </div>
   );
 }
 

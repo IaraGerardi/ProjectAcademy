@@ -9,11 +9,11 @@ En caso de que la propiedad de ese objeto que guarda los mensajes de error del i
 el input va a recibir el mensaje que devuelven las validaciones del front, en cambio, si esa propiedad tiene como valor true, 
 muestra los mensajes de la verificacion del back*/
 
-import Icon from "../../global-components/Svg-icon";
+/* import Icon from "../../global-components/Svg-icon"; */
 
 function InputLabel({ labelName, placeholderName, inputType, propInputName, propInputValue, propsOnchange }) { /* creo 4 props para que el componente padre(FormOrientado) le pase al componente hijo(InputLabel) */
   return (
-    <div className="containerInputLabel flex flex-col gap-2">
+    <div className="containerInputLabel flex flex-col gap-2 w-64">
 
       {/* En el input de global components tengo un condicional para que si hay un mensaje de error cambie a rojo el borde del input,
       creo que estaria bueno incluirlo en este componente tambien */}
