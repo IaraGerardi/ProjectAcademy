@@ -8,6 +8,9 @@ ModelOrientado.belongsTo(ModelOrientador);//Cada orientado tiene el ID de su uni
 ModelOrientador.hasMany(ModelEvento); //Crea FK orientadoreId para los orientados
 ModelEvento.belongsTo(ModelOrientador);//Cada evento tiene el ID de su unico orientador
 
+ModelOrientado.belongsToMany(ModelEvento, {through: "orientado_evento"});
+ModelEvento.belongsToMany(ModelOrientado, {through: "orientado_evento"});
+
 module.exports = {
     ModelOrientado,
     ModelOrientador,
