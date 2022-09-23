@@ -1,10 +1,14 @@
+//Express
 const express = require ("express");
 const routerAdmin = express.Router();
+//Controllers
 const { getAllOrientados, createOrientado, orientadoById, getAllOrientadores, orientadorToOrientado, orientadoAndOrientador } = require ("../controllers/orientadoController.js");
 const { getAllNovedades } = require("../controllers/novedadesController.js");
 const { isAuthenticated } = require("../controllers/loginAdminController.js"); //Autenticacion para que solo puedan ingresar usuarios logueados (admins)
 const { getAllAdminsProfiles, getAdminProfile } = require("../controllers/profileAdminController.js");
+//Middlewares y Validaciones
 const photoProfileCheck = require("../middleware/orientadoImages.js");
+const validateCreate = require("../validations/createOrientado.js");
 
 //Rutas de la vista privada del Admin
 routerAdmin.get('/admin/orientados', getAllOrientados);
@@ -16,8 +20,9 @@ routerAdmin.get('/admin/profile/:id', getAdminProfile);
 
 //Ruta para crear Orientados
 
-routerAdmin.post('/admin/create', photoProfileCheck, createOrientado);
-/* routerAdmin.post('/upload', photoProfileCheck); */
+routerAdmin.post('/admin/create', photoProfileCheck, validateCreate, createOrientado);
+
+
 
 //Ruta para mostrar al Orientado que esta en la ID
 routerAdmin.get('/admin/orientados/:id', orientadoById)
@@ -30,8 +35,6 @@ routerAdmin.get('/admin/orientados/:id/orientador', orientadoAndOrientador)
 
 //Ruta para asignar o modificar Orientador a Orientado
 routerAdmin.put('/admin/orientados/:id/orientadorToOrientado', orientadorToOrientado)
-
-
 
 
 module.exports = routerAdmin;
