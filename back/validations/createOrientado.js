@@ -65,7 +65,7 @@ const validateCreate = [
         .notEmpty().withMessage('El campo dirección está vacío')
     ,
     check('why')
-        .isLength({ min: 200 })
+        .notEmpty().withMessage('Escriba un breve descripcion de porque se acerca a nosotros')
     ,
     (req, res, next) => {
         validateResult(req, res, next)
