@@ -10,6 +10,7 @@ function StudentInfo() {
     
     const [orientado,setOrientado]=useState([]);//estado donde voy a guardar el objeto del admin  y luego obtener sus datos a traves de la notacion de puntos
     const [image,setImage]=useState("default.png");
+    const [age,setAge]=useState();
     const URI=`http://localhost:8000/admin/orientados`;
     console.log(image);
 
@@ -32,20 +33,28 @@ function StudentInfo() {
          getOrientadoData(); 
   },[]) 
 
-/*   const getAge = value => {
-    let today = new Date();
+ const getAge = value => {
+    let today = new Date().toLocaleDateString('en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric"})
+    console.log(today)// funciona
     let birthDate = new Date(value);
     let age = today.getFullYear() - birthDate.getFullYear();
-    let m = today.getMonth() - birthDate.getMonth();
+    console.log(age)
+ /*    let m = today.getMonth() - birthDate.getMonth();
     if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
         age--;
-    }
+    } */
     setAge(age);
   }
+
     useEffect(()=>{
-       getAge(orientado.age.split(" ")[0]);
-       console.log(orientado.age.split(" ")[0])
-    },[]); */
+       getAge(orientado.age);
+       console.log(orientado.age)
+    },[]); 
+  
+console.log(orientado.age)
+
+
+
  console.log(orientado.photoProfile)
   return (
     <div className="cotainerForm ml-8 mt-10 mb-10">
