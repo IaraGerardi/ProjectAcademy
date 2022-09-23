@@ -26,7 +26,7 @@ function FormOrientado() {
   const [age, setAge] = useState("");
   const [school, setSchool] = useState("");
   const [address, setAddress] = useState("");
-
+  const [why,setWhy]=useState("");
   const [dni, setDni] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("")
@@ -64,7 +64,8 @@ function FormOrientado() {
         dni: dni,
         age: age,
         school: school,
-        address: address, });
+        address: address,
+        why:why, });
 
       navegate("/orientados/StudentInfo");
     } catch (error) {
@@ -79,11 +80,27 @@ function FormOrientado() {
     { value: "Taller de matemáticas", label: "Taller de matemáticas" },
     { value: "Métodos de estudio", label: "Métodos de estudio" },
   ];
+  //estilos react-select
+  const customStyles = {
+    control: base=> ({
+      ...base,
+      borderRadius:  "8px",
+      borderColor: '#cbd5e1',
+      fontSize: "15px",
+      height: 32,
+    minHeight: 32,
+    marginTop: '8px',
+        })
+    }
+
 
   // handle onChange event of the dropdown
   const handleChange = (e) => {
     setProgram(e.value);
   };
+  const handleCancelForm=(e)=>{
+    navegate("/orientados/newUsers");
+  }
 
   // Funcion para darle un formato al nombre y apellido
 
@@ -112,14 +129,14 @@ function FormOrientado() {
         onSubmit={handleSubmit}
         encType="multipart/form-data"
       >
-
+     <h2 className="text-2xl font-medium text-slate-700">01.Informacion básica 1</h2>
         {/* abre formulario de alta de oreintado , tiene 4 divs hijos */}
-        <div className="container-basicInfo ">
+        <div className="container-basicInfo flex flex-row  gap-12 ">
 
           {/* div1 info basica */}
-          <h2 className="text-2xl font-medium text-slate-700">01.Informacion básica 1</h2>
+          
           {/*  a cada uno de los InputLabel recibe los 4 props  */}
-          {/* falta input imagen  */}
+         
           <UploadImg />
 
           <div className=" cajaInputsDatosP flex flex-col flex-wrap h-40">
@@ -127,7 +144,7 @@ function FormOrientado() {
               labelName="Nombre"
               inputType="text"
               propInputName="name"
-              placeholderName="ingresar nombre"
+              placeholderName="Ingresar nombre"
               propInputValue={name}
               propsOnchange={handleNameChange}
               verifyInput={verifyMessages.name ? verifyMessages.name :
@@ -138,7 +155,7 @@ function FormOrientado() {
               labelName="Apellido"
               inputType="text"
               propInputName="lastname"
-              placeholderName="ingresar Apellido"
+              placeholderName="Ingresar Apellido"
               propInputValue={lastname}
               propsOnchange={handleNameChange}
               verifyInput={verifyMessages.lastname ? verifyMessages.lastname :
@@ -149,7 +166,7 @@ function FormOrientado() {
               labelName="Email"
               inputType="email"
               propInputName="email"
-              placeholderName="ingresar email"
+              placeholderName="Ingresar email"
               propInputValue={email}
               propsOnchange={(e) => setEmail(e.target.value)}
               verifyInput={verifyMessages.email ? verifyMessages.email :
@@ -157,7 +174,7 @@ function FormOrientado() {
                 null}
             />
             {/*------ select input ------------- */}
-            <div>
+            <div className=" h-16 ">
               <label htmlFor="" className="font-medium text-slate-600">
                 Programa
               </label>
@@ -166,6 +183,7 @@ function FormOrientado() {
                 value={options.filter((obj) => obj.value === program)} // set selected value
                 options={options} // set list of the data
                 onChange={handleChange} // assign onChange function
+                styles={customStyles}//style para react select
                 className="w-64 rounded-lg "
               />
             </div>
@@ -181,7 +199,7 @@ function FormOrientado() {
               labelName="Telefono"
               inputType="phone"
               propInputName="tel"
-              placeholderName="ingresar telefono"
+              placeholderName="Ingresar telefono"
               propInputValue={phone}
               propsOnchange={(e) => setPhone(e.target.value)}
               verifyInput={verifyMessages.phone ? verifyMessages.phone :
@@ -192,7 +210,7 @@ function FormOrientado() {
               labelName="Colegio"
               inputType="text"
               propInputName="school"
-              placeholderName="ingresar colegio"
+              placeholderName="Ingresar colegio"
               propInputValue={school}
               propsOnchange={(e) => setSchool(e.target.value)}
               verifyInput={verifyMessages.school ? verifyMessages.school :
@@ -203,7 +221,7 @@ function FormOrientado() {
               labelName="Edad"
               inputType="date"
               propInputName="age"
-              placeholderName="ingresar edad"
+              placeholderName="Ingresar edad"
               propInputValue={age}
               propsOnchange={(e) => setAge(e.target.value)}
               verifyInput={verifyMessages.age ? verifyMessages.age :
@@ -215,7 +233,7 @@ function FormOrientado() {
               labelName="Domicilio"
               inputType="text"
               propInputName="address"
-              placeholderName="ingresar domicilio"
+              placeholderName="Ingresar domicilio"
               propInputValue={address}
               propsOnchange={(e) => setAddress(e.target.value)}
               verifyInput={verifyMessages.address ? verifyMessages.address :
@@ -241,11 +259,12 @@ function FormOrientado() {
           {/* div3 crear usuario y contraseña */}
           <h2 className="text-2xl font-medium text-slate-700">03.Crear usuario y contraseña</h2>
           {/*  a cada uno de los InputLabel recibe los 4 props  */}
+      
           <InputLabel
             labelName="Usuario"
             inputType="text"
             propInputName="dni"
-            placeholderName="ingresar DNI del orientado"
+            placeholderName="Ingresar DNI del orientado"
             propInputValue={dni}
             propsOnchange={(e) => setDni(e.target.value)}
             verifyInput={verifyMessages.dni ? verifyMessages.dni :
@@ -274,17 +293,14 @@ function FormOrientado() {
               // verifyMessages.confirmPassword === true ? backMessages.confirmPassword : 
               null}
           />
+          
         </div>
         <div className="mt-10">
           {/* div4 botones form */}
           <button className=" w-44 h-10 bg-celesteValtech rounded-lg text-base text-white font-medium " type="submit">
             Ingresar Orientado
           </button>
-          <button
-            className=" w-32 text-sm underline " /*  onClick={propOnClickCancel} */
-          >
-            Cancelar ingreso
-          </button>
+          <button className=" w-32 text-sm underline" onClick={handleCancelForm}>Cancelar ingreso</button>
         </div>
       </form>
     </div>
