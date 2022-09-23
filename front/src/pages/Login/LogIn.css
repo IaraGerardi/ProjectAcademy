@@ -65,11 +65,3 @@
     border-radius: 8px;
     margin: 10px;
 }
-
-.loginAdmin input[type=submit] {
-    font-weight: 500;
-    font-size: 16px;
-    color: white;
-    background-color: #0BA4A0;
-    border: none;
-}
