@@ -71,8 +71,7 @@ function CallStudents() {
                     {orientados.map((usuario) => {
                         return (
                           
-                            
-                           
+                        
 
                                 <li className="box-students" key={usuario.id} >
                                  <Link to={`/orientados/${usuario.id}`}>

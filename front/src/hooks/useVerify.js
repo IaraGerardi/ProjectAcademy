@@ -5,10 +5,9 @@ function useVerify(formValues) {
     const [verifyMessages, setVerifyMessages] = useState({});
 
     const verifyInput = (value, payload) => {
-        console.log(payload)
         const { id, type } = payload;
+        // console.log(`${id}: ${value}`)
 
-        // Por ahora solo la verificacion de que el campo no este vacio y la del formato del email estan en uso
         value === null || value === "" ? setVerifyMessages(prevVerifyMessages => ({
             ...prevVerifyMessages,
             [id]: "El campo no puede estar vacio",
@@ -21,19 +20,19 @@ function useVerify(formValues) {
                     ...prevVerifyMessages,
                     [id]: `El campo no debe tener mas de ${payload.maxLength} caracteres`,
                 })) :
-                    // Esta verificacion no anda bien todavia
-                    // (/\S+@\S+\.\S+/.test(value) === false) ? setVerifyMessages(prevVerifyMessages => ({
-                    //     ...prevVerifyMessages,
-                    //     [id]: "El campo no puede tener espacios",
-                    // })) :
-                    type === "email" && (/\S+@\S+\.\S+/.test(value) === false) ? setVerifyMessages(prevVerifyMessages => ({
+                    payload.noSpaces && (/^\S*$/.test(value) === false) ? setVerifyMessages(prevVerifyMessages => ({
                         ...prevVerifyMessages,
-                        [id]: "El email tiene un formato incorrecto",
+                        [id]: "El campo no puede tener espacios",
                     })) :
-                        type === "age" && (value < 0 || value > 100) ? setVerifyMessages(prevVerifyMessages => ({
+                        type === "email" && (/\S+@\S+\.\S+/.test(value) === false) ? setVerifyMessages(prevVerifyMessages => ({
                             ...prevVerifyMessages,
-                            [id]: "Ingrese una edad valida",
+                            [id]: "El email tiene un formato incorrecto",
                         })) :
+                        // Comento la verificacion ya que no esta en uso
+                            // type === "age" && (value < 0 || value > 100) ? setVerifyMessages(prevVerifyMessages => ({
+                            //     ...prevVerifyMessages,
+                            //     [id]: "Ingrese una edad valida",
+                            // })) :
                             type === "confirmPassword" && value !== payload.firstPass ? setVerifyMessages(prevVerifyMessages => ({
                                 ...prevVerifyMessages,
                                 [id]: "La contraseña no coincide",

@@ -10,7 +10,7 @@ function StudentsScreen() {
        
             <div className="container-P w-full flex"> {/*  containedor padre tamaño igual a app */}        
                     <Sidebar /> {/* hijo 1 izquierdo sticky */}            
-                        <div className="container-derecho header-sa">{/*  hijo2 derecho  column */}           
+                        <div className="container-derecho ">{/*  hijo2 derecho  column */}           
                                  <HeaderInicio propNamePage="Orientados" />
                             <>
                             

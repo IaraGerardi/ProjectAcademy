@@ -75,9 +75,8 @@ function Assign() {
         return (<div className="cont-student">
             <div className="cont-image-profile">
                 <img className="image-profile-student"
-                    src="https://img.blogs.es/anexom/wp-content/uploads/2021/12/perfil-1024x754.jpg"
-                    //  src={require(`../../img-back/orientadores${orientador.avatar}`)} 
-                    alt="Foto-perfil de Orientado" />
+                     src={require(`../../img-back/orientadores/${orientador.avatar}`)} 
+                    alt="Foto-perfil de Orientador" />
 
             </div>
 
@@ -127,10 +126,10 @@ function Assign() {
                             <div className="cont-student"> {/*Card de Orientado*/}
 
                                 <div className="cont-image-profile">
-                                    <img className="image-profile-student"
-                                        src="https://img.blogs.es/anexom/wp-content/uploads/2021/12/perfil-1024x754.jpg"
-                                        //  src={require(`../../img-back/orientados/${orientado.photoProfile}`)} 
-                                        alt="Foto-perfil de Orientado" />
+                                <img className="image-profile-student"
+                                        // src="https://img.blogs.es/anexom/wp-content/uploads/2021/12/perfil-1024x754.jpg"
+                                        // src={require(`../../img-back/orientados/${orientado.photoProfile}`)} 
+                                        alt="Foto-perfil de Orientado" /> 
 
                                 </div>
 

@@ -12,6 +12,7 @@ import ProfileAdminScreen from './pages/ProfileAdmin/ProfileAdminScreen';
 import { EventScreen } from './pages/Events/EventScreen';
 import FormOrientado from './pages/StudentsScreen/componentes-nuevoOrientado/FormOrientado';
 import NewUsers from './pages/StudentsScreen/components/NewUsers';
+import StudentInfo from './pages/StudentsScreen/componentes-nuevoOrientado/StudentInfo';
 // Fin Importación Páginas
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path='/orientados/*' element={<Orientados />} >
           <Route path="nuevo" element={<FormOrientado/>}/>
           <Route path="newUsers" element={<NewUsers/>}/>
+          <Route path="StudentInfo/:id" element={<StudentInfo/>}/>
         </Route>
         <Route path='/orientados/:id' element={<Assign/>} />
         <Route path='/eventos' element={<EventScreen />} />

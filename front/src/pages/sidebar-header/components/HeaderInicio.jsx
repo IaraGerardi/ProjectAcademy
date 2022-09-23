@@ -51,7 +51,7 @@ function HeaderInicio({ propNamePage }) {
     return (
         <>
 
-            <div className='boxMainHeader '>
+            <div className='boxMainHeader sticky top-0 z-10'>
                 <p className='p-header'>
                     {propNamePage === "Bienvenido/a" ? `${propNamePage} ${parseado.name}` : propNamePage}</p>
 
