@@ -106,7 +106,8 @@ function FormOrientado() {
 
   const handleNameChange = (e) => {
     let value = e.target.value;
-    let arrVar = value.split(" ");
+    let valueLowerCase = value.toLowerCase();
+    let arrVar = valueLowerCase.split(" ");
 
     for (let i = 0; i < arrVar.length; i++) {
       arrVar[i] = arrVar[i].charAt(0).toUpperCase() + arrVar[i].slice(1);
