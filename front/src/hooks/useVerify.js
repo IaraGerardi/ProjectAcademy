@@ -7,6 +7,7 @@ function useVerify(formValues) {
     const verifyInput = (value, payload) => {
         const { id, type } = payload;
         // console.log(`${id}: ${value}`)
+        // min dos caracteres el nombre
 
         value === null || value === "" ? setVerifyMessages(prevVerifyMessages => ({
             ...prevVerifyMessages,
@@ -49,7 +50,8 @@ function useVerify(formValues) {
         }
     }
 
-    // Defino la variable que verifica si el formulario esta verificado o no, podria cambiar isVerified de variable a estado para que la verificacion se hiciera adentro de un useEffect
+    // Defino la variable que verifica si el formulario esta verificado o no, podria cambiar isVerified de variable a estado 
+    // para que la verificacion se hiciera adentro de un useEffect
     const isVerified = Object.values(verifyMessages).every(value => {
         if (value === true) {
             return true;
