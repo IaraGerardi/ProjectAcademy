@@ -7,17 +7,22 @@ import { useParams } from 'react-router-dom';
 
 function StudentInfo() {
     let { id } = useParams();
+    
     const [orientado,setOrientado]=useState([]);//estado donde voy a guardar el objeto del admin  y luego obtener sus datos a traves de la notacion de puntos
-     
+    const [image,setImage]=useState("default.png");
     const URI=`http://localhost:8000/admin/orientados`;
-
+    console.log(image);
 
     useEffect( ()=>{ // la a ejecutar la funcion luego de renderizar la pantalla y no todo el tiempo
 
         const getOrientadoData= async()=>{
             try{
-                const resOrientado = await axios.get(`${URI}/${id}`)//trae uri y le agrega /gdsaiukyhds y lo guarda       /* ${id} */
-                setOrientado(resOrientado.data); 
+                const resOrientado = await axios.get(`${URI}/2`)//trae uri y le agrega /gdsaiukyhds y lo guarda       /* ${id} */
+                setOrientado(resOrientado.data) 
+                if(resOrientado.data.photoProfile){
+                  setImage(resOrientado.data.photoProfile)
+                }
+                
             
 
             }catch(error){// en caso de fallar 
@@ -25,15 +30,29 @@ function StudentInfo() {
             }
         }
          getOrientadoData(); 
-  },[URI]) 
+  },[]) 
 
-
+/*   const getAge = value => {
+    let today = new Date();
+    let birthDate = new Date(value);
+    let age = today.getFullYear() - birthDate.getFullYear();
+    let m = today.getMonth() - birthDate.getMonth();
+    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+        age--;
+    }
+    setAge(age);
+  }
+    useEffect(()=>{
+       getAge(orientado.age.split(" ")[0]);
+       console.log(orientado.age.split(" ")[0])
+    },[]); */
+ console.log(orientado.photoProfile)
   return (
     <div className="cotainerForm ml-8 mt-10 mb-10">
        <h2 className="text-2xl font-medium text-slate-700">01.Informacion básica 1</h2>
          <div className="container-basicInfo flex flex-row gap-16">{/* div1 info basica */}
-         <img src={`../../../img-back/orientados/${orientado.photoProfile}`} alt="" className='w-20 h-20 rounded-full'/>
-        
+         <img src={require(`../../../img-back/orientados/${image}`)} alt="" className='w-20 h-20 rounded-full object-cover'/>
+         
        
         <div>
         <span>{`${orientado.name} ${orientado.lastname}`}</span>
@@ -79,8 +98,10 @@ function StudentInfo() {
         {/*  a cada uno de los InputLabel recibe los 4 props  */}
         <span className='text-slate-400 text-xs'>USUARIO</span>
         <p>{orientado.dni}</p>
+        <div className='flex flex-col'>
         <span className='text-slate-400 text-xs'>CONTRASEÑA</span>
-        <p>sadksagjbnd</p>
+        <input className='outline-none' type="password" defaultValue={orientado.password} readOnly/>
+        </div>
       </div>
 
         <button className=" w-44 h-10 mt-10 p-2 bg-celesteValtech rounded-lg text-base text-white font-medium " type="submit" >Asignar Orientador/a</button>

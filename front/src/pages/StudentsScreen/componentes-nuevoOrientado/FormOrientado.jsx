@@ -51,7 +51,7 @@ function FormOrientado() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    verifyForm();
+   /*  verifyForm(); */
     try {
       const resp = await axios.post(url, {
         name: name,
@@ -67,7 +67,7 @@ function FormOrientado() {
         address: address,
         why:why, });
 
-      navegate("/orientados/StudentInfo");
+      navegate("/orientados/StudentInfo/2");
     } catch (error) {
       console.log(error.response);
     }

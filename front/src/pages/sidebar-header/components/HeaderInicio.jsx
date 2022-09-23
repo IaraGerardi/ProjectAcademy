@@ -51,7 +51,7 @@ function HeaderInicio({ propNamePage }) {
     return (
         <>
 
-            <div className='boxMainHeader sticky top-0 z-10'>
+            <div className='boxMainHeader '>
                 <p className='p-header'>
                     {propNamePage === "Bienvenido/a" ? `${propNamePage} ${parseado.name}` : propNamePage}</p>
 
@@ -61,7 +61,7 @@ function HeaderInicio({ propNamePage }) {
             </div>
 
             <div className={`sesion ${active ? 'mostrar-sesion' : 'ocultar-sesion'}`}>
-                <Link to="/profile"><img className="logo-perfil" src={LogoPerfil} alt='icon-profile' /> Mi perfil</Link>
+                <Link to="/profile" className="p-2"><img className="logo-perfil" src={LogoPerfil} alt='icon-profile' /> Mi perfil</Link>
 
 
                 <Link to="/"><img className="logo-perfil" src={cerrarSesion} alt='icon-logout' /><button onClick={() => { getLogout() }}>Cerrar sesión</button></Link>

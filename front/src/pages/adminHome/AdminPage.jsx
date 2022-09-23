@@ -50,7 +50,7 @@ function AdminPage() {
                       <div className="flex items-center w-9/12 ml-20 justify-between h-auto ">
                         <div className="orientadoscd">
                           <div>
-                            <Link className="navegar" to="/orientados">
+                            <Link className="navegar" to="/orientados/newUsers">
                               Ver más orientados
                             </Link>
                           </div>

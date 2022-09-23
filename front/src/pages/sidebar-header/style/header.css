@@ -33,7 +33,8 @@
 
 .sesion {
   width: 200px;
-  height: 50px;
+  height: 70px;
+  
   background-color: #fff;
   border-radius: 10px;
   flex-direction: column;
@@ -59,6 +60,8 @@
 
 .mostrar-sesion {
   display: flex;
+  z-index: 11;
+
 }
 
 .ocultar-sesion {
