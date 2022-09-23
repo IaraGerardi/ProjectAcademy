@@ -124,7 +124,7 @@ ModelOrientado.init({
         }
     },
     age: {
-        type: DataTypes.DATE,
+        type: DataTypes.DATEONLY,
         allowNull: false,
         validate: {
             notNull: {

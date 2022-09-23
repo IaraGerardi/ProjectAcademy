@@ -23,7 +23,7 @@ ModelEvento.init({
     /* ORIENTADOS */
 
     date: {
-        type: DataTypes.DATE,
+        type: DataTypes.DATEONLY,
         allowNull: false,
         validate: { //Validaciones de la base de datos
             notNull: {
