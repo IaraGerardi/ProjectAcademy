@@ -12,11 +12,10 @@ import Select from "react-select";
 
 
 function Assign() {
-    const [orientado, setOrientado] = useState({});
+    const [orientado, setOrientado] = useState([]);
     const [orientadores, setOrientadores] = useState([]);
     const Params = useParams();
     const idParams = Params.id; //Tiene que tener el mismo nombre que en la ruta  en este caso"id"
-
     let { id } = useParams();
 
     const putUri = `http://localhost:8000/admin/orientados/${id}/orientadorToOrientado`;
@@ -28,9 +27,9 @@ function Assign() {
     useEffect(() => {
         const getOrientados = async () => {
             try {
-                const res = await axios.get(`http://localhost:8000/admin/orientados/${idParams}`);
+                const res = await axios.get(`http://localhost:8000/admin/orientados`);
                 setOrientado(res.data); /* LLama 1 Orientado */
-                console.log(res.data.photoProfile)
+                console.log(res.data)
             } catch (error) {
                 console.log(error);
             }
@@ -44,7 +43,7 @@ function Assign() {
             try {
                 const res = await axios.get("http://localhost:8000/admin/orientadores");
                 setOrientadores(res.data); /* LLama Orientadores */
-                console.log(res.data)
+
             } catch (error) {
                 console.log(error);
             }
@@ -65,17 +64,78 @@ function Assign() {
     const handleSubmit = async (e) => {
         e.preventDefault()
         console.log(`ID del orientador capturado ${orientadorId}`)
-        await axios.put(putUri, {orientador: orientadorId}) //"orientador:" es el req.body que tiene los datos y "orientadorId" son los datos
-        .then((response) => {
-            console.log(response.data)})
+        await axios.put(putUri, { orientador: orientadorId }) //"orientador:" es el req.body que tiene los datos y "orientadorId" son los datos
+            .then((response) => {
+                console.log(response.data)
+            })
     }
+
+
+    // ${idParams}
+
+
+
+    const selectOrientado = orientado.map((orientado) => {
+        const orientadoCall = orientado
+        if(orientadoCall.id == idParams) { //NO PONER TRIPLE IGUAL "=" PORQUE SE ROMPE
+            return (
+                <div key={orientadoCall.id} className="cont-student">
+    
+                    <div className="cont-image-profile">
+                        <img
+                            className="image-profile-student"
+                            src={require(`../../img-back/orientados/${orientadoCall.photoProfile}`)}
+                            alt="Foto perfil orientado"
+                        />
+                    </div>
+    
+                    <hr />
+    
+                    <div className="cont-info-student">
+                        <div>
+                            <div>
+                                <p className="name-student">{orientadoCall.name} {orientadoCall.lastname}</p>
+                                <span className="text-orientado">Orientado</span>
+                            </div>
+    
+                            <div>
+                                <span className="text-gray">MAIL</span>
+                                <p className="text-email">{orientadoCall.email}</p>
+                            </div>
+    
+                            <div>
+                                <span className="text-gray">COLEGIO</span>
+                                <p>{orientadoCall.school}</p>
+                            </div>
+    
+                        </div>
+    
+                        <div className="cont-number">
+                            <span className="text-gray">TELÉFONO</span>
+                            <p>{orientadoCall.phone}</p>
+    
+                            <span className="text-gray">PROGRAMA</span>
+                            <p>Literatura</p>
+                        </div>
+    
+                    </div>
+    
+                </div>
+            )
+        }
+    
+    });
+
+
+
 
     const selectOrientador = orientadores.map((orientador) => {
         /*Recorre la api y retorna la card del orientador*/
         return (<div className="cont-student">
             <div className="cont-image-profile">
+
                 <img className="image-profile-student"
-                     src={require(`../../img-back/orientadores/${orientador.avatar}`)} 
+                    src={require(`../../img-back/orientadores/${orientador.avatar}`)}
                     alt="Foto-perfil de Orientador" />
 
             </div>
@@ -104,6 +164,7 @@ function Assign() {
 
             </div>
 
+
         </div>)
     });
 
@@ -123,49 +184,12 @@ function Assign() {
 
                             <p className="text-referent">Asignación de Orientador Referente</p>
 
-                            <div className="cont-student"> {/*Card de Orientado*/}
 
-                                <div className="cont-image-profile">
-                                <img className="image-profile-student"
-                                        // src="https://img.blogs.es/anexom/wp-content/uploads/2021/12/perfil-1024x754.jpg"
-                                        // src={require(`../../img-back/orientados/${orientado.photoProfile}`)} 
-                                        alt="Foto-perfil de Orientado" /> 
+                            {selectOrientado}
 
-                                </div>
+                
 
-                                <hr />
 
-                                <div className="cont-info-student">
-
-                                    <div>
-                                        <div>
-                                            <p className="name-student">{orientado.name} {orientado.lastname}</p>
-                                            <span className="text-orientado">Orientado</span>
-                                        </div>
-
-                                        <div>
-                                            <span className="text-gray">MAIL</span>
-                                            <p className="text-email">{orientado.email}</p>
-                                        </div>
-
-                                        <div>
-                                            <span className="text-gray">COLEGIO</span>
-                                            <p>{orientado.school}</p>
-                                        </div>
-
-                                    </div>
-
-                                    <div className="cont-number">
-                                        <span className="text-gray">TELÉFONO</span>
-                                        <p>{orientado.phone}</p>
-
-                                        <span className="text-gray">PROGRAMA</span>
-                                        <p>Literatura</p>
-                                    </div>
-
-                                </div>
-
-                            </div>
 
                             <p className="text-referent two"> Selección de un Orientador Referente  </p>
 
@@ -177,7 +201,7 @@ function Assign() {
                             {/*<h1>orientador: {valorOrientador}</h1> */}
 
 
-                            <form method="PUT" onSubmit={handleSubmit}>
+                            < form method="PUT" onSubmit={handleSubmit} >
 
                                 <Select
                                     inputId="orientador"
@@ -187,7 +211,7 @@ function Assign() {
                                     options={orientadores.map(orientador => ({ label: `${orientador.name} ${orientador.lastname}`, value: orientador.id, name: "orientador", id: "orientador" })
                                     )}
                                     onChange={handleSelectChange}
-                                    // onChange={(e)=> setOrientadoId(e.target.value)}
+                                // onChange={(e)=> setOrientadoId(e.target.value)}
                                 />
 
                                 <ul>
@@ -197,7 +221,7 @@ function Assign() {
 
                                 {/*Botón reutilizable para enviar y modificar orientador*/}
 
-                                <input
+                                < input
                                     type="submit"
                                     value="Asignar orientador/a"
                                     className="btn-asignar" />
@@ -216,7 +240,7 @@ function Assign() {
                 </div>
             </>
 
-        </div>
+        </div >
     )
 }
 
