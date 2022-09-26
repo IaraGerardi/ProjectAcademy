@@ -83,7 +83,7 @@ function FormLogIn() {
                 id="passwordLog" type="password" label="Contraseña" placeholder="Ingresa tu contraseña"
                 verifyInput={verifyForm.passwordLog} handleChange={handleChange} />
             <input type="submit" value="Ingresar"
-                className="w-44 cursor-pointer border-none text-white text-base font-medium celeste-Valtech inputLogIn" />
+                className="w-44 cursor-pointer border-none text-white text-base font-medium bg-celesteValtech inputLogIn" />
         </form>
     );
 }

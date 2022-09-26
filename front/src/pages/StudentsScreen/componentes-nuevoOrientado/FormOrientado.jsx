@@ -51,8 +51,8 @@ function FormOrientado() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-   /*  verifyForm(); */
-    try {
+  /*  verifyForm(); */ 
+     try {
       const resp = await axios.post(url, {
         name: name,
         password: password,
@@ -60,17 +60,17 @@ function FormOrientado() {
         email: email,
         phone: phone,
         program: program,
-        /*photoProfile: photoProfile,*/ 
+       
         dni: dni,
         age: age,
         school: school,
         address: address,
         why:why, });
 
-      navegate("/orientados/StudentInfo/2");
+      navegate("/orientados/StudentInfo");
     } catch (error) {
       console.log(error.response);
-    }
+    } 
   };
 
   // Opciones del select
@@ -132,7 +132,7 @@ function FormOrientado() {
       >
      <h2 className="text-2xl font-medium text-slate-700">01.Informacion básica 1</h2>
         {/* abre formulario de alta de oreintado , tiene 4 divs hijos */}
-        <div className="container-basicInfo flex flex-row  gap-12 ">
+        <div className="container-basicInfo flex  flex-col lg:flex-row  gap-12 ">
 
           {/* div1 info basica */}
           
@@ -140,7 +140,8 @@ function FormOrientado() {
          
           <UploadImg />
 
-          <div className=" cajaInputsDatosP flex flex-col flex-wrap h-40">
+          <div className=" cajaInputsDatosP flex flex-col w-3/4  md:flex-row md:gap-5 lg:flex-row lg:gap-5  lg:w-4/5">
+            <div className=" w-64">
             <InputLabel
               labelName="Nombre"
               inputType="text"
@@ -163,6 +164,8 @@ function FormOrientado() {
                 // verifyMessages.lastname === true ? backMessages.lastname : 
                 null}
             />
+           </div>
+            <div className=" w-64">
             <InputLabel
               labelName="Email"
               inputType="email"
@@ -188,14 +191,16 @@ function FormOrientado() {
                 className="w-64 rounded-lg "
               />
             </div>
+            </div>
           </div>
         </div>
-        <div className="container-personalInfo  text-slate-700">
+        <div className="container-personalInfo  text-slate-700 flex flex-col">
           {" "}
           {/* div2 datos personales */}
-          <h2 className="text-2xl font-medium">02.Datos personales</h2>
+          <h2 className=" text-lg  md:text-xl  lg:text-2xl font-medium">02.Datos personales</h2>
           {/*  a cada uno de los InputLabel recibe los 4 props  */}
-          <div className=" cajaInputsDatosP flex flex-col flex-wrap h-40">
+          <div className=" cajaInputsDatosP  flex  flex-col md:flex-row md:gap-5 lg:flex-row lg:gap-5 h-62">
+            <div>
             <InputLabel
               labelName="Telefono"
               inputType="phone"
@@ -218,6 +223,8 @@ function FormOrientado() {
                 // verifyMessages.school === true ? backMessages.school : 
                 null}
             />
+            </div>
+            <div>
             <InputLabel
               labelName="Edad"
               inputType="date"
@@ -241,6 +248,7 @@ function FormOrientado() {
                 // verifyMessages.address === true ? backMessages.address : 
                 null}
             />
+            </div>
           </div>
           <div className="containerInputLabel flex flex-col gap-2">
             <label className="font-medium text-slate-600">
@@ -250,8 +258,9 @@ function FormOrientado() {
               rows="4"
               cols="40"
               name="why"
+              onChange={(e) => setWhy(e.target.value)}
               placeholder="Escribe un comentario."
-              className=" rounded-lg border border-slate-300 w-2/4 placeholder:pl-2"
+              className=" rounded-lg border border-slate-300 w-3/4 lg:w-2/4 placeholder:pl-2"
             />
           </div>
         </div>
