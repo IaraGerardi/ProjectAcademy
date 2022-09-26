@@ -19,9 +19,7 @@ routerAdmin.get('/admin/profile', getAllAdminsProfiles);
 routerAdmin.get('/admin/profile/:id', getAdminProfile);
 
 //Ruta para crear Orientados
-
 routerAdmin.post('/admin/create', photoProfileCheck, validateCreate, createOrientado);
-
 
 
 //Ruta para mostrar al Orientado que esta en la ID

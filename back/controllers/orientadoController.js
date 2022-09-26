@@ -1,4 +1,4 @@
-const bcryptjs = require('bcryptjs');
+bcrypt = require('bcryptjs');
 const { ModelOrientado, ModelOrientador } = require("../database/associations");
 /* llama a modelo orientado desde associations 
 porque son los ultimos cambios que recibe, 
@@ -18,6 +18,7 @@ const getAllOrientados = async (req, res) => {
 const createOrientado = async (req, res) => {
     const { name, lastname, email, phone, program, password} = req.body;
     const { dni, age, school, address, why } = req.body;
+    const passwordHash = await bcrypt.hash(password, 10)
     
     try {
         const user = await ModelOrientado.create({
@@ -34,9 +35,9 @@ const createOrientado = async (req, res) => {
             why,
 
             dni,
-            password: await bcryptjs.hash(password, 10)
+            password: passwordHash
         });
-        res.json(user)
+        res.json({user, passwordHash})
     } catch (error) {
         res.json({ message: error.message })
     }

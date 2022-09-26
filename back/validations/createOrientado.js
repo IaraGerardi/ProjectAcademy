@@ -52,6 +52,12 @@ const validateCreate = [
         .notEmpty().withMessage('El campo DNI está vacío')
         .isNumeric().withMessage('Solo se permiten numeros')
         .isLength({ min: 8 }).withMessage('Faltan numeros')
+        .custom(async (value) => {
+            return ModelOrientado.findOne({ where: { dni: value } })
+                .then(dni => {
+                    if (dni) { return Promise.reject('Este DNI ya está siendo utilizado') }
+                })
+        })
     ,
     check('age')
         .notEmpty().withMessage('El campo Edad está vacío')
