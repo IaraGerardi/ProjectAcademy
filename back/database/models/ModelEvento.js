@@ -18,10 +18,6 @@ ModelEvento.init({
         }
     },
 
-    /* ORIENTADOR */
-
-    /* ORIENTADOS */
-
     date: {
         type: DataTypes.DATEONLY,
         allowNull: false,
