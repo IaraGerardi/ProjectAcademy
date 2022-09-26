@@ -52,7 +52,7 @@ export const UploadImg = () => {
           accept="image/*"
           onChange={(event) => {
             const file = event.target.files[0];
-            if (file && file.type.substr(0, 5) === "image") {
+            if (file && file.type.substring(0, 5) === "image") {
               setImage(file);
             } else {
               setImage(null);

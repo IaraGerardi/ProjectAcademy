@@ -1,25 +1,26 @@
 // Importaciones de reacr, react router, hooks y axios
-import React, { useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import useVerify from "../../../hooks/useVerify"
 import axios from "axios";
 // Componentes
 import InputLabel from "../componentes-nuevoOrientado/InputLabel";
 import Select from "react-select";
-import { UploadImg } from "./UploadImg";
 // CSS
 import '../call-students.css';
+import img from '../img/orientadoDefault-removebg-preview.png'
+import './upload.css'
 
 function FormOrientado() {
 
-  const url = "http://localhost:8000/admin/create";
+  /* const url = "http://localhost:8000/admin/create"; */
 
   // ESTADOS DEL FORMULARIO DE SUS RESPECTIVOS INPUT
   const [name, setName] = useState("");
   const [lastname, setLastname] = useState("");
   const [email, setEmail] = useState("");
 
-  /* const [photoProfile, setphotoProfile] = useState(); */
+  const [photoProfile, setphotoProfile] = useState("");
   const [program, setProgram] = useState("");
 
   const [phone, setPhone] = useState("");
@@ -51,26 +52,37 @@ function FormOrientado() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  /*  verifyForm(); */ 
-     try {
-      const resp = await axios.post(url, {
+    verifyForm();
+    const formData = new FormData()
+    formData.append('photoProfile', photoProfile)
+    try {
+      const response = await axios({
+        method:"post",
+        url:"http://localhost:8000/admin/create",
+        data:formData,
         name: name,
         password: password,
         lastname: lastname,
         email: email,
         phone: phone,
         program: program,
-       
+        photoProfile: photoProfile.name, 
         dni: dni,
         age: age,
         school: school,
         address: address,
-        why:why, });
-
+        why:why,
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        }
+       }
+       );
+       
+        console.log(response);
       navegate("/orientados/StudentInfo");
     } catch (error) {
-      console.log(error.response);
-    } 
+      console.error(error.response);
+    }
   };
 
   // Opciones del select
@@ -122,6 +134,23 @@ function FormOrientado() {
     }
   };
 
+  /* previsualizacion de img */
+  const [preview, setPreview] = useState();
+    const fileInputRef = useRef();
+
+    useEffect(() => {
+        if (photoProfile) {
+          const reader = new FileReader();
+          reader.onloadend = () => {
+            setPreview(reader.result);
+          };
+          reader.readAsDataURL(photoProfile);
+        } else {
+          setPreview(null);
+        }
+      }, [photoProfile]);
+
+
   return (
     <div className="cotainerForm ml-8 mt-10 mb-10">
       <form
@@ -138,7 +167,43 @@ function FormOrientado() {
           
           {/*  a cada uno de los InputLabel recibe los 4 props  */}
          
-          <UploadImg />
+          {/* previsualizacion img */}
+          <div>
+        {preview ? (
+          <img
+          className="imgProfile"
+            src={preview}
+            style={{ objectFit: "cover" }}
+            onClick={() => {
+              setphotoProfile(null)
+            }}
+            alt='default'
+          />
+        ) : (
+          <button
+          className="btnUpload"
+            onClick={(event) => {
+              event.preventDefault();
+              fileInputRef.current.click();
+            }}
+          >
+           <img src={img} alt='profile' />
+          </button>
+        )}
+            <input
+            style={{ display: "none" }}
+            ref={fileInputRef}
+            type="file"
+            onChange={(event) => {
+                const file = event.target.files[0];
+                if (file && file.type.substring(0, 5) === "image") {
+                  setphotoProfile(file);
+                } else {
+                  setphotoProfile(null);
+                }
+              }}
+            />
+          </div>
 
           <div className=" cajaInputsDatosP flex flex-col w-3/4  md:flex-row md:gap-5 lg:flex-row lg:gap-5  lg:w-4/5">
             <div className=" w-64">
