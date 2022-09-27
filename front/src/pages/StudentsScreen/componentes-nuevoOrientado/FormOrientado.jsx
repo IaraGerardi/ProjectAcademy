@@ -71,12 +71,15 @@ function FormOrientado() {
       age: age,
       school: school,
       address: address,
-      why:why},{
-        headers: {
+      why:why
+    },
+    {
+      headers: {
           'Content-Type': 'multipart/form-data'
-  }})
-  .then((response)=>
-  console.log(response))
+  }
+})
+    .then((response)=>
+    console.log(response))
   };
 
   // Opciones del select
