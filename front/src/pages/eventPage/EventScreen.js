@@ -72,24 +72,28 @@ const optionsTwo  = [
     <div className="container-derecho header-sa">{/*  hijo2 derecho  column */}
       <HeaderInicio propNamePage="Eventos"/>
       
-      <div>
+      <div className='mt-7 ml-10'>
         
         <div>
           <h2 className="text-2xl font-medium text-slate-700">Crear un evento</h2>
-          <h4>Puedes crear un primer encuentro entre Orientadores y Orientados.</h4>
+          <h4 >Puedes crear un primer encuentro entre Orientadores y Orientados.</h4>
 
-          <form className='formEvent'>
+          <form className='mt-10'>
 
             <h2 className="text-2xl font-medium text-slate-700">01. Información sobre el evento</h2>
 
-        <div className='style'>
-            <label className="font-medium text-slate-600">Nombre del evento</label>
+        <div className='flex flex-row'>
+
+          <div className='flex flex-col py-5 '>
+            <label className=" font-medium text-slate-600 mb-2">Nombre del evento</label>
             <input
             className='w-64 h-8 p-2 rounded-lg border'
             type='text'
             placeholder='Ingresar nombre'
             />
+          </div>
 
+          <div className='flex flex-col py-5 mx-5'>
             <label className="font-medium text-slate-600">Orientador participante</label>
             <Select
                 placeholder="Seleccionar orientador"
@@ -99,25 +103,32 @@ const optionsTwo  = [
                 styles={customStyles}//style para react select
                 className="w-64 rounded-lg "
               />
-            
+          </div>  
 
-            <label className="font-medium text-slate-600">Orientado/es participante/s</label>
+          <div className='flex flex-col py-5 '>
+            <label className="font-medium text-slate-600 mb-2">Orientado/es participante/s</label>
             <input
             className='w-64 h-8 p-2 rounded-lg border'
             type='search' 
             placeholder='selecciona orientado/es'
             />
+          </div>
+
         </div>
 
             <h2 className="text-2xl font-medium text-slate-700">02. Días y Horarios disponibles </h2>
-        <div className='style'>   
-            <label className="font-medium text-slate-600">Fecha</label>
+        <div className='flex flex-row'>   
+
+          <div className='flex flex-col'>
+            <label className="font-medium text-slate-600 mb-2">Fecha</label>
             <input
             className='w-64 h-8 p-2 rounded-lg border'
             type='date' 
             placeholder='Ingresar fecha' 
             />
+          </div>
 
+          <div className='flex flex-col mx-5'>
             <label className="font-medium text-slate-600">Horario</label>
             <Select
                 placeholder="Seleccionar horario"
@@ -127,7 +138,9 @@ const optionsTwo  = [
                 styles={customStyles}//style para react select
                 className="w-64 rounded-lg "
               />
+          </div>
 
+          <div className='flex flex-col'>
             <label className="font-medium text-slate-600">Duración</label>
             <Select
                 placeholder="Seleccionar duración"
@@ -137,12 +150,15 @@ const optionsTwo  = [
                 styles={customStyles}//style para react select
                 className="w-64 rounded-lg " 
               />  
-              
+          </div>
+
           </div> 
 
           <h2 className="text-2xl font-medium text-slate-700">03. Detalle </h2>
 
           <div  className="containerInputLabel flex flex-col gap-2">
+
+          <div className='flex flex-col'> 
             <label className="font-medium text-slate-600">
               Comentarios del evento
             </label>
@@ -154,6 +170,8 @@ const optionsTwo  = [
               placeholder="En este espacio vamos a despejar dudas"
               className=" rounded-lg border border-slate-300 w-3/4 lg:w-2/4 placeholder:pl-2"
             />
+          </div> 
+
           </div>
 
 
