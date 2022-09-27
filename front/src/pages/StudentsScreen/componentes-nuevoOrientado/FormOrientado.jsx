@@ -75,6 +75,8 @@ function FormOrientado() {
         headers: {
           'Content-Type': 'multipart/form-data'
   }})
+  .then((response)=>
+  console.log(response))
   };
 
   // Opciones del select

@@ -18,9 +18,7 @@ const getAllOrientados = async (req, res) => {
 const createOrientado = async (req, res) => {
     const { name, lastname, email, phone, program} = req.body;
     const { dni, age, school, address, why } = req.body;
-    const passwordHash = await bcryptjs.hash(req.body.password, 10)
     try {
-        console.log("asd2")
         const user = await ModelOrientado.create({
             name: name, //Cuando el nombre de la propiedad es la misma no es necesario poner name: name.
             lastname: lastname,
@@ -33,10 +31,10 @@ const createOrientado = async (req, res) => {
             address: address,
             why: why,
             dni: dni,
-            password: passwordHash
+            password: await bcryptjs.hash(req.body.password, 10)
         });
-        console.log("create hecho correctamente")
-        res.json({user, passwordHash})
+
+        res.json({id: user.id})
     } catch (error) {
         console.log(error)
         res.json({ message: error.message })
