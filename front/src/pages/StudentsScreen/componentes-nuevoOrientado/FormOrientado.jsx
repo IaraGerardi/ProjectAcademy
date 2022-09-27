@@ -121,9 +121,8 @@ function FormOrientado() {
   // Funcion para darle un formato al nombre y apellido
 
   const handleNameChange = (e) => {
-    let value = e.target.value;
-    let valueLowerCase = value.toLowerCase();
-    let arrVar = valueLowerCase.split(" ");
+    let value = e.target.value.toLowerCase();
+    let arrVar = value.split(" ");
 
     for (let i = 0; i < arrVar.length; i++) {
       arrVar[i] = arrVar[i].charAt(0).toUpperCase() + arrVar[i].slice(1);
