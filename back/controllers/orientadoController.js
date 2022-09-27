@@ -18,13 +18,7 @@ const getAllOrientados = async (req, res) => {
 const createOrientado = async (req, res) => {
     const { name, lastname, email, phone, program} = req.body;
     const { dni, age, school, address, why } = req.body;
-    console.log(req.body.photoProfile)
     const passwordHash = await bcryptjs.hash(req.body.password, 10)
-    console.log('hola ', req.body)
-    console.log(name)
-    console.log(lastname)
-    console.log(`este es req.file: ${req.file}`)
-    console.log(passwordHash)
     try {
         console.log("asd2")
         const user = await ModelOrientado.create({
