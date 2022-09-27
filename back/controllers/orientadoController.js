@@ -1,4 +1,4 @@
-bcrypt = require('bcryptjs');
+const bcryptjs = require('bcryptjs');
 const { ModelOrientado, ModelOrientador } = require("../database/associations");
 /* llama a modelo orientado desde associations 
 porque son los ultimos cambios que recibe, 
@@ -16,29 +16,35 @@ const getAllOrientados = async (req, res) => {
 }
 
 const createOrientado = async (req, res) => {
-    const { name, lastname, email, phone, program, password} = req.body;
+    const { name, lastname, email, phone, program} = req.body;
     const { dni, age, school, address, why } = req.body;
-    const passwordHash = await bcrypt.hash(password, 10)
-    
+    console.log(req.body.photoProfile)
+    const passwordHash = await bcryptjs.hash(req.body.password, 10)
+    console.log('hola ', req.body)
+    console.log(name)
+    console.log(lastname)
+    console.log(`este es req.file: ${req.file}`)
+    console.log(passwordHash)
     try {
+        console.log("asd2")
         const user = await ModelOrientado.create({
-            name, //Cuando el nombre de la propiedad es la misma no es necesario poner name: name.
-            lastname,
-            email,
-            program,
+            name: name, //Cuando el nombre de la propiedad es la misma no es necesario poner name: name.
+            lastname: lastname,
+            email: email,
+            program: program,
             photoProfile: req.file ? req.file.filename : null,
-
-            phone,
-            age,
-            school,
-            address,
-            why,
-
-            dni,
+            phone: phone,
+            age: age,
+            school: school,
+            address: address,
+            why: why,
+            dni: dni,
             password: passwordHash
         });
+        console.log("create hecho correctamente")
         res.json({user, passwordHash})
     } catch (error) {
+        console.log(error)
         res.json({ message: error.message })
     }
 }
