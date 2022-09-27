@@ -11,8 +11,20 @@
     border-radius: 8px;
 }
 
+.mostrar-alert {
+    display: flex;
+    z-index: 11;
+  
+  }
 
+.ocultar-alert{
+    display: none;
+}
 
 .msg-alert{
     padding-right: 200px;
+}
+
+.iconDelete-alert{
+    cursor: pointer;
 }
