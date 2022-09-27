@@ -6,24 +6,15 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import Select from "react-select";
-import Boton from "./components/boton";
-
-
-
 
 function Assign() {
     const [orientado, setOrientado] = useState([]);
     const [orientadores, setOrientadores] = useState([]);
-    const Params = useParams();
-    const idParams = Params.id; //Tiene que tener el mismo nombre que en la ruta  en este caso"id"
+    const [valorOrientador, setValorOrientador] = useState();
     let { id } = useParams();
 
-    const putUri = `http://localhost:8000/admin/orientados/${id}/orientadorToOrientado`;
+    const URI = `http://localhost:8000/admin/orientados/${id}/orientadorToOrientado`;
     /*Hay que enviar los datos a esa URL*/
-
-    const [orientadorId, setOrientadoId] = useState()
-
-
 
     useEffect(() => {
         const getOrientados = async () => {
@@ -52,45 +43,31 @@ function Assign() {
         getOrientadores();
     }, []);
 
-
-    const [valorOrientador, setValorOrientador] = useState();
+    // Opciones para el select
+    const options = orientadores.map(orientador => ({
+        label: `${orientador.name} ${orientador.lastname}`,
+        value: orientador.id, name: "orientador", id: "orientador"
+    })
+    )
 
     /*Captura el valor (abajo le paso el valor del ID)*/
     const handleSelectChange = ({ value }) => {
-        console.log(value)
         setValorOrientador(value);
     }
 
     const handleSubmit = async (e) => {
-        e.preventDefault()
-        console.log(`ID del orientador capturado ${valorOrientador}`)
-        try {
-            console.log(valorOrientador)
-            const res = await axios(putUri, {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'multipart/form-data',
-                },
-                data: {
-                    'OrientadoreId': valorOrientador
-                }
-            }); //"orientador:" es el req.body que tiene los datos y "orientadorId" son los datos
-            console.log(valorOrientador)
-            console.log(res.data)  
-        } catch (error) {
-            console.log(error)
-        }
-
-
+        e.preventDefault();
+        await axios.put(URI, { orientador: valorOrientador })
+            .then((response) => {
+                console.log(response.data)
+            })
     }
-
-
-
 
     const selectOrientado = orientado.map((orientado) => { /*Recorre la api y retorna la card del orientado*/
         const orientadoCall = orientado
-        if (orientadoCall.id == idParams) { /*Trae al orientado por el id*/
-            //NO PONER TRIPLE IGUAL "=" PORQUE SE ROMPE
+        /* Rompia porque orientado.id es un numero y los datos que trae useParams son strings, 
+        parsee el id para poder poner que sea exactamente igual y que no salga un warning*/
+        if (orientadoCall.id === parseInt(id)) { //NO PONER TRIPLE IGUAL "=" PORQUE SE ROMPE 
             return (
                 <div key={orientadoCall.id} className="cont-student">
 
@@ -205,16 +182,19 @@ function Assign() {
                             {/*Input selector*/}
 
                             < form onSubmit={handleSubmit} >
+                                {/* Al select le paso como opciones un array llamado options que declaro afuera del return,
+                                tiene una funcion onChange que cambia valorOrientador, y en base a ese estado recorre options
+                                y define como valor el indice de options en el que la propiedad value coincida con el valor actual
+                                del estado valorOrientador*/}
                                 <Select
+                                    Name="orientador"
+                                    options={options}
                                     inputId="orientador"
-                                    Name="OrientadoreId"
-                                    className="selector-teacher"
-                                    defaultValue={{ label: "Seleccionar Orientador", value: "defaul" }}
-                                    options={orientadores.map(orientador => ({ label: `${orientador.name} ${orientador.lastname}`, value: orientador.id, name: "orientador", id: "orientador" })
-                                    )}
                                     onChange={handleSelectChange}
-                                // onChange={(e)=> setOrientadoId(e.target.value)}
-                                />
+                                    placeholder="Select Option" className="selector-teacher"
+                                    // styles={customStyles}
+                                    value={options.filter((obj) => obj.value === valorOrientador)}
+                                    defaultValue={{ label: "Seleccionar Orientador", value: "default" }} />
 
                                 <ul>
                                     {/*LLama a la card del orientador y le pasa el valor del id -1*/}
