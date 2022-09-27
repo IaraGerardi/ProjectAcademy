@@ -17,7 +17,7 @@ import Delete from "../img/delete.svg"
 
 function FormOrientado() {
 
-  /* const url = "http://localhost:8000/admin/create"; */
+   const URI = "http://localhost:8000/admin/create"; 
 
   // ESTADOS DEL FORMULARIO DE SUS RESPECTIVOS INPUT
   const [name, setName] = useState("");
@@ -59,36 +59,24 @@ function FormOrientado() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     verifyForm();
-    const formData = new FormData()
+    const formData = new FormData() 
     formData.append('photoProfile', photoProfile)
-    try {
-      const response = await axios({
-        method: "post",
-        url: "http://localhost:8000/admin/create",
-        data: formData,
-        name: name,
-        password: password,
-        lastname: lastname,
-        email: email,
-        phone: phone,
-        program: program,
-        photoProfile: photoProfile.name,
-        dni: dni,
-        age: age,
-        school: school,
-        address: address,
-        why: why,
+    await axios.post(URI, {
+      name: name,
+      password: password,
+      lastname: lastname,
+      email: email,
+      phone: phone,
+      program: program,
+      photoProfile: photoProfile, 
+      dni: dni,
+      age: age,
+      school: school,
+      address: address,
+      why:why},{
         headers: {
-          'Content-Type': 'multipart/form-data',
-        }
-      }
-      );
-
-      console.log(response);
-      navegate("/orientados/StudentInfo");
-    } catch (error) {
-      console.error(error.response);
-    }
+          'Content-Type': 'multipart/form-data'
+  }})
   };
 
   // Opciones del select
