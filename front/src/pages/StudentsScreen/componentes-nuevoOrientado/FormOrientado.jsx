@@ -10,6 +10,10 @@ import Select from "react-select";
 import '../call-students.css';
 import img from '../img/orientadoDefault-removebg-preview.png'
 import './upload.css'
+import "./alert.css"
+// SVG
+import Affirmation from "../img/affirmation.svg"
+import Delete from "../img/delete.svg"
 
 function FormOrientado() {
 
@@ -27,7 +31,7 @@ function FormOrientado() {
   const [age, setAge] = useState("");
   const [school, setSchool] = useState("");
   const [address, setAddress] = useState("");
-  const [why,setWhy]=useState("");
+  const [why, setWhy] = useState("");
   const [dni, setDni] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("")
@@ -57,28 +61,28 @@ function FormOrientado() {
     formData.append('photoProfile', photoProfile)
     try {
       const response = await axios({
-        method:"post",
-        url:"http://localhost:8000/admin/create",
-        data:formData,
+        method: "post",
+        url: "http://localhost:8000/admin/create",
+        data: formData,
         name: name,
         password: password,
         lastname: lastname,
         email: email,
         phone: phone,
         program: program,
-        photoProfile: photoProfile.name, 
+        photoProfile: photoProfile.name,
         dni: dni,
         age: age,
         school: school,
         address: address,
-        why:why,
+        why: why,
         headers: {
           'Content-Type': 'multipart/form-data',
         }
-       }
-       );
-       
-        console.log(response);
+      }
+      );
+
+      console.log(response);
       navegate("/orientados/StudentInfo");
     } catch (error) {
       console.error(error.response);
@@ -94,23 +98,23 @@ function FormOrientado() {
   ];
   //estilos react-select
   const customStyles = {
-    control: base=> ({
+    control: base => ({
       ...base,
-      borderRadius:  "8px",
+      borderRadius: "8px",
       borderColor: '#cbd5e1',
       fontSize: "15px",
       height: 32,
-    minHeight: 32,
-    marginTop: '8px',
-        })
-    }
+      minHeight: 32,
+      marginTop: '8px',
+    })
+  }
 
 
   // handle onChange event of the dropdown
   const handleChange = (e) => {
     setProgram(e.value);
   };
-  const handleCancelForm=(e)=>{
+  const handleCancelForm = (e) => {
     navegate("/orientados/newUsers");
   }
 
@@ -129,26 +133,26 @@ function FormOrientado() {
 
     if (e.target.name === "name") {
       setName(nameVar)
-    } else if(e.target.name === "lastname"){
+    } else if (e.target.name === "lastname") {
       setLastname(nameVar)
     }
   };
 
   /* previsualizacion de img */
   const [preview, setPreview] = useState();
-    const fileInputRef = useRef();
+  const fileInputRef = useRef();
 
-    useEffect(() => {
-        if (photoProfile) {
-          const reader = new FileReader();
-          reader.onloadend = () => {
-            setPreview(reader.result);
-          };
-          reader.readAsDataURL(photoProfile);
-        } else {
-          setPreview(null);
-        }
-      }, [photoProfile]);
+  useEffect(() => {
+    if (photoProfile) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setPreview(reader.result);
+      };
+      reader.readAsDataURL(photoProfile);
+    } else {
+      setPreview(null);
+    }
+  }, [photoProfile]);
 
 
   return (
@@ -159,42 +163,42 @@ function FormOrientado() {
         onSubmit={handleSubmit}
         encType="multipart/form-data"
       >
-     <h2 className="text-2xl font-medium text-slate-700">01.Informacion básica 1</h2>
+        <h2 className="text-2xl font-medium text-slate-700">01.Informacion básica 1</h2>
         {/* abre formulario de alta de oreintado , tiene 4 divs hijos */}
         <div className="container-basicInfo flex  flex-col lg:flex-row  gap-12 ">
 
           {/* div1 info basica */}
-          
+
           {/*  a cada uno de los InputLabel recibe los 4 props  */}
-         
+
           {/* previsualizacion img */}
           <div>
-        {preview ? (
-          <img
-          className="imgProfile"
-            src={preview}
-            style={{ objectFit: "cover" }}
-            onClick={() => {
-              setphotoProfile(null)
-            }}
-            alt='default'
-          />
-        ) : (
-          <button
-          className="btnUpload"
-            onClick={(event) => {
-              event.preventDefault();
-              fileInputRef.current.click();
-            }}
-          >
-           <img src={img} alt='profile' />
-          </button>
-        )}
+            {preview ? (
+              <img
+                className="imgProfile"
+                src={preview}
+                style={{ objectFit: "cover" }}
+                onClick={() => {
+                  setphotoProfile(null)
+                }}
+                alt='default'
+              />
+            ) : (
+              <button
+                className="btnUpload"
+                onClick={(event) => {
+                  event.preventDefault();
+                  fileInputRef.current.click();
+                }}
+              >
+                <img src={img} alt='profile' />
+              </button>
+            )}
             <input
-            style={{ display: "none" }}
-            ref={fileInputRef}
-            type="file"
-            onChange={(event) => {
+              style={{ display: "none" }}
+              ref={fileInputRef}
+              type="file"
+              onChange={(event) => {
                 const file = event.target.files[0];
                 if (file && file.type.substring(0, 5) === "image") {
                   setphotoProfile(file);
@@ -207,55 +211,55 @@ function FormOrientado() {
 
           <div className=" cajaInputsDatosP flex flex-col w-3/4  md:flex-row md:gap-5 lg:flex-row lg:gap-5  lg:w-4/5">
             <div className=" w-64">
-            <InputLabel
-              labelName="Nombre"
-              inputType="text"
-              propInputName="name"
-              placeholderName="Ingresar nombre"
-              propInputValue={name}
-              propsOnchange={handleNameChange}
-              verifyInput={verifyMessages.name ? verifyMessages.name :
-                // verifyMessages.name === true ? backMessages.name : 
-                null}
-            />
-            <InputLabel
-              labelName="Apellido"
-              inputType="text"
-              propInputName="lastname"
-              placeholderName="Ingresar Apellido"
-              propInputValue={lastname}
-              propsOnchange={handleNameChange}
-              verifyInput={verifyMessages.lastname ? verifyMessages.lastname :
-                // verifyMessages.lastname === true ? backMessages.lastname : 
-                null}
-            />
-           </div>
-            <div className=" w-64">
-            <InputLabel
-              labelName="Email"
-              inputType="email"
-              propInputName="email"
-              placeholderName="Ingresar email"
-              propInputValue={email}
-              propsOnchange={(e) => setEmail(e.target.value)}
-              verifyInput={verifyMessages.email ? verifyMessages.email :
-                // verifyMessages.email === true ? backMessages.email : 
-                null}
-            />
-            {/*------ select input ------------- */}
-            <div className=" h-16 ">
-              <label htmlFor="" className="font-medium text-slate-600">
-                Programa
-              </label>
-              <Select
-                placeholder="Select Option"
-                value={options.filter((obj) => obj.value === program)} // set selected value
-                options={options} // set list of the data
-                onChange={handleChange} // assign onChange function
-                styles={customStyles}//style para react select
-                className="w-64 rounded-lg "
+              <InputLabel
+                labelName="Nombre"
+                inputType="text"
+                propInputName="name"
+                placeholderName="Ingresar nombre"
+                propInputValue={name}
+                propsOnchange={handleNameChange}
+                verifyInput={verifyMessages.name ? verifyMessages.name :
+                  // verifyMessages.name === true ? backMessages.name : 
+                  null}
+              />
+              <InputLabel
+                labelName="Apellido"
+                inputType="text"
+                propInputName="lastname"
+                placeholderName="Ingresar Apellido"
+                propInputValue={lastname}
+                propsOnchange={handleNameChange}
+                verifyInput={verifyMessages.lastname ? verifyMessages.lastname :
+                  // verifyMessages.lastname === true ? backMessages.lastname : 
+                  null}
               />
             </div>
+            <div className=" w-64">
+              <InputLabel
+                labelName="Email"
+                inputType="email"
+                propInputName="email"
+                placeholderName="Ingresar email"
+                propInputValue={email}
+                propsOnchange={(e) => setEmail(e.target.value)}
+                verifyInput={verifyMessages.email ? verifyMessages.email :
+                  // verifyMessages.email === true ? backMessages.email : 
+                  null}
+              />
+              {/*------ select input ------------- */}
+              <div className=" h-16 ">
+                <label htmlFor="" className="font-medium text-slate-600">
+                  Programa
+                </label>
+                <Select
+                  placeholder="Select Option"
+                  value={options.filter((obj) => obj.value === program)} // set selected value
+                  options={options} // set list of the data
+                  onChange={handleChange} // assign onChange function
+                  styles={customStyles}//style para react select
+                  className="w-64 rounded-lg "
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -266,53 +270,53 @@ function FormOrientado() {
           {/*  a cada uno de los InputLabel recibe los 4 props  */}
           <div className=" cajaInputsDatosP  flex  flex-col md:flex-row md:gap-5 lg:flex-row lg:gap-5 h-62">
             <div>
-            <InputLabel
-              labelName="Telefono"
-              inputType="phone"
-              propInputName="tel"
-              placeholderName="Ingresar telefono"
-              propInputValue={phone}
-              propsOnchange={(e) => setPhone(e.target.value)}
-              verifyInput={verifyMessages.phone ? verifyMessages.phone :
-                // verifyMessages.phone === true ? backMessages.phone : 
-                null}
-            />
-            <InputLabel
-              labelName="Colegio"
-              inputType="text"
-              propInputName="school"
-              placeholderName="Ingresar colegio"
-              propInputValue={school}
-              propsOnchange={(e) => setSchool(e.target.value)}
-              verifyInput={verifyMessages.school ? verifyMessages.school :
-                // verifyMessages.school === true ? backMessages.school : 
-                null}
-            />
+              <InputLabel
+                labelName="Telefono"
+                inputType="phone"
+                propInputName="tel"
+                placeholderName="Ingresar telefono"
+                propInputValue={phone}
+                propsOnchange={(e) => setPhone(e.target.value)}
+                verifyInput={verifyMessages.phone ? verifyMessages.phone :
+                  // verifyMessages.phone === true ? backMessages.phone : 
+                  null}
+              />
+              <InputLabel
+                labelName="Colegio"
+                inputType="text"
+                propInputName="school"
+                placeholderName="Ingresar colegio"
+                propInputValue={school}
+                propsOnchange={(e) => setSchool(e.target.value)}
+                verifyInput={verifyMessages.school ? verifyMessages.school :
+                  // verifyMessages.school === true ? backMessages.school : 
+                  null}
+              />
             </div>
             <div>
-            <InputLabel
-              labelName="Edad"
-              inputType="date"
-              propInputName="age"
-              placeholderName="Ingresar edad"
-              propInputValue={age}
-              propsOnchange={(e) => setAge(e.target.value)}
-              verifyInput={verifyMessages.age ? verifyMessages.age :
-                // verifyMessages.age === true ? backMessages.age : 
-                null}
-            />
+              <InputLabel
+                labelName="Edad"
+                inputType="date"
+                propInputName="age"
+                placeholderName="Ingresar edad"
+                propInputValue={age}
+                propsOnchange={(e) => setAge(e.target.value)}
+                verifyInput={verifyMessages.age ? verifyMessages.age :
+                  // verifyMessages.age === true ? backMessages.age : 
+                  null}
+              />
 
-            <InputLabel
-              labelName="Domicilio"
-              inputType="text"
-              propInputName="address"
-              placeholderName="Ingresar domicilio"
-              propInputValue={address}
-              propsOnchange={(e) => setAddress(e.target.value)}
-              verifyInput={verifyMessages.address ? verifyMessages.address :
-                // verifyMessages.address === true ? backMessages.address : 
-                null}
-            />
+              <InputLabel
+                labelName="Domicilio"
+                inputType="text"
+                propInputName="address"
+                placeholderName="Ingresar domicilio"
+                propInputValue={address}
+                propsOnchange={(e) => setAddress(e.target.value)}
+                verifyInput={verifyMessages.address ? verifyMessages.address :
+                  // verifyMessages.address === true ? backMessages.address : 
+                  null}
+              />
             </div>
           </div>
           <div className="containerInputLabel flex flex-col gap-2">
@@ -334,7 +338,7 @@ function FormOrientado() {
           {/* div3 crear usuario y contraseña */}
           <h2 className="text-2xl font-medium text-slate-700">03.Crear usuario y contraseña</h2>
           {/*  a cada uno de los InputLabel recibe los 4 props  */}
-      
+
           <InputLabel
             labelName="Usuario"
             inputType="text"
@@ -368,7 +372,7 @@ function FormOrientado() {
               // verifyMessages.confirmPassword === true ? backMessages.confirmPassword : 
               null}
           />
-          
+
         </div>
         <div className="mt-10">
           {/* div4 botones form */}
@@ -377,6 +381,15 @@ function FormOrientado() {
           </button>
           <button className=" w-32 text-sm underline" onClick={handleCancelForm}>Cancelar ingreso</button>
         </div>
+
+
+        <div className="alert">
+
+          <img src={Affirmation} alt="icon de afirmacion" />
+          <p className="msg-alert">El Orientado fué ingresado con éxito.</p>
+          <img src={Delete} alt="icon de eliminar" />
+        </div>
+
       </form>
     </div>
   );

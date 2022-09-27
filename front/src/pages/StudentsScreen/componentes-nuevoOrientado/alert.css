@@ -1,0 +1,18 @@
+.alert {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #2E384D;
+    color: white;
+    font-weight: 500;
+    font-size: 16px;
+    width: 61%;
+    height: 56px;
+    border-radius: 8px;
+}
+
+
+
+.msg-alert{
+    padding-right: 200px;
+}
