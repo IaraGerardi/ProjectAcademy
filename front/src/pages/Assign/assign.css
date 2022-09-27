@@ -2,7 +2,7 @@
     font-size: 1.6em;
     color: #2E384D;
     font-family: sans-serif 'Rubik';
-    font-weight: 600;
+    font-weight: bold;
     padding-bottom: 20px;
 }
 
@@ -110,9 +110,9 @@ hr {
 }
 
 
-
 .btn-asignar {
     margin-top: 40px;
+    margin-bottom: 20px;
     width: 200px;
     height: 40px;
     border-radius: 8px;
@@ -121,6 +121,7 @@ hr {
     font-weight: 500;
     font-size: 16px;
     transition: 500ms;
+
 }
 
 .btn-asignar:hover {

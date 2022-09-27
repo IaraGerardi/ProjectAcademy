@@ -11,8 +11,28 @@
     border-radius: 8px;
 }
 
+.mostrar-alert {
+    display: flex;
+    z-index: 11;
+  
+  }
 
+.ocultar-alert{
+    display: none;
+}
 
 .msg-alert{
     padding-right: 200px;
+    padding-bottom: 0px;
+    font-family: sans-serif;
+font-weight: bold;
+}
+
+.msg-alert-orientador{
+    font-size: 12px;
+    font-family: sans-serif;
+}
+
+.iconDelete-alert{
+    cursor: pointer;
 }

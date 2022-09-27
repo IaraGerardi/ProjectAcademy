@@ -35,6 +35,8 @@ function FormOrientado() {
   const [dni, setDni] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("")
+  
+  const [active, setActive] = useState(false);
 
   const navegate = useNavigate();
 
@@ -368,18 +370,19 @@ function FormOrientado() {
         </div>
         <div className="mt-10">
           {/* div4 botones form */}
-          <button className=" w-44 h-10 bg-celesteValtech rounded-lg text-base text-white font-medium " type="submit">
+          <button className=" w-44 h-10 bg-celesteValtech rounded-lg text-base text-white font-medium " onClick={() => setActive(!active)} type="submit">
             Ingresar Orientado
           </button>
           <button className=" w-32 text-sm underline" onClick={handleCancelForm}>Cancelar ingreso</button>
         </div>
 
 
-        <div className="alert">
-
+        <div className={`alert ${active ? 'mostrar-alert' : 'ocultar-alert'}`}>
           <img src={Affirmation} alt="icon de afirmacion" />
           <p className="msg-alert">El Orientado fué ingresado con éxito.</p>
-          <img src={Delete} alt="icon de eliminar" />
+          <img className="iconDelete-alert" src={Delete} onClick={() => setActive(!active)} alt="icon de eliminar" />
+
+
         </div>
 
       </form>

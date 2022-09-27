@@ -6,11 +6,14 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import Select from "react-select";
+import Affirmation from "../StudentsScreen/img/affirmation.svg"
+import Delete from "../StudentsScreen/img/delete.svg"
 
 function Assign() {
     const [orientado, setOrientado] = useState([]);
     const [orientadores, setOrientadores] = useState([]);
     const [valorOrientador, setValorOrientador] = useState();
+    const [active, setActive] = useState(false);
     let { id } = useParams();
 
     const URI = `http://localhost:8000/admin/orientados/${id}/orientadorToOrientado`;
@@ -171,7 +174,7 @@ function Assign() {
 
                         <div className="p-10">
 
-                            <p className="text-referent">Asignación de Orientador Referente</p>
+                            <p className="text-referent">Asignación de Orientado a un Orientador Referente</p>
 
                             {selectOrientado} {/*Llama a la card del orientado*/}
 
@@ -194,7 +197,8 @@ function Assign() {
                                     placeholder="Select Option" className="selector-teacher"
                                     // styles={customStyles}
                                     value={options.filter((obj) => obj.value === valorOrientador)}
-                                    defaultValue={{ label: "Seleccionar Orientador", value: "default" }} />
+                                    defaultValue={{ label: "Seleccionar Orientador", value: "default" }}
+                                />
 
                                 <ul>
                                     {/*LLama a la card del orientador y le pasa el valor del id -1*/}
@@ -204,11 +208,21 @@ function Assign() {
                                 {/*Botón reutilizable para enviar y modificar orientador*/}
 
                                 < input
+                                    onClick={() => setActive(!active)}
                                     type="submit"
                                     value="Asignar orientador/a"
                                     className="btn-asignar"
                                 />
 
+                                <div className={`alert ${active ? 'mostrar-alert' : 'ocultar-alert'}`}>
+                                    <img src={Affirmation} alt="icon de afirmacion" />
+                                    <div>
+                                        <p className="msg-alert">El Orientado fué asignado a su referente.</p>
+
+                                        <span className="msg-alert-orientador">Recibirá una notificación para que contacte al Orientador.</span>
+                                    </div>
+                                    <img className="iconDelete-alert" src={Delete} onClick={() => setActive(!active)} alt="icon de eliminar" />
+                                </div>
 
 
                                 {/* <Boton
