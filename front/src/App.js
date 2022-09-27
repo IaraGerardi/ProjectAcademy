@@ -9,7 +9,7 @@ import AdminPage from './pages/adminHome/AdminPage';
 import LogIn from './pages/Login/LogInScreen';
 import {Error} from './pages/Home/components/error/Error'
 import ProfileAdminScreen from './pages/ProfileAdmin/ProfileAdminScreen';
-import { EventScreen } from './pages/Events/EventScreen';
+import { EventScreen } from './pages/eventPage/EventScreen';
 import FormOrientado from './pages/StudentsScreen/componentes-nuevoOrientado/FormOrientado';
 import NewUsers from './pages/StudentsScreen/components/NewUsers';
 import StudentInfo from './pages/StudentsScreen/componentes-nuevoOrientado/StudentInfo';
