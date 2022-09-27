@@ -17,7 +17,7 @@ import Delete from "../img/delete.svg"
 
 function FormOrientado() {
 
-   const URI = "http://localhost:8000/admin/create"; 
+  const URI = "http://localhost:8000/admin/create";
 
   // ESTADOS DEL FORMULARIO DE SUS RESPECTIVOS INPUT
   const [name, setName] = useState("");
@@ -35,7 +35,7 @@ function FormOrientado() {
   const [dni, setDni] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("")
-  
+
   const [active, setActive] = useState(false);
 
   const navegate = useNavigate();
@@ -59,7 +59,7 @@ function FormOrientado() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     verifyForm();
-    const formData = new FormData() 
+    const formData = new FormData()
     formData.append('photoProfile', photoProfile)
     await axios.post(URI, {
       name: name,
@@ -68,20 +68,28 @@ function FormOrientado() {
       email: email,
       phone: phone,
       program: program,
-      photoProfile: photoProfile, 
+      photoProfile: photoProfile,
       dni: dni,
       age: age,
       school: school,
       address: address,
-      why:why
+      why: why
     },
-    {
-      headers: {
+      {
+        headers: {
           'Content-Type': 'multipart/form-data'
-  }
-})
-    .then((response)=>
-    console.log(response))
+        }
+      })
+      .then((response) => {
+        if (response.status == 200) {
+          setActive(!active)
+          setTimeout(() => {
+            navegate("/orientados/newUsers")
+          }, "2000")
+        } else {
+
+        }
+      })
   };
 
   // Opciones del select
@@ -381,8 +389,6 @@ function FormOrientado() {
           <img src={Affirmation} alt="icon de afirmacion" />
           <p className="msg-alert">El Orientado fué ingresado con éxito.</p>
           <img className="iconDelete-alert" src={Delete} onClick={() => setActive(!active)} alt="icon de eliminar" />
-
-
         </div>
 
       </form>
