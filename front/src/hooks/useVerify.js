@@ -41,23 +41,25 @@ function useVerify(formValues) {
                                         ...prevVerifyMessages,
                                         [id]: "El campo no puede tener numeros",
                                     })) :
-                                        payload.cantHaveSpecialChar && (/[!@#\$%\^\&*\(\)\/\\+=._-]/g).test(value) ? setVerifyMessages(prevVerifyMessages => ({
-                                            ...prevVerifyMessages,
-                                            [id]: "El campo no puede tener simbolos",
-                                        })) :
-                                            // Comento la verificacion ya que no esta en uso
-                                            // type === "age" && (value < 0 || value > 100) ? setVerifyMessages(prevVerifyMessages => ({
-                                            //     ...prevVerifyMessages,
-                                            //     [id]: "Ingrese una edad valida",
-                                            // })) :
-                                            type === "confirmPassword" && value !== payload.firstPass ? setVerifyMessages(prevVerifyMessages => ({
+                                        payload.cantHaveSpecialChar && (/[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/).test(value) ?
+                                            setVerifyMessages(prevVerifyMessages => ({
                                                 ...prevVerifyMessages,
-                                                [id]: "La contraseña no coincide",
+                                                [id]: "El campo no puede tener simbolos",
                                             })) :
-                                                setVerifyMessages(prevVerifyMessages => ({
-                                                    ...prevVerifyMessages,
-                                                    [id]: true,
-                                                }))
+                                            // Comento la verificacion ya que no esta en uso
+                                            /* type === "birthDate" && (age < 0 || age > 100) ? setVerifyMessages(prevVerifyMessages => ({
+                                                ...prevVerifyMessages,
+                                                [id]: "Ingrese una edad valida",
+                                            })) : */
+                                                type === "confirmPassword" && value !== payload.firstPass ?
+                                                    setVerifyMessages(prevVerifyMessages => ({
+                                                        ...prevVerifyMessages,
+                                                        [id]: "La contraseña no coincide",
+                                                    })) :
+                                                    setVerifyMessages(prevVerifyMessages => ({
+                                                        ...prevVerifyMessages,
+                                                        [id]: true,
+                                                    }))
     }
 
     const verifyForm = () => {
