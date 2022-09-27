@@ -2,7 +2,7 @@
     font-size: 1.6em;
     color: #2E384D;
     font-family: sans-serif 'Rubik';
-    font-weight: 600;
+    font-weight: bold;
     padding-bottom: 20px;
 }
 
@@ -108,7 +108,6 @@ hr {
     margin-bottom: 15px;
     border-radius: px;
 }
-
 
 
 .btn-asignar {

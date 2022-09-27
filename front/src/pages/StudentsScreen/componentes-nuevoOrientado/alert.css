@@ -23,6 +23,14 @@
 
 .msg-alert{
     padding-right: 200px;
+    padding-bottom: 0px;
+    font-family: sans-serif;
+font-weight: bold;
+}
+
+.msg-alert-orientador{
+    font-size: 12px;
+    font-family: sans-serif;
 }
 
 .iconDelete-alert{

@@ -174,7 +174,7 @@ function Assign() {
 
                         <div className="p-10">
 
-                            <p className="text-referent">Asignación de Orientador Referente</p>
+                            <p className="text-referent">Asignación de Orientado a un Orientador Referente</p>
 
                             {selectOrientado} {/*Llama a la card del orientado*/}
 
@@ -216,7 +216,11 @@ function Assign() {
 
                                 <div className={`alert ${active ? 'mostrar-alert' : 'ocultar-alert'}`}>
                                     <img src={Affirmation} alt="icon de afirmacion" />
-                                    <p className="msg-alert">El Orientado fué ingresado con éxito.</p>
+                                    <div>
+                                        <p className="msg-alert">El Orientado fué asignado a su referente.</p>
+
+                                        <span className="msg-alert-orientador">Recibirá una notificación para que contacte al Orientador.</span>
+                                    </div>
                                     <img className="iconDelete-alert" src={Delete} onClick={() => setActive(!active)} alt="icon de eliminar" />
                                 </div>
 
