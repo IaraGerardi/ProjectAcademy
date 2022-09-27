@@ -1,13 +1,13 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function useVerify(formValues) {
-
+    // min dos caracteres el nombre
     const [verifyMessages, setVerifyMessages] = useState({});
+    const [isVerified, setIsVerified] = useState(false)
+    let result = "";
 
     const verifyInput = (value, payload) => {
         const { id, type } = payload;
-        // console.log(`${id}: ${value}`)
-        // min dos caracteres el nombre
 
         value === null || value === "" ? setVerifyMessages(prevVerifyMessages => ({
             ...prevVerifyMessages,
@@ -29,19 +29,35 @@ function useVerify(formValues) {
                             ...prevVerifyMessages,
                             [id]: "El email tiene un formato incorrecto",
                         })) :
-                        // Comento la verificacion ya que no esta en uso
-                            // type === "age" && (value < 0 || value > 100) ? setVerifyMessages(prevVerifyMessages => ({
-                            //     ...prevVerifyMessages,
-                            //     [id]: "Ingrese una edad valida",
-                            // })) :
-                            type === "confirmPassword" && value !== payload.firstPass ? setVerifyMessages(prevVerifyMessages => ({
+                            payload.mustHaveNumbers && /\d/.test(value) === false ? setVerifyMessages(prevVerifyMessages => ({
                                 ...prevVerifyMessages,
-                                [id]: "La contraseña no coincide",
+                                [id]: "El campo debe tener numeros",
                             })) :
-                                setVerifyMessages(prevVerifyMessages => ({
+                                payload.onlyNumbers && /^\d+$/.test(value) === false ? setVerifyMessages(prevVerifyMessages => ({
                                     ...prevVerifyMessages,
-                                    [id]: true,
-                                }))
+                                    [id]: "El campo debe tener solo numeros",
+                                })) :
+                                    payload.cantHaveNumbers && /\d/.test(value) ? setVerifyMessages(prevVerifyMessages => ({
+                                        ...prevVerifyMessages,
+                                        [id]: "El campo no puede tener numeros",
+                                    })) :
+                                        payload.cantHaveSpecialChar && (/[!@#\$%\^\&*\(\)\/\\+=._-]/g).test(value) ? setVerifyMessages(prevVerifyMessages => ({
+                                            ...prevVerifyMessages,
+                                            [id]: "El campo no puede tener simbolos",
+                                        })) :
+                                            // Comento la verificacion ya que no esta en uso
+                                            // type === "age" && (value < 0 || value > 100) ? setVerifyMessages(prevVerifyMessages => ({
+                                            //     ...prevVerifyMessages,
+                                            //     [id]: "Ingrese una edad valida",
+                                            // })) :
+                                            type === "confirmPassword" && value !== payload.firstPass ? setVerifyMessages(prevVerifyMessages => ({
+                                                ...prevVerifyMessages,
+                                                [id]: "La contraseña no coincide",
+                                            })) :
+                                                setVerifyMessages(prevVerifyMessages => ({
+                                                    ...prevVerifyMessages,
+                                                    [id]: true,
+                                                }))
     }
 
     const verifyForm = () => {
@@ -50,14 +66,16 @@ function useVerify(formValues) {
         }
     }
 
-    // Defino la variable que verifica si el formulario esta verificado o no, podria cambiar isVerified de variable a estado 
-    // para que la verificacion se hiciera adentro de un useEffect
-    const isVerified = Object.values(verifyMessages).every(value => {
-        if (value === true) {
-            return true;
-        }
-        return false;
-    });
+    // Recorro los valores de verifyMessages, si todos son true devuelvo true, si no devuelvo false, y cambio el estado isVerified a ese valor
+    useEffect(() => {
+        Object.values(verifyMessages).every(value => {
+            if (value === true) {
+                return result = true;
+            }
+            return result = false;
+        });
+        setIsVerified(result)
+    }, [verifyForm])
 
     return { verifyForm, verifyMessages, isVerified }
 }
