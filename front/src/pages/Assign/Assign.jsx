@@ -4,7 +4,7 @@ import HeaderInicio from "../sidebar-header/components/HeaderInicio"
 import "./assign.css"
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import Select from "react-select";
 import Affirmation from "../StudentsScreen/img/affirmation.svg"
 import Delete from "../StudentsScreen/img/delete.svg"
@@ -14,7 +14,8 @@ function Assign() {
     const [orientadores, setOrientadores] = useState([]);
     const [valorOrientador, setValorOrientador] = useState();
     const [active, setActive] = useState(false);
-    let { id } = useParams();
+    const { id } = useParams();
+    const navigate = useNavigate();
 
     const URI = `http://localhost:8000/admin/orientados/${id}/orientadorToOrientado`;
     /*Hay que enviar los datos a esa URL*/
@@ -77,7 +78,7 @@ function Assign() {
                     <div className="cont-image-profile">
                         <img
                             className="image-profile-student"
-                            src={require(`../../img-back/orientados/${orientadoCall.photoProfile}`)}
+                            src={require(`../../img-back/orientados/${orientado.photoProfile}`)}
                             alt="Foto perfil orientado"
                         />
                     </div>
@@ -108,7 +109,7 @@ function Assign() {
                             <p>{orientadoCall.phone}</p>
 
                             <span className="text-gray">PROGRAMA</span>
-                            <p>{orientado.program}</p>
+                            <p>{orientado.program !== null ? orientado.program : "Sin definir"}</p>
                         </div>
 
                     </div>
@@ -123,7 +124,7 @@ function Assign() {
 
 
     const selectOrientador = orientadores.map((orientador) => {
-        
+
         /*Recorre la api y retorna la card del orientador*/
         return (<div className="cont-student">
             <div className="cont-image-profile">
@@ -184,55 +185,64 @@ function Assign() {
                             <span>Referente</span>
 
                             {/*Input selector*/}
-
-                            < form onSubmit={handleSubmit} >
-                                {/* Al select le paso como opciones un array llamado options que declaro afuera del return,
+                            {orientado[id - 1]?.OrientadoreId === null ?
+                                < form onSubmit={handleSubmit} >
+                                    {/* Al select le paso como opciones un array llamado options que declaro afuera del return,
                                 tiene una funcion onChange que cambia valorOrientador, y en base a ese estado recorre options
                                 y define como valor el indice de options en el que la propiedad value coincida con el valor actual
                                 del estado valorOrientador*/}
-                                <Select
-                                    Name="orientador"
-                                    options={options}
-                                    inputId="orientador"
-                                    onChange={handleSelectChange}
-                                    placeholder="Select Option" className="selector-teacher"
-                                    // styles={customStyles}
-                                    value={options.filter((obj) => obj.value === valorOrientador)}
-                                    defaultValue={{ label: "Seleccionar Orientador", value: "default" }}
-                                />
+                                    <Select
+                                        Name="orientador"
+                                        options={options}
+                                        inputId="orientador"
+                                        onChange={handleSelectChange}
+                                        placeholder="Select Option" className="selector-teacher"
+                                        // styles={customStyles}
+                                        value={options.filter((obj) => obj.value === valorOrientador)}
+                                        defaultValue={{ label: "Seleccionar Orientador", value: "default" }}
+                                    />
 
-                                <ul>
-                                    {/*LLama a la card del orientador y le pasa el valor del id -1*/}
-                                    {selectOrientador[valorOrientador - 1]}
-                                </ul>
+                                    <ul>
+                                        {/*LLama a la card del orientador y le pasa el valor del id -1*/}
+                                        {selectOrientador[valorOrientador - 1]}
+                                    </ul>
 
-                                {/*Botón reutilizable para enviar y modificar orientador*/}
+                                    {/*Botón reutilizable para enviar y modificar orientador*/}
 
-                                < input
-                                    onClick={() => setActive(!active)}
-                                    type="submit"
-                                    value="Asignar orientador/a"
-                                    className="btn-asignar"
-                                />
+                                    < input
+                                        onClick={() => setActive(!active)}
+                                        type="submit"
+                                        value="Asignar orientador/a"
+                                        className="btn-asignar"
+                                    />
 
-                                <div className={`alert ${active ? 'mostrar-alert' : 'ocultar-alert'}`}>
-                                    <img src={Affirmation} alt="icon de afirmacion" />
-                                    <div>
-                                        <p className="msg-alert">El Orientado fué asignado a su referente.</p>
+                                    <div className={`alert ${active ? 'mostrar-alert' : 'ocultar-alert'}`}>
+                                        <img src={Affirmation} alt="icon de afirmacion" />
+                                        <div>
+                                            <p className="msg-alert">El Orientado fué asignado a su referente.</p>
 
-                                        <span className="msg-alert-orientador">Recibirá una notificación para que contacte al Orientador.</span>
+                                            <span className="msg-alert-orientador">Recibirá una notificación para que contacte al Orientador.</span>
+                                        </div>
+                                        <img className="iconDelete-alert" src={Delete} onClick={() => setActive(!active)} alt="icon de eliminar" />
                                     </div>
-                                    <img className="iconDelete-alert" src={Delete} onClick={() => setActive(!active)} alt="icon de eliminar" />
-                                </div>
 
 
-                                {/* <Boton
+                                    {/* <Boton
                                     Evento=""
                                     ClaseBtn="btn-asignar"
                                     NombreBtn="Asignar orientador/a"
                                 /> */}
 
-                            </form>
+                                </form> :
+                                <>
+                                    <ul> {selectOrientador[orientado[id - 1]?.OrientadoreId]} </ul>
+                                    <input
+                                        readOnly={true}
+                                        value="Ver perfil completo"
+                                        onClick={() => navigate(`/orientados/StudentInfo/${id}`)}
+                                        className=" w-44 h-10 mt-10 p-2 bg-celesteValtech rounded-lg text-base text-white font-medium " />
+                                </>
+                            }
 
                         </div>
 
