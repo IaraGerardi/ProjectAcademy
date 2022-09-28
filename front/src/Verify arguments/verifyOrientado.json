@@ -1,0 +1,75 @@
+[
+    {
+        "id": "name",
+        "type": "text",
+        "minLength": 2,
+        "maxLength": 250,
+        "cantHaveNumbers": true,
+        "cantHaveSpecialChar": true
+    },
+    {
+        "id": "lastname",
+        "type": "lastname",
+        "minLength": 2,
+        "maxLength": 50,
+        "cantHaveNumbers": true,
+        "cantHaveSpecialChar": true
+    },
+    {
+        "id": "email",
+        "type": "email",
+        "noSpaces": true
+    },
+    {
+        "id": "program",
+        "type": "program",
+        "minLength": 4,
+        "maxLength": 50
+    },
+    {
+        "id": "phone",
+        "type": "phone",
+        "minLength": 8,
+        "maxLength": 50,
+        "noSpaces": true,
+        "onlyNumbers": true
+    },
+    {
+        "id": "age",
+        "type": "age"
+    },
+    {
+        "id": "school",
+        "type": "school",
+        "maxLength": 500
+    },
+    {
+        "id": "address",
+        "type": "address",
+        "maxLength": 500
+    },
+    {
+        "id": "why",
+        "type": "text-area",
+        "maxLength": 500
+    },
+    {
+        "id": "dni",
+        "type": "dni",
+        "noSpaces": true,
+        "onlyNumbers": true,
+        "maxLength": 50
+    },
+    {
+        "id": "password",
+        "type": "password",
+        "minLength": 8,
+        "noSpaces": true
+    },
+    {
+        "id": "confirmPassword",
+        "type": "confirmPassword",
+        "minLength": 8,
+        "noSpaces": true
+    }
+]

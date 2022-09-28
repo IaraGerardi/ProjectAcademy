@@ -1,11 +1,13 @@
-// Importaciones de reacr, react router, hooks y axios
+// Importaciones de react, react router, hooks y axios
 import { useRef, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import useVerify from "../../../hooks/useVerify"
+import verifications from "../../../Verify arguments/verifyOrientado.json"
 import axios from "axios";
 // Componentes
 import InputLabel from "../componentes-nuevoOrientado/InputLabel";
 import Select from "react-select";
+import Icon from "../../global-components/Svg-icon";
 // CSS
 import '../call-students.css';
 import img from '../img/orientadoDefault-removebg-preview.png'
@@ -41,20 +43,13 @@ function FormOrientado() {
   const navegate = useNavigate();
 
   // Argumentos para la verificacion del formulario
-  let verificationArgs = [
-    { inputValue: name, payload: { id: "name", type: "text" } },
-    { inputValue: lastname, payload: { id: "lastname", type: "password" } },
-    { inputValue: email, payload: { id: "email", type: "email", noSpaces: true } },
-    { inputValue: program, payload: { id: "program", type: "program" } },
-    { inputValue: phone, payload: { id: "phone", type: "phone" } },
-    { inputValue: age, payload: { id: "age", type: "age" } },
-    { inputValue: school, payload: { id: "school", type: "school" } },
-    { inputValue: address, payload: { id: "address", type: "address" } },
-    { inputValue: dni, payload: { id: "dni", type: "dni", noSpaces: true } },
-    { inputValue: password, payload: { id: "password", tType: "password", noSpaces: true } },
-    { inputValue: confirmPassword, payload: { id: "confirmPassword", type: "confirmPassword", firstPass: password, noSpaces: true } },
+  let formValues = [
+    { inputValue: name }, { inputValue: lastname }, { inputValue: email }, { inputValue: program }, { inputValue: phone },
+    { inputValue: age }, { inputValue: school }, { inputValue: address }, { inputValue: why }, { inputValue: dni },
+    { inputValue: password }, { inputValue: confirmPassword },
   ]
-  let { verifyForm, verifyMessages, isVerified } = useVerify(verificationArgs);
+
+  let { verifyForm, verifyMessages } = useVerify(formValues, verifications);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -329,8 +324,20 @@ function FormOrientado() {
               name="why"
               onChange={(e) => setWhy(e.target.value)}
               placeholder="Escribe un comentario."
-              className=" rounded-lg border border-slate-300 w-3/4 lg:w-2/4 placeholder:pl-2"
+              className={`${verifyMessages.why && verifyMessages.why !== null && verifyMessages.why !== true ?
+                "border-red-600" : "border-slate-300"}
+              rounded-lg border w-3/4 lg:w-2/4 placeholder:pl-2 `}
             />
+            {verifyMessages.why && verifyMessages.why !== null && verifyMessages.why !== true ?
+              <div className="flex ml-2.5">
+                <Icon
+                  classname="w-3.5 h-3.5 m-1.5 fill-red-600"
+                  type="exclamationMark"
+                  width="24" height="24" />
+                <span className="text-red-600">{verifyMessages.why}</span>
+              </div>
+              : null
+            }
           </div>
         </div>
         <div className="container-crateUsernamePassword">
