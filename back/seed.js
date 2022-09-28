@@ -30,7 +30,7 @@ const orientados = [{
   "age": "1984-01-04",
   "school": "Oneill",
   "address": "1077 Northfield Trail",
-  "OrientadoreId": 7
+  "OrientadoreId": 1
 }, {
   "name": "Edythe",
   "password": "aqcoaxC3u",
@@ -328,27 +328,36 @@ const addAll = async () => {
     orientados.forEach((orientados) => ModelOrientado.create(orientados));
     novedades.forEach((novedades) => ModelNovedades.create(novedades));
     admin.forEach((admin) => ModelAdmin.create(admin));
-
+    eventos.forEach((eventos) => ModelEvento.create(eventos));
 
     /* Multiplica Math.random por el numero del parametro(max) y disminuye al numero entero mas cercano */
-    const getRandomInt = (max) => {
+    /* const getRandomInt = (max) => {
       return Math.floor(Math.random() * max);
-    }
+    } */
 
     /* eventos.forEach((eventos) => ModelEvento.create( //Crea el evento agregando orientados al azar
       eventos
       )); */
 
-    let evento = eventos.forEach((eventos) => ModelEvento.create(eventos,{ include: "orientados"}));
+    /* let evento = eventos.forEach((eventos) => ModelEvento.create(eventos[0])); */
 
-    orientados.forEach((orientado) => {
+
+    /* orientados.forEach((orientado) => {
       eventos.forEach((event) => {
         if (orientado.OrientadoreId == event.OrientadoreId) {
-          evento.setorientados([orientado])
-          console.log('*****Hola llegue acá PASO 4*******');
+          evento.addOrientado([orientado,])
+          console.log('*****Hola llegue acá PASO 4*******', orientado);
         }
       })
-    })
+    }) */
+
+    /* const evento = await ModelEvento.create({
+      name: "NombreEvento", date: "2022-10-10", time: "11:45", duration: "00:30", description: "Meet de Prueba", OrientadoreId: 1
+    });
+
+
+
+    await evento.setOrientado(orientados[0]) */
 
   }
   catch (error) {
