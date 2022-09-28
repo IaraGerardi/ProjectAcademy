@@ -188,6 +188,9 @@ export const EventScreen = () => {
 
           </div>
 
+          <button className=" w-44 h-10 bg-celesteValtech rounded-lg text-base text-white font-medium " type="submit">
+            Agendar evento
+          </button>
 
           </form>
         </div>
