@@ -2,38 +2,40 @@ import React from 'react'
 import HeaderInicio from '../sidebar-header/components/HeaderInicio'
 import { Sidebar } from '../sidebar-header/components/Sidebar.js'
 import Select from "react-select";
+import makeAnimated from 'react-select/animated';
 import { useState, useEffect } from "react";
 import axios from 'axios';
 import './event.css'
 
 export const EventScreen = () => {
 
-  const URI ='http://localhost:8000/admin/orientadores';
 
-  const [orientador, setOrientador] = useState('')
-
-
+  const [orientadores, setOrientadores] = useState([])
+  const [orientados, setOrientados] = useState([])
   const [horario, setHorario] = useState("");
+  const animatedComponents = makeAnimated();
 
-  useEffect( ()=>{
-    getOrientadores()
-},[])
 
-  const getOrientadores = async () =>{
-    const res = await axios.get(URI)
+  const ShowData = async () =>{
+    const res = await axios.get('http://localhost:8000/admin/orientadores')
     console.log(res.data)
-    setOrientador(res.data)
+    setOrientadores(res.data)
   }
 
-const optionsTwo  = [
-  { value: 'Gonzalo Cataldo', label: 'Gonzalo Cataldo', },
-  { value: 'Iara Gerardi', label: 'Iara Gerardi' },
-  { value: 'Sebastian Avila', label: 'Sebastian Avila' },
-  { value: 'Ayelen Maidana', label: 'Ayelen Maidana' },
-  { value: 'Maximiliano Portel', label: 'Maximiliano Portel' },
-  { value: 'Macarena Leiva', label: 'Macarena Leiva', },
-];
+  useEffect( ()=>{
+    ShowData()
+  },[])
 
+
+  const ShowDataStudents = async () =>{
+    const resp = await axios.get('http://localhost:8000/admin/orientados')
+    console.log(resp.data)
+    setOrientados(resp.data)
+  }
+
+  useEffect( ()=>{
+    ShowDataStudents()
+  },[])
 
   
   const options = [
@@ -42,6 +44,8 @@ const optionsTwo  = [
     { value: "10:00", label: "10:00 hs" },
     { value: "10:30", label: "10:30 hs" },
   ];
+
+
   //estilos react-select
   const customStyles = {
     control: base=> ({
@@ -50,19 +54,24 @@ const optionsTwo  = [
       borderColor: '#cbd5e1',
       fontSize: "15px",
       height: 32,
-    minHeight: 32,
-    marginTop: '8px',
+      minHeight: 32,
+      marginTop: '8px',
         })
     }
 
-
-    const handleChangeTwo = (e) => {
-      setOrientador(e.value);
-    };
-  // handle onChange event of the dropdown
-  const handleChange = (e) => {
-    setHorario(e.value);
+  //manejador de evento del select 2
+  const handlerSelectOne = (e) => {
+    console.log(e);
   };
+
+  //manejador de evento del select 2
+  const handlerSelectTwo = (e) => {
+    console.log(e);
+  };
+
+  const handleChange = (e) => {
+    setHorario(e.value)
+  }
 
   return (
 
@@ -87,7 +96,7 @@ const optionsTwo  = [
           <div className='flex flex-col py-5 '>
             <label className=" font-medium text-slate-600 mb-2">Nombre del evento</label>
             <input
-            className='w-64 h-8 p-2 rounded-lg border'
+            className='w-80 h-8 p-2 rounded-lg border'
             type='text'
             placeholder='Ingresar nombre'
             />
@@ -97,21 +106,26 @@ const optionsTwo  = [
             <label className="font-medium text-slate-600">Orientador participante</label>
             <Select
                 placeholder="Seleccionar orientador"
-                value={optionsTwo.filter((obj) => obj.value === orientador)} // set selected value
-                options={optionsTwo} // set list of the data
-                onChange={handleChangeTwo } // assign onChange function
+                /* value={optionsTwo.filter((obj) => obj.value === orientador)} // set selected value */
+                options={orientadores.map(elem => ({label: `${elem.name} ${elem.lastname}`, value: elem.id }))} 
+                onChange={handlerSelectOne } // assign onChange function
                 styles={customStyles}//style para react select
-                className="w-64 rounded-lg "
+                className="w-80 rounded-lg "
               />
           </div>  
 
           <div className='flex flex-col py-5 '>
             <label className="font-medium text-slate-600 mb-2">Orientado/es participante/s</label>
-            <input
-            className='w-64 h-8 p-2 rounded-lg border'
-            type='search' 
-            placeholder='selecciona orientado/es'
-            />
+            <Select
+                placeholder="Seleccionar orientador"
+                /* value={optionsTwo.filter((obj) => obj.value === orientador)} // set selected value */
+                options={orientados.map(elem => ({label: `${elem.name} ${elem.lastname}`, value: elem.id }))} 
+                onChange={handlerSelectTwo } // assign onChange function
+                isMulti
+                components={animatedComponents}
+                styles={customStyles}//style para react select
+                className="w-auto rounded-lg "
+              />
           </div>
 
         </div>
@@ -136,7 +150,7 @@ const optionsTwo  = [
                 options={options} // set list of the data
                 onChange={handleChange} // assign onChange function
                 styles={customStyles}//style para react select
-                className="w-64 rounded-lg "
+                className="w-80 rounded-lg "
               />
           </div>
 
@@ -148,7 +162,7 @@ const optionsTwo  = [
                 options={} // set list of the data
                 onChange={} // assign onChange function*/
                 styles={customStyles}//style para react select
-                className="w-64 rounded-lg " 
+                className="w-80 rounded-lg " 
               />  
           </div>
 
