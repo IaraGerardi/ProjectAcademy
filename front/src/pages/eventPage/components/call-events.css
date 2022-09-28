@@ -1,0 +1,119 @@
+.container-events {
+    width: 78%;
+    height: 432px;
+    border: solid 1px rgba(218, 222, 235, 1);
+    ;
+    border-radius: 8px;
+    margin: 0px;
+}
+
+.title-table {
+    height: 48px;
+    border-bottom: solid 1px rgba(218, 222, 235, 1);
+    color: #0BA4A0;
+}
+
+
+.events {
+    width: 224px;
+    height: 48px;
+    font-family: sans-serif;
+}
+
+.title-events {
+    width: 224px;
+    height: 48px;
+    font-family: sans-serif;
+    padding-left: 8px;
+}
+
+.events {
+    width: 224px;
+    height: 48px;
+    font-family: sans-serif;
+    color: #2E384D;
+    font-weight: 500;
+    padding-left: 8px;
+    border-bottom: solid 1px rgba(218, 222, 235, 1);
+}
+
+
+.icon-delete {
+    cursor: pointer;
+    padding-left: 140px;
+    height: 20px;
+}
+
+
+
+@media (max-width: 1080px ) {
+
+    .events {
+        width: 224px;
+        height: 48px;
+        font-family: sans-serif;
+        color: #2E384D;
+        font-weight: 500;
+        padding-left: 8px;
+        font-size: 12px;
+        border-bottom: solid 1px rgba(218, 222, 235, 1);
+    }
+  
+    .icon-delete {
+        cursor: pointer;
+        padding-left: 100px;
+  
+    }
+
+}
+
+
+@media (max-width: 1080px ) {
+
+    .events {
+        width: 224px;
+        height: 48px;
+        font-family: sans-serif;
+        color: #2E384D;
+        font-weight: 500;
+        padding-left: 8px;
+        font-size: 12px;
+        border-bottom: solid 1px rgba(218, 222, 235, 1);
+    }
+
+
+    .icon-delete {
+        cursor: pointer;
+        padding-left: 50px;
+        height: 18px;
+  
+    }
+
+
+}
+
+
+
+@media (max-width: 738px ) {
+
+    .events {
+        width: 224px;
+        height: 48px;
+        font-family: sans-serif;
+        color: #2E384D;
+        font-weight: 500;
+        padding-left: 8px;
+        font-size: 11px;
+        border-bottom: solid 1px rgba(218, 222, 235, 1);
+    }
+
+
+    .icon-delete {
+        cursor: pointer;
+        height: 14px;
+        padding-left: 0px;
+  
+    }
+
+
+}

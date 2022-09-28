@@ -14,7 +14,7 @@ function StudentsScreen() {
                                  <HeaderInicio propNamePage="Orientados" />
                             <>
                             
-                                
+            
                             <Outlet/>
                             </>
                 </div>

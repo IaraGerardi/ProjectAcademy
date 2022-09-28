@@ -16,7 +16,9 @@ function Assign() {
     const [active, setActive] = useState(false);
     const [valueBtn, setValueBtn] = useState(false)
     const { id } = useParams();
+
     const navigate = useNavigate();
+  
 
     const URI = `http://localhost:8000/admin/orientados/${id}/orientadorToOrientado`;
     /*Hay que enviar los datos a esa URL*/
@@ -64,8 +66,14 @@ function Assign() {
         e.preventDefault();
         await axios.put(URI, { orientador: valorOrientador })
             .then((response) => {
-                setActive(!active)
-                setValueBtn(!valueBtn)
+
+                if (response.status == 200) {
+                    setActive(!active)
+                    setTimeout(() => {
+                        navigate("/orientados/newUsers")
+                    }, "2000")
+                }
+
             })
     }
 
