@@ -46,12 +46,17 @@ function FormLogIn() {
     return (
         <form className="flex flex-col" method="POST" onSubmit={handleSubmit}>
             <FormInput
-                id="emailLog" type="email" label="Email" placeholder="Ingresa tu email" handleChange={handleChange}
-                verifyInput={verifyMessages.emailLog && verifyMessages.emailLog !== true ? verifyMessages.emailLog : backMessages.emailLog} />
+                handleChange={handleChange}
+                inputClass="w-80" labelClass="p-2.5 items-center" containerClass="flex flex-col"
+                id="emailLog" type="email" label="Email" placeholder="Ingresa tu email"
+                verifyInput={verifyMessages.emailLog && verifyMessages.emailLog !== true
+                    ? verifyMessages.emailLog : backMessages.emailLog} />
             <FormInput
-                id="passwordLog" type="password" label="Contraseña" placeholder="Ingresa tu contraseña" handleChange={handleChange}
-                verifyInput={verifyMessages.passwordLog && verifyMessages.passwordLog !== true ? verifyMessages.passwordLog
-                    : backMessages.passwordLog} />
+                handleChange={handleChange}
+                inputClass="w-80" labelClass="p-2.5 items-center" containerClass="flex flex-col"
+                id="passwordLog" type="password" label="Contraseña" placeholder="Ingresa tu contraseña"
+                verifyInput={verifyMessages.passwordLog && verifyMessages.passwordLog !== true
+                    ? verifyMessages.passwordLog : backMessages.passwordLog} />
             <input type="submit" value="Ingresar"
                 className={`w-44 cursor-pointer border-none text-white text-base font-medium bg-celesteValtech`} />
         </form>
