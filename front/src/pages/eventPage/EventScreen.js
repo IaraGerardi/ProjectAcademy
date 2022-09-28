@@ -85,37 +85,37 @@ export const EventScreen = () => {
         
         <div>
           <h2 className="text-2xl font-medium text-slate-700">Crear un evento</h2>
-          <h4 >Puedes crear un primer encuentro entre Orientadores y Orientados.</h4>
+          <h4 className='text-lg text-slate-700'>Puedes crear un primer encuentro entre Orientadores y Orientados.</h4>
 
           <form className='mt-10'>
 
-            <h2 className="text-2xl font-medium text-slate-700">01. Información sobre el evento</h2>
+            <h2 className="text-base font-medium text-slate-700">01. Información sobre el evento</h2>
 
         <div className='flex flex-row'>
 
-          <div className='flex flex-col py-5 '>
+          <div className='text-sm flex flex-col py-5 '>
             <label className=" font-medium text-slate-600 mb-2">Nombre del evento</label>
             <input
-            className='w-80 h-8 p-2 rounded-lg border'
+            className='text-sm w-80 h-8 p-2 rounded-lg border'
             type='text'
             placeholder='Ingresar nombre'
             />
           </div>
 
           <div className='flex flex-col py-5 mx-5'>
-            <label className="font-medium text-slate-600">Orientador participante</label>
+            <label className="text-sm font-medium text-slate-600">Orientador participante</label>
             <Select
                 placeholder="Seleccionar orientador"
                 /* value={optionsTwo.filter((obj) => obj.value === orientador)} // set selected value */
                 options={orientadores.map(elem => ({label: `${elem.name} ${elem.lastname}`, value: elem.id }))} 
                 onChange={handlerSelectOne } // assign onChange function
                 styles={customStyles}//style para react select
-                className="w-80 rounded-lg "
+                className="text-sm w-80 rounded-lg "
               />
           </div>  
 
           <div className='flex flex-col py-5 '>
-            <label className="font-medium text-slate-600 mb-2">Orientado/es participante/s</label>
+            <label className="text-sm font-medium text-slate-600 mb-2">Orientado/es participante/s</label>
             <Select
                 placeholder="Seleccionar orientador"
                 /* value={optionsTwo.filter((obj) => obj.value === orientador)} // set selected value */
@@ -124,56 +124,56 @@ export const EventScreen = () => {
                 isMulti
                 components={animatedComponents}
                 styles={customStyles}//style para react select
-                className="w-auto rounded-lg "
+                className="text-sm w-auto rounded-lg "
               />
           </div>
 
         </div>
 
-            <h2 className="text-2xl font-medium text-slate-700">02. Días y Horarios disponibles </h2>
+            <h2 className="text-base font-medium text-slate-700">02. Días y Horarios disponibles </h2>
         <div className='flex flex-row'>   
 
           <div className='flex flex-col'>
-            <label className="font-medium text-slate-600 mb-2">Fecha</label>
+            <label className="text-sm font-medium text-slate-600 mb-2">Fecha</label>
             <input
-            className='w-64 h-8 p-2 rounded-lg border'
+            className='text-sm w-80 h-8 p-2 rounded-lg border'
             type='date' 
             placeholder='Ingresar fecha' 
             />
           </div>
 
           <div className='flex flex-col mx-5'>
-            <label className="font-medium text-slate-600">Horario</label>
+            <label className="text-sm font-medium text-slate-600">Horario</label>
             <Select
                 placeholder="Seleccionar horario"
                 value={options.filter((obj) => obj.value === horario)} // set selected value
                 options={options} // set list of the data
                 onChange={handleChange} // assign onChange function
                 styles={customStyles}//style para react select
-                className="w-80 rounded-lg "
+                className="text-sm w-80 rounded-lg "
               />
           </div>
 
           <div className='flex flex-col'>
-            <label className="font-medium text-slate-600">Duración</label>
+            <label className="text-sm font-medium text-slate-600">Duración</label>
             <Select
                 placeholder="Seleccionar duración"
              /*    value={} // set selected value
                 options={} // set list of the data
                 onChange={} // assign onChange function*/
                 styles={customStyles}//style para react select
-                className="w-80 rounded-lg " 
+                className="text-sm w-80 rounded-lg " 
               />  
           </div>
 
           </div> 
 
-          <h2 className="text-2xl font-medium text-slate-700">03. Detalle </h2>
+          <h2 className="text-base font-medium text-slate-700">03. Detalle </h2>
 
           <div  className="containerInputLabel flex flex-col gap-2">
 
           <div className='flex flex-col'> 
-            <label className="font-medium text-slate-600">
+            <label className="text-sm font-medium text-slate-600">
               Comentarios del evento
             </label>
             <textarea
