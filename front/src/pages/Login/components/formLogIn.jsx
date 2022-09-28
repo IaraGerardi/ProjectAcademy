@@ -3,20 +3,18 @@ import { useNavigate } from "react-router-dom";
 import FormInput from "../../global-components/formInput";
 import axios from "axios";
 import useVerify from "../../../hooks/useVerify"
+import verifications from "../../../Verify arguments/verifyLogIn.json"
 
 function FormLogIn() {
     const URI = "http://localhost:8000/login"
     const navigate = useNavigate();
 
-    const [logTries, setLogTtries] = useState(0);
-    const [maxTries, setMaxTries] = useState(3);
     const [form, setForm] = useState({ emailLog: null, passwordLog: null });
     const [backMessages, setBackMessages] = useState({ emailLog: null, passwordLog: null, });
 
-    let verificationArgs = [{ inputValue: form.emailLog, payload: { id: "emailLog", type: "email" } },
-    { inputValue: form.passwordLog, payload: { id: "passwordLog", type: "password" } }]
+    let formValues = [{ inputValue: form.emailLog }, { inputValue: form.passwordLog }]
 
-    let { verifyForm, verifyMessages } = useVerify(verificationArgs);
+    let { verifyForm, verifyMessages } = useVerify(formValues, verifications);
 
     const handleChange = (e) => {
         setForm({
@@ -55,9 +53,7 @@ function FormLogIn() {
                 verifyInput={verifyMessages.passwordLog && verifyMessages.passwordLog !== true ? verifyMessages.passwordLog
                     : backMessages.passwordLog} />
             <input type="submit" value="Ingresar"
-                onClick={() => setLogTtries(logTries + 1)} disabled={logTries >= maxTries ? true : false}
-                className={`w-44 cursor-pointer border-none text-white text-base font-medium bg-celesteValtech 
-            ${logTries >= maxTries ? "bg-opacity-50" : null}`} />
+                className={`w-44 cursor-pointer border-none text-white text-base font-medium bg-celesteValtech`} />
         </form>
     );
 }
