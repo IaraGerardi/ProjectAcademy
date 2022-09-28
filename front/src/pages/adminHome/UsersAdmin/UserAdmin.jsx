@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import "./UserAdmin.css";
 import Icon from "../../global-components/Svg-icon";
+import { Link } from "react-router-dom";
 
 function UserAdmin() {
   const [newusers, setNewusers] = useState([]);
@@ -24,7 +25,7 @@ function UserAdmin() {
     <div className="box-center">
       <ul className="ulUserAdmin">
         {newusers.map((usersapi) => (
-          <div className="boxtwo" key={usersapi.name}>
+          <Link to={`/orientados/StudentInfo/${usersapi.id}`}className="boxtwo" key={usersapi.name}>
             <div className="boximagepi flex">
               <img
                 className="ImgUsers"
@@ -45,7 +46,7 @@ function UserAdmin() {
                 <Icon classname="" type="userIcon" width="17" height="24" />
               </div>
             ) : null}
-          </div>
+          </Link>
         ))}
       </ul>
     </div>

@@ -74,7 +74,7 @@ function CallStudents() {
                         
 
                                 <li className="box-students" key={usuario.id} >
-                                 <Link to={`/orientados/${usuario.id}`}>
+                                 <Link to={`/orientados/StudentInfo/${usuario.id}`}>
                                     <div className="content-students">
                                       
                                         <img
