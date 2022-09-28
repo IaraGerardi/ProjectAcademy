@@ -73,6 +73,8 @@ const validateCreate = [
     check('why')
         .notEmpty().withMessage('Escriba un breve descripcion de porque se acerca a nosotros')
     ,
+    /* check('photoProfil')//se fija si existe
+        .notEmpty().withMessage('El campo foto está vacío'), VER SI ANDA ESTO. VALIDACION DE FOTO */
     (req, res, next) => {
         validateResult(req, res, next)
     }

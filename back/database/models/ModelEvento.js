@@ -28,12 +28,12 @@ ModelEvento.init({
             isDate: true //isDate solo acepta fechas 
         }
     },
-    schedule: {
+    time: {
         type: DataTypes.TIME,
         allowNull: false,
         validate: { //Validaciones de la base de datos
             notNull: {
-                msg: 'Debe ingresar un nombre al evento'
+                msg: 'Debe ingresar horario al evento'
             }
         }
     },
@@ -42,7 +42,7 @@ ModelEvento.init({
         allowNull: false,
         validate: { //Validaciones de la base de datos
             notNull: {
-                msg: 'Debe ingresar un nombre al evento'
+                msg: 'Debe ingresar tiempo de duración'
             }
         }
     },
