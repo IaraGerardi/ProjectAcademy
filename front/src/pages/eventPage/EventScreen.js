@@ -15,7 +15,7 @@ export const EventScreen = () => {
   const [horario, setHorario] = useState("");
   const animatedComponents = makeAnimated();
 
-
+  //obtengo los datos de orientadores
   const ShowData = async () =>{
     const res = await axios.get('http://localhost:8000/admin/orientadores')
     console.log(res.data)
@@ -26,7 +26,7 @@ export const EventScreen = () => {
     ShowData()
   },[])
 
-
+  //obtengo los datos de orientados
   const ShowDataStudents = async () =>{
     const resp = await axios.get('http://localhost:8000/admin/orientados')
     console.log(resp.data)
@@ -37,7 +37,7 @@ export const EventScreen = () => {
     ShowDataStudents()
   },[])
 
-  
+  //opciones para el select de la hora
   const options = [
     { value: "09:00", label: "09:00 hs" },
     { value: "09:30", label: "09:30 hs" },
@@ -45,21 +45,7 @@ export const EventScreen = () => {
     { value: "10:30", label: "10:30 hs" },
   ];
 
-
-  //estilos react-select
-  const customStyles = {
-    control: base=> ({
-      ...base,
-      borderRadius:  "8px",
-      borderColor: '#cbd5e1',
-      fontSize: "15px",
-      height: 32,
-      minHeight: 32,
-      marginTop: '8px',
-        })
-    }
-
-  //manejador de evento del select 2
+  //manejador de evento del select 1
   const handlerSelectOne = (e) => {
     console.log(e);
   };
@@ -73,6 +59,19 @@ export const EventScreen = () => {
     setHorario(e.value)
   }
 
+  //estilos react-select
+  const customStyles = {
+     control: base=> ({
+      ...base,
+      borderRadius:  "8px",
+      borderColor: '#cbd5e1',
+      fontSize: "15px",
+      height: 32,
+      minHeight: 32,
+      marginTop: '8px',
+      })
+    }
+
   return (
 
     <div className="container-P w-full flex"> {/*  containedor padre tamaño igual a app */}
@@ -83,55 +82,55 @@ export const EventScreen = () => {
       
       <div className='mt-7 ml-10'>
         
-        <div>
+        <div className='mt-5 ml-5'>
           <h2 className="text-2xl font-medium text-slate-700">Crear un evento</h2>
           <h4 className='text-lg text-slate-700'>Puedes crear un primer encuentro entre Orientadores y Orientados.</h4>
 
-          <form className='mt-10'>
+          <form className='mt-5'>
 
             <h2 className="text-base font-medium text-slate-700">01. Información sobre el evento</h2>
 
-        <div className='flex flex-row'>
+              <div className='flex flex-row py-3 '>
 
-          <div className='text-sm flex flex-col py-5 '>
-            <label className=" font-medium text-slate-600 mb-2">Nombre del evento</label>
-            <input
-            className='text-sm w-80 h-8 p-2 rounded-lg border'
-            type='text'
-            placeholder='Ingresar nombre'
-            />
-          </div>
+                <div className='flex flex-col'>
+                  <label className="text-sm font-medium text-slate-600 mb-2">Nombre del evento</label>
+                  <input
+                    className='text-sm w-80 h-8 p-2 rounded-lg border'
+                    type='text'
+                    placeholder='Ingresar nombre'
+                  />
+                </div>
 
-          <div className='flex flex-col py-5 mx-5'>
-            <label className="text-sm font-medium text-slate-600">Orientador participante</label>
-            <Select
-                placeholder="Seleccionar orientador"
-                /* value={optionsTwo.filter((obj) => obj.value === orientador)} // set selected value */
-                options={orientadores.map(elem => ({label: `${elem.name} ${elem.lastname}`, value: elem.id }))} 
-                onChange={handlerSelectOne } // assign onChange function
-                styles={customStyles}//style para react select
-                className="text-sm w-80 rounded-lg "
-              />
-          </div>  
+              <div className='flex flex-col mx-5'>
+                <label className="text-sm font-medium text-slate-600">Orientador participante</label>
+                <Select
+                  placeholder="Seleccionar orientador"
+                  options={orientadores.map(elem => ({label: `${elem.name} ${elem.lastname}`, value: elem.id }))} 
+                  onChange={handlerSelectOne }
+                  styles={customStyles}
+                  className="text-sm w-80 rounded-lg "
+                />
+              </div>  
 
-          <div className='flex flex-col py-5 '>
-            <label className="text-sm font-medium text-slate-600 mb-2">Orientado/es participante/s</label>
-            <Select
-                placeholder="Seleccionar orientador"
-                /* value={optionsTwo.filter((obj) => obj.value === orientador)} // set selected value */
-                options={orientados.map(elem => ({label: `${elem.name} ${elem.lastname}`, value: elem.id }))} 
-                onChange={handlerSelectTwo } // assign onChange function
-                isMulti
-                components={animatedComponents}
-                styles={customStyles}//style para react select
-                className="text-sm w-auto rounded-lg "
-              />
-          </div>
+              <div className='flex flex-col'>
+                <label className="text-sm font-medium text-slate-600 ">Orientado/es participante/s</label>
+                <Select
+                  placeholder="Seleccionar orientador"
+                  options={orientados.map(elem => ({label: `${elem.name} ${elem.lastname}`, value: elem.id }))} 
+                  onChange={handlerSelectTwo }
+                  isMulti
+                  components={animatedComponents}
+                  styles={customStyles}
+                  className="text-sm w-80 rounded-lg "
+                />
+              </div>
 
         </div>
 
+        <div className='border-y-2 py-5 my-5 w-5/6'>
             <h2 className="text-base font-medium text-slate-700">02. Días y Horarios disponibles </h2>
-        <div className='flex flex-row'>   
+
+        <div className='flex flex-row py-3'>   
 
           <div className='flex flex-col'>
             <label className="text-sm font-medium text-slate-600 mb-2">Fecha</label>
@@ -168,9 +167,11 @@ export const EventScreen = () => {
 
           </div> 
 
+        </div>
+
           <h2 className="text-base font-medium text-slate-700">03. Detalle </h2>
 
-          <div  className="containerInputLabel flex flex-col gap-2">
+        <div  className="containerInputLabel flex flex-col gap-2 py-3">
 
           <div className='flex flex-col'> 
             <label className="text-sm font-medium text-slate-600">
