@@ -236,7 +236,7 @@ function Assign() {
 
                                 </form> :
                                 <>
-                                    <ul> {selectOrientador[orientado[id - 1]?.OrientadoreId]} </ul>
+                                    <ul> {selectOrientador[orientado[id - 1]?.OrientadoreId - 1]} </ul>
                                     <input
                                         readOnly={true}
                                         value="Ver perfil completo"
