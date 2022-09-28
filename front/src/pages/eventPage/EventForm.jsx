@@ -11,7 +11,8 @@ export const EventForm = () => {
 
   const [orientadores, setOrientadores] = useState([])
   const [orientados, setOrientados] = useState([])
-  const [horario, setHorario] = useState("");
+  const [hours, setHours] = useState("");
+  const [duration, setDuration] = useState("");
   const animatedComponents = makeAnimated();
 
   //obtengo los datos de orientadores
@@ -37,25 +38,38 @@ export const EventForm = () => {
   },[])
 
   //opciones para el select de la hora
-  const options = [
+  const optionsHours = [
     { value: "09:00", label: "09:00 hs" },
     { value: "09:30", label: "09:30 hs" },
     { value: "10:00", label: "10:00 hs" },
     { value: "10:30", label: "10:30 hs" },
   ];
 
+  const optionsDuration = [
+    { value: "00:15", label: "09:00 hs" },
+    { value: "00:30", label: "09:30 hs" },
+    { value: "00:45", label: "10:00 hs" },
+    { value: "1:00", label: "10:30 hs" },
+  ];
+
   //manejador de evento del select 1
   const handlerSelectOne = (e) => {
-    console.log(e);
+    console.log(e.value);
   };
 
   //manejador de evento del select 2
   const handlerSelectTwo = (e) => {
-    console.log(e);
+    console.log(e.value);
   };
 
-  const handleChange = (e) => {
-    setHorario(e.value)
+  const handleHours = (e) => {
+    console.log(e.value);
+    setHours(e.value)
+  }
+
+  const handleDuration = (e) => {
+    console.log(e.value);
+    setDuration(e.value)
   }
 
   //estilos react-select
@@ -144,10 +158,10 @@ export const EventForm = () => {
             <label className="text-sm font-medium text-slate-600">Horario</label>
             <Select
                 placeholder="Seleccionar horario"
-                value={options.filter((obj) => obj.value === horario)} // set selected value
-                options={options} // set list of the data
-                onChange={handleChange} // assign onChange function
-                styles={customStyles}//style para react select
+                value={optionsHours.filter((obj) => obj.value === hours)} // set selected value
+                options={optionsHours} 
+                onChange={handleHours} 
+                styles={customStyles}
                 className="text-sm w-80 rounded-lg "
               />
           </div>
@@ -156,10 +170,10 @@ export const EventForm = () => {
             <label className="text-sm font-medium text-slate-600">Duración</label>
             <Select
                 placeholder="Seleccionar duración"
-             /*    value={} // set selected value
-                options={} // set list of the data
-                onChange={} // assign onChange function*/
-                styles={customStyles}//style para react select
+                value={optionsDuration.filter((obj) => obj.value === duration)}
+                options={optionsDuration} 
+                onChange={handleDuration} 
+                styles={customStyles}
                 className="text-sm w-80 rounded-lg " 
               />  
           </div>
@@ -180,8 +194,8 @@ export const EventForm = () => {
               rows="4"
               cols="40"
               name="why"
-              
-              placeholder="En este espacio vamos a despejar dudas"
+              /* onChange={} */
+              placeholder="Escribir comentarios"
               className=" rounded-lg border border-slate-300 w-3/4 lg:w-2/4 placeholder:pl-2"
             />
           </div> 
