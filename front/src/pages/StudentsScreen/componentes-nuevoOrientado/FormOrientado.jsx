@@ -86,8 +86,6 @@ function FormOrientado() {
           setTimeout(() => {
             navegate("/orientados/newUsers")
           }, "2000")
-        } else {
-
         }
       })
   };

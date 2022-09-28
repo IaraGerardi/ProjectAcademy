@@ -14,6 +14,7 @@ function Assign() {
     const [orientadores, setOrientadores] = useState([]);
     const [valorOrientador, setValorOrientador] = useState();
     const [active, setActive] = useState(false);
+    const [valueBtn, setValueBtn] = useState(false)
     const { id } = useParams();
     const navigate = useNavigate();
 
@@ -63,7 +64,8 @@ function Assign() {
         e.preventDefault();
         await axios.put(URI, { orientador: valorOrientador })
             .then((response) => {
-                console.log(response.data)
+                setActive(!active)
+                setValueBtn(!valueBtn)
             })
     }
 
@@ -210,9 +212,8 @@ function Assign() {
                                     {/*Botón reutilizable para enviar y modificar orientador*/}
 
                                     < input
-                                        onClick={() => setActive(!active)}
                                         type="submit"
-                                        value="Asignar orientador/a"
+                                        value={`${!valueBtn ? 'Asignar Orientador/a' : 'Modificar Orientador/a'}`}
                                         className="btn-asignar"
                                     />
 
