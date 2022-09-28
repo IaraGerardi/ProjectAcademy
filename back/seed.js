@@ -3,6 +3,7 @@ const ModelNovedades = require('./database/models/ModelNovedades.js');
 const ModelAdmin = require('./database/models/ModelAdmin.js');
 const sequelize = require('./database/db.js');
 
+
 /* Datos y metodo para generar en las tablas */
 
 //Glosario (1° descomentar - 2° ctrl+click - 3° volver a comentar)
@@ -20,17 +21,17 @@ const orientadores = [
 ];
 
 const orientados = [{
-  "name": "Adams",
-  "password": "Q343fM",
-  "lastname": "Roistone",
-  "email": "aroistone0@nytimes.com",
-  "phone": "6113510781",
-  "photoProfile": "default1.png",
-  "dni": 31630263,
-  "age": "1984-01-04",
-  "school": "Oneill",
-  "address": "1077 Northfield Trail",
-  "OrientadoreId": 1
+  name: "Adams",
+  password: "Q343fM",
+  lastname: "Roistone",
+  email: "aroistone0@nytimes.com",
+  phone: "6113510781",
+  photoProfile: "default1.png",
+  dni: 31630263,
+  age: "1984-01-04",
+  school: "Oneill",
+  address: "1077 Northfield Trail",
+  OrientadoreId: 1
 }, {
   "name": "Edythe",
   "password": "aqcoaxC3u",
@@ -328,36 +329,38 @@ const addAll = async () => {
     orientados.forEach((orientados) => ModelOrientado.create(orientados));
     novedades.forEach((novedades) => ModelNovedades.create(novedades));
     admin.forEach((admin) => ModelAdmin.create(admin));
-    eventos.forEach((eventos) => ModelEvento.create(eventos));
 
-    /* Multiplica Math.random por el numero del parametro(max) y disminuye al numero entero mas cercano */
-    /* const getRandomInt = (max) => {
-      return Math.floor(Math.random() * max);
-    } */
+    const evento = await ModelEvento.create(eventos[0]);
+    const alumno = await ModelOrientado.findAll({ where: { OrientadoreId: 1 } })
+    await evento.setOrientados(alumno)
 
-    /* eventos.forEach((eventos) => ModelEvento.create( //Crea el evento agregando orientados al azar
-      eventos
-      )); */
+    const evento2 = await ModelEvento.create(eventos[1]);
+    const alumno2 = await ModelOrientado.findAll({ where: { OrientadoreId: 2 } })
+    await evento2.setOrientados(alumno2)
 
-    /* let evento = eventos.forEach((eventos) => ModelEvento.create(eventos[0])); */
+    const evento3 = await ModelEvento.create(eventos[2]);
+    const alumno3 = await ModelOrientado.findAll({ where: { OrientadoreId: 3 } })
+    await evento3.setOrientados(alumno3)
 
+    const evento4 = await ModelEvento.create(eventos[3]);
+    const alumno4 = await ModelOrientado.findAll({ where: { OrientadoreId: 4 } })
+    await evento4.setOrientados(alumno4)
 
-    /* orientados.forEach((orientado) => {
-      eventos.forEach((event) => {
-        if (orientado.OrientadoreId == event.OrientadoreId) {
-          evento.addOrientado([orientado,])
-          console.log('*****Hola llegue acá PASO 4*******', orientado);
-        }
-      })
-    }) */
+    const evento5 = await ModelEvento.create(eventos[4]);
+    const alumno5 = await ModelOrientado.findAll({ where: { OrientadoreId: 5 } })
+    await evento5.setOrientados(alumno5)
 
-    /* const evento = await ModelEvento.create({
-      name: "NombreEvento", date: "2022-10-10", time: "11:45", duration: "00:30", description: "Meet de Prueba", OrientadoreId: 1
-    });
+    const evento6 = await ModelEvento.create(eventos[5]);
+    const alumno6 = await ModelOrientado.findAll({ where: { OrientadoreId: 6 } })
+    await evento6.setOrientados(alumno6)
 
+    const evento7 = await ModelEvento.create(eventos[6]);
+    const alumno7 = await ModelOrientado.findAll({ where: { OrientadoreId: 7 } })
+    await evento7.setOrientados(alumno7)
 
-
-    await evento.setOrientado(orientados[0]) */
+    const evento8 = await ModelEvento.create(eventos[7]);
+    const alumno8 = await ModelOrientado.findAll({ where: { OrientadoreId: 8 } })
+    await evento8.setOrientados(alumno8)
 
   }
   catch (error) {
