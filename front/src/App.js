@@ -14,12 +14,13 @@ import FormOrientado from './pages/StudentsScreen/componentes-nuevoOrientado/For
 import NewUsers from './pages/StudentsScreen/components/NewUsers';
 import StudentInfo from './pages/StudentsScreen/componentes-nuevoOrientado/StudentInfo';
 import PrivateRoutes from './privateRoute/PrivateRoutes';
+import { EventForm } from './pages/eventPage/EventForm';
 
 
 
 // Fin Importación Páginas
 function App() {
-  let auth = false;
+  let auth = true;
   return (
 
     <Routes>
@@ -42,6 +43,7 @@ function App() {
           <Route path='orientados/:id' element={<Assign />} />
       
           <Route path='eventos' element={<EventScreen />} />
+          <Route path='eventos/form' element={<EventForm />} />
 
       </Route>
 
