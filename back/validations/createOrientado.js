@@ -1,18 +1,8 @@
-const { check, validationResult, body } = require('express-validator');
+const { check } = require('express-validator');
 const { ModelOrientado } = require('../database/associations');
 const { validateResult } = require('../helpers/validateHelper');
 
-/* const getAge = value => {
-    let today = new Date();
-    let birthDate = new Date(value);
-    let age = today.getFullYear() - birthDate.getFullYear();
-    let m = today.getMonth() - birthDate.getMonth();
-    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
-        age--;
-    }
-    return age;
-} */
-
+//Express-Validator para formulario CREAR ORIENTADO
 const validateCreate = [
     check('name')//se fija si existe
         .notEmpty().withMessage('El campo nombre está vacío')
@@ -32,7 +22,7 @@ const validateCreate = [
         .notEmpty().withMessage('El campo email está vacío')
         .isEmail().withMessage('Ingrese email valido')
         .custom(async (value) => {
-            return ModelOrientado.findOne({ where: { email: value } })
+            return ModelOrientado.findOne({ where: { email: value } }) //Busca en la base de datos si el Email ya esta ingresado
                 .then(email => {
                     if (email) { return Promise.reject('Este email ya está siendo utilizado') }
                 })
@@ -76,18 +66,12 @@ const validateCreate = [
     /* check('photoProfil')//se fija si existe
         .notEmpty().withMessage('El campo foto está vacío'), VER SI ANDA ESTO. VALIDACION DE FOTO */
     (req, res, next) => {
-        validateResult(req, res, next)
+        validateResult(req, res, next);
+        /* Esta accion está en un helper
+        cumple la funcion de seguir la lectura
+        o tirar error si algo falla */
     }
 ]
 
 
 module.exports = validateCreate;
-
-
-const validationCreate = (req, res, next) => {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-        return res.status(400).json({ errors: errors.array() })
-    }
-    next()
-}
