@@ -1,6 +1,7 @@
 const ModelOrientado = require("./models/ModelOrientado");
 const ModelOrientador = require("./models/ModelOrientador");
 const ModelEvento = require("./models/ModelEvento.js");
+const ModelOrientadoEvento = require("./models/ModelOrientadoEvento.js");
 
 //1 a N / Orientadores a Orientados
 ModelOrientador.hasMany(ModelOrientado); //Crea FK OrientadoreId para los orientados
@@ -17,5 +18,6 @@ ModelEvento.belongsToMany(ModelOrientado, {through: "orientado_evento"});
 module.exports = {
     ModelOrientado,
     ModelOrientador,
-    ModelEvento
+    ModelEvento,
+    ModelOrientadoEvento
 }
