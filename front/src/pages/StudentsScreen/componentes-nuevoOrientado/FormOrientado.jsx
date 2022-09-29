@@ -79,7 +79,7 @@ function FormOrientado() {
         if (response.status == 200) {
           setActive(!active)
           setTimeout(() => {
-            navegate("/orientados/newUsers")
+            navegate(`/orientados/StudentInfo/${response.data.id}`)
           }, "2000")
         }
       })

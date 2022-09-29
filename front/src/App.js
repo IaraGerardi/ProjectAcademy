@@ -40,7 +40,7 @@ function App() {
           <Route path='profile' element={<ProfileAdminScreen />} />
 
               <Route path='orientados/*' element={<Orientados />} >
-                <Route path="nuevo/:id" element={<FormOrientado />} />
+                <Route path="nuevo" element={<FormOrientado />} />
                 <Route path="newUsers" element={<NewUsers />} />
                 <Route path="StudentInfo/:id" element={<StudentInfo />} />
               </Route>

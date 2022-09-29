@@ -21,7 +21,7 @@ function StudentInfo() {
         const resOrientado = await axios.get(`${URI}/${id}`) //trae uri y le agrega /gdsaiukyhds y lo guarda   
         setOrientado(resOrientado.data)
         if (resOrientado.data.photoProfile) {
-          setImage(orientado.photoProfile)
+          setImage(resOrientado.data.photoProfile)
         }
       } catch (error) {// en caso de fallar 
         console.log(error)
@@ -55,7 +55,7 @@ function StudentInfo() {
     <div className="cotainerForm ml-8 mt-10 mb-10">
       <h2 className="text-2xl font-medium text-slate-700">01.Informacion básica </h2>
       <div className="container-basicInfo flex flex-row gap-16">{/* div1 info basica */}
-        {/* <img src={require(`../../../img-back/orientados/${image}`)} alt="" className='w-20 h-20 rounded-full object-cover' /> */}
+        <img src={require(`../../../img-back/orientados/${image}`)} alt="" className='w-20 h-20 rounded-full object-cover' />
 
 
         <div className='flex flex-col gap-5'>
