@@ -1,17 +1,26 @@
 import React from "react";
-import "./call-events.css"
-import Delete from "./img/delete.svg"
 import { useState, useEffect } from "react";
 import axios from "axios";
 
 
+import RowLeft from "./img/left.svg"
+import RowRight from "./img/right.svg"
+import Delete from "./img/delete.svg"
+//IMPORTACION DE SVG
 
-function CallEvents() {
+import "./call-events.css" //IMPORTACION DE CSS
 
+
+
+
+
+
+
+function CallEvents() { //LLAMADA DE EVENTOS DE LA API
 
     const [event, setEvent] = useState();
 
-
+    // 
     useEffect(() => {
         const getEvent = async () => {
             try {
@@ -25,21 +34,24 @@ function CallEvents() {
         getEvent();
     }, []);
 
-
-    useEffect(() => {
-        function slice() {
-            const arrayNuevo = event.slice(2)
-            setEvent(arrayNuevo)
-        }
-        slice()
-    }, []);
-
     return (
         // TABLA DE EVENTOS
         <>
+
+     
+            <div className="cont-pagination">
+                <div>1-8 de 100</div>
+                <div className="cont-btn-pagination">
+                           {/*BOTONES DE LA PAGINACION*/}
+                    <img className="btn-row" src={RowLeft} alt="" />
+                    <img className="btn-row" src={RowRight} alt="" />
+                </div>
+            </div>
+
+
+
             <div className="table-events">
                 <div className="container-events">
-
                     <table >
                         <thead>
                             <tr className="title-table">
@@ -50,20 +62,18 @@ function CallEvents() {
                             </tr>
                         </thead>
 
-                        <tbody>
+                        <tbody> {/*RECORRO LA API Y MUESTRO LOS DATOS */}
                             {event?.map((event) => {
                                 return (
                                     <tr>
                                         <td className="events">{event.date}</td>
-                                        <td className="events">{event.duration}</td>
+                                        <td className="events">{event.time}</td>
                                         <td className="events">{event.name}</td>
                                         <td className="events">{event.Orientados[0].name} {event.Orientados[0].lastname}</td>
                                         <td className="events left"><img className="icon-delete" src={Delete} alt="icon de tacho de basura" /></td>
                                     </tr>
                                 )
                             })}
-
-
                         </tbody>
                     </table>
                 </div>

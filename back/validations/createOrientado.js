@@ -1,4 +1,4 @@
-const { check } = require('express-validator');
+const { check, body } = require('express-validator');
 const { ModelOrientado } = require('../database/associations');
 const { validateResult } = require('../helpers/validateHelper');
 
@@ -63,8 +63,16 @@ const validateCreate = [
     check('why')
         .notEmpty().withMessage('Escriba un breve descripcion de porque se acerca a nosotros')
     ,
-    /* check('photoProfil')//se fija si existe
-        .notEmpty().withMessage('El campo foto está vacío'), VER SI ANDA ESTO. VALIDACION DE FOTO */
+    check('photoProfile')//se fija si existe
+        .custom((value, { req }) => {
+            value = req.file
+            if (!value) {
+                return false
+            }
+            console.log('Entro al otro');
+            return true
+        })
+        .withMessage('El campo foto está vacío'), //VER SI ANDA ESTO. VALIDACION DE FOTO
     (req, res, next) => {
         validateResult(req, res, next);
         /* Esta accion está en un helper

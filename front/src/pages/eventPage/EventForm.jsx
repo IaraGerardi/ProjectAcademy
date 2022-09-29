@@ -9,8 +9,10 @@ import axios from 'axios';
 export const EventForm = () => {
 
   const [nameEvent, setName] = useState('')
-  const [orientadorEvent, setOrientadores] = useState([])      
+  const [orientadorEvent, setOrientadores] = useState([])
+  const [valorOrientador, setValorOrientadores] = useState([])       
   const [orientadosEvent, setOrientados] = useState([])
+  const [valorOrientados, setValorOrientados] = useState([])
   const [dateEvent, setDateEvent] = useState('')
   const [timeEvent, setHours] = useState("");
   const [durationEvent, setDuration] = useState("");
@@ -24,10 +26,12 @@ export const EventForm = () => {
   // PETICION 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log(`ORIENTADOR EVENT:${valorOrientador}`)
+    console.log(`ORIENTADOS EVENT:${valorOrientados}`)
     await axios.post(URI, {
       nameEvent,
-      orientadorEvent,
-      orientadosEvent,
+      orientadorEvent: valorOrientador,
+      orientadosEvent: valorOrientados,
       dateEvent,
       timeEvent,
       durationEvent,
@@ -80,13 +84,13 @@ export const EventForm = () => {
   //manejador de evento del select 1
   const handlerSelectOne = (e) => {
     console.log(e);
-
+    setValorOrientadores(e.value)
   };
 
   //manejador de evento del select 2
   const handlerSelectTwo = (e) => {
     console.log(e);
-   
+    setValorOrientados(e)
   };
 
   const handleHours = (e) => {
@@ -111,7 +115,6 @@ export const EventForm = () => {
       marginTop: '8px',
       })
     }
-
   return (
 
     <div className="container-P w-full flex"> {/*  containedor padre tamaño igual a app */}
@@ -150,8 +153,8 @@ export const EventForm = () => {
                 <label className="text-sm font-medium text-slate-600">Orientador participante</label>
                 <Select
                   placeholder="Seleccionar orientador"
-                  options={orientadorEvent.map(elem => ({label: `${elem.name} ${elem.lastname}`, value: elem.id }))} 
-                  onChange={handlerSelectOne }
+                  options={orientadorEvent.map(elem => ({label: `${elem.name} ${elem.lastname}`, value: elem.id }))}
+                  onChange={handlerSelectOne}
                   styles={customStyles}
                   className="text-sm w-80 rounded-lg "
                 />
@@ -161,7 +164,6 @@ export const EventForm = () => {
                 <label className="text-sm font-medium text-slate-600 ">Orientado/es participante/s</label>
                 <Select
                   placeholder="Seleccionar orientado"
-                  
                   options={orientadosEvent.map(elem => ({label: `${elem.name} ${elem.lastname}`, value:elem.id }))} 
                   onChange={handlerSelectTwo }
                   isMulti
