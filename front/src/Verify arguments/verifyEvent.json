@@ -1,0 +1,27 @@
+[
+    {
+        "id": "hours",
+        "type": "time",
+        "noSpaces": true
+    },
+    {
+        "id": "duration",
+        "type": "time",
+        "noSpaces": true
+    },
+    {
+        "id": "name",
+        "type": "name",
+        "maxLength": 200
+    },
+    {
+        "id": "date",
+        "type": "date",
+        "noSpaces": true
+    },
+    {
+        "id": "comment",
+        "type": "textarea",
+        "maxLength": 500
+    }
+]

@@ -1,7 +1,7 @@
 [
     {
         "id": "name",
-        "type": "text",
+        "type": "name",
         "minLength": 2,
         "maxLength": 250,
         "cantHaveNumbers": true,
@@ -68,7 +68,7 @@
     },
     {
         "id": "confirmPassword",
-        "type": "confirmPassword",
+        "type": "password",
         "minLength": 8,
         "noSpaces": true
     }
