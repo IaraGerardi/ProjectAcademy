@@ -8,11 +8,13 @@ import axios from 'axios';
 
 export const EventForm = () => {
 
-
-  const [orientadores, setOrientadores] = useState([])
-  const [orientados, setOrientados] = useState([])
-  const [hours, setHours] = useState("");
-  const [duration, setDuration] = useState("");
+  const [nameEvent, setName] = useState('')
+  const [orientadorEvent, setOrientadores] = useState([])      
+  const [orientadosEvent, setOrientados] = useState([])
+  const [dateEvent, setDateEvent] = useState('')
+  const [timeEvent, setHours] = useState("");
+  const [durationEvent, setDuration] = useState("");
+  const [descriptionEvent, setDescriptionEvent] = useState('')
   const animatedComponents = makeAnimated();
 
   //obtengo los datos de orientadores
@@ -37,6 +39,7 @@ export const EventForm = () => {
     ShowDataStudents()
   },[])
 
+
   //opciones para el select de la hora
   const optionsHours = [
     { value: "09:00", label: "09:00 hs" },
@@ -54,12 +57,14 @@ export const EventForm = () => {
 
   //manejador de evento del select 1
   const handlerSelectOne = (e) => {
-    console.log(e.value);
+    console.log(e);
+
   };
 
   //manejador de evento del select 2
   const handlerSelectTwo = (e) => {
-    console.log(e.value);
+    console.log(e);
+   
   };
 
   const handleHours = (e) => {
@@ -111,6 +116,8 @@ export const EventForm = () => {
                     className='text-sm w-80 h-8 p-2 rounded-lg border'
                     type='text'
                     placeholder='Ingresar nombre'
+                    value={nameEvent}
+                    onChange={(e) => setName(e.target.value)}
                   />
                 </div>
 
@@ -118,7 +125,7 @@ export const EventForm = () => {
                 <label className="text-sm font-medium text-slate-600">Orientador participante</label>
                 <Select
                   placeholder="Seleccionar orientador"
-                  options={orientadores.map(elem => ({label: `${elem.name} ${elem.lastname}`, value: elem.id }))} 
+                  options={orientadorEvent.map(elem => ({label: `${elem.name} ${elem.lastname}`, value: elem.id }))} 
                   onChange={handlerSelectOne }
                   styles={customStyles}
                   className="text-sm w-80 rounded-lg "
@@ -129,7 +136,8 @@ export const EventForm = () => {
                 <label className="text-sm font-medium text-slate-600 ">Orientado/es participante/s</label>
                 <Select
                   placeholder="Seleccionar orientado"
-                  options={orientados.map(elem => ({label: `${elem.name} ${elem.lastname}`, value: elem.id }))} 
+                  
+                  options={orientadosEvent.map(elem => ({label: `${elem.name} ${elem.lastname}`, value:elem.id }))} 
                   onChange={handlerSelectTwo }
                   isMulti
                   components={animatedComponents}
@@ -149,7 +157,10 @@ export const EventForm = () => {
             <label className="text-sm font-medium text-slate-600 mb-2">Fecha</label>
             <input
             className='text-sm w-80 h-8 p-2 rounded-lg border'
-            type='date' 
+            type='date'
+            name='dateEvent'
+            value={dateEvent} 
+            onChange={(e) => setDateEvent(e.target.value)}
             placeholder='Ingresar fecha' 
             />
           </div>
@@ -158,7 +169,7 @@ export const EventForm = () => {
             <label className="text-sm font-medium text-slate-600">Horario</label>
             <Select
                 placeholder="Seleccionar horario"
-                value={optionsHours.filter((obj) => obj.value === hours)} // set selected value
+                value={optionsHours.filter((obj) => obj.value === timeEvent)} // set selected value
                 options={optionsHours} 
                 onChange={handleHours} 
                 styles={customStyles}
@@ -170,7 +181,7 @@ export const EventForm = () => {
             <label className="text-sm font-medium text-slate-600">Duración</label>
             <Select
                 placeholder="Seleccionar duración"
-                value={optionsDuration.filter((obj) => obj.value === duration)}
+                value={optionsDuration.filter((obj) => obj.value === durationEvent)}
                 options={optionsDuration} 
                 onChange={handleDuration} 
                 styles={customStyles}
@@ -193,8 +204,8 @@ export const EventForm = () => {
             <textarea
               rows="4"
               cols="40"
-              name="why"
-              /* onChange={} */
+              name='descriptionEvent'
+              onChange={(e) => setDescriptionEvent(e.target.value)}
               placeholder="Escribir comentarios"
               className=" rounded-lg border border-slate-300 w-3/4 lg:w-2/4 placeholder:pl-2"
             />
