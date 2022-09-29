@@ -36,8 +36,8 @@ dni
 password
 
 Campos Orientados:
-1.	name			nombre
-2.	lastname		apellido
+1.	name            nombre
+2.	lastname    	apellido
 3.	email			correo electrónico
 4.	phone			teléfono
 5.	program		    Programa (Orientación vocacional, Reorientación,vocacional, Taller de matemáticas, Métodos de estudio)
@@ -65,3 +65,29 @@ Campos Admins:
 6.	phone
 7. 	linkedin
 8.  avatar
+
+Campos Eventos:
+name                STRING
+date                ONLYDATE
+time                TIME
+duration            TIME
+description         STRING
+OrientadoreId       INT
+
+Evento{
+    Dato1evento: '',
+    dato2: '',
+    'Orientadore': {
+        Datos de orientador
+    },
+    'Orientados': [
+        {
+            DatosPrimerOrientado
+        },
+        {
+            DatosSegundoOrientado
+        },{
+            etc
+        }
+    ]
+}
