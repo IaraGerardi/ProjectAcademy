@@ -17,6 +17,28 @@ export const EventForm = () => {
   const [descriptionEvent, setDescriptionEvent] = useState('')
   const animatedComponents = makeAnimated();
 
+  // URL DE PETICION 
+
+  const URI = "http://localhost:8000/admin/createEvent"
+
+  // PETICION 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    await axios.post(URI, {
+      nameEvent,
+      orientadorEvent,
+      orientadosEvent,
+      dateEvent,
+      timeEvent,
+      durationEvent,
+      descriptionEvent,
+    }
+    )
+    .then((response) => console.log(response))
+  }
+  // -------- 
+
+
   //obtengo los datos de orientadores
   const ShowData = async () =>{
     const res = await axios.get('http://localhost:8000/admin/orientadores')
@@ -104,7 +126,10 @@ export const EventForm = () => {
           <h2 className="text-2xl font-medium text-slate-700">Crear un evento</h2>
           <h4 className='text-lg text-slate-700'>Puedes crear un primer encuentro entre Orientadores y Orientados.</h4>
 
-          <form className='mt-5'>
+          <form 
+          method='POST' 
+          onSubmit={handleSubmit} 
+          className='mt-5'>
 
             <h2 className="text-base font-medium text-slate-700">01. Información sobre el evento</h2>
 
