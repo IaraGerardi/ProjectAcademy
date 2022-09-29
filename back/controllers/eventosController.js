@@ -10,7 +10,7 @@ const createEvento = async (req, res) => { //Se crea la constante del metodo que
             time: timeEvent,
             duration: durationEvent,
             description: descriptionEvent,
-            OrientadoreId: orientadorEvent.value //Ya que el orientador se obtiene atraves de un objeto con el nombre y el id del orientador, utilizamos ".value" para acceder a la id e insertarla en el registro del evento.
+            OrientadoreId: orientadorEvent //Ya que el orientador se obtiene atraves de un objeto con el nombre y el id del orientador, utilizamos ".value" para acceder a la id e insertarla en el registro del evento.
         });
         for (let i = 0; i < orientadosEvent.length; i++) { //Bucle for para poder agregar todos los orientados que se obtienen en un array de objetos llamado "orientadosEvent" al evento que se acaba de crear.
         await ModelOrientadoEvento.create({  //Esta es la tabla pivot que contiene todos los orientados que van a un solo evento.
