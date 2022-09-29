@@ -1,6 +1,9 @@
 .bannerItem, .bannerItem img, .contentItemBanner, .buttonsBanner{
-    width:98.8vw;
+    width: 100vw;
     height: 50vh;
+}
+.buttonsBanner{
+    width: 98.8vw;
 }
 .bannerItem img{
     object-fit: cover;

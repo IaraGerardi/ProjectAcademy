@@ -3,7 +3,7 @@ import Icon from "./Svg-icon";
 function FormInput(props) {
 
     // Props de valores del input
-    const { id, type, label, placeholder } = props
+    const { id, type, value, label, placeholder } = props
     // Props de clases para personalizar estilos
     const { inputClass, labelClass, containerClass } = props
     // Prop con el estado de la verificacion del input y prop con la funcion que guarda el valor del mismo
@@ -20,7 +20,7 @@ function FormInput(props) {
                     ${verifyInput !== null && verifyInput !== true ? "border-red-600" : "border-slate-300"}`}
                     rows="4" cols="40" id={id} name={id} onChange={handleChange} placeholder={placeholder}
                 />
-                : <input className={`${inputClass}
+                : <input value={value} className={`${inputClass}
                 ${verifyInput !== null && verifyInput !== true ? "border border-solid border-red-600" : "border border-slate-300"}`}
                     id={id} name={id} type={type} onChange={handleChange} placeholder={placeholder} />
             }

@@ -45,6 +45,7 @@ function FormLogIn() {
             .then((response) => {
                 if (response.data.si) {
                     localStorage.setItem("usuario", JSON.stringify(response.data.admin));
+                    
                     navigate('/inicio');
                 } else {
                     setBackMessages({

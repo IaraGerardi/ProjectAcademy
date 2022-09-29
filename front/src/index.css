@@ -11,3 +11,7 @@
   padding-inline-start: 0px;
 }
  */
+
+ body{
+  overflow-x: hidden;
+ }
