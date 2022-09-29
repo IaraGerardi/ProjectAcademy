@@ -1,4 +1,4 @@
-import { useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import "../call-students.css"
 import buscador from "../../sidebar-header/icons/logo-buscador.svg"
@@ -70,13 +70,13 @@ function CallStudents() {
                     {orientados.length === 0 && <p>No se encontró la búsqueda.</p>}
                     {orientados.map((usuario) => {
                         return (
-                          
-                        
 
-                                <li className="box-students" key={usuario.id} >
-                                 <Link to={`/orientados/StudentInfo/${usuario.id}`}>
+
+
+                            <li className="box-students" key={usuario.id} >
+                                <Link to={`/orientados/StudentInfo/${usuario.id}`}>
                                     <div className="content-students">
-                                      
+
                                         <img
                                             className="ImgUsers"
                                             src={require(`../../../img-back/orientados/${usuario.photoProfile}`)}
@@ -91,9 +91,9 @@ function CallStudents() {
                                         </div>
 
                                     </div>
-                                    </Link>
-                                </li> 
-                               
+                                </Link>
+                            </li>
+
                         );
                     })}
                 </ul >
