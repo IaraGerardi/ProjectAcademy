@@ -14,11 +14,12 @@ import "./call-events.css" //IMPORTACION DE CSS
 
 
 
-
-
 function CallEvents() { //LLAMADA DE EVENTOS DE LA API
 
     const [event, setEvent] = useState();
+    const [valorActualDe, setValorActualDe] = useState(1);
+    const [valorActualHasta, setValorActualHasta] = useState(8);
+
 
     // 
     useEffect(() => {
@@ -34,23 +35,39 @@ function CallEvents() { //LLAMADA DE EVENTOS DE LA API
         getEvent();
     }, []);
 
+
+
+
+
+    const nextHandler = () => {
+        setValorActualDe(valorActualDe+8)
+        setValorActualHasta(valorActualHasta+8)
+    }
+
+    const prevHandler = () => {
+        setValorActualDe(valorActualDe-8)
+        setValorActualHasta(valorActualHasta-8)
+    }
     return (
-        // TABLA DE EVENTOS
+
         <>
-
-     
-            <div className="cont-pagination">
-                <div>1-8 de 100</div>
-                <div className="cont-btn-pagination">
-                           {/*BOTONES DE LA PAGINACION*/}
-                    <img className="btn-row" src={RowLeft} alt="" />
-                    <img className="btn-row" src={RowRight} alt="" />
-                </div>
-            </div>
-
-
+            {/* TABLA DE EVENTOS */}
 
             <div className="table-events">
+
+
+                <div className="pagination">
+                    <div className="cont-pagination">
+                        <div>{valorActualDe}-{valorActualHasta}  de 100</div>
+                        <div className="cont-btn-pagination">
+                            {/*BOTONES DE LA PAGINACION*/}
+                            <img onClick={prevHandler} className="btn-row" src={RowLeft} alt="" />
+                            <img onClick={nextHandler} className="btn-row" src={RowRight} alt="" />
+                        </div>
+                    </div>
+                </div>
+
+
                 <div className="container-events">
                     <table >
                         <thead>
@@ -65,7 +82,7 @@ function CallEvents() { //LLAMADA DE EVENTOS DE LA API
                         <tbody> {/*RECORRO LA API Y MUESTRO LOS DATOS */}
                             {event?.map((event) => {
                                 return (
-                                    <tr>
+                                    <tr key={event.id}>
                                         <td className="events">{event.date}</td>
                                         <td className="events">{event.time}</td>
                                         <td className="events">{event.name}</td>

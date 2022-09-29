@@ -1,16 +1,24 @@
-.cont-pagination {
 
+
+.pagination{
+    width: 80%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+
+.cont-pagination {
     width: 180px;
     height: 40px;
     display: flex;
     flex-direction: row;
     position: relative;
     align-items: center;
-    left: 810px;
     font-size: 12px;
     font-weight: bold;
     color: #2E384D;
     justify-content: space-evenly;
+  
 }
 
 .cont-btn-pagination {
@@ -20,14 +28,9 @@
     width: 50px;
 }
 
-
-
 .btn-row {
     cursor: pointer;
 }
-
-
-
 
 
 
@@ -140,7 +143,7 @@
 
 }
 
-@media (max-width: 738px) {
+@media (max-width: 662px) {
 
     .title-events {
         width: 224px;
