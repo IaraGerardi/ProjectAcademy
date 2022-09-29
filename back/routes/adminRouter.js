@@ -2,7 +2,7 @@
 const express = require ("express");
 const routerAdmin = express.Router();
 //Controllers
-const { createEvento, getEvent } = require("../controllers/eventosController")
+const { createEvento, getEvent, deleteEvento } = require("../controllers/eventosController")
 const { getAllOrientados, createOrientado, orientadoById, getAllOrientadores, orientadorToOrientado, orientadoAndOrientador } = require ("../controllers/orientadoController.js");
 const { getAllNovedades } = require("../controllers/novedadesController.js");
 const { isAuthenticated } = require("../controllers/loginAdminController.js"); //Autenticacion para que solo puedan ingresar usuarios logueados (admins)
