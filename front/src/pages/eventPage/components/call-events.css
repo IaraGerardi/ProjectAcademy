@@ -1,3 +1,37 @@
+.cont-pagination {
+
+    width: 180px;
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    align-items: center;
+    left: 810px;
+    font-size: 12px;
+    font-weight: bold;
+    color: #2E384D;
+    justify-content: space-evenly;
+}
+
+.cont-btn-pagination {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 50px;
+}
+
+
+
+.btn-row {
+    cursor: pointer;
+}
+
+
+
+
+
+
+
 .container-events {
     width: 78%;
     height: 45%;
