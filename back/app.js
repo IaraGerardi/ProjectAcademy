@@ -35,9 +35,10 @@ app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')));
 //
 app.use('/', routerAdmin);
-app.use('/', routerLogin)
-//Aviso de conexión a la base de datos
+app.use('/', routerLogin);
 
+
+//Aviso de conexión a la base de datos
 app.listen(PORT, () => {
     console.log(`SERVER UP running in http://localhost:${PORT}`);
     try {
