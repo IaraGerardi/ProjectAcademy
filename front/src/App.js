@@ -15,13 +15,16 @@ import NewUsers from './pages/StudentsScreen/components/NewUsers';
 import StudentInfo from './pages/StudentsScreen/componentes-nuevoOrientado/StudentInfo';
 import PrivateRoutes from './privateRoute/PrivateRoutes';
 import { EventForm } from './pages/eventPage/EventForm';
+//context
+import Context,{auth}from './context/Context';
 
 
 
 // Fin Importación Páginas
 function App() {
-  let auth = true;
+  let auten = true;
   return (
+<Context.Provider value={auth.logueado}>  {/* envuelvo el contexto para todas las rutas  */}
 
     <Routes>
       {/*  rutas publicas */}
@@ -31,7 +34,7 @@ function App() {
 
       {/*  rutas privadas */}
 
-      <Route element={<PrivateRoutes propAuth={auth} />}>
+      <Route element={<PrivateRoutes propAuth={auten} />}>
           <Route path='inicio' element={<AdminPage />} />
           <Route path='profile' element={<ProfileAdminScreen />} />
 
@@ -49,11 +52,8 @@ function App() {
 
       
 
-      {/*  version de ruta privada que funciona */}
-      {/*  <Route path='/private-routes/*' element={ <PrivateRoutes propAuth={auth}/> }>
-                  <Route path='holi1' element={<Probando/>}/>
-           </Route> */}
     </Routes>
+    </Context.Provider> 
   );
 }
 export default App;

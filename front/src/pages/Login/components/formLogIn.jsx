@@ -3,9 +3,24 @@ import { useNavigate } from "react-router-dom";
 import FormInput from "../../global-components/formInput";
 import axios from "axios";
 import useVerify from "../../../hooks/useVerify"
-import verifications from "../../../Verify arguments/verifyLogIn.json"
+import verifications from "../../../Verify arguments/verifyLogIn.json";
+//context
+import {useContext} from "react";
+import Context from "../../../context/Context";
+import { useEffect } from "react";
+
+
 
 function FormLogIn() {
+
+    const nose= useContext(Context);
+    useEffect(()=>{
+        
+        console.log(JSON.stringify(nose))
+    },[])
+
+
+
     const URI = "http://localhost:8000/login"
     const navigate = useNavigate();
 
