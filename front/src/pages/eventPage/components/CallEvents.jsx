@@ -22,43 +22,35 @@ function CallEvents() {
                                 <td className="events">19:30hs</td>
                                 <td className="events">Evento grupal</td>
                                 <td className="events">Avila Sebastian</td>
-                                <td className="events"><img className="icon-delete" src={Delete} alt="icon de tacho de basura" /></td>
+                                <td className="events left"><img className="icon-delete" src={Delete} alt="icon de tacho de basura" /></td>
                             </tr>
                             <tr>
                                 <td className="events">28/09/2022</td>
                                 <td className="events">19:30hs</td>
                                 <td className="events">Evento grupal</td>
                                 <td className="events">Avila Sebastian</td>
-                                <td className="events"><img className="icon-delete" src={Delete} alt="icon de tacho de basura" /></td>
+                                <td className="events left"><img className="icon-delete" src={Delete} alt="icon de tacho de basura" /></td>
                             </tr>
                             <tr>
                                 <td className="events">28/09/2022</td>
                                 <td className="events">19:30hs</td>
                                 <td className="events">Evento grupal</td>
                                 <td className="events">Avila Sebastian</td>
-                                <td className="events"><img className="icon-delete" src={Delete} alt="icon de tacho de basura" /></td>
+                                <td className="events left"><img className="icon-delete" src={Delete} alt="icon de tacho de basura" /></td>
                             </tr>
                             <tr>
                                 <td className="events">28/09/2022</td>
                                 <td className="events">19:30hs</td>
                                 <td className="events">Evento grupal</td>
                                 <td className="events">Avila Sebastian</td>
-                                <td className="events"><img className="icon-delete" src={Delete} alt="icon de tacho de basura" /></td>
+                                <td className="events left"><img className="icon-delete" src={Delete} alt="icon de tacho de basura" /></td>
                             </tr>
                             <tr>
                                 <td className="events">28/09/2022</td>
                                 <td className="events">19:30hs</td>
                                 <td className="events">Evento grupal</td>
                                 <td className="events">Avila Sebastian</td>
-                                <td className="events"><img className="icon-delete" src={Delete} alt="icon de tacho de basura" /></td>
-                            </tr>
-
-                            <tr>
-                                <td className="events">28/09/2022</td>
-                                <td className="events">19:30hs</td>
-                                <td className="events">Evento grupal</td>
-                                <td className="events">Avila Sebastian</td>
-                                <td className="events"><img className="icon-delete" src={Delete} alt="icon de tacho de basura" /></td>
+                                <td className="events left"><img className="icon-delete" src={Delete} alt="icon de tacho de basura" /></td>
                             </tr>
 
                             <tr>
@@ -66,14 +58,22 @@ function CallEvents() {
                                 <td className="events">19:30hs</td>
                                 <td className="events">Evento grupal</td>
                                 <td className="events">Avila Sebastian</td>
-                                <td className="events"><img className="icon-delete" src={Delete} alt="icon de tacho de basura" /></td>
+                                <td className="events left"><img className="icon-delete" src={Delete} alt="icon de tacho de basura" /></td>
+                            </tr>
+
+                            <tr>
+                                <td className="events">28/09/2022</td>
+                                <td className="events">19:30hs</td>
+                                <td className="events">Evento grupal</td>
+                                <td className="events">Avila Sebastian</td>
+                                <td className="events left"><img className="icon-delete" src={Delete} alt="icon de tacho de basura" /></td>
                             </tr>
                             <tr>
                                 <td className="events">28/09/2022</td>
                                 <td className="events">19:30hs</td>
                                 <td className="events">Evento grupal</td>
                                 <td className="events">Avila Sebastian</td>
-                                <td className="events"><img className="icon-delete" src={Delete} alt="icon de tacho de basura" /></td>
+                                <td className="events left"><img className="icon-delete" src={Delete} alt="icon de tacho de basura" /></td>
                             </tr>
 
                         </table>
