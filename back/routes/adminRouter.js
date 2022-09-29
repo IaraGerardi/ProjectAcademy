@@ -38,5 +38,9 @@ routerAdmin.put('/admin/orientados/:id/orientadorToOrientado', orientadorToOrien
 routerAdmin.get('/admin/event', getEvent)
 
 //Ruta para crear eventos
-routerAdmin.post('/admin/createEvent', createEvento )
+routerAdmin.post('/admin/createEvent', createEvento)
+
+//Ruta para eliminar eventos
+routerAdmin.delete('/admin/:id/deleteEvent', deleteEvento)
+
 module.exports = routerAdmin;
