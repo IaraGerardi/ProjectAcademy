@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 function useVerify(formValues, validations) {
     // min dos caracteres el nombre
     const [verifyMessages, setVerifyMessages] = useState({});
-    const [isVerified, setIsVerified] = useState(false)
+    // const [isVerified, setIsVerified] = useState(false);
 
     const verifyInput = (value, payload) => {
         const { id, type } = payload;
@@ -79,7 +79,7 @@ function useVerify(formValues, validations) {
     //     setIsVerified(result)
     // }, [verifyForm])
 
-    return { verifyForm, verifyMessages, isVerified }
+    return { verifyForm, verifyMessages }
 }
 
 export default useVerify;
