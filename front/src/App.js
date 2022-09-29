@@ -15,6 +15,7 @@ import NewUsers from './pages/StudentsScreen/components/NewUsers';
 import StudentInfo from './pages/StudentsScreen/componentes-nuevoOrientado/StudentInfo';
 import PrivateRoutes from './privateRoute/PrivateRoutes';
 import { EventForm } from './pages/eventPage/EventForm';
+import { ProbandoReducer } from './context/Reducer';
 //context
 import Context,{auth}from './context/Context';
 
@@ -31,7 +32,7 @@ function App() {
       <Route path='/' element={<HomeScreen />} />
       <Route path='/logIn' element={<LogIn />} />
       <Route path='*' element={<Error />} />
-
+      <Route path='/reducer' element={<ProbandoReducer />} />
       {/*  rutas privadas */}
 
       <Route element={<PrivateRoutes propAuth={auten} />}>
