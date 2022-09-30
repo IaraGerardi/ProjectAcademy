@@ -67,16 +67,6 @@ export const EventForm = () => {
   },[])
 
 
-  //opciones para el select de la hora
-
-
-/*   const optionsDuration = [
-    { value: "00:15", label: "09:00 hs" },
-    { value: "00:30", label: "09:30 hs" },
-    { value: "00:45", label: "10:00 hs" },
-    { value: "1:00", label: "10:30 hs" },
-  ]; */
-
   //manejador de evento del select 1
   const handlerSelectOne = (e) => {
     console.log(e);
@@ -89,11 +79,13 @@ export const EventForm = () => {
     setValorOrientados(e)
   };
 
+  //manejador del select horario
   const handleHours = (e) => {
     console.log(e.value);
     setHours(e.value)
   }
 
+  //manejador del select duracion
   const handleDuration = (e) => {
     console.log(e.value);
     setDuration(e.value)
@@ -111,6 +103,7 @@ export const EventForm = () => {
       marginTop: '8px',
       })
     }
+    
   return (
 
     <div className="container-P w-full flex"> {/*  containedor padre tamaño igual a app */}
@@ -125,7 +118,7 @@ export const EventForm = () => {
           <h2 className="text-2xl font-medium text-slate-700">Crear un evento</h2>
           <h4 className='text-lg text-slate-700'>Puedes crear un primer encuentro entre Orientadores y Orientados.</h4>
 
-        //formulario agendar eventos
+        {/* formulario agendar eventos */}
           <form 
           method='POST' 
           onSubmit={handleSubmit} 
