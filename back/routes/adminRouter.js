@@ -3,7 +3,7 @@ const express = require ("express");
 const routerAdmin = express.Router();
 //Controllers
 const { createEvento, getEvent, deleteEvento } = require("../controllers/eventosController")
-const { getAllOrientados, createOrientado, orientadoById, getAllOrientadores, orientadorToOrientado, orientadoAndOrientador } = require ("../controllers/orientadoController.js");
+const { getAllOrientados, createOrientado, orientadoById, getAllOrientadores, orientadorToOrientado, orientadoAndOrientador, getAllOrientados2 } = require ("../controllers/orientadoController.js");
 const { getAllNovedades } = require("../controllers/novedadesController.js");
 const { isAuthenticated } = require("../controllers/loginAdminController.js"); //Autenticacion para que solo puedan ingresar usuarios logueados (admins)
 const { getAllAdminsProfiles, getAdminProfile } = require("../controllers/profileAdminController.js");
@@ -13,6 +13,7 @@ const validateCreate = require("../validations/createOrientado.js");
 
 //Rutas de la vista privada del Admin
 routerAdmin.get('/admin/orientados', getAllOrientados);
+routerAdmin.get('/admin/pruebaorientados', getAllOrientados2); //Es de prueba despues se borra
 routerAdmin.get('/admin/novedades', getAllNovedades);
 
 //Rutas para obtener profiles de admins

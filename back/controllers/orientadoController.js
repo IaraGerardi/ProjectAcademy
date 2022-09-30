@@ -15,6 +15,24 @@ const getAllOrientados = async (req, res) => {
     }
 }
 
+const getAllOrientados2 = async (req, res) => {
+    try {
+        const { page = 0, size = 5} = req.query;  //En la query pasamos parametros de pagina y tamaño de cuantos datos se mostraran(Por defecto será pagina 0 y 5 orientados que se muestren)
+        let options = {
+            limit: Number(size),
+            offset: Number(page) * Number(size)
+        }
+        const { count , rows } = await ModelOrientado.findAndCountAll(options)
+
+        res.json({
+            total: count,
+            categories: rows
+        })
+    } catch (error) {
+        res.json({ message: error.message })
+    }
+}
+
 const createOrientado = async (req, res) => {
     const { name, lastname, email, phone, program} = req.body;
     const { dni, age, school, address, why } = req.body;
@@ -82,6 +100,7 @@ const orientadorToOrientado = async (req, res) => {
 module.exports = {
     createOrientado,
     getAllOrientados,
+    getAllOrientados2,
     orientadorToOrientado,
     orientadoById,
     getAllOrientadores,
