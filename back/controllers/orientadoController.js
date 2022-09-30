@@ -5,7 +5,7 @@ porque son los ultimos cambios que recibe,
 en caso de no funcionar probar llamando al modelo
 desde "../database/models/ModelOrientado.js*/
 
-
+//URL: /admin/orientados
 const getAllOrientados = async (req, res) => {
     try {
         const orientados = await ModelOrientado.findAll();
@@ -15,14 +15,21 @@ const getAllOrientados = async (req, res) => {
     }
 }
 
+//URL: /admin/pruebaorientados
 const getAllOrientados2 = async (req, res) => {
     try {
-        const { page = 0, size = 5} = req.query;  //En la query pasamos parametros de pagina y tamaño de cuantos datos se mostraran(Por defecto será pagina 0 y 5 orientados que se muestren)
+        /* En la query pasamos parametros de pagina y tamaño de cuantos datos
+        se mostraran(Por defecto será pagina 0 y 5 orientados que se muestren)
+        limit: Cantidad de datos limite que trae,
+        offset: se establece desde que dato arranca la query 
+        Ejemplo: 1(page) * 5(size/limit) = 5(Offset) 
+        Arranca desde el quinto dato y muestra un maximo de 5 posteriores. */
+        const { page = 0, size = 5 } = req.query;
         let options = {
-            limit: Number(size),
-            offset: Number(page) * Number(size)
+            limit: +size,
+            offset: (+page) * (+size)
         }
-        const { count , rows } = await ModelOrientado.findAndCountAll(options)
+        const { count, rows } = await ModelOrientado.findAndCountAll(options)
 
         res.json({
             total: count,
@@ -34,7 +41,7 @@ const getAllOrientados2 = async (req, res) => {
 }
 
 const createOrientado = async (req, res) => {
-    const { name, lastname, email, phone, program} = req.body;
+    const { name, lastname, email, phone, program } = req.body;
     const { dni, age, school, address, why } = req.body;
     try {
         const user = await ModelOrientado.create({
@@ -52,7 +59,10 @@ const createOrientado = async (req, res) => {
             password: await bcryptjs.hash(req.body.password, 10)
         });
 
-        res.json({id: user.id})
+        res.json({ 
+            status: 'Successful',
+            id: user.id 
+        })
     } catch (error) {
         console.log(error)
         res.json({ message: error.message })
@@ -79,7 +89,7 @@ const orientadoAndOrientador = async (req, res) => {
     res.json(orientado)
 }
 
-const getAllOrientadores = async (req,res)=>{
+const getAllOrientadores = async (req, res) => {
     const orientadores = await ModelOrientador.findAll();
     res.json(orientadores)
 }
