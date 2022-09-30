@@ -5,7 +5,7 @@ import Select from "react-select";
 import makeAnimated from 'react-select/animated';
 import { useState, useEffect } from "react";
 import axios from 'axios';
-import { optionsDuration } from './duration'
+import { optionsDuration, optionsHours } from './duration'
 
 export const EventForm = () => {
 
@@ -68,12 +68,7 @@ export const EventForm = () => {
 
 
   //opciones para el select de la hora
-  const optionsHours = [
-    { value: "09:00", label: "09:00 hs" },
-    { value: "09:30", label: "09:30 hs" },
-    { value: "10:00", label: "10:00 hs" },
-    { value: "10:30", label: "10:30 hs" },
-  ];
+
 
 /*   const optionsDuration = [
     { value: "00:15", label: "09:00 hs" },
@@ -130,6 +125,7 @@ export const EventForm = () => {
           <h2 className="text-2xl font-medium text-slate-700">Crear un evento</h2>
           <h4 className='text-lg text-slate-700'>Puedes crear un primer encuentro entre Orientadores y Orientados.</h4>
 
+        //formulario agendar eventos
           <form 
           method='POST' 
           onSubmit={handleSubmit} 
