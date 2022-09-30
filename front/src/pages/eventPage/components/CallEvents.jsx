@@ -1,8 +1,5 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import axios from "axios";
-
-
 import RowLeft from "./img/left.svg"
 import RowRight from "./img/right.svg"
 import Delete from "./img/delete.svg"
@@ -16,48 +13,12 @@ function CallEvents({ events }) {
     const [offset, setOffset] = useState(0);
     const [limit, setLimit] = useState(2);
     const [eventList, setEventList] = useState(events);
-    // const [event, setEvent] = useState();
-    // const [valorActualDe, setValorActualDe] = useState(1);
-    // const [valorActualHasta, setValorActualHasta] = useState(2);
 
     console.log("events prop:", events)
-    // 
-    // useEffect(() => {
-    //     const getEvent = async () => {
-    //         try {
-    //             const res = await axios.get("http://localhost:8000/admin/event");
-    //             setEvent(res.data);
-    //             console.log(res.data)
-    //         } catch (error) {
-    //             console.log(error)
-    //         }
-    //     };
-    //     getEvent();
-    // }, []);
-
-
-
-
-
-    // const nextHandler = () => {
-    //     setValorActualDe(valorActualDe + 8)
-    //     setValorActualHasta(valorActualHasta + 8)
-    // }
-
-    // const prevHandler = () => {
-    //     setValorActualDe(valorActualDe - 8)
-    //     setValorActualHasta(valorActualHasta - 8)
-    // }
 
     // Cambio minimo y maximo de eventos que se muestran
-    const prevPage = () => {
-        setOffset(offset - 2);
-        setLimit(limit - 2);
-    }
-    const nextPage = () => {
-        setOffset(offset + 2);
-        setLimit(limit + 2);
-    }
+    const prevPage = () => { setOffset(offset - 2); setLimit(limit - 2); }
+    const nextPage = () => { setOffset(offset + 2); setLimit(limit + 2); }
 
     useEffect(() => {
         const changeEventPages = () => {

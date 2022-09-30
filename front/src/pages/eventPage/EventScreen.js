@@ -76,6 +76,7 @@ export const EventScreen = () => {
             />
           </div>
 
+{/* Paso los eventos como props para que se actualice cuando el estado cambie por el buscador */}
           <CallEvents events={eventsList} />
 
         </div>
