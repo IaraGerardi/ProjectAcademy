@@ -6,6 +6,7 @@ import makeAnimated from 'react-select/animated';
 import { useState, useEffect } from "react";
 import axios from 'axios';
 import { optionsDuration, optionsHours } from './duration'
+import { useNavigate } from "react-router-dom";
 
 export const EventForm = () => {
 
@@ -18,7 +19,9 @@ export const EventForm = () => {
   const [timeEvent, setHours] = useState("");
   const [durationEvent, setDuration] = useState("");
   const [descriptionEvent, setDescriptionEvent] = useState('')
+  const [active, setActive] = useState(false);
   const animatedComponents = makeAnimated();
+  const navegate = useNavigate();
 
   // URL DE PETICION 
 
@@ -39,7 +42,14 @@ export const EventForm = () => {
       descriptionEvent,
     }
     )
-    .then((response) => console.log(response))
+    .then((response) => {
+      if (response.status === 200) {
+      setActive(!active)
+      setTimeout(() => {
+        navegate('/eventos')
+      }, "2000")
+    }
+  })
   }
   // -------- 
 
@@ -103,7 +113,7 @@ export const EventForm = () => {
       marginTop: '8px',
       })
     }
-    
+
   return (
 
     <div className="container-P w-full flex"> {/*  containedor padre tamaño igual a app */}
@@ -112,7 +122,7 @@ export const EventForm = () => {
     <div className="container-derecho header-sa">{/*  hijo2 derecho  column */}
       <HeaderInicio propNamePage="Eventos"/>
       
-      <div className='mt-7 ml-10'>
+      <div className='mt-5 ml-8'>
         
         <div className='mt-5 ml-5'>
           <h2 className="text-2xl font-medium text-slate-700">Crear un evento</h2>
@@ -129,9 +139,9 @@ export const EventForm = () => {
               <div className='flex flex-row py-3 '>
 
                 <div className='flex flex-col'>
-                  <label className="text-sm font-medium text-slate-600 mb-2">Nombre del evento</label>
+                  <label className="text-sm font-medium text-slate-700 mb-2">Nombre del evento</label>
                   <input
-                    className='text-sm w-80 h-8 p-2 rounded-lg border'
+                    className='text-sm w-80 h-8 p-2 rounded-lg border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block focus:ring-1'
                     type='text'
                     placeholder='Ingresar nombre'
                     value={nameEvent}
@@ -173,7 +183,7 @@ export const EventForm = () => {
           <div className='flex flex-col'>
             <label className="text-sm font-medium text-slate-600 mb-2">Fecha</label>
             <input
-            className='text-sm w-80 h-8 p-2 rounded-lg border'
+            className='text-sm w-80 h-8 p-2 rounded-lg border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block focus:ring-1'
             type='date'
             name='dateEvent'
             value={dateEvent} 
@@ -224,7 +234,7 @@ export const EventForm = () => {
               name='descriptionEvent'
               onChange={(e) => setDescriptionEvent(e.target.value)}
               placeholder="Escribir comentarios"
-              className=" rounded-lg border border-slate-300 w-3/4 lg:w-2/4 placeholder:pl-2"
+              className=" rounded-lg border border-slate-300 w-3/4 lg:w-2/4 placeholder:pl-2 shadow-sm placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block focus:ring-1"
             />
           </div> 
 
