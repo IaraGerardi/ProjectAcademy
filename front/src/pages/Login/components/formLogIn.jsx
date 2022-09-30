@@ -1,25 +1,25 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+ import { useNavigate } from "react-router-dom"; 
 import FormInput from "../../global-components/formInput";
 import axios from "axios";
 import useVerify from "../../../hooks/useVerify"
 import verifications from "../../../Verify arguments/verifyLogIn.json";
 //context
 import {useContext} from "react";
-import Context from "../../../context/Context";
-import { useEffect } from "react";
+import StoreContext from "../../../Store/StoreProvider";
+ import {types} from "../../../Store/StoreReducer" 
+
+/* import Context from "../../../context/Context"; */
+/* import { useEffect } from "react"; */
 
 
 
 function FormLogIn() {
 
-    const nose= useContext(Context);
-    useEffect(()=>{
-        
-        console.log(JSON.stringify(nose))
-    },[])
 
-
+ const  [store,dispatch]=useContext(StoreContext)
+        const {logged}=store;
+        console.log(logged)
 
     const URI = "http://localhost:8000/login"
     const navigate = useNavigate();
@@ -45,8 +45,8 @@ function FormLogIn() {
             .then((response) => {
                 if (response.data.si) {
                     localStorage.setItem("usuario", JSON.stringify(response.data.admin));
-                    
-                    navigate('/inicio');
+                  dispatch({type:types.authLogin})
+                  navigate('/inicio'); 
                 } else {
                     setBackMessages({
                         emailLog: null,
@@ -73,8 +73,9 @@ function FormLogIn() {
                 id="passwordLog" type="password" label="Contraseña" placeholder="Ingresa tu contraseña"
                 verifyInput={verifyMessages.passwordLog && verifyMessages.passwordLog !== true
                     ? verifyMessages.passwordLog : backMessages.passwordLog} />
-            <input type="submit" value="Ingresar"
+            <input type="submit" value="Ingresar" 
                 className={`w-44 cursor-pointer border-none text-white text-base font-medium bg-celesteValtech`} />
+              
         </form>
     );
 }

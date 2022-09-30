@@ -7,8 +7,15 @@ import LogoPerfil from "../icons/logo-perfil.svg"
 import cerrarSesion from "../icons/logo-cerrar.svg"
 
 import "../style/header.css"
+ import {types} from "../../../Store/StoreReducer"; 
+import { useContext } from "react";
+import StoreContext from "../../../Store/StoreProvider";
+ 
 
 function HeaderInicio({ propNamePage }) {
+    const [store,dispatch]=useContext(StoreContext)
+     const {logged}=store;
+   console.log(logged)
 
     const [infoAdmin, setInfoAdmin] = useState([]);
     const [active, setActive] = useState(false);
@@ -39,6 +46,7 @@ function HeaderInicio({ propNamePage }) {
             setInfoAdmin(resLogout.data);
             console.log(resLogout.data);
             localStorage.removeItem("usuario")
+           dispatch({type:types.authLogout})
             navigate('/login')
         } catch (error) {
             console.log(error);
@@ -64,9 +72,9 @@ function HeaderInicio({ propNamePage }) {
                 <Link to="/profile" className="p-2"><img className="logo-perfil" src={LogoPerfil} alt='icon-profile' /> Mi perfil</Link>
 
 
-                <Link to="/"><img className="logo-perfil" src={cerrarSesion} alt='icon-logout' /><button onClick={() => { getLogout() }}>Cerrar sesión</button></Link>
+                <Link to="/"><img className="logo-perfil" src={cerrarSesion} alt='icon-logout' /><button onClick={() => { getLogout()  }}>Cerrar sesión</button></Link>
 
-
+              
             </div>
         </>
 

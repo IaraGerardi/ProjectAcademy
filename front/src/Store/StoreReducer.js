@@ -1,23 +1,38 @@
- import React, { useReducer } from 'react'
- 
+
+ const types={
+    authLogin:'auth - Login',
+    authLogout:'auth - Logout'
+ }
 
 
 
- const initialState = {
-    logged: false
+ const initialStore = {
+    logged: false,
+    user:{
+      id:1,
+      name:'aye'
+    }
+
 };
 
-function reducer(state, action) {
+const storeReducer=(state, action)=> {
   switch (action.type) {
-    case 'login':
-      return {logged: true};
-    case 'logout':
-      return {logged: false};
+    case types.authLogin:
+      return {
+        ...state,
+        logged: true};
+    case types.authLogout:
+      return {
+        ...state,
+        logged: false};
     default:
-      throw new Error();
+      return state; // retorno el estado previo si ningu type concide
   }
-}
 
+}
+export default storeReducer;
+export {initialStore,types};
+/* 
 export const ProbandoReducer=()=> {
   const [state, dispatch] = useReducer(reducer, initialState);
   console.log(state.logged)
@@ -30,7 +45,7 @@ export const ProbandoReducer=()=> {
     </>
   );
 } 
-
+ */
 
 /* const initialState = {count: 0};
 
