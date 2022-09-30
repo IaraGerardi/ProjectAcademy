@@ -10,44 +10,65 @@ import Delete from "./img/delete.svg"
 
 import "./call-events.css" //IMPORTACION DE CSS
 
+function CallEvents({ events }) { 
+    // Recibe eventos como prop
 
+    const [offset, setOffset] = useState(0);
+    const [limit, setLimit] = useState(2);
+    const [eventList, setEventList] = useState(events);
+    // const [event, setEvent] = useState();
+    // const [valorActualDe, setValorActualDe] = useState(1);
+    // const [valorActualHasta, setValorActualHasta] = useState(2);
 
-
-
-function CallEvents() { //LLAMADA DE EVENTOS DE LA API
-
-    const [event, setEvent] = useState();
-    const [valorActualDe, setValorActualDe] = useState(1);
-    const [valorActualHasta, setValorActualHasta] = useState(8);
-
-
+    console.log("events prop:", events)
     // 
+    // useEffect(() => {
+    //     const getEvent = async () => {
+    //         try {
+    //             const res = await axios.get("http://localhost:8000/admin/event");
+    //             setEvent(res.data);
+    //             console.log(res.data)
+    //         } catch (error) {
+    //             console.log(error)
+    //         }
+    //     };
+    //     getEvent();
+    // }, []);
+
+
+
+
+
+    // const nextHandler = () => {
+    //     setValorActualDe(valorActualDe + 8)
+    //     setValorActualHasta(valorActualHasta + 8)
+    // }
+
+    // const prevHandler = () => {
+    //     setValorActualDe(valorActualDe - 8)
+    //     setValorActualHasta(valorActualHasta - 8)
+    // }
+
+    // Cambio minimo y maximo de eventos que se muestran
+    const prevPage = () => {
+        setOffset(offset - 2);
+        setLimit(limit - 2);
+    }
+    const nextPage = () => {
+        setOffset(offset + 2);
+        setLimit(limit + 2);
+    }
+
     useEffect(() => {
-        const getEvent = async () => {
-            try {
-                const res = await axios.get("http://localhost:8000/admin/event");
-                setEvent(res.data);
-                console.log(res.data)
-            } catch (error) {
-                console.log(error)
-            }
-        };
-        getEvent();
-    }, []);
+        const changeEventPages = () => {
+            // Hago un slice de la lista de eventos
+            const slicedEvents = events.slice(offset, limit);
+            // Define ese array como la lista de eventos
+            setEventList(slicedEvents)
+        }
+        changeEventPages()
+    }, [offset, limit, events])
 
-
-
-
-
-    const nextHandler = () => {
-        setValorActualDe(valorActualDe+8)
-        setValorActualHasta(valorActualHasta+8)
-    }
-
-    const prevHandler = () => {
-        setValorActualDe(valorActualDe-8)
-        setValorActualHasta(valorActualHasta-8)
-    }
     return (
 
         <>
@@ -58,11 +79,12 @@ function CallEvents() { //LLAMADA DE EVENTOS DE LA API
 
                 <div className="pagination">
                     <div className="cont-pagination">
-                        <div>{valorActualDe}-{valorActualHasta}  de 100</div>
+                        <div>{offset}-{limit}  de 100</div>
                         <div className="cont-btn-pagination">
                             {/*BOTONES DE LA PAGINACION*/}
-                            <img onClick={prevHandler} className="btn-row" src={RowLeft} alt="" />
-                            <img onClick={nextHandler} className="btn-row" src={RowRight} alt="" />
+                            {/* Si el valor del que arranca el paginado es menor a cero deshabilito */}
+                            <img onClick={offset > 0 ? prevPage : null} className={`btn-row ${offset > 0 ? null : "opacity-50"}`} src={RowLeft} alt="" />
+                            <img onClick={nextPage} className="btn-row" src={RowRight} alt="" />
                         </div>
                     </div>
                 </div>
@@ -80,7 +102,7 @@ function CallEvents() { //LLAMADA DE EVENTOS DE LA API
                         </thead>
 
                         <tbody> {/*RECORRO LA API Y MUESTRO LOS DATOS */}
-                            {event?.map((event) => {
+                            {eventList.map((event) => {
                                 return (
                                     <tr key={event.id}>
                                         <td className="events">{event.date}</td>

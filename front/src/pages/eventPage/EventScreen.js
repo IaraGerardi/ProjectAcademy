@@ -19,10 +19,7 @@ export const EventScreen = () => {
 
   useEffect(() => {
     setEventsList(events)
-  }, [])
-
-  /* Hice la busqueda en base a que coincidan el id del orientador del orientado y del evento, 
-  pero cuando este el metodo para traer la tabla de evento-alumno podria cambiarlo */
+  }, [events])
 
   const handleSearch = (terminoBusqueda) => {
 
@@ -41,7 +38,6 @@ export const EventScreen = () => {
 
     // Filtro los eventos en base al id del orientador
     let filteredEvents = events.filter((event) => {
-      console.log(event)
       if (arrayOrientadoreId.includes(event.Orientadore.id)) {
         return event;
       }
@@ -50,33 +46,8 @@ export const EventScreen = () => {
     // Y guardo el resultado en el estado de la lista
     setEventsList(filteredEvents);
   }
-  /*   const [orientadores, setOrientadores] = useState([])
-    const [orientados, setOrientados] = useState([]) */
 
-
-
-  //obtengo los datos de orientadores
-  /* const ShowData = async () =>{
-    const res = await axios.get('http://localhost:8000/admin/orientadores')
-    console.log(res.data)
-    setOrientadores(res.data)
-  }
-
-  useEffect( ()=>{
-    ShowData()
-  },[]) */
-
-  //obtengo los datos de orientados
-  /* const ShowDataStudents = async () =>{
-    const resp = await axios.get('http://localhost:8000/admin/orientados')
-    console.log(resp.data)
-    setOrientados(resp.data)
-  }
-
-  useEffect( ()=>{
-    ShowDataStudents()
-  },[]) */
-
+  console.log("father event list:", eventsList)
 
   return (
 
@@ -87,10 +58,6 @@ export const EventScreen = () => {
         <HeaderInicio propNamePage="Eventos" />
 
         <div className='mt-7 ml-10'>
-
-
-
-
           <div className="cont-ingresar-orientado">
             <p className="text-new-user">Todos los eventos</p>
             <Link to='/eventos/form'><button className=" w-44 h-10 bg-celesteValtech rounded-lg text-base text-white font-medium " type="submit">
@@ -109,7 +76,7 @@ export const EventScreen = () => {
             />
           </div>
 
-          <CallEvents />
+          <CallEvents events={eventsList} />
 
         </div>
 
