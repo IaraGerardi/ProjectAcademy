@@ -5,6 +5,7 @@ import Select from "react-select";
 import makeAnimated from 'react-select/animated';
 import { useState, useEffect } from "react";
 import axios from 'axios';
+import { optionsDuration } from './duration'
 
 export const EventForm = () => {
 
@@ -74,12 +75,12 @@ export const EventForm = () => {
     { value: "10:30", label: "10:30 hs" },
   ];
 
-  const optionsDuration = [
+/*   const optionsDuration = [
     { value: "00:15", label: "09:00 hs" },
     { value: "00:30", label: "09:30 hs" },
     { value: "00:45", label: "10:00 hs" },
     { value: "1:00", label: "10:30 hs" },
-  ];
+  ]; */
 
   //manejador de evento del select 1
   const handlerSelectOne = (e) => {
