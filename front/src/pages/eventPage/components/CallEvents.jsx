@@ -5,17 +5,14 @@ import RowRight from "./img/right.svg"
 import Delete from "./img/delete.svg"
 import axios from 'axios';
 //IMPORTACION DE SVG
-
 import "./call-events.css" //IMPORTACION DE CSS
 
-function CallEvents({ events }) { 
+function CallEvents({ events }) {
     // Recibe eventos como prop
 
     const [offset, setOffset] = useState(0);
     const [limit, setLimit] = useState(2);
     const [eventList, setEventList] = useState(events);
-
-    console.log("events prop:", events)
 
     // Cambio minimo y maximo de eventos que se muestran
     const prevPage = () => { setOffset(offset - 2); setLimit(limit - 2); }
@@ -32,27 +29,28 @@ function CallEvents({ events }) {
     }, [offset, limit, events])
 
 
-        //eliminar un evento
-        const deleteEvent = async(id) => {
-           await axios.delete(`http://localhost:8000/admin/${id}/deleteEvent/`)
-        }
+    //eliminar un evento
+    const deleteEvent = async (id) => {
+        await axios.delete(`http://localhost:8000/admin/${id}/deleteEvent/`)
+    }
 
     return (
 
         <>
             {/* TABLA DE EVENTOS */}
-
             <div className="table-events">
-
-
                 <div className="pagination">
                     <div className="cont-pagination">
                         <div>{offset}-{limit}  de 100</div>
                         <div className="cont-btn-pagination">
                             {/*BOTONES DE LA PAGINACION*/}
-                            {/* Si el valor del que arranca el paginado es menor a cero deshabilito */}
-                            <img onClick={offset > 0 ? prevPage : null} className={`btn-row ${offset > 0 ? null : "opacity-50"}`} src={RowLeft} alt="" />
-                            <img onClick={nextPage} className="btn-row" src={RowRight} alt="" />
+                            {/* Si el valor del que empieza el paginado es menor a cero deshabilito el boton*/}
+                            <img onClick={offset > 0 ? prevPage : null}
+                                className={`btn-row ${offset > 0 ? null : "opacity-50"}`} src={RowLeft} alt="" />
+                            {/* Si el limite del paginado es mas alto que la cantidad de eventos que hay para mostrar
+                            deshabilito el boton*/}
+                            <img onClick={limit < events.length ? nextPage : null}
+                                className={`btn-row ${(limit < events.length) ? null : "opacity-50"}`} src={RowRight} alt="" />
                         </div>
                     </div>
                 </div>
@@ -77,7 +75,7 @@ function CallEvents({ events }) {
                                         <td className="events">{event.time}</td>
                                         <td className="events">{event.name}</td>
                                         <td className="events">{event.Orientados[0].name} {event.Orientados[0].lastname}</td>
-                                        <td className="events left"><img onClick={ ()=> deleteEvent(event.id)} className="icon-delete" src={Delete} alt="icon de tacho de basura" /></td>
+                                        <td className="events left"><img onClick={() => deleteEvent(event.id)} className="icon-delete" src={Delete} alt="icon de tacho de basura" /></td>
                                     </tr>
                                 )
                             })}

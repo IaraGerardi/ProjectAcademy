@@ -11,7 +11,7 @@ function LogIn() {
     return (
         <div className="loginAdmin flex">
             <div className="imagesContainer flex flex-col justify-center items-center">
-                <Link to="/">
+                <Link className="w-52 h-12" to="/">
                     <img className="cursor-pointer" id="vCampLogo" src={Logo} alt="v_camp" />
                 </Link>
                 <img className="w-96 h-96" id="logInImage" src={LogInIcon} alt="icon" />
