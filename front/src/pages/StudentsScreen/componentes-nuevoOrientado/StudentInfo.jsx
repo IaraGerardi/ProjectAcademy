@@ -55,10 +55,10 @@ function StudentInfo() {
     <div className="cotainerForm ml-8 mt-10 mb-10">
       <h2 className="text-2xl font-medium text-slate-700">01.Informacion básica </h2>
       <div className="container-basicInfo flex flex-row gap-16">{/* div1 info basica */}
-        <img src={require(`../../../img-back/orientados/${image}`)} alt="" className='w-20 h-20 rounded-full object-cover' />
+        <img src={require(`../../../img-back/orientados/${image}`)} alt="" className=' w-28 h-28 mt-8 ml-4 rounded-full object-cover' />
 
 
-        <div className='flex flex-col gap-5'>
+        <div className='flex flex-col gap-5 mt-5'>
           <span className='text-2xl font-semibold mt-3'>{`${orientado.name} ${orientado.lastname}`}</span>
           <div className=" cajaInputsDatosP flex flex-col flex-wrap h-40">
             <span className='text-slate-400 text-xs'>EMAIL</span>
@@ -76,7 +76,7 @@ function StudentInfo() {
         {/* div2 datos personales */}
         <h2 className="text-2xl font-medium">02.Datos personales</h2>
         {/*  a cada uno de los InputLabel recibe los 4 props  */}
-        <div className=" cajaInputsDatosP flex flex-row h-32 gap-20">
+        <div className=" cajaInputsDatosP flex flex-row h-32 gap-20 mt-4">
           <div>
             <span className='text-slate-400 text-xs'>TELEFONO</span>
             <p>{orientado.phone}</p>
@@ -95,7 +95,7 @@ function StudentInfo() {
         <p>{orientado.why}</p>
       </div>
 
-      <div className="container-crateUsernamePassword">
+      <div className="container-crateUsernamePassword ">
 
         {/* div3 crear usuario y contraseña */}
         <h2 className="text-2xl font-medium text-slate-700">03.Usuario y contraseña</h2>
