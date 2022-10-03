@@ -80,7 +80,7 @@ function FormOrientado() {
           setActive(!active)
           setTimeout(() => {
             navegate(`/orientados/StudentInfo/${response.data.id}`)
-          }, "2000")
+          }, "4000")
         }
       })
   };
@@ -383,7 +383,7 @@ function FormOrientado() {
         </div>
         <div className="mt-10">
           {/* div4 botones form */}
-          <button className=" w-44 h-10 bg-celesteValtech rounded-lg text-base text-white font-medium " onClick={() => setActive(!active)} type="submit">
+          <button className=" w-44 h-10 bg-celesteValtech rounded-lg text-base text-white font-medium " type="submit">
             Ingresar Orientado
           </button>
           <button className=" w-32 text-sm underline" onClick={handleCancelForm}>Cancelar ingreso</button>
