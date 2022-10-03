@@ -11,7 +11,7 @@ function UserAdmin() {
     const getOrientados = async () => {
       try {
         const res = await axios.get("http://localhost:8000/admin/orientados");
-        setNewusers(res.data.slice(-6));
+        setNewusers(res.data.slice(0,6));
 
         console.log(res.data);
       } catch (error) {

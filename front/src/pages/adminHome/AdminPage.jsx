@@ -27,14 +27,14 @@ function AdminPage() {
 
                     <div className="boxcentral h-1/6  items-center">
                       <div className=" boxcentraltwo flex items-center w-9/12 ml-20 justify-between h-full">
-                        <div className="text-1xl text-center font-semibold">
+                        <div className="text-1xl text-center font-semibold mt-4 ml-2">
                           <div>Nuevos orientados</div>
                           <div className="nuevosorientados bg-cyan-400 h-1 mt-2 w-48" ></div>
                         </div>
 
                         <div>
                           <Link className="navegar" to="/orientados/nuevo">
-                            <button className="btn-ingresar-orientado mr-2">
+                            <button className="btn-ingresar-orientado mr-2 mt-5">
                               Ingresar orientado
                             </button>
                           </Link>
