@@ -8,10 +8,13 @@ desde "../database/models/ModelOrientado.js*/
 //URL: /admin/orientados
 const getAllOrientados = async (req, res) => {
     try {
-        const orientados = await ModelOrientado.findAll();
+        const orientados = await ModelOrientado.findAll({
+            attributes: ['id', 'name', 'lastname', 'photoProfile', 'OrientadoreId'],
+            order: [['id', 'DESC']]
+        });
         res.json(orientados)
     } catch (error) {
-        res.json({ message: error.message })
+        res.json({ message: error.message });
     }
 }
 
@@ -59,9 +62,9 @@ const createOrientado = async (req, res) => {
             password: await bcryptjs.hash(req.body.password, 10)
         });
 
-        res.json({ 
+        res.json({
             status: 'Successful',
-            id: user.id 
+            id: user.id
         })
     } catch (error) {
         console.log(error)
