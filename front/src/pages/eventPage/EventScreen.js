@@ -47,7 +47,7 @@ export const EventScreen = () => {
     setEventsList(filteredEvents);
   }
 
-  console.log("father event list:", eventsList)
+  /* console.log("father event list:", eventsList) */
 
   return (
 

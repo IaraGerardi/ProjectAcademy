@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import RowLeft from "./img/left.svg"
 import RowRight from "./img/right.svg"
 import Delete from "./img/delete.svg"
+import axios from 'axios';
 //IMPORTACION DE SVG
 
 import "./call-events.css" //IMPORTACION DE CSS
@@ -29,6 +30,12 @@ function CallEvents({ events }) {
         }
         changeEventPages()
     }, [offset, limit, events])
+
+
+        //eliminar un evento
+        const deleteEvent = async(id) => {
+           await axios.delete(`http://localhost:8000/admin/${id}/deleteEvent/`)
+        }
 
     return (
 
@@ -70,7 +77,7 @@ function CallEvents({ events }) {
                                         <td className="events">{event.time}</td>
                                         <td className="events">{event.name}</td>
                                         <td className="events">{event.Orientados[0].name} {event.Orientados[0].lastname}</td>
-                                        <td className="events left"><img className="icon-delete" src={Delete} alt="icon de tacho de basura" /></td>
+                                        <td className="events left"><img onClick={ ()=> deleteEvent(event.id)} className="icon-delete" src={Delete} alt="icon de tacho de basura" /></td>
                                     </tr>
                                 )
                             })}

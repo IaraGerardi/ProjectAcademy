@@ -122,11 +122,11 @@ export const EventForm = () => {
     <div className="container-derecho header-sa">{/*  hijo2 derecho  column */}
       <HeaderInicio propNamePage="Eventos"/>
       
-      <div className='mt-5 ml-8'>
+      <div className='lg:mt-5 lg:ml-8'>
         
         <div className='mt-5 ml-5'>
-          <h2 className="text-2xl font-medium text-slate-700">Crear un evento</h2>
-          <h4 className='text-lg text-slate-700'>Puedes crear un primer encuentro entre Orientadores y Orientados.</h4>
+          <h2 className="lg:text-2xl font-medium text-slate-700">Crear un evento</h2>
+          <h4 className='lg:text-lg text-slate-700'>Puedes crear un primer encuentro entre Orientadores y Orientados.</h4>
 
         {/* formulario agendar eventos */}
           <form 
@@ -134,14 +134,14 @@ export const EventForm = () => {
           onSubmit={handleSubmit} 
           className='mt-5'>
 
-            <h2 className="text-base font-medium text-slate-700">01. Información sobre el evento</h2>
+            <h2 className="lg:text-base lg:font-medium text-slate-700 ">01. Información sobre el evento</h2>
 
-              <div className='flex flex-row py-3 '>
+              <div className='flex flex-col lg:flex-row md:flex-wrap py-5 items-center'>
 
                 <div className='flex flex-col'>
                   <label className="text-sm font-medium text-slate-700 mb-2">Nombre del evento</label>
                   <input
-                    className='text-sm w-80 h-8 p-2 rounded-lg border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block focus:ring-1'
+                    className=' text-sm lg:w-80 md:w-64 h-8 p-2 rounded-lg border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block focus:ring-1'
                     type='text'
                     placeholder='Ingresar nombre'
                     value={nameEvent}
@@ -149,18 +149,18 @@ export const EventForm = () => {
                   />
                 </div>
 
-              <div className='flex flex-col mx-5'>
+              <div className='flex flex-col lg:mx-5'>
                 <label className="text-sm font-medium text-slate-600">Orientador participante</label>
                 <Select
                   placeholder="Seleccionar orientador"
                   options={orientadorEvent.map(elem => ({label: `${elem.name} ${elem.lastname}`, value: elem.id }))}
                   onChange={handlerSelectOne}
                   styles={customStyles}
-                  className="text-sm w-80 rounded-lg "
+                  className="text-sm lg:w-80 rounded-lg md:w-64 "
                 />
               </div>  
 
-              <div className='flex flex-col'>
+              <div className='flex flex-col '>
                 <label className="text-sm font-medium text-slate-600 ">Orientado/es participante/s</label>
                 <Select
                   placeholder="Seleccionar orientado"
@@ -169,21 +169,21 @@ export const EventForm = () => {
                   isMulti
                   components={animatedComponents}
                   styles={customStyles}
-                  className="text-sm w-80 rounded-lg "
+                  className="text-sm lg:w-80 rounded-lg md:w-64"
                 />
               </div>
 
         </div>
 
-        <div className='border-y-2 py-5 my-5 w-5/6'>
-            <h2 className="text-base font-medium text-slate-700">02. Días y Horarios disponibles </h2>
+        <div className='border-y-2 lg:py-5 lg:my-5 lg:w-5/6 '>
+            <h2 className="lg:text-base lg:font-medium text-slate-700 ">02. Días y Horarios disponibles </h2>
 
-        <div className='flex flex-row py-3'>   
+        <div className='flex flex-col lg:flex-row lg:py-3 md:flex-wrap items-center'>   
 
           <div className='flex flex-col'>
             <label className="text-sm font-medium text-slate-600 mb-2">Fecha</label>
             <input
-            className='text-sm w-80 h-8 p-2 rounded-lg border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block focus:ring-1'
+            className='text-sm h-8 p-2 rounded-lg border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block focus:ring-1'
             type='date'
             name='dateEvent'
             value={dateEvent} 
@@ -192,7 +192,7 @@ export const EventForm = () => {
             />
           </div>
 
-          <div className='flex flex-col mx-5'>
+          <div className='flex flex-col lg:mx-5'>
             <label className="text-sm font-medium text-slate-600">Horario</label>
             <Select
                 placeholder="Seleccionar horario"
@@ -200,7 +200,7 @@ export const EventForm = () => {
                 options={optionsHours} 
                 onChange={handleHours} 
                 styles={customStyles}
-                className="text-sm w-80 rounded-lg "
+                className="text-sm lg:w-80 rounded-lg md:w-64"
               />
           </div>
 
@@ -212,7 +212,7 @@ export const EventForm = () => {
                 options={optionsDuration} 
                 onChange={handleDuration} 
                 styles={customStyles}
-                className="text-sm w-80 rounded-lg " 
+                className="text-sm lg:w-80 rounded-lg md:w-64" 
               />  
           </div>
 
@@ -220,7 +220,7 @@ export const EventForm = () => {
 
         </div>
 
-          <h2 className="text-base font-medium text-slate-700">03. Detalle </h2>
+          <h2 className="lg:text-base lg:font-medium text-slate-700">03. Detalle </h2>
 
         <div  className="containerInputLabel flex flex-col gap-2 py-3">
 
