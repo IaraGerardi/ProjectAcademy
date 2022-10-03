@@ -123,9 +123,9 @@ export const EventForm = () => {
       
       <div className='lg:mt-5 lg:ml-8'>
         
-        <div className='mt-5 ml-5'>
+        <div className='m-2 md:mt-5 md:ml-5'>
           <h2 className="lg:text-2xl font-medium text-slate-700">Crear un evento</h2>
-          <h4 className='lg:text-lg text-slate-700'>Puedes crear un primer encuentro entre Orientadores y Orientados.</h4>
+          <h4 className='lg:text-lg text-slate-700 '>Puedes crear un primer encuentro entre Orientadores y Orientados.</h4>
 
         {/* formulario agendar eventos */}
           <form 
@@ -148,7 +148,7 @@ export const EventForm = () => {
                   />
                 </div>
 
-              <div className='flex flex-col mt-2 lg:mx-9'>
+              <div className='flex flex-col mt-2 lg:mx-8'>
                 <label className='text-sm font-medium text-slate-600 '>Orientador participante</label>
                 <Select
                   placeholder="Seleccionar orientador"
@@ -191,7 +191,7 @@ export const EventForm = () => {
             />
           </div>
 
-          <div className='flex flex-col lg:mx-9'>
+          <div className='flex flex-col lg:mx-8'>
             <label className="text-sm font-medium text-slate-600">Horario</label>
             <Select
                 placeholder="Seleccionar horario"
