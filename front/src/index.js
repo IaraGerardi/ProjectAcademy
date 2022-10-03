@@ -8,11 +8,13 @@ import { StoreProvider } from './Store/StoreProvider';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <StoreProvider>
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>
-  </StoreProvider>
+  <React.StrictMode> 
+      <StoreProvider>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+      </StoreProvider>
+  </React.StrictMode>
 );
 
 
