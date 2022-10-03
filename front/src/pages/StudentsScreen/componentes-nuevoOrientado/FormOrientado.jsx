@@ -9,7 +9,7 @@ import InputLabel from "../componentes-nuevoOrientado/InputLabel";
 import Select from "react-select";
 import Icon from "../../global-components/Svg-icon";
 // CSS
-import '../call-students.css';
+/* import '../call-students.css'; */
 import img from '../img/orientadoDefault-removebg-preview.png'
 import './upload.css'
 import "./alert.css"
@@ -151,16 +151,16 @@ function FormOrientado() {
 
 
   return (
-    <div className="cotainerForm ml-8 mt-10 mb-10">
+    <div className="cotainerForm ml-8 mt-10 mb-10 w-auto">
       <form
         method="POST"
         className=" flex flex-col gap-4"
         onSubmit={handleSubmit}
         encType="multipart/form-data"
       >
-        <h2 className="text-2xl font-medium text-slate-700">01.Informacion básica 1</h2>
-        {/* abre formulario de alta de oreintado , tiene 4 divs hijos */}
-        <div className="container-basicInfo flex  flex-col lg:flex-row  gap-12 ">
+        <h2 className="text-lg  md:text-xl  lg:text-2xl font-medium text-slate-700">01.Informacion básica 1</h2>
+        {/* abre formulario de alta de orientado , tiene 4 divs hijos */}
+        <div className="container-basicInfo flex  flex-col gap-5 lg:flex-row  lg:gap-12 md:w-full lg:h-40">
 
           {/* div1 info basica */}
 
@@ -204,7 +204,7 @@ function FormOrientado() {
             />
           </div>
 
-          <div className=" cajaInputsDatosP flex flex-col w-3/4  md:flex-row md:gap-5 lg:flex-row lg:gap-5  lg:w-4/5">
+          <div className=" cajaInputsDatosP flex flex-col md: min-w-3/4 md:flex-row md:gap-5 lg:flex-row lg:gap-5  lg:w-4/5 lg:h-40 ">
             <div className=" w-64">
               <InputLabel
                 labelName="Nombre"
@@ -242,7 +242,7 @@ function FormOrientado() {
                   null}
               />
               {/*------ select input ------------- */}
-              <div className=" h-16 ">
+              <div className=" h-16  mt-3">
                 <label htmlFor="" className="font-medium text-slate-600">
                   Programa
                 </label>
@@ -258,12 +258,12 @@ function FormOrientado() {
             </div>
           </div>
         </div>
-        <div className="container-personalInfo  text-slate-700 flex flex-col">
+        <div className="container-personalInfo  text-slate-700 flex flex-col bg-indigo-300  h-128 md:h-96 lg:h-96 gap-3">
           {" "}
           {/* div2 datos personales */}
-          <h2 className=" text-lg  md:text-xl  lg:text-2xl font-medium">02.Datos personales</h2>
+          <h2 className=" text-lg  md:text-xl  lg:text-2xl font-medium ">02.Datos personales</h2>
           {/*  a cada uno de los InputLabel recibe los 4 props  */}
-          <div className=" cajaInputsDatosP  flex  flex-col md:flex-row md:gap-5 lg:flex-row lg:gap-5 h-62">
+          <div className=" cajaInputsDatosP  flex  flex-col md:flex-row md:gap-5 lg:flex-row lg:gap-5  ">
             <div>
               <InputLabel
                 labelName="Telefono"
@@ -319,14 +319,14 @@ function FormOrientado() {
               ¿Porque se acercó a nuestra institución?
             </label>
             <textarea
-              rows="4"
+              rows="3"
               cols="40"
               name="why"
               onChange={(e) => setWhy(e.target.value)}
               placeholder="Escribe un comentario."
               className={`${verifyMessages.why && verifyMessages.why !== null && verifyMessages.why !== true ?
                 "border-red-600" : "border-slate-300"}
-              rounded-lg border w-3/4 lg:w-2/4 placeholder:pl-2 `}
+              rounded-lg border w-60 pl-3 pt-2 md:w-2/4 lg:w-2/4 placeholder:pl-1  resize-none`}
             />
             {verifyMessages.why && verifyMessages.why !== null && verifyMessages.why !== true ?
               <div className="flex ml-2.5">
@@ -343,7 +343,7 @@ function FormOrientado() {
         <div className="container-crateUsernamePassword">
           {" "}
           {/* div3 crear usuario y contraseña */}
-          <h2 className="text-2xl font-medium text-slate-700">03.Crear usuario y contraseña</h2>
+          <h2 className="text-lg  md:text-xl  lg:text-2xl font-medium text-slate-700">03.Crear usuario y contraseña</h2>
           {/*  a cada uno de los InputLabel recibe los 4 props  */}
 
           <InputLabel

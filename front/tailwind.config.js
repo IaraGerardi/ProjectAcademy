@@ -7,6 +7,9 @@ module.exports = {
     extend: {
       colors:{
         'celesteValtech':'#0BA4A0',
+      },
+      height: {
+        '128': '32rem',
       }
     },
   },
