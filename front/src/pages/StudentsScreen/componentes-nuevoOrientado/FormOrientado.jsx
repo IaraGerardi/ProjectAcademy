@@ -124,7 +124,7 @@ function FormOrientado() {
       arrVar[i] = arrVar[i].charAt(0).toUpperCase() + arrVar[i].slice(1);
     }
 
-    const nameVar = arrVar.join(" ");
+    // const nameVar = arrVar.join(" ");
 
     if (e.target.name === "name") {
       setName(nameVar)
