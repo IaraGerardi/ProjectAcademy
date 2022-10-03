@@ -19,7 +19,7 @@ function FormLogIn() {
 
  const  [store,dispatch]=useContext(StoreContext)
         const {logged}=store;
-        console.log(logged)
+        // console.log(logged)
 
     const URI = "http://localhost:8000/login"
     const navigate = useNavigate();

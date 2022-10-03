@@ -15,7 +15,7 @@ import StoreContext from "../../../Store/StoreProvider";
 function HeaderInicio({ propNamePage }) {
     const [store,dispatch]=useContext(StoreContext)
      const {logged}=store;
-   console.log(logged)
+//    console.log(logged)
 
     const [infoAdmin, setInfoAdmin] = useState([]);
     const [active, setActive] = useState(false);
@@ -28,8 +28,8 @@ function HeaderInicio({ propNamePage }) {
             try {
                 const resInfoAdmin = await axios.get(`http://localhost:8000/admin/profile/${usuario.id}`);
                 setInfoAdmin(resInfoAdmin.data);
-                console.log(usuario);
-                console.log(parseado)
+                // console.log(usuario);
+                // console.log(parseado)
             } catch (error) {
                 console.log(error);
             }
