@@ -23,9 +23,12 @@ ModelEvento.init({
         allowNull: false,
         validate: { //Validaciones de la base de datos
             notNull: {
-                msg: 'Debe ingresar un nombre al evento'
+                msg: 'Debe ingresar fecha al evento'
             },
-            isDate: true //isDate solo acepta fechas 
+            isDate: {
+                args: true,
+                msg: "Ingrese fecha"
+            } //isDate solo acepta fechas 
         }
     },
     time: {
@@ -55,8 +58,8 @@ ModelEvento.init({
                 msg: 'Descripción maxima de 500 caracteres'
             }
         }
-    }
-},{
+    },
+}, {
     sequelize,
     modelName: "Evento"
 });

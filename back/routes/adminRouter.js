@@ -10,6 +10,7 @@ const { getAllAdminsProfiles, getAdminProfile } = require("../controllers/profil
 //Middlewares y Validaciones
 const photoProfileCheck = require("../middleware/orientadoImages.js");
 const validateCreate = require("../validations/createOrientado.js");
+const { eventValidator } = require("../validations/createEvento");
 
 //Rutas de la vista privada del Admin
 routerAdmin.get('/admin/orientados', getAllOrientados);
@@ -39,7 +40,7 @@ routerAdmin.put('/admin/orientados/:id/orientadorToOrientado', orientadorToOrien
 routerAdmin.get('/admin/event', getEvent)
 
 //Ruta para crear eventos
-routerAdmin.post('/admin/createEvent', createEvento)
+routerAdmin.post('/admin/createEvent', eventValidator, createEvento)
 
 //Ruta para eliminar eventos
 routerAdmin.delete('/admin/:id/deleteEvent', deleteEvento)

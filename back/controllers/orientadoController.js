@@ -8,9 +8,11 @@ desde "../database/models/ModelOrientado.js*/
 //URL: /admin/orientados
 const getAllOrientados = async (req, res) => {
     try {
+
+        
         const orientados = await ModelOrientado.findAll({
             attributes: ['id', 'name', 'lastname', 'photoProfile', 'OrientadoreId'],
-            order: [['id', 'DESC']]
+            //order: [['id', 'DESC']]
         });
         res.json(orientados)
     } catch (error) {
@@ -27,10 +29,10 @@ const getAllOrientados2 = async (req, res) => {
         offset: se establece desde que dato arranca la query 
         Ejemplo: 1(page) * 5(size/limit) = 5(Offset) 
         Arranca desde el quinto dato y muestra un maximo de 5 posteriores. */
-        const { page = 0, size = 5 } = req.query;
+        const { page = 0, size = 5, order = 'ASC'} = req.query;
         let options = {
             limit: +size,
-            offset: (+page) * (+size)
+            offset: (+page) * (+size),
         }
         const { count, rows } = await ModelOrientado.findAndCountAll(options)
 
