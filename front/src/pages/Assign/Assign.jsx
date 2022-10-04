@@ -68,10 +68,8 @@ function Assign() {
             .then((response) => {
 
                 if (response.status == 200) {
-                    setActive(!active)
-                    setTimeout(() => {
-                        navigate("/orientados/newUsers")
-                    }, "2000")
+                    // setActive(!active);
+                    window.location.reload();
                 }
 
             })
@@ -221,7 +219,7 @@ function Assign() {
 
                                     < input
                                         type="submit"
-                                        value={`${!valueBtn ? 'Asignar Orientador/a' : 'Modificar Orientador/a'}`}
+                                        value={`Asignar Orientador/a`}
                                         className="btn-asignar"
                                     />
 
@@ -247,9 +245,8 @@ function Assign() {
                                     <ul> {selectOrientador[orientado[id - 1]?.OrientadoreId - 1]} </ul>
                                     <input
                                         readOnly={true}
-                                        value="Ver perfil completo"
-                                        onClick={() => navigate(`/orientados/StudentInfo/${id}`)}
-                                        className=" w-44 h-10 mt-10 p-2 bg-celesteValtech rounded-lg text-base text-white font-medium " />
+                                        value="Modificar orientador/a"
+                                        className="text-center h-10 mt-10 p-2 bg-celesteValtech rounded-lg text-base text-white font-medium " />
                                 </>
                             }
 
