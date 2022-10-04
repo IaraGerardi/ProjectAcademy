@@ -13,12 +13,12 @@ exports.adminLogin = async (req, res) => {
         } else if (!emailLog) {
             res.json({
                 alertMessage: "Ingrese un email",
-                input: "emailLog"
+                params: 'emailLog'
             })
         } else if (!passwordLog) {
             res.json({
                 alertMessage: "Ingrese una contraseña",
-                input: "passwordLog"
+                params: "passwordLog"
             })
         } else {
             const admin = await ModelAdmin.findOne({
@@ -27,7 +27,7 @@ exports.adminLogin = async (req, res) => {
             if (admin.length == 0) {
                 res.json({
                     alertMessage: "Email incorrecto",
-                    input: "emailLog"
+                    params: "emailLog"
                 })
             } else if (passwordLog !== admin.password) {
                 console.log(admin)
@@ -36,7 +36,7 @@ exports.adminLogin = async (req, res) => {
                 console.log(passwordLog)
                 res.json({
                     alertMessage: "Contraseña incorrecta",
-                    input: "passwordLog"
+                    params: "passwordLog"
                 })
             } else {
                 const loggedAdmin = await ModelAdmin.findOne({
