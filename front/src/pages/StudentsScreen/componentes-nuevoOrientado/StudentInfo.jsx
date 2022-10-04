@@ -18,7 +18,7 @@ function StudentInfo() {
 
     const getOrientadoData = async () => {
       try {
-        const resOrientado = await axios.get(`${URI}/${id}`) //trae uri y le agrega /gdsaiukyhds y lo guarda   
+        const resOrientado = await axios.get(`${URI}/${id}`, {withCredentials:true}) //trae uri y le agrega /gdsaiukyhds y lo guarda   
         setOrientado(resOrientado.data)
         if (resOrientado.data.photoProfile) {
           setImage(resOrientado.data.photoProfile)

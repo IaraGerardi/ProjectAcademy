@@ -14,7 +14,6 @@ function Assign() {
     const [orientadores, setOrientadores] = useState([]);
     const [valorOrientador, setValorOrientador] = useState();
     const [active, setActive] = useState(false);
-    const [valueBtn, setValueBtn] = useState(false)
     const { id } = useParams();
 
     const navigate = useNavigate();
@@ -26,7 +25,7 @@ function Assign() {
     useEffect(() => {
         const getOrientados = async () => {
             try {
-                const res = await axios.get(`http://localhost:8000/admin/orientados`);
+                const res = await axios.get(`http://localhost:8000/admin/orientados`, {withCredentials: true});
                 setOrientado(res.data); /* LLama Orientados */
                 console.log(res.data)
             } catch (error) {
@@ -40,7 +39,7 @@ function Assign() {
     useEffect(() => {
         const getOrientadores = async () => {
             try {
-                const res = await axios.get("http://localhost:8000/admin/orientadores");
+                const res = await axios.get("http://localhost:8000/admin/orientadores", {withCredentials: true});
                 setOrientadores(res.data); /* LLama Orientadores */
 
             } catch (error) {
@@ -51,7 +50,7 @@ function Assign() {
     }, []);
 
     // Opciones para el select
-    const options = orientadores.map(orientador => ({
+    const options = orientadores?.map(orientador => ({
         label: `${orientador.name} ${orientador.lastname}`,
         value: orientador.id, name: "orientador", id: "orientador"
     })
@@ -75,7 +74,7 @@ function Assign() {
             })
     }
 
-    const selectOrientado = orientado.map((orientado) => { /*Recorre la api y retorna la card del orientado*/
+    const selectOrientado = orientado?.map((orientado) => { /*Recorre la api y retorna la card del orientado*/
         const orientadoCall = orientado
         /* Rompia porque orientado.id es un numero y los datos que trae useParams son strings, 
         parsee el id para poder poner que sea exactamente igual y que no salga un warning*/
