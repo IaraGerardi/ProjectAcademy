@@ -15,7 +15,7 @@ import NewUsers from './pages/StudentsScreen/components/NewUsers';
 import StudentInfo from './pages/StudentsScreen/componentes-nuevoOrientado/StudentInfo';
  import PrivateRoutes from './privateRoute/PrivateRoutes'; 
 import { EventForm } from './pages/eventPage/EventForm';
-/* import { ProbandoReducer } from './context/Reducer'; */
+
 
 
 // Fin Importación Páginas

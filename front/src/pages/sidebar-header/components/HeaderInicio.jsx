@@ -14,8 +14,8 @@ import StoreContext from "../../../Store/StoreProvider";
 
 function HeaderInicio({ propNamePage }) {
     const [store,dispatch]=useContext(StoreContext)
-     const {logged}=store;
-//    console.log(logged)
+     
+
 
     const [infoAdmin, setInfoAdmin] = useState([]);
     const [active, setActive] = useState(false);

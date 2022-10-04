@@ -5,9 +5,9 @@
  }
 
 /*  obtengo usuario del localstorage */
-  let userStorage=localStorage.getItem('usuario');
+   let userStorage=localStorage.getItem('usuario');
   console.log(userStorage)
-
+ 
 
  const obtengoUser=()=>{
   
@@ -17,10 +17,10 @@
     return false
   }
  
- }   
+ }    
  
  const initialStore = {
-    logged: false,
+    logged: obtengoUser(),
 };
 
 
@@ -29,12 +29,12 @@ const storeReducer=(state, action)=> {
     case types.authLogin:
       return {
         ...state,
-        logged:obtengoUser()
+        logged:true
         };
     case types.authLogout:
       return {
         ...state,
-        logged:obtengoUser()};
+        logged:false};
     default:
       return state; // retorno el estado previo si ningu type concide
   }
