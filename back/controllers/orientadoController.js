@@ -33,6 +33,8 @@ const getAllOrientados2 = async (req, res) => {
         let options = {
             limit: +size,
             offset: (+page) * (+size),
+            order: [['id', order]],
+            attributes: ['id', 'name', 'lastname', 'photoProfile', 'OrientadoreId']
         }
         const { count, rows } = await ModelOrientado.findAndCountAll(options)
 
