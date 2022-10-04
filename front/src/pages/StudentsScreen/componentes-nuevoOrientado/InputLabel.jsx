@@ -23,9 +23,9 @@ function InputLabel({ labelName, placeholderName, inputType, propInputName, prop
       si hay algun error se renderiza el div con el mensaje de error y un icono */}
 
       {verifyInput !== null && verifyInput !== true ?
-        <div className="flex ml-2.5">
+        <div className="flex ml-2.5 relative bottom-3">
           <Icon
-            classname="w-3.5 h-3.5 m-1.5 fill-red-600"
+            classname="w-3.5 h-3.5 m-1.5 text-sm fill-red-600"
             type="exclamationMark"
             width="24" height="24" />
           <span className="text-red-600">{verifyInput}</span>

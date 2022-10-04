@@ -10,7 +10,7 @@ function FormInput(props) {
     const { verifyInput, handleChange } = props
 
     return (
-        <div className={containerClass}>
+        <div className={`flex flex-col h-32 ${containerClass}`}>
             <label className={labelClass} htmlFor={id}>{label}</label>
             {/* Si el valor del prop que tiene las validaciones no tiene ningun error el input tiene un borde gris, 
             si hay algun error cambia a rojo */}
@@ -20,19 +20,21 @@ function FormInput(props) {
                     ${verifyInput !== null && verifyInput !== true ? "border-red-600" : "border-slate-300"}`}
                     rows="4" cols="40" id={id} name={id} onChange={handleChange} placeholder={placeholder}
                 />
-                : <input value={value} className={`${inputClass}
-                ${verifyInput !== null && verifyInput !== true ? "border border-solid border-red-600" : "border border-slate-300"}`}
-                    id={id} name={id} type={type} onChange={handleChange} placeholder={placeholder} />
+                : <input
+                    value={value} id={id} name={id} type={type} onChange={handleChange} placeholder={placeholder}
+                    className={`${inputClass} relative bottom-2
+                    ${verifyInput !== null && verifyInput !== true ? "border border-solid border-red-600" : "border border-slate-300"}`}
+                />
             }
             {/* Si el input no tiene ningun error no se muestra nada, 
             si hay algun error se renderiza el div con el mensaje de error y un icono */}
             {verifyInput !== null && verifyInput !== true ?
-                <div className="flex ml-2.5">
+                <div className="flex items-center relative bottom-3 ml-2.5">
                     <Icon
-                        classname="w-3.5 h-3.5 m-1.5 fill-red-600"
+                        classname="w-2.5 h-2.5 m-1.5 fill-red-600"
                         type="exclamationMark"
                         width="24" height="24" />
-                    <span className="text-red-600">{verifyInput}</span>
+                    <span className="text-red-600 text-sm">{verifyInput}</span>
                 </div>
                 : null
             }
