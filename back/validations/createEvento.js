@@ -3,7 +3,7 @@ const { ModelEvento } = require('../database/associations');
 const { validateResult } = require('../helpers/validateHelper');
 
 const regExpTime = new RegExp(/^([0-2][0-9]):[0-5][0-9]$/)
-const regExpDuration = new RegExp(/^([0][0-8]):[0-5][0-9]$/)
+const regExpDuration = new RegExp(/^([0][0-8]):([0-5][0-9]):[0-5][0-9]$/)
 
 const eventValidator = [
     /* ------Inpunt nameEvent------- */
@@ -42,22 +42,22 @@ const eventValidator = [
         .notEmpty().withMessage('Ingrese duración del evento')
         .matches(regExpDuration).withMessage('Revise la duración del evento')
         .custom(value => {
-            if (value > '08:00') {
+            if (value > '08:00:00') {
                 return false
             } else {
                 return true
             }
         }).withMessage('Revise la duración del evento')
     ,
-
-    check('OrientadoreId')
+/* ------Inpunt OrientadoreId------- */
+    check('orientadorEvent')
         .notEmpty().withMessage('Ingrese Orientador')
         .isNumeric().withMessage('Revise datos de orientador')
     ,
+    /* ------Inpunt orientadosEvent------- */
     check('orientadosEvent')
         .notEmpty().withMessage('Ingrese orientados')
     ,
-
 
     (req, res, next) => {
         validateResult(req, res, next);
