@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom"
+import { Link/* , useNavigate */ } from "react-router-dom"
 
 import LogoPerfil from "../icons/logo-perfil.svg"
 import cerrarSesion from "../icons/logo-cerrar.svg"
@@ -19,7 +19,7 @@ function HeaderInicio({ propNamePage }) {
 
     const [infoAdmin, setInfoAdmin] = useState([]);
     const [active, setActive] = useState(false);
-    const navigate = useNavigate()
+  /*   const navigate = useNavigate() */
     const usuario = localStorage.getItem('usuario')
     const parseado = JSON.parse(usuario)
 
@@ -47,7 +47,7 @@ function HeaderInicio({ propNamePage }) {
             console.log(resLogout.data);
             localStorage.removeItem("usuario")
            dispatch({type:types.authLogout})
-            navigate('/login')
+           /*  navigate('/login') */
         } catch (error) {
             console.log(error);
         }
