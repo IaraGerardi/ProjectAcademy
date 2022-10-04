@@ -11,12 +11,12 @@ function CallEvents({ events }) {
     // Recibe eventos como prop
 
     const [offset, setOffset] = useState(0);
-    const [limit, setLimit] = useState(2);
+    const [limit, setLimit] = useState(8);
     const [eventList, setEventList] = useState(events);
 
     // Cambio minimo y maximo de eventos que se muestran
-    const prevPage = () => { setOffset(offset - 2); setLimit(limit - 2); }
-    const nextPage = () => { setOffset(offset + 2); setLimit(limit + 2); }
+    const prevPage = () => { setOffset(offset - 8); setLimit(limit - 8); }
+    const nextPage = () => { setOffset(offset + 8); setLimit(limit + 8); }
 
     useEffect(() => {
         const changeEventPages = () => {

@@ -45,11 +45,6 @@
 }
 
 
-/* .box-search{
-    width: 100%;
-    height: 48px;
-    margin-bottom: 50px;
-} */
 
 .cont-search-orientado {
     width: 59%;
@@ -84,10 +79,35 @@
     padding: 0px 13px 0px 0px;
 }
 
+.container-search{
+    height: 48px;
+    width: 100%;
+    display: flex;
+    margin-bottom: 60px;
+}
 
 
+.list-student{
+    display: flex;
+    flex-wrap: wrap;
+}
 
-@media (max-width: 1000px) {
+@media (max-width: 1120px) {
+
+    .container-search{
+        height: 48px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 40px;
+    }
+
+    .list-student{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+    }
 
     .cont-search-orientado {
         width: 376px;
@@ -125,8 +145,7 @@
 
 
 
-@media (max-width: 560px) {
-
+@media (max-width: 610px) {
 
     .cont-search-orientado {
         width: 276px;

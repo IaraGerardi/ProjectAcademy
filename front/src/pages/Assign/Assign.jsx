@@ -192,7 +192,7 @@ function Assign() {
 
                             <p className="text-referent two"> Selección de un Orientador Referente  </p>
 
-                            <span>Referente</span>
+                            <span className="referent">Referente</span>
 
                             {/*Input selector*/}
                             {orientado[id - 1]?.OrientadoreId === null ?

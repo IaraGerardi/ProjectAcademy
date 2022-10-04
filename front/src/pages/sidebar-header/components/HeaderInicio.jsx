@@ -62,8 +62,6 @@ function HeaderInicio({ propNamePage }) {
             <div className='boxMainHeader '>
                 <p className='p-header'>
                     {propNamePage === "Bienvenido/a" ? `${propNamePage} ${parseado.name}` : propNamePage}</p>
-
-
                 <img className="img-header cursor-pointer" src={require(`../../../img-back/admins/${parseado.avatar}`)} onClick={() => setActive(!active)} alt={parseado.name} />
 
             </div>
@@ -71,9 +69,7 @@ function HeaderInicio({ propNamePage }) {
             <div className={`sesion ${active ? 'mostrar-sesion' : 'ocultar-sesion'}`}>
                 <Link to="/profile" className="p-2"><img className="logo-perfil" src={LogoPerfil} alt='icon-profile' /> Mi perfil</Link>
 
-
                 <Link to="/"><img className="logo-perfil" src={cerrarSesion} alt='icon-logout' /><button onClick={() => { getLogout()  }}>Cerrar sesión</button></Link>
-
               
             </div>
         </>

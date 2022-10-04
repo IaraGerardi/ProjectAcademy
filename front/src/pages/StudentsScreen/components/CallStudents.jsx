@@ -53,20 +53,22 @@ function CallStudents() {
 
     return (
         <>
-            <div className="cont-search-orientado">
-                <input
-                    className="search-orientado"
-                    type="text"
-                    placeholder="Buscar orientado por nombre y apellido"
-                    value={busqueda}
-                    onChange={handleChange}
-                />
-                <img className="logo-buscador" src={buscador} alt="logo buscador" />
-            </div> {/*Input Buscador*/}
+            <div className="container-search">
+                <div className="cont-search-orientado">
+                    <input
+                        className="search-orientado"
+                        type="text"
+                        placeholder="Buscar orientado por nombre y apellido"
+                        value={busqueda}
+                        onChange={handleChange}
+                    />
+                    <img className="logo-buscador" src={buscador} alt="logo buscador" />
+                </div> {/*Input Buscador*/}
+            </div>
 
             <div className="cont-students">
 
-                <ul> {/*Llamado a la Api*/}
+                <ul className="list-student"> {/*Llamado a la Api*/}
                     {orientados.length === 0 && <p>No se encontró la búsqueda.</p>}
                     {orientados.map((usuario) => {
                         return (

@@ -8,6 +8,7 @@
     border-bottom: 10px solid #E9F9F8;
 }
 
+
 .cont-ingresar-orientado {
     display: flex;
     justify-content: space-around;
@@ -63,7 +64,7 @@
 
 
 
-@media (max-width: 560px) {
+@media (max-width: 610px) {
 
     .cont-ingresar-orientado {
         display: flex;
