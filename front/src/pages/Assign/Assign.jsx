@@ -17,7 +17,7 @@ function Assign() {
     const { id } = useParams();
 
     const navigate = useNavigate();
-  
+
 
     const URI = `http://localhost:8000/admin/orientados/${id}/orientadorToOrientado`;
     /*Hay que enviar los datos a esa URL*/
@@ -25,7 +25,7 @@ function Assign() {
     useEffect(() => {
         const getOrientados = async () => {
             try {
-                const res = await axios.get(`http://localhost:8000/admin/orientados`, {withCredentials: true});
+                const res = await axios.get(`http://localhost:8000/admin/orientados`, { withCredentials: true });
                 setOrientado(res.data); /* LLama Orientados */
                 console.log(res.data)
             } catch (error) {
@@ -39,7 +39,7 @@ function Assign() {
     useEffect(() => {
         const getOrientadores = async () => {
             try {
-                const res = await axios.get("http://localhost:8000/admin/orientadores", {withCredentials: true});
+                const res = await axios.get("http://localhost:8000/admin/orientadores", { withCredentials: true });
                 setOrientadores(res.data); /* LLama Orientadores */
 
             } catch (error) {
@@ -63,7 +63,7 @@ function Assign() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        await axios.put(URI, { orientador: valorOrientador })
+        await axios.put(URI, { orientador: valorOrientador }, { withCredentials: true })
             .then((response) => {
 
                 if (response.status == 200) {
@@ -222,15 +222,7 @@ function Assign() {
                                         className="btn-asignar"
                                     />
 
-                                    <div className={`alert ${active ? 'mostrar-alert' : 'ocultar-alert'}`}>
-                                        <img src={Affirmation} alt="icon de afirmacion" />
-                                        <div>
-                                            <p className="msg-alert">El Orientado fué asignado a su referente.</p>
 
-                                            <span className="msg-alert-orientador">Recibirá una notificación para que contacte al Orientador.</span>
-                                        </div>
-                                        <img className="iconDelete-alert" src={Delete} onClick={() => setActive(!active)} alt="icon de eliminar" />
-                                    </div>
 
 
                                     {/* <Boton
@@ -245,7 +237,18 @@ function Assign() {
                                     <input
                                         readOnly={true}
                                         value="Modificar orientador/a"
-                                        className="text-center h-10 mt-10 p-2 bg-celesteValtech rounded-lg text-base text-white font-medium " />
+                                        className="text-center h-10 mt-10 p-2 bg-celesteValtech rounded-lg text-base text-white font-medium "
+                                    />
+
+                                    <div className={`alert ${!active ? 'mostrar-alert' : 'ocultar-alert'}`}>
+                                        <img src={Affirmation} alt="icon de afirmacion" />
+                                        <div>
+                                            <p className="msg-alert">El Orientado fué asignado a su referente.</p>
+
+                                            <span className="msg-alert-orientador">Recibirá una notificación para que contacte al Orientador.</span>
+                                        </div>
+                                        <img className="iconDelete-alert" src={Delete} onClick={() => setActive(!active)} alt="icon de eliminar" />
+                                    </div>
                                 </>
                             }
 
