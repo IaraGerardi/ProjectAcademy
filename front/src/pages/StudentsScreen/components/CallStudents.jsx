@@ -17,11 +17,11 @@ function CallStudents() {
         {/*Pedido a la Api*/ }
         const getOrientados = async () => {
             try {
-                const res = await axios.get("http://localhost:8000/admin/orientados");
-                setOrientados(res.data);
-                setTablaOrientados(res.data)
-
-                console.log(res.data);
+                const res = await axios.get(`http://localhost:8000/admin/pruebaorientados?page=0&size=20&order=DESC`
+                );
+                setOrientados(res.data.categories);
+                console.log(res.data.categories)
+                setTablaOrientados(res.data.categories)
             } catch (error) {
                 console.log(error);
             }
@@ -69,8 +69,8 @@ function CallStudents() {
             <div className="cont-students">
 
                 <ul className="list-student"> {/*Llamado a la Api*/}
-                    {orientados.length === 0 && <p>No se encontró la búsqueda.</p>}
-                    {orientados.map((usuario) => {
+                    {orientados?.length === 0 && <p>No se encontró la búsqueda.</p>}
+                    {orientados?.map((usuario) => {
                         return (
 
 

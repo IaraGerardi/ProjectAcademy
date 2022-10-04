@@ -1,11 +1,13 @@
 .text-new-user {
     font-size: 24px;
-    font-weight: 600;
+    font-weight: 700;
     line-height: 32px;
     font-family: sans-serif 'Rubik';
     color: #2E384D;
     height: 35px;
     border-bottom: 10px solid #E9F9F8;
+    margin-bottom: 20px;
+    
 }
 
 

@@ -1,6 +1,4 @@
-
-
-.pagination{
+.pagination {
     width: 80%;
     display: flex;
     justify-content: flex-end;
@@ -18,7 +16,7 @@
     font-weight: bold;
     color: #2E384D;
     justify-content: space-evenly;
-  
+
 }
 
 .cont-btn-pagination {
@@ -31,8 +29,6 @@
 .btn-row {
     cursor: pointer;
 }
-
-
 
 
 .container-events {
@@ -78,10 +74,21 @@
     height: 20px;
 }
 
+.table-events {
+    display: flex;
+    flex-direction: column;
+}
 
 
 @media (max-width: 1080px) {
 
+
+    .table-events {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
 
     .title-events {
         width: 224px;
@@ -144,6 +151,30 @@
 }
 
 @media (max-width: 662px) {
+
+
+    .cont-pagination {
+        width: 180px;
+        height: 40px;
+        display: flex;
+        flex-direction: row;
+        position: relative;
+        align-items: center;
+        font-size: 10px;
+        font-weight: bold;
+        color: #2E384D;
+        justify-content: space-evenly;
+    }
+
+
+    .cont-btn-pagination {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        width: 50px;
+        height: 10px;
+    }
+
 
     .title-events {
         width: 224px;
