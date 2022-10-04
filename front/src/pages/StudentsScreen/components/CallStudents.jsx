@@ -10,18 +10,23 @@ function CallStudents() {
 
     const [orientados, setOrientados] = useState([]);
     const [tablaOrientados, setTablaOrientados] = useState([]);
+
+
     const [busqueda, setBusqueda] = useState("");
+    //LE PASO UN ESTADO VACIO AL INPUT SEARCH
+
 
 
     useEffect(() => {
         {/*Pedido a la Api*/ }
         const getOrientados = async () => {
             try {
-                const res = await axios.get(`http://localhost:8000/admin/pruebaorientados?page=0&size=20&order=DESC`
-                );
+                const res = await axios.get(`http://localhost:8000/admin/pruebaorientados?page=0&size=1000&order=DESC`
+                ); // EN LA URI PONGO PAGE 0 Y UN SIZE DE 1000 QUE SIRVE PARA TRAER POR EL MOMENTO MIL USUARIOS
                 setOrientados(res.data.categories);
-                console.log(res.data.categories)
                 setTablaOrientados(res.data.categories)
+
+
             } catch (error) {
                 console.log(error);
             }

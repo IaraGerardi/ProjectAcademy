@@ -68,7 +68,7 @@ function CallEvents({ events }) {
                             </tr>
                         </thead>
 
-                        <tbody> {/*RECORRO LA API Y MUESTRO LOS DATOS */}
+                        <tbody>{/*RECORRO LA API Y MUESTRO LOS DATOS */}
                             {eventList.map((event) => {
                                 return (
                                     <tr key={event.id}>
