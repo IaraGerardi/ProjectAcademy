@@ -13,7 +13,7 @@ import { EventScreen } from './pages/eventPage/EventScreen';
 import FormOrientado from './pages/StudentsScreen/componentes-nuevoOrientado/FormOrientado';
 import NewUsers from './pages/StudentsScreen/components/NewUsers';
 import StudentInfo from './pages/StudentsScreen/componentes-nuevoOrientado/StudentInfo';
-/* import PrivateRoutes from './privateRoute/PrivateRoutes'; */
+ import PrivateRoutes from './privateRoute/PrivateRoutes'; 
 import { EventForm } from './pages/eventPage/EventForm';
 /* import { ProbandoReducer } from './context/Reducer'; */
 
@@ -33,7 +33,7 @@ function App() {
 
       {/*  rutas privadas */}
 
-     {/*  <Route element={<PrivateRoutes  />}> */}
+      <Route element={<PrivateRoutes  />}> 
           <Route path='inicio' element={<AdminPage />} />
           <Route path='profile' element={<ProfileAdminScreen />} />
 
@@ -47,7 +47,7 @@ function App() {
           <Route path='eventos' element={<EventScreen />} />
           <Route path='eventos/form' element={<EventForm />} />
 
-   {/*    </Route> */}
+     </Route> 
 
       
 

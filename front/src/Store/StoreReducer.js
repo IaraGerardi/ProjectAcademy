@@ -4,27 +4,37 @@
     authLogout:'auth - Logout'
  }
 
+/*  obtengo usuario del localstorage */
+  let userStorage=localStorage.getItem('usuario');
+  console.log(userStorage)
 
 
+ const obtengoUser=()=>{
+  
+  if(userStorage !== null){
+    return true
+  }else{
+    return false
+  }
+ 
+ }   
+ 
  const initialStore = {
     logged: false,
-    user:{
-      id:1,
-      name:'aye'
-    }
-
 };
+
 
 const storeReducer=(state, action)=> {
   switch (action.type) {
     case types.authLogin:
       return {
         ...state,
-        logged: true};
+        logged:obtengoUser()
+        };
     case types.authLogout:
       return {
         ...state,
-        logged: false};
+        logged:obtengoUser()};
     default:
       return state; // retorno el estado previo si ningu type concide
   }
@@ -32,6 +42,29 @@ const storeReducer=(state, action)=> {
 }
 export default storeReducer;
 export {initialStore,types};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* 
 export const ProbandoReducer=()=> {
   const [state, dispatch] = useReducer(reducer, initialState);
