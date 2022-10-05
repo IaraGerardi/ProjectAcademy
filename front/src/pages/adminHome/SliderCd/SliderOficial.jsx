@@ -13,7 +13,7 @@ function SliderOficial() {
   useEffect(() => {
     const ObtenerNotice = async () => {
       const url = "http://localhost:8000/admin/novedades";
-      const result = await axios.get(url);
+      const result = await axios.get(url, {withCredentials: true});
       // console.log(result.data);
 
       setNotice(result.data);
