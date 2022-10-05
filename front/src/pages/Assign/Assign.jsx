@@ -14,11 +14,10 @@ function Assign() {
     const [orientadores, setOrientadores] = useState([]);
     const [valorOrientador, setValorOrientador] = useState();
     const [active, setActive] = useState(false);
-    const [valueBtn, setValueBtn] = useState(false)
     const { id } = useParams();
 
     const navigate = useNavigate();
-  
+
 
     const URI = `http://localhost:8000/admin/orientados/${id}/orientadorToOrientado`;
     /*Hay que enviar los datos a esa URL*/
@@ -26,7 +25,7 @@ function Assign() {
     useEffect(() => {
         const getOrientados = async () => {
             try {
-                const res = await axios.get(`http://localhost:8000/admin/orientados`);
+                const res = await axios.get(`http://localhost:8000/admin/orientados`, { withCredentials: true });
                 setOrientado(res.data); /* LLama Orientados */
                 console.log(res.data)
             } catch (error) {
@@ -40,7 +39,7 @@ function Assign() {
     useEffect(() => {
         const getOrientadores = async () => {
             try {
-                const res = await axios.get("http://localhost:8000/admin/orientadores");
+                const res = await axios.get("http://localhost:8000/admin/orientadores", { withCredentials: true });
                 setOrientadores(res.data); /* LLama Orientadores */
 
             } catch (error) {
@@ -51,7 +50,7 @@ function Assign() {
     }, []);
 
     // Opciones para el select
-    const options = orientadores.map(orientador => ({
+    const options = orientadores?.map(orientador => ({
         label: `${orientador.name} ${orientador.lastname}`,
         value: orientador.id, name: "orientador", id: "orientador"
     })
@@ -64,20 +63,18 @@ function Assign() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        await axios.put(URI, { orientador: valorOrientador })
+        await axios.put(URI, { orientador: valorOrientador }, { withCredentials: true })
             .then((response) => {
 
                 if (response.status == 200) {
-                    setActive(!active)
-                    setTimeout(() => {
-                        navigate("/orientados/newUsers")
-                    }, "2000")
+                    // setActive(!active);
+                    window.location.reload();
                 }
 
             })
     }
 
-    const selectOrientado = orientado.map((orientado) => { /*Recorre la api y retorna la card del orientado*/
+    const selectOrientado = orientado?.map((orientado) => { /*Recorre la api y retorna la card del orientado*/
         const orientadoCall = orientado
         /* Rompia porque orientado.id es un numero y los datos que trae useParams son strings, 
         parsee el id para poder poner que sea exactamente igual y que no salga un warning*/
@@ -221,19 +218,11 @@ function Assign() {
 
                                     < input
                                         type="submit"
-                                        value={`${!valueBtn ? 'Asignar Orientador/a' : 'Modificar Orientador/a'}`}
+                                        value={`Asignar Orientador/a`}
                                         className="btn-asignar"
                                     />
 
-                                    <div className={`alert ${active ? 'mostrar-alert' : 'ocultar-alert'}`}>
-                                        <img src={Affirmation} alt="icon de afirmacion" />
-                                        <div>
-                                            <p className="msg-alert">El Orientado fué asignado a su referente.</p>
 
-                                            <span className="msg-alert-orientador">Recibirá una notificación para que contacte al Orientador.</span>
-                                        </div>
-                                        <img className="iconDelete-alert" src={Delete} onClick={() => setActive(!active)} alt="icon de eliminar" />
-                                    </div>
 
 
                                     {/* <Boton
@@ -247,9 +236,19 @@ function Assign() {
                                     <ul> {selectOrientador[orientado[id - 1]?.OrientadoreId - 1]} </ul>
                                     <input
                                         readOnly={true}
-                                        value="Ver perfil completo"
-                                        onClick={() => navigate(`/orientados/StudentInfo/${id}`)}
-                                        className=" w-44 h-10 mt-10 p-2 bg-celesteValtech rounded-lg text-base text-white font-medium " />
+                                        value="Modificar orientador/a"
+                                        className="text-center h-10 mt-10 p-2 bg-celesteValtech rounded-lg text-base text-white font-medium "
+                                    />
+
+                                    <div className={`alert ${!active ? 'mostrar-alert' : 'ocultar-alert'}`}>
+                                        <img src={Affirmation} alt="icon de afirmacion" />
+                                        <div>
+                                            <p className="msg-alert">El Orientado fué asignado a su referente.</p>
+
+                                            <span className="msg-alert-orientador">Recibirá una notificación para que contacte al Orientador.</span>
+                                        </div>
+                                        <img className="iconDelete-alert" src={Delete} onClick={() => setActive(!active)} alt="icon de eliminar" />
+                                    </div>
                                 </>
                             }
 

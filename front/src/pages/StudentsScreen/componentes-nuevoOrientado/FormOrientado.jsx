@@ -54,35 +54,35 @@ function FormOrientado() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     verifyForm();
-    const formData = new FormData()
-    formData.append('photoProfile', photoProfile)
-    await axios.post(URI, {
-      name: name,
-      password: password,
-      lastname: lastname,
-      email: email,
-      phone: phone,
-      program: program,
-      photoProfile: photoProfile,
-      dni: dni,
-      age: age,
-      school: school,
-      address: address,
-      why: why
-    },
-      {
-        headers: {
-          'Content-Type': 'multipart/form-data'
-        }
-      })
-      .then((response) => {
-        if (response.status == 200) {
-          setActive(!active)
-          setTimeout(() => {
-            navegate(`/orientados/StudentInfo/${response.data.id}`)
-          }, "4000")
-        }
-      })
+    // const formData = new FormData()
+    // formData.append('photoProfile', photoProfile)
+    // await axios.post(URI, {
+    //   name: name,
+    //   password: password,
+    //   lastname: lastname,
+    //   email: email,
+    //   phone: phone,
+    //   program: program,
+    //   photoProfile: photoProfile,
+    //   dni: dni,
+    //   age: age,
+    //   school: school,
+    //   address: address,
+    //   why: why
+    // },
+    //   {
+    //     headers: {
+    //       'Content-Type': 'multipart/form-data'
+    //     }
+    //   })
+    //   .then((response) => {
+    //     if (response.status == 200) {
+    //       setActive(!active)
+    //       setTimeout(() => {
+    //         navegate(`/orientados/StudentInfo/${response.data.id}`)
+    //       }, "4000")
+    //     }
+    //   })
   };
 
   // Opciones del select
@@ -204,7 +204,7 @@ function FormOrientado() {
             />
           </div>
 
-          <div className=" cajaInputsDatosP flex flex-col md: min-w-3/4 md:flex-row md:gap-5 lg:flex-row lg:gap-5  lg:w-4/5 lg:h-40 ">
+          <div className=" cajaInputsDatosP flex flex-col md: min-w-3/4 md:flex-row md:gap-5 lg:flex-row lg:gap-5 bg-red-200 lg:w-4/5 lg:h-56 ">
             <div className=" w-64">
               <InputLabel
                 labelName="Nombre"
@@ -213,9 +213,7 @@ function FormOrientado() {
                 placeholderName="Ingresar nombre"
                 propInputValue={name}
                 propsOnchange={handleNameChange}
-                verifyInput={verifyMessages.name ? verifyMessages.name :
-                  // verifyMessages.name === true ? backMessages.name : 
-                  null}
+                verifyInput={verifyMessages.name ? verifyMessages.name : null}
               />
               <InputLabel
                 labelName="Apellido"
@@ -224,9 +222,7 @@ function FormOrientado() {
                 placeholderName="Ingresar Apellido"
                 propInputValue={lastname}
                 propsOnchange={handleNameChange}
-                verifyInput={verifyMessages.lastname ? verifyMessages.lastname :
-                  // verifyMessages.lastname === true ? backMessages.lastname : 
-                  null}
+                verifyInput={verifyMessages.lastname ? verifyMessages.lastname : null}
               />
             </div>
             <div className=" w-64">
@@ -242,7 +238,7 @@ function FormOrientado() {
                   null}
               />
               {/*------ select input ------------- */}
-              <div className=" h-16  mt-3">
+              <div className="h-28 flex flex-col mt-3">
                 <label htmlFor="" className="font-medium text-slate-600">
                   Programa
                 </label>
@@ -252,13 +248,24 @@ function FormOrientado() {
                   options={options} // set list of the data
                   onChange={handleChange} // assign onChange function
                   styles={customStyles}//style para react select
-                  className="w-64 rounded-lg "
+                  className={`w-64 h-8 rounded-lg `}
                 />
+                {verifyMessages.program && (verifyMessages.program !== null && verifyMessages.program !== true) ?
+                  <div className="flex ml-2.5 items-center relative bottom-2">
+                    <Icon
+                      classname="w-3.5 h-3.5 m-1.5 text-sm fill-red-600"
+                      type="exclamationMark"
+                      width="24" height="24" />
+                    <span className="text-red-600 text-sm">{verifyMessages.program}</span>
+                  </div>
+                  : null
+                }
+                {/* agregar verificaciones del programa*/}
               </div>
             </div>
           </div>
         </div>
-        <div className="container-personalInfo  text-slate-700 flex flex-col bg-indigo-300  h-128 md:h-96 lg:h-96 gap-3">
+        <div className="container-personalInfo  text-slate-700 flex flex-col bg-slate-500 h-max md:h-96 lg:h-96 gap-3">
           {" "}
           {/* div2 datos personales */}
           <h2 className=" text-lg  md:text-xl  lg:text-2xl font-medium ">02.Datos personales</h2>
@@ -272,9 +279,7 @@ function FormOrientado() {
                 placeholderName="Ingresar telefono"
                 propInputValue={phone}
                 propsOnchange={(e) => setPhone(e.target.value)}
-                verifyInput={verifyMessages.phone ? verifyMessages.phone :
-                  // verifyMessages.phone === true ? backMessages.phone : 
-                  null}
+                verifyInput={verifyMessages.phone ? verifyMessages.phone : null}
               />
               <InputLabel
                 labelName="Colegio"
@@ -283,9 +288,7 @@ function FormOrientado() {
                 placeholderName="Ingresar colegio"
                 propInputValue={school}
                 propsOnchange={(e) => setSchool(e.target.value)}
-                verifyInput={verifyMessages.school ? verifyMessages.school :
-                  // verifyMessages.school === true ? backMessages.school : 
-                  null}
+                verifyInput={verifyMessages.school ? verifyMessages.school : null}
               />
             </div>
             <div>
@@ -296,9 +299,7 @@ function FormOrientado() {
                 placeholderName="Ingresar edad"
                 propInputValue={age}
                 propsOnchange={(e) => setAge(e.target.value)}
-                verifyInput={verifyMessages.age ? verifyMessages.age :
-                  // verifyMessages.age === true ? backMessages.age : 
-                  null}
+                verifyInput={verifyMessages.age ? verifyMessages.age : null}
               />
 
               <InputLabel
@@ -308,9 +309,7 @@ function FormOrientado() {
                 placeholderName="Ingresar domicilio"
                 propInputValue={address}
                 propsOnchange={(e) => setAddress(e.target.value)}
-                verifyInput={verifyMessages.address ? verifyMessages.address :
-                  // verifyMessages.address === true ? backMessages.address : 
-                  null}
+                verifyInput={verifyMessages.address ? verifyMessages.address : null}
               />
             </div>
           </div>
@@ -364,9 +363,7 @@ function FormOrientado() {
             placeholderName="ingresar contraseña"
             propInputValue={password}
             propsOnchange={(e) => setPassword(e.target.value)}
-            verifyInput={verifyMessages.password ? verifyMessages.password :
-              // verifyMessages.password === true ? backMessages.password : 
-              null}
+            verifyInput={verifyMessages.password ? verifyMessages.password : null}
           />
           <InputLabel
             labelName="Repetir contraseña"
@@ -375,9 +372,7 @@ function FormOrientado() {
             placeholderName="Repetir contraseña"
             propInputValue={confirmPassword}
             propsOnchange={(e) => setConfirmPassword(e.target.value)}
-            verifyInput={verifyMessages.confirmPassword ? verifyMessages.confirmPassword :
-              // verifyMessages.confirmPassword === true ? backMessages.confirmPassword : 
-              null}
+            verifyInput={verifyMessages.confirmPassword ? verifyMessages.confirmPassword : null}
           />
 
         </div>

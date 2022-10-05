@@ -21,11 +21,10 @@ function CallStudents() {
         {/*Pedido a la Api*/ }
         const getOrientados = async () => {
             try {
-                const res = await axios.get(`http://localhost:8000/admin/pruebaorientados?page=0&size=1000&order=DESC`
+                const res = await axios.get(`http://localhost:8000/admin/pruebaorientados?page=0&size=1000&order=DESC`,{withCredentials: true}
                 ); // EN LA URI PONGO PAGE 0 Y UN SIZE DE 1000 QUE SIRVE PARA TRAER POR EL MOMENTO MIL USUARIOS
                 setOrientados(res.data.categories);
                 setTablaOrientados(res.data.categories)
-
 
             } catch (error) {
                 console.log(error);
