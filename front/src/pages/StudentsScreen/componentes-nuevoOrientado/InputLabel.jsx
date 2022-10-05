@@ -13,7 +13,7 @@ function InputLabel({ labelName, placeholderName, inputType, propInputName, prop
 
   return (
     // Hay que cambiar los estilos para que no cambie tanto cuando hay un error
-    <div className="containerInputLabel flex flex-col gap-2 w-64 pt-3">
+    <div className="containerInputLabel flex flex-col gap-2 w-64 h-28 pt-3">
 
       <label htmlFor="" className="font-medium text-slate-600 ">{labelName}</label> {/* prop1 para pasar el nombre al label  el cual estara arriba del input*/}
       <input type={inputType} name={propInputName} onChange={propsOnchange} value={propInputValue} placeholder={placeholderName}
@@ -23,12 +23,12 @@ function InputLabel({ labelName, placeholderName, inputType, propInputName, prop
       si hay algun error se renderiza el div con el mensaje de error y un icono */}
 
       {verifyInput !== null && verifyInput !== true ?
-        <div className="flex ml-2.5 relative bottom-3">
+        <div className="flex ml-2.5 items-center relative bottom-2">
           <Icon
             classname="w-3.5 h-3.5 m-1.5 text-sm fill-red-600"
             type="exclamationMark"
             width="24" height="24" />
-          <span className="text-red-600">{verifyInput}</span>
+          <span className="text-red-600 text-sm">{verifyInput}</span>
         </div>
         : null
       }

@@ -10,7 +10,7 @@ function FormInput(props) {
     const { verifyInput, handleChange } = props
 
     return (
-        <div className={`flex flex-col h-32 ${containerClass}`}>
+        <div className={`flex flex-col h-28 ${containerClass}`}>
             <label className={labelClass} htmlFor={id}>{label}</label>
             {/* Si el valor del prop que tiene las validaciones no tiene ningun error el input tiene un borde gris, 
             si hay algun error cambia a rojo */}
