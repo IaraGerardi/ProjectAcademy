@@ -2,7 +2,7 @@
 const express = require ("express");
 const routerAdmin = express.Router();
 //Controllers
-const { createEvento, getEvent, deleteEvento } = require("../controllers/eventosController")
+const { createEvento, getEvents, deleteEvent } = require("../controllers/eventosController")
 const { getAllOrientados, createOrientado, orientadoById, getAllOrientadores, orientadorToOrientado, orientadoAndOrientador, getAllOrientados2 } = require ("../controllers/orientadoController.js");
 const { getAllNovedades } = require("../controllers/novedadesController.js");
 const { getAllAdminsProfiles, getAdminProfile } = require("../controllers/profileAdminController.js");
@@ -38,12 +38,12 @@ routerAdmin.get('/admin/orientados/:id/orientador', isAuthenticated, orientadoAn
 routerAdmin.put('/admin/orientados/:id/orientadorToOrientado', isAuthenticated, orientadorToOrientado)
 
 //Ruta para ver Eventos
-routerAdmin.get('/admin/event', isAuthenticated, getEvent)
+routerAdmin.get('/admin/event', isAuthenticated, getEvents)
 
 //Ruta para crear eventos
 routerAdmin.post('/admin/createEvent', isAuthenticated, eventValidator, createEvento)
 
 //Ruta para eliminar eventos
-routerAdmin.delete('/admin/:id/deleteEvent', isAuthenticated, deleteEvento)
+routerAdmin.delete('/admin/:id/deleteEvent', isAuthenticated, deleteEvent)
 
 module.exports = routerAdmin;
