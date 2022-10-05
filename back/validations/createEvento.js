@@ -1,5 +1,4 @@
-const { check, body } = require('express-validator');
-const { ModelEvento } = require('../database/associations');
+const { check } = require('express-validator');
 const { validateResult } = require('../helpers/validateHelper');
 
 const regExpTime = new RegExp(/^([0-2][0-9]):[0-5][0-9]$/)

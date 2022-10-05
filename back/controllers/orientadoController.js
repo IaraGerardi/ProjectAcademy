@@ -8,8 +8,6 @@ desde "../database/models/ModelOrientado.js*/
 //URL: /admin/orientados
 const getAllOrientados = async (req, res) => {
     try {
-
-        
         const orientados = await ModelOrientado.findAll({
             attributes: ['id', 'name', 'lastname', 'photoProfile', 'OrientadoreId'],
             //order: [['id', 'DESC']]
@@ -23,18 +21,20 @@ const getAllOrientados = async (req, res) => {
 //URL: /admin/pruebaorientados
 const getAllOrientados2 = async (req, res) => {
     try {
-        /* En la query pasamos parametros de pagina y tamaño de cuantos datos
-        se mostraran(Por defecto será pagina 0 y 5 orientados que se muestren)
+        /* En la query pasamos parametros de pagina, tamaño de cuantos 
+        datos se mostraran y el orden (Por defecto será la  pagina 0,
+        orden ascendente y 5 orientados que se muestren).
         limit: Cantidad de datos limite que trae,
         offset: se establece desde que dato arranca la query 
+        order: orden que se muestran(Ascendente o Descendente by ID)
         Ejemplo: 1(page) * 5(size/limit) = 5(Offset) 
         Arranca desde el quinto dato y muestra un maximo de 5 posteriores. */
-        const { page = 0, size = 5, order = 'ASC'} = req.query;
+        const { page = 0, size = 5, order = 'ASC' } = req.query;
         let options = {
             limit: +size,
             offset: (+page) * (+size),
             order: [['id', order]],
-            attributes: {exclude: ['password']}
+            attributes: { exclude: ['password'] }
         }
         const { count, rows } = await ModelOrientado.findAndCountAll(options)
 
@@ -81,7 +81,8 @@ const orientadoById = async (req, res) => {
         {
             where: {
                 id: req.params.id
-            }
+            },
+            attributes: { exclude: ['password'] }
         })
     res.json(orientado)
 }
