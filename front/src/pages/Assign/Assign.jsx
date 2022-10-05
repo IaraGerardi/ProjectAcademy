@@ -25,9 +25,10 @@ function Assign() {
     useEffect(() => {
         const getOrientados = async () => {
             try {
-                const res = await axios.get(`http://localhost:8000/admin/orientados`, { withCredentials: true });
-                setOrientado(res.data); /* LLama Orientados */
-                console.log(res.data)
+                // const res = await axios.get(`http://localhost:8000/admin/orientados`, { withCredentials: true });
+                  const res = await axios.get(`http://localhost:8000/admin/pruebaorientados?page=0&size=1000`, { withCredentials: true });
+                setOrientado(res.data.categories); /* LLama Orientados */
+                console.log(res.data.categories)
             } catch (error) {
                 console.log(error);
             }
@@ -67,7 +68,6 @@ function Assign() {
             .then((response) => {
 
                 if (response.status == 200) {
-                    // setActive(!active);
                     window.location.reload();
                 }
 
@@ -214,22 +214,14 @@ function Assign() {
                                         {selectOrientador[valorOrientador - 1]}
                                     </ul>
 
-                                    {/*Botón reutilizable para enviar y modificar orientador*/}
+                                    {/*Botón para enviar orientador*/}
 
                                     < input
                                         type="submit"
                                         value={`Asignar Orientador/a`}
-                                        className="btn-asignar"
+                                        className="text-center h-10 mt-10 p-2 bg-celesteValtech rounded-lg text-base text-white font-medium cursor-pointer"
                                     />
 
-
-
-
-                                    {/* <Boton
-                                    Evento=""
-                                    ClaseBtn="btn-asignar"
-                                    NombreBtn="Asignar orientador/a"
-                                /> */}
 
                                 </form> :
                                 <>
@@ -237,7 +229,7 @@ function Assign() {
                                     <input
                                         readOnly={true}
                                         value="Modificar orientador/a"
-                                        className="text-center h-10 mt-10 p-2 bg-celesteValtech rounded-lg text-base text-white font-medium "
+                                        className="text-center h-10 mt-10 p-2 bg-celesteValtech rounded-lg text-base text-white font-medium cursor-pointer "
                                     />
 
                                     <div className={`alert ${!active ? 'mostrar-alert' : 'ocultar-alert'}`}>
