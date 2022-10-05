@@ -10,7 +10,7 @@ function UserAdmin() {
   useEffect(() => {
     const getOrientados = async () => {
       try {
-        const res = await axios.get("http://localhost:8000/admin/orientados");
+        const res = await axios.get("http://localhost:8000/admin/orientados", { withCredentials: true });
         setNewusers(res.data.slice(0,6));
 
         console.log(res.data);

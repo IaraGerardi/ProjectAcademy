@@ -56,7 +56,7 @@ export const EventForm = () => {
 
   //obtengo los datos de orientadores
   const ShowData = async () =>{
-    const res = await axios.get('http://localhost:8000/admin/orientadores')
+    const res = await axios.get('http://localhost:8000/admin/orientadores', { withCredentials: true })
     console.log(res.data)
     setOrientadores(res.data)
   }
@@ -67,7 +67,7 @@ export const EventForm = () => {
 
   //obtengo los datos de orientados
   const ShowDataStudents = async () =>{
-    const resp = await axios.get('http://localhost:8000/admin/orientados')
+    const resp = await axios.get('http://localhost:8000/admin/orientados', { withCredentials: true })
     console.log(resp.data)
     setOrientados(resp.data)
   }

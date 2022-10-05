@@ -26,7 +26,7 @@ function HeaderInicio({ propNamePage }) {
     useEffect(() => {
         const getAdmin = async () => {
             try {
-                const resInfoAdmin = await axios.get(`http://localhost:8000/admin/profile/${usuario.id}`);
+                const resInfoAdmin = await axios.get(`http://localhost:8000/admin/profile/${usuario.id}`, { withCredentials: true });
                 setInfoAdmin(resInfoAdmin.data);
                 // console.log(usuario);
                 // console.log(parseado)
