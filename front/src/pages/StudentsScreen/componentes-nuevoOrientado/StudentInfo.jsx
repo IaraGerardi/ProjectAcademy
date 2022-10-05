@@ -2,6 +2,9 @@ import React from 'react'
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+// // SVG
+import Affirmation from "../img/affirmation.svg"
+import Delete from "../img/delete.svg"
 
 function StudentInfo() {
 
@@ -14,11 +17,13 @@ function StudentInfo() {
   const { id } = useParams();
   const URI = `http://localhost:8000/admin/orientados`;
 
+  const [active, setActive] = useState(false);
+
   useEffect(() => { // la a ejecutar la funcion luego de renderizar la pantalla y no todo el tiempo
 
     const getOrientadoData = async () => {
       try {
-        const resOrientado = await axios.get(`${URI}/${id}`, {withCredentials:true}) //trae uri y le agrega /gdsaiukyhds y lo guarda   
+        const resOrientado = await axios.get(`${URI}/${id}`, { withCredentials: true }) //trae uri y le agrega /gdsaiukyhds y lo guarda   
         setOrientado(resOrientado.data)
         if (resOrientado.data.photoProfile) {
           setImage(resOrientado.data.photoProfile)
@@ -112,8 +117,19 @@ function StudentInfo() {
         <button className=" w-44 h-10 mt-10 p-2 bg-celesteValtech rounded-lg text-base text-white font-medium "
           onClick={handleAssign}> Asignar Orientador/a </button>
         : <button className=" w-44 h-10 mt-10 p-2 bg-celesteValtech rounded-lg text-base text-white font-medium "
-        onClick={handleAssign}> Ver Orientador/a </button>
+          onClick={handleAssign}> Ver Orientador/a </button>
       }
+
+
+
+
+      <div className={`alert ${!active ? 'mostrar-alert' : 'ocultar-alert'}`}>
+        <img src={Affirmation} alt="icon de afirmacion" />
+        {/* <p>{orientado.updatedAt}</p> */}
+        <p className="msg-alert">El Orientado fué ingresado con éxito.</p>
+        <img className="iconDelete-alert" src={Delete} onClick={() => setActive(!active)} alt="icon de eliminar" />
+      </div>
+
 
     </div>
   )
