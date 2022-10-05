@@ -5,10 +5,7 @@ function usePost(URI, form, verifications) {
     const [backVerifications, setBackVerifications] = useState({});
     const [success, setSuccess] = useState(null);
     const [error, setError] = useState(null);
-
-    // For each verification it must add an object property whose value is null and key is the id of the currect index of the array
-    // , tiene que haber una funcion que se exporte
-
+    
     const postForm = async (e) => {
         e.preventDefault();
         try {
