@@ -1,8 +1,8 @@
 // Importaciones de react, react router, hooks y axios
 import { useRef, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import useVerify from "../../../hooks/useVerify"
-import verifications from "../../../Verify arguments/verifyOrientado.json"
+import useVerify from "../../../hooks/useVerify";
+import verifications from "../../../verifyArguments/verifyOrientado.json"
 import axios from "axios";
 // Componentes
 import InputLabel from "../componentes-nuevoOrientado/InputLabel";

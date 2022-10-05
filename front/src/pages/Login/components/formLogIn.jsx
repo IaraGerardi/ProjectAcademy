@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import FormInput from "../../global-components/formInput";
 import axios from "axios";
 import useVerify from "../../../hooks/useVerify"
-import verifications from "../../../Verify arguments/verifyLogIn.json";
+import verifications from "../../../verifyArguments/verifyLogIn.json"
 import usePost from "../../../hooks/usePost";
 //context
 import { useContext } from "react";

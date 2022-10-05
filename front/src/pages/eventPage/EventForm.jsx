@@ -7,6 +7,7 @@ import { useState, useEffect } from "react";
 import axios from 'axios';
 import { optionsDuration, optionsHours } from './duration'
 import { useNavigate } from "react-router-dom";
+import verifications from "./../../verifyArguments/verifyEvent.json"
 
 export const EventForm = () => {
 
