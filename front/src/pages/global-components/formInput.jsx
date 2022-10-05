@@ -7,7 +7,7 @@ function FormInput(props) {
     // Props de clases para personalizar estilos
     const { inputClass, labelClass, containerClass } = props
     // Prop con el estado de la verificacion del input y prop con la funcion que guarda el valor del mismo
-    const { verifyInput, handleChange } = props
+    const { verifyInput, onHandleChange } = props
 
     return (
         <div className={`flex flex-col h-28 ${containerClass}`}>
@@ -18,10 +18,10 @@ function FormInput(props) {
                 <textarea
                     className={`${inputClass} rounded-lg border w-3/4 lg:w-2/4 placeholder:pl-2
                     ${verifyInput !== null && verifyInput !== true ? "border-red-600" : "border-slate-300"}`}
-                    rows="4" cols="40" id={id} name={id} onChange={handleChange} placeholder={placeholder}
+                    rows="4" cols="40" id={id} name={id} onChange={onHandleChange} placeholder={placeholder}
                 />
                 : <input
-                    value={value} id={id} name={id} type={type} onChange={handleChange} placeholder={placeholder}
+                    value={value} id={id} name={id} type={type} onChange={onHandleChange} placeholder={placeholder}
                     className={`${inputClass} relative bottom-2
                     ${verifyInput !== null && verifyInput !== true ? "border border-solid border-red-600" : "border border-slate-300"}`}
                 />

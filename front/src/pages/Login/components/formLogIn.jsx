@@ -27,7 +27,7 @@ function FormLogIn() {
     const navigate = useNavigate();
 
     const [form, setForm] = useState({ emailLog: null, passwordLog: null });
-    // const [backMessages, setBackMessages] = useState({ emailLog: null, passwordLog: null, });
+    const [backMessages, setBackMessages] = useState({ emailLog: null, passwordLog: null, });
 
     let formValues = [{ inputValue: form.emailLog }, { inputValue: form.passwordLog }]
 
@@ -44,38 +44,38 @@ function FormLogIn() {
             [e.target.id]: e.target.value,
         })
     }
-console.log(backVerifications)
+    console.log(backMessages)
     const handleSubmit = async (e) => {
         e.preventDefault();
         verifyForm();
-        // await axios.post(`${URI}`, form, { withCredentials: true })
-        //     .then((response) => {
-        //         if (response.data.si) {
-        //             localStorage.setItem("usuario", JSON.stringify(response.data.admin));
-        //           dispatch({type:types.authLogin})
-        //           navigate('/inicio'); 
-        //         } else {
-        //             setBackMessages({
-        //                 emailLog: null,
-        //                 passwordLog: null,
-        //             })
-        //             setBackMessages(prevBackMessages => ({
-        //                 ...prevBackMessages, [response.data.input]: response.data.alertMessage,
-        //             }))
-        //         }
-        //     })
+        await axios.post(`${URI}`, form, { withCredentials: true })
+            .then((response) => {
+                if (response.data.si) {
+                    localStorage.setItem("usuario", JSON.stringify(response.data.admin));
+                    dispatch({ type: types.authLogin })
+                    navigate('/inicio');
+                } else {
+                    setBackMessages({
+                        emailLog: null,
+                        passwordLog: null,
+                    })
+                    setBackMessages(prevBackMessages => ({
+                        ...prevBackMessages, [response.data.input]: response.data.alertMessage,
+                    }))
+                }
+            })
     }
 
     return (
         <form className="flex flex-col" method="POST" onSubmit={handleSubmit}>
             <FormInput
-                handleChange={handleChange}
+                onHandleChange={handleChange}
                 inputClass="w-80" labelClass="p-2.5 items-center" containerClass="flex flex-col w-96"
                 id="emailLog" type="email" label="Email" placeholder="Ingresa tu email"
                 verifyInput={verifyMessages.emailLog && verifyMessages.emailLog !== true
                     ? verifyMessages.emailLog : backVerifications.emailLog} />
             <FormInput
-                handleChange={handleChange}
+                onHandleChange={handleChange}
                 inputClass="w-80" labelClass="p-2.5 items-center" containerClass="flex flex-col w-96"
                 id="passwordLog" type="password" label="Contraseña" placeholder="Ingresa tu contraseña"
                 verifyInput={verifyMessages.passwordLog && verifyMessages.passwordLog !== true
