@@ -31,8 +31,6 @@ export const EventForm = () => {
   // PETICION 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(`ORIENTADOR EVENT:${valorOrientador}`)
-    console.log(`ORIENTADOS EVENT:${valorOrientados}`)
     await axios.post(URI, {
       nameEvent,
       orientadorEvent: valorOrientador,
@@ -58,7 +56,6 @@ export const EventForm = () => {
   //obtengo los datos de orientadores
   const ShowData = async () =>{
     const res = await axios.get('http://localhost:8000/admin/orientadores', { withCredentials: true })
-    console.log(res.data)
     setOrientadores(res.data)
   }
 
@@ -69,7 +66,6 @@ export const EventForm = () => {
   //obtengo los datos de orientados
   const ShowDataStudents = async () =>{
     const resp = await axios.get('http://localhost:8000/admin/orientados', { withCredentials: true })
-    console.log(resp.data)
     setOrientados(resp.data)
   }
 
@@ -80,25 +76,21 @@ export const EventForm = () => {
 
   //manejador de evento del select 1
   const handlerSelectOne = (e) => {
-    console.log(e);
     setValorOrientadores(e.value)
   };
 
   //manejador de evento del select 2
   const handlerSelectTwo = (e) => {
-    console.log(e);
     setValorOrientados(e)
   };
 
   //manejador del select horario
   const handleHours = (e) => {
-    console.log(e.value);
     setHours(e.value)
   }
 
   //manejador del select duracion
   const handleDuration = (e) => {
-    console.log(e.value);
     setDuration(e.value)
   }
 
@@ -116,10 +108,10 @@ export const EventForm = () => {
 
   return (
 
-    <div className="container-P w-full flex"> {/*  containedor padre tamaño igual a app */}
-      <Sidebar /> {/* hijo 1 izquierdo sticky */}
+    <div className="container-P w-full flex"> 
+      <Sidebar />
 
-    <div className="container-derecho header-sa">{/*  hijo2 derecho  column */}
+    <div className="container-derecho header-sa">
       <HeaderInicio propNamePage="Eventos"/>
       
       <div className='lg:mt-5 lg:ml-8'>
