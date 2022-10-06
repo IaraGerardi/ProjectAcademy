@@ -3,8 +3,8 @@
 ## Proyecto Academia
 
 Plataforma digital web que permite gestionar nuevos ingresos de orientados y eventos para los mismos.
-Se desarrolló desde el front con React.js, para el diseño utilizamos css y tailwind; Nos apoyamos en herramientas de gestion como Jira, Git y Github y scrum como metodología para trabajar colaborativamente en equipo y así poder obtener el mejor resultado posible del proyecto.
-A continuacion enumeramos y damos una breve descripcion de cada vista del proyecto.
+Se desarrolló desde el front con React.js, para el diseño utilizamos css y tailwind; Nos apoyamos en herramientas de gestion como Jira, Git, Github y scrum como metodología para trabajar colaborativamente en equipo y así poder obtener el mejor resultado posible del proyecto.
+A continuación enumeramos y damos una descripcion de cada vista del proyecto.
 
 ### 1. Sitio publico
 - Home Page
@@ -16,8 +16,8 @@ A continuacion enumeramos y damos una breve descripcion de cada vista del proyec
 
 ### 2. Portal privado – Web
 En esta vista el objetivo es que puedan ingresar solo los administradores para gestionar los orientados que se dan de alta y los eventos.Se visualiza un sidebar con tres opciones para navegar, *inicio*, *orientados* y *eventos*. Un header con imagen de perfil y acceso a los datos del mismo.
-- ***Login*** solo podran ingresar al portal privado los administradores en el se encuentran validaciones tanto del back como del front.
-- ***Inicio*** con *listado de orientados* asignados a un orientador o no diferenciados por un icono, *boton para ingresar* orientados linkeado con react-router-dom, seccion de *novedades* obtenidas desde back.
+- ***Login*** solo podran ingresar al portal privado los administradores, en el se encuentran validaciones tanto del back como del front.
+- ***Inicio*** con *listado de orientados* asignados a un orientador, o no, diferenciados por un icono, *boton para ingresar* orientados linkeado con react-router-dom y seccion de *novedades* obtenidas desde back.
 - ***Orientados*** se visualiza el listado de orientados, primero los que no estan asignados y un *buscador* para los orientados.
 - ***Ingresar orientado*** formulario que permite registrar un nuevo ingreso con sus datos, foto de perfil y generar usuario y contraseña. Todos los campos se encuentran con validaciones de back y front.
 - ***Asignar orientador*** luego de ingresar un orientado nuevo, se podra visualizar la opcion de asignar un orientador a traves de un select con opciones consultando a back.
