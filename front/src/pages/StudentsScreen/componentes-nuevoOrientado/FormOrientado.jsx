@@ -8,6 +8,7 @@ import axios from "axios";
 import InputLabel from "../componentes-nuevoOrientado/InputLabel";
 import Select from "react-select";
 import Icon from "../../global-components/Svg-icon";
+import FormInput from "../../global-components/formInput";
 // CSS
 /* import '../call-students.css'; */
 import img from '../img/orientadoDefault-removebg-preview.png'
@@ -18,17 +19,15 @@ import Affirmation from "../img/affirmation.svg"
 import Delete from "../img/delete.svg"
 
 function FormOrientado() {
-
+  let timer = "";
   const URI = "http://localhost:8000/admin/create";
 
   // ESTADOS DEL FORMULARIO DE SUS RESPECTIVOS INPUT
   const [name, setName] = useState("");
   const [lastname, setLastname] = useState("");
   const [email, setEmail] = useState("");
-
   const [photoProfile, setphotoProfile] = useState("");
   const [program, setProgram] = useState("");
-
   const [phone, setPhone] = useState("");
   const [age, setAge] = useState("");
   const [school, setSchool] = useState("");
@@ -36,24 +35,53 @@ function FormOrientado() {
   const [why, setWhy] = useState("");
   const [dni, setDni] = useState("");
   const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("")
+  const [confirmPassword, setConfirmPassword] = useState("");
 
   const [active, setActive] = useState(false);
-
+  const [activeVerify, setActiveVerify] = useState({});
+  const [backMessages, setBackMessages] = useState({ emailLog: null, passwordLog: null, });
+  
   const navegate = useNavigate();
+
 
   // Argumentos para la verificacion del formulario
   let formValues = [
     { inputValue: name }, { inputValue: lastname }, { inputValue: email }, { inputValue: program }, { inputValue: phone },
     { inputValue: age }, { inputValue: school }, { inputValue: address }, { inputValue: why }, { inputValue: dni },
-    { inputValue: password }, { inputValue: confirmPassword },
+    { inputValue: password }, { inputValue: confirmPassword }, { inputValue: photoProfile.name ? photoProfile.name : photoProfile }
   ]
 
-  let { verifyForm, verifyMessages } = useVerify(formValues, verifications);
+  let { handleVerifyForm, verifyMessages, isVerified } = useVerify(formValues, verifications);
+
+  const handleSetNull = (obj) => {
+    Object.keys(obj).forEach((index) => {
+      obj[index] = null;
+    });
+  }
+
+  const handleTimer = (e) => {
+    if (activeVerify[e.target.name] === true) {
+      return;
+    }
+    timer = setTimeout(() => {
+      setActiveVerify({
+        ...activeVerify,
+        [e.target.name]: true
+      })
+    }, 2000)
+    return () => clearTimeout(timer);
+  }
+
+  useEffect(() => {
+    handleSetNull(backMessages);
+    handleVerifyForm();
+  }, [name, lastname, email, program, phone, age, school, address, why, dni, password, confirmPassword])
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    verifyForm();
+    if (!isVerified) {
+      return;
+    }
     const formData = new FormData()
     formData.append('photoProfile', photoProfile)
     await axios.post(URI, {
@@ -105,31 +133,28 @@ function FormOrientado() {
     })
   }
 
-
   // handle onChange event of the dropdown
-  const handleChange = (e) => {
+  const handleProgramChange = (e) => {
     setProgram(e.value);
   };
+
   const handleCancelForm = (e) => {
     navegate("/orientados/newUsers");
   }
 
-  // Funcion para darle un formato al nombre y apellido
-
   const handleNameChange = (e) => {
     let value = e.target.value.toLowerCase();
-    let arrVar = value.split(" ");
+    let valueArray = value.split(" ");
 
-    for (let i = 0; i < arrVar.length; i++) {
-      arrVar[i] = arrVar[i].charAt(0).toUpperCase() + arrVar[i].slice(1);
+    for (let i = 0; i < valueArray.length; i++) {
+      valueArray[i] = valueArray[i].charAt(0).toUpperCase() + valueArray[i].slice(1);
     }
 
-    const nameVar = arrVar.join("");
-
+    const newValue = valueArray.join("");
     if (e.target.name === "name") {
-      setName(nameVar)
+      setName(newValue)
     } else if (e.target.name === "lastname") {
-      setLastname(nameVar)
+      setLastname(newValue)
     }
   };
 
@@ -148,7 +173,6 @@ function FormOrientado() {
       setPreview(null);
     }
   }, [photoProfile]);
-
 
   return (
     <div className="cotainerForm ml-8 mt-10 mb-10 w-auto">
@@ -203,7 +227,7 @@ function FormOrientado() {
             />
           </div>
 
-          <div className=" cajaInputsDatosP flex flex-col md: min-w-3/4 md:flex-row md:gap-5 lg:flex-row lg:gap-5 bg-red-200 lg:w-4/5 lg:h-56 ">
+          <div className="cajaInputsDatosP flex flex-col md: min-w-3/4 md:flex-row md:gap-5 lg:flex-row lg:gap-5 bg-red-200 lg:w-4/5 lg:h-56 ">
             <div className=" w-64">
               <InputLabel
                 labelName="Nombre"
@@ -211,8 +235,8 @@ function FormOrientado() {
                 propInputName="name"
                 placeholderName="Ingresar nombre"
                 propInputValue={name}
-                propsOnchange={handleNameChange}
-                verifyInput={verifyMessages.name ? verifyMessages.name : null}
+                propsOnchange={(e) => { handleTimer(e); handleNameChange(e) }}
+                verifyInput={!(activeVerify.name) ? null : verifyMessages.name ? verifyMessages.name : null}
               />
               <InputLabel
                 labelName="Apellido"
@@ -220,8 +244,8 @@ function FormOrientado() {
                 propInputName="lastname"
                 placeholderName="Ingresar Apellido"
                 propInputValue={lastname}
-                propsOnchange={handleNameChange}
-                verifyInput={verifyMessages.lastname ? verifyMessages.lastname : null}
+                propsOnchange={(e) => { handleTimer(e); handleNameChange(e); }}
+                verifyInput={!(activeVerify.lastname) ? null : verifyMessages.lastname ? verifyMessages.lastname : null}
               />
             </div>
             <div className=" w-64">
@@ -231,8 +255,8 @@ function FormOrientado() {
                 propInputName="email"
                 placeholderName="Ingresar email"
                 propInputValue={email}
-                propsOnchange={(e) => setEmail(e.target.value)}
-                verifyInput={verifyMessages.email ? verifyMessages.email :
+                propsOnchange={(e) => { handleTimer(e); setEmail(e.target.value) }}
+                verifyInput={!(activeVerify.email) ? null : verifyMessages.email ? verifyMessages.email :
                   // verifyMessages.email === true ? backMessages.email : 
                   null}
               />
@@ -245,11 +269,13 @@ function FormOrientado() {
                   placeholder="Select Option"
                   value={options.filter((obj) => obj.value === program)} // set selected value
                   options={options} // set list of the data
-                  onChange={handleChange} // assign onChange function
+                  onChange={(e) => { handleProgramChange(e); }} // assign onChange function
                   styles={customStyles}//style para react select
-                  className={`w-64 h-8 rounded-lg `}
+                  className={`w-64 h-8 rounded-lg
+                        ${verifyMessages.program && verifyMessages.program !== null ? "border-red-600" : null}`}
                 />
-                {verifyMessages.program && (verifyMessages.program !== null && verifyMessages.program !== true) ?
+                {!(activeVerify.program) ? null : verifyMessages.program &&
+                  (verifyMessages.program !== null && verifyMessages.program !== true) ?
                   <div className="flex ml-2.5 items-center relative bottom-2">
                     <Icon
                       classname="w-3.5 h-3.5 m-1.5 text-sm fill-red-600"
@@ -277,8 +303,8 @@ function FormOrientado() {
                 propInputName="tel"
                 placeholderName="Ingresar telefono"
                 propInputValue={phone}
-                propsOnchange={(e) => setPhone(e.target.value)}
-                verifyInput={verifyMessages.phone ? verifyMessages.phone : null}
+                propsOnchange={(e) => { handleTimer(e); setPhone(e.target.value) }}
+                verifyInput={!(activeVerify.tel) ? null : verifyMessages.tel ? verifyMessages.tel : null}
               />
               <InputLabel
                 labelName="Colegio"
@@ -286,8 +312,8 @@ function FormOrientado() {
                 propInputName="school"
                 placeholderName="Ingresar colegio"
                 propInputValue={school}
-                propsOnchange={(e) => setSchool(e.target.value)}
-                verifyInput={verifyMessages.school ? verifyMessages.school : null}
+                propsOnchange={(e) => { handleTimer(e); setSchool(e.target.value) }}
+                verifyInput={!(activeVerify.school) ? null : verifyMessages.school ? verifyMessages.school : null}
               />
             </div>
             <div>
@@ -297,8 +323,8 @@ function FormOrientado() {
                 propInputName="age"
                 placeholderName="Ingresar edad"
                 propInputValue={age}
-                propsOnchange={(e) => setAge(e.target.value)}
-                verifyInput={verifyMessages.age ? verifyMessages.age : null}
+                propsOnchange={(e) => { handleTimer(e); setAge(e.target.value) }}
+                verifyInput={!(activeVerify.age) ? null : verifyMessages.age ? verifyMessages.age : null}
               />
 
               <InputLabel
@@ -307,36 +333,20 @@ function FormOrientado() {
                 propInputName="address"
                 placeholderName="Ingresar domicilio"
                 propInputValue={address}
-                propsOnchange={(e) => setAddress(e.target.value)}
-                verifyInput={verifyMessages.address ? verifyMessages.address : null}
+                propsOnchange={(e) => { handleTimer(e); setAddress(e.target.value) }}
+                verifyInput={!(activeVerify.address) ? null : verifyMessages.address ? verifyMessages.address : null}
               />
             </div>
           </div>
-          <div className="containerInputLabel flex flex-col gap-2">
-            <label className="font-medium text-slate-600">
-              ¿Porque se acercó a nuestra institución?
-            </label>
-            <textarea
-              rows="3"
-              cols="40"
-              name="why"
-              onChange={(e) => setWhy(e.target.value)}
-              placeholder="Escribe un comentario."
-              className={`${verifyMessages.why && verifyMessages.why !== null && verifyMessages.why !== true ?
-                "border-red-600" : "border-slate-300"}
-              rounded-lg border w-60 pl-3 pt-2 md:w-2/4 lg:w-2/4 placeholder:pl-1  resize-none`}
-            />
-            {verifyMessages.why && verifyMessages.why !== null && verifyMessages.why !== true ?
-              <div className="flex ml-2.5">
-                <Icon
-                  classname="w-3.5 h-3.5 m-1.5 fill-red-600"
-                  type="exclamationMark"
-                  width="24" height="24" />
-                <span className="text-red-600">{verifyMessages.why}</span>
-              </div>
-              : null
-            }
-          </div>
+          <FormInput
+            onHandleChange={(e) => { handleTimer(e); setWhy(e.target.value) }}
+            labelClass="font-medium text-slate-600"
+            containerClass="containerInputLabel flex flex-col gap-2 h-32 "
+            inputClass="rounded-lg border w-60 pl-3 pt-2 md:w-2/4 lg:w-2/4 placeholder:pl-1  resize-none"
+            id="why" type="textarea" label="¿Porque se acercó a nuestra institución?" placeholder="Escribe un comentario."
+            verifyInput={!(activeVerify.why) ? null
+              : verifyMessages.why && verifyMessages.why !== true ? verifyMessages.why
+                : backMessages.why ? backMessages.why : null} />
         </div>
         <div className="container-crateUsernamePassword">
           {" "}
@@ -350,8 +360,8 @@ function FormOrientado() {
             propInputName="dni"
             placeholderName="Ingresar DNI del orientado"
             propInputValue={dni}
-            propsOnchange={(e) => setDni(e.target.value)}
-            verifyInput={verifyMessages.dni ? verifyMessages.dni :
+            propsOnchange={(e) => { handleTimer(e); setDni(e.target.value) }}
+            verifyInput={!(activeVerify.dni) ? null : verifyMessages.dni ? verifyMessages.dni :
               // verifyMessages.dni === true ? backMessages.dni : 
               null}
           />
@@ -361,8 +371,8 @@ function FormOrientado() {
             propInputName="password"
             placeholderName="ingresar contraseña"
             propInputValue={password}
-            propsOnchange={(e) => setPassword(e.target.value)}
-            verifyInput={verifyMessages.password ? verifyMessages.password : null}
+            propsOnchange={(e) => { handleTimer(e); setPassword(e.target.value) }}
+            verifyInput={!(activeVerify.password) ? null : verifyMessages.password ? verifyMessages.password : null}
           />
           <InputLabel
             labelName="Repetir contraseña"
@@ -370,14 +380,15 @@ function FormOrientado() {
             propInputName="passwordrepeat"
             placeholderName="Repetir contraseña"
             propInputValue={confirmPassword}
-            propsOnchange={(e) => setConfirmPassword(e.target.value)}
-            verifyInput={verifyMessages.confirmPassword ? verifyMessages.confirmPassword : null}
+            propsOnchange={(e) => { handleTimer(e); setConfirmPassword(e.target.value) }}
+            verifyInput={!(activeVerify.passwordrepeat) ? null : verifyMessages.passwordrepeat ? verifyMessages.passwordrepeat : null}
           />
 
         </div>
         <div className="mt-10">
           {/* div4 botones form */}
-          <button className=" w-44 h-10 bg-celesteValtech rounded-lg text-base text-white font-medium " type="submit">
+          <button type="submit" disabled={!isVerified}
+            className={`w-44 h-10 bg-celesteValtech rounded-lg text-base text-white font-medium ${(!isVerified) ? "opacity-50" : null}`}>
             Ingresar Orientado
           </button>
           <button className=" w-32 text-sm underline" onClick={handleCancelForm}>Cancelar ingreso</button>
