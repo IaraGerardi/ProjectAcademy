@@ -10,7 +10,7 @@ function CardProfile() {
     const parseado = JSON.parse(usuario)// pasando el item a json
 
      const [admin,setAdmin]=useState([]);//estado donde voy a guardar el objeto del admin  y luego obtener sus datos a traves de la notacion de puntos
-     const [loading,setLoading]=useState(true);
+     const [loadingProfile,setLoadingProfile]=useState(true);
      const URI=`http://localhost:8000/admin/profile`;
 
 
@@ -20,7 +20,7 @@ function CardProfile() {
                 try{
                     const resAdmin = await axios.get(`${URI}/${parseado.id}`,{withCredentials:true})//trae uri y le agrega /gdsaiukyhds y lo guarda
                     setAdmin(resAdmin.data); 
-                    setLoading(false)
+                    setLoadingProfile(false)
 
                 }catch(error){// en caso de fallar 
                     console.log (error)
@@ -40,7 +40,7 @@ function CardProfile() {
 
        <p className='pProfile ml-10 mt-8  font-medium text-slate-600'>Mi perfil</p>
        {
-        loading ?
+        loadingProfile ?
         <div className='flex justify-center mt-7'> <BeatLoader
         color="#1EC5BB"
         cssOverride={{}}
