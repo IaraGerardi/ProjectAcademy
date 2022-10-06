@@ -2,8 +2,11 @@ import HeaderInicio from "../sidebar-header/components/HeaderInicio"
 import {Sidebar} from "../sidebar-header/components/Sidebar.js"
 import CardProfile from "./componentes-Profile/CardProfile";
 
+/* import { useState,useEffect } from "react"; */
+
 
 function ProfileAdminScreen() {
+
   return (
   
       
@@ -14,9 +17,10 @@ function ProfileAdminScreen() {
                 <div className="container-derecho header-sa">{/*  hijo2 derecho  column */}
                     <HeaderInicio propNamePage="Bienvenido/a"/>
 
-                    <div>
-                    <CardProfile/>
-                    </div>
+                
+               <CardProfile/>
+              
+                    
                     
 
                     

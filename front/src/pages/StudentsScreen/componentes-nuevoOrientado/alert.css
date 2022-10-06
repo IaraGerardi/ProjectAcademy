@@ -12,6 +12,7 @@
     margin-top: 20px;
 }
 
+
 .mostrar-alert {
     display: flex;
     z-index: 11;
@@ -36,6 +37,45 @@
 
 .iconDelete-alert {
     cursor: pointer;
+}
+
+
+
+
+
+.alert-event {
+    margin-bottom: 20px;
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    background-color: #2E384D;
+    color: white;
+    font-weight: 500;
+    font-size: 6px;
+    width: 62%;
+    height: 96px;
+    border-radius: 8px;
+    
+}
+
+
+.msg-alert-event {
+    padding-top: 10px;
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 13px;
+}
+
+
+.cont-logo-event{
+    padding: 10px;
+}
+
+
+
+.ocultar-alert-event {
+    display: none;
 }
 
 
@@ -91,7 +131,7 @@
 
 
 
-@media (max-width: 651px) {
+@media (max-width: 695px) {
 
     .alert {
         display: flex;
@@ -124,6 +164,13 @@
     .msg-alert-orientador {
         font-size: 8px;
         font-family: sans-serif;
+    }
+
+    .msg-alert-event {
+        padding-top: 10px;
+        font-family: sans-serif;
+        font-weight: bold;
+        font-size: 8px;
     }
 
 

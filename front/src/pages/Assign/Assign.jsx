@@ -1,13 +1,18 @@
 import React from "react";
+//IMPORTACION DE HEADER Y SIDEBAR
 import { Sidebar } from "../sidebar-header/components/Sidebar";
 import HeaderInicio from "../sidebar-header/components/HeaderInicio"
-import "./assign.css"
+//IMPORTACION DE ESTADOS, RUTAS Y AXIOS
 import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import axios from "axios";
-import { useParams, useNavigate } from "react-router-dom";
 import Select from "react-select";
+//IMPORTACION DE SVG
 import Affirmation from "../StudentsScreen/img/affirmation.svg"
 import Delete from "../StudentsScreen/img/delete.svg"
+//IMPORTACION DE ESTILOS
+import "./assign.css"
+import "../StudentsScreen/componentes-nuevoOrientado/alert.css"
 
 function Assign() {
     const [orientado, setOrientado] = useState([]);
@@ -16,7 +21,6 @@ function Assign() {
     const [active, setActive] = useState(false);
     const { id } = useParams();
 
-    const navigate = useNavigate();
 
 
     const URI = `http://localhost:8000/admin/orientados/${id}/orientadorToOrientado`;
@@ -25,9 +29,10 @@ function Assign() {
     useEffect(() => {
         const getOrientados = async () => {
             try {
-                const res = await axios.get(`http://localhost:8000/admin/orientados`, { withCredentials: true });
-                setOrientado(res.data); /* LLama Orientados */
-                console.log(res.data)
+                // const res = await axios.get(`http://localhost:8000/admin/orientados`, { withCredentials: true });
+                const res = await axios.get(`http://localhost:8000/admin/pruebaorientados?page=0&size=1000`, { withCredentials: true });
+                setOrientado(res.data.categories); /* LLama Orientados */
+                console.log(res.data.categories)
             } catch (error) {
                 console.log(error);
             }
@@ -66,8 +71,7 @@ function Assign() {
         await axios.put(URI, { orientador: valorOrientador }, { withCredentials: true })
             .then((response) => {
 
-                if (response.status == 200) {
-                    // setActive(!active);
+                if (response.status === 200) {
                     window.location.reload();
                 }
 
@@ -214,22 +218,14 @@ function Assign() {
                                         {selectOrientador[valorOrientador - 1]}
                                     </ul>
 
-                                    {/*Botón reutilizable para enviar y modificar orientador*/}
+                                    {/*Botón para enviar orientador*/}
 
                                     < input
                                         type="submit"
                                         value={`Asignar Orientador/a`}
-                                        className="btn-asignar"
+                                        className="text-center h-10 mt-10 p-2 bg-celesteValtech rounded-lg text-base text-white font-medium cursor-pointer"
                                     />
 
-
-
-
-                                    {/* <Boton
-                                    Evento=""
-                                    ClaseBtn="btn-asignar"
-                                    NombreBtn="Asignar orientador/a"
-                                /> */}
 
                                 </form> :
                                 <>
@@ -237,10 +233,39 @@ function Assign() {
                                     <input
                                         readOnly={true}
                                         value="Modificar orientador/a"
-                                        className="text-center h-10 mt-10 p-2 bg-celesteValtech rounded-lg text-base text-white font-medium "
+                                        className="text-center h-10 mt-10 p-2 bg-celesteValtech rounded-lg text-base text-white font-medium cursor-pointer "
                                     />
 
-                                    <div className={`alert ${!active ? 'mostrar-alert' : 'ocultar-alert'}`}>
+                                    {/* {setInterval(() => {
+                                        console.log(new Date().toLocaleTimeString())
+                                    }, 1000)}; */}
+
+
+                                    {orientado?.map((orientado) => {
+                                        const orientadoCall = orientado
+                                        if (orientadoCall.id === parseInt(id)) {
+                                            return (
+
+                                                <div key={orientadoCall.id} className={`alert ${!active ? 'mostrar-alert' : 'ocultar-alert'}`}>
+                                                    <img src={Affirmation} alt="icon de afirmacion" />
+                                                    <div>
+                                                        <p className="msg-alert">El Orientado fué asignado a su referente.</p>
+                                                        <span className="msg-alert-orientador">Recibirá una notificación para que contacte al Orientador.</span>
+                                                    </div>
+                                                    <img className="iconDelete-alert" src={Delete} onClick={() => setActive(!active)} alt="icon de eliminar" />
+                                                </div>
+
+                                            )
+                                        }
+
+                                    })};
+
+                                    {/* <p>{orientado.updatedAt}</p> */}
+
+
+
+
+                                    {/* <div className={`alert ${!active ? 'mostrar-alert' : 'ocultar-alert'}`}>
                                         <img src={Affirmation} alt="icon de afirmacion" />
                                         <div>
                                             <p className="msg-alert">El Orientado fué asignado a su referente.</p>
@@ -248,7 +273,7 @@ function Assign() {
                                             <span className="msg-alert-orientador">Recibirá una notificación para que contacte al Orientador.</span>
                                         </div>
                                         <img className="iconDelete-alert" src={Delete} onClick={() => setActive(!active)} alt="icon de eliminar" />
-                                    </div>
+                                    </div> */}
                                 </>
                             }
 

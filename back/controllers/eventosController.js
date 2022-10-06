@@ -27,7 +27,7 @@ const createEvento = async (req, res) => { //Se crea la constante del metodo que
 }
 
 //Metodo para eliminar evento
-const deleteEvento = async (req,res) => {
+const deleteEvent = async (req,res) => {
     try {
         await ModelEvento.destroy({//Se utiliza el metodo ".destroy" para eliminar un registro en la tabla Eventos 
             where: {id: req.params.id} //con "where:" especificamos que registro queremos eliminar, en este caso todos los eventos que contengan el id de req.params, osea el id que se encuentra en la url
@@ -44,7 +44,7 @@ const deleteEvento = async (req,res) => {
 }
 
 //Obtiene todos los eventos, con su orientdor y todos los orientados que asistiran
-const getEvent = async (req, res) => {
+const getEvents = async (req, res) => {
     try {
         const event = await ModelEvento.findAll({
             include: [
@@ -66,6 +66,6 @@ const getEvent = async (req, res) => {
 
 module.exports = {
     createEvento,
-    deleteEvento,
-    getEvent
+    deleteEvent,
+    getEvents
 }
