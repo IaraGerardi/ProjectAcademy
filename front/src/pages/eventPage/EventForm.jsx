@@ -121,8 +121,7 @@ export const EventForm = () => {
           <h4 className='lg:text-lg text-slate-700 '>Puedes crear un primer encuentro entre Orientadores y Orientados.</h4>
 
         {/* formulario agendar eventos */}
-          <form 
-          method='POST' 
+          <form
           onSubmit={handleSubmit} 
           className='mt-5 flex flex-col'>
 
