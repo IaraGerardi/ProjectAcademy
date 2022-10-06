@@ -54,35 +54,35 @@ function FormOrientado() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     verifyForm();
-    // const formData = new FormData()
-    // formData.append('photoProfile', photoProfile)
-    // await axios.post(URI, {
-    //   name: name,
-    //   password: password,
-    //   lastname: lastname,
-    //   email: email,
-    //   phone: phone,
-    //   program: program,
-    //   photoProfile: photoProfile,
-    //   dni: dni,
-    //   age: age,
-    //   school: school,
-    //   address: address,
-    //   why: why
-    // },
-    //   {
-    //     headers: {
-    //       'Content-Type': 'multipart/form-data'
-    //     }
-    //   })
-    //   .then((response) => {
-    //     if (response.status == 200) {
-    //       setActive(!active)
-    //       setTimeout(() => {
-    //         navegate(`/orientados/StudentInfo/${response.data.id}`)
-    //       }, "4000")
-    //     }
-    //   })
+    const formData = new FormData()
+    formData.append('photoProfile', photoProfile)
+    await axios.post(URI, {
+      name: name,
+      password: password,
+      lastname: lastname,
+      email: email,
+      phone: phone,
+      program: program,
+      photoProfile: photoProfile,
+      dni: dni,
+      age: age,
+      school: school,
+      address: address,
+      why: why
+    },
+      {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      })
+      .then((response) => {
+        if (response.status == 200) {
+          setActive(!active)
+          setTimeout(() => {
+            navegate(`/orientados/StudentInfo/${response.data.id}`)
+          }, "4000")
+        }
+      })
   };
 
   // Opciones del select
@@ -153,7 +153,6 @@ function FormOrientado() {
   return (
     <div className="cotainerForm ml-8 mt-10 mb-10 w-auto">
       <form
-        method="POST"
         className=" flex flex-col gap-4"
         onSubmit={handleSubmit}
         encType="multipart/form-data"
