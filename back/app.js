@@ -8,11 +8,11 @@ const cors = require('cors');
 const routerAdmin = require("./routes/adminRouter.js");
 const routerLogin = require("./routes/loginRouter.js");
 //Requerimos Modelos y sus asociaciones para que se creen en la base de datos de manera fácil y rápida
-const ModelOrientador = require('./database/models/ModelOrientador.js');
-const ModelOrientado = require('./database/models/ModelOrientado.js');
-const ModelNovedades = require('./database/models/ModelNovedades.js');
+const ModelCounselor = require('./database/models/ModelCounselor.js');
+const ModelOriented = require('./database/models/ModelOriented.js');
+const ModelNews = require('./database/models/ModelNews.js');
 const ModelAdmin = require('./database/models/ModelAdmin.js');
-const ModelEvento = require('./database/models/ModelEvento.js');
+const ModelEvent = require('./database/models/ModelEvent.js');
 require('./database/associations.js');
 
 

@@ -1,4 +1,4 @@
-const ModelNovedades = require("../database/models/ModelNovedades.js");
+const ModelNovedades = require("../database/models/ModelNews.js");
 
 
 const getAllNovedades = async (req, res) => {

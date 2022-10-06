@@ -1,23 +1,23 @@
-const ModelOrientado = require("./models/ModelOrientado");
-const ModelOrientador = require("./models/ModelOrientador");
-const ModelEvento = require("./models/ModelEvento.js");
-const ModelOrientadoEvento = require("./models/ModelOrientadoEvento.js");
+const ModelOriented = require("./models/ModelOriented");
+const ModelCounselor = require("./models/ModelCounselor");
+const ModelEvent = require("./models/ModelEvent.js");
+const ModelOrientedEvent = require("./models/ModelOrientedEvent.js");
 
 //1 a N / Orientadores a Orientados
-ModelOrientador.hasMany(ModelOrientado); //Crea FK OrientadoreId para los orientados
-ModelOrientado.belongsTo(ModelOrientador);//Cada orientado tiene el ID de su unico orientador
+ModelCounselor.hasMany(ModelOriented); //Crea FK OrientadoreId para los orientados
+ModelOriented.belongsTo(ModelCounselor);//Cada orientado tiene el ID de su unico orientador
 
 //1 a N / Orientador a Eventos
-ModelOrientador.hasMany(ModelEvento); //Crea FK OrientadoreId para los Eventos
-ModelEvento.belongsTo(ModelOrientador); //Cada Evento tiene el ID del unico orientador
+ModelCounselor.hasMany(ModelEvent); //Crea FK OrientadoreId para los Eventos
+ModelEvent.belongsTo(ModelCounselor); //Cada Evento tiene el ID del unico orientador
 
 //N a N / Orientados a Eventos
-ModelOrientado.belongsToMany(ModelEvento, {through: "orientado_evento"}); // Tabla pivot llamada "orientado_evento", relacion tabla orientado y tabla Evento
-ModelEvento.belongsToMany(ModelOrientado, {through: "orientado_evento"});
+ModelOriented.belongsToMany(ModelEvent, {through: "oriented_event"}); // Tabla pivot llamada "orientado_evento", relacion tabla orientado y tabla Evento
+ModelEvent.belongsToMany(ModelOriented, {through: "oriented_event"});
 
 module.exports = {
-    ModelOrientado,
-    ModelOrientador,
-    ModelEvento,
-    ModelOrientadoEvento
+    ModelOriented,
+    ModelCounselor,
+    ModelEvent,
+    ModelOrientedEvent
 }
