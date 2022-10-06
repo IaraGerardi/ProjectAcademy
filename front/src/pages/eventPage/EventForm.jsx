@@ -12,10 +12,10 @@ import verifications from "./../../verifyArguments/verifyEvent.json"
 export const EventForm = () => {
 
   const [nameEvent, setName] = useState('')
-  const [orientadorEvent, setOrientadores] = useState([])
-  const [valorOrientador, setValorOrientadores] = useState([])       
-  const [orientadosEvent, setOrientados] = useState([])
-  const [valorOrientados, setValorOrientados] = useState([])
+  const [counselorEvent, setCounselorEvent] = useState([])
+  const [valueCounselor, setValueCounselor] = useState([])       
+  const [orientedEvent, setOrientedEvent] = useState([])
+  const [valueOriented, setValueOriented] = useState([])
   const [dateEvent, setDateEvent] = useState('')
   const [timeEvent, setHours] = useState("");
   const [durationEvent, setDuration] = useState("");
@@ -33,8 +33,8 @@ export const EventForm = () => {
     e.preventDefault();
     await axios.post(URI, {
       nameEvent,
-      orientadorEvent: valorOrientador,
-      orientadosEvent: valorOrientados,
+      counselorEvent: valueCounselor,
+      orientedEvent: valueOriented,
       dateEvent,
       timeEvent,
       durationEvent,
@@ -56,7 +56,7 @@ export const EventForm = () => {
   //obtengo los datos de orientadores
   const ShowData = async () =>{
     const res = await axios.get('http://localhost:8000/admin/orientadores', { withCredentials: true })
-    setOrientadores(res.data)
+    setCounselorEvent(res.data)
   }
 
   useEffect( ()=>{
@@ -66,7 +66,7 @@ export const EventForm = () => {
   //obtengo los datos de orientados
   const ShowDataStudents = async () =>{
     const resp = await axios.get('http://localhost:8000/admin/orientados', { withCredentials: true })
-    setOrientados(resp.data)
+    setOrientedEvent(resp.data)
   }
 
   useEffect( ()=>{
@@ -76,12 +76,12 @@ export const EventForm = () => {
 
   //manejador de evento del select 1
   const handlerSelectOne = (e) => {
-    setValorOrientadores(e.value)
+    setValueCounselor(e.value)
   };
 
   //manejador de evento del select 2
   const handlerSelectTwo = (e) => {
-    setValorOrientados(e)
+    setValueOriented(e)
   };
 
   //manejador del select horario
@@ -144,7 +144,7 @@ export const EventForm = () => {
                 <label className='text-sm font-medium text-slate-600 '>Orientador participante</label>
                 <Select
                   placeholder="Seleccionar orientador"
-                  options={orientadorEvent.map(elem => ({label: `${elem.name} ${elem.lastname}`, value: elem.id }))}
+                  options={counselorEvent.map(elem => ({label: `${elem.name} ${elem.lastname}`, value: elem.id }))}
                   onChange={handlerSelectOne}
                   styles={customStylesEvent}
                   className='w-64 lg:w-80'
@@ -155,7 +155,7 @@ export const EventForm = () => {
                 <label className='text-sm font-medium text-slate-600 '>Orientado/es participante/s</label>
                 <Select
                   placeholder="Seleccionar orientado"
-                  options={orientadosEvent.map(elem => ({label: `${elem.name} ${elem.lastname}`, value:elem.id }))} 
+                  options={orientedEvent.map(elem => ({label: `${elem.name} ${elem.lastname}`, value:elem.id }))} 
                   onChange={handlerSelectTwo }
                   isMulti
                   components={animatedComponents}
