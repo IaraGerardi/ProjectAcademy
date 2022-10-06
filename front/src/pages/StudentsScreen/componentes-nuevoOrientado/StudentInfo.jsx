@@ -59,6 +59,7 @@ function StudentInfo() {
 
 
 
+
   return (
     <div className="cotainerForm ml-8 mt-10 mb-10">
       <h2 className="text-2xl font-medium text-slate-700">01.Informacion básica </h2>
@@ -131,20 +132,14 @@ function StudentInfo() {
       {/*LLAMADO DE ALERTA */}
       {/* El .PARSE CONVIERTE LA FECHA Y HORA EN MILISEGUNDOS  Y PREGUNTO SI LA FECHA ACTUAL MENOS LA FECHA DE CREACION DEL ORIENTADO ES MENOR A 1000 MILISEGUNDOS ENTONCES MOSTRAME ALERT.*/}
       {
-        (Date.parse(new Date()) - Date.parse(`${orientado.createdAt}`) < 10000 || active) && <div className={`alert ${!active ? 'mostrar-alert' : 'ocultar-alert'}`}>
+        (Date.parse(new Date()) - Date.parse(`${orientado.createdAt}`) < 5000 || active) && <div className={`alert ${!active ? 'mostrar-alert' : 'ocultar-alert'}`}>
+          console.log(orientado.createdAt)
           <img src={Affirmation} alt="icon de afirmacion" />
           <p className="msg-alert">El Orientado fué ingresado con éxito.</p>
           <img className="iconDelete-alert" src={Delete} onClick={() => setActive(!active)} alt="icon de eliminar" />
         </div>
 
       }
-
-
-
-
-
-
-
 
     </div>
   )

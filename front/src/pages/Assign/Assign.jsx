@@ -29,7 +29,6 @@ function Assign() {
     useEffect(() => {
         const getOrientados = async () => {
             try {
-                // const res = await axios.get(`http://localhost:8000/admin/orientados`, { withCredentials: true });
                 const res = await axios.get(`http://localhost:8000/admin/pruebaorientados?page=0&size=1000`, { withCredentials: true });
                 setOrientado(res.data.categories); /* LLama Orientados */
                 console.log(res.data.categories)
@@ -123,6 +122,7 @@ function Assign() {
                             <p>{orientado.program !== null ? orientado.program : "Sin definir"}</p>
                         </div>
 
+
                     </div>
 
                 </div>
@@ -130,7 +130,6 @@ function Assign() {
         }
 
     });
-
 
 
 
@@ -236,17 +235,18 @@ function Assign() {
                                         className="text-center h-10 mt-10 p-2 bg-celesteValtech rounded-lg text-base text-white font-medium cursor-pointer "
                                     />
 
-                                    {/* {setInterval(() => {
-                                        console.log(new Date().toLocaleTimeString())
-                                    }, 1000)}; */}
 
+                                </>
 
-                                    {orientado?.map((orientado) => {
-                                        const orientadoCall = orientado
-                                        if (orientadoCall.id === parseInt(id)) {
-                                            return (
+                            }
 
-                                                <div key={orientadoCall.id} className={`alert ${!active ? 'mostrar-alert' : 'ocultar-alert'}`}>
+                            {orientado.map((oriented) => {
+                                const alertCall = oriented
+                                if (alertCall.id === parseInt(id)) {
+                                    return (
+                                        <div>
+                                            {
+                                                (Date.parse(new Date()) - Date.parse(`${oriented.updatedAt}`) < 2000 || active) && <div className={`alert ${!active ? 'mostrar-alert' : 'ocultar-alert'}`}>
                                                     <img src={Affirmation} alt="icon de afirmacion" />
                                                     <div>
                                                         <p className="msg-alert">El Orientado fué asignado a su referente.</p>
@@ -255,27 +255,12 @@ function Assign() {
                                                     <img className="iconDelete-alert" src={Delete} onClick={() => setActive(!active)} alt="icon de eliminar" />
                                                 </div>
 
-                                            )
-                                        }
-
-                                    })};
-
-                                    {/* <p>{orientado.updatedAt}</p> */}
-
-
-
-
-                                    {/* <div className={`alert ${!active ? 'mostrar-alert' : 'ocultar-alert'}`}>
-                                        <img src={Affirmation} alt="icon de afirmacion" />
-                                        <div>
-                                            <p className="msg-alert">El Orientado fué asignado a su referente.</p>
-
-                                            <span className="msg-alert-orientador">Recibirá una notificación para que contacte al Orientador.</span>
+                                            }
                                         </div>
-                                        <img className="iconDelete-alert" src={Delete} onClick={() => setActive(!active)} alt="icon de eliminar" />
-                                    </div> */}
-                                </>
-                            }
+                                    )
+                                }
+
+                            })}
 
                         </div>
 
