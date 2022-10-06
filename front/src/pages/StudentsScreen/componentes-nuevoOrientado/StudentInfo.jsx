@@ -17,6 +17,7 @@ function StudentInfo() {
   const { id } = useParams();
   const URI = `http://localhost:8000/admin/orientados`;
 
+  // http://localhost:8000/admin/pruebaorientados?page=0&size=1000
   const [active, setActive] = useState(false);
 
   useEffect(() => { // la a ejecutar la funcion luego de renderizar la pantalla y no todo el tiempo
@@ -55,6 +56,8 @@ function StudentInfo() {
   const handleAssign = () => {
     navigate(`/orientados/${orientado.id}`)
   }
+
+
 
   return (
     <div className="cotainerForm ml-8 mt-10 mb-10">
@@ -120,15 +123,27 @@ function StudentInfo() {
           onClick={handleAssign}> Ver Orientador/a </button>
       }
 
+      {/* {viewAlert} */}
+
+
+      {/* <p>{orientado.updatedAt}</p> */}
+
+      {/*LLAMADO DE ALERTA */}
+      {/* El .PARSE CONVIERTE LA FECHA Y HORA EN MILISEGUNDOS  Y PREGUNTO SI LA FECHA ACTUAL MENOS LA FECHA DE CREACION DEL ORIENTADO ES MENOR A 1000 MILISEGUNDOS ENTONCES MOSTRAME ALERT.*/}
+      {
+        (Date.parse(new Date()) - Date.parse(`${orientado.createdAt}`) < 10000 || active) && <div className={`alert ${!active ? 'mostrar-alert' : 'ocultar-alert'}`}>
+          <img src={Affirmation} alt="icon de afirmacion" />
+          <p className="msg-alert">El Orientado fué ingresado con éxito.</p>
+          <img className="iconDelete-alert" src={Delete} onClick={() => setActive(!active)} alt="icon de eliminar" />
+        </div>
+
+      }
 
 
 
-      <div className={`alert ${!active ? 'mostrar-alert' : 'ocultar-alert'}`}>
-        <img src={Affirmation} alt="icon de afirmacion" />
-        {/* <p>{orientado.updatedAt}</p> */}
-        <p className="msg-alert">El Orientado fué ingresado con éxito.</p>
-        <img className="iconDelete-alert" src={Delete} onClick={() => setActive(!active)} alt="icon de eliminar" />
-      </div>
+
+
+
 
 
     </div>
