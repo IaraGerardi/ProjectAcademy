@@ -14,7 +14,7 @@ const PORT = (process.env.PORT || '3000');
 //Para poder utilizar cors
 app.use(cors({
     credentials: true,
-    origin: ["http://localhost:3000"],
+    origin: [`http://localhost:${process.env.FRONT_PORT}`],
     methods: ["GET", "POST", "PUT", "DELETE"]
 }));
 //Para poder utilizar json
@@ -32,7 +32,7 @@ app.use('/', routerLogin);
 
 //Aviso de conexión a la base de datos
 app.listen(PORT, () => {
-    console.log(`SERVER UP running in http://localhost:${PORT}`);
+    console.log(`SERVER UP running in http://localhost:${PORT} and front in ${process.env.FRONT_PORT}`);
     try {
         sequelize.authenticate();
         //true = rompe y crea la base de datos - false = queda inactivo

@@ -7,7 +7,7 @@ const { getAllOriented, createOriented, orientedById, getAllCounselor, counselor
 const { getAllNews } = require("../controllers/newsController.js");
 const { getAllAdminsProfiles, getAdminProfile } = require("../controllers/profileAdminController.js");
 //Autenticacion para que solo puedan ingresar usuarios logueados (admins)
-const { isAuthenticated } = require("../controllers/loginAdminController.js"); 
+const { isAuthenticated } = require("../middleware/logAuthentication.js"); 
 //Middlewares y Validaciones
 const photoProfileCheck = require("../middleware/orientedImages.js");
 const validateCreate = require("../validations/createOriented.js");
@@ -15,7 +15,7 @@ const { eventValidator } = require("../validations/createEvent");
 
 //Rutas de la vista privada del Admin
 routerAdmin.get('/admin/oriented', isAuthenticated, getAllOriented);
-routerAdmin.get('/admin/orientedPaginated', isAuthenticated, getAllOrientedPaginated); //Es de prueba despues se borra
+routerAdmin.get('/admin/orientedPaginated', isAuthenticated, getAllOrientedPaginated);
 routerAdmin.get('/admin/news', isAuthenticated, getAllNews);
 
 //Rutas para obtener profiles de admins
