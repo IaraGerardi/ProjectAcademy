@@ -51,7 +51,7 @@ const eventValidator = [
 /* ------Inpunt OrientadoreId------- */
     check('counselorEvent')
         .notEmpty().withMessage('Ingrese Orientador')
-        .isNumeric().withMessage('Revise datos de orientador')
+/*      .isNumeric().withMessage('Revise datos de orientador') */ //Hacer que el front traiga un numero, no un objeto.
     ,
     /* ------Inpunt orientadosEvent------- */
     check('orientedEvent')

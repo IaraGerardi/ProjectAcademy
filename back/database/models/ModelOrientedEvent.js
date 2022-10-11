@@ -8,7 +8,7 @@ ModelOrientedEvent.init({
 },{
     sequelize,
     freezeTableName: true,
-    modelName: 'Oriented_event'
+    modelName: 'oriented_event'
 });
 
 module.exports = ModelOrientedEvent;

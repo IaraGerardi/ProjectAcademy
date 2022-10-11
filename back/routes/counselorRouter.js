@@ -7,7 +7,7 @@ const { getAllCounselor } = require("../controllers/counselorController.js")
 const { isAuthenticated } = require("../middleware/logAuthentication.js"); //Autenticacion para usuarios logueados
 
 //Ruta orientadores
-counselorRouter.get('/counselor', isAuthenticated, getAllCounselor); //trae todos los orientadores
+counselorRouter.get('/', isAuthenticated, getAllCounselor); //trae todos los orientadores
 
 
 module.exports = counselorRouter;

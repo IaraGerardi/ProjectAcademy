@@ -7,7 +7,7 @@ const { getAllAdmins, getAdmin } = require("../controllers/adminController.js");
 const { isAuthenticated } = require("../middleware/logAuthentication.js"); //Autenticacion para usuarios logueados
 
 //Rutas admins
-adminRouter.get('/admins', isAuthenticated,  getAllAdmins); //trae todos los admins 
-adminRouter.get('/admin/:id', isAuthenticated, getAdmin); //trae un admin que selecciones en id
+adminRouter.get('/', isAuthenticated,  getAllAdmins); //trae todos los admins 
+adminRouter.get('/:id', isAuthenticated, getAdmin); //trae un admin que selecciones en id
 
 module.exports = adminRouter;

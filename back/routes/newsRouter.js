@@ -7,6 +7,6 @@ const { getAllNews } = require("../controllers/newsController.js");
 const { isAuthenticated } = require("../middleware/logAuthentication.js"); //Autenticacion para usuarios logueados
 
 //Rutas novedades
-newsRouter.get('/news', isAuthenticated, getAllNews); //trae todas las novedades
+newsRouter.get('/', isAuthenticated, getAllNews); //trae todas las novedades
 
 module.exports = newsRouter;

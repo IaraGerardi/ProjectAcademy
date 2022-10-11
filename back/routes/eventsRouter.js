@@ -8,9 +8,9 @@ const { isAuthenticated } = require("../middleware/logAuthentication.js"); //Aut
 const { eventValidator } = require("../validations/createEvent");
 
 //Ruta eventos
-eventsRouter.get('/events', isAuthenticated, getEvents); //trae todos los eventos
-eventsRouter.post('/event/create', isAuthenticated, eventValidator, createEvent); //crear eventos
-eventsRouter.delete('/event/:id/delete', isAuthenticated, deleteEvent); //eliminar eventos
+eventsRouter.get('/', isAuthenticated, getEvents); //trae todos los eventos
+eventsRouter.post('/create', isAuthenticated, eventValidator, createEvent); //crear eventos
+eventsRouter.delete('/:id/delete', isAuthenticated, deleteEvent); //eliminar eventos
 
 
 module.exports = eventsRouter;

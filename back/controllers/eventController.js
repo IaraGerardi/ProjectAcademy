@@ -3,14 +3,15 @@ const { ModelEvent, ModelOrientedEvent, ModelOriented, ModelCounselor } = requir
 //Metodo para crear un Event
 const createEvent = async (req, res) => { //Se crea la constante del metodo que luego se utilizara en las routes. 
     const {nameEvent, dateEvent, timeEvent, durationEvent, descriptionEvent, counselorEvent, orientedEvent} = req.body; //Capturamos los inputs y los guardamos en una variable
-    try {  //Se utiliza un try{} catch(error){} para poder detectar errores y visualizarlos
+    console.log(counselorEvent + "     ASJFLKASJFSLAKFJSLAJFL")
+    try {  
         const event = await ModelEvent.create({ //Traemos el modelo de la tabla Events con "ModelEvent" y usamos el metodo de Sequelize .create y pasamos las variables donde guardamos la informacion de los inputs a la columna correspondiente.
             name: nameEvent,
             date: dateEvent,
             time: timeEvent,
             duration: durationEvent,
             description: descriptionEvent,
-            CounselorId: counselorEvent //Ya que el counselor se obtiene atraves de un objeto con el nombre y el id del counselor, utilizamos ".value" para acceder a la id e insertarla en el registro del Event.
+            CounselorId: counselorEvent.value //Ya que el counselor se obtiene atraves de un objeto con el nombre y el id del counselor, utilizamos ".value" para acceder a la id e insertarla en el registro del Event.
         });
         for (let i = 0; i < orientedEvent.length; i++) { //Bucle for para poder agregar todos los oriented que se obtienen en un array de objetos llamado "orientedEvent" al Event que se acaba de crear.
         await ModelOrientedEvent.create({  //Esta es la tabla pivot que contiene todos los oriented que van a un solo Event.
