@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../db.js');
 
-class ModelNovedades extends Model { }
+class ModelNews extends Model { }
 
-ModelNovedades.init({
+ModelNews.init({
     titulo:{
         type: DataTypes.STRING,
         allowNull: { //No permite que el campo sea "null"
@@ -29,8 +29,8 @@ ModelNovedades.init({
     }
 }, {
     sequelize, 
-    modelName: "Novedades",
+    modelName: "News",
     timestamps: false
 });
 
-module.exports = ModelNovedades;
+module.exports = ModelNews;

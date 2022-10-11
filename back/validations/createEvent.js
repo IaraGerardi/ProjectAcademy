@@ -49,12 +49,12 @@ const eventValidator = [
         }).withMessage('Revise la duración del evento')
     ,
 /* ------Inpunt OrientadoreId------- */
-    check('orientadorEvent')
+    check('counselorEvent')
         .notEmpty().withMessage('Ingrese Orientador')
         .isNumeric().withMessage('Revise datos de orientador')
     ,
     /* ------Inpunt orientadosEvent------- */
-    check('orientadosEvent')
+    check('orientedEvent')
         .notEmpty().withMessage('Ingrese orientados')
     ,
 

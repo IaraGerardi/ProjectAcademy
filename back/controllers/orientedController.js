@@ -1,25 +1,25 @@
 const bcryptjs = require('bcryptjs');
-const { ModelOrientado, ModelOrientador } = require("../database/associations");
-/* llama a modelo orientado desde associations 
+const { ModelOriented, ModelCounselor } = require("../database/associations");
+/* llama a modelo oriented desde associations 
 porque son los ultimos cambios que recibe, 
 en caso de no funcionar probar llamando al modelo
-desde "../database/models/ModelOrientado.js*/
+desde "../database/models/ModelOriented.js*/
 
 //URL: /admin/orientados
-const getAllOrientados = async (req, res) => {
+const getAllOriented = async (req, res) => {
     try {
-        const orientados = await ModelOrientado.findAll({
-            attributes: ['id', 'name', 'lastname', 'photoProfile', 'OrientadoreId'],
+        const oriented = await ModelOriented.findAll({
+            attributes: ['id', 'name', 'lastname', 'photoProfile', 'CounselorId'],
             //order: [['id', 'DESC']]
         });
-        res.json(orientados)
+        res.json(oriented)
     } catch (error) {
         res.json({ message: error.message });
     }
 }
 
-//URL: /admin/pruebaorientados
-const getAllOrientados2 = async (req, res) => {
+//URL: /admin/pruebaorienteds
+const getAllOrientedPaginated = async (req, res) => {
     try {
         /* En la query pasamos parametros de pagina, tamaño de cuantos 
         datos se mostraran y el orden (Por defecto será la  pagina 0,
@@ -36,7 +36,7 @@ const getAllOrientados2 = async (req, res) => {
             order: [['id', order]],
             attributes: { exclude: ['password'] }
         }
-        const { count, rows } = await ModelOrientado.findAndCountAll(options)
+        const { count, rows } = await ModelOriented.findAndCountAll(options)
 
         res.json({
             total: count,
@@ -47,11 +47,11 @@ const getAllOrientados2 = async (req, res) => {
     }
 }
 
-const createOrientado = async (req, res) => {
+const createOriented = async (req, res) => {
     const { name, lastname, email, phone, program } = req.body;
     const { dni, age, school, address, why } = req.body;
     try {
-        const user = await ModelOrientado.create({
+        const user = await ModelOriented.create({
             name: name, //Cuando el nombre de la propiedad es la misma no es necesario poner name: name.
             lastname: lastname,
             email: email,
@@ -76,51 +76,52 @@ const createOrientado = async (req, res) => {
     }
 }
 
-const orientadoById = async (req, res) => {
-    const orientado = await ModelOrientado.findOne(
+const orientedById = async (req, res) => {
+    const oriented = await ModelOriented.findOne(
         {
             where: {
                 id: req.params.id
             },
             attributes: { exclude: ['password'] }
         })
-    res.json(orientado)
+    res.json(oriented)
 }
 
-const orientadoAndOrientador = async (req, res) => {
-    const orientado = await ModelOrientado.findOne(
+//Agregar ORIENTADOR EN LA RESPUESTA (JSON)
+const orientedAndCounselor = async (req, res) => {
+    const oriented = await ModelOriented.findOne(
         {
             where: {
                 id: req.params.id
             }
         })
-    res.json(orientado)
+    res.json(oriented)
 }
 
-const getAllOrientadores = async (req, res) => {
-    const orientadores = await ModelOrientador.findAll();
-    res.json(orientadores)
+const getAllCounselor = async (req, res) => {
+    const counselor = await ModelCounselor.findAll();
+    res.json(counselor)
 }
 
-const orientadorToOrientado = async (req, res) => {
-    const orientador = req.body.orientador
-    await ModelOrientado.update({
-        OrientadoreId: orientador
+const counselorToOriented = async (req, res) => {
+    const counselor = req.body.counselor
+    await ModelOriented.update({
+        CounselorId: counselor
     }, {
         where: {
             id: req.params.id
         }
     })
-    console.log(`ID del orientador enviado:${orientador}`)
-    res.json(`ID del orientador enviado:${orientador}`)
+    console.log(`ID del orientador enviado:${counselor}`)
+    res.json(`ID del orientador enviado:${counselor}`)
 }
 
 module.exports = {
-    createOrientado,
-    getAllOrientados,
-    getAllOrientados2,
-    orientadorToOrientado,
-    orientadoById,
-    getAllOrientadores,
-    orientadoAndOrientador
+    createOriented,
+    getAllOriented,
+    getAllOrientedPaginated,
+    counselorToOriented,
+    orientedById,
+    getAllCounselor,
+    orientedAndCounselor
 }

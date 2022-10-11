@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../db.js');
 
-class ModelOrientador extends Model { }
+class ModelCounselor extends Model { }
 
-ModelOrientador.init({
+ModelCounselor.init({
     name:{
         type: DataTypes.STRING,
         allowNull: { //No permite que el campo sea "null"
@@ -62,11 +62,11 @@ ModelOrientador.init({
     }
 }, {
     sequelize, 
-    modelName: "Orientadores",
+    modelName: "Counselor",
     timestamps: false
 });
 
-module.exports = ModelOrientador;
+module.exports = ModelCounselor;
 
 /* // the defined model is the class itself
 console.log(User === sequelize.models.User); // true */

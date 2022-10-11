@@ -9,8 +9,6 @@ const routerAdmin = require("./routes/adminRouter.js");
 const routerLogin = require("./routes/loginRouter.js");
 require('./database/associations.js');
 
-
-
 dotenv.config({ path: './env/.env' })
 const PORT = (process.env.PORT || '3000');
 //Para poder utilizar cors
@@ -38,7 +36,7 @@ app.listen(PORT, () => {
     try {
         sequelize.authenticate();
         //true = rompe y crea la base de datos - false = queda inactivo
-        // sequelize.sync({force: true});
+        //sequelize.sync({force: true});
         console.log(`Database connected`);
     } catch (error) {
         console.log(error);
