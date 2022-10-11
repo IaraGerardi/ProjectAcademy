@@ -1,6 +1,6 @@
 const ModelAdmin = require("../database/models/ModelAdmin");
 
-const getAllAdminsProfiles = async(req, res) => {
+const getAllAdmins = async(req, res) => {
     try {
         const profilesAdmin = await ModelAdmin.findAll({
             attributes: {exclude: ['password']}
@@ -11,7 +11,7 @@ const getAllAdminsProfiles = async(req, res) => {
     }
 }
 
-const getAdminProfile = async(req, res) => {
+const getAdmin = async(req, res) => {
     try {
         const profileAdmin = await ModelAdmin.findOne({
             where: {id: req.params.id},
@@ -24,6 +24,6 @@ const getAdminProfile = async(req, res) => {
 }
 
 module.exports = {
-    getAdminProfile,
-    getAllAdminsProfiles
+    getAdmin,
+    getAllAdmins
 }

@@ -93,15 +93,13 @@ const orientedAndCounselor = async (req, res) => {
         {
             where: {
                 id: req.params.id
-            }
+            },include: {model: ModelCounselor}
         })
+
     res.json(oriented)
 }
 
-const getAllCounselor = async (req, res) => {
-    const counselor = await ModelCounselor.findAll();
-    res.json(counselor)
-}
+
 
 const counselorToOriented = async (req, res) => {
     const counselor = req.body.counselor
@@ -122,6 +120,5 @@ module.exports = {
     getAllOrientedPaginated,
     counselorToOriented,
     orientedById,
-    getAllCounselor,
     orientedAndCounselor
 }

@@ -161,6 +161,7 @@ ModelOriented.init({
     },
 }, {
     sequelize,
+    freezeTableName: true,
     modelName: "Oriented",
     indexes: [ //declaramos cuales columnas van a ser unicas y le damos el argumento true.
         {

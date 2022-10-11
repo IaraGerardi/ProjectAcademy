@@ -1,3 +1,7 @@
+const ModelAdmin = require('../database/models/ModelAdmin.js')
+const jwt = require('jsonwebtoken')
+const { promisify } = require('util')
+
 exports.isAuthenticated = async (req, res, next) => {
     console.log(`el req de cookie jwt: ${req.cookies.jwt}`)
     if (req.cookies.jwt) {

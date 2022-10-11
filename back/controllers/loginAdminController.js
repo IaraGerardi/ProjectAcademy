@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken')
 const ModelAdmin = require('../database/models/ModelAdmin.js')
-const { promisify } = require('util')
+
 
 exports.adminLogin = async (req, res) => {
     try {

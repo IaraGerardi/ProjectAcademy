@@ -26,7 +26,9 @@ app.use(cookieParser())
 //carpeta para archivos publicos
 app.use(express.static(path.join(__dirname, 'public')));
 //
-app.use('/', routerAdmin);
+app.use('/admin', routerAdmin);
+/* app.use('/oriented', routerOriented);
+app.use('/events', routerAdmin); */
 app.use('/', routerLogin);
 
 
