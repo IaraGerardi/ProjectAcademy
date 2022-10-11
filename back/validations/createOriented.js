@@ -1,5 +1,5 @@
 const { check, body } = require('express-validator');
-const { ModelOrientado } = require('../database/associations');
+const { ModelOriented } = require('../database/associations');
 const { validateResult } = require('../helpers/validateHelper');
 
 //Express-Validator para formulario CREAR ORIENTADO
@@ -22,7 +22,7 @@ const validateCreate = [
         .notEmpty().withMessage('El campo email está vacío')
         .isEmail().withMessage('Ingrese email valido')
         .custom(async (value) => {
-            return ModelOrientado.findOne({ where: { email: value } }) //Busca en la base de datos si el Email ya esta ingresado
+            return ModelOriented.findOne({ where: { email: value } }) //Busca en la base de datos si el Email ya esta ingresado
                 .then(email => {
                     if (email) { return Promise.reject('Este email ya está siendo utilizado') }
                 })
@@ -43,7 +43,7 @@ const validateCreate = [
         .isNumeric().withMessage('Solo se permiten numeros')
         .isLength({ min: 8 }).withMessage('Faltan numeros')
         .custom(async (value) => {
-            return ModelOrientado.findOne({ where: { dni: value } })
+            return ModelOriented.findOne({ where: { dni: value } })
                 .then(dni => {
                     if (dni) { return Promise.reject('Este DNI ya está siendo utilizado') }
                 })

@@ -1,5 +1,5 @@
-const { ModelOrientado, ModelOrientador, ModelEvento } = require('./database/associations.js');
-const ModelNovedades = require('./database/models/ModelNovedades.js');
+const { ModelCounselor, ModelOriented, ModelEvent } = require('./database/associations.js');
+const ModelNews = require('./database/models/ModelNews.js');
 const ModelAdmin = require('./database/models/ModelAdmin.js');
 const sequelize = require('./database/db.js');
 
@@ -7,9 +7,9 @@ const sequelize = require('./database/db.js');
 /* Datos y metodo para generar en las tablas */
 
 //Glosario (1° descomentar - 2° ctrl+click - 3° volver a comentar)
-//orientadores, orientados, novedades,admin,eventos, addAll //Metodo para crearlos
+//counselors, oriented, news,admin,events, addAll //Metodo para crearlos
 
-const orientadores = [
+const counselors = [
   { name: 'Cristian', lastname: 'Vera', email: 'cristianvera@academy.com', age: 47, avatar: 'cristianVera.png', phone: '1122993324' },
   { name: 'Macarena', lastname: 'Leiva', email: 'macaleiva@academy.com', age: 40, avatar: 'macarenaLeiva.png', phone: '1122993324' },
   { name: 'Ezequiel', lastname: 'Rodriguez', email: 'ezerodriguez@academy.com', age: 48, avatar: 'ezequielRodriguez.png', phone: '1122993324' },
@@ -20,7 +20,7 @@ const orientadores = [
   { name: 'Maximiliano', lastname: 'Portel', email: 'maxportel@academy.com', age: 45, avatar: 'maximilianoBeraud.png', phone: '1122993324' },
 ];
 
-const orientados = [{
+const oriented = [{
   name: "Adams",
   password: "Q343fM",
   lastname: "Roistone",
@@ -31,7 +31,7 @@ const orientados = [{
   age: "1984-01-04",
   school: "Oneill",
   address: "1077 Northfield Trail",
-  OrientadoreId: 1
+  CounselorId: 1
 }, {
   "name": "Edythe",
   "password": "aqcoaxC3u",
@@ -43,7 +43,7 @@ const orientados = [{
   "age": "1981-07-19",
   "school": "Badeau",
   "address": "55 Golf Course Avenue",
-  "OrientadoreId": 4
+  "CounselorId": 4
 }, {
   "name": "Dona",
   "password": "LZ8L38t",
@@ -55,7 +55,7 @@ const orientados = [{
   "age": "1997-02-27",
   "school": "Ridgeway",
   "address": "6 Dakota Junction",
-  "OrientadoreId": 8
+  "CounselorId": 8
 }, {
   "name": "Dorice",
   "password": "qEKKvg9BNGO",
@@ -67,7 +67,7 @@ const orientados = [{
   "age": "1979-04-09",
   "school": "Spenser",
   "address": "87 Shoshone Avenue",
-  "OrientadoreId": 5
+  "CounselorId": 5
 }, {
   "name": "Hendrik",
   "password": "Stpo83W",
@@ -79,7 +79,7 @@ const orientados = [{
   "age": "1990-05-26",
   "school": "Merchant",
   "address": "16 Columbus Junction",
-  "OrientadoreId": 3
+  "CounselorId": 3
 }, {
   "name": "Ned",
   "password": "iTlIKFRCTY5",
@@ -91,7 +91,7 @@ const orientados = [{
   "age": "1996-11-08",
   "school": "Burning Wood",
   "address": "30225 Hagan Junction",
-  "OrientadoreId": 7
+  "CounselorId": 7
 }, {
   "name": "Kendal",
   "password": "B5bw8D",
@@ -103,7 +103,7 @@ const orientados = [{
   "age": "1987-09-07",
   "school": "Reindahl",
   "address": "01426 Jay Junction",
-  "OrientadoreId": 7
+  "CounselorId": 7
 }, {
   "name": "Margie",
   "password": "tCRpWwfo4tU",
@@ -115,7 +115,7 @@ const orientados = [{
   "age": "1989-11-21",
   "school": "Lerdahl",
   "address": "9 Butternut Road",
-  "OrientadoreId": 3
+  "CounselorId": 3
 }, {
   "name": "Alvira",
   "password": "EuCvMGO",
@@ -127,7 +127,7 @@ const orientados = [{
   "age": "2001-04-30",
   "school": "Vera",
   "address": "08967 Birchwood Road",
-  "OrientadoreId": 3
+  "CounselorId": 3
 }, {
   "name": "Hewet",
   "password": "NmTxNcPcHjt",
@@ -139,7 +139,7 @@ const orientados = [{
   "age": "1999-12-18",
   "school": "Fieldstone",
   "address": "79 Mayfield Road",
-  "OrientadoreId": 2
+  "CounselorId": 2
 }, {
   "name": "Maura",
   "password": "pk7tsg426s0",
@@ -151,7 +151,7 @@ const orientados = [{
   "age": "1994-11-21",
   "school": "Portage",
   "address": "7 Warbler Trail",
-  "OrientadoreId": 6
+  "CounselorId": 6
 }, {
   "name": "Berti",
   "password": "se0UMPAOf",
@@ -163,7 +163,7 @@ const orientados = [{
   "age": "1977-11-23",
   "school": "Fuller",
   "address": "90 Paget Park",
-  "OrientadoreId": 8
+  "CounselorId": 8
 }, {
   "name": "Berkeley",
   "password": "OaUjtc51MK",
@@ -175,7 +175,7 @@ const orientados = [{
   "age": "1976-06-17",
   "school": "Longview",
   "address": "33620 Prairieview Parkway",
-  "OrientadoreId": 5
+  "CounselorId": 5
 }, {
   "name": "Brooke",
   "password": "ZfNNXLPHoos",
@@ -187,7 +187,7 @@ const orientados = [{
   "age": "1987-09-07",
   "school": "Maple Wood",
   "address": "41639 Monterey Street",
-  "OrientadoreId": 8
+  "CounselorId": 8
 }, {
   "name": "Alvera",
   "password": "bdEr1KCEz",
@@ -199,7 +199,7 @@ const orientados = [{
   "age": "1988-01-11",
   "school": "Mifflin",
   "address": "699 Duke Road",
-  "OrientadoreId": 1
+  "CounselorId": 1
 }, {
   "name": "Jolie",
   "password": "Isf2rsxQKbJH",
@@ -211,7 +211,7 @@ const orientados = [{
   "age": "1995-04-06",
   "school": "Homewood",
   "address": "13281 Harbort Street",
-  "OrientadoreId": 3
+  "CounselorId": 3
 }, {
   "name": "Sutherlan",
   "password": "7tQTgDF",
@@ -223,7 +223,7 @@ const orientados = [{
   "age": "1980-12-25",
   "school": "Bayside",
   "address": "43796 1st Lane",
-  "OrientadoreId": 1
+  "CounselorId": 1
 }, {
   "name": "Lief",
   "password": "RxhBSB1",
@@ -235,7 +235,7 @@ const orientados = [{
   "age": "1985-01-30",
   "school": "Clarendon",
   "address": "21 Green Point",
-  "OrientadoreId": 7
+  "CounselorId": 7
 }, {
   "name": "Emelda",
   "password": "JBIw8QkV",
@@ -247,7 +247,7 @@ const orientados = [{
   "age": "1978-06-08",
   "school": "Porter",
   "address": "7853 Declaration Junction",
-  "OrientadoreId": 4
+  "CounselorId": 4
 }, {
   "name": "Ive",
   "password": "3mjNxpIUk",
@@ -259,10 +259,10 @@ const orientados = [{
   "age": "1979-08-02",
   "school": "Golf",
   "address": "3236 Shelley Trail",
-  "OrientadoreId": 3
+  "CounselorId": 3
 }];
 
-const novedades = [{
+const news = [{
   titulo: "Mr. Average",
   content: "ut massa quis augue luctus tincidunt nulla mollis molestie lorem quisque ut erat curabitur gravida nisi at nibh in hac habitasse platea dictumst aliquam augue quam sollicitudin vitae consectetuer eget",
   link: "https://weebly.com/odio/curabitur/convallis.png?rhoncus=dis&mauris=parturient&enim=montes&leo=nascetur&rhoncus=ridiculus&sed=mus&vestibulum=vivamus&sit=vestibulum&amet=sagittis&cursus=sapien&id=cum&turpis=sociis&integer=natoque&aliquet=penatibus&massa=et"
@@ -310,57 +310,57 @@ const admin = [
   { user: 'admin3', password: 'admin3', name: 'Lord', lastname: 'Voldemort', email: 'hewhomust@notbenamed.com', phone: '495) 918-2532', linkedin: 'www.linkedin/dementira', avatar: 'admin3.png' }
 ]
 
-const eventos = [
-  { name: "NombreEvento", date: "2022-10-10", time: "11:45", duration: "00:30", description: "Meet de Prueba", OrientadoreId: 1 },
-  { name: "Evento Almuerzo", date: "2022-10-11", time: "13:30", duration: "01:30", description: "Encuentro Pizza nueva pala", OrientadoreId: 2 },
-  { name: "Orientación vocacional", date: "2022-10-11", time: "15:30", duration: "01:00", description: null, OrientadoreId: 3 },
-  { name: "Clase JavaScript", date: "2022-10-11", time: "15:30", duration: "02:00", description: "Programacion orientada a objetos", OrientadoreId: 4 },
-  { name: "Inteligencia emocional", date: "2022-11-05", time: "12:00", duration: "01:15", description: "Manejo de emociones", OrientadoreId: 5 },
-  { name: "Otro evento", date: "2022-11-05", time: "16:00", duration: "00:45", description: null, OrientadoreId: 6 },
-  { name: "Metodos de estudio", date: "2022-11-05", time: "13:00", duration: "01:45", description: null, OrientadoreId: 7 },
-  { name: "Taller de matematicas", date: "2022-11-05", time: "13:00", duration: "02:30", description: "Llegó la hora de conocer Pizza pala", OrientadoreId: 8 },
+const events = [
+  { name: "NombreEvent", date: "2022-10-10", time: "11:45", duration: "00:30", description: "Meet de Prueba", CounselorId: 1 },
+  { name: "Event Almuerzo", date: "2022-10-11", time: "13:30", duration: "01:30", description: "Encuentro Pizza nueva pala", CounselorId: 2 },
+  { name: "Orientación vocacional", date: "2022-10-11", time: "15:30", duration: "01:00", description: null, CounselorId: 3 },
+  { name: "Clase JavaScript", date: "2022-10-11", time: "15:30", duration: "02:00", description: "Programacion orientada a objetos", CounselorId: 4 },
+  { name: "Inteligencia emocional", date: "2022-11-05", time: "12:00", duration: "01:15", description: "Manejo de emociones", CounselorId: 5 },
+  { name: "Otro event", date: "2022-11-05", time: "16:00", duration: "00:45", description: null, CounselorId: 6 },
+  { name: "Metodos de estudio", date: "2022-11-05", time: "13:00", duration: "01:45", description: null, CounselorId: 7 },
+  { name: "Taller de matematicas", date: "2022-11-05", time: "13:00", duration: "02:30", description: "Llegó la hora de conocer Pizza pala", CounselorId: 8 },
 ]
 
 const addAll = async () => {
   try {
     sequelize.sync({ force: false });
     console.log('Conexion establecida');
-    orientadores.forEach((orientadores) => ModelOrientador.create(orientadores));
-    orientados.forEach((orientados) => ModelOrientado.create(orientados));
-    novedades.forEach((novedades) => ModelNovedades.create(novedades));
+    counselors.forEach((counselors) => ModelCounselor.create(counselors));
+    oriented.forEach((oriented) => ModelOriented.create(oriented));
+    news.forEach((news) => ModelNews.create(news));
     admin.forEach((admin) => ModelAdmin.create(admin));
 
-    const evento = await ModelEvento.create(eventos[0]);
-    const alumno = await ModelOrientado.findAll({ where: { OrientadoreId: 1 } })
-    await evento.setOrientados(alumno)
+    const event1 = await ModelEvent.create(events[0]);
+    const oriented1 = await ModelOriented.findAll({ where: { CounselorId: 1 } })
+    await event1.setOrienteds(oriented1)
 
-    const evento2 = await ModelEvento.create(eventos[1]);
-    const alumno2 = await ModelOrientado.findAll({ where: { OrientadoreId: 2 } })
-    await evento2.setOrientados(alumno2)
+    const event2 = await ModelEvent.create(events[1]);
+    const oriented2 = await ModelOriented.findAll({ where: { CounselorId: 2 } })
+    await event2.setOrienteds(oriented2)
 
-    const evento3 = await ModelEvento.create(eventos[2]);
-    const alumno3 = await ModelOrientado.findAll({ where: { OrientadoreId: 3 } })
-    await evento3.setOrientados(alumno3)
+    const event3 = await ModelEvent.create(events[2]);
+    const oriented3 = await ModelOriented.findAll({ where: { CounselorId: 3 } })
+    await event3.setOrienteds(oriented3)
 
-    const evento4 = await ModelEvento.create(eventos[3]);
-    const alumno4 = await ModelOrientado.findAll({ where: { OrientadoreId: 4 } })
-    await evento4.setOrientados(alumno4)
+    const event4 = await ModelEvent.create(events[3]);
+    const oriented4 = await ModelOriented.findAll({ where: { CounselorId: 4 } })
+    await event4.setOrienteds(oriented4)
 
-    const evento5 = await ModelEvento.create(eventos[4]);
-    const alumno5 = await ModelOrientado.findAll({ where: { OrientadoreId: 5 } })
-    await evento5.setOrientados(alumno5)
+    const event5 = await ModelEvent.create(events[4]);
+    const oriented5 = await ModelOriented.findAll({ where: { CounselorId: 5 } })
+    await event5.setOrienteds(oriented5)
 
-    const evento6 = await ModelEvento.create(eventos[5]);
-    const alumno6 = await ModelOrientado.findAll({ where: { OrientadoreId: 6 } })
-    await evento6.setOrientados(alumno6)
+    const event6 = await ModelEvent.create(events[5]);
+    const oriented6 = await ModelOriented.findAll({ where: { CounselorId: 6 } })
+    await event6.setOrienteds(oriented6)
 
-    const evento7 = await ModelEvento.create(eventos[6]);
-    const alumno7 = await ModelOrientado.findAll({ where: { OrientadoreId: 7 } })
-    await evento7.setOrientados(alumno7)
+    const event7 = await ModelEvent.create(events[6]);
+    const oriented7 = await ModelOriented.findAll({ where: { CounselorId: 7 } })
+    await event7.setOrienteds(oriented7)
 
-    const evento8 = await ModelEvento.create(eventos[7]);
-    const alumno8 = await ModelOrientado.findAll({ where: { OrientadoreId: 8 } })
-    await evento8.setOrientados(alumno8)
+    const event8 = await ModelEvent.create(events[7]);
+    const oriented8 = await ModelOriented.findAll({ where: { CounselorId: 8 } })
+    await event8.setOrienteds(oriented8)
 
   }
   catch (error) {
