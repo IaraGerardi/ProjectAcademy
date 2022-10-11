@@ -1,6 +1,6 @@
 import HeaderInicio from "../sidebar-header/components/HeaderInicio"
 import {Sidebar} from "../sidebar-header/components/Sidebar.js"
-import CardProfile from "./componentes-Profile/CardProfile";
+import CardProfile from "./components/CardProfile";
 
 /* import { useState,useEffect } from "react"; */
 

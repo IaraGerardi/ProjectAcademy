@@ -6,11 +6,11 @@ import axios from 'axios';
 
 function CardProfile() {
 
-    const usuario = localStorage.getItem('usuario')//base de datos pequeña del navegador y .getItem trae un elemento del local storage
-    const parseado = JSON.parse(usuario)// pasando el item a json
+    const user = localStorage.getItem('usuario')//base de datos pequeña del navegador y .getItem trae un elemento del local storage
+    const parsed = JSON.parse(user)// pasando el item a json
 
      const [admin,setAdmin]=useState([]);//estado donde voy a guardar el objeto del admin  y luego obtener sus datos a traves de la notacion de puntos
-     const [loading,setLoading]=useState(true);
+     const [loadingProfile,setLoadingProfile]=useState(true);
      const URI=`http://localhost:8000/admin/profile`;
 
 
@@ -18,9 +18,9 @@ function CardProfile() {
 
             const getAdminProfile= async()=>{
                 try{
-                    const resAdmin = await axios.get(`${URI}/${parseado.id}`,{withCredentials:true})//trae uri y le agrega /gdsaiukyhds y lo guarda
+                    const resAdmin = await axios.get(`${URI}/${parsed.id}`,{withCredentials:true})//trae uri y le agrega /gdsaiukyhds y lo guarda
                     setAdmin(resAdmin.data); 
-                    setLoading(false)
+                    setLoadingProfile(false)
 
                 }catch(error){// en caso de fallar 
                     console.log (error)
@@ -31,16 +31,16 @@ function CardProfile() {
     
         getAdminProfile(); 
       
-      },[URI,parseado.id])   //parametros que el useffect tiene que recibir.
+      },[URI,parsed.id])   //parametros que el useffect tiene que recibir.
 
-  console.log(localStorage)
+  
 
   return ( // hay etiquetas que tienen clses de tailwind las dejo ahi para que si nos ponemos de acuerdo podamos usarlo.
     <div className="containerCardProfile">
 
        <p className='pProfile ml-10 mt-8  font-medium text-slate-600'>Mi perfil</p>
        {
-        loading ?
+        loadingProfile ?
         <div className='flex justify-center mt-7'> <BeatLoader
         color="#1EC5BB"
         cssOverride={{}}
@@ -52,7 +52,7 @@ function CardProfile() {
       :
       <div className='containerAdminProfile w-5/6 p-4 ml-8 mt-2 flex flex-col bg-white rounded-lg  border md:flex-row lg:w-4/6 lg:h-3/5 lg:p-8 lg:ml-10 lg:mt-4  lg:flex-row  '>
       <div className="boxImgAdminProfile w-5/12 flex justify-center">
-             <img className="imgAdmin w-20 h-20 md:w-28 md:h-28 lg:w-36 lg:h-36 rounded-full" src={require(`../../../img-back/admins/${parseado.avatar}`)} alt="" />
+             <img className="imgAdmin w-20 h-20 md:w-28 md:h-28 lg:w-36 lg:h-36 rounded-full" src={require(`../../../img-back/admins/${parsed.avatar}`)} alt="" />
       </div>
 
       

@@ -15,7 +15,7 @@ import "./assign.css"
 import "../StudentsScreen/componentes-nuevoOrientado/alert.css"
 
 function Assign() {
-    const [orientado, setOrientado] = useState([]);
+    const [oriented, setOrientaded] = useState([]);
     const [orientadores, setOrientadores] = useState([]);
     const [valorOrientador, setValorOrientador] = useState();
     const [active, setActive] = useState(false);
@@ -29,9 +29,8 @@ function Assign() {
     useEffect(() => {
         const getOrientados = async () => {
             try {
-                // const res = await axios.get(`http://localhost:8000/admin/orientados`, { withCredentials: true });
                 const res = await axios.get(`http://localhost:8000/admin/pruebaorientados?page=0&size=1000`, { withCredentials: true });
-                setOrientado(res.data.categories); /* LLama Orientados */
+                setOrientaded(res.data.categories); /* LLama Orientados */
                 console.log(res.data.categories)
             } catch (error) {
                 console.log(error);
@@ -78,18 +77,18 @@ function Assign() {
             })
     }
 
-    const selectOrientado = orientado?.map((orientado) => { /*Recorre la api y retorna la card del orientado*/
-        const orientadoCall = orientado
+    const selectOrientado = oriented?.map((oriented) => { /*Recorre la api y retorna la card del orientado*/
+        const orientedCall = oriented
         /* Rompia porque orientado.id es un numero y los datos que trae useParams son strings, 
         parsee el id para poder poner que sea exactamente igual y que no salga un warning*/
-        if (orientadoCall.id === parseInt(id)) { //NO PONER TRIPLE IGUAL "=" PORQUE SE ROMPE 
+        if (orientedCall.id === parseInt(id)) { //NO PONER TRIPLE IGUAL "=" PORQUE SE ROMPE 
             return (
-                <div key={orientadoCall.id} className="cont-student">
+                <div key={orientedCall.id} className="cont-student">
 
                     <div className="cont-image-profile">
                         <img
                             className="image-profile-student"
-                            src={require(`../../img-back/orientados/${orientado.photoProfile}`)}
+                            src={require(`../../img-back/orientados/${oriented.photoProfile}`)}
                             alt="Foto perfil orientado"
                         />
                     </div>
@@ -99,29 +98,30 @@ function Assign() {
                     <div className="cont-info-student">
                         <div>
                             <div>
-                                <p className="name-student">{orientadoCall.name} {orientadoCall.lastname}</p>
+                                <p className="name-student">{orientedCall.name} {orientedCall.lastname}</p>
                                 <span className="text-orientado">Orientado</span>
                             </div>
 
                             <div>
                                 <span className="text-gray">MAIL</span>
-                                <p className="text-email">{orientadoCall.email}</p>
+                                <p className="text-email">{orientedCall.email}</p>
                             </div>
 
                             <div>
                                 <span className="text-gray">COLEGIO</span>
-                                <p>{orientadoCall.school}</p>
+                                <p>{orientedCall.school}</p>
                             </div>
 
                         </div>
 
                         <div className="cont-number">
                             <span className="text-gray">TELÉFONO</span>
-                            <p>{orientadoCall.phone}</p>
+                            <p>{orientedCall.phone}</p>
 
                             <span className="text-gray">PROGRAMA</span>
-                            <p>{orientado.program !== null ? orientado.program : "Sin definir"}</p>
+                            <p>{oriented.program !== null ? oriented.program : "Sin definir"}</p>
                         </div>
+
 
                     </div>
 
@@ -130,7 +130,6 @@ function Assign() {
         }
 
     });
-
 
 
 
@@ -196,7 +195,7 @@ function Assign() {
                             <span className="referent">Referente</span>
 
                             {/*Input selector*/}
-                            {orientado[id - 1]?.OrientadoreId === null ?
+                            {oriented[id - 1]?.OrientadoreId === null ?
                                 < form onSubmit={handleSubmit} >
                                     {/* Al select le paso como opciones un array llamado options que declaro afuera del return,
                                 tiene una funcion onChange que cambia valorOrientador, y en base a ese estado recorre options
@@ -229,24 +228,25 @@ function Assign() {
 
                                 </form> :
                                 <>
-                                    <ul> {selectOrientador[orientado[id - 1]?.OrientadoreId - 1]} </ul>
+                                    <ul> {selectOrientador[oriented[id - 1]?.OrientadoreId - 1]} </ul>
                                     <input
                                         readOnly={true}
                                         value="Modificar orientador/a"
                                         className="text-center h-10 mt-10 p-2 bg-celesteValtech rounded-lg text-base text-white font-medium cursor-pointer "
                                     />
 
-                                    {/* {setInterval(() => {
-                                        console.log(new Date().toLocaleTimeString())
-                                    }, 1000)}; */}
 
+                                </>
 
-                                    {orientado?.map((orientado) => {
-                                        const orientadoCall = orientado
-                                        if (orientadoCall.id === parseInt(id)) {
-                                            return (
+                            }
 
-                                                <div key={orientadoCall.id} className={`alert ${!active ? 'mostrar-alert' : 'ocultar-alert'}`}>
+                            {oriented.map((orientedAlert) => {
+                                const alertCall = orientedAlert
+                                if (alertCall.id === parseInt(id)) {
+                                    return (
+                                        <div>
+                                            {
+                                                (Date.parse(new Date()) - Date.parse(`${orientedAlert.updatedAt}`) < 2000 || active) && <div className={`alert ${!active ? 'mostrar-alert' : 'ocultar-alert'}`}>
                                                     <img src={Affirmation} alt="icon de afirmacion" />
                                                     <div>
                                                         <p className="msg-alert">El Orientado fué asignado a su referente.</p>
@@ -255,27 +255,12 @@ function Assign() {
                                                     <img className="iconDelete-alert" src={Delete} onClick={() => setActive(!active)} alt="icon de eliminar" />
                                                 </div>
 
-                                            )
-                                        }
-
-                                    })};
-
-                                    {/* <p>{orientado.updatedAt}</p> */}
-
-
-
-
-                                    {/* <div className={`alert ${!active ? 'mostrar-alert' : 'ocultar-alert'}`}>
-                                        <img src={Affirmation} alt="icon de afirmacion" />
-                                        <div>
-                                            <p className="msg-alert">El Orientado fué asignado a su referente.</p>
-
-                                            <span className="msg-alert-orientador">Recibirá una notificación para que contacte al Orientador.</span>
+                                            }
                                         </div>
-                                        <img className="iconDelete-alert" src={Delete} onClick={() => setActive(!active)} alt="icon de eliminar" />
-                                    </div> */}
-                                </>
-                            }
+                                    )
+                                }
+
+                            })}
 
                         </div>
 

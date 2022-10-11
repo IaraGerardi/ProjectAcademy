@@ -27,7 +27,7 @@ function FormInput(props) {
                         classname="w-2.5 h-2.5 m-1.5 fill-red-600"
                         type="exclamationMark"
                         width="24" height="24" />
-                    <span className="text-red-600 text-sm">{verifyInput}</span>
+                    <span className="text-red-600 text-xs">{verifyInput}</span>
                 </div>
                 : null
             }
