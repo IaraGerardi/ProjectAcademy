@@ -4,7 +4,7 @@ const loginRouter = express.Router();
 const { adminLogin, logout } = require('../controllers/loginAdminController.js')
 
 //Metodo de log in
-loginRouter.post('/login', adminLogin)
+loginRouter.post('/admin/login', adminLogin)
 //Metodo de log out
 loginRouter.get('/logout', logout)
 
