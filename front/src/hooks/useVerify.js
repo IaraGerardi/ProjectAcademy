@@ -56,14 +56,7 @@ function useVerify(formValues, validations) {
             }))
         } else if (type === "date") {
             const today = (new Date()).toLocaleDateString('en-us', { year: "numeric", month: "numeric", day: "numeric" });
-            // console.log(value, new Date())
             const inputDate = (new Date(`${value} `)).toLocaleDateString('en-us', { year: "numeric", month: "numeric", day: "numeric" });
-            // console.log(today, inputDate)
-            // console.log(Date.parse(today), Date.parse(inputDate))
-            // console.log(Date.parse(inputDate) > Date.parse(today))
-            // la fecha mas antigua tiene menor valor, 
-            // El lunes seria un 5 y hoy un 8, entonces, 
-            // si algo es pasado, fechaComparativa > pasado, si algo es futuro fechaComparativa < futuro
             // entonces today tendria que ser menor que la fecha del input para que sea una fecha pasada
             // if ((Date.parse(inputDate) === Date.parse(today))) {
             //     setVerifyMessages(prevVerifyMessages => ({
