@@ -27,7 +27,7 @@
         "maxLength": 50
     },
     {
-        "id": "phone",
+        "id": "tel",
         "type": "phone",
         "minLength": 8,
         "maxLength": 50,
@@ -36,7 +36,8 @@
     },
     {
         "id": "age",
-        "type": "age"
+        "type": "date",
+        "pastDate": true
     },
     {
         "id": "school",
@@ -50,7 +51,7 @@
     },
     {
         "id": "why",
-        "type": "text-area",
+        "type": "textArea",
         "maxLength": 500
     },
     {
@@ -67,9 +68,13 @@
         "noSpaces": true
     },
     {
-        "id": "confirmPassword",
-        "type": "password",
+        "id": "passwordrepeat",
+        "type": "confirmPassword",
         "minLength": 8,
         "noSpaces": true
+    },
+    {
+        "id": "photoProfile",
+        "type": "photoFile"
     }
 ]

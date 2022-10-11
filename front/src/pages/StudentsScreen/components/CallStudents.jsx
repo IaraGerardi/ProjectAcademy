@@ -3,6 +3,7 @@ import axios from "axios";
 import "../call-students.css"
 import buscador from "../../sidebar-header/icons/logo-buscador.svg"
 import { Link } from "react-router-dom";
+import BeatLoader from "react-spinners/BeatLoader";
 import "../orientados.css"
 
 function CallStudents() {
@@ -10,7 +11,7 @@ function CallStudents() {
 
     const [orientados, setOrientados] = useState([]);
     const [tablaOrientados, setTablaOrientados] = useState([]);
-
+    const [loadingCallStudents,setLoadingCallStudents]=useState(true)
 
     const [busqueda, setBusqueda] = useState("");
     //LE PASO UN ESTADO VACIO AL INPUT SEARCH
@@ -25,7 +26,7 @@ function CallStudents() {
                 ); // EN LA URI PONGO PAGE 0 Y UN SIZE DE 1000 QUE SIRVE PARA TRAER POR EL MOMENTO MIL USUARIOS
                 setOrientados(res.data.categories);
                 setTablaOrientados(res.data.categories)
-
+                setLoadingCallStudents(false)
             } catch (error) {
                 console.log(error);
             }
@@ -70,39 +71,53 @@ function CallStudents() {
                 </div> {/*Input Buscador*/}
             </div>
 
-            <div className="cont-students">
+            <div className="cont-students flex justify-center">
+   {
+                loadingCallStudents ?
+                <div className='flex justify-center mt-7'> <BeatLoader
+                color="#1EC5BB"
+                cssOverride={{}}
+            
+                margin={5}
+                size={10}
+                speedMultiplier={1}
+            /></div>
+            :
+            <ul className="list-student"> {/*Llamado a la Api*/}
+                                {orientados?.length === 0 && <p>No se encontró la búsqueda.</p>}
+                                {orientados?.map((usuario) => {
+                                    return (
 
-                <ul className="list-student"> {/*Llamado a la Api*/}
-                    {orientados?.length === 0 && <p>No se encontró la búsqueda.</p>}
-                    {orientados?.map((usuario) => {
-                        return (
 
 
+                                        <li className="box-students" key={usuario.id} >
+                                            <Link to={`/orientados/StudentInfo/${usuario.id}`}>
+                                                <div className="content-students">
 
-                            <li className="box-students" key={usuario.id} >
-                                <Link to={`/orientados/StudentInfo/${usuario.id}`}>
-                                    <div className="content-students">
+                                                    <img
+                                                        className="ImgUsers"
+                                                        src={require(`../../../img-back/orientados/${usuario.photoProfile}`)}
+                                                        alt="Foto perfil orientado"
+                                                    />
+                                                    <div>
 
-                                        <img
-                                            className="ImgUsers"
-                                            src={require(`../../../img-back/orientados/${usuario.photoProfile}`)}
-                                            alt="Foto perfil orientado"
-                                        />
-                                        <div>
+                                                        <h4>
+                                                            {usuario.name} {usuario.lastname}
+                                                        </h4>
+                                                        <p>{usuario.school}</p>
+                                                    </div>
 
-                                            <h4>
-                                                {usuario.name} {usuario.lastname}
-                                            </h4>
-                                            <p>{usuario.school}</p>
-                                        </div>
+                                                </div>
+                                            </Link>
+                                        </li>
 
-                                    </div>
-                                </Link>
-                            </li>
+                                    );
+                                })}
+                            </ul >
 
-                        );
-                    })}
-                </ul >
+
+            }
+                
             </div >
         </>
     );
