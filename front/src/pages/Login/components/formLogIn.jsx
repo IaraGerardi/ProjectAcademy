@@ -5,8 +5,8 @@ import axios from "axios";
 import useVerify from "../../../hooks/useVerify";
 import verifications from "../../../verifyArguments/verifyLogIn.json";
 //context
-import StoreContext from "../../../Store/StoreProvider";
-import { types } from "../../../Store/StoreReducer";
+import StoreContext from "../../../store/StoreProvider";
+import { types } from "../../../store/StoreReducer";
 
 function FormLogIn() {
     let timer = ""
