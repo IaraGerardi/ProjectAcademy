@@ -9,6 +9,7 @@ import StoreContext from "../../../store/StoreProvider";
 import { types } from "../../../store/StoreReducer";
 import BeatLoader from "react-spinners/BeatLoader";
 
+
 function FormLogIn() {
     let timer = ""
     const navigate = useNavigate();
