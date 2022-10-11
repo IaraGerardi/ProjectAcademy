@@ -28,7 +28,7 @@ This project was made using the follow technologies (last version):
     3. run ```nodemon``` on back side<br>
     4. stop the server with ctrl + c<br>
     5. comment ```sequelize.sync({force: true})``` on back/app.js<br>
-    7. run ```node seed`` on back side<br>
+    7. run ```node seed``` on back side<br>
     8. stop the server with ctrl + c<br>
     9. now you should have the database created with tables and data.<br>
   5. run ```nodemon``` on back side.
