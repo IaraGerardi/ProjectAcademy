@@ -15,7 +15,7 @@ const createEvent = async (req, res) => { //Se crea la constante del metodo que 
         for (let i = 0; i < orientedEvent.length; i++) { //Bucle for para poder agregar todos los oriented que se obtienen en un array de objetos llamado "orientedEvent" al Event que se acaba de crear.
         await ModelOrientedEvent.create({  //Esta es la tabla pivot que contiene todos los oriented que van a un solo Event.
             EventId: event.id, //Utilizamos el id de "event" que es el registro que acabamos de ingresar en la tabla de Events.
-            OrientedId: orientedEvent[i].value  
+            OrientedId: orientedEvent[i].value
         });
         } 
         console.log("Evento creado correctamente")
@@ -56,7 +56,7 @@ const getEvents = async (req, res) => {
                     attributes: [ 'name', 'lastname','photoProfile']
                 }
 
-            ], attributes: ['id', 'name', 'date', 'time', 'duration', 'description']
+            ], attributes: ['id', 'name', 'date', 'time', 'duration', 'description', 'createdAt']
         });
         res.json(event)
     } catch (error) {

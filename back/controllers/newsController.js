@@ -1,15 +1,15 @@
-const ModelNovedades = require("../database/models/ModelNews.js");
+const ModelNews = require("../database/models/ModelNews.js");
 
 
-const getAllNovedades = async (req, res) => {
+const getAllNews = async (req, res) => {
     try {
-        const novedades = await ModelNovedades.findAll();
-        res.json(novedades)
+        const news = await ModelNews.findAll();
+        res.json(news)
     } catch (error) {
         res.json({message: error.message})
     }
 }
 
 module.exports = {
-    getAllNovedades
+    getAllNews
 }

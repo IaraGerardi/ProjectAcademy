@@ -19,7 +19,7 @@ const getAllOriented = async (req, res) => {
 }
 
 //URL: /admin/pruebaorienteds
-const getAllOriented2 = async (req, res) => {
+const getAllOrientedPaginated = async (req, res) => {
     try {
         /* En la query pasamos parametros de pagina, tamaño de cuantos 
         datos se mostraran y el orden (Por defecto será la  pagina 0,
@@ -87,6 +87,7 @@ const orientedById = async (req, res) => {
     res.json(oriented)
 }
 
+//Agregar ORIENTADOR EN LA RESPUESTA (JSON)
 const orientedAndCounselor = async (req, res) => {
     const oriented = await ModelOriented.findOne(
         {
@@ -118,7 +119,7 @@ const counselorToOriented = async (req, res) => {
 module.exports = {
     createOriented,
     getAllOriented,
-    getAllOriented2,
+    getAllOrientedPaginated,
     counselorToOriented,
     orientedById,
     getAllCounselor,
