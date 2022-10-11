@@ -54,21 +54,34 @@ function useVerify(formValues, validations) {
                 ...prevVerifyMessages,
                 [id]: "El email tiene un formato incorrecto",
             }))
-            //} else if (type === "date") {
-            //     const today = (new Date()).toLocaleDateString();
-            //     const inputDate = (new Date(`${value} `)).toLocaleDateString();
-
-            //     if (payload.futureDate && today > inputDate) {
-            //         setVerifyMessages(prevVerifyMessages => ({
-            //             ...prevVerifyMessages,
-            //             [id]: "Elija una fecha futura",
-            //         }))
-            //     } else if (payload.pastDate && today > inputDate) {
-            //         setVerifyMessages(prevVerifyMessages => ({
-            //             ...prevVerifyMessages,
-            //             [id]: "Elija una fecha pasada",
-            //         }))
-            //     } 
+        } else if (type === "date") {
+            const today = (new Date()).toLocaleDateString('en-us', { year: "numeric", month: "numeric", day: "numeric" });
+            // console.log(value, new Date())
+            const inputDate = (new Date(`${value} `)).toLocaleDateString('en-us', { year: "numeric", month: "numeric", day: "numeric" });
+            // console.log(today, inputDate)
+            // console.log(Date.parse(today), Date.parse(inputDate))
+            // console.log(Date.parse(inputDate) > Date.parse(today))
+            // la fecha mas antigua tiene menor valor, 
+            // El lunes seria un 5 y hoy un 8, entonces, 
+            // si algo es pasado, fechaComparativa > pasado, si algo es futuro fechaComparativa < futuro
+            // entonces today tendria que ser menor que la fecha del input para que sea una fecha pasada
+            // if ((Date.parse(inputDate) === Date.parse(today))) {
+            //     setVerifyMessages(prevVerifyMessages => ({
+            //         ...prevVerifyMessages,
+            //         [id]: "No puede elegir la fecha actual",
+            //     }))
+            // } else if (payload.futureDate && (Date.parse(inputDate) < Date.parse(today))) {
+            //     setVerifyMessages(prevVerifyMessages => ({
+            //         ...prevVerifyMessages,
+            //         [id]: "Elija una fecha futura",
+            //     }))
+            // } else {
+            //     console.log("error??")
+            //     // setVerifyMessages(prevVerifyMessages => ({
+            //     //     ...prevVerifyMessages,
+            //     //     [id]: "Elija una fecha pasada",
+            //     // }))
+            // } 
             // else {
             //     setVerifyMessages(prevVerifyMessages => ({
             //         ...prevVerifyMessages,
@@ -81,9 +94,6 @@ function useVerify(formValues, validations) {
                 [id]: "Las contraseñas no coinciden",
             }))
         } else {
-            // let mutableObject = verifyMessages;
-            // delete mutableObject[id];
-            // setVerifyMessages(mutableObject)
             setVerifyMessages(prevVerifyMessages => ({
                 ...prevVerifyMessages,
                 [id]: true,
