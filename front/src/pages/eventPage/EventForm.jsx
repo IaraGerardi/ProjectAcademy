@@ -51,6 +51,7 @@ export const EventForm = () => {
   // PETICION 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    handleVerifyForm();
     await axios.post(URI, {
       nameEvent,
       counselorEvent: valueCounselor,
@@ -159,18 +160,6 @@ export const EventForm = () => {
                     verifyMessages.eventName && verifyMessages.eventName !== true
                       ? verifyMessages.eventName : null} />
 
-                {/* <div className='flex flex-col mt-2'>
-                  <label className="text-sm font-medium text-slate-600 ">Nombre del evento</label>
-                  <input
-                    className='w-64 lg:w-80 text-sm p-2 rounded-lg border shadow-sm border-slate-300
-                     placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block focus:ring-1'
-                    type='text'
-                    placeholder='Ingresar nombre'
-                    value={nameEvent}
-                    onChange={(e) => { setName(e.target.value); handleTimer(e); }}
-                  />
-                </div> */}
-
                 <div className='flex flex-col mt-2 lg:mx-8'>
                   <label className='text-sm font-medium text-slate-600 '>Orientador participante</label>
                   <Select
@@ -202,17 +191,29 @@ export const EventForm = () => {
 
                 <div className='flex flex-col lg:flex-row md:flex-wrap '>
 
-                  <div className='flex flex-col'>
+                  <FormInput
+                    onHandleChange={(e) => { setDateEvent(e.target.value); handleTimer(e); }}
+                    inputClass="text-sm w-80 h-8 p-2 rounded-lg border"
+                    labelClass="text-sm font-medium text-slate-600 mb-2" containerClass="flex flex-col"
+                    id="eventDate" type="date" label="Fecha" placeholder="Ingresar fecha"
+                    verifyInput={!(activeVerify.eventDate) ? null :
+                      verifyMessages.eventDate && verifyMessages.eventDate !== true
+                        ? verifyMessages.eventDate : null} />
+
+
+                  {/* <div className='flex flex-col'>
                     <label className="text-sm font-medium text-slate-600 ">Fecha</label>
                     <input
-                      className='text-sm w-64 lg:w-80 p-2 rounded-lg border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block focus:ring-1'
+                      className='text-sm w-64 lg:w-80 p-2 rounded-lg border shadow-sm
+                       border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block 
+                       focus:ring-1'
                       type='date'
                       name='dateEvent'
                       value={dateEvent}
                       onChange={(e) => setDateEvent(e.target.value)}
                       placeholder='Ingresar fecha'
                     />
-                  </div>
+                  </div> */}
 
                   <div className='flex flex-col lg:mx-8'>
                     <label className="text-sm font-medium text-slate-600">Horario</label>
@@ -244,7 +245,16 @@ export const EventForm = () => {
 
               <h2 className="lg:text-base lg:font-medium text-slate-700">03. Detalle </h2>
 
-              <div className="containerInputLabel flex flex-col gap-2 py-3">
+              <FormInput
+                onHandleChange={(e) => { setDescriptionEvent(e.target.value); handleTimer(e); }}
+                inputClass=" rounded-lg border border-slate-300 w-3/4 lg:w-2/4 placeholder:pl-2"
+                labelClass="text-sm font-medium text-slate-600 mb-2" containerClass="flex flex-col"
+                id="eventComments" type="textarea" label="Comentarios" placeholder="Escribir comentarios"
+                verifyInput={!(activeVerify.eventComments) ? null :
+                  verifyMessages.eventComments && verifyMessages.eventComments !== true
+                    ? verifyMessages.eventComments : null} />
+
+              {/* <div className="containerInputLabel flex flex-col gap-2 py-3">
 
                 <div className='flex flex-col '>
                   <label className="text-sm font-medium text-slate-600">
@@ -256,13 +266,14 @@ export const EventForm = () => {
                     name='descriptionEvent'
                     onChange={(e) => setDescriptionEvent(e.target.value)}
                     placeholder="Escribir comentarios"
-                    className="w-64 lg:w-[678px] rounded-lg border border-slate-300 placeholder:pl-2 shadow-sm placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block focus:ring-1"
+                    className="w-64 lg:w-[678px] rounded-lg border border-slate-300 placeholder:pl-2 shadow-sm
+                     placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block focus:ring-1"
                   />
                 </div>
 
-              </div>
+              </div> */}
 
-              <button className=" w-44 h-10 bg-celesteValtech rounded-lg text-base text-white font-medium " type="submit">
+              <button disabled={!isVerified} className=" w-44 h-10 bg-celesteValtech rounded-lg text-base text-white font-medium" type="submit">
                 Agendar evento
               </button>
 
