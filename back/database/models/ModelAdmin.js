@@ -1,5 +1,5 @@
 const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../db.js');
+const sequelize = require('../db');
 
 class ModelAdmin extends Model { }
 
@@ -74,7 +74,15 @@ ModelAdmin.init({
 {
     sequelize, 
     modelName: "admins",
-    timestamps: false
+    timestamps: false,
+    defaultScope: {
+        attributes: { exclude: ['password'] },
+    },
+    scopes: {
+        withPassword: {
+            attributes: { },
+        }
+    }
 });
 
 module.exports = ModelAdmin;

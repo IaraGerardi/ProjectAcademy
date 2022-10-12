@@ -1,5 +1,5 @@
 const { Model } = require('sequelize');
-const sequelize = require('../db.js');
+const sequelize = require('../db');
 
 class ModelOrientedEvent extends Model { }
 
@@ -8,7 +8,7 @@ ModelOrientedEvent.init({
 },{
     sequelize,
     freezeTableName: true,
-    modelName: 'Oriented_event'
+    modelName: 'oriented_event'
 });
 
 module.exports = ModelOrientedEvent;

@@ -5,15 +5,22 @@ import axios from "axios";
 import useVerify from "../../../hooks/useVerify";
 import verifications from "../../../verifyArguments/verifyLogIn.json";
 //context
-import StoreContext from "../../../Store/StoreProvider";
-import { types } from "../../../Store/StoreReducer";
+import StoreContext from "../../../store/StoreProvider";
+import { types } from "../../../store/StoreReducer";
+import BeatLoader from "react-spinners/BeatLoader";
+import Config from "../../../config.json";
+
 
 function FormLogIn() {
+    const {BASE_URL}=Config
+
     let timer = ""
     const navigate = useNavigate();
-    const URI = "http://localhost:8000/login";
+    const URI = `${BASE_URL}/admin/login`;
+
     const [store, dispatch] = useContext(StoreContext);
     // States
+    const [loader, setLoader] = useState(false);
     const [form, setForm] = useState({ emailLog: null, passwordLog: null });
     const [activeVerify, setActiveVerify] = useState({});
     const [backMessages, setBackMessages] = useState({ emailLog: null, passwordLog: null, });
@@ -60,13 +67,15 @@ function FormLogIn() {
         }
         await axios.post(`${URI}`, form, { withCredentials: true })
             .then((response) => {
+                setLoader(false)
                 if (response.data.si) {
                     localStorage.setItem("usuario", JSON.stringify(response.data.admin));
                     dispatch({ type: types.authLogin })
                     navigate('/inicio');
                 } else {
                     setBackMessages(prevBackMessages => ({
-                        ...prevBackMessages, [response.data.params]: response.data.alertMessage,
+                        ...prevBackMessages,
+                        [response.data.params]: response.data.alertMessage,
                     }))
                 }
             })
@@ -74,23 +83,25 @@ function FormLogIn() {
 
     return (
         <form className="flex flex-col" onSubmit={handleSubmit}>
-            <FormInput
-                onHandleChange={handleChange}
-                inputClass="w-80" labelClass="p-2 items-center" containerClass="flex flex-col w-96 h-28"
+            <FormInput onHandleChange={handleChange}
+                inputClass="w-80 focus:outline" labelClass="p-2 items-center" containerClass="flex flex-col w-96 h-28"
                 id="emailLog" type="email" label="Email" placeholder="Ingresa tu email"
                 verifyInput={!(activeVerify.emailLog) ? null
                     : verifyMessages.emailLog && verifyMessages.emailLog !== true ? verifyMessages.emailLog
                         : backMessages.emailLog ? backMessages.emailLog : null} />
-            <FormInput
-                onHandleChange={handleChange}
-                inputClass="w-80" labelClass="p-2.5 items-center" containerClass="flex flex-col w-96"
+            <FormInput onHandleChange={handleChange}
+                inputClass="w-80 focus:outline" labelClass="p-2.5 items-center" containerClass="flex flex-col w-96"
                 id="passwordLog" type="password" label="Contraseña" placeholder="Ingresa tu contraseña"
                 verifyInput={!(activeVerify.passwordLog) ? null
                     : verifyMessages.passwordLog && verifyMessages.passwordLog !== true ? verifyMessages.passwordLog
                         : backMessages.passwordLog ? backMessages.passwordLog : null} />
-            <input type="submit" value="Ingresar" disabled={!isVerified}
+            <input type="submit" value="Ingresar" disabled={!isVerified} onClick={() => { setLoader(true); console.log("click") }}
                 className={`w-44 cursor-pointer border-none text-white text-base font-medium bg-celesteValtech
                 ${isVerified ? null : "opacity-60"}`} />
+            {loader &&
+                <div className='w-screen h-screen flex items-center absolute top-0 left-0 justify-center bg-slate-600 bg-opacity-10'>
+                    <BeatLoader size={10} margin={5} color="#1EC5BB" cssOverride={{}} speedMultiplier={1} />
+                </div>}
         </form>
     );
 }

@@ -1,5 +1,5 @@
 const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../db.js');
+const sequelize = require('../db');
 
 
 /* TENER EN CUENTA DESCOMENTAR LOS NOT NULL
@@ -168,8 +168,15 @@ ModelOriented.init({
             unique: true,
             fields: ['email', 'dni']
         }
-    ]
-    //timestamps: false
+    ],
+    defaultScope: {
+        attributes: { exclude: ['password'] },
+    },
+    scopes: {
+        withPassword: {
+            attributes: { },
+        }
+    }
 });
 
 module.exports = ModelOriented;

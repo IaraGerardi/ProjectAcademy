@@ -5,6 +5,7 @@
     },
     {
         "id": "passwordLog",
-        "type": "password"
+        "type": "password",
+        "minLength": 6
     }
 ]

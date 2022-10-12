@@ -81,13 +81,12 @@ const orientedById = async (req, res) => {
         {
             where: {
                 id: req.params.id
-            },
-            attributes: { exclude: ['password'] }
+            }
         })
     res.json(oriented)
 }
 
-//Agregar ORIENTADOR EN LA RESPUESTA (JSON)
+
 const orientedAndCounselor = async (req, res) => {
     const oriented = await ModelOriented.findOne(
         {

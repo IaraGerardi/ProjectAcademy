@@ -18,22 +18,20 @@ This project was made using the follow technologies (last version):
 ## How to run
   0. git clone https://github.com/IaraGerardi/ProjectAcademy
   1. run ```npm i``` for both front and back side. 
-  2. create an env folder on back side, inside create an .env file.
-  3. inside the .env file copy and paste this environment variables (you can set your own variables): <br>
-    ```PORT = 8000``` <br>
-    ```JWT_SECRET = secret``` 
+  3. delete the ".example" on .env.example file
   4. database migration: <br>
     1. open MySql and create an schema called 'project_academy'<br>
     2. go to back/app.js and uncomment the ```sequelize.sync({force: true})```<br>
     3. run ```nodemon``` on back side<br>
     4. stop the server with ctrl + c<br>
     5. comment ```sequelize.sync({force: true})``` on back/app.js<br>
-    7. run ```node seed`` on back side<br>
+    7. run ```node seed``` on back side<br>
     8. stop the server with ctrl + c<br>
     9. now you should have the database created with tables and data.<br>
   5. run ```nodemon``` on back side.
   6. run ```npm start``` on front side.
   7. open http://localhost:3000 with your browser to see the result. 
 
-
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
 

@@ -7,9 +7,9 @@ import LogoPerfil from "../icons/logo-perfil.svg"
 import cerrarSesion from "../icons/logo-cerrar.svg"
 
 import "../style/header.css"
- import {types} from "../../../Store/StoreReducer"; 
+ import {types} from "../../../store/StoreReducer"; 
 import { useContext } from "react";
-import StoreContext from "../../../Store/StoreProvider";
+import StoreContext from "../../../store/StoreProvider";
  
 
 function HeaderInicio({ propNamePage }) {

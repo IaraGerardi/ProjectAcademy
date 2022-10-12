@@ -2,15 +2,15 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const dotenv = require('dotenv');
-const sequelize = require('./database/db.js');
+const sequelize = require('./database/db');
 const cookieParser = require('cookie-parser')
 const cors = require('cors');
-const routerAdmin = require("./routes/adminRouter.js");
-const routerLogin = require("./routes/loginRouter.js");
-require('./database/associations.js');
+const { adminRouter, loginRouter, counselorRouter, eventsRouter, orientedRouter, newsRouter } = require("./routes/routes")
 
-dotenv.config({ path: './env/.env' })
-const PORT = (process.env.PORT || '3000');
+//seteamos el path del .env
+dotenv.config({ path: "../.env" })
+//el puerto se coloca en las variables de entorno sino se utilizara 8000
+const PORT = (process.env.PORT || '8000');
 //Para poder utilizar cors
 app.use(cors({
     credentials: true,
@@ -25,12 +25,13 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser())
 //carpeta para archivos publicos
 app.use(express.static(path.join(__dirname, 'public')));
-//
-app.use('/admin', routerAdmin);
-/* app.use('/oriented', routerOriented);
-app.use('/events', routerAdmin); */
-app.use('/', routerLogin);
-
+//routes
+app.use('/', loginRouter);
+app.use('/admins', adminRouter);
+app.use('/counselor', counselorRouter);
+app.use('/oriented', orientedRouter);
+app.use('/news', newsRouter);
+app.use('/events', eventsRouter);
 
 //Aviso de conexión a la base de datos
 app.listen(PORT, () => {

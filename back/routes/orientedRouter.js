@@ -4,17 +4,17 @@ const orientedRouter = express.Router();
 //Controller
 const { getAllOriented, getAllOrientedPaginated, orientedById, createOriented, counselorToOriented, orientedAndCounselor } = require ("../controllers/orientedController.js");
 //Middlewares
-const { isAuthenticated } = require("../middleware/logAuthentication.js"); //Autenticacion para usuarios logueados
-const photoProfileCheck = require("../middleware/orientedImages.js");
-const validateCreate = require("../validations/createOriented.js");
+const { isAuthenticated } = require("../middleware/logAuthentication"); //Autenticacion para usuarios logueados
+const photoProfileCheck = require("../middleware/orientedImages");
+const validateCreate = require("../validations/createOriented");
 
 //Rutas orientados
-orientedRouter.get('/oriented', isAuthenticated, getAllOriented); //trae todos los orientados
-orientedRouter.get('/orientedPaginated', isAuthenticated, getAllOrientedPaginated); //trae todos los orientados paginados
-orientedRouter.get('/oriented/:id', isAuthenticated, orientedById); //trae el orientado que se escriba en ':id'
-orientedRouter.get('/oriented/:id/counselor', isAuthenticated, orientedAndCounselor); //trae al orientado junto con su orientador
-orientedRouter.post('/oriented/create', isAuthenticated, photoProfileCheck, validateCreate, createOriented); //crear orientado
-orientedRouter.put('/oriented/:id/counselorToOriented', isAuthenticated, counselorToOriented); //asigna o modifica un orientador de un orientado seleccionado por id
+orientedRouter.get('/', isAuthenticated, getAllOriented); //trae todos los orientados
+orientedRouter.get('/paginated', isAuthenticated, getAllOrientedPaginated); //trae todos los orientados paginados
+orientedRouter.get('/:id', isAuthenticated, orientedById); //trae el orientado que se escriba en ':id'
+orientedRouter.get('/:id/counselor', isAuthenticated, orientedAndCounselor); //trae al orientado junto con su orientador
+orientedRouter.post('/create', isAuthenticated, photoProfileCheck, validateCreate, createOriented); //crear orientado
+orientedRouter.put('/:id/counselorToOriented', isAuthenticated, counselorToOriented); //asigna o modifica un orientador de un orientado seleccionado por id
 
 
 module.exports = orientedRouter;
