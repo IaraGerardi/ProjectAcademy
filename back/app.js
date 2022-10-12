@@ -2,10 +2,10 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const dotenv = require('dotenv');
-const sequelize = require('./database/db.js');
+const sequelize = require('./database/db');
 const cookieParser = require('cookie-parser')
 const cors = require('cors');
-const { adminRouter, loginRouter, counselorRouter, eventsRouter, orientedRouter, newsRouter } = require("./routes/routes.js")
+const { adminRouter, loginRouter, counselorRouter, eventsRouter, orientedRouter, newsRouter } = require("./routes/routes")
 
 //seteamos el path del .env
 dotenv.config({ path: "../.env" })

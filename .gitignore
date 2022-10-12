@@ -4,22 +4,22 @@
 ## dependencies ##
 /back/node_modules
 /front/node_modules
-/back/.pnp
-/back/.pnp.js
+/front/.pnp
+/front/.pnp.js
 
 # testing
-/back/coverage
+/front/coverage
 
 # production
-/back/build
+/front/build
 
 # misc
-/back/.DS_Store
-/back/.env.local
-/back/.env.development.local
-/back/.env.test.local
-/back/.env.production.local
+/front/.DS_Store
+/front/.env.local
+/front/.env.development.local
+/front/.env.test.local
+/front/.env.production.local
 
-/back/npm-debug.log*
-/back/yarn-debug.log*
-/back/yarn-error.log*
+/front/npm-debug.log*
+/front/yarn-debug.log*
+/front/yarn-error.log*

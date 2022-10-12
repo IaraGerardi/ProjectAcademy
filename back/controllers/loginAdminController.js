@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken')
-const ModelAdmin = require('../database/models/ModelAdmin.js')
+const ModelAdmin = require('../database/models/ModelAdmin')
 
 
 exports.adminLogin = async (req, res) => {

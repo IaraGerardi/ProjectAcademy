@@ -1,7 +1,7 @@
 const ModelOriented = require("./models/ModelOriented");
 const ModelCounselor = require("./models/ModelCounselor");
-const ModelEvent = require("./models/ModelEvent.js");
-const ModelOrientedEvent = require("./models/ModelOrientedEvent.js");
+const ModelEvent = require("./models/ModelEvent");
+const ModelOrientedEvent = require("./models/ModelOrientedEvent");
 
 //1 a N / Orientadores a Orientados
 ModelCounselor.hasMany(ModelOriented); //Crea FK OrientadoreId para los orientados

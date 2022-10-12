@@ -4,9 +4,9 @@ const orientedRouter = express.Router();
 //Controller
 const { getAllOriented, getAllOrientedPaginated, orientedById, createOriented, counselorToOriented, orientedAndCounselor } = require ("../controllers/orientedController.js");
 //Middlewares
-const { isAuthenticated } = require("../middleware/logAuthentication.js"); //Autenticacion para usuarios logueados
-const photoProfileCheck = require("../middleware/orientedImages.js");
-const validateCreate = require("../validations/createOriented.js");
+const { isAuthenticated } = require("../middleware/logAuthentication"); //Autenticacion para usuarios logueados
+const photoProfileCheck = require("../middleware/orientedImages");
+const validateCreate = require("../validations/createOriented");
 
 //Rutas orientados
 orientedRouter.get('/', isAuthenticated, getAllOriented); //trae todos los orientados

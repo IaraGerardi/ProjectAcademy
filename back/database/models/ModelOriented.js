@@ -1,5 +1,5 @@
 const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../db.js');
+const sequelize = require('../db');
 
 
 /* TENER EN CUENTA DESCOMENTAR LOS NOT NULL

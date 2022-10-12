@@ -1,4 +1,4 @@
-const ModelAdmin = require('../database/models/ModelAdmin.js')
+const ModelAdmin = require('../database/models/ModelAdmin')
 const jwt = require('jsonwebtoken')
 const { promisify } = require('util')
 
