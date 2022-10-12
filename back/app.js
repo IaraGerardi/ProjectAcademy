@@ -7,12 +7,6 @@ const cookieParser = require('cookie-parser')
 const cors = require('cors');
 const routerAdmin = require("./routes/adminRouter.js");
 const routerLogin = require("./routes/loginRouter.js");
-//Requerimos Modelos y sus asociaciones para que se creen en la base de datos de manera fácil y rápida
-const ModelOrientador = require('./database/models/ModelOrientador.js');
-const ModelOrientado = require('./database/models/ModelOrientado.js');
-const ModelNovedades = require('./database/models/ModelNovedades.js');
-const ModelAdmin = require('./database/models/ModelAdmin.js');
-const ModelEvento = require('./database/models/ModelEvento.js');
 require('./database/associations.js');
 
 
