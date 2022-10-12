@@ -8,9 +8,9 @@ LAS SEEDS QUE TENEMOS FUNCIONEN YA QUE
  NO TIENEN ESOS ATRIBUTOS */
 
 
-class ModelOrientado extends Model { }
+class ModelOriented extends Model { }
 
-ModelOrientado.init({
+ModelOriented.init({
     name: {
         type: DataTypes.STRING,
         allowNull: false, //No permite que el campo sea "null"
@@ -161,7 +161,8 @@ ModelOrientado.init({
     },
 }, {
     sequelize,
-    modelName: "Orientado",
+    freezeTableName: true,
+    modelName: "Oriented",
     indexes: [ //declaramos cuales columnas van a ser unicas y le damos el argumento true.
         {
             unique: true,
@@ -171,4 +172,4 @@ ModelOrientado.init({
     //timestamps: false
 });
 
-module.exports = ModelOrientado;
+module.exports = ModelOriented;
