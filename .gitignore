@@ -1,2 +1,25 @@
 ### env ###
 /.env
+
+## dependencies ##
+/back/node_modules
+/front/node_modules
+/back/.pnp
+/back/.pnp.js
+
+# testing
+/back/coverage
+
+# production
+/back/build
+
+# misc
+/back/.DS_Store
+/back/.env.local
+/back/.env.development.local
+/back/.env.test.local
+/back/.env.production.local
+
+/back/npm-debug.log*
+/back/yarn-debug.log*
+/back/yarn-error.log*
