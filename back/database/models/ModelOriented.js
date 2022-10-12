@@ -168,8 +168,15 @@ ModelOriented.init({
             unique: true,
             fields: ['email', 'dni']
         }
-    ]
-    //timestamps: false
+    ],
+    defaultScope: {
+        attributes: { exclude: ['password'] },
+    },
+    scopes: {
+        withPassword: {
+            attributes: { },
+        }
+    }
 });
 
 module.exports = ModelOriented;

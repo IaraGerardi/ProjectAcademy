@@ -6,10 +6,11 @@ const sequelize = require('./database/db.js');
 const cookieParser = require('cookie-parser')
 const cors = require('cors');
 const { adminRouter, loginRouter, counselorRouter, eventsRouter, orientedRouter, newsRouter } = require("./routes/routes.js")
-require('./database/associations.js');
 
-dotenv.config({ path: './env/.env' })
-const PORT = (process.env.PORT || '3000');
+//seteamos el path del .env
+dotenv.config({ path: "../.env" })
+//el puerto se coloca en las variables de entorno sino se utilizara 8000
+const PORT = (process.env.PORT || '8000');
 //Para poder utilizar cors
 app.use(cors({
     credentials: true,

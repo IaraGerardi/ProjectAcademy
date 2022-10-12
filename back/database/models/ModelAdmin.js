@@ -74,7 +74,15 @@ ModelAdmin.init({
 {
     sequelize, 
     modelName: "admins",
-    timestamps: false
+    timestamps: false,
+    defaultScope: {
+        attributes: { exclude: ['password'] },
+    },
+    scopes: {
+        withPassword: {
+            attributes: { },
+        }
+    }
 });
 
 module.exports = ModelAdmin;

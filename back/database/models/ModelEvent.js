@@ -61,7 +61,9 @@ ModelEvent.init({
     },
 }, {
     sequelize,
-    modelName: "Event"
+    modelName: "Event",
+    timestamps: true,
+    paranoid: true
 });
 
 module.exports = ModelEvent;
