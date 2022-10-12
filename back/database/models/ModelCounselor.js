@@ -1,5 +1,5 @@
 const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../db.js');
+const sequelize = require('../db');
 
 class ModelCounselor extends Model { }
 
@@ -67,6 +67,3 @@ ModelCounselor.init({
 });
 
 module.exports = ModelCounselor;
-
-/* // the defined model is the class itself
-console.log(User === sequelize.models.User); // true */

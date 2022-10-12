@@ -2,9 +2,9 @@
 const express = require ("express");
 const adminRouter = express.Router();
 //Controllers
-const { getAllAdmins, getAdmin } = require("../controllers/adminController.js");
+const { getAllAdmins, getAdmin } = require("../controllers/adminController");
 //Middlewares y Validaciones
-const { isAuthenticated } = require("../middleware/logAuthentication.js"); //Autenticacion para usuarios logueados
+const { isAuthenticated } = require("../middleware/logAuthentication"); //Autenticacion para usuarios logueados
 
 //Rutas admins
 adminRouter.get('/', isAuthenticated,  getAllAdmins); //trae todos los admins 

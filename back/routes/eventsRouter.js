@@ -4,7 +4,7 @@ const eventsRouter = express.Router();
 //Controller
 const { createEvent, getEvents, deleteEvent } = require("../controllers/eventController")
 //Middlewares
-const { isAuthenticated } = require("../middleware/logAuthentication.js"); //Autenticacion para usuarios logueados
+const { isAuthenticated } = require("../middleware/logAuthentication"); //Autenticacion para usuarios logueados
 const { eventValidator } = require("../validations/createEvent");
 
 //Ruta eventos

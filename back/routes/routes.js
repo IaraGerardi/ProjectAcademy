@@ -1,9 +1,9 @@
 const adminRouter = require("./adminRouter");
-const loginRouter = require("./loginRouter.js");
-const counselorRouter = require("./counselorRouter.js");
-const eventsRouter = require("./eventsRouter.js");
-const orientedRouter = require("./orientedRouter.js");
-const newsRouter = require("./newsRouter.js")
+const loginRouter = require("./loginRouter");
+const counselorRouter = require("./counselorRouter");
+const eventsRouter = require("./eventsRouter");
+const orientedRouter = require("./orientedRouter");
+const newsRouter = require("./newsRouter")
 
 module.exports = {
     adminRouter,

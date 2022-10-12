@@ -1,5 +1,5 @@
 const { Model } = require('sequelize');
-const sequelize = require('../db.js');
+const sequelize = require('../db');
 
 class ModelOrientedEvent extends Model { }
 
