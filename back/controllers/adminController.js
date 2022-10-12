@@ -1,12 +1,13 @@
 const ModelAdmin = require("../database/models/ModelAdmin");
 
-const getAllAdmins = async(req, res) => {
+const getAllAdmins = async(res) => {
     try {
         const profilesAdmin = await ModelAdmin.findAll({
         });
-        res.json(profilesAdmin)
+        res.status(200).json(profilesAdmin)
     } catch (error) {
-        res.json({message: error.message});
+        console.log(error)
+        res.status(400).json({message: error.message});
     }
 }
 
@@ -15,9 +16,10 @@ const getAdmin = async(req, res) => {
         const profileAdmin = await ModelAdmin.findOne({
             where: {id: req.params.id}
         });
-        res.json(profileAdmin);
+        res.status(200).json(profileAdmin);
     } catch (error) {
-        res.json({message: error.message});
+        console.log(error)
+        res.status(400).json({message: error.message});
     }
 }
 
