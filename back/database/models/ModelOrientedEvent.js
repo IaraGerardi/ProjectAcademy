@@ -1,19 +1,3 @@
-<<<<<<< HEAD
-const { Model } = require('sequelize');
-const sequelize = require('../db');
-
-class ModelOrientedEvent extends Model { }
-
-ModelOrientedEvent.init({
-
-},{
-    sequelize,
-    freezeTableName: true,
-    modelName: 'oriented_event'
-});
-
-module.exports = ModelOrientedEvent;
-=======
 'use strict';
 const {
   Model
@@ -27,14 +11,14 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      ModelOrientedEvent.belongsTo(models.ModelEvent, {
+      /* ModelOrientedEvent.belongsTo(models.ModelEvent, {
         foreignKey: 'id',
         targetKey: 'EventId'
     }),
     ModelOrientedEvent.belongsTo(models.ModelOriented, {
       foreignKey: 'id',
       targetKey: 'OrientedId'
-  })
+  }) */
     }
   }
   ModelOrientedEvent.init({
@@ -46,4 +30,3 @@ module.exports = (sequelize, DataTypes) => {
   });
   return ModelOrientedEvent;
 };
->>>>>>> feature_migrations_mpb

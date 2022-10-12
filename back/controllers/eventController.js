@@ -1,4 +1,4 @@
-const { ModelEvent, ModelOrientedEvent, ModelOriented, ModelCounselor } = require("../database/associations");
+const { ModelEvent, ModelOrientedEvent, ModelOriented, ModelCounselor } = require("../database/models/index");
 
 //Metodo para crear un Event
 const createEvent = async (req, res) => { 

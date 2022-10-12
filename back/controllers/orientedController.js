@@ -1,5 +1,5 @@
 const bcryptjs = require('bcryptjs');
-const { ModelOriented, ModelCounselor } = require("../database/associations");
+const { ModelOriented, ModelCounselor } = require("../database/models/index");
 /* llama a modelo oriented desde associations 
 porque son los ultimos cambios que recibe, 
 en caso de no funcionar probar llamando al modelo
