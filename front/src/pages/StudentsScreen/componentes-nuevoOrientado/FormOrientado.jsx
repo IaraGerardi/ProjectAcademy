@@ -129,7 +129,7 @@ function FormOrientado() {
       fontSize: "15px",
       height: 32,
       minHeight: 32,
-      marginTop: '8px',
+    
     })
   }
 
@@ -175,15 +175,15 @@ function FormOrientado() {
   }, [photoProfile]);
 
   return (
-    <div className="cotainerForm ml-8 mt-10 mb-10 w-auto">
+    <div className="cotainerForm mt-10 mb-10 mx-6 w-auto">
       <form
-        className=" flex flex-col gap-4"
+        className=" flex flex-col gap-4 "
         onSubmit={handleSubmit}
         encType="multipart/form-data"
       >
         <h2 className="text-lg  md:text-xl  lg:text-2xl font-medium text-slate-700">01.Informacion básica 1</h2>
         {/* abre formulario de alta de orientado , tiene 4 divs hijos */}
-        <div className="container-basicInfo flex  flex-col gap-5 lg:flex-row  lg:gap-12 md:w-full lg:h-40">
+        <div className="container-basicInfo flex  flex-col gap-5 lg:flex-row  lg:gap-5 md:w-full lg:h-48">
 
           {/* div1 info basica */}
 
@@ -227,8 +227,8 @@ function FormOrientado() {
             />
           </div>
 
-          <div className="cajaInputsDatosP flex flex-col md: min-w-3/4 md:flex-row md:gap-5 lg:flex-row lg:gap-5 bg-red-200 lg:w-4/5 lg:h-56 ">
-            <div className=" w-64">
+          <div className="cajaInputsDatosP flex flex-col gap-0 md:min-w-3/4 md:flex-row md:gap-5 lg:flex-row lg:gap-10 lg:w-4/5 lg:h-48 ">
+            <div className=" w-72 flex flex-col ">
               <InputLabel
                 labelName="Nombre"
                 inputType="text"
@@ -248,7 +248,7 @@ function FormOrientado() {
                 verifyInput={!(activeVerify.lastname) ? null : verifyMessages.lastname ? verifyMessages.lastname : null}
               />
             </div>
-            <div className=" w-64">
+            <div className=" w-72">
               <InputLabel
                 labelName="Email"
                 inputType="email"
@@ -261,8 +261,8 @@ function FormOrientado() {
                   null}
               />
               {/*------ select input ------------- */}
-              <div className="h-28 flex flex-col mt-3">
-                <label htmlFor="" className="font-medium text-slate-600">
+              <div className=" w-72 h-24 flex flex-col gap-2">
+                <label htmlFor="" className="font-medium text-slate-600 mt-1">
                   Programa
                 </label>
                 <Select
@@ -341,8 +341,8 @@ function FormOrientado() {
           <FormInput
             onHandleChange={(e) => { handleTimer(e); setWhy(e.target.value) }}
             labelClass="font-medium text-slate-600"
-            containerClass="containerInputLabel flex flex-col gap-2 h-32 "
-            inputClass="rounded-lg border w-60 pl-3 pt-2 md:w-2/4 lg:w-2/4 placeholder:pl-1  resize-none"
+            containerClass="containerInputLabel flex flex-col gap-2 h-32 w-72 "
+            inputClass="rounded-lg border w-60 pl-3 pt-2 w-68 md:w-2/4 lg:w-72 placeholder:pl-1  resize-none"
             id="why" type="textarea" label="¿Porque se acercó a nuestra institución?" placeholder="Escribe un comentario."
             verifyInput={!(activeVerify.why) ? null
               : verifyMessages.why && verifyMessages.why !== true ? verifyMessages.why
@@ -385,7 +385,7 @@ function FormOrientado() {
           />
 
         </div>
-        <div className="mt-10">
+        <div className="mt-2">
           {/* div4 botones form */}
           <button type="submit" disabled={!isVerified}
             className={`w-44 h-10 bg-celesteValtech rounded-lg text-base text-white font-medium ${(!isVerified) ? "opacity-50" : null}`}>
