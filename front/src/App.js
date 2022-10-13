@@ -15,15 +15,16 @@ import NewUsers from './pages/StudentsScreen/components/NewUsers';
 import StudentInfo from './pages/StudentsScreen/componentes-nuevoOrientado/StudentInfo';
  import PrivateRoutes from './privateRoute/PrivateRoutes'; 
 import { EventForm } from './pages/eventPage/EventForm';
-
+import dotenv from 'dotenv';
 
 
 // Fin Importación Páginas
 function App() {
-  
-  return (
-
  
+  return (
+<>
+      
+    <h1>h{process.env.REACT_APP_BASE_URL}</h1>
     <Routes>
       {/*  rutas publicas */}
       <Route path='/' element={<HomeScreen />} />
@@ -53,7 +54,7 @@ function App() {
 
     </Routes>
   
-    
+    </>
   );
 }
 export default App;
