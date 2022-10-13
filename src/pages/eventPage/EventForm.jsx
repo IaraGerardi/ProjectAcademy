@@ -10,12 +10,9 @@ import { optionsHours } from './duration';
 import { useNavigate } from "react-router-dom";
 import useVerify from "../../hooks/useVerify";
 import verifications from "./../../verifyArguments/verifyEvent.json";
-import Config from "../../config.json";
 
 
 export const EventForm = () => {
-
-  const {BASE_URL}=Config
 
   const [nameEvent, setName] = useState('')
   const [counselorEvent, setCounselorEvent] = useState([])
@@ -39,8 +36,7 @@ export const EventForm = () => {
 
   // URL DE PETICION 
 
-  const URI =`${BASE_URL}/create`
-
+  const URI =`${process.env.REACT_APP_BASE_URL}/events/create`
 
   const handleTimer = (e) => {
     if (activeVerify[e.target.id] === true) {
@@ -83,7 +79,7 @@ export const EventForm = () => {
 
   //obtengo los datos de orientadores
   const ShowData = async () => {
-    const res = await axios.get('http://localhost:8000/counselor', { withCredentials: true })
+    const res = await axios.get(`${process.env.REACT_APP_BASE_URL}/counselor`, { withCredentials: true })
     setCounselorEvent(res.data)
   }
 
@@ -93,7 +89,7 @@ export const EventForm = () => {
 
   //obtengo los datos de orientados
   const ShowDataStudents = async () => {
-    const resp = await axios.get('http://localhost:8000/oriented', { withCredentials: true })
+    const resp = await axios.get(`${process.env.REACT_APP_BASE_URL}/oriented`, { withCredentials: true })
     setOrientedEvent(resp.data)
   }
 
@@ -173,11 +169,11 @@ export const EventForm = () => {
             {/* formulario agendar eventos */}
             <form
               onSubmit={handleSubmit}
-              className='mt-5 flex flex-col m-7'>
+              className='mt-5 flex flex-col m-7 lg:m-0'>
 
-              <h2 className="lg:text-base font-medium text-slate-700 ">01. Información sobre el evento</h2>
+              <h2 className="lg:text-base font-medium text-slate-700 lg:pt-5">01. Información sobre el evento</h2>
 
-              <div className='flex flex-col lg:flex-row md:flex-wrap lg:py-5 '>
+              <div className='flex flex-col lg:flex-row md:flex-wrap lg:py-3 '>
               
                 <FormInput
                   onHandleChange={(e) => { setName(e.target.value); handleTimer(e); }}
@@ -189,7 +185,7 @@ export const EventForm = () => {
                     verifyMessages.eventName && verifyMessages.eventName !== true
                       ? verifyMessages.eventName : null} />
 
-                <div className='flex flex-col mt-2 lg:mx-8'>
+                <div className='flex flex-col lg:mx-8'>
                   <label className='text-sm font-medium text-slate-600 '>Orientador participante</label>
                   <Select
                     placeholder="Seleccionar orientador"
@@ -200,7 +196,7 @@ export const EventForm = () => {
                   />
                 </div>
 
-                <div className='flex flex-col mt-2'>
+                <div className='flex flex-col'>
                   <label className='text-sm font-medium text-slate-600 '>Orientado/es participante/s</label>
                   <Select
                     placeholder="Seleccionar orientado"
@@ -281,9 +277,9 @@ export const EventForm = () => {
               <FormInput
               
                 onHandleChange={(e) => { setDescriptionEvent(e.target.value); handleTimer(e); }}
-                inputClass=" lg:w-[678px] rounded-lg border border-slate-300 placeholder:pl-2 shadow-sm
+                inputClass=" lg:w-[678px] h-20 rounded-lg border border-slate-300 placeholder:pl-2 shadow-sm
                 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block focus:ring-1"
-                labelClass="text-sm font-medium text-slate-600" containerClass="flex flex-col w-64"
+                labelClass="text-sm font-medium text-slate-600" containerClass="flex flex-col w-46"
                 id="eventComments" type="textarea" label="Comentarios del evento" placeholder="Escribir comentarios"
                 verifyInput={!(activeVerify.eventComments) ? null :
                   verifyMessages.eventComments && verifyMessages.eventComments !== true
@@ -309,7 +305,7 @@ export const EventForm = () => {
 
               */}
 
-              <button disabled={!isVerified} className=" w-44 h-10 bg-celesteValtech rounded-lg text-base text-white font-medium" type="submit">
+              <button disabled={!isVerified} className=" w-44 h-10 m-3 bg-celesteValtech rounded-lg text-base text-white font-medium" type="submit">
                 Agendar evento
               </button>
 
