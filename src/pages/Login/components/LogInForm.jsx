@@ -8,16 +8,16 @@ import verifications from "../../../verifyArguments/verifyLogIn.json";
 import StoreContext from "../../../store/StoreProvider";
 import { types } from "../../../store/StoreReducer";
 import BeatLoader from "react-spinners/BeatLoader";
-import Config from "../../../config.json";
+
 
 
 function FormLogIn() {
-    const {BASE_URL}=Config
+    
 
     let timer = ""
     const navigate = useNavigate();
-    const URI = `${BASE_URL}/admin/login`;
-
+    const URI = `${process.env.REACT_APP_BASE_URL}/admin/login`;
+  
     const [store, dispatch] = useContext(StoreContext);
     // States
     const [loader, setLoader] = useState(false);
@@ -78,6 +78,7 @@ function FormLogIn() {
                         [response.data.params]: response.data.alertMessage,
                     }))
                 }
+                console.log(response)
             })
     }
 

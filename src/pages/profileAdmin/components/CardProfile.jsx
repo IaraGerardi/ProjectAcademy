@@ -3,11 +3,11 @@ import { useEffect , useState } from 'react'
 import BeatLoader from "react-spinners/BeatLoader";
 import axios from 'axios';
 
-/* import Config from "../../../config.json"; */
+
 
 function CardProfile() {
  
-    /* const {BASE_URL}=Config */
+
 
     const user = localStorage.getItem('usuario')//base de datos pequeña del navegador y .getItem trae un elemento del local storage
     const parsed = JSON.parse(user)// pasando el item a json
@@ -15,7 +15,7 @@ function CardProfile() {
      const [admin,setAdmin]=useState([]);//estado donde voy a guardar el objeto del admin  y luego obtener sus datos a traves de la notacion de puntos
      const [loadingProfile,setLoadingProfile]=useState(true);
      const URI=`${process.env.REACT_APP_BASE_URL}/admins`;
-console.log(URI)
+
 
      useEffect( ()=>{ // la a ejecutar la funcion luego de renderizar la pantalla y no todo el tiempo
 
