@@ -1,16 +1,10 @@
 const bcryptjs = require('bcryptjs');
 const { ModelOriented, ModelCounselor } = require("../database/associations");
-/* llama a modelo oriented desde associations 
-porque son los ultimos cambios que recibe, 
-en caso de no funcionar probar llamando al modelo
-desde "../database/models/ModelOriented.js*/
 
-//URL: /admin/orientados
 const getAllOriented = async (res) => {
     try {
         const oriented = await ModelOriented.findAll({
             attributes: ['id', 'name', 'lastname', 'photoProfile', 'CounselorId'],
-            //order: [['id', 'DESC']]
         });
         res.status(200).json(oriented)
     } catch (error) {
@@ -19,7 +13,6 @@ const getAllOriented = async (res) => {
     }
 }
 
-//URL: /admin/pruebaorienteds
 const getAllOrientedPaginated = async (req, res) => {
     try {
         /* En la query pasamos parametros de pagina, tamaño de cuantos 
@@ -121,7 +114,7 @@ const counselorToOriented = async (req, res) => {
             id: req.params.id
         }
     })
-    res.status(200).json({message: "Succesfully assigned counselor to Oriented"})
+    res.status(200).json({message: "Succesfully assigned Counselor to Oriented"})
     } catch (error) {
         console.log(error)
     res.status(400).json({message: error.message});

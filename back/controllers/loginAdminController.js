@@ -62,7 +62,7 @@ exports.adminLogin = async (req, res) => {
 
 exports.logout = (res) => {
     try {
-        res.status(200).clearCookie('jwt').send('cookie limpiada')
+        res.status(200).clearCookie('jwt').json({message: "Cookie cleared"})
     } catch(error) {
         console.log(error)
         res.status(400).json({message: error.message});

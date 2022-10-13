@@ -35,7 +35,7 @@ const deleteEvent = async (req,res) => {
             where: {EventId: req.params.id}    
         })
         res.status(200).json({
-            message: "Event eliminado correctamente"
+            message: "Event deleted succesfully"
         })
     } catch (error) {
         console.log(error)
