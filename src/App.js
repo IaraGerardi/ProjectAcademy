@@ -13,48 +13,36 @@ import { EventScreen } from './pages/eventPage/EventScreen';
 import FormOrientado from './pages/StudentsScreen/componentes-nuevoOrientado/FormOrientado';
 import NewUsers from './pages/StudentsScreen/components/NewUsers';
 import StudentInfo from './pages/StudentsScreen/componentes-nuevoOrientado/StudentInfo';
- import PrivateRoutes from './privateRoute/PrivateRoutes'; 
+import PrivateRoutes from './privateRoute/PrivateRoutes';
 import { EventForm } from './pages/eventPage/EventForm';
 
 
-// Fin Importación Páginas
 function App() {
- const BASE_URL = process.env.REACT_APP_BASE_URL;
- console.log(BASE_URL)
-  return (
 
-      
-   
+  return (
     <Routes>
       {/*  rutas publicas */}
       <Route path='/' element={<HomeScreen />} />
-      <Route path='/logIn' element={<LogIn BASE_URL={BASE_URL}/>} />
+      <Route path='/logIn' element={<LogIn />} />
       <Route path='*' element={<Error />} />
-    
 
       {/*  rutas privadas */}
+      <Route element={<PrivateRoutes />}>
+        <Route path='inicio' element={<AdminPage />} />
+        <Route path='profile' element={<ProfileAdminScreen />} />
 
-      <Route element={<PrivateRoutes  />}> 
-          <Route path='inicio' element={<AdminPage />} />
-          <Route path='profile' element={<ProfileAdminScreen />} />
+        <Route path='orientados/*' element={<Orientados />} >
+          <Route path="nuevo" element={<FormOrientado />} />
+          <Route path="newUsers" element={<NewUsers />} />
+          <Route path="StudentInfo/:id" element={<StudentInfo />} />
+        </Route>
 
-              <Route path='orientados/*' element={<Orientados />} >
-                <Route path="nuevo" element={<FormOrientado />} />
-                <Route path="newUsers" element={<NewUsers />} />
-                <Route path="StudentInfo/:id" element={<StudentInfo />} />
-              </Route>
+        <Route path='orientados/:id' element={<Assign />} />
+        <Route path='eventos' element={<EventScreen />} />
+        <Route path='eventos/form' element={<EventForm />} />
 
-          <Route path='orientados/:id' element={<Assign />} />
-          <Route path='eventos' element={<EventScreen />} />
-          <Route path='eventos/form' element={<EventForm />} />
-
-     </Route> 
-
-      
-
+      </Route>
     </Routes>
-  
-
   );
 }
 export default App;

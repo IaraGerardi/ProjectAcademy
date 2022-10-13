@@ -9,13 +9,11 @@ import StoreContext from "../../../store/StoreProvider";
 import { types } from "../../../store/StoreReducer";
 import BeatLoader from "react-spinners/BeatLoader";
 
-
-
-function FormLogIn({ BASE_URL }) {
+function FormLogIn() {
 
     let timer = ""
     const navigate = useNavigate();
-    const URI = `${BASE_URL}/admin/login`;
+    const URI = `${ process.env.REACT_APP_BASE_URL}/admin/login`;
     const [store, dispatch] = useContext(StoreContext);
     // States
     const [loader, setLoader] = useState(false);
@@ -65,15 +63,16 @@ function FormLogIn({ BASE_URL }) {
         }
         await axios.post(`${URI}`, form, { withCredentials: true })
             .then((response) => {
+                console.log(response)
                 setLoader(false)
-                if (response.data.message) {
+                if (response.data.message === "Succesful Login") {
                     localStorage.setItem("usuario", JSON.stringify(response.data.admin));
                     dispatch({ type: types.authLogin })
                     navigate('/inicio');
                 } else {
                     setBackMessages(prevBackMessages => ({
                         ...prevBackMessages,
-                        [response.data.params]: response.data.alertMessage,
+                        [response.data.params]: response.data.message,
                     }))
                 }
             })
