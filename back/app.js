@@ -36,7 +36,7 @@ app.use('/events', eventsRouter);
 //verificacion de conexion a la base de datos
 dbStatus = async() => {
     try {
-        await sequelize.authenticate();
+        await db.sequelize.authenticate();
         console.log(`Database connected`);
         app.listen(PORT, () => {
             console.log(`SERVER UP running in http://localhost:${PORT} and front in ${process.env.FRONT_PORT}`);
