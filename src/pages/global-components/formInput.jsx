@@ -2,7 +2,7 @@ import Icon from "./Svg-icon";
 
 function FormInput(props) {
 
-    const { id, type, value, label, placeholder } = props
+    const { id, type, value, label, placeholder,col,rows } = props
     const { inputClass, labelClass, containerClass } = props
     const { verifyInput, onHandleChange } = props
 
@@ -11,13 +11,13 @@ function FormInput(props) {
             <label className={labelClass} htmlFor={id}>{label}</label>
             {type === "textarea" ?
                 <textarea
-                    className={`${inputClass} rounded-lg border w-3/4 lg:w-2/4 placeholder:pl-2
+                    className={`${inputClass} rounded-lg border  placeholder:pl-2
                     ${verifyInput !== null && verifyInput !== true ? "border-red-600" : "border-slate-300"}`}
-                    rows="4" cols="40" id={id} name={id} onChange={onHandleChange} placeholder={placeholder}
+                    rows={rows} cols={col} id={id} name={id} onChange={onHandleChange} placeholder={placeholder}
                 />
                 : <input
                     value={value} id={id} name={id} type={type} onChange={onHandleChange} placeholder={placeholder}
-                    className={`${inputClass} h-24
+                    className={`${inputClass} 
                     ${verifyInput !== null && verifyInput !== true ? "border border-solid border-red-600" : "border border-slate-300"}`}
                 />
             }

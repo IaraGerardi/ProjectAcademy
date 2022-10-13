@@ -17,13 +17,13 @@ import StudentInfo from './pages/StudentsScreen/componentes-nuevoOrientado/Stude
 import { EventForm } from './pages/eventPage/EventForm';
 
 
-
 // Fin Importación Páginas
 function App() {
-  
+ 
   return (
 
- 
+      
+   
     <Routes>
       {/*  rutas publicas */}
       <Route path='/' element={<HomeScreen />} />
@@ -53,7 +53,7 @@ function App() {
 
     </Routes>
   
-    
+
   );
 }
 export default App;
