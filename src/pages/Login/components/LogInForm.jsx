@@ -11,13 +11,11 @@ import BeatLoader from "react-spinners/BeatLoader";
 
 
 
-function FormLogIn() {
-    
+function FormLogIn({ BASE_URL }) {
 
     let timer = ""
     const navigate = useNavigate();
-    const URI = `${process.env.REACT_APP_BASE_URL}/admin/login`;
-  
+    const URI = `${BASE_URL}/admin/login`;
     const [store, dispatch] = useContext(StoreContext);
     // States
     const [loader, setLoader] = useState(false);
@@ -68,7 +66,7 @@ function FormLogIn() {
         await axios.post(`${URI}`, form, { withCredentials: true })
             .then((response) => {
                 setLoader(false)
-                if (response.data.si) {
+                if (response.data.message) {
                     localStorage.setItem("usuario", JSON.stringify(response.data.admin));
                     dispatch({ type: types.authLogin })
                     navigate('/inicio');
@@ -78,7 +76,6 @@ function FormLogIn() {
                         [response.data.params]: response.data.alertMessage,
                     }))
                 }
-                console.log(response)
             })
     }
 
