@@ -1,27 +1,3 @@
-<<<<<<< HEAD
-const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../db');
-
-class ModelCounselor extends Model { }
-
-ModelCounselor.init({
-    name:{
-        type: DataTypes.STRING,
-        allowNull: { //No permite que el campo sea "null"
-            args: false,
-            msg: 'El campo no puede estar vacío'
-        }, 
-
-        validate: {  //Validaciones de la base de datos
-            isAlpha: { //isAlpha solo deja usar letras
-                args: true,
-                msg: 'Solo debe contener letras'
-            },
-            len: { //len establece el minimo y maximo de caracteres
-                args: [2,100],
-                msg: 'Debe contener minimo 2 caracteres'
-            }
-=======
 'use strict';
 const {
     Model
@@ -41,7 +17,6 @@ module.exports = (sequelize, DataTypes) => {
                 ModelCounselor.hasMany(models.ModelEvent, {
                     foreignKey: 'counselorId'
                 });
->>>>>>> feature_migrations_mpb
         }
     }
     ModelCounselor.init({
@@ -52,9 +27,6 @@ module.exports = (sequelize, DataTypes) => {
                 msg: 'El campo no puede estar vacío'
             },
 
-<<<<<<< HEAD
-module.exports = ModelCounselor;
-=======
             validate: {  //Validaciones de la base de datos
                 isAlpha: { //isAlpha solo deja usar letras
                     args: true,
@@ -111,4 +83,3 @@ module.exports = ModelCounselor;
     });
     return ModelCounselor;
 };
->>>>>>> feature_migrations_mpb

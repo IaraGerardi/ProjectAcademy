@@ -1,19 +1,3 @@
-<<<<<<< HEAD
-const { Model } = require('sequelize');
-const sequelize = require('../db');
-
-class ModelOrientedEvent extends Model { }
-
-ModelOrientedEvent.init({
-
-},{
-    sequelize,
-    freezeTableName: true,
-    modelName: 'oriented_event'
-});
-
-module.exports = ModelOrientedEvent;
-=======
 'use strict';
 const {
   Model
@@ -46,4 +30,3 @@ module.exports = (sequelize, DataTypes) => {
   });
   return ModelOrientedEvent;
 };
->>>>>>> feature_migrations_mpb
