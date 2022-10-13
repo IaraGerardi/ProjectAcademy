@@ -1,11 +1,7 @@
+const { orienteds: ModelOriented, counselors: ModelCounselor} = require('../database/models');
 const bcryptjs = require('bcryptjs');
-const { ModelOriented, ModelCounselor } = require("../database/models/index");
-/* llama a modelo oriented desde associations 
-porque son los ultimos cambios que recibe, 
-en caso de no funcionar probar llamando al modelo
-desde "../database/models/ModelOriented.js*/
 
-//URL: /admin/orientados
+//URL: orientados
 const getAllOriented = async (req, res) => {
     try {
         const oriented = await ModelOriented.findAll({

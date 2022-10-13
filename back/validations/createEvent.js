@@ -16,12 +16,8 @@ const eventValidator = [
         .isDate().withMessage('Verifique el formato de la fecha')
         .custom(value => {
             const today = (new Date()).toLocaleDateString(); //Dato del día pasado a string* NOTA no considera la hora
-            const dataDate = (new Date(`${value} `)).toLocaleDateString(); //Dato ingresado a string.* NOTA /* Hay un espacio despues del "value" ingresado asi usa la misma zona horaria*/
-            if (Date.parse(dataDate) < Date.parse(today)) { //Parseamos los datos a numeros y comparamos. Si es menor algun día anterior al de hoy y retorna error
-                return false;
-            } else {
-                return true
-            }
+            const dataDate = (new Date(`${value} `)).toLocaleDateString(); 
+            return dataDate >= today
         }).withMessage('Verifique la fecha ingresada')
     ,
     /* ------Inpunt timeEvent------- */
