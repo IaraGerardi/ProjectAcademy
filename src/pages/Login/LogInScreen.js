@@ -7,7 +7,7 @@ import Logo from "./assets/LogoVCamp.png"
 // CSS
 import "./LogIn.css"
 
-function LogIn() {
+function LogIn({ BASE_URL }) {
     return (
         <div className="loginAdmin flex">
             <div className="imagesContainer flex flex-col justify-center items-center">
@@ -18,7 +18,7 @@ function LogIn() {
             </div>
             <div className="formContainer flex flex-col justify-center">
                 <h2 className="text-3xl font-medium">Ingresá a tu portal</h2>
-                <FormLogIn />
+                <FormLogIn BASE_URL={BASE_URL}/>
             </div>
         </div>
     )

@@ -19,7 +19,8 @@ import { EventForm } from './pages/eventPage/EventForm';
 
 // Fin Importación Páginas
 function App() {
- 
+ const BASE_URL = process.env.REACT_APP_BASE_URL;
+ console.log(BASE_URL)
   return (
 
       
@@ -27,7 +28,7 @@ function App() {
     <Routes>
       {/*  rutas publicas */}
       <Route path='/' element={<HomeScreen />} />
-      <Route path='/logIn' element={<LogIn />} />
+      <Route path='/logIn' element={<LogIn BASE_URL={BASE_URL}/>} />
       <Route path='*' element={<Error />} />
     
 
