@@ -6,12 +6,16 @@ import FormInput from '../global-components/formInput';
 import makeAnimated from 'react-select/animated';
 import { useState, useEffect } from "react";
 import axios from 'axios';
-import { optionsDuration, optionsHours } from './duration';
+import { optionsHours } from './duration';
 import { useNavigate } from "react-router-dom";
 import useVerify from "../../hooks/useVerify";
 import verifications from "./../../verifyArguments/verifyEvent.json";
+import Config from "../../config.json";
+
 
 export const EventForm = () => {
+
+  const {BASE_URL}=Config
 
   const [nameEvent, setName] = useState('')
   const [counselorEvent, setCounselorEvent] = useState([])
@@ -23,6 +27,8 @@ export const EventForm = () => {
   const [durationEvent, setDuration] = useState("");
   const [descriptionEvent, setDescriptionEvent] = useState('')
   const [active, setActive] = useState(false);
+  const [timeOptArray, setTimeOptArray] = useState([]);
+
   const animatedComponents = makeAnimated();
   const navegate = useNavigate();
   // Verifications
@@ -33,7 +39,7 @@ export const EventForm = () => {
 
   // URL DE PETICION 
 
-  const URI = "http://localhost:8000/admin/createEvent"
+  const URI =`${BASE_URL}/create`
 
   const handleTimer = (e) => {
     if (activeVerify[e.target.id] === true) {
@@ -76,7 +82,7 @@ export const EventForm = () => {
 
   //obtengo los datos de orientadores
   const ShowData = async () => {
-    const res = await axios.get('http://localhost:8000/admin/orientadores', { withCredentials: true })
+    const res = await axios.get('http://localhost:8000/counselor', { withCredentials: true })
     setCounselorEvent(res.data)
   }
 
@@ -86,7 +92,7 @@ export const EventForm = () => {
 
   //obtengo los datos de orientados
   const ShowDataStudents = async () => {
-    const resp = await axios.get('http://localhost:8000/admin/orientados', { withCredentials: true })
+    const resp = await axios.get('http://localhost:8000/oriented', { withCredentials: true })
     setOrientedEvent(resp.data)
   }
 
@@ -94,6 +100,30 @@ export const EventForm = () => {
     ShowDataStudents()
   }, [])
 
+  //funcion para opciones de duración
+
+  const timeArray = []
+  let i = 15
+  let time = ""
+
+  useEffect(() => {
+  const handlerDurationEvent = () =>{
+
+    
+
+do {
+
+    (i.toString().length <= 2) ? time = `00${i}`: time = `0${i}`;
+    time = `${time.slice(0,2)}:${time.slice(-2)}:00`
+    timeArray.push({value: time, label: time})
+    parseInt(i.toString().slice(-2)) < 45 ? i += 15 : i += 55;
+} while (i < 800)
+
+setTimeOptArray(timeArray)
+
+  }
+  handlerDurationEvent()
+}, [])
 
   //manejador de evento del select 1
   const handlerSelectOne = (e) => {
@@ -126,6 +156,8 @@ export const EventForm = () => {
 
     })
   }
+
+
 
   return (
 
@@ -231,8 +263,8 @@ export const EventForm = () => {
                     <label className="text-sm font-medium text-slate-600">Duración</label>
                     <Select
                       placeholder="Seleccionar duración"
-                      value={optionsDuration.filter((obj) => obj.value === durationEvent)}
-                      options={optionsDuration}
+                      value={timeOptArray.filter((obj) => obj.value === durationEvent)}
+                      options={timeOptArray}      
                       onChange={handleDuration}
                       styles={customStylesEvent}
                       className="w-64 lg:w-80 "
