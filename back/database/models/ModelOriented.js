@@ -173,12 +173,12 @@ module.exports = (sequelize, DataTypes) => {
         modelName: "orienteds",
         defaultScope: {
             attributes: { exclude: ['password'] },
-          },
-          scopes: {
-            withoutPassword: {
-              attributes: { exclude: ['password'] },
+        },
+        scopes: {
+            withPassword: {
+                attributes: { },
             }
-          },
+        },
         indexes: [ //declaramos cuales columnas van a ser unicas y le damos el argumento true.
             {
                 unique: true,

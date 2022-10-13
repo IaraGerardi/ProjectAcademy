@@ -87,12 +87,12 @@ module.exports = (sequelize, DataTypes) => {
             timestamps: false,
             defaultScope: {
                 attributes: { exclude: ['password'] },
-              },
-              scopes: {
-                withoutPassword: {
-                  attributes: { exclude: ['password'] },
+            },
+            scopes: {
+                withPassword: {
+                    attributes: { },
                 }
-              }
+            }
         });
     return ModelAdmin;
 };
