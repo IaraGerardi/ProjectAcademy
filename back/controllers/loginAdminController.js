@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken')
-const ModelAdmin = require('../database/models/ModelAdmin')
+const { admins : ModelAdmin} = require('../database/models/index')
 
 
 exports.adminLogin = async (req, res) => {
@@ -21,7 +21,7 @@ exports.adminLogin = async (req, res) => {
                 params: "passwordLog"
             })
         } else {
-            const admin = await ModelAdmin.scope('withPassword').findOne({
+            const admin = await ModelAdmin/* .scope('withPassword') */.findOne({
                 where: { email: emailLog }
             })
             if (admin.length == 0) {
@@ -60,7 +60,7 @@ exports.adminLogin = async (req, res) => {
     }
 }
 
-exports.logout = (res) => {
+exports.logout = (req, res) => {
     try {
         res.status(200).clearCookie('jwt').json({message: "Cookie cleared"})
     } catch(error) {

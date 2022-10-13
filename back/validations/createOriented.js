@@ -1,5 +1,5 @@
 const { check, body } = require('express-validator');
-const { ModelOriented } = require('../database/associations');
+const { orienteds: ModelOriented } = require('../database/models/index');
 const { validateResult } = require('../helpers/validateHelper');
 
 //Express-Validator para formulario CREAR ORIENTADO

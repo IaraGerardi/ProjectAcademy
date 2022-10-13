@@ -1,4 +1,4 @@
-const { ModelEvent, ModelOrientedEvent, ModelOriented, ModelCounselor } = require("../database/associations");
+const { events: ModelEvent, counselors: ModelCounselor, orienteds: ModelOriented,  oriented_event: ModelOrientedEvent} = require("../database/models/index");
 
 //Metodo para crear un Event
 const createEvent = async (req, res) => { 
@@ -10,7 +10,7 @@ const createEvent = async (req, res) => {
             time: timeEvent,
             duration: durationEvent,
             description: descriptionEvent,
-            CounselorId: counselorEvent.value 
+            CounselorId: counselorEvent.value
         });
         for (let i = 0; i < orientedEvent.length; i++) { 
         await ModelOrientedEvent.create({  
@@ -44,7 +44,7 @@ const deleteEvent = async (req,res) => {
 }
 
 //Obtiene todos los Events, con su orientdor y todos los oriented que asistiran
-const getEvents = async (res) => {
+const getEvents = async (req, res) => {
     try {
         const event = await ModelEvent.findAll({
             include: [

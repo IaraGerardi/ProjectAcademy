@@ -1,7 +1,8 @@
+const { orienteds: ModelOriented, counselors: ModelCounselor} = require('../database/models');
 const bcryptjs = require('bcryptjs');
-const { ModelOriented, ModelCounselor } = require("../database/associations");
 
-const getAllOriented = async (res) => {
+//URL: orientados
+const getAllOriented = async (req, res) => {
     try {
         const oriented = await ModelOriented.findAll({
             attributes: ['id', 'name', 'lastname', 'photoProfile', 'CounselorId'],

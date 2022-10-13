@@ -11,14 +11,14 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      ModelOrientedEvent.belongsTo(models.ModelEvent, {
+      /* ModelOrientedEvent.belongsTo(models.ModelEvent, {
         foreignKey: 'id',
         targetKey: 'EventId'
     }),
     ModelOrientedEvent.belongsTo(models.ModelOriented, {
       foreignKey: 'id',
       targetKey: 'OrientedId'
-  })
+  }) */
     }
   }
   ModelOrientedEvent.init({
