@@ -66,11 +66,7 @@ const validateCreate = [
     check('photoProfile')//se fija si existe
         .custom((value, { req }) => {
             value = req.file
-            if (!value) {
-                return false
-            }
-            console.log('Entro al otro');
-            return true
+            return !(!value)
         })
         .withMessage('El campo foto está vacío'), //VER SI ANDA ESTO. VALIDACION DE FOTO
     (req, res, next) => {
