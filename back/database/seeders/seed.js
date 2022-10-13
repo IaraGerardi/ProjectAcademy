@@ -1,13 +1,3 @@
-const { ModelCounselor, ModelOriented, ModelEvent } = require('./database/associations.js');
-const ModelNews = require('./database/models/ModelNews.js');
-const ModelAdmin = require('./database/models/ModelAdmin.js');
-const sequelize = require('./database/db.js');
-
-
-/* Datos y metodo para generar en las tablas */
-
-//Glosario (1° descomentar - 2° ctrl+click - 3° volver a comentar)
-//counselors, oriented, news,admin,events, addAll //Metodo para crearlos
 
 const counselors = [
   { name: 'Cristian', lastname: 'Vera', email: 'cristianvera@academy.com', age: 47, avatar: 'cristianVera.png', phone: '1122993324' },
@@ -31,235 +21,235 @@ const oriented = [{
   age: "1984-01-04",
   school: "Oneill",
   address: "1077 Northfield Trail",
-  CounselorId: 1
+  counselorId: 1
 }, {
-  "name": "Edythe",
-  "password": "aqcoaxC3u",
-  "lastname": "Starten",
-  "email": "estarten1@google.com.hk",
-  "phone": "6085446805",
-  "photoProfile": "default2.png",
-  "dni": 30522223,
-  "age": "1981-07-19",
-  "school": "Badeau",
-  "address": "55 Golf Course Avenue",
-  "CounselorId": 4
+  name: "Edythe",
+  password: "aqcoaxC3u",
+  lastname: "Starten",
+  email: "estarten1@google.com.hk",
+  phone: "6085446805",
+  photoProfile: "default2.png",
+  dni: 30522223,
+  age: "1981-07-19",
+  school: "Badeau",
+  address: "55 Golf Course Avenue",
+  counselorId: 4
 }, {
-  "name": "Dona",
-  "password": "LZ8L38t",
-  "lastname": "Stening",
-  "email": "dstening2@forbes.com",
-  "phone": "8029367451",
-  "photoProfile": "default3.png",
-  "dni": 34212925,
-  "age": "1997-02-27",
-  "school": "Ridgeway",
-  "address": "6 Dakota Junction",
-  "CounselorId": 8
+  name: "Dona",
+  password: "LZ8L38t",
+  lastname: "Stening",
+  email: "dstening2@forbes.com",
+  phone: "8029367451",
+  photoProfile: "default3.png",
+  dni: 34212925,
+  age: "1997-02-27",
+  school: "Ridgeway",
+  address: "6 Dakota Junction",
+  counselorId: 8
 }, {
-  "name": "Dorice",
-  "password": "qEKKvg9BNGO",
-  "lastname": "Backshill",
-  "email": "dbackshill3@umich.edu",
-  "phone": "4091770317",
-  "photoProfile": "default4.png",
-  "dni": 21977387,
-  "age": "1979-04-09",
-  "school": "Spenser",
-  "address": "87 Shoshone Avenue",
-  "CounselorId": 5
+  name: "Dorice",
+  password: "qEKKvg9BNGO",
+  lastname: "Backshill",
+  email: "dbackshill3@umich.edu",
+  phone: "4091770317",
+  photoProfile: "default4.png",
+  dni: 21977387,
+  age: "1979-04-09",
+  school: "Spenser",
+  address: "87 Shoshone Avenue",
+  counselorId: 5
 }, {
-  "name": "Hendrik",
-  "password": "Stpo83W",
-  "lastname": "Thorsby",
-  "email": "hthorsby4@a8.net",
-  "phone": "3773063391",
-  "photoProfile": "default5.png",
-  "dni": 41158365,
-  "age": "1990-05-26",
-  "school": "Merchant",
-  "address": "16 Columbus Junction",
-  "CounselorId": 3
+  name: "Hendrik",
+  password: "Stpo83W",
+  lastname: "Thorsby",
+  email: "hthorsby4@a8.net",
+  phone: "3773063391",
+  photoProfile: "default5.png",
+  dni: 41158365,
+  age: "1990-05-26",
+  school: "Merchant",
+  address: "16 Columbus Junction",
+  counselorId: 3
 }, {
-  "name": "Ned",
-  "password": "iTlIKFRCTY5",
-  "lastname": "Brown",
-  "email": "nbrown5@w3.org",
-  "phone": "9161218940",
-  "photoProfile": "default6.png",
-  "dni": 23340403,
-  "age": "1996-11-08",
-  "school": "Burning Wood",
-  "address": "30225 Hagan Junction",
-  "CounselorId": 7
+  name: "Ned",
+  password: "iTlIKFRCTY5",
+  lastname: "Brown",
+  email: "nbrown5@w3.org",
+  phone: "9161218940",
+  photoProfile: "default6.png",
+  dni: 23340403,
+  age: "1996-11-08",
+  school: "Burning Wood",
+  address: "30225 Hagan Junction",
+  counselorId: 7
 }, {
-  "name": "Kendal",
-  "password": "B5bw8D",
-  "lastname": "Milkins",
-  "email": "kmilkins6@mtv.com",
-  "phone": "3059078476",
-  "photoProfile": "default7.png",
-  "dni": 46931124,
-  "age": "1987-09-07",
-  "school": "Reindahl",
-  "address": "01426 Jay Junction",
-  "CounselorId": 7
+  name: "Kendal",
+  password: "B5bw8D",
+  lastname: "Milkins",
+  email: "kmilkins6@mtv.com",
+  phone: "3059078476",
+  photoProfile: "default7.png",
+  dni: 46931124,
+  age: "1987-09-07",
+  school: "Reindahl",
+  address: "01426 Jay Junction",
+  counselorId: 7
 }, {
-  "name": "Margie",
-  "password": "tCRpWwfo4tU",
-  "lastname": "Danilchev",
-  "email": "mdanilchev7@ebay.co.uk",
-  "phone": "6271063476",
-  "photoProfile": "default8.png",
-  "dni": 49500048,
-  "age": "1989-11-21",
-  "school": "Lerdahl",
-  "address": "9 Butternut Road",
-  "CounselorId": 3
+  name: "Margie",
+  password: "tCRpWwfo4tU",
+  lastname: "Danilchev",
+  email: "mdanilchev7@ebay.co.uk",
+  phone: "6271063476",
+  photoProfile: "default8.png",
+  dni: 49500048,
+  age: "1989-11-21",
+  school: "Lerdahl",
+  address: "9 Butternut Road",
+  counselorId: 3
 }, {
-  "name": "Alvira",
-  "password": "EuCvMGO",
-  "lastname": "Stygall",
-  "email": "astygall8@printfriendly.com",
-  "phone": "6013821494",
-  "photoProfile": "default9.png",
-  "dni": 29377386,
-  "age": "2001-04-30",
-  "school": "Vera",
-  "address": "08967 Birchwood Road",
-  "CounselorId": 3
+  name: "Alvira",
+  password: "EuCvMGO",
+  lastname: "Stygall",
+  email: "astygall8@printfriendly.com",
+  phone: "6013821494",
+  photoProfile: "default9.png",
+  dni: 29377386,
+  age: "2001-04-30",
+  school: "Vera",
+  address: "08967 Birchwood Road",
+  counselorId: 3
 }, {
-  "name": "Hewet",
-  "password": "NmTxNcPcHjt",
-  "lastname": "Dalziell",
-  "email": "hdalziell9@youku.com",
-  "phone": "8085279622",
-  "photoProfile": "default10.png",
-  "dni": 29166918,
-  "age": "1999-12-18",
-  "school": "Fieldstone",
-  "address": "79 Mayfield Road",
-  "CounselorId": 2
+  name: "Hewet",
+  password: "NmTxNcPcHjt",
+  lastname: "Dalziell",
+  email: "hdalziell9@youku.com",
+  phone: "8085279622",
+  photoProfile: "default10.png",
+  dni: 29166918,
+  age: "1999-12-18",
+  school: "Fieldstone",
+  address: "79 Mayfield Road",
+  counselorId: 2
 }, {
-  "name": "Maura",
-  "password": "pk7tsg426s0",
-  "lastname": "Hastler",
-  "email": "mhastlera@nature.com",
-  "phone": "5619620952",
-  "photoProfile": "default20.png",
-  "dni": 37208494,
-  "age": "1994-11-21",
-  "school": "Portage",
-  "address": "7 Warbler Trail",
-  "CounselorId": 6
+  name: "Maura",
+  password: "pk7tsg426s0",
+  lastname: "Hastler",
+  email: "mhastlera@nature.com",
+  phone: "5619620952",
+  photoProfile: "default20.png",
+  dni: 37208494,
+  age: "1994-11-21",
+  school: "Portage",
+  address: "7 Warbler Trail",
+  counselorId: 6
 }, {
-  "name": "Berti",
-  "password": "se0UMPAOf",
-  "lastname": "Wallbutton",
-  "email": "bwallbuttonb@rambler.ru",
-  "phone": "7041015879",
-  "photoProfile": "default11.png",
-  "dni": 32144595,
-  "age": "1977-11-23",
-  "school": "Fuller",
-  "address": "90 Paget Park",
-  "CounselorId": 8
+  name: "Berti",
+  password: "se0UMPAOf",
+  lastname: "Wallbutton",
+  email: "bwallbuttonb@rambler.ru",
+  phone: "7041015879",
+  photoProfile: "default11.png",
+  dni: 32144595,
+  age: "1977-11-23",
+  school: "Fuller",
+  address: "90 Paget Park",
+  counselorId: 8
 }, {
-  "name": "Berkeley",
-  "password": "OaUjtc51MK",
-  "lastname": "Haldon",
-  "email": "bhaldonc@miibeian.gov.cn",
-  "phone": "9078488920",
-  "photoProfile": "default12.png",
-  "dni": 38433396,
-  "age": "1976-06-17",
-  "school": "Longview",
-  "address": "33620 Prairieview Parkway",
-  "CounselorId": 5
+  name: "Berkeley",
+  password: "OaUjtc51MK",
+  lastname: "Haldon",
+  email: "bhaldonc@miibeian.gov.cn",
+  phone: "9078488920",
+  photoProfile: "default12.png",
+  dni: 38433396,
+  age: "1976-06-17",
+  school: "Longview",
+  address: "33620 Prairieview Parkway",
+  counselorId: 5
 }, {
-  "name": "Brooke",
-  "password": "ZfNNXLPHoos",
-  "lastname": "Bielfelt",
-  "email": "bbielfeltd@who.int",
-  "phone": "5163091655",
-  "photoProfile": "default13.png",
-  "dni": 22864690,
-  "age": "1987-09-07",
-  "school": "Maple Wood",
-  "address": "41639 Monterey Street",
-  "CounselorId": 8
+  name: "Brooke",
+  password: "ZfNNXLPHoos",
+  lastname: "Bielfelt",
+  email: "bbielfeltd@who.int",
+  phone: "5163091655",
+  photoProfile: "default13.png",
+  dni: 22864690,
+  age: "1987-09-07",
+  school: "Maple Wood",
+  address: "41639 Monterey Street",
+  counselorId: 8
 }, {
-  "name": "Alvera",
-  "password": "bdEr1KCEz",
-  "lastname": "Gainor",
-  "email": "againore@google.pl",
-  "phone": "4348360300",
-  "photoProfile": "default14.png",
-  "dni": 30315765,
-  "age": "1988-01-11",
-  "school": "Mifflin",
-  "address": "699 Duke Road",
-  "CounselorId": 1
+  name: "Alvera",
+  password: "bdEr1KCEz",
+  lastname: "Gainor",
+  email: "againore@google.pl",
+  phone: "4348360300",
+  photoProfile: "default14.png",
+  dni: 30315765,
+  age: "1988-01-11",
+  school: "Mifflin",
+  address: "699 Duke Road",
+  counselorId: 1
 }, {
-  "name": "Jolie",
-  "password": "Isf2rsxQKbJH",
-  "lastname": "Best",
-  "email": "jbestf@blogspot.com",
-  "phone": "6477356896",
-  "photoProfile": "default15.png",
-  "dni": 41812406,
-  "age": "1995-04-06",
-  "school": "Homewood",
-  "address": "13281 Harbort Street",
-  "CounselorId": 3
+  name: "Jolie",
+  password: "Isf2rsxQKbJH",
+  lastname: "Best",
+  email: "jbestf@blogspot.com",
+  phone: "6477356896",
+  photoProfile: "default15.png",
+  dni: 41812406,
+  age: "1995-04-06",
+  school: "Homewood",
+  address: "13281 Harbort Street",
+  counselorId: 3
 }, {
-  "name": "Sutherlan",
-  "password": "7tQTgDF",
-  "lastname": "Falloon",
-  "email": "sfalloong@hibu.com",
-  "phone": "6178869993",
-  "photoProfile": "default16.png",
-  "dni": 25284300,
-  "age": "1980-12-25",
-  "school": "Bayside",
-  "address": "43796 1st Lane",
-  "CounselorId": 1
+  name: "Sutherlan",
+  password: "7tQTgDF",
+  lastname: "Falloon",
+  email: "sfalloong@hibu.com",
+  phone: "6178869993",
+  photoProfile: "default16.png",
+  dni: 25284300,
+  age: "1980-12-25",
+  school: "Bayside",
+  address: "43796 1st Lane",
+  counselorId: 1
 }, {
-  "name": "Lief",
-  "password": "RxhBSB1",
-  "lastname": "Hannigan",
-  "email": "lohanniganh@aboutads.info",
-  "phone": "9151929118",
-  "photoProfile": "default17.png",
-  "dni": 47568414,
-  "age": "1985-01-30",
-  "school": "Clarendon",
-  "address": "21 Green Point",
-  "CounselorId": 7
+  name: "Lief",
+  password: "RxhBSB1",
+  lastname: "Hannigan",
+  email: "lohanniganh@aboutads.info",
+  phone: "9151929118",
+  photoProfile: "default17.png",
+  dni: 47568414,
+  age: "1985-01-30",
+  school: "Clarendon",
+  address: "21 Green Point",
+  counselorId: 7
 }, {
-  "name": "Emelda",
-  "password": "JBIw8QkV",
-  "lastname": "Dionisetto",
-  "email": "edionisettoi@sina.com.cn",
-  "phone": "1135788922",
-  "photoProfile": "default18.png",
-  "dni": 28783672,
-  "age": "1978-06-08",
-  "school": "Porter",
-  "address": "7853 Declaration Junction",
-  "CounselorId": 4
+  name: "Emelda",
+  password: "JBIw8QkV",
+  lastname: "Dionisetto",
+  email: "edionisettoi@sina.com.cn",
+  phone: "1135788922",
+  photoProfile: "default18.png",
+  dni: 28783672,
+  age: "1978-06-08",
+  school: "Porter",
+  address: "7853 Declaration Junction",
+  counselorId: 4
 }, {
-  "name": "Ive",
-  "password": "3mjNxpIUk",
-  "lastname": "Luscombe",
-  "email": "iluscombej@reference.com",
-  "phone": "4955222699",
-  "photoProfile": "default19.png",
-  "dni": 24817824,
-  "age": "1979-08-02",
-  "school": "Golf",
-  "address": "3236 Shelley Trail",
-  "CounselorId": 3
+  name: "Ive",
+  password: "3mjNxpIUk",
+  lastname: "Luscombe",
+  email: "iluscombej@reference.com",
+  phone: "4955222699",
+  photoProfile: "default19.png",
+  dni: 24817824,
+  age: "1979-08-02",
+  school: "Golf",
+  address: "3236 Shelley Trail",
+  counselorId: 3
 }];
 
 const news = [{
@@ -311,60 +301,20 @@ const admin = [
 ]
 
 const events = [
-  { name: "NombreEvent", date: "2022-10-10", time: "11:45", duration: "00:30", description: "Meet de Prueba", CounselorId: 1 },
-  { name: "Event Almuerzo", date: "2022-10-11", time: "13:30", duration: "01:30", description: "Encuentro Pizza nueva pala", CounselorId: 2 },
-  { name: "Orientación vocacional", date: "2022-10-11", time: "15:30", duration: "01:00", description: null, CounselorId: 3 },
-  { name: "Clase JavaScript", date: "2022-10-11", time: "15:30", duration: "02:00", description: "Programacion orientada a objetos", CounselorId: 4 },
-  { name: "Inteligencia emocional", date: "2022-11-05", time: "12:00", duration: "01:15", description: "Manejo de emociones", CounselorId: 5 },
-  { name: "Otro event", date: "2022-11-05", time: "16:00", duration: "00:45", description: null, CounselorId: 6 },
-  { name: "Metodos de estudio", date: "2022-11-05", time: "13:00", duration: "01:45", description: null, CounselorId: 7 },
-  { name: "Taller de matematicas", date: "2022-11-05", time: "13:00", duration: "02:30", description: "Llegó la hora de conocer Pizza pala", CounselorId: 8 },
+  { name: "NombreEvent", date: "2022-10-10", time: "11:45", duration: "00:30", description: "Meet de Prueba", counselorId: 1 },
+  { name: "Event Almuerzo", date: "2022-10-11", time: "13:30", duration: "01:30", description: "Encuentro Pizza nueva pala", counselorId: 2 },
+  { name: "Orientación vocacional", date: "2022-10-11", time: "15:30", duration: "01:00", description: null, counselorId: 3 },
+  { name: "Clase JavaScript", date: "2022-10-11", time: "15:30", duration: "02:00", description: "Programacion orientada a objetos", counselorId: 4 },
+  { name: "Inteligencia emocional", date: "2022-11-05", time: "12:00", duration: "01:15", description: "Manejo de emociones", counselorId: 5 },
+  { name: "Otro event", date: "2022-11-05", time: "16:00", duration: "00:45", description: null, counselorId: 6 },
+  { name: "Metodos de estudio", date: "2022-11-05", time: "13:00", duration: "01:45", description: null, counselorId: 7 },
+  { name: "Taller de matematicas", date: "2022-11-05", time: "13:00", duration: "02:30", description: "Llegó la hora de conocer Pizza pala", counselorId: 8 },
 ]
 
-const addAll = async () => {
-  try {
-    sequelize.sync({ force: false });
-    console.log('Conexion establecida');
-    counselors.forEach((counselors) => ModelCounselor.create(counselors));
-    oriented.forEach((oriented) => ModelOriented.create(oriented));
-    news.forEach((news) => ModelNews.create(news));
-    admin.forEach((admin) => ModelAdmin.create(admin));
-
-    const event1 = await ModelEvent.create(events[0]);
-    const oriented1 = await ModelOriented.findAll({ where: { CounselorId: 1 } })
-    await event1.setOrienteds(oriented1)
-
-    const event2 = await ModelEvent.create(events[1]);
-    const oriented2 = await ModelOriented.findAll({ where: { CounselorId: 2 } })
-    await event2.setOrienteds(oriented2)
-
-    const event3 = await ModelEvent.create(events[2]);
-    const oriented3 = await ModelOriented.findAll({ where: { CounselorId: 3 } })
-    await event3.setOrienteds(oriented3)
-
-    const event4 = await ModelEvent.create(events[3]);
-    const oriented4 = await ModelOriented.findAll({ where: { CounselorId: 4 } })
-    await event4.setOrienteds(oriented4)
-
-    const event5 = await ModelEvent.create(events[4]);
-    const oriented5 = await ModelOriented.findAll({ where: { CounselorId: 5 } })
-    await event5.setOrienteds(oriented5)
-
-    const event6 = await ModelEvent.create(events[5]);
-    const oriented6 = await ModelOriented.findAll({ where: { CounselorId: 6 } })
-    await event6.setOrienteds(oriented6)
-
-    const event7 = await ModelEvent.create(events[6]);
-    const oriented7 = await ModelOriented.findAll({ where: { CounselorId: 7 } })
-    await event7.setOrienteds(oriented7)
-
-    const event8 = await ModelEvent.create(events[7]);
-    const oriented8 = await ModelOriented.findAll({ where: { CounselorId: 8 } })
-    await event8.setOrienteds(oriented8)
-
-  }
-  catch (error) {
-    console.log(error);
-  }
+module.exports = {
+  admin,
+  counselors,
+  events,
+  news,
+  oriented
 }
-addAll()

@@ -2,10 +2,10 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const dotenv = require('dotenv');
-const sequelize = require('./database/db');
 const cookieParser = require('cookie-parser')
 const cors = require('cors');
-const { adminRouter, loginRouter, counselorRouter, eventsRouter, orientedRouter, newsRouter } = require("./routes/routes")
+const { adminRouter, loginRouter, counselorRouter, eventsRouter, orientedRouter, newsRouter } = require("./routes/routes");
+const db = require('./database/models');
 
 //seteamos el path del .env
 dotenv.config({ path: "../.env" })
@@ -37,7 +37,7 @@ app.use('/events', eventsRouter);
 app.listen(PORT, () => {
     console.log(`SERVER UP running in http://localhost:${PORT} and front in ${process.env.FRONT_PORT}`);
     try {
-        sequelize.authenticate();
+        db.sequelize.authenticate()
         //true = rompe y crea la base de datos - false = queda inactivo
         //sequelize.sync({force: true});
         console.log(`Database connected`);
