@@ -6,7 +6,7 @@ module.exports = {
       OrientedId: {
         type: Sequelize.INTEGER,
         references: {
-          model: 'Oriented',
+          model: 'orienteds',
           key: 'id'
         },
         onDelete: 'CASCADE',
@@ -21,6 +21,14 @@ module.exports = {
         onDelete: 'CASCADE',
         onUpdate: 'CASCADE'
       },
+      createdAt: {
+        allowNull: false,
+        type: Sequelize.DATE
+      },
+      updatedAt: {
+        allowNull: false,
+        type: Sequelize.DATE
+      }
     });
   },
   async down(queryInterface, Sequelize) {

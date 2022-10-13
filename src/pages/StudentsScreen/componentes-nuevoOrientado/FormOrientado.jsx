@@ -290,7 +290,7 @@ function FormOrientado() {
             </div>
           </div>
         </div>
-        <div className="container-personalInfo  text-slate-700 flex flex-col bg-slate-500 h-max md:h-96 lg:h-96 gap-3">
+        <div className="container-personalInfo  text-slate-700 flex flex-col h-max md:h-96 lg:h-96 gap-3">
           {" "}
           {/* div2 datos personales */}
           <h2 className=" text-lg  md:text-xl  lg:text-2xl font-medium ">02.Datos personales</h2>
@@ -341,8 +341,10 @@ function FormOrientado() {
           <FormInput
             onHandleChange={(e) => { handleTimer(e); setWhy(e.target.value) }}
             labelClass="font-medium text-slate-600"
-            containerClass="containerInputLabel flex flex-col gap-2 h-32 w-72 "
-            inputClass="rounded-lg border w-60 pl-3 pt-2 w-68 md:w-2/4 lg:w-72 placeholder:pl-1  resize-none"
+            containerClass="containerInputLabel flex flex-col gap-2 h-36 w-72 md:w-full md:min-w-full lg:w-1/2  lg:max-w-1/2"
+            col="45"
+            rows="4"
+            inputClass="rounded-lg border  pl-3 pt-2 w-64 md:w-11/12 lg:w-11/12 placeholder:pl-1  resize-none"
             id="why" type="textarea" label="¿Porque se acercó a nuestra institución?" placeholder="Escribe un comentario."
             verifyInput={!(activeVerify.why) ? null
               : verifyMessages.why && verifyMessages.why !== true ? verifyMessages.why

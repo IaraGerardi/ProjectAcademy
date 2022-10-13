@@ -33,15 +33,17 @@ app.use('/oriented', orientedRouter);
 app.use('/news', newsRouter);
 app.use('/events', eventsRouter);
 
-//Aviso de conexión a la base de datos
-app.listen(PORT, () => {
-    console.log(`SERVER UP running in http://localhost:${PORT} and front in ${process.env.FRONT_PORT}`);
+//verificacion de conexion a la base de datos
+dbStatus = async() => {
     try {
-        db.sequelize.authenticate()
-        //true = rompe y crea la base de datos - false = queda inactivo
-        //sequelize.sync({force: true});
+        await db.sequelize.authenticate();
         console.log(`Database connected`);
+        app.listen(PORT, () => {
+            console.log(`SERVER UP running in http://localhost:${PORT} and front in ${process.env.FRONT_PORT}`);
+            });  
     } catch (error) {
-        console.log(error);
+        console.log(error)
+        process.exit()
     }
-});
+}
+dbStatus()

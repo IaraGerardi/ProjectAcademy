@@ -84,7 +84,15 @@ module.exports = (sequelize, DataTypes) => {
         {
             sequelize,
             modelName: "admins",
-            timestamps: false
+            timestamps: false,
+            defaultScope: {
+                attributes: { exclude: ['password'] },
+            },
+            scopes: {
+                withPassword: {
+                    attributes: { },
+                }
+            }
         });
     return ModelAdmin;
 };

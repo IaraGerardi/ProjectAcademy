@@ -1,5 +1,5 @@
 const { check, body } = require('express-validator');
-const { ModelOriented } = require('../database/models/index');
+const { orienteds: ModelOriented } = require('../database/models/index');
 const { validateResult } = require('../helpers/validateHelper');
 
 //Express-Validator para formulario CREAR ORIENTADO
@@ -66,11 +66,7 @@ const validateCreate = [
     check('photoProfile')//se fija si existe
         .custom((value, { req }) => {
             value = req.file
-            if (!value) {
-                return false
-            }
-            console.log('Entro al otro');
-            return true
+            return !(!value)
         })
         .withMessage('El campo foto está vacío'), //VER SI ANDA ESTO. VALIDACION DE FOTO
     (req, res, next) => {
