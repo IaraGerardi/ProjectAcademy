@@ -7,7 +7,7 @@ function FormInput(props) {
     const { verifyInput, onHandleChange } = props
 
     return (
-        <div className={`flex flex-col h-28 ${containerClass}`}>
+        <div className={`flex flex-col  ${containerClass}`}>
             <label className={labelClass} htmlFor={id}>{label}</label>
             {type === "textarea" ?
                 <textarea
