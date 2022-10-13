@@ -22,12 +22,12 @@ function FormInput(props) {
                 />
             }
             {verifyInput !== null && verifyInput !== true ?
-                <div className="flex items-center relative bottom-3 ml-2.5">
+                <div className="flex items-center relative bottom-3 py-2">
                     <Icon
-                        classname="w-2.5 h-2.5 m-1.5 fill-red-600"
+                        classname="w-3.5 h-3.5 mr-1 fill-red-600"
                         type="exclamationMark"
                         width="24" height="24" />
-                    <span className="text-red-600 text-xs">{verifyInput}</span>
+                    <span className="text-red-600 text-xs ">{verifyInput}</span>
                 </div>
                 : null
             }

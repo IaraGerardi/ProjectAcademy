@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 // Componentes
-import FormLogIn from "./components/formLogIn"
+import FormLogIn from "./components/LogInForm"
 // Imagenes
 import LogInIcon from "./assets/LogInIcon.png"
 import Logo from "./assets/LogoVCamp.png"
