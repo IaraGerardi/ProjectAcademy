@@ -1,4 +1,4 @@
-const { ModelCounselor } = require("../database/models/index");
+const { counselors : ModelCounselor} = require('../database/models/index')
 
 const getAllCounselor = async (res) => {
     try {    
