@@ -1,6 +1,6 @@
 const { counselors : ModelCounselor} = require('../database/models/index')
 
-const getAllCounselor = async (res) => {
+const getAllCounselor = async (req, res) => {
     try {    
         const counselor = await ModelCounselor.findAll();
         res.status(200).json(counselor)

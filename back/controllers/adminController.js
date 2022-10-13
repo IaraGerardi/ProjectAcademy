@@ -1,6 +1,6 @@
 const { admins : ModelAdmin} = require('../database/models/index');
 
-const getAllAdmins = async(res) => {
+const getAllAdmins = async(req, res) => {
     try {
         const profilesAdmin = await ModelAdmin.findAll({
         });

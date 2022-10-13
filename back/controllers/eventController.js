@@ -44,7 +44,7 @@ const deleteEvent = async (req,res) => {
 }
 
 //Obtiene todos los Events, con su orientdor y todos los oriented que asistiran
-const getEvents = async (res) => {
+const getEvents = async (req, res) => {
     try {
         const event = await ModelEvent.findAll({
             include: [
