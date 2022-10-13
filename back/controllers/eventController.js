@@ -18,10 +18,10 @@ const createEvent = async (req, res) => {
             OrientedId: orientedEvent[i].value
         });
         } 
-        res.json({event: event}) 
+        res.status(200).json(event) 
     } catch (error) {
         console.log(error)
-        res.json({ message: error.message }) 
+        res.status(400).json({message: error.message});
     }
 }
 
@@ -34,16 +34,17 @@ const deleteEvent = async (req,res) => {
         await ModelOrientedEvent.destroy({ 
             where: {EventId: req.params.id}    
         })
-        res.json({
-            "message": "Event eliminado correctamente"
+        res.status(200).json({
+            message: "Event deleted succesfully"
         })
     } catch (error) {
-        res.json ({message:error.message})
+        console.log(error)
+        res.status(400).json({message: error.message});
     }
 }
 
 //Obtiene todos los Events, con su orientdor y todos los oriented que asistiran
-const getEvents = async (req, res) => {
+const getEvents = async (res) => {
     try {
         const event = await ModelEvent.findAll({
             include: [
@@ -57,9 +58,10 @@ const getEvents = async (req, res) => {
 
             ], attributes: ['id', 'name', 'date', 'time', 'duration', 'description', 'createdAt']
         });
-        res.json(event)
+        res.status(200).json(event)
     } catch (error) {
-        res.json({ message: error.message })
+        console.log(error)
+        res.status(400).json({message: error.message});
     }
 }
 

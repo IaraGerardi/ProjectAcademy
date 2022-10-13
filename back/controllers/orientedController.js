@@ -1,24 +1,18 @@
 const bcryptjs = require('bcryptjs');
-const { ModelOriented, ModelCounselor } = require("../database/models/index");
-/* llama a modelo oriented desde associations 
-porque son los ultimos cambios que recibe, 
-en caso de no funcionar probar llamando al modelo
-desde "../database/models/ModelOriented.js*/
+const { ModelOriented, ModelCounselor } = require("../database/associations");
 
-//URL: /admin/orientados
-const getAllOriented = async (req, res) => {
+const getAllOriented = async (res) => {
     try {
         const oriented = await ModelOriented.findAll({
             attributes: ['id', 'name', 'lastname', 'photoProfile', 'CounselorId'],
-            //order: [['id', 'DESC']]
         });
-        res.json(oriented)
+        res.status(200).json(oriented)
     } catch (error) {
-        res.json({ message: error.message });
+        console.log(error)
+        res.status(400).json({message: error.message});
     }
 }
 
-//URL: /admin/pruebaorienteds
 const getAllOrientedPaginated = async (req, res) => {
     try {
         /* En la query pasamos parametros de pagina, tamaño de cuantos 
@@ -38,12 +32,13 @@ const getAllOrientedPaginated = async (req, res) => {
         }
         const { count, rows } = await ModelOriented.findAndCountAll(options)
 
-        res.json({
+        res.status(200).json({
             total: count,
             categories: rows
         })
     } catch (error) {
-        res.json({ message: error.message })
+        console.log(error)
+        res.status(400).json({message: error.message});
     }
 }
 
@@ -66,42 +61,52 @@ const createOriented = async (req, res) => {
             password: await bcryptjs.hash(req.body.password, 10)
         });
 
-        res.json({
-            status: 'Successful',
+        res.status(200).json({
+            message: 'Successfully created new Oriented',
             id: user.id
         })
     } catch (error) {
         console.log(error)
-        res.json({ message: error.message })
+        res.status(400).json({message: error.message});
     }
 }
 
 const orientedById = async (req, res) => {
-    const oriented = await ModelOriented.findOne(
+    try {    
+        const oriented = await ModelOriented.findOne(
         {
             where: {
                 id: req.params.id
             }
         })
-    res.json(oriented)
+    res.status(200).json(oriented)
+    } catch (error) {
+        console.log(error)
+        res.status(400).json({message: error.message});
+    }
+
 }
 
 
 const orientedAndCounselor = async (req, res) => {
+    try {   
     const oriented = await ModelOriented.findOne(
         {
             where: {
                 id: req.params.id
             },include: {model: ModelCounselor}
         })
-
-    res.json(oriented)
+    res.status(200).json(oriented)
+} catch (error) {
+    console.log(error)
+    res.status(400).json({message: error.message});
 }
-
+}
 
 
 const counselorToOriented = async (req, res) => {
     const counselor = req.body.counselor
+    try {   
     await ModelOriented.update({
         CounselorId: counselor
     }, {
@@ -109,8 +114,11 @@ const counselorToOriented = async (req, res) => {
             id: req.params.id
         }
     })
-    console.log(`ID del orientador enviado:${counselor}`)
-    res.json(`ID del orientador enviado:${counselor}`)
+    res.status(200).json({message: "Succesfully assigned Counselor to Oriented"})
+    } catch (error) {
+        console.log(error)
+    res.status(400).json({message: error.message});
+}
 }
 
 module.exports = {
