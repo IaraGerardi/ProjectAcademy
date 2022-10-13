@@ -341,10 +341,10 @@ function FormOrientado() {
           <FormInput
             onHandleChange={(e) => { handleTimer(e); setWhy(e.target.value) }}
             labelClass="font-medium text-slate-600"
-            containerClass="containerInputLabel flex flex-col gap-2 h-36 w-72 md:w-full md:min-w-full lg:w-1/2  lg:max-w-1/2"
+            containerClass="containerInputLabel flex flex-col gap-2 h-36 w-72 md:w-full md:min-w-full lg:max-w-11/12"
             col="45"
             rows="4"
-            inputClass="rounded-lg border  pl-3 pt-2 w-64 md:w-11/12 lg:w-11/12 placeholder:pl-1  resize-none"
+            inputClass="rounded-lg border  pl-3 pt-2 w-64 md:w-[570px] lg:w-[570px] md:max-w-6/12  placeholder:pl-1  resize-none"
             id="why" type="textarea" label="¿Porque se acercó a nuestra institución?" placeholder="Escribe un comentario."
             verifyInput={!(activeVerify.why) ? null
               : verifyMessages.why && verifyMessages.why !== true ? verifyMessages.why
