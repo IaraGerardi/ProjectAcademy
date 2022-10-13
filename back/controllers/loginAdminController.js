@@ -21,7 +21,7 @@ exports.adminLogin = async (req, res) => {
                 params: "passwordLog"
             })
         } else {
-            const admin = await ModelAdmin/* .scope('withPassword') */.findOne({
+            const admin = await ModelAdmin.scope('withPassword').findOne({
                 where: { email: emailLog }
             })
             if (admin.length == 0) {
