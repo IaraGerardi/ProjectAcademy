@@ -1,6 +1,6 @@
 'use strict';
 const {
-    Model, Sequelize
+    Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
     class ModelOriented extends Model {
@@ -11,10 +11,12 @@ module.exports = (sequelize, DataTypes) => {
          */
         static associate(models) {
             // define association here
-            /* ModelOriented.belongsTo(models.ModelCounselor, {
-                foreignKey: 'id',
-                targetKey: 'counselorId'
-            }) */
+            ModelOriented.belongsTo(models.counselors, {
+                foreignKey: 'counselorId',
+                targetKey: 'id'
+            })
+
+            ModelOriented.belongsToMany(models.events, {through: 'oriented_event'})
         }
     }
     ModelOriented.init({
@@ -168,7 +170,15 @@ module.exports = (sequelize, DataTypes) => {
         }
     }, {
         sequelize,
-        modelName: "Oriented",
+        modelName: "orienteds",
+        defaultScope: {
+            attributes: { exclude: ['password'] },
+        },
+        scopes: {
+            withPassword: {
+                attributes: { },
+            }
+        },
         indexes: [ //declaramos cuales columnas van a ser unicas y le damos el argumento true.
             {
                 unique: true,

@@ -11,12 +11,14 @@ module.exports = (sequelize, DataTypes) => {
          */
         static associate(models) {
             // define association here
-            /* ModelCounselor.hasMany(models.ModelOriented, {
-                foreignKey: 'counselorId'
-            }), */
-                /* ModelCounselor.hasMany(models.ModelEvent, {
-                    foreignKey: 'counselorId'
-                }); */
+            ModelCounselor.hasMany(models.orienteds, {
+                foreignKey: 'counselorId',
+                sourceKey: 'id'
+            });
+            ModelCounselor.hasMany(models.events, {
+                    foreignKey: 'counselorId',
+                    sourceKey: 'id'
+            });
         }
     }
     ModelCounselor.init({
@@ -78,7 +80,7 @@ module.exports = (sequelize, DataTypes) => {
         }
     }, {
         sequelize,
-        modelName: "Counselor",
+        modelName: "counselors",
         timestamps: false
     });
     return ModelCounselor;

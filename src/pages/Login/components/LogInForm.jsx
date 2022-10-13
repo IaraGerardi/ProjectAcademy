@@ -8,16 +8,14 @@ import verifications from "../../../verifyArguments/verifyLogIn.json";
 import StoreContext from "../../../store/StoreProvider";
 import { types } from "../../../store/StoreReducer";
 import BeatLoader from "react-spinners/BeatLoader";
-import Config from "../../../config.json";
 
 
-function FormLogIn() {
-    const {BASE_URL}=Config
+
+function FormLogIn({ BASE_URL }) {
 
     let timer = ""
     const navigate = useNavigate();
     const URI = `${BASE_URL}/admin/login`;
-
     const [store, dispatch] = useContext(StoreContext);
     // States
     const [loader, setLoader] = useState(false);
@@ -68,7 +66,7 @@ function FormLogIn() {
         await axios.post(`${URI}`, form, { withCredentials: true })
             .then((response) => {
                 setLoader(false)
-                if (response.data.si) {
+                if (response.data.message) {
                     localStorage.setItem("usuario", JSON.stringify(response.data.admin));
                     dispatch({ type: types.authLogin })
                     navigate('/inicio');

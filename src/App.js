@@ -17,17 +17,18 @@ import StudentInfo from './pages/StudentsScreen/componentes-nuevoOrientado/Stude
 import { EventForm } from './pages/eventPage/EventForm';
 
 
-
 // Fin Importación Páginas
 function App() {
-  
+ const BASE_URL = process.env.REACT_APP_BASE_URL;
+ console.log(BASE_URL)
   return (
 
- 
+      
+   
     <Routes>
       {/*  rutas publicas */}
       <Route path='/' element={<HomeScreen />} />
-      <Route path='/logIn' element={<LogIn />} />
+      <Route path='/logIn' element={<LogIn BASE_URL={BASE_URL}/>} />
       <Route path='*' element={<Error />} />
     
 
@@ -53,7 +54,7 @@ function App() {
 
     </Routes>
   
-    
+
   );
 }
 export default App;
