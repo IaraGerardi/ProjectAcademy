@@ -13,13 +13,13 @@
 }
 
 
-.mostrar-alert {
+.show-alert {
     display: flex;
     z-index: 11;
 
 }
 
-.ocultar-alert {
+.hidden-alert {
     display: none;
 }
 
@@ -74,7 +74,7 @@
 
 
 
-.ocultar-alert-event {
+.hidden-alert-event {
     display: none;
 }
 
