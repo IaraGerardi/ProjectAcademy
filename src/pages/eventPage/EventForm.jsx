@@ -31,12 +31,13 @@ export const EventForm = () => {
   // Verifications
   let timer = null;
   const [activeVerify, setActiveVerify] = useState({});
-  const formValues = [{ inputValue: nameEvent }, { inputValue: counselorEvent }];
+  const formValues = [{ inputValue: nameEvent }, { inputValue: valueCounselor }, { inputValue: valueOriented }, { inputValue: dateEvent },
+  { inputValue: timeEvent }, { inputValue: durationEvent }, { inputValue: descriptionEvent }];
   const { handleVerifyForm, verifyMessages, isVerified } = useVerify(formValues, verifications);
 
   // URL DE PETICION 
 
-  const URI =`${process.env.REACT_APP_BASE_URL}/events/create`
+  const URI = `${process.env.REACT_APP_BASE_URL}/events/create`
 
   const handleTimer = (e) => {
     if (activeVerify[e.target.id] === true) {
@@ -103,13 +104,13 @@ export const EventForm = () => {
     const timeArray = []
     let i = 15
     let time = ""
-    const handlerDurationEvent = () =>{
+    const handlerDurationEvent = () => {
 
       do {
 
-        (i.toString().length <= 2) ? time = `00${i}`: time = `0${i}`;
-        time = `${time.slice(0,2)}:${time.slice(-2)}:00`
-        timeArray.push({value: time, label: time})
+        (i.toString().length <= 2) ? time = `00${i}` : time = `0${i}`;
+        time = `${time.slice(0, 2)}:${time.slice(-2)}:00`
+        timeArray.push({ value: time, label: time })
         parseInt(i.toString().slice(-2)) < 45 ? i += 15 : i += 55;
       } while (i <= 800)
 
@@ -174,7 +175,6 @@ export const EventForm = () => {
               <h2 className="lg:text-base font-medium text-slate-700 lg:pt-3">01. Información sobre el evento</h2>
 
               <div className='flex flex-col lg:flex-row md:flex-wrap lg:py-2 pl-3 pt-2 '>
-              
                 <FormInput
                   onHandleChange={(e) => { setName(e.target.value); handleTimer(e); }}
                   inputClass="w-56 md:w-80 lg:w-80 text-sm p-2 rounded-lg border shadow-sm border-slate-300
@@ -255,7 +255,7 @@ export const EventForm = () => {
                     <Select
                       placeholder="Seleccionar duración"
                       value={timeOptArray.filter((obj) => obj.value === durationEvent)}
-                      options={timeOptArray}      
+                      options={timeOptArray}
                       onChange={handleDuration}
                       styles={customStylesEvent}
                       className="w-56 md:w-80 lg:w-80 "
@@ -265,7 +265,6 @@ export const EventForm = () => {
                 </div>
 
               </div>
-
               
               <div className="containerInputLabel flex flex-col gap-2 py-3 ">
                 <h2 className="lg:text-base font-medium text-slate-700">03. Detalle </h2>
@@ -279,6 +278,7 @@ export const EventForm = () => {
                     id="eventComments" 
                     type="textarea" 
                     label="Comentarios del evento" 
+
                     placeholder="Escribir comentarios"
                     verifyInput={!(activeVerify.eventComments) ? null :
                     verifyMessages.eventComments && verifyMessages.eventComments !== true
