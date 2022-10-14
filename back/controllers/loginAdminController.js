@@ -23,7 +23,7 @@ exports.adminLogin = async (req, res) => {
       const admin = await ModelAdmin.scope("withPassword").findOne({
         where: { email: emailLog },
       });
-      if (admin.length === 0) {
+      if (admin == null) {
         res.json({
           message: "Incorrect Email",
           params: "emailLog",
