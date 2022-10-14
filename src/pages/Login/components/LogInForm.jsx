@@ -9,15 +9,11 @@ import StoreContext from "../../../store/StoreProvider";
 import { types } from "../../../store/StoreReducer";
 import BeatLoader from "react-spinners/BeatLoader";
 
-
-
 function FormLogIn() {
-    
 
     let timer = ""
     const navigate = useNavigate();
-    const URI = `${process.env.REACT_APP_BASE_URL}/admin/login`;
-  
+    const URI = `${ process.env.REACT_APP_BASE_URL}/admin/login`;
     const [store, dispatch] = useContext(StoreContext);
     // States
     const [loader, setLoader] = useState(false);
@@ -67,18 +63,18 @@ function FormLogIn() {
         }
         await axios.post(`${URI}`, form, { withCredentials: true })
             .then((response) => {
+                console.log(response)
                 setLoader(false)
-                if (response.data.si) {
+                if (response.data.message === "Succesful Login") {
                     localStorage.setItem("usuario", JSON.stringify(response.data.admin));
                     dispatch({ type: types.authLogin })
                     navigate('/inicio');
                 } else {
                     setBackMessages(prevBackMessages => ({
                         ...prevBackMessages,
-                        [response.data.params]: response.data.alertMessage,
+                        [response.data.params]: response.data.message,
                     }))
                 }
-                console.log(response)
             })
     }
 
@@ -86,13 +82,13 @@ function FormLogIn() {
         <form className="flex flex-col" onSubmit={handleSubmit}>
             <FormInput onHandleChange={handleChange}
                 inputClass="w-80 focus:outline" labelClass="p-2 items-center" containerClass="flex flex-col w-96 h-28"
-                id="emailLog" type="email" label="Email" placeholder="Ingresa tu email"
+                errorClass="mx-2.5" id="emailLog" type="email" label="Email" placeholder="Ingresa tu email"
                 verifyInput={!(activeVerify.emailLog) ? null
                     : verifyMessages.emailLog && verifyMessages.emailLog !== true ? verifyMessages.emailLog
                         : backMessages.emailLog ? backMessages.emailLog : null} />
             <FormInput onHandleChange={handleChange}
-                inputClass="w-80 focus:outline" labelClass="p-2.5 items-center" containerClass="flex flex-col w-96"
-                id="passwordLog" type="password" label="Contraseña" placeholder="Ingresa tu contraseña"
+                inputClass="w-80 focus:outline" labelClass="p-2.5 items-center" containerClass="flex flex-col w-96 h-28"
+                errorClass="mx-2.5" id="passwordLog" type="password" label="Contraseña" placeholder="Ingresa tu contraseña"
                 verifyInput={!(activeVerify.passwordLog) ? null
                     : verifyMessages.passwordLog && verifyMessages.passwordLog !== true ? verifyMessages.passwordLog
                         : backMessages.passwordLog ? backMessages.passwordLog : null} />

@@ -1,87 +1,91 @@
-'use strict';
-const {
-    Model
-} = require('sequelize');
+const { Model } = require("sequelize");
+
 module.exports = (sequelize, DataTypes) => {
-    class ModelCounselor extends Model {
-        /**
-         * Helper method for defining associations.
-         * This method is not a part of Sequelize lifecycle.
-         * The `models/index` file will call this method automatically.
-         */
-        static associate(models) {
-            // define association here
-            ModelCounselor.hasMany(models.orienteds, {
-                foreignKey: 'counselorId',
-                sourceKey: 'id'
-            });
-            ModelCounselor.hasMany(models.events, {
-                    foreignKey: 'counselorId',
-                    sourceKey: 'id'
-            });
-        }
+  class ModelCounselor extends Model {
+    static associate(models) {
+      // define association here
+      ModelCounselor.hasMany(models.orienteds, {
+        foreignKey: "counselorId",
+        sourceKey: "id",
+      });
+      ModelCounselor.hasMany(models.events, {
+        foreignKey: "counselorId",
+        sourceKey: "id",
+      });
     }
-    ModelCounselor.init({
-        name: {
-            type: DataTypes.STRING,
-            allowNull: { //No permite que el campo sea "null"
-                args: false,
-                msg: 'El campo no puede estar vacío'
-            },
-
-            validate: {  //Validaciones de la base de datos
-                isAlpha: { //isAlpha solo deja usar letras
-                    args: true,
-                    msg: 'Solo debe contener letras'
-                },
-                len: { //len establece el minimo y maximo de caracteres
-                    args: [2, 100],
-                    msg: 'Debe contener minimo 2 caracteres'
-                }
-            }
+  }
+  ModelCounselor.init(
+    {
+      name: {
+        type: DataTypes.STRING,
+        allowNull: {
+          // No permite que el campo sea "null"
+          args: false,
+          msg: "El campo no puede estar vacío",
         },
 
-        lastname: {
-            type: DataTypes.STRING,
-            allowNull: { //No permite que el campo sea "null"
-                args: false,
-                msg: 'El campo no puede estar vacío'
-            },
+        validate: {
+          // Validaciones de la base de datos
+          isAlpha: {
+            // isAlpha solo deja usar letras
+            args: true,
+            msg: "Solo debe contener letras",
+          },
+          len: {
+            // len establece el minimo y maximo de caracteres
+            args: [2, 100],
+            msg: "Debe contener minimo 2 caracteres",
+          },
+        },
+      },
 
-            validate: {  //Validaciones de la base de datos
-                isAlpha: { //isAlpha solo deja usar letras
-                    args: true,
-                    msg: 'Solo debe contener letras'
-                },
-                len: { //len establece el minimo y maximo de caracteres
-                    args: [2, 100],
-                    msg: 'Debe contener minimo 2 caracteres'
-                }
-            }
+      lastname: {
+        type: DataTypes.STRING,
+        allowNull: {
+          // No permite que el campo sea "null"
+          args: false,
+          msg: "El campo no puede estar vacío",
         },
 
-        email: {
-            type: DataTypes.STRING,
-            validate: {
-                isEmail: {
-                    args: true,
-                    msg: 'Debe ser un correo valido'
-                }
-            }
+        validate: {
+          // Validaciones de la base de datos
+          isAlpha: {
+            // isAlpha solo deja usar letras
+            args: true,
+            msg: "Solo debe contener letras",
+          },
+          len: {
+            // len establece el minimo y maximo de caracteres
+            args: [2, 100],
+            msg: "Debe contener minimo 2 caracteres",
+          },
         },
-        age: {
-            type: DataTypes.DATE,
+      },
+
+      email: {
+        type: DataTypes.STRING,
+        validate: {
+          isEmail: {
+            args: true,
+            msg: "Debe ser un correo valido",
+          },
         },
-        avatar: {
-            type: DataTypes.STRING,
-        },
-        phone: {
-            type: DataTypes.INTEGER,
-        }
-    }, {
-        sequelize,
-        modelName: "counselors",
-        timestamps: false
-    });
-    return ModelCounselor;
+      },
+      age: {
+        type: DataTypes.DATE,
+      },
+      avatar: {
+        type: DataTypes.STRING,
+      },
+      phone: {
+        type: DataTypes.INTEGER,
+      },
+    },
+    {
+      sequelize,
+      modelName: "counselors",
+      timestamps: false,
+    }
+  );
+  return ModelCounselor;
 };

@@ -15,7 +15,7 @@ function StudentInfo() {
   const [age, setAge] = useState(1);
   const navigate = useNavigate()
   const { id } = useParams();
-  const URI = `http://localhost:8000/admin/orientados`;
+  const URI = `${process.env.REACT_APP_BASE_URL}/oriented`;
 
   // http://localhost:8000/admin/pruebaorientados?page=0&size=1000
   const [active, setActive] = useState(false);
@@ -132,7 +132,7 @@ function StudentInfo() {
       {/*LLAMADO DE ALERTA */}
       {/* El .PARSE CONVIERTE LA FECHA Y HORA EN MILISEGUNDOS  Y PREGUNTO SI LA FECHA ACTUAL MENOS LA FECHA DE CREACION DEL ORIENTADO ES MENOR A 1000 MILISEGUNDOS ENTONCES MOSTRAME ALERT.*/}
       {
-        (Date.parse(new Date()) - Date.parse(`${orientedInfo.createdAt}`) < 2000 || active) && <div className={`alert ${!active ? 'mostrar-alert' : 'ocultar-alert'}`}>
+        (Date.parse(new Date()) - Date.parse(`${orientedInfo.createdAt}`) < 2000 || active) && <div className={`alert ${!active ? 'show-alert' : 'hidden-alert'}`}>
           <img src={Affirmation} alt="icon de afirmacion" />
           <p className="msg-alert">El Orientado fué ingresado con éxito.</p>
           <img className="iconDelete-alert" src={Delete} onClick={() => setActive(!active)} alt="icon de eliminar" />

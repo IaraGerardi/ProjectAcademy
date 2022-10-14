@@ -60,20 +60,23 @@
   display: flex;
 }
 
-.boxbuttoncd {
-  text-align: center;
+.boxnoticesone {
   height: 40px;
-  width: 200px;
-  border-bottom: 5px solid rgb(30, 199, 255);
+  width: 170px;
+  border-bottom: 18px solid #e9f9f8;
 }
 
 .novedades {
   margin-left: 160px;
 }
 
-.orientadoscd {
+.orientedcd {
+  margin-left: 10px;
   height: 23px;
-  border-bottom: 10px solid yellow;
+  border-bottom: 10px solid #ffeb33;
+}
+.textnovedade {
+  margin-left: 90px;
 }
 
 .BoxNovedadescd {
@@ -83,15 +86,27 @@
   border-bottom: 10px solid rgb(206, 244, 255);
 }
 
+.btn-enter-orientaded {
+  width: 184px;
+  height: 40px;
+  border-radius: 8px;
+  background-color: #0BA4A0;
+  color: white;
+  border: none;
+  font-weight: 600;
+  font-size: 13px;
+  transition: 500ms;
+}
+
 @media (max-width: 600px) {
   .box-center {
     margin-left: -35px;
   }
-  .boxcentral {
+  .contentsone {
     display: flex;
     margin-right: 100px;
   }
-  .boxcentraltwo {
+  .contentstwo {
     display: flex;
     flex-direction: column;
   }
@@ -100,7 +115,7 @@
     margin-right: 100px;
   }
 
-  .btn-ingresar-orientado {
+  .butonsingresedoriented {
     margin-top: 10px;
     margin-left: 7px;
   }
@@ -108,10 +123,10 @@
     margin-left: -33px;
     width: 160%;
   }
-  .orientadoscd {
+  .orientedcd {
     margin-left: -25px;
   }
-  .nuevosorientados {
+  .newsorientedcv {
     width: 160px;
   }
   .Adminbloque {
@@ -130,5 +145,8 @@
   }
   .slick-list {
     width: 100%;
+  }
+  .textnovedade {
+    margin-left: 50px;
   }
 }

@@ -4,50 +4,37 @@ import HeaderInicio from '../sidebar-header/components/HeaderInicio'
 import { Sidebar } from '../sidebar-header/components/Sidebar.js'
 import CallEvents from './components/CallEvents'
 import useGet from "../../hooks/useGet"
-/* import { useState, useEffect } from "react";
-import axios from 'axios';
- */
+
 export const EventScreen = () => {
   const [eventsList, setEventsList] = useState([])
 
-  const URIorientados = "http://localhost:8000/admin/orientados";
-  const URIeventos = "http://localhost:8000/admin/event";
+  const URIevents = `${process.env.REACT_APP_BASE_URL}/events`;
+  const URIoriented = `${process.env.REACT_APP_BASE_URL}/oriented`;
 
-  // Traigo los orientados y eventos
-  const orientados = useGet(URIorientados).data;
-  const events = useGet(URIeventos).data;
+  const events = useGet(URIevents).data;
+  const oriented = useGet(URIoriented).data;
 
   useEffect(() => {
     setEventsList(events)
   }, [events])
 
-  const handleSearch = (terminoBusqueda) => {
+  const handleSearch = (searchName) => {
 
-    // Primero filtro los orientados en base a lo que ingresa por la busqueda
-    let filteredOrientados = orientados.filter((orientado) => {
-      const fullName = `${orientado.name} ${orientado.lastname}`.toLowerCase()
-      if (fullName.includes(terminoBusqueda.toLowerCase())) {
-        return orientado.OrientadoreId;
-      }
+    const filteredOrientedList = oriented.filter((oriented) => {
+      const fullName = `${oriented.name} ${oriented.lastname}`.toLowerCase()
+      return (fullName.includes(searchName.toLowerCase()));
     })
 
-    // Despues mapeo ese array filtrado para obtener los ids del orientador
-    const arrayOrientadoreId = filteredOrientados.map((orientado) => {
-      return orientado.OrientadoreId;
+    const counselorArray = filteredOrientedList.map((oriented) => {
+      return oriented.CounselorId;
     })
 
-    // Filtro los eventos en base al id del orientador
-    let filteredEvents = events.filter((event) => {
-      if (arrayOrientadoreId.includes(event.Orientadore.id)) {
-        return event;
-      }
+    const filteredEvents = events.filter((event) => {
+      return (counselorArray.includes(event.Counselor.id));
     })
-
-    // Y guardo el resultado en el estado de la lista
     setEventsList(filteredEvents);
   }
 
-  /* console.log("father event list:", eventsList) */
 
   return (
 
@@ -58,7 +45,7 @@ export const EventScreen = () => {
         <HeaderInicio propNamePage="Eventos" />
 
         <div className='mt-7 ml-10'>
-          <div className="cont-ingresar-orientado">
+          <div className="cont-enter-oriented">
             <p className="text-new-user">Todos los eventos</p>
             <Link to='/eventos/form'><button className=" w-44 h-10 bg-celesteValtech rounded-lg text-base text-white font-medium " type="submit">
               Agendar evento
@@ -66,17 +53,17 @@ export const EventScreen = () => {
             </Link>
 
           </div> {/*Texto y Boton que redirije a la Página de Crear Eventos.*/}
-          <div className="cont-search-orientado">
+          <div className="cont-search-oriented">
             <input
               type="text"
               defaultValue={""}
               onChange={(e) => handleSearch(e.target.value)}
-              className="search-orientado"
+              className="search-oriented"
               placeholder="Buscar orientado por nombre y apellido"
             />
           </div>
 
-{/* Paso los eventos como props para que se actualice cuando el estado cambie por el buscador */}
+          {/* Paso los eventos como props para que se actualice cuando el estado cambie por el buscador */}
           <CallEvents events={eventsList} />
 
         </div>

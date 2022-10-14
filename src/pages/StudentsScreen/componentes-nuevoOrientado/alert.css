@@ -13,13 +13,13 @@
 }
 
 
-.mostrar-alert {
+.show-alert {
     display: flex;
     z-index: 11;
 
 }
 
-.ocultar-alert {
+.hidden-alert {
     display: none;
 }
 
@@ -30,7 +30,7 @@
     font-weight: bold;
 }
 
-.msg-alert-orientador {
+.msg-alert-counselor {
     font-size: 12px;
     font-family: sans-serif;
 }
@@ -74,7 +74,7 @@
 
 
 
-.ocultar-alert-event {
+.hidden-alert-event {
     display: none;
 }
 

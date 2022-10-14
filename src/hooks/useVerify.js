@@ -54,33 +54,6 @@ function useVerify(formValues, validations) {
                 ...prevVerifyMessages,
                 [id]: "El email tiene un formato incorrecto",
             }))
-        } else if (type === "date") {
-            const today = (new Date()).toLocaleDateString('en-us', { year: "numeric", month: "numeric", day: "numeric" });
-            const inputDate = (new Date(`${value} `)).toLocaleDateString('en-us', { year: "numeric", month: "numeric", day: "numeric" });
-            // entonces today tendria que ser menor que la fecha del input para que sea una fecha pasada
-            // if ((Date.parse(inputDate) === Date.parse(today))) {
-            //     setVerifyMessages(prevVerifyMessages => ({
-            //         ...prevVerifyMessages,
-            //         [id]: "No puede elegir la fecha actual",
-            //     }))
-            // } else if (payload.futureDate && (Date.parse(inputDate) < Date.parse(today))) {
-            //     setVerifyMessages(prevVerifyMessages => ({
-            //         ...prevVerifyMessages,
-            //         [id]: "Elija una fecha futura",
-            //     }))
-            // } else {
-            //     console.log("error??")
-            //     // setVerifyMessages(prevVerifyMessages => ({
-            //     //     ...prevVerifyMessages,
-            //     //     [id]: "Elija una fecha pasada",
-            //     // }))
-            // } 
-            // else {
-            //     setVerifyMessages(prevVerifyMessages => ({
-            //         ...prevVerifyMessages,
-            //         [id]: "No puede elegir la fecha actual",
-            //     }))
-            // }
         } else if ((type === "confirmPassword" && formValues[i - 1].inputValue) && formValues[i - 1].inputValue !== value) {
             setVerifyMessages(prevVerifyMessages => ({
                 ...prevVerifyMessages,

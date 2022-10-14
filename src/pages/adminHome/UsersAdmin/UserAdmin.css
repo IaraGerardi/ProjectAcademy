@@ -1,10 +1,9 @@
 .box-center {
-  width: 100%;
   display: flex;
 }
 
 .boxtwo {
-  border: 1px solid #DADEEB;
+  border: 1px solid #dadeeb;
   width: 312px;
   height: 96px;
   border-radius: 8px;
@@ -17,7 +16,6 @@
 
 .boxflex {
   display: flex;
-
   width: 100%;
 }
 
@@ -37,7 +35,7 @@ li {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  margin-left: 80px;
+  margin-left: 40px;
 }
 
 .boxBtnHome {
@@ -50,7 +48,7 @@ li {
 
 .iconcd {
   margin-bottom: 50px;
-margin-top: -5px;
+  margin-top: -5px;
   padding: 5px;
   margin-right: 15px;
 }
@@ -74,12 +72,43 @@ margin-top: -5px;
   margin-left: 5px;
   font-size: 14px;
   color: #8798ad;
-  
 }
 
 @media (max-width: 600px) {
-  .boxtwo{
+  .boxtwo {
+    width: 100vh;
+  }
+  .ulUserAdmin {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 320px) {
+  .boxtwo {
     width: 100%;
   }
-  
+  .ulUserAdmin {
+    width: 100%;
+  }
+}
+
+@media (max-width: 610px) {
+  .ulUserAdmin {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .ulUserAdmin {
+    justify-content: center;
+  }
+  .boxtwo {
+    width: 100%;
+  }
+}
+
+@media (max-width: 376px) {
+  .ulUserAdmin {
+    justify-content: center;
+  }
 }

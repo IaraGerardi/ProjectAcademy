@@ -16,15 +16,12 @@
 }
 
 .box-students:hover {
-    width: 305px;
-    height: 105px;
+    width: 303px;
+    height: 103px;
     transition: 500ms;
 }
 
 
-.lista {
-    margin: 0px;
-}
 
 .content-students {
     height: 100%;
@@ -46,7 +43,7 @@
 
 
 
-.cont-search-orientado {
+.cont-search-oriented {
     width: 59%;
     /* width: 656px; */
     height: 48px;
@@ -61,7 +58,7 @@
     margin-bottom: 50px;
 }
 
-.search-orientado {
+.search-oriented {
     border-top: solid 1px rgb(227, 227, 227);
     border-bottom: solid 1px rgb(227, 227, 227);
     width: 590px;
@@ -70,11 +67,11 @@
     padding-left: 25px;
 }
 
-.search-orientado:focus {
+.search-oriented:focus {
     outline: none;
 }
 
-.logo-buscador {
+.logo-search {
     height: 20px;
     padding: 0px 13px 0px 0px;
 }
@@ -109,7 +106,7 @@
         align-items: center;
     }
 
-    .cont-search-orientado {
+    .cont-search-oriented {
         width: 376px;
         height: 48px;
         border: solid 1px rgb(227, 227, 227);
@@ -123,7 +120,7 @@
         margin-bottom: 50px;
     }
     
-    .search-orientado {
+    .search-oriented {
         border-top: solid 1px rgb(227, 227, 227);
         border-bottom: solid 1px rgb(227, 227, 227);
         /* width: 590px; */
@@ -133,11 +130,11 @@
         padding-left: 25px;
     }
     
-    .search-orientado:focus {
+    .search-oriented:focus {
         outline: none;
     }
     
-    .logo-buscador {
+    .logo-search {
         height: 18px;
         padding: 0px 13px 0px 0px;
     }
@@ -147,7 +144,7 @@
 
 @media (max-width: 610px) {
 
-    .cont-search-orientado {
+    .cont-search-oriented {
         width: 276px;
         height: 48px;
         border: solid 1px rgb(227, 227, 227);
@@ -162,7 +159,7 @@
     
     }
     
-    .search-orientado {
+    .search-oriented {
         border-top: solid 1px rgb(227, 227, 227);
         border-bottom: solid 1px rgb(227, 227, 227);
         width: 90%;
@@ -171,11 +168,11 @@
        
     }
     
-    .search-orientado:focus {
+    .search-oriented:focus {
         outline: none;
     }
     
-    .logo-buscador {
+    .logo-search {
         height: 18px;
         padding: 0px 20px 0px 0px;
     }

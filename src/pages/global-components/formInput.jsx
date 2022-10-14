@@ -3,11 +3,11 @@ import Icon from "./Svg-icon";
 function FormInput(props) {
 
     const { id, type, value, label, placeholder,col,rows } = props
-    const { inputClass, labelClass, containerClass } = props
+    const { inputClass, labelClass, containerClass, errorClass } = props
     const { verifyInput, onHandleChange } = props
 
     return (
-        <div className={`flex flex-col h-28 ${containerClass}`}>
+        <div className={`flex flex-col  ${containerClass}`}>
             <label className={labelClass} htmlFor={id}>{label}</label>
             {type === "textarea" ?
                 <textarea
@@ -22,7 +22,7 @@ function FormInput(props) {
                 />
             }
             {verifyInput !== null && verifyInput !== true ?
-                <div className="flex items-center relative bottom-3 py-2">
+                <div className={`flex items-center relative bottom-3 py-2 ${errorClass}`}>
                     <Icon
                         classname="w-3.5 h-3.5 mr-1 fill-red-600"
                         type="exclamationMark"

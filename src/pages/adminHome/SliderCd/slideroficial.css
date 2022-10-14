@@ -10,7 +10,7 @@
 }
 
 .card {
-  border: 1px solid #DADEEB;
+  border: 1px solid #dadeeb;
   border-radius: 8px;
   overflow: hidden;
   height: 200px;
@@ -20,19 +20,12 @@
   align-items: center;
   width: 100px;
 }
-.card-top h1 {
-  display: flex;
-  justify-content: center;
+
+.card:hover {
+  background-color: rgb(244, 244, 244);
 }
 
-.boxcard {
-  margin-top: 100px;
-  height: 300px;
-  display: flex;
-  flex-direction: column;
-}
-
-.textouno {
+.textonecv {
   margin-top: 3px;
   margin-left: 5px;
   color: black;
@@ -41,7 +34,7 @@
   height: 60px;
 }
 
-.textodos {
+.texttwocv {
   margin-left: 5px;
   color: gray;
   width: 80%;
@@ -49,7 +42,7 @@
   height: 100px;
 }
 
-.textotres {
+.texttreecv {
   margin-left: 5px;
   width: 80%;
   overflow: hidden;
@@ -63,11 +56,11 @@
   height: 200px;
 }
 
-.botoneffectcd {
+.Butoneffectone {
   color: black;
   height: 22px;
   width: 70px;
-  border-bottom: 10px solid yellow;
+  border-bottom: 10px solid #ffeb33;
 }
 
 @media (max-width: 600px) {
