@@ -6,17 +6,17 @@ exports.adminLogin = async (req, res) => {
     const { emailLog } = req.body;
     const { passwordLog } = req.body;
     if (!emailLog && !passwordLog) {
-      res.json({
-        message: "Enter email and password",
+      res.status(403).json({
+        message: "Ingrese un email y contraseña",
       });
     } else if (!emailLog) {
-      res.json({
-        message: "Enter an email",
+      res.status(403).json({
+        message: "Ingrese un email",
         params: "emailLog",
       });
     } else if (!passwordLog) {
-      res.json({
-        message: "Enter a password",
+      res.status(403).json({
+        message: "Ingrese una contraseña",
         params: "passwordLog",
       });
     } else {
@@ -24,13 +24,13 @@ exports.adminLogin = async (req, res) => {
         where: { email: emailLog },
       });
       if (admin == null) {
-        res.json({
-          message: "Incorrect Email",
+        res.status(403).json({
+          message: "Email incorrecto",
           params: "emailLog",
         });
       } else if (passwordLog !== admin.password) {
-        res.json({
-          message: "Incorrect Password",
+        res.status(403).json({
+          message: "Contraseña incorrecta",
           params: "passwordLog",
         });
       } else {
