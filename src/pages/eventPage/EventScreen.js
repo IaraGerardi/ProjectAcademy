@@ -30,7 +30,7 @@ export const EventScreen = () => {
     })
 
     const filteredEvents = events.filter((event) => {
-      return (counselorArray.includes(event.Counselor.id));
+      return (counselorArray.includes(event.counselor.id));
     })
     setEventsList(filteredEvents);
   }

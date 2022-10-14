@@ -16,7 +16,8 @@
 .show-alert {
     display: flex;
     z-index: 11;
-
+    position: absolute;
+    margin-bottom: 30px;
 }
 
 .hidden-alert {
@@ -40,6 +41,10 @@
 }
 
 
+.msg-alert-counselor-events {
+    font-size: 15px;
+    font-family: sans-serif;
+}
 
 
 
@@ -56,7 +61,7 @@
     width: 62%;
     height: 96px;
     border-radius: 8px;
-    
+
 }
 
 
@@ -68,7 +73,7 @@
 }
 
 
-.cont-logo-event{
+.cont-logo-event {
     padding: 10px;
 }
 
@@ -87,6 +92,13 @@
         font-size: 13px;
         padding-right: 100px;
     }
+
+    .msg-alert-counselor-events {
+        font-size: 12px;
+        font-family: sans-serif;
+    }
+    
+
 }
 
 
@@ -130,7 +142,6 @@
 
 
 
-
 @media (max-width: 695px) {
 
     .alert {
@@ -145,6 +156,13 @@
         height: 36px;
         border-radius: 8px;
     }
+
+
+    .msg-alert-counselor-events {
+        font-size: 9px;
+        font-family: sans-serif;
+    }
+    
 
 
     .msg-alert {

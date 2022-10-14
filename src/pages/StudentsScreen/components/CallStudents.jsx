@@ -22,7 +22,7 @@ function CallStudents() {
         {/*Pedido a la Api*/ }
         const getoriented = async () => {
             try {
-                const res = await axios.get(`${process.env.REACT_APP_BASE_URL}/oriented/paginated?page=0&size=1000&order=DESC`,{withCredentials: true}
+                const res = await axios.get(`${process.env.REACT_APP_BASE_URL}/oriented/paginated?page=0&size=1000&order=ASC`,{withCredentials: true}
                 ); // EN LA URI PONGO PAGE 0 Y UN SIZE DE 1000 QUE SIRVE PARA TRAER POR EL MOMENTO MIL USUARIOS
                 setOriented(res.data.categories);
                 setTableOriented(res.data.categories)
