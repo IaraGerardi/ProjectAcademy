@@ -26,7 +26,7 @@ function HeaderInicio({ propNamePage }) {
     useEffect(() => {
         const getAdmin = async () => {
             try {
-                const resInfoAdmin = await axios.get(`http://localhost:8000/admin/profile/${usuario.id}`, { withCredentials: true });
+                const resInfoAdmin = await axios.get(`${process.env.REACT_APP_BASE_URL}/admins/${usuario.id}`, { withCredentials: true });
                 setInfoAdmin(resInfoAdmin.data);
                 // console.log(usuario);
                 // console.log(parseado)
@@ -42,7 +42,7 @@ function HeaderInicio({ propNamePage }) {
 
     const getLogout = async () => {
         try {
-            const resLogout = await axios.get(`http://localhost:8000/logout`, { withCredentials: true });
+            const resLogout = await axios.get(`${process.env.REACT_APP_BASE_URL}/logout`, { withCredentials: true });
             setInfoAdmin(resLogout.data);
             console.log(resLogout.data);
             localStorage.removeItem("usuario")

@@ -20,7 +20,7 @@ import Delete from "../img/delete.svg"
 
 function FormOrientado() {
   let timer = "";
-  const URI = "http://localhost:8000/admin/create";
+  const URI = `${process.env.REACT_APP_BASE_URL}/oriented/create`;
 
   // ESTADOS DEL FORMULARIO DE SUS RESPECTIVOS INPUT
   const [name, setName] = useState("");
@@ -104,7 +104,9 @@ function FormOrientado() {
         }
       })
       .then((response) => {
-        if (response.status == 200) {
+        console.log(response)
+        if (response.data.message == 'Successfully created new Oriented') {
+
           setActive(!active)
           setTimeout(() => {
             navegate(`/orientados/StudentInfo/${response.data.id}`)
