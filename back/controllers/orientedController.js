@@ -126,6 +126,28 @@ const counselorToOriented = async (req, res) => {
   }
 };
 
+const orientedPasswordUpdate = async (req, res) => {
+  try {
+    const { newPassword } = req.body;
+      await ModelOriented.update(
+          {
+            password: await bcryptjs.hash(newPassword, 10),
+          },
+          {
+            where: {
+              id: req.params.id,
+            }
+          }
+        );
+    res
+      .status(200)
+      .json({ message: "Succesfully updated password" });
+  } catch (error) {
+    console.log(error);
+    res.status(400).json({ message: error.message });
+  };
+}
+
 module.exports = {
   createOriented,
   getAllOriented,
@@ -133,4 +155,5 @@ module.exports = {
   counselorToOriented,
   orientedById,
   orientedAndCounselor,
+  orientedPasswordUpdate
 };

@@ -10,6 +10,7 @@ const {
   createOriented,
   counselorToOriented,
   orientedAndCounselor,
+  orientedPasswordUpdate
 } = require("../controllers/orientedController");
 // Middlewares
 const { isAuthenticated } = require("../middleware/logAuthentication"); // Autenticacion para usuarios logueados
@@ -33,5 +34,10 @@ orientedRouter.put(
   isAuthenticated,
   counselorToOriented
 ); // asigna o modifica un orientador de un orientado seleccionado por id
+orientedRouter.put(
+  "/:id/updatePassword",
+  isAuthenticated,
+  orientedPasswordUpdate
+); // actualiza la contraseña de un orientado
 
 module.exports = orientedRouter;
