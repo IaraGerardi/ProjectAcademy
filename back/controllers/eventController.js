@@ -1,3 +1,4 @@
+'use strict';
 const { events: ModelEvent, counselors: ModelCounselor, orienteds: ModelOriented,  oriented_event: ModelOrientedEvent} = require("../database/models/index");
 
 //Metodo para crear un Event
@@ -12,18 +13,18 @@ const createEvent = async (req, res) => {
             description: descriptionEvent,
             CounselorId: counselorEvent.value
         });
+        const orientedtoEvent = []
         for (let i = 0; i < orientedEvent.length; i++) { 
-        await ModelOrientedEvent.create({  
-            EventId: event.id,
-            OrientedId: orientedEvent[i].value
-        });
-        } 
-        res.status(200).json(event) 
+            orientedtoEvent.unshift({eventId: event.id, orientedId: orientedEvent[i].value})
+        }
+        await ModelOrientedEvent.bulkCreate(orientedtoEvent)
+        res.status(200).json({message: "Event created succesfully"}) 
     } catch (error) {
         console.log(error)
         res.status(400).json({message: error.message});
     }
 }
+
 
 //Metodo para eliminar Event
 const deleteEvent = async (req,res) => {
