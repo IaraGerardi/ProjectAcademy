@@ -33,7 +33,7 @@ function AdminPage() {
 
                         <div>
                           <Link className="navegar" to="/orientados/nuevo">
-                            <button className="btn-ingresar-orientado mr-2 mt-5">
+                            <button className="btn-enter-orientaded mr-2 mt-5">
                               Ingresar orientado
                             </button>
                           </Link>

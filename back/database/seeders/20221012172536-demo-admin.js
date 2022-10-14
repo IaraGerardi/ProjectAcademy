@@ -1,12 +1,10 @@
-'use strict';
-
-const { admin } = require('./seed');
+const { admin } = require("./seed");
 
 module.exports = {
-  async up(queryInterface, Sequelize) {
-    await queryInterface.bulkInsert('admins', admin, {});
+  async up(queryInterface) {
+    await queryInterface.bulkInsert("admins", admin, {});
   },
-  async down(queryInterface, Sequelize) {
-    await queryInterface.bulkDelete('admins', null, {});
-  }
+  async down(queryInterface) {
+    await queryInterface.bulkDelete("admins", null, {});
+  },
 };

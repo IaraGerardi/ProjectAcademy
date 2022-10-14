@@ -1,7 +1,7 @@
 const jwt = require("jsonwebtoken");
-const { admins: ModelAdmin } = require("../database/models/index");
+const { orienteds: ModelOriented } = require("../database/models/index");
 
-exports.adminLogin = async (req, res) => {
+exports.orientedLogin = async (req, res) => {
   try {
     const { emailLog } = req.body;
     const { passwordLog } = req.body;
@@ -11,7 +11,7 @@ exports.adminLogin = async (req, res) => {
       });
     } else if (!emailLog) {
       res.json({
-        message: "Enter an email",
+        message: "Enter a email",
         params: "emailLog",
       });
     } else if (!passwordLog) {
@@ -20,28 +20,28 @@ exports.adminLogin = async (req, res) => {
         params: "passwordLog",
       });
     } else {
-      const admin = await ModelAdmin.scope("withPassword").findOne({
+      const oriented = await ModelOriented.scope("withPassword").findOne({
         where: { email: emailLog },
       });
-      if (admin.length === 0) {
+      if (oriented == null) {
         res.json({
-          message: "Incorrect Email",
+          message: "Incorrect email",
           params: "emailLog",
         });
-      } else if (passwordLog !== admin.password) {
+      } else if (passwordLog !== oriented.password) {
         res.json({
           message: "Incorrect Password",
           params: "passwordLog",
         });
       } else {
-        const loggedAdmin = await ModelAdmin.findOne({
+        const loggedOriented = await ModelOriented.findOne({
           where: { email: emailLog },
         });
-        const { id } = admin;
+        const { id } = oriented;
         const token = jwt.sign({ id: id }, process.env.JWT_SECRET, {
           expiresIn: 24 * 60 * 60 * 1000,
         });
-        console.log(`token: ${token} for user : ${admin.user}`);
+        console.log(`token: ${token} for user : ${oriented.name}`);
         const cookiesOptions = {
           expires: new Date(Date.now() + 24 * 60 * 60 * 1000), // La cookie expira en 24 horas
           httpOnly: true,
@@ -49,19 +49,10 @@ exports.adminLogin = async (req, res) => {
         res.cookie("jwt", token, cookiesOptions);
         res.status(200).json({
           message: "Succesful Login",
-          admin: loggedAdmin,
+          oriented: loggedOriented,
         });
       }
     }
-  } catch (error) {
-    console.log(error);
-    res.status(400).json({ message: error.message });
-  }
-};
-
-exports.logout = (req, res) => {
-  try {
-    res.status(200).clearCookie("jwt").json({ message: "Cookie cleared" });
   } catch (error) {
     console.log(error);
     res.status(400).json({ message: error.message });

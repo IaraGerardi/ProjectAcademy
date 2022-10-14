@@ -36,7 +36,7 @@ function CallEvents({ events }) {
 
     //eliminar un evento
     const deleteEvent = async (id) => {
-        await axios.delete(`http://localhost:8000/admin/${id}/deleteEvent/`, { withCredentials: true })
+        await axios.delete(`${process.env.REACT_APP_BASE_URL}/events/${id}/delete`, { withCredentials: true })
         window.location.reload(false);
     }
 

@@ -1,13 +1,11 @@
-'use strict';
-
-const { news } = require('./seed');
+const { news } = require("./seed");
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
-  async up(queryInterface, Sequelize) {
-    await queryInterface.bulkInsert('news', news, {});
+  async up(queryInterface) {
+    await queryInterface.bulkInsert("news", news, {});
   },
-  async down(queryInterface, Sequelize) {
-    await queryInterface.bulkDelete('news', null, {});
-  }
+  async down(queryInterface) {
+    await queryInterface.bulkDelete("news", null, {});
+  },
 };
