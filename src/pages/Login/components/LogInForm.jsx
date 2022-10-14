@@ -82,13 +82,13 @@ function FormLogIn() {
         <form className="flex flex-col" onSubmit={handleSubmit}>
             <FormInput onHandleChange={handleChange}
                 inputClass="w-80 focus:outline" labelClass="p-2 items-center" containerClass="flex flex-col w-96 h-28"
-                id="emailLog" type="email" label="Email" placeholder="Ingresa tu email"
+                errorClass="mx-2.5" id="emailLog" type="email" label="Email" placeholder="Ingresa tu email"
                 verifyInput={!(activeVerify.emailLog) ? null
                     : verifyMessages.emailLog && verifyMessages.emailLog !== true ? verifyMessages.emailLog
                         : backMessages.emailLog ? backMessages.emailLog : null} />
             <FormInput onHandleChange={handleChange}
-                inputClass="w-80 focus:outline" labelClass="p-2.5 items-center" containerClass="flex flex-col w-96"
-                id="passwordLog" type="password" label="Contraseña" placeholder="Ingresa tu contraseña"
+                inputClass="w-80 focus:outline" labelClass="p-2.5 items-center" containerClass="flex flex-col w-96 h-28"
+                errorClass="mx-2.5" id="passwordLog" type="password" label="Contraseña" placeholder="Ingresa tu contraseña"
                 verifyInput={!(activeVerify.passwordLog) ? null
                     : verifyMessages.passwordLog && verifyMessages.passwordLog !== true ? verifyMessages.passwordLog
                         : backMessages.passwordLog ? backMessages.passwordLog : null} />
