@@ -15,7 +15,7 @@ function StudentInfo() {
   const [age, setAge] = useState(1);
   const navigate = useNavigate()
   const { id } = useParams();
-  const URI = `http://localhost:8000/admin/orientados`;
+  const URI = `${process.env.REACT_APP_BASE_URL}/oriented`;
 
   // http://localhost:8000/admin/pruebaorientados?page=0&size=1000
   const [active, setActive] = useState(false);
