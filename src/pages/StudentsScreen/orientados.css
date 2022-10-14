@@ -10,15 +10,14 @@
     
 }
 
-
-.cont-ingresar-orientado {
+.cont-enter-oriented {
     display: flex;
     justify-content: space-around;
     margin: 40px 0px;
     width: 100%;
 }
 
-.btn-ingresar-orientado {
+.btn-enter-orientaded {
     width: 184px;
     height: 40px;
     border-radius: 8px;
@@ -30,7 +29,7 @@
     transition: 500ms;
 }
 
-.btn-ingresar-orientado:hover {
+.btn-enter-orientaded:hover {
     transition: 500ms;
     background-color: #20c0bb;
     cursor: pointer;
@@ -49,7 +48,7 @@
         border-bottom: 10px solid #E9F9F8;
     }
 
-    .btn-ingresar-orientado {
+    .btn-enter-orientaded {
         width: 144px;
         height: 40px;
         border-radius: 8px;
@@ -68,7 +67,7 @@
 
 @media (max-width: 610px) {
 
-    .cont-ingresar-orientado {
+    .cont-enter-orientaded {
         display: flex;
         flex-direction: column;
         justify-content: center;
