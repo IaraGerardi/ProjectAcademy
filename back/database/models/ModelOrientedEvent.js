@@ -1,32 +1,20 @@
-'use strict';
-const {
-  Model
-} = require('sequelize');
-module.exports = (sequelize, DataTypes) => {
+const { Model } = require("sequelize");
+
+module.exports = (sequelize) => {
   class ModelOrientedEvent extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
-    static associate(models) {
+    static associate() {
       // define association here
-      /* ModelOrientedEvent.belongsTo(models.ModelEvent, {
-        foreignKey: 'id',
-        targetKey: 'EventId'
-    }),
-    ModelOrientedEvent.belongsTo(models.ModelOriented, {
-      foreignKey: 'id',
-      targetKey: 'OrientedId'
-  }) */
     }
   }
-  ModelOrientedEvent.init({
-
-  },{
+  ModelOrientedEvent.init(
+    {},
+    {
       sequelize,
       freezeTableName: true,
-      modelName: 'oriented_event'
-  });
+      modelName: "oriented_event",
+      timestamps: true,
+      paranoid: true,
+    }
+  );
   return ModelOrientedEvent;
 };
