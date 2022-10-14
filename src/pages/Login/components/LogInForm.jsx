@@ -13,7 +13,7 @@ function FormLogIn() {
 
     let timer = ""
     const navigate = useNavigate();
-    const URI = `${ process.env.REACT_APP_BASE_URL}/admin/login`;
+    const URI = `${process.env.REACT_APP_BASE_URL}/admin/login`;
     const [store, dispatch] = useContext(StoreContext);
     // States
     const [loader, setLoader] = useState(false);
@@ -61,21 +61,21 @@ function FormLogIn() {
         if (!isVerified) {
             return;
         }
-        await axios.post(`${URI}`, form, { withCredentials: true })
-            .then((response) => {
-                console.log(response)
-                setLoader(false)
-                if (response.data.message === "Succesful Login") {
-                    localStorage.setItem("usuario", JSON.stringify(response.data.admin));
-                    dispatch({ type: types.authLogin })
-                    navigate('/inicio');
-                } else {
-                    setBackMessages(prevBackMessages => ({
-                        ...prevBackMessages,
-                        [response.data.params]: response.data.message,
-                    }))
-                }
-            })
+        try {
+            const response = await axios.post(`${URI}`, form, { withCredentials: true })
+            setLoader(false)
+            if (response.data.message === "Succesful Login") {
+                localStorage.setItem("usuario", JSON.stringify(response.data.admin));
+                dispatch({ type: types.authLogin })
+                navigate('/inicio');
+            }
+        } catch (err) {
+            setLoader(false)
+            setBackMessages(prevBackMessages => ({
+                ...prevBackMessages,
+                [err.response.data.params]: err.response.data.message,
+            }))
+        }
     }
 
     return (
