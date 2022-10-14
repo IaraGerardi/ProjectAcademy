@@ -25,6 +25,6 @@ exports.isAuthenticated = async (req, res, next) => {
       return next();
     }
   } else {
-    res.json({ logged: "Not logged" });
+    res.status(403).json({ logged: "Not logged" });
   }
 };
