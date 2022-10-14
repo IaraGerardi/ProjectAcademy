@@ -31,7 +31,7 @@ function Assign() {
     useEffect(() => {
         const getOriented = async () => {
             try {
-                const res = await axios.get(`${process.env.REACT_APP_BASE_URL}/oriented/paginated?page=0&size=1000&order=DESC`, { withCredentials: true });
+                const res = await axios.get(`${process.env.REACT_APP_BASE_URL}/oriented/paginated?page=0&size=1000`, { withCredentials: true });
                 setOriented(res.data.categories); /* LLama Orientados */
                 console.log(res.data.categories)
             } catch (error) {
