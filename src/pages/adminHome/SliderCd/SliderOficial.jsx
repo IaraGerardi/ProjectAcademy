@@ -5,26 +5,24 @@ import "slick-carousel/slick/slick-theme.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-function SliderOficial() {
+function SliderOfficial() {
   const [notice, setNotice] = useState([]);
   console.log(notice);
 
-  // este es un pedido asincronico
   useEffect(() => {
-    const ObtenerNotice = async () => {
-      const url = "http://localhost:8000/admin/novedades";
-      const result = await axios.get(url, {withCredentials: true});
-      // console.log(result.data);
+    const informationNotice = async () => {
+      const url = `${process.env.REACT_APP_BASE_URL}/news`;
+      const result = await axios.get(url, { withCredentials: true });
 
       setNotice(result.data);
     };
-    ObtenerNotice();
+    informationNotice();
   }, []);
 
   //
   const settings = {
     dots: true,
-    infinite: false,
+    infinite: true,
     speed: 500,
     slidesToShow: 3,
     slidesToScroll: 4,
@@ -47,6 +45,7 @@ function SliderOficial() {
           initialSlide: 2,
         },
       },
+
       {
         breakpoint: 480,
         settings: {
@@ -61,17 +60,19 @@ function SliderOficial() {
     <Slider className="sliderone" {...settings}>
       {notice.map((data) => (
         <div key={data.id} className="card">
-          <div className="textouno text-2xl font-bold">
+          <div className="textonecv text-2xl font-bold">
             <h2>{data.titulo}</h2>
           </div>
 
-          <div className="textodos">
+          <div className="texttwocv">
             <p>{data.content}</p>
           </div>
 
-          <div className="textotres">
-            <div className="botoneffectcd">
-              <a href={data.link}>Ver mas</a>
+          <div className="texttreecv">
+            <div className="Butoneffectone">
+              <a target="_blank" href={data.link}>
+                Ver más
+              </a>
             </div>
           </div>
         </div>
@@ -80,4 +81,4 @@ function SliderOficial() {
   );
 }
 
-export default SliderOficial;
+export default SliderOfficial;

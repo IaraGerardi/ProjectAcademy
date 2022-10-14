@@ -8,7 +8,7 @@ import UserAdmin from "./UsersAdmin/UserAdmin";
 
 function AdminPage() {
   return (
-    <div className="container-P w-full flex">
+    <div className="w-full flex">
       {" "}
       {/*  containedor padre tamaño igual a app */}
       <Sidebar />
@@ -24,12 +24,11 @@ function AdminPage() {
               <div className="h-30 w-full">
                 <div className="boxMainAdminHome mt-2">
                   <div className=" h-3/5">
-
-                    <div className="boxcentral h-1/6  items-center">
-                      <div className=" boxcentraltwo flex items-center w-9/12 ml-20 justify-between h-full">
+                    <div className="contentsone h-1/6  items-center">
+                      <div className="contentstwo flex items-center w-9/12 ml-20 justify-between h-full">
                         <div className="text-1xl text-center font-semibold mt-4 ml-2">
                           <div>Nuevos orientados</div>
-                          <div className="nuevosorientados bg-cyan-400 h-1 mt-2 w-48" ></div>
+                          <div className="newsorientedcv bg-cyan-400 h-1 mt-2 w-48"></div>
                         </div>
 
                         <div>
@@ -42,13 +41,13 @@ function AdminPage() {
                       </div>
                     </div>
 
-                    <div className="Adminbloque mt-3">
+                    <div className="Admindblock mt-3">
                       <UserAdmin />
                     </div>
 
                     <div className="items-center mt-1">
-                      <div className="flex items-center w-9/12 ml-20 justify-between h-auto ">
-                        <div className="orientadoscd">
+                      <div className="flex items-center w-9/10 ml-20 justify-between h-auto ">
+                        <div className="orientedcd">
                           <div>
                             <Link className="navegar" to="/orientados/newUsers">
                               Ver más orientados
@@ -59,10 +58,10 @@ function AdminPage() {
                     </div>
 
                     <div className=" h-3/1 items-center mt-4">
-                      <div className="flex items-center w-8/12 ml-20 justify-between h-auto ">
+                      <div className="flex  w-8/12 textnovedade justify-between h-auto ">
                         <div>
                           <div>
-                            <h1 className="BoxNovedadescd text-3xl text-bold">
+                            <h1 className="boxnoticesone text-3xl text-bold">
                               Novedades
                             </h1>
                           </div>
