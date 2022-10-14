@@ -160,44 +160,49 @@ export const EventForm = () => {
       <div className="container-derecho header-sa">
         <HeaderInicio propNamePage="Eventos" />
 
-        <div className='lg:mt-5 lg:ml-8'>
+        <div className='lg:mt-5 lg:m-8'>
 
           <div className='m-2 md:mt-5 md:ml-5'>
-            <h2 className="lg:text-2xl font-medium text-slate-700">Crear un evento</h2>
-            <h4 className='lg:text-lg text-slate-700 text-sm'>Puedes crear un primer encuentro entre Orientadores y Orientados.</h4>
+              <h2 className="lg:text-2xl font-medium text-slate-700">Crear un evento</h2>
+              <h4 className='lg:text-lg text-slate-700 text-sm'>Puedes crear un primer encuentro entre Orientadores y Orientados.</h4>
 
             {/* formulario agendar eventos */}
             <form
               onSubmit={handleSubmit}
-              className='mt-5 flex flex-col m-7 lg:m-0'>
+              className='mt-5 flex flex-col lg:m-0 lg:mr-20 md:mr-20'>
 
-              <h2 className="lg:text-base font-medium text-slate-700 lg:pt-5">01. Información sobre el evento</h2>
+              <h2 className="lg:text-base font-medium text-slate-700 lg:pt-3">01. Información sobre el evento</h2>
 
-              <div className='flex flex-col lg:flex-row md:flex-wrap lg:py-3 '>
+              <div className='flex flex-col lg:flex-row md:flex-wrap lg:py-2 pl-3 pt-2 '>
               
                 <FormInput
                   onHandleChange={(e) => { setName(e.target.value); handleTimer(e); }}
-                  inputClass="w-48 lg:w-80 text-sm p-2 rounded-lg border shadow-sm border-slate-300
+                  inputClass="w-56 md:w-80 lg:w-80 text-sm p-2 rounded-lg border shadow-sm border-slate-300
                   placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block focus:ring-1"
-                  labelClass="text-sm font-medium text-slate-600" containerClass="flex flex-col"
-                  id="eventName" type="text" label="Nombre del evento" placeholder="Ingresar nombre"
+                  labelClass="text-sm font-medium text-slate-600"
+                  containerClass="flex flex-col px-2"
+                  id="eventName" 
+                  type="text" 
+                  label="Nombre del evento" 
+                  placeholder="Ingresar nombre"
                   verifyInput={!(activeVerify.eventName) ? null :
-                    verifyMessages.eventName && verifyMessages.eventName !== true
-                      ? verifyMessages.eventName : null} />
+                  verifyMessages.eventName && verifyMessages.eventName !== true
+                  ? verifyMessages.eventName : null} 
+                />
 
-                <div className='flex flex-col lg:mx-8'>
-                  <label className='text-sm font-medium text-slate-600 '>Orientador participante</label>
+                <div className='flex flex-col px-2'>
+                  <label className='text-sm font-medium text-slate-600 mt-2 lg:mt-0'>Orientador participante</label>
                   <Select
                     placeholder="Seleccionar orientador"
                     options={counselorEvent.map(elem => ({ label: `${elem.name} ${elem.lastname}`, value: elem.id }))}
                     onChange={handlerSelectOne}
                     styles={customStylesEvent}
-                    className='w-48 lg:w-80'
+                    className='w-56 md:w-80  lg:w-80'
                   />
                 </div>
 
-                <div className='flex flex-col'>
-                  <label className='text-sm font-medium text-slate-600 '>Orientado/es participante/s</label>
+                <div className='flex flex-col px-2'>
+                  <label className='text-sm font-medium text-slate-600 mt-2 lg:mt-0'>Orientado/es participante/s</label>
                   <Select
                     placeholder="Seleccionar orientado"
                     options={orientedEvent.map(elem => ({ label: `${elem.name} ${elem.lastname}`, value: elem.id }))}
@@ -205,64 +210,55 @@ export const EventForm = () => {
                     isMulti
                     components={animatedComponents}
                     styles={customStylesEvent}
-                    className='w-48 lg:w-80'
+                    className='w-56 md:w-80 lg:w-80'
                   />
                 </div>
 
               </div>
 
-              <div className='border-y-2 pb-6 pt-6 w-5/6 mt-5'>
-                <h2 className="lg:text-base font-medium text-slate-700 mb-5">02. Días y Horarios disponibles </h2>
+              <div className='border-y-2 pb-6 pt-6  mt-4 '>
+                <h2 className="lg:text-base font-medium text-slate-700 mb-4">02. Días y Horarios disponibles </h2>
 
-                <div className='flex flex-col lg:flex-row md:flex-wrap '>
-
+                <div className='flex flex-col lg:flex-row md:flex-wrap lg:py-3 pl-3 pt-2 '>
+                
                   <FormInput
                     onHandleChange={(e) => { setDateEvent(e.target.value); handleTimer(e); }}
-                    inputClass="text-sm w-48 lg:w-80 p-2 rounded-lg border shadow-sm
+                    inputClass="text-sm w-56 md:w-80 lg:w-80 p-2 rounded-lg border shadow-sm
                     border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block 
                     focus:ring-1"
-                    labelClass="text-sm font-medium text-slate-600" containerClass="flex flex-col"
-                    id="eventDate" type="date" label="Fecha" placeholder="Ingresar fecha"
+                    labelClass="text-sm font-medium text-slate-600" 
+                    containerClass="flex flex-col px-2"
+                    id="eventDate" 
+                    type="date" 
+                    label="Fecha" 
+                    placeholder="Ingresar fecha"
                     verifyInput={!(activeVerify.eventDate) ? null :
-                      verifyMessages.eventDate && verifyMessages.eventDate !== true
-                        ? verifyMessages.eventDate : null} />
+                    verifyMessages.eventDate && verifyMessages.eventDate !== true
+                    ? verifyMessages.eventDate : null} 
+                  />
 
 
-                  {/* <div className='flex flex-col'>
-                    <label className="text-sm font-medium text-slate-600 ">Fecha</label>
-                    <input
-                      className='text-sm w-64 lg:w-80 p-2 rounded-lg border shadow-sm
-                       border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block 
-                       focus:ring-1'
-                      type='date'
-                      name='dateEvent'
-                      value={dateEvent}
-                      onChange={(e) => setDateEvent(e.target.value)}
-                      placeholder='Ingresar fecha'
-                    />
-                  </div> */}
-
-                  <div className='flex flex-col lg:mx-8'>
-                    <label className="text-sm font-medium text-slate-600">Horario</label>
+                  <div className='flex flex-col px-2'>
+                    <label className="text-sm font-medium text-slate-600 mt-2 lg:mt-0">Horario</label>
                     <Select
                       placeholder="Seleccionar horario"
                       value={optionsHours.filter((obj) => obj.value === timeEvent)} // set selected value
                       options={optionsHours}
                       onChange={handleHours}
                       styles={customStylesEvent}
-                      className="w-48 lg:w-80 "
+                      className="w-56 md:w-80 lg:w-80 "
                     />
                   </div>
 
-                  <div className='flex flex-col'>
-                    <label className="text-sm font-medium text-slate-600">Duración</label>
+                  <div className='flex flex-col px-2'>
+                    <label className="text-sm font-medium text-slate-600 mt-2 lg:mt-0">Duración</label>
                     <Select
                       placeholder="Seleccionar duración"
                       value={timeOptArray.filter((obj) => obj.value === durationEvent)}
                       options={timeOptArray}      
                       onChange={handleDuration}
                       styles={customStylesEvent}
-                      className="w-48 lg:w-80 "
+                      className="w-56 md:w-80 lg:w-80 "
                     />
                   </div>
 
@@ -271,41 +267,27 @@ export const EventForm = () => {
               </div>
 
               
-              <div className="containerInputLabel flex flex-col gap-2 py-3">
-              <h2 className="lg:text-base font-medium text-slate-700">03. Detalle </h2>
-              <div className='flex flex-col '>
-              <FormInput
-              
-                onHandleChange={(e) => { setDescriptionEvent(e.target.value); handleTimer(e); }}
-                inputClass=" lg:w-[678px] h-20 rounded-lg border border-slate-300 placeholder:pl-2 shadow-sm
-                placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block focus:ring-1"
-                labelClass="text-sm font-medium text-slate-600" containerClass="flex flex-col w-46"
-                id="eventComments" type="textarea" label="Comentarios del evento" placeholder="Escribir comentarios"
-                verifyInput={!(activeVerify.eventComments) ? null :
-                  verifyMessages.eventComments && verifyMessages.eventComments !== true
-                    ? verifyMessages.eventComments : null} />
-              </div>
-              </div>
-              {/* 
-
-                
-                  <label className="text-sm font-medium text-slate-600">
-                    Comentarios del evento
-                  </label>
-                  <textarea
-                    rows="4"
-                    cols="40"
-                    name='descriptionEvent'
-                    onChange={(e) => setDescriptionEvent(e.target.value)}
+              <div className="containerInputLabel flex flex-col gap-2 py-3 ">
+                <h2 className="lg:text-base font-medium text-slate-700">03. Detalle </h2>
+                <div className='flex flex-col pl-4'>
+                  <FormInput
+                    onHandleChange={(e) => { setDescriptionEvent(e.target.value); handleTimer(e); }}
+                    inputClass="md:w-80 lg:w-[660px] h-20 rounded-lg border border-slate-300 placeholder:pl-2 shadow-sm
+                    placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block focus:ring-1"
+                    labelClass="text-sm font-medium text-slate-600" 
+                    containerClass="flex flex-col w-56"
+                    id="eventComments" 
+                    type="textarea" 
+                    label="Comentarios del evento" 
                     placeholder="Escribir comentarios"
-                    className="w-64 lg:w-[678px] rounded-lg border border-slate-300 placeholder:pl-2 shadow-sm
-                     placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block focus:ring-1"
+                    verifyInput={!(activeVerify.eventComments) ? null :
+                    verifyMessages.eventComments && verifyMessages.eventComments !== true
+                    ? verifyMessages.eventComments : null} 
                   />
-                
+                </div>
+              </div>
 
-              */}
-
-              <button disabled={!isVerified} className=" w-44 h-10 m-3 bg-celesteValtech rounded-lg text-base text-white font-medium" type="submit">
+              <button disabled={!isVerified} className=" w-44 h-10 ml-9 md:ml-3 lg:ml-3 bg-celesteValtech rounded-lg text-base text-white font-medium" type="submit">
                 Agendar evento
               </button>
 
