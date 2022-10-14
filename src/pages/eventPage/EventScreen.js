@@ -45,7 +45,7 @@ export const EventScreen = () => {
         <HeaderInicio propNamePage="Eventos" />
 
         <div className='mt-7 ml-10'>
-          <div className="cont-ingresar-orientado">
+          <div className="cont-enter-oriented">
             <p className="text-new-user">Todos los eventos</p>
             <Link to='/eventos/form'><button className=" w-44 h-10 bg-celesteValtech rounded-lg text-base text-white font-medium " type="submit">
               Agendar evento
@@ -53,12 +53,12 @@ export const EventScreen = () => {
             </Link>
 
           </div> {/*Texto y Boton que redirije a la Página de Crear Eventos.*/}
-          <div className="cont-search-orientado">
+          <div className="cont-search-oriented">
             <input
               type="text"
               defaultValue={""}
               onChange={(e) => handleSearch(e.target.value)}
-              className="search-orientado"
+              className="search-oriented"
               placeholder="Buscar orientado por nombre y apellido"
             />
           </div>
