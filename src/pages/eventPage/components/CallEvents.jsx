@@ -41,7 +41,6 @@ function CallEvents({ events }) {
     }
 
     return (
-
         <>
             {/* TABLA DE EVENTOS */}
             <div className="table-events">
@@ -80,8 +79,9 @@ function CallEvents({ events }) {
                                         <td className="events">{event.date}</td>
                                         <td className="events">{event.time}</td>
                                         <td className="events">{event.name}</td>
-                                        <td className="events">{event.Orientados[0].name} {event.Orientados[0].lastname}</td>
-                                        <td className="events left"><img onClick={() => deleteEvent(event.id)} className="icon-delete" src={Deleted} alt="icon de tacho de basura" /></td>
+                                        <td className="events">{event.counselor.name} {event.counselor.lastname}</td>
+                                        <td className="events left"><img onClick={() => deleteEvent(event.id)} className="icon-delete" src={Deleted} alt="Icon trash" /></td>
+
                                     </tr>
                                 )
                             })}
@@ -92,13 +92,14 @@ function CallEvents({ events }) {
 
 
                 {events.map((eventAlert) => {
+
                     return (
                         <div key={eventAlert.id}>
                             {
-                                (Date.parse(new Date()) - Date.parse('2022-10-13T17:32:00') < 2000 || active)
+                                (Date.parse(new Date()) - Date.parse('2022-10-13T21:06:00') < 2000 || active)
                                 && <div className={`alert-event ${!active ? 'show-alert' : 'hidden-alert-event'}`}>
                                     <div className="cont-logo-event">
-                                        <img src={Affirmation} alt="icon de afirmacion" />
+                                        <img src={Affirmation} alt="Icon Affirmation" />
                                     </div>
 
                                     <div>
@@ -107,7 +108,7 @@ function CallEvents({ events }) {
                                     </div>
 
                                     <div className="cont-logo-event">
-                                        <img className="iconDelete-alert" src={Delete} onClick={() => setActive(!active)} alt="icon de eliminar" />
+                                        <img className="iconDelete-alert" src={Delete} onClick={() => setActive(!active)} alt="Icon Delete" />
                                     </div>
                                 </div>
 

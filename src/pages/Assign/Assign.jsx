@@ -15,59 +15,61 @@ import "./assign.css"
 import "../StudentsScreen/componentes-nuevoOrientado/alert.css"
 
 function Assign() {
-    const [oriented, setOrientaded] = useState([]);
-    const [orientadores, setOrientadores] = useState([]);
-    const [valorOrientador, setValorOrientador] = useState();
+    const [oriented, setOriented] = useState([]);
+    const [counselor, setCounselor] = useState([]);
+    const [valueCounselor, setValueCounselor] = useState();
     const [active, setActive] = useState(false);
     const { id } = useParams();
 
 
+    // `${process.env.REACT_APP_BASE_URL}/oriented/paginated?page=0&size=1000&order=DESC`
 
-    const URI = `http://localhost:8000/admin/orientados/${id}/orientadorToOrientado`;
+    const UriAsiggned = `${process.env.REACT_APP_BASE_URL}/oriented/${id}/counselorToOriented`;
     /*Hay que enviar los datos a esa URL*/
 
+
     useEffect(() => {
-        const getOrientados = async () => {
+        const getOriented = async () => {
             try {
-                const res = await axios.get(`http://localhost:8000/admin/pruebaorientados?page=0&size=1000`, { withCredentials: true });
-                setOrientaded(res.data.categories); /* LLama Orientados */
+                const res = await axios.get(`${process.env.REACT_APP_BASE_URL}/oriented/paginated?page=0&size=1000&order=DESC`, { withCredentials: true });
+                setOriented(res.data.categories); /* LLama Orientados */
                 console.log(res.data.categories)
             } catch (error) {
                 console.log(error);
             }
         };
-        getOrientados();
+        getOriented();
     }, []);
 
 
     useEffect(() => {
-        const getOrientadores = async () => {
+        const getCounselor = async () => {
             try {
-                const res = await axios.get("http://localhost:8000/admin/orientadores", { withCredentials: true });
-                setOrientadores(res.data); /* LLama Orientadores */
+                const res = await axios.get(`${process.env.REACT_APP_BASE_URL}/counselor`, { withCredentials: true });
+                setCounselor(res.data); /* LLama Orientadores */
 
             } catch (error) {
                 console.log(error);
             }
         };
-        getOrientadores();
+        getCounselor();
     }, []);
 
     // Opciones para el select
-    const options = orientadores?.map(orientador => ({
-        label: `${orientador.name} ${orientador.lastname}`,
-        value: orientador.id, name: "orientador", id: "orientador"
+    const options = counselor?.map(counselor => ({
+        label: `${counselor.name} ${counselor.lastname}`,
+        value: counselor.id, name: "counselor", id: "counselor"
     })
     )
 
     /*Captura el valor (abajo le paso el valor del ID)*/
     const handleSelectChange = ({ value }) => {
-        setValorOrientador(value);
+        setValueCounselor(value);
     }
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        await axios.put(URI, { orientador: valorOrientador }, { withCredentials: true })
+        await axios.put(UriAsiggned, { counselor: valueCounselor }, { withCredentials: true })
             .then((response) => {
 
                 if (response.status === 200) {
@@ -77,7 +79,7 @@ function Assign() {
             })
     }
 
-    const selectOrientado = oriented?.map((oriented) => { /*Recorre la api y retorna la card del orientado*/
+    const selectOriented = oriented?.map((oriented) => { /*Recorre la api y retorna la card del orientado*/
         const orientedCall = oriented
         /* Rompia porque orientado.id es un numero y los datos que trae useParams son strings, 
         parsee el id para poder poner que sea exactamente igual y que no salga un warning*/
@@ -133,14 +135,14 @@ function Assign() {
 
 
 
-    const selectOrientador = orientadores.map((orientador) => {
+    const selectCounselor = counselor.map((counselor) => {
 
         /*Recorre la api y retorna la card del orientador*/
         return (<div className="cont-student">
             <div className="cont-image-profile">
 
                 <img className="image-profile-student"
-                    src={require(`../../img-back/orientadores/${orientador.avatar}`)}
+                    src={require(`../../img-back/orientadores/${counselor.avatar}`)}
                     alt="Foto-perfil de Orientador" />
 
             </div>
@@ -151,20 +153,20 @@ function Assign() {
 
                 <div>
                     <div>
-                        <p className="name-student">{orientador.name} {orientador.lastname}</p>
+                        <p className="name-student">{counselor.name} {counselor.lastname}</p>
                         <span className="text-orientado">Orientador/a</span>
                     </div>
 
                     <div>
                         <span className="text-gray">MAIL</span>
-                        <p>{orientador.email}</p>
+                        <p>{counselor.email}</p>
                     </div>
 
                 </div>
 
                 <div className="cont-number">
                     <span className="text-gray">TELÉFONO</span>
-                    <p>{orientador.phone}</p>
+                    <p>{counselor.phone}</p>
                 </div>
 
             </div>
@@ -188,33 +190,33 @@ function Assign() {
 
                             <p className="text-referent">Asignación de Orientado a un Orientador Referente</p>
 
-                            {selectOrientado} {/*Llama a la card del orientado*/}
+                            {selectOriented} {/*Llama a la card del orientado*/}
 
                             <p className="text-referent two"> Selección de un Orientador Referente  </p>
 
                             <span className="referent">Referente</span>
 
                             {/*Input selector*/}
-                            {oriented[id - 1]?.OrientadoreId === null ?
+                            {oriented[id - 1]?.counselorId === null ?
                                 < form onSubmit={handleSubmit} >
                                     {/* Al select le paso como opciones un array llamado options que declaro afuera del return,
                                 tiene una funcion onChange que cambia valorOrientador, y en base a ese estado recorre options
                                 y define como valor el indice de options en el que la propiedad value coincida con el valor actual
                                 del estado valorOrientador*/}
                                     <Select
-                                        Name="orientador"
+                                        Name="counselor"
                                         options={options}
-                                        inputId="orientador"
+                                        inputId="counselor"
                                         onChange={handleSelectChange}
                                         placeholder="Select Option" className="selector-teacher"
                                         // styles={customStyles}
-                                        value={options.filter((obj) => obj.value === valorOrientador)}
+                                        value={options.filter((obj) => obj.value === valueCounselor)}
                                         defaultValue={{ label: "Seleccionar Orientador", value: "default" }}
                                     />
 
                                     <ul>
                                         {/*LLama a la card del orientador y le pasa el valor del id -1*/}
-                                        {selectOrientador[valorOrientador - 1]}
+                                        {selectCounselor[valueCounselor - 1]}
                                     </ul>
 
                                     {/*Botón para enviar orientador*/}
@@ -228,7 +230,7 @@ function Assign() {
 
                                 </form> :
                                 <>
-                                    <ul> {selectOrientador[oriented[id - 1]?.OrientadoreId - 1]} </ul>
+                                    <ul> {selectCounselor[oriented[id - 1]?.counselorId - 1]} </ul>
                                     <input
                                         readOnly={true}
                                         value="Modificar orientador/a"
@@ -246,11 +248,11 @@ function Assign() {
                                     return (
                                         <div>
                                             {
-                                                (Date.parse(new Date()) - Date.parse(`${orientedAlert.updatedAt}`) < 2000 || active) && <div className={`alert ${!active ? 'mostrar-alert' : 'ocultar-alert'}`}>
+                                                (Date.parse(new Date()) - Date.parse(`${orientedAlert.updatedAt}`) < 2000 || active) && <div className={`alert ${!active ? 'show-alert' : 'hidden-alert'}`}>
                                                     <img src={Affirmation} alt="icon de afirmacion" />
                                                     <div>
                                                         <p className="msg-alert">El Orientado fué asignado a su referente.</p>
-                                                        <span className="msg-alert-orientador">Recibirá una notificación para que contacte al Orientador.</span>
+                                                        <span className="msg-alert-counselor">Recibirá una notificación para que contacte al Orientador.</span>
                                                     </div>
                                                     <img className="iconDelete-alert" src={Delete} onClick={() => setActive(!active)} alt="icon de eliminar" />
                                                 </div>
