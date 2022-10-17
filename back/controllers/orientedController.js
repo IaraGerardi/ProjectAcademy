@@ -8,7 +8,7 @@ const {
 const getAllOriented = async (req, res) => {
   try {
     const oriented = await ModelOriented.findAll({
-      attributes: ["id", "name", "lastname", "photoProfile", "CounselorId"],
+      attributes: ["id", "name", "lastname", "photoProfile", "counselorId"],
     });
     res.status(200).json(oriented);
   } catch (error) {
