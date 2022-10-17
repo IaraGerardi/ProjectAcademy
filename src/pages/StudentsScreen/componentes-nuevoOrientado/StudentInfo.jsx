@@ -132,11 +132,12 @@ function StudentInfo() {
       {/*LLAMADO DE ALERTA */}
       {/* El .PARSE CONVIERTE LA FECHA Y HORA EN MILISEGUNDOS  Y PREGUNTO SI LA FECHA ACTUAL MENOS LA FECHA DE CREACION DEL ORIENTADO ES MENOR A 1000 MILISEGUNDOS ENTONCES MOSTRAME ALERT.*/}
       {
-        (Date.parse(new Date()) - Date.parse(`${orientedInfo.createdAt}`) < 2000 || active) && <div className={`alert ${!active ? 'show-alert' : 'hidden-alert'}`}>
+        (Date.parse(new Date()) - Date.parse(`${orientedInfo.createdAt}`) < 10000 || active) && <div className={`alert ${!active ? 'show-alert' : 'hidden-alert'}`}>
           <img src={Affirmation} alt="icon de afirmacion" />
           <p className="msg-alert">El Orientado fué ingresado con éxito.</p>
           <img className="iconDelete-alert" src={Delete} onClick={() => setActive(!active)} alt="icon de eliminar" />
         </div>
+
 
       }
 

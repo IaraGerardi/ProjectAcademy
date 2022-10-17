@@ -87,24 +87,7 @@ function CallEvents({ events }) {
                             })}
                         </tbody>
                     </table>
-                    {/* 
-{console.log(events.length)}
-
-                    {(Date.parse(new Date()) - Date.parse('2022-10-14T21:06:00') < 2000 || active)
-                                && <div className={`alert-event ${!active ? 'show-alert' : 'hidden-alert-event'}`}>
-                                    <div className="cont-logo-event">
-                                        <img src={Affirmation} alt="Icon Affirmation" />
-                                    </div>
-
-                                    <div>
-                                        <p className="msg-alert-event">Encuentro agendado</p>
-                                        <span className="msg-alert-counselor-events">El encuentro está agendado en la fecha que sugeriste, el orientado podrá confirmarlo o elegir otra fecha. Te notificaremos la confirmación o modificación</span>
-                                    </div>
-
-                                    <div className="cont-logo-event">
-                                        <img className="iconDelete-alert" src={Delete} onClick={() => setActive(!active)} alt="Icon Delete" />
-                                    </div>
-                                </div> } */}
+                  
 
 
                 </div>
@@ -113,7 +96,7 @@ function CallEvents({ events }) {
                     return (
                         <div key={eventAlert.id}>
                             {
-                                (Date.parse(new Date()) - Date.parse(eventAlert.createdAt) < 2000 || active)
+                                (Date.parse(new Date()) - Date.parse(eventAlert.createdAt) < 10000 || active)
                                 && <div className={`alert-event ${!active ? 'show-alert' : 'hidden-alert-event'}`}>
                                     <div className="cont-logo-event">
                                         <img src={Affirmation} alt="Icon Affirmation" />

@@ -33,7 +33,6 @@ function Assign() {
             try {
                 const res = await axios.get(`${process.env.REACT_APP_BASE_URL}/oriented/paginated?page=0&size=1000`, { withCredentials: true });
                 setOriented(res.data.categories); /* LLama Orientados */
-                console.log(res.data.categories)
             } catch (error) {
                 console.log(error);
             }
@@ -204,7 +203,7 @@ function Assign() {
                                 y define como valor el indice de options en el que la propiedad value coincida con el valor actual
                                 del estado valorOrientador*/}
                                     <Select
-                                        Name="counselor"
+                                        name="counselor"
                                         options={options}
                                         inputId="counselor"
                                         onChange={handleSelectChange}

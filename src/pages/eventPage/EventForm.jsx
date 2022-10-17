@@ -289,7 +289,7 @@ export const EventForm = () => {
                 </div>
               </div>
 
-              <button disabled={!isVerified} className=" w-44 h-10 ml-9 md:ml-3 lg:ml-3 bg-celesteValtech rounded-lg text-base text-white font-medium" type="submit">
+              <button  className=" w-44 h-10 ml-9 md:ml-3 lg:ml-3 bg-celesteValtech rounded-lg text-base text-white font-medium" type="submit">
                 Agendar evento
               </button>
 
