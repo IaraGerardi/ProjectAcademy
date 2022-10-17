@@ -84,7 +84,7 @@ function FormOrientado() {
     }
     const formData = new FormData()
     formData.append('photoProfile', photoProfile)
-    await axios.post(URI, {
+    await axios.post(URI ,  {
       name: name,
       password: password,
       lastname: lastname,
@@ -98,7 +98,9 @@ function FormOrientado() {
       address: address,
       why: why
     },
+    
       {
+        withCredentials: true,
         headers: {
           'Content-Type': 'multipart/form-data'
         }
