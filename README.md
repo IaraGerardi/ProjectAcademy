@@ -27,12 +27,13 @@ This project was made using the follow technologies (last version):
 3. database migration: <br>
 4. open MySql and create an schema called 'project_academy'<br>
 5. go to directory ../ProjectAcademy/back/database <br>
-6. run sequelize db:migrate <br>
-7. run sequelize db:seed:all <br>
-8. now you should have the database created with tables and data.<br>
-9. run `nodemon` on back side.
-10. run `npm start` on front side.
-11. open http://localhost:3000 with your browser to see the result.
+6. run ```npm i -g sequelize-cli``` <br>
+7. run ```sequelize db:migrate``` <br>
+8. run ```sequelize db:seed:all``` <br>
+9. now you should have the database created with tables and data.<br>
+10. run ```nodemon``` on back side.
+11. run ```npm start``` on front side.
+12. open http://localhost:3000 with your browser to see the result.
 
 ## License
 
