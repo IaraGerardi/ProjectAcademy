@@ -109,7 +109,7 @@ const counselorToOriented = async (req, res) => {
   try {
     await ModelOriented.update(
       {
-        CounselorId: counselor,
+        counselorId: counselor,
       },
       {
         where: {
