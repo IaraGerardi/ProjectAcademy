@@ -128,8 +128,43 @@ const counselorToOriented = async (req, res) => {
 
 const orientedPasswordUpdate = async (req, res) => {
   try {
-    const { newPassword } = req.body;
-      await ModelOriented.update(
+    const { newPassword, newPasswordRepeat, actualPassword } = req.body;
+    if (!actualPassword) {
+      res.status(403).json({
+        message: "Ingrese la contraseña actual",
+        params: "actualPassword",
+      });
+    } else if (!newPassword) {
+      res.status(403).json({
+        message: "Ingrese la nueva contraseña",
+        params: "newPassword",
+      });
+    } else if (!newPasswordRepeat) {
+      res.status(403).json({
+        message: "Ingrese la nueva contraseña repetida",
+        params: "newPasswordRepeat",
+      });
+    } else {
+      const oriented = await ModelOriented.scope("withPassword").findOne({
+        where: { id: req.params.id },
+      });
+      if(!await bcryptjs.compare(actualPassword, oriented.password)) {
+        res.status(403).json({
+          message: "Contraseña actual incorrecta",
+          params: "actualPassword",
+        });
+      } else if (newPassword !== newPasswordRepeat) {
+        res.status(403).json({
+          message: "La contraseña repetida es diferentes",
+          params: "newPasswordRepeat",
+        });
+      } else if (newPassword === actualPassword) {
+        res.status(403).json({
+          message: "Las contraseña actual y la nueva deben ser diferentes",
+          params: "newPassword",
+        });
+      } else {
+        await ModelOriented.update(
           {
             password: await bcryptjs.hash(newPassword, 10),
           },
@@ -142,6 +177,8 @@ const orientedPasswordUpdate = async (req, res) => {
     res
       .status(200)
       .json({ message: "Succesfully updated password" });
+      }
+    }
   } catch (error) {
     console.log(error);
     res.status(400).json({ message: error.message });

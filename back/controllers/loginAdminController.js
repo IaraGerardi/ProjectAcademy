@@ -1,5 +1,4 @@
 const jwt = require("jsonwebtoken");
-const bcryptjs = require("bcryptjs");
 const { admins: ModelAdmin } = require("../database/models/index");
 
 exports.adminLogin = async (req, res) => {
@@ -24,16 +23,12 @@ exports.adminLogin = async (req, res) => {
       const admin = await ModelAdmin.scope("withPassword").findOne({
         where: { email: emailLog },
       });
-      console.log(passwordLog)
-      console.log(admin)
-      console.log(admin.password)
-      console.log(await bcryptjs.compare(passwordLog, admin.password))
       if (admin == null) {
         res.status(403).json({
           message: "Email incorrecto",
           params: "emailLog",
         });
-      } else if (await bcryptjs.compare(passwordLog, admin.password) === false) {
+      } else if (passwordLog !== admin.password) {
         res.status(403).json({
           message: "Contraseña incorrecta",
           params: "passwordLog",

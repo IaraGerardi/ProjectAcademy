@@ -1,4 +1,5 @@
 const jwt = require("jsonwebtoken");
+const bcryptjs = require("bcryptjs");
 const { orienteds: ModelOriented } = require("../database/models/index");
 
 exports.orientedLogin = async (req, res) => {
@@ -28,7 +29,7 @@ exports.orientedLogin = async (req, res) => {
           message: "Incorrect email",
           params: "emailLog",
         });
-      } else if (passwordLog !== oriented.password) {
+      } else if (!await bcryptjs.compare(passwordLog, oriented.password)) {
         res.json({
           message: "Incorrect Password",
           params: "passwordLog",
