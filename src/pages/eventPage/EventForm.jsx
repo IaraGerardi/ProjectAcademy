@@ -52,11 +52,12 @@ export const EventForm = () => {
     return () => clearTimeout(timer);
   }
 
+  useEffect(()=>{
+    handleVerifyForm();
+  },[nameEvent, valueCounselor, valueOriented, dateEvent, timeEvent, durationEvent, descriptionEvent])
   // PETICION 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // handleVerifyForm();
-
     await axios.post(URI, {
       nameEvent,
       counselorEvent: valueCounselor,
