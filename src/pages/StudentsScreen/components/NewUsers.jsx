@@ -7,7 +7,7 @@ function NewUsers() {
     <div className="cont-enter-oriented">
         <p className="text-new-user">Nuevos usuarios a orientar</p>
         <Link to="/orientados/nuevo">
-            <button className="btn-enter-orientaded" /* onClick={handleRenderForm} */>Ingresar orientado</button>
+            <button className="w-44 h-10 bg-celesteValtech rounded-lg text-base text-white font-medium " /* onClick={handleRenderForm} */>Ingresar orientado</button>
         </Link>
     </div> {/*Texto y Boton que redirije a la Página de ingresar orientados.*/}
 

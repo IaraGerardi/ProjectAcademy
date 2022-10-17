@@ -87,7 +87,7 @@ function CallEvents({ events }) {
                             })}
                         </tbody>
                     </table>
-{/* 
+                    {/* 
 {console.log(events.length)}
 
                     {(Date.parse(new Date()) - Date.parse('2022-10-14T21:06:00') < 2000 || active)
@@ -108,9 +108,6 @@ function CallEvents({ events }) {
 
 
                 </div>
-
-                 {/* {console.log(eventList)} */}
-
 
                 {events.map((eventAlert) => {
                     return (
@@ -137,7 +134,7 @@ function CallEvents({ events }) {
                     )
 
 
-                })} 
+                })}
 
                 {/* 
                 {

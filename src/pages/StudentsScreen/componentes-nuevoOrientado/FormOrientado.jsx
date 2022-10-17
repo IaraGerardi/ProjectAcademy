@@ -398,13 +398,6 @@ function FormOrientado() {
           <button className=" w-32 text-sm underline" onClick={handleCancelForm}>Cancelar ingreso</button>
         </div>
 
-
-        <div className={`alert ${active ? 'mostrar-alert' : 'ocultar-alert'}`}>
-          <img src={Affirmation} alt="icon de afirmacion" />
-          <p className="msg-alert">El Orientado fué ingresado con éxito.</p>
-          <img className="iconDelete-alert" src={Delete} onClick={() => setActive(!active)} alt="icon de eliminar" />
-        </div>
-
       </form>
     </div>
   );
