@@ -55,7 +55,8 @@ export const EventForm = () => {
   // PETICION 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    handleVerifyForm();
+    // handleVerifyForm();
+
     await axios.post(URI, {
       nameEvent,
       counselorEvent: valueCounselor,
@@ -64,7 +65,7 @@ export const EventForm = () => {
       timeEvent,
       durationEvent,
       descriptionEvent,
-    }
+    }, {withCredentials: true}
     )
       .then((response) => {
         if (response.status === 200) {

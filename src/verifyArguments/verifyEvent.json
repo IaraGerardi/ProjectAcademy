@@ -1,5 +1,13 @@
 [
     {
+        "id": "nameEvent",
+        "type": "name"
+    },
+    {
+        "id": "valueCounselor",
+        "type": ""
+    },
+    {
         "id": "hours",
         "type": "time",
         "noSpaces": true
