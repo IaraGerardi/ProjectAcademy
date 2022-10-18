@@ -7,7 +7,7 @@ import axios from "axios";
 
 function SliderOfficial() {
   const [notice, setNotice] = useState([]);
-  console.log(notice);
+ 
 
   useEffect(() => {
     const informationNotice = async () => {

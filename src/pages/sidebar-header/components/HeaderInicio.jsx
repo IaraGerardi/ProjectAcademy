@@ -44,7 +44,7 @@ function HeaderInicio({ propNamePage }) {
         try {
             const resLogout = await axios.get(`${process.env.REACT_APP_BASE_URL}/logout`, { withCredentials: true });
             setInfoAdmin(resLogout.data);
-            console.log(resLogout.data);
+           
             localStorage.removeItem("usuario")
            dispatch({type:types.authLogout})
            /*  navigate('/login') */

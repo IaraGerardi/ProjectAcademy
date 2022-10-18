@@ -6,7 +6,7 @@
 
 /*  obtengo usuario del localstorage */
    let userStorage=localStorage.getItem('usuario');
-  console.log(userStorage)
+ 
  
 
  const obtengoUser=()=>{
