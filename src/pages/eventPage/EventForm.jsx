@@ -4,6 +4,7 @@ import { Sidebar } from '../sidebar-header/components/Sidebar.js';
 import Select from "react-select";
 import FormInput from '../global-components/formInput';
 import makeAnimated from 'react-select/animated';
+import Icon from '../global-components/Svg-icon';
 import { useState, useEffect } from "react";
 import axios from 'axios';
 import { optionsHours } from './duration';
@@ -25,26 +26,22 @@ export const EventForm = () => {
   const [active, setActive] = useState(false);
   const [timeOptArray, setTimeOptArray] = useState([]);
 
-  const animatedComponents = makeAnimated();
   const navegate = useNavigate();
-  // Verifications
-  let timer = null;
+  const animatedComponents = makeAnimated();
+  const URI = `${process.env.REACT_APP_BASE_URL}/events/create`;
+
   const [activeVerify, setActiveVerify] = useState({});
   const formValues = [{ inputValue: nameEvent }, { inputValue: valueCounselor }, { inputValue: valueOriented }, { inputValue: dateEvent },
   { inputValue: timeEvent }, { inputValue: durationEvent }, { inputValue: descriptionEvent }];
   const { handleVerifyForm, verifyMessages, isVerified } = useVerify(formValues, verifications);
 
-  // URL DE PETICION 
-
-  const URI = `${process.env.REACT_APP_BASE_URL}/events/create`
-
   const handleTimer = (e) => {
     const inputName = e.target ? e.target.name : e.name ? e.name : e[0].name
-    console.log(inputName, e)
+
     if (activeVerify[inputName] === true) {
       return;
     }
-    timer = setTimeout(() => {
+    let timer = setTimeout(() => {
       setActiveVerify({
         ...activeVerify,
         [inputName]: true
@@ -52,15 +49,25 @@ export const EventForm = () => {
     }, 1000)
     return () => clearTimeout(timer);
   }
-  console.log(activeVerify)
-  // console.table(activeVerify)
+
   useEffect(() => {
     handleVerifyForm();
   }, [nameEvent, valueCounselor, valueOriented, dateEvent, timeEvent, durationEvent, descriptionEvent])
 
+  const showAllVerifications = () => {
+    let mutableObj = {};
+    Object.keys(verifications).forEach((i) => {
+      mutableObj[verifications[i].id] = true;
+    });
+    setActiveVerify(mutableObj)
+  }
   // PETICION 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!isVerified) {
+      showAllVerifications();
+      return;
+    }
     await axios.post(URI, {
       nameEvent,
       counselorEvent: valueCounselor,
@@ -125,7 +132,7 @@ export const EventForm = () => {
 
   //manejador de evento del select 1
   const handlerSelectOne = (e) => {
-    setValueCounselor(e.value);
+    setValueCounselor(e);
     handleTimer(e);
   };
 
@@ -159,7 +166,6 @@ export const EventForm = () => {
     })
   }
 
-
   return (
 
     <div className="container-P w-full flex">
@@ -187,9 +193,10 @@ export const EventForm = () => {
                   inputClass="w-56 md:w-80 lg:w-80 text-sm p-2 rounded-lg border shadow-sm border-slate-300
                   placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block focus:ring-1"
                   labelClass="text-sm font-medium text-slate-600"
-                  containerClass="flex flex-col px-2"
+                  containerClass="flex flex-col px-2 h-20"
                   id="eventName"
                   type="text"
+                  errorClass="mt-[5px]"
                   label="Nombre del evento"
                   placeholder="Ingresar nombre"
                   verifyInput={!(activeVerify.eventName) ? null :
@@ -208,6 +215,17 @@ export const EventForm = () => {
                     styles={customStylesEvent}
                     className='w-56 md:w-80 lg:w-80'
                   />
+                  {!(activeVerify.valueCounselor) ? null : verifyMessages.valueCounselor &&
+                    verifyMessages.valueCounselor !== null && verifyMessages.valueCounselor !== true ?
+                    <div className={`flex items-center relative bottom-3 py-2`}>
+                      <Icon
+                        classname="w-3.5 h-3.5 mr-1 fill-red-600"
+                        type="exclamationMark"
+                        width="24" height="24" />
+                      <span className="text-red-600 text-xs ">{verifyMessages.valueCounselor}</span>
+                    </div>
+                    : null
+                  }
                 </div>
 
                 <div className='flex flex-col px-2'>
@@ -239,6 +257,7 @@ export const EventForm = () => {
                     focus:ring-1"
                     labelClass="text-sm font-medium text-slate-600"
                     containerClass="flex flex-col px-2"
+                    errorClass="mt-[5px]"
                     id="eventDate"
                     type="date"
                     label="Fecha"
@@ -259,6 +278,17 @@ export const EventForm = () => {
                       styles={customStylesEvent}
                       className="w-56 md:w-80 lg:w-80 "
                     />
+                    {!(activeVerify.eventTime) ? null : verifyMessages.eventTime &&
+                      verifyMessages.eventTime !== null && verifyMessages.eventTime !== true ?
+                      <div className={`flex items-center relative bottom-3 py-2`}>
+                        <Icon
+                          classname="w-3.5 h-3.5 mr-1 fill-red-600"
+                          type="exclamationMark"
+                          width="24" height="24" />
+                        <span className="text-red-600 text-xs ">{verifyMessages.eventTime}</span>
+                      </div>
+                      : null
+                    }
                   </div>
 
                   <div className='flex flex-col px-2'>
@@ -271,6 +301,17 @@ export const EventForm = () => {
                       styles={customStylesEvent}
                       className="w-56 md:w-80 lg:w-80 "
                     />
+                    {!(activeVerify.duration) ? null : verifyMessages.duration &&
+                      verifyMessages.duration !== null && verifyMessages.duration !== true ?
+                      <div className={`flex items-center relative bottom-3 py-2`}>
+                        <Icon
+                          classname="w-3.5 h-3.5 mr-1 fill-red-600"
+                          type="exclamationMark"
+                          width="24" height="24" />
+                        <span className="text-red-600 text-xs ">{verifyMessages.duration}</span>
+                      </div>
+                      : null
+                    }
                   </div>
 
                 </div>
@@ -285,11 +326,11 @@ export const EventForm = () => {
                     inputClass="md:w-80 lg:w-[660px] h-20 rounded-lg border border-slate-300 placeholder:pl-2 shadow-sm
                     placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block focus:ring-1"
                     labelClass="text-sm font-medium text-slate-600"
-                    containerClass="flex flex-col w-56"
+                    containerClass="flex flex-col w-56 md:w-80 lg:w-[660px] h-36 bg-blue-200"
+                    errorClass="mt-[5px]"
                     id="eventComments"
                     type="textarea"
                     label="Comentarios del evento"
-
                     placeholder="Escribir comentarios"
                     verifyInput={!(activeVerify.eventComments) ? null :
                       verifyMessages.eventComments && verifyMessages.eventComments !== true
@@ -298,9 +339,8 @@ export const EventForm = () => {
                 </div>
               </div>
 
-              <button type="submit" disabled={!isVerified} 
-              className={`${isVerified ? null : "opacity-60"} 
-              w-44 h-10 ml-9 md:ml-3 lg:ml-3 bg-celesteValtech rounded-lg text-base text-white font-medium`}>
+              <button type="submit"
+                className={`w-44 h-10 ml-9 md:ml-3 lg:ml-3 bg-celesteValtech rounded-lg text-base text-white font-medium`}>
                 Agendar evento
               </button>
 
