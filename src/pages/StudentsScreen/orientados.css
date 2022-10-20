@@ -67,7 +67,7 @@
 
 @media (max-width: 610px) {
 
-    .cont-enter-orientaded {
+    .cont-enter-oriented {
         display: flex;
         flex-direction: column;
         justify-content: center;
