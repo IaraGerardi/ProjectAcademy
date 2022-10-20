@@ -68,9 +68,9 @@ function HeaderInicio({ propNamePage }) {
                     <img className="img-header cursor-pointer" src={require(`../../../img-back/admins/${parseado.avatar}`)} onClick={() => setActive(!active)} alt={parseado.name} />
 
                     <div className={`sesion ${active ? 'mostrar-sesion' : 'ocultar-sesion'}`}>
-                        <Link to="/profile" className="p-2"><img className="logo-perfil" src={LogoPerfil} alt='icon-profile' /> Mi perfil</Link>
+                        <Link to="/profile" className="p-2"><img className="logo-profile" src={LogoPerfil} alt='icon-profile' /> Mi perfil</Link>
 
-                        <Link to="/"><img className="logo-perfil" src={cerrarSesion} alt='icon-logout' /><button onClick={() => { getLogout() }}>Cerrar sesión</button></Link>
+                        <Link to="/"><img className="logo-profile" src={cerrarSesion} alt='icon-logout' /><button onClick={() => { getLogout() }}>Cerrar sesión</button></Link>
 
                     </div>
                 </div>
