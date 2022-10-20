@@ -64,12 +64,10 @@ export const EventForm = () => {
   // PETICION 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("se ejecuto la funcion")
     if (!isVerified) {
       showAllVerifications();
       return;
     }
-    console.log("se ejecuto la peticion")
     await axios.post(URI, {
       nameEvent,
       counselorEvent: valueCounselor,

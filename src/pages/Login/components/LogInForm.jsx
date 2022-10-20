@@ -64,19 +64,18 @@ function FormLogIn() {
         }
         try {
             const response = await axios.post(`${URI}`, form, { withCredentials: true })
-            setLoader(false)
             if (response.data.message === "Succesful Login") {
                 localStorage.setItem("usuario", JSON.stringify(response.data.admin));
                 dispatch({ type: types.authLogin })
                 navigate('/inicio');
             }
         } catch (err) {
-            setLoader(false)
             setBackMessages(prevBackMessages => ({
                 ...prevBackMessages,
                 [err.response.data.params]: err.response.data.message,
             }))
         }
+        setLoader(false)
     }
 
     return (
