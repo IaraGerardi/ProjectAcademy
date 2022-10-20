@@ -14,6 +14,11 @@ function useVerify(formValues, validations) {
                 ...prevVerifyMessages,
                 [id]: "El campo no puede estar vacio",
             }))
+        } else if (type === "select" && value.length < 1) {
+            setVerifyMessages(prevVerifyMessages => ({
+                ...prevVerifyMessages,
+                [id]: "El campo no puede estar vacio",
+            }))
         } else if (payload.mustHaveNumbers && /\d/.test(value) === false) {
             setVerifyMessages(prevVerifyMessages => ({
                 ...prevVerifyMessages,

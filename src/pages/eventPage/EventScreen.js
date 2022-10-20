@@ -26,7 +26,7 @@ export const EventScreen = () => {
     })
 
     const counselorArray = filteredOrientedList.map((oriented) => {
-      return oriented.CounselorId;
+      return oriented.counselorId;
     })
 
     const filteredEvents = events.filter((event) => {

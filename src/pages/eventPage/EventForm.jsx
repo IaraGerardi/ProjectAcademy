@@ -64,10 +64,12 @@ export const EventForm = () => {
   // PETICION 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log("se ejecuto la funcion")
     if (!isVerified) {
       showAllVerifications();
       return;
     }
+    console.log("se ejecuto la peticion")
     await axios.post(URI, {
       nameEvent,
       counselorEvent: valueCounselor,
@@ -204,7 +206,7 @@ export const EventForm = () => {
                       ? verifyMessages.eventName : null}
                 />
 
-                <div className='flex flex-col px-2'>
+                <div className='flex flex-col px-2 h-20'>
                   <label className='text-sm font-medium text-slate-600 mt-2 lg:mt-0'>Orientador participante</label>
                   <Select
                     Name="valueCounselor"
@@ -217,7 +219,7 @@ export const EventForm = () => {
                   />
                   {!(activeVerify.valueCounselor) ? null : verifyMessages.valueCounselor &&
                     verifyMessages.valueCounselor !== null && verifyMessages.valueCounselor !== true ?
-                    <div className={`flex items-center relative bottom-3 py-2`}>
+                    <div className={`flex items-center relative bottom-3 py-2 mt-[5px]`}>
                       <Icon
                         classname="w-3.5 h-3.5 mr-1 fill-red-600"
                         type="exclamationMark"
@@ -228,7 +230,7 @@ export const EventForm = () => {
                   }
                 </div>
 
-                <div className='flex flex-col px-2'>
+                <div className='flex flex-col px-2 h-20'>
                   <label className='text-sm font-medium text-slate-600 mt-2 lg:mt-0'>Orientado/es participante/s</label>
                   <Select
                     Name="oriented"
@@ -241,6 +243,17 @@ export const EventForm = () => {
                     styles={customStylesEvent}
                     className='w-56 md:w-80 lg:w-80'
                   />
+                  {!(activeVerify.oriented) ? null : verifyMessages.oriented &&
+                    verifyMessages.oriented !== null && verifyMessages.oriented !== true ?
+                    <div className={`flex items-center relative bottom-3 py-2 mt-[5px]`}>
+                      <Icon
+                        classname="w-3.5 h-3.5 mr-1 fill-red-600"
+                        type="exclamationMark"
+                        width="24" height="24" />
+                      <span className="text-red-600 text-xs">{verifyMessages.oriented}</span>
+                    </div>
+                    : null
+                  }
                 </div>
 
               </div>
@@ -249,15 +262,15 @@ export const EventForm = () => {
                 <h2 className="lg:text-base font-medium text-slate-700 mb-4">02. Días y Horarios disponibles </h2>
 
                 <div className='flex flex-col lg:flex-row md:flex-wrap lg:py-3 pl-3 pt-2 '>
-
+                  {/* Agregarle altura al input en si */}
                   <FormInput
                     onHandleChange={(e) => { setDateEvent(e.target.value); handleTimer(e); }}
                     inputClass="text-sm w-56 md:w-80 lg:w-80 p-2 rounded-lg border shadow-sm
                     border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block 
-                    focus:ring-1"
+                    focus:ring-1 h-10"
                     labelClass="text-sm font-medium text-slate-600"
-                    containerClass="flex flex-col px-2"
-                    errorClass="mt-[5px]"
+                    containerClass="flex flex-col px-2 h-20"
+                    errorClass="h-2 relative top-[0.1px]"
                     id="eventDate"
                     type="date"
                     label="Fecha"
@@ -267,8 +280,7 @@ export const EventForm = () => {
                         ? verifyMessages.eventDate : null}
                   />
 
-
-                  <div className='flex flex-col px-2'>
+                  <div className='flex flex-col px-2 h-20'>
                     <label className="text-sm font-medium text-slate-600 mt-2 lg:mt-0">Horario</label>
                     <Select
                       placeholder="Seleccionar horario"
@@ -280,7 +292,7 @@ export const EventForm = () => {
                     />
                     {!(activeVerify.eventTime) ? null : verifyMessages.eventTime &&
                       verifyMessages.eventTime !== null && verifyMessages.eventTime !== true ?
-                      <div className={`flex items-center relative bottom-3 py-2`}>
+                      <div className={`flex items-center relative bottom-3 py-2 mt-[5px]`}>
                         <Icon
                           classname="w-3.5 h-3.5 mr-1 fill-red-600"
                           type="exclamationMark"
@@ -291,7 +303,7 @@ export const EventForm = () => {
                     }
                   </div>
 
-                  <div className='flex flex-col px-2'>
+                  <div className='flex flex-col px-2 h-20'>
                     <label className="text-sm font-medium text-slate-600 mt-2 lg:mt-0">Duración</label>
                     <Select
                       placeholder="Seleccionar duración"
@@ -303,7 +315,7 @@ export const EventForm = () => {
                     />
                     {!(activeVerify.duration) ? null : verifyMessages.duration &&
                       verifyMessages.duration !== null && verifyMessages.duration !== true ?
-                      <div className={`flex items-center relative bottom-3 py-2`}>
+                      <div className={`flex items-center relative bottom-3 py-2 mt-[5px]`}>
                         <Icon
                           classname="w-3.5 h-3.5 mr-1 fill-red-600"
                           type="exclamationMark"
@@ -320,13 +332,13 @@ export const EventForm = () => {
 
               <div className="containerInputLabel flex flex-col gap-2 py-3 ">
                 <h2 className="lg:text-base font-medium text-slate-700">03. Detalle </h2>
-                <div className='flex flex-col pl-4'>
+                <div className='flex flex-col pl-4 '>
                   <FormInput
                     onHandleChange={(e) => { setDescriptionEvent(e.target.value); handleTimer(e); }}
                     inputClass="md:w-80 lg:w-[660px] h-20 rounded-lg border border-slate-300 placeholder:pl-2 shadow-sm
-                    placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block focus:ring-1"
-                    labelClass="text-sm font-medium text-slate-600"
-                    containerClass="flex flex-col w-56 md:w-80 lg:w-[660px] h-36 bg-blue-200"
+                    placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block focus:ring-1 resize-none"
+                    labelClass="text-sm font-medium text-slate-600 "
+                    containerClass="flex flex-col w-56 md:w-80 lg:w-[660px] h-36"
                     errorClass="mt-[5px]"
                     id="eventComments"
                     type="textarea"
