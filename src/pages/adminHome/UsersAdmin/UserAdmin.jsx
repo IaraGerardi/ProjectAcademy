@@ -17,7 +17,7 @@ function UserAdmin() {
         });
         setNewusers(res.data.slice(0, 6));
         setLoadingOriented(false);
-        console.log(res.data);
+        
       } catch (error) {
         console.log(error);
       }

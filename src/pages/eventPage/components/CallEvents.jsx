@@ -79,7 +79,7 @@ function CallEvents({ events }) {
                                         <td className="events">{event.date}</td>
                                         <td className="events">{event.time}</td>
                                         <td className="events">{event.name}</td>
-                                        <td className="events">{event.counselor.name} {event.counselor.lastname}</td>
+                                        <td className="events">{event.counselor?.name} {event.counselor?.lastname}</td>
                                         <td className="events left"><img onClick={() => deleteEvent(event.id)} className="icon-delete" src={Deleted} alt="Icon trash" /></td>
 
                                     </tr>
