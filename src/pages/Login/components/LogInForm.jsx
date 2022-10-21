@@ -25,10 +25,12 @@ function FormLogIn() {
     const formValues = [{ inputValue: form.emailLog }, { inputValue: form.passwordLog }];
     const { handleVerifyForm, verifyMessages, isVerified } = useVerify(formValues, verifications);
 
-    const handleSetNull = (obj) => {
-        Object.keys(obj).forEach((index) => {
-            obj[index] = null;
-        });
+    const handleChange = (e) => {
+        handleTimer(e)
+        setForm({
+            ...form,
+            [e.target.id]: e.target.value,
+        })
     }
 
     const handleTimer = (e) => {
@@ -44,18 +46,29 @@ function FormLogIn() {
         return () => clearTimeout(timer);
     }
 
-    const handleChange = (e) => {
-        handleTimer(e)
-        setForm({
-            ...form,
-            [e.target.id]: e.target.value,
-        })
+
+    const handleSetNull = (obj) => {
+        Object.keys(obj).forEach((index) => {
+            obj[index] = null;
+        });
     }
 
     useEffect(() => {
         handleSetNull(backMessages);
         handleVerifyForm();
     }, [form])
+
+    const handleErrorMessage = (property) => {
+        if (!(activeVerify[property]) || !(verifyMessages[property])) {
+            return null;
+        }
+
+        if (verifyMessages[property] !== true) {
+            return verifyMessages[property];
+        } else {
+            return backMessages[property];
+        }
+    }
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -74,8 +87,9 @@ function FormLogIn() {
                 ...prevBackMessages,
                 [err.response.data.params]: err.response.data.message,
             }))
+        } finally {
+            setLoader(false)
         }
-        setLoader(false)
     }
 
     return (
@@ -90,9 +104,7 @@ function FormLogIn() {
                 placeholder="Ingresa tu email"
                 inputClass="w-80 focus:outline"
                 containerClass="flex flex-col w-96 h-28"
-                verifyInput={!(activeVerify.emailLog) ? null
-                    : verifyMessages.emailLog && verifyMessages.emailLog !== true ? verifyMessages.emailLog
-                        : backMessages.emailLog ? backMessages.emailLog : null} />
+                verifyInput={handleErrorMessage("emailLog")} />
             <FormInput
                 type="password"
                 id="passwordLog"
@@ -103,9 +115,7 @@ function FormLogIn() {
                 labelClass="p-2.5 items-center"
                 placeholder="Ingresa tu contraseña"
                 containerClass="flex flex-col w-96 h-28"
-                verifyInput={!(activeVerify.passwordLog) ? null
-                    : verifyMessages.passwordLog && verifyMessages.passwordLog !== true ? verifyMessages.passwordLog
-                        : backMessages.passwordLog ? backMessages.passwordLog : null} />
+                verifyInput={handleErrorMessage("passwordLog")} />
             <input
                 type="submit"
                 value="Ingresar"
