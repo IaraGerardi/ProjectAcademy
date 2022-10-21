@@ -8,6 +8,11 @@
     border-right: 1px solid rgba(228, 232, 240, 1);
 }
 
+
+.logo-profile {
+    margin: 0px 7px 0px 0px;
+  }
+
 .ulSidebar {
     display: flex;
     flex-direction: column;
