@@ -1,13 +1,10 @@
 import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-// Validations
 import useVerify from "../../../hooks/useVerify";
 import verifications from "../../../verifyArguments/verifyLogIn.json";
-//Context
 import StoreContext from "../../../store/StoreProvider";
 import { types } from "../../../store/StoreReducer";
-// Components
 import FormInput from "../../global-components/formInput";
 import BeatLoader from "react-spinners/BeatLoader";
 
@@ -16,12 +13,12 @@ function FormLogIn() {
     const navigate = useNavigate();
     const URI = `${process.env.REACT_APP_BASE_URL}/admin/login`;
     const [store, dispatch] = useContext(StoreContext);
-    // States
+
     const [loader, setLoader] = useState(false);
     const [form, setForm] = useState({ emailLog: null, passwordLog: null });
     const [activeVerify, setActiveVerify] = useState({});
     const [backMessages, setBackMessages] = useState({ emailLog: null, passwordLog: null, });
-    // Hook arguments and calls
+
     const formValues = [{ inputValue: form.emailLog }, { inputValue: form.passwordLog }];
     const { handleVerifyForm, verifyMessages, isVerified } = useVerify(formValues, verifications);
 
@@ -63,7 +60,7 @@ function FormLogIn() {
             return null;
         }
 
-        if (verifyMessages[property] !== true) {
+        if (isVerified !== true) {
             return verifyMessages[property];
         } else {
             return backMessages[property];
