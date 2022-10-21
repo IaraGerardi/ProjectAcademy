@@ -35,6 +35,16 @@ export const EventForm = () => {
   { inputValue: timeEvent }, { inputValue: durationEvent }, { inputValue: descriptionEvent }];
   const { handleVerifyForm, verifyMessages, isVerified } = useVerify(formValues, verifications);
 
+  const ShowData = async () => {
+    const res = await axios.get(`${process.env.REACT_APP_BASE_URL}/counselor`, { withCredentials: true })
+    setCounselorEvent(res.data)
+  }
+
+  useEffect(() => {
+    ShowData();
+    ShowDataStudents();
+  }, [])
+
   const handleTimer = (e) => {
     const inputName = e.target ? e.target.name : e.name ? e.name : e[0].name
 
@@ -61,7 +71,14 @@ export const EventForm = () => {
     });
     setActiveVerify(mutableObj)
   }
-  // PETICION 
+
+  const handleErrorMessage = (property) => {
+    if (!(activeVerify[property]) || !(verifyMessages[property])) {
+      return null;
+    }
+    verifyMessages[property];
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!isVerified) {
@@ -88,28 +105,6 @@ export const EventForm = () => {
       })
   }
 
-  //obtengo los datos de orientadores
-  const ShowData = async () => {
-    const res = await axios.get(`${process.env.REACT_APP_BASE_URL}/counselor`, { withCredentials: true })
-    setCounselorEvent(res.data)
-  }
-
-  useEffect(() => {
-    ShowData()
-  }, [])
-
-  //obtengo los datos de orientados
-  const ShowDataStudents = async () => {
-    const resp = await axios.get(`${process.env.REACT_APP_BASE_URL}/oriented`, { withCredentials: true })
-    setOrientedEvent(resp.data)
-  }
-
-  useEffect(() => {
-    ShowDataStudents()
-  }, [])
-
-  //funcion para opciones de duración
-
   useEffect(() => {
 
     const timeArray = [];
@@ -130,31 +125,26 @@ export const EventForm = () => {
     handlerDurationEvent();
   }, [])
 
-  //manejador de evento del select 1
   const handlerSelectOne = (e) => {
     setValueCounselor(e);
     handleTimer(e);
   };
 
-  //manejador de evento del select 2
   const handlerSelectTwo = (e) => {
     setValueOriented(e);
     handleTimer(e);
   };
 
-  //manejador del select horario
   const handleHours = (e) => {
     setHours(e.value);
     handleTimer(e);
   }
 
-  //manejador del select duracion
   const handleDuration = (e) => {
     setDuration(e.value);
     handleTimer(e);
   }
 
-  //estilos react-select
   const customStylesEvent = {
     control: base => ({
       ...base,
@@ -180,7 +170,6 @@ export const EventForm = () => {
             <h2 className="lg:text-2xl font-medium text-slate-700">Crear un evento</h2>
             <h4 className='lg:text-lg text-slate-700 text-sm'>Puedes crear un primer encuentro entre Orientadores y Orientados.</h4>
 
-            {/* formulario agendar eventos */}
             <form
               onSubmit={handleSubmit}
               className='mt-5 flex flex-col lg:m-0 lg:mr-20 md:mr-20'>
@@ -199,9 +188,7 @@ export const EventForm = () => {
                   errorClass="mt-[5px]"
                   label="Nombre del evento"
                   placeholder="Ingresar nombre"
-                  verifyInput={!(activeVerify.eventName) ? null :
-                    verifyMessages.eventName && verifyMessages.eventName !== true
-                      ? verifyMessages.eventName : null}
+                  verifyInput={handleErrorMessage("eventName")}
                 />
 
                 <div className='flex flex-col px-2 h-20'>
@@ -273,9 +260,7 @@ export const EventForm = () => {
                     type="date"
                     label="Fecha"
                     placeholder="Ingresar fecha"
-                    verifyInput={!(activeVerify.eventDate) ? null :
-                      verifyMessages.eventDate && verifyMessages.eventDate !== true
-                        ? verifyMessages.eventDate : null}
+                    verifyInput={handleErrorMessage("eventDate")}
                   />
 
                   <div className='flex flex-col px-2 h-20'>
@@ -342,9 +327,7 @@ export const EventForm = () => {
                     type="textarea"
                     label="Comentarios del evento"
                     placeholder="Escribir comentarios"
-                    verifyInput={!(activeVerify.eventComments) ? null :
-                      verifyMessages.eventComments && verifyMessages.eventComments !== true
-                        ? verifyMessages.eventComments : null}
+                    verifyInput={handleErrorMessage("eventComments")}
                   />
                 </div>
               </div>

@@ -2,7 +2,7 @@ import Icon from "./Svg-icon";
 
 function FormInput(props) {
 
-    const { verifyInput, onHandleChange } = props
+    const { verifyInput, redBorder, onHandleChange } = props
     const { id, type, value, label, placeholder, col, rows } = props
     const { inputClass, labelClass, containerClass, errorClass } = props
 
@@ -17,8 +17,7 @@ function FormInput(props) {
                     rows={rows}
                     placeholder={placeholder}
                     onChange={onHandleChange}
-                    className={`${inputClass} rounded-lg border  placeholder:pl-2
-                    ${verifyInput !== null && verifyInput !== true ? "border-red-600" : "border-slate-300"}`}
+                    className={`${inputClass} rounded-lg border placeholder:pl-2 "border-slate-300"`}
                 />
                 : <input
                     id={id}
@@ -28,7 +27,8 @@ function FormInput(props) {
                     onChange={onHandleChange}
                     placeholder={placeholder}
                     className={`${inputClass} 
-                    ${verifyInput !== null && verifyInput !== true ? "border border-solid border-red-600" : "border border-slate-300"}`}
+                    ${redBorder && verifyInput !== null && verifyInput !== true ?
+                            "border border-solid border-red-600" : "border border-slate-300"}`}
                 />
             }
             {verifyInput !== null && verifyInput !== true ?

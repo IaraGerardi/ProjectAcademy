@@ -98,6 +98,7 @@ function FormLogIn() {
                 type="email"
                 id="emailLog"
                 label="Email"
+                redBorder={true}
                 errorClass="mx-2.5"
                 labelClass="p-2 items-center"
                 onHandleChange={handleChange}
@@ -108,6 +109,7 @@ function FormLogIn() {
             <FormInput
                 type="password"
                 id="passwordLog"
+                redBorder={true}
                 label="Contraseña"
                 errorClass="mx-2.5"
                 onHandleChange={handleChange}

@@ -106,7 +106,6 @@ function FormOrientado() {
         }
       })
       .then((response) => {
-        console.log(response)
         if (response.data.message == 'Successfully created new Oriented') {
 
           setActive(!active)
