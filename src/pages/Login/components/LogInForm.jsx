@@ -1,13 +1,10 @@
 import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-// Validations
 import useVerify from "../../../hooks/useVerify";
 import verifications from "../../../verifyArguments/verifyLogIn.json";
-//Context
 import StoreContext from "../../../store/StoreProvider";
 import { types } from "../../../store/StoreReducer";
-// Components
 import FormInput from "../../global-components/formInput";
 import BeatLoader from "react-spinners/BeatLoader";
 
@@ -16,19 +13,21 @@ function FormLogIn() {
     const navigate = useNavigate();
     const URI = `${process.env.REACT_APP_BASE_URL}/admin/login`;
     const [store, dispatch] = useContext(StoreContext);
-    // States
+
     const [loader, setLoader] = useState(false);
     const [form, setForm] = useState({ emailLog: null, passwordLog: null });
     const [activeVerify, setActiveVerify] = useState({});
     const [backMessages, setBackMessages] = useState({ emailLog: null, passwordLog: null, });
-    // Hook arguments and calls
+
     const formValues = [{ inputValue: form.emailLog }, { inputValue: form.passwordLog }];
     const { handleVerifyForm, verifyMessages, isVerified } = useVerify(formValues, verifications);
 
-    const handleSetNull = (obj) => {
-        Object.keys(obj).forEach((index) => {
-            obj[index] = null;
-        });
+    const handleChange = (e) => {
+        handleTimer(e)
+        setForm({
+            ...form,
+            [e.target.id]: e.target.value,
+        })
     }
 
     const handleTimer = (e) => {
@@ -44,18 +43,29 @@ function FormLogIn() {
         return () => clearTimeout(timer);
     }
 
-    const handleChange = (e) => {
-        handleTimer(e)
-        setForm({
-            ...form,
-            [e.target.id]: e.target.value,
-        })
+
+    const handleSetNull = (obj) => {
+        Object.keys(obj).forEach((index) => {
+            obj[index] = null;
+        });
     }
 
     useEffect(() => {
         handleSetNull(backMessages);
         handleVerifyForm();
     }, [form])
+
+    const handleErrorMessage = (property) => {
+        if (!(activeVerify[property]) || !(verifyMessages[property])) {
+            return null;
+        }
+
+        if (isVerified !== true) {
+            return verifyMessages[property];
+        } else {
+            return backMessages[property];
+        }
+    }
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -64,18 +74,18 @@ function FormLogIn() {
         }
         try {
             const response = await axios.post(`${URI}`, form, { withCredentials: true })
-            setLoader(false)
             if (response.data.message === "Succesful Login") {
                 localStorage.setItem("usuario", JSON.stringify(response.data.admin));
                 dispatch({ type: types.authLogin })
                 navigate('/inicio');
             }
         } catch (err) {
-            setLoader(false)
             setBackMessages(prevBackMessages => ({
                 ...prevBackMessages,
                 [err.response.data.params]: err.response.data.message,
             }))
+        } finally {
+            setLoader(false)
         }
     }
 
@@ -85,18 +95,18 @@ function FormLogIn() {
                 type="email"
                 id="emailLog"
                 label="Email"
+                redBorder={true}
                 errorClass="mx-2.5"
                 labelClass="p-2 items-center"
                 onHandleChange={handleChange}
                 placeholder="Ingresa tu email"
                 inputClass="w-80 focus:outline"
                 containerClass="flex flex-col w-96 h-28"
-                verifyInput={!(activeVerify.emailLog) ? null
-                    : verifyMessages.emailLog && verifyMessages.emailLog !== true ? verifyMessages.emailLog
-                        : backMessages.emailLog ? backMessages.emailLog : null} />
+                verifyInput={handleErrorMessage("emailLog")} />
             <FormInput
                 type="password"
                 id="passwordLog"
+                redBorder={true}
                 label="Contraseña"
                 errorClass="mx-2.5"
                 onHandleChange={handleChange}
@@ -104,9 +114,7 @@ function FormLogIn() {
                 labelClass="p-2.5 items-center"
                 placeholder="Ingresa tu contraseña"
                 containerClass="flex flex-col w-96 h-28"
-                verifyInput={!(activeVerify.passwordLog) ? null
-                    : verifyMessages.passwordLog && verifyMessages.passwordLog !== true ? verifyMessages.passwordLog
-                        : backMessages.passwordLog ? backMessages.passwordLog : null} />
+                verifyInput={handleErrorMessage("passwordLog")} />
             <input
                 type="submit"
                 value="Ingresar"

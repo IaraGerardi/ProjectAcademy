@@ -30,7 +30,7 @@ function StudentInfo() {
           setImage(resOrientado.data.photoProfile)
         }
       } catch (error) {// en caso de fallar 
-        console.log(error)
+        console.error(error)
       }
     }
     getOrientedData();

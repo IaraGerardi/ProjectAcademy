@@ -4,6 +4,7 @@ import { Sidebar } from '../sidebar-header/components/Sidebar.js';
 import Select from "react-select";
 import FormInput from '../global-components/formInput';
 import makeAnimated from 'react-select/animated';
+import Icon from '../global-components/Svg-icon';
 import { useState, useEffect } from "react";
 import axios from 'axios';
 import { optionsHours } from './duration';
@@ -25,26 +26,37 @@ export const EventForm = () => {
   const [active, setActive] = useState(false);
   const [timeOptArray, setTimeOptArray] = useState([]);
 
-  const animatedComponents = makeAnimated();
   const navegate = useNavigate();
-  // Verifications
-  let timer = null;
+  const animatedComponents = makeAnimated();
+  const URI = `${process.env.REACT_APP_BASE_URL}/events/create`;
+
   const [activeVerify, setActiveVerify] = useState({});
   const formValues = [{ inputValue: nameEvent }, { inputValue: valueCounselor }, { inputValue: valueOriented }, { inputValue: dateEvent },
   { inputValue: timeEvent }, { inputValue: durationEvent }, { inputValue: descriptionEvent }];
   const { handleVerifyForm, verifyMessages, isVerified } = useVerify(formValues, verifications);
 
-  // URL DE PETICION 
+  const ShowData = async () => {
+    const res = await axios.get(`${process.env.REACT_APP_BASE_URL}/counselor`, { withCredentials: true })
+    setCounselorEvent(res.data)
+  }
+  
+  const ShowDataStudents = async () => {
+    const resp = await axios.get(`${process.env.REACT_APP_BASE_URL}/oriented`, { withCredentials: true })
+    setOrientedEvent(resp.data)
+  }
 
-  const URI = `${process.env.REACT_APP_BASE_URL}/events/create`
+  useEffect(() => {
+    ShowData();
+    ShowDataStudents();
+  }, [])
 
   const handleTimer = (e) => {
     const inputName = e.target ? e.target.name : e.name ? e.name : e[0].name
-    console.log(inputName, e)
+
     if (activeVerify[inputName] === true) {
       return;
     }
-    timer = setTimeout(() => {
+    let timer = setTimeout(() => {
       setActiveVerify({
         ...activeVerify,
         [inputName]: true
@@ -52,15 +64,32 @@ export const EventForm = () => {
     }, 1000)
     return () => clearTimeout(timer);
   }
-  console.log(activeVerify)
-  // console.table(activeVerify)
+
   useEffect(() => {
     handleVerifyForm();
   }, [nameEvent, valueCounselor, valueOriented, dateEvent, timeEvent, durationEvent, descriptionEvent])
 
-  // PETICION 
+  const showAllVerifications = () => {
+    let mutableObj = {};
+    Object.keys(verifications).forEach((i) => {
+      mutableObj[verifications[i].id] = true;
+    });
+    setActiveVerify(mutableObj)
+  }
+
+  const handleErrorMessage = (property) => {
+    if (!(activeVerify[property]) || !(verifyMessages[property])) {
+      return null;
+    }
+    return verifyMessages[property];
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!isVerified) {
+      showAllVerifications();
+      return;
+    }
     await axios.post(URI, {
       nameEvent,
       counselorEvent: valueCounselor,
@@ -80,28 +109,6 @@ export const EventForm = () => {
         }
       })
   }
-
-  //obtengo los datos de orientadores
-  const ShowData = async () => {
-    const res = await axios.get(`${process.env.REACT_APP_BASE_URL}/counselor`, { withCredentials: true })
-    setCounselorEvent(res.data)
-  }
-
-  useEffect(() => {
-    ShowData()
-  }, [])
-
-  //obtengo los datos de orientados
-  const ShowDataStudents = async () => {
-    const resp = await axios.get(`${process.env.REACT_APP_BASE_URL}/oriented`, { withCredentials: true })
-    setOrientedEvent(resp.data)
-  }
-
-  useEffect(() => {
-    ShowDataStudents()
-  }, [])
-
-  //funcion para opciones de duración
 
   useEffect(() => {
 
@@ -123,31 +130,26 @@ export const EventForm = () => {
     handlerDurationEvent();
   }, [])
 
-  //manejador de evento del select 1
   const handlerSelectOne = (e) => {
-    setValueCounselor(e.value);
+    setValueCounselor(e);
     handleTimer(e);
   };
 
-  //manejador de evento del select 2
   const handlerSelectTwo = (e) => {
     setValueOriented(e);
     handleTimer(e);
   };
 
-  //manejador del select horario
   const handleHours = (e) => {
     setHours(e.value);
     handleTimer(e);
   }
 
-  //manejador del select duracion
   const handleDuration = (e) => {
     setDuration(e.value);
     handleTimer(e);
   }
 
-  //estilos react-select
   const customStylesEvent = {
     control: base => ({
       ...base,
@@ -158,7 +160,6 @@ export const EventForm = () => {
 
     })
   }
-
 
   return (
 
@@ -174,7 +175,6 @@ export const EventForm = () => {
             <h2 className="lg:text-2xl font-medium text-slate-700">Crear un evento</h2>
             <h4 className='lg:text-lg text-slate-700 text-sm'>Puedes crear un primer encuentro entre Orientadores y Orientados.</h4>
 
-            {/* formulario agendar eventos */}
             <form
               onSubmit={handleSubmit}
               className='mt-5 flex flex-col lg:m-0 lg:mr-20 md:mr-20'>
@@ -187,17 +187,16 @@ export const EventForm = () => {
                   inputClass="w-56 md:w-80 lg:w-80 text-sm p-2 rounded-lg border shadow-sm border-slate-300
                   placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block focus:ring-1"
                   labelClass="text-sm font-medium text-slate-600"
-                  containerClass="flex flex-col px-2"
+                  containerClass="flex flex-col px-2 h-20"
                   id="eventName"
                   type="text"
+                  errorClass="mt-[5px]"
                   label="Nombre del evento"
                   placeholder="Ingresar nombre"
-                  verifyInput={!(activeVerify.eventName) ? null :
-                    verifyMessages.eventName && verifyMessages.eventName !== true
-                      ? verifyMessages.eventName : null}
+                  verifyInput={handleErrorMessage("eventName")}
                 />
 
-                <div className='flex flex-col px-2'>
+                <div className='flex flex-col px-2 h-20'>
                   <label className='text-sm font-medium text-slate-600 mt-2 lg:mt-0'>Orientador participante</label>
                   <Select
                     Name="valueCounselor"
@@ -208,9 +207,20 @@ export const EventForm = () => {
                     styles={customStylesEvent}
                     className='w-56 md:w-80 lg:w-80'
                   />
+                  {!(activeVerify.valueCounselor) ? null : verifyMessages.valueCounselor &&
+                    verifyMessages.valueCounselor !== null && verifyMessages.valueCounselor !== true ?
+                    <div className={`flex items-center relative bottom-3 py-2 mt-[5px]`}>
+                      <Icon
+                        classname="w-3.5 h-3.5 mr-1 fill-red-600"
+                        type="exclamationMark"
+                        width="24" height="24" />
+                      <span className="text-red-600 text-xs ">{verifyMessages.valueCounselor}</span>
+                    </div>
+                    : null
+                  }
                 </div>
 
-                <div className='flex flex-col px-2'>
+                <div className='flex flex-col px-2 h-20'>
                   <label className='text-sm font-medium text-slate-600 mt-2 lg:mt-0'>Orientado/es participante/s</label>
                   <Select
                     Name="oriented"
@@ -223,6 +233,17 @@ export const EventForm = () => {
                     styles={customStylesEvent}
                     className='w-56 md:w-80 lg:w-80'
                   />
+                  {!(activeVerify.oriented) ? null : verifyMessages.oriented &&
+                    verifyMessages.oriented !== null && verifyMessages.oriented !== true ?
+                    <div className={`flex items-center relative bottom-3 py-2 mt-[5px]`}>
+                      <Icon
+                        classname="w-3.5 h-3.5 mr-1 fill-red-600"
+                        type="exclamationMark"
+                        width="24" height="24" />
+                      <span className="text-red-600 text-xs">{verifyMessages.oriented}</span>
+                    </div>
+                    : null
+                  }
                 </div>
 
               </div>
@@ -231,25 +252,23 @@ export const EventForm = () => {
                 <h2 className="lg:text-base font-medium text-slate-700 mb-4">02. Días y Horarios disponibles </h2>
 
                 <div className='flex flex-col lg:flex-row md:flex-wrap lg:py-3 pl-3 pt-2 '>
-
+                  {/* Agregarle altura al input en si */}
                   <FormInput
                     onHandleChange={(e) => { setDateEvent(e.target.value); handleTimer(e); }}
                     inputClass="text-sm w-56 md:w-80 lg:w-80 p-2 rounded-lg border shadow-sm
                     border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block 
-                    focus:ring-1"
+                    focus:ring-1 h-10"
                     labelClass="text-sm font-medium text-slate-600"
-                    containerClass="flex flex-col px-2"
+                    containerClass="flex flex-col px-2 h-20"
+                    errorClass="h-2 relative top-[0.1px]"
                     id="eventDate"
                     type="date"
                     label="Fecha"
                     placeholder="Ingresar fecha"
-                    verifyInput={!(activeVerify.eventDate) ? null :
-                      verifyMessages.eventDate && verifyMessages.eventDate !== true
-                        ? verifyMessages.eventDate : null}
+                    verifyInput={handleErrorMessage("eventDate")}
                   />
 
-
-                  <div className='flex flex-col px-2'>
+                  <div className='flex flex-col px-2 h-20'>
                     <label className="text-sm font-medium text-slate-600 mt-2 lg:mt-0">Horario</label>
                     <Select
                       placeholder="Seleccionar horario"
@@ -259,9 +278,20 @@ export const EventForm = () => {
                       styles={customStylesEvent}
                       className="w-56 md:w-80 lg:w-80 "
                     />
+                    {!(activeVerify.eventTime) ? null : verifyMessages.eventTime &&
+                      verifyMessages.eventTime !== null && verifyMessages.eventTime !== true ?
+                      <div className={`flex items-center relative bottom-3 py-2 mt-[5px]`}>
+                        <Icon
+                          classname="w-3.5 h-3.5 mr-1 fill-red-600"
+                          type="exclamationMark"
+                          width="24" height="24" />
+                        <span className="text-red-600 text-xs ">{verifyMessages.eventTime}</span>
+                      </div>
+                      : null
+                    }
                   </div>
 
-                  <div className='flex flex-col px-2'>
+                  <div className='flex flex-col px-2 h-20'>
                     <label className="text-sm font-medium text-slate-600 mt-2 lg:mt-0">Duración</label>
                     <Select
                       placeholder="Seleccionar duración"
@@ -271,6 +301,17 @@ export const EventForm = () => {
                       styles={customStylesEvent}
                       className="w-56 md:w-80 lg:w-80 "
                     />
+                    {!(activeVerify.duration) ? null : verifyMessages.duration &&
+                      verifyMessages.duration !== null && verifyMessages.duration !== true ?
+                      <div className={`flex items-center relative bottom-3 py-2 mt-[5px]`}>
+                        <Icon
+                          classname="w-3.5 h-3.5 mr-1 fill-red-600"
+                          type="exclamationMark"
+                          width="24" height="24" />
+                        <span className="text-red-600 text-xs ">{verifyMessages.duration}</span>
+                      </div>
+                      : null
+                    }
                   </div>
 
                 </div>
@@ -279,28 +320,25 @@ export const EventForm = () => {
 
               <div className="containerInputLabel flex flex-col gap-2 py-3 ">
                 <h2 className="lg:text-base font-medium text-slate-700">03. Detalle </h2>
-                <div className='flex flex-col pl-4'>
+                <div className='flex flex-col pl-4 '>
                   <FormInput
                     onHandleChange={(e) => { setDescriptionEvent(e.target.value); handleTimer(e); }}
                     inputClass="md:w-80 lg:w-[660px] h-20 rounded-lg border border-slate-300 placeholder:pl-2 shadow-sm
-                    placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block focus:ring-1"
-                    labelClass="text-sm font-medium text-slate-600"
-                    containerClass="flex flex-col w-56"
+                    placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block focus:ring-1 resize-none"
+                    labelClass="text-sm font-medium text-slate-600 "
+                    containerClass="flex flex-col w-56 md:w-80 lg:w-[660px] h-36"
+                    errorClass="mt-[5px]"
                     id="eventComments"
                     type="textarea"
                     label="Comentarios del evento"
-
                     placeholder="Escribir comentarios"
-                    verifyInput={!(activeVerify.eventComments) ? null :
-                      verifyMessages.eventComments && verifyMessages.eventComments !== true
-                        ? verifyMessages.eventComments : null}
+                    verifyInput={handleErrorMessage("eventComments")}
                   />
                 </div>
               </div>
 
-              <button type="submit" disabled={!isVerified} 
-              className={`${isVerified ? null : "opacity-60"} 
-              w-44 h-10 ml-9 md:ml-3 lg:ml-3 bg-celesteValtech rounded-lg text-base text-white font-medium`}>
+              <button type="submit"
+                className={`w-44 h-10 ml-9 md:ml-3 lg:ml-3 bg-celesteValtech rounded-lg text-base text-white font-medium`}>
                 Agendar evento
               </button>
 
