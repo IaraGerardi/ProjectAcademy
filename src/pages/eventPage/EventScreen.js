@@ -47,9 +47,9 @@ export const EventScreen = () => {
         <div className='mt-7 ml-10'>
           <div className="cont-enter-oriented">
             <p className="text-new-user">Todos los eventos</p>
-            <Link to='/eventos/form'><button className=" w-44 h-10 bg-celesteValtech rounded-lg text-base text-white font-medium " type="submit">
+            <Link className='w-44 h-10 bg-celesteValtech rounded-lg text-base text-white text-center p-2 font-medium' to='/eventos/form'>
               Agendar evento
-            </button>
+          
             </Link>
 
           </div> {/*Texto y Boton que redirije a la Página de Crear Eventos.*/}

@@ -32,10 +32,9 @@ function AdminPage() {
                         </div>
 
                         <div>
-                          <Link className="navegar" to="/orientados/nuevo">
-                            <button className="btn-enter-orientaded mr-2 mt-5">
+                          <Link className="w-44 h-10 bg-celesteValtech rounded-lg text-base text-white text-center p-2 font-medium" to="/orientados/nuevo">
                               Ingresar orientado
-                            </button>
+                  
                           </Link>
                         </div>
                       </div>
