@@ -77,7 +77,7 @@ function FormOrientado() {
     if (!(activeVerify[property]) || !(verifyMessages[property])) {
       return null;
     }
-    verifyMessages[property];
+    return verifyMessages[property];
   }
 
   const handleSubmit = async (e) => {

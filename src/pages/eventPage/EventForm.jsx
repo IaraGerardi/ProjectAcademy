@@ -39,6 +39,11 @@ export const EventForm = () => {
     const res = await axios.get(`${process.env.REACT_APP_BASE_URL}/counselor`, { withCredentials: true })
     setCounselorEvent(res.data)
   }
+  
+  const ShowDataStudents = async () => {
+    const resp = await axios.get(`${process.env.REACT_APP_BASE_URL}/oriented`, { withCredentials: true })
+    setOrientedEvent(resp.data)
+  }
 
   useEffect(() => {
     ShowData();
@@ -76,7 +81,7 @@ export const EventForm = () => {
     if (!(activeVerify[property]) || !(verifyMessages[property])) {
       return null;
     }
-    verifyMessages[property];
+    return verifyMessages[property];
   }
 
   const handleSubmit = async (e) => {
