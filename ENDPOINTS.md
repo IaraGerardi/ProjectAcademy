@@ -26,4 +26,4 @@ http://localhost:8000/news //Gets all the news (GET)<br>
 Events: <br>
 http://localhost:8000/events //Gets all the events (GET)<br>
 http://localhost:8000/events/create //Creates an event (POST)<br>
-http://localhost:8000/events/:id/delete //Deletes an event selected in :id (DELETE)<br>
+http://localhost:8000/events/:id //Deletes an event selected in :id (DELETE)<br>
