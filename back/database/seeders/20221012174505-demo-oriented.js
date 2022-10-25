@@ -1,4 +1,4 @@
-const { oriented } = require("./seed");
+const { oriented } = require("../seed");
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {

@@ -1,4 +1,4 @@
-const { news } = require("./seed");
+const { news } = require("../seed");
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
