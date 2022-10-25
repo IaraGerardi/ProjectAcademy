@@ -5,6 +5,8 @@ import { Sidebar } from '../sidebar-header/components/Sidebar.js'
 import CallEvents from './components/CallEvents'
 import useGet from "../../hooks/useGet"
 
+import "../StudentsScreen/oriented.css"
+
 export const EventScreen = () => {
   const [eventsList, setEventsList] = useState([])
 
@@ -47,21 +49,40 @@ export const EventScreen = () => {
         <div className='mt-7 ml-10'>
           <div className="cont-enter-oriented">
             <p className="text-new-user">Todos los eventos</p>
-            <Link className='w-44 h-10 bg-celesteValtech rounded-lg text-base text-white text-center p-2 font-medium' to='/eventos/form'>
+            <Link className='button-add-oriented' to='/eventos/form'>
               Agendar evento
-          
+
             </Link>
 
           </div> {/*Texto y Boton que redirije a la Página de Crear Eventos.*/}
-          <div className="cont-search-oriented">
-            <input
-              type="text"
-              defaultValue={""}
-              onChange={(e) => handleSearch(e.target.value)}
-              className="search-oriented"
-              placeholder="Buscar orientado por nombre y apellido"
-            />
+
+
+          <div className="container-search">
+            <div className="cont-search-oriented">
+              <input
+                type="text"
+                defaultValue={""}
+                onChange={(e) => handleSearch(e.target.value)}
+                className="search-oriented"
+                placeholder="Buscar orientado por nombre y apellido"
+              />
+            </div>
           </div>
+
+          {/* <div className="container-search">
+                <div className="cont-search-oriented">
+                    <input
+                        className="search-oriented"
+                        type="text"
+                        placeholder="Buscar orientado por nombre y apellido"
+                        value={search}
+                        onChange={handleChange}
+                    />
+                    <img className="logo-search" src={searchBar} alt="logo buscador" />
+                </div> 
+            </div> */}
+
+
 
           {/* Paso los eventos como props para que se actualice cuando el estado cambie por el buscador */}
           <CallEvents events={eventsList} />
