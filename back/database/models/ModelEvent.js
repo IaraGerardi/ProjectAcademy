@@ -4,12 +4,13 @@ module.exports = (sequelize, DataTypes) => {
   class ModelEvent extends Model {
     static associate(models) {
       // define association here
+      ModelEvent.belongsToMany(models.orienteds, { through: models.oriented_event });
       ModelEvent.belongsTo(models.counselors, {
         foreignKey: "counselorId",
         targetKey: "id",
       });
 
-      ModelEvent.belongsToMany(models.orienteds, { through: "oriented_event" });
+     
     }
   }
   ModelEvent.init(
