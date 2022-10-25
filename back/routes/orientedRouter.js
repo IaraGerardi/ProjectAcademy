@@ -23,7 +23,7 @@ orientedRouter.get("/paginated", isAuthenticated, getAllOrientedPaginated); // t
 orientedRouter.get("/:id", isAuthenticated, orientedById); // trae el orientado que se escriba en ':id'
 orientedRouter.get("/:id/counselor", isAuthenticated, orientedAndCounselor); // trae al orientado junto con su orientador
 orientedRouter.post(
-  "/create",
+  "/",
   isAuthenticated,
   photoProfileCheck,
   validateCreate,
