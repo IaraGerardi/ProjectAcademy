@@ -61,6 +61,41 @@ function CallEvents({ events }) {
                 </div>
 
 
+                {eventList.map((eventMobile) => {
+                    return (
+
+
+                        <div className="event-mobile">
+
+                            <div key={eventMobile.id} className="container-events-responsive">
+
+                                <div>
+                                    <p className="title-events-responsive"><strong className="event-title-responsive">Fecha</strong></p>
+                                    <p className="event-date-responsive">{eventMobile.date}</p>
+                                    <p className="title-events-responsive"><strong className="event-title-responsive">Horario</strong></p>
+                                    <p className="event-date-responsive">{`${eventMobile.time}hs`}</p>
+                                </div>
+                                <div>
+
+                                    <p className="title-events-responsive"><strong className="event-title-responsive">Evento</strong></p>
+                                    <p className="event-date-responsive">{eventMobile.name}</p>
+                                    <p className="title-events-responsive"><strong className="event-title-responsive">Participantes</strong></p>
+                                    <p className="event-date-responsive">{eventMobile.counselor?.name} {eventMobile.counselor?.lastname}</p>
+                                </div>
+                            </div>
+
+                            <div className="delete-responsive" onClick={() => deleteEvent(eventMobile.id)}>
+                                <div className="text-delete">Eliminar Evento</div>
+                            </div>
+
+                        </div>
+
+
+                    )
+
+                })}
+
+
                 <div className="container-events">
                     <table >
                         <thead>
