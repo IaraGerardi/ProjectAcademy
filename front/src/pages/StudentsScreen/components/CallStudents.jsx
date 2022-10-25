@@ -4,14 +4,14 @@ import "../call-students.css"
 import searchBar from "../../sidebar-header/icons/logo-buscador.svg"
 import { Link } from "react-router-dom";
 import BeatLoader from "react-spinners/BeatLoader";
-import "../orientados.css"
+import "../oriented.css"
 
 function CallStudents() {
 
 
     const [oriented, setOriented] = useState([]);
     const [tableOriented, setTableOriented] = useState([]);
-    const [loadingCallStudents,setLoadingCallStudents]=useState(true)
+    const [loadingCallStudents, setLoadingCallStudents] = useState(true)
 
     const [search, setSearch] = useState("");
     //LE PASO UN ESTADO VACIO AL INPUT SEARCH
@@ -22,7 +22,7 @@ function CallStudents() {
         {/*Pedido a la Api*/ }
         const getoriented = async () => {
             try {
-                const res = await axios.get(`${process.env.REACT_APP_BASE_URL}/oriented/paginated?page=0&size=1000&order=ASC`,{withCredentials: true}
+                const res = await axios.get(`${process.env.REACT_APP_BASE_URL}/oriented/paginated?page=0&size=1000&order=ASC`, { withCredentials: true }
                 ); // EN LA URI PONGO PAGE 0 Y UN SIZE DE 1000 QUE SIRVE PARA TRAER POR EL MOMENTO MIL USUARIOS
                 setOriented(res.data.categories);
                 setTableOriented(res.data.categories)
@@ -71,52 +71,52 @@ function CallStudents() {
             </div>
 
             <div className="cont-students flex justify-center">
-   {
-                loadingCallStudents ?
-                <div className='flex justify-center mt-7'> <BeatLoader
-                color="#1EC5BB"
-                cssOverride={{}}
-            
-                margin={5}
-                size={10}
-                speedMultiplier={1}
-            /></div>
-            :
-            <ul className="list-student"> {/*Llamado a la Api*/}
-                                {oriented?.length === 0 && <p>No se encontró la búsqueda.</p>}
-                                {oriented?.map((usuario) => {
-                                    return (
+                {
+                    loadingCallStudents ?
+                        <div className='flex justify-center mt-7'> <BeatLoader
+                            color="#1EC5BB"
+                            cssOverride={{}}
+
+                            margin={5}
+                            size={10}
+                            speedMultiplier={1}
+                        /></div>
+                        :
+                        <ul className="list-student"> {/*Llamado a la Api*/}
+                            {oriented?.length === 0 && <p>No se encontró la búsqueda.</p>}
+                            {oriented?.map((usuario) => {
+                                return (
 
 
 
-                                        <li className="box-students" key={usuario.id} >
-                                            <Link to={`/orientados/StudentInfo/${usuario.id}`}>
-                                                <div className="content-students">
+                                    <li className="box-students" key={usuario.id} >
+                                        <Link to={`/orientados/StudentInfo/${usuario.id}`}>
+                                            <div className="content-students">
 
-                                                    <img
-                                                        className="ImgUsers"
-                                                        src={require(`../../../img-back/orientados/${usuario.photoProfile}`)}
-                                                        alt="Foto perfil orientado"
-                                                    />
-                                                    <div>
+                                                <img
+                                                    className="ImgUsers"
+                                                    src={require(`../../../img-back/orientados/${usuario.photoProfile}`)}
+                                                    alt="Foto perfil orientado"
+                                                />
+                                                <div>
 
-                                                        <h4>
-                                                            {usuario.name} {usuario.lastname}
-                                                        </h4>
-                                                        <p>{usuario.school}</p>
-                                                    </div>
-
+                                                    <h4>
+                                                        {usuario.name} {usuario.lastname}
+                                                    </h4>
+                                                    <p>{usuario.school}</p>
                                                 </div>
-                                            </Link>
-                                        </li>
 
-                                    );
-                                })}
-                            </ul >
+                                            </div>
+                                        </Link>
+                                    </li>
+
+                                );
+                            })}
+                        </ul >
 
 
-            }
-                
+                }
+
             </div >
         </>
     );
