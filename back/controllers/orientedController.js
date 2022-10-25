@@ -10,10 +10,10 @@ const getAllOriented = async (req, res) => {
     const oriented = await ModelOriented.findAll({
       attributes: ["id", "name", "lastname", "photoProfile", "counselorId"],
     });
-    res.status(200).json(oriented);
+    res.status(200).json({ message: 'Successful', info: oriented });
   } catch (error) {
     console.log(error);
-    res.status(400).json({ message: error.message });
+    res.status(400).json({ message: 'Something went wrong' });
   }
 };
 
@@ -36,13 +36,19 @@ const getAllOrientedPaginated = async (req, res) => {
     };
     const { count, rows } = await ModelOriented.findAndCountAll(options);
 
-    res.status(200).json({
-      total: count,
-      categories: rows,
-    });
+    !count || !rows ?
+      res.status(204).json({ message: 'Oriented not found' })
+      :
+      res.status(200).json({
+        message: 'Successful',
+        info: {
+          total: count,
+          categories: rows,
+        }
+      });
   } catch (error) {
     console.log(error);
-    res.status(400).json({ message: error.message });
+    res.status(400).json({ message: 'Something went wrong' });
   }
 };
 
@@ -51,27 +57,33 @@ const createOriented = async (req, res) => {
   const { dni, age, school, address, why } = req.body;
   try {
     const user = await ModelOriented.create({
-      name: name, // Cuando el nombre de la propiedad es la misma no es necesario poner name: name.
-      lastname: lastname,
-      email: email,
-      program: program,
+      name,
+      lastname,
+      email,
+      program,
       photoProfile: req.file ? req.file.filename : null,
-      phone: phone,
-      age: age,
-      school: school,
-      address: address,
-      why: why,
-      dni: dni,
+      phone,
+      age,
+      school,
+      address,
+      why,
+      dni,
       password: await bcryptjs.hash(req.body.password, 10),
     });
 
-    res.status(200).json({
-      message: "Successfully created new Oriented",
-      id: user.id,
-    });
+    !user ?
+      res.status(204).json({
+        message: "Something went wrong",
+        info: user,
+      })
+      :
+      res.status(200).json({
+        message: "Successfully created new Oriented",
+        info: user.id,
+      });
   } catch (error) {
     console.log(error);
-    res.status(400).json({ message: error.message });
+    res.status(400).json({ message: 'Something went wrong' });
   }
 };
 
@@ -82,11 +94,13 @@ const orientedById = async (req, res) => {
         id: req.params.id,
       },
     });
-    throw !oriented ? Error : 
-    res.status(200).json(oriented);
+    !oriented ?
+      res.status(204).json({ message: 'Oriented not found', info: oriented })
+      :
+      res.status(200).json({ message: 'Successful', info: oriented });
   } catch (error) {
     console.log(error);
-    res.status(400).json({ message: 'Error' });
+    res.status(400).json({ message: 'Something went wrong' });
   }
 };
 
@@ -98,10 +112,13 @@ const orientedAndCounselor = async (req, res) => {
       },
       include: { model: ModelCounselor },
     });
-    res.status(200).json(oriented);
+    !oriented ?
+      res.status(204).json({ message: 'Oriented not found', info: oriented })
+      :
+      res.status(200).json({ message: 'Successful', info: oriented });
   } catch (error) {
     console.log(error);
-    res.status(400).json({ message: error.message });
+    res.status(400).json({ message: 'Something went wrong' });
   }
 };
 
@@ -118,12 +135,10 @@ const counselorToOriented = async (req, res) => {
         },
       }
     );
-    res
-      .status(200)
-      .json({ message: "Succesfully assigned Counselor to Oriented" });
+    res.status(200).json({ message: "Succesfully assigned" });
   } catch (error) {
     console.log(error);
-    res.status(400).json({ message: error.message });
+    res.status(400).json({ message: 'Something went wrong' });
   }
 };
 
@@ -149,7 +164,7 @@ const orientedPasswordUpdate = async (req, res) => {
       const oriented = await ModelOriented.scope("withPassword").findOne({
         where: { id: req.params.id },
       });
-      if(!await bcryptjs.compare(actualPassword, oriented.password)) {
+      if (!await bcryptjs.compare(actualPassword, oriented.password)) {
         res.status(403).json({
           message: "Contraseña actual incorrecta",
           params: "actualPassword",
@@ -175,9 +190,9 @@ const orientedPasswordUpdate = async (req, res) => {
             }
           }
         );
-    res
-      .status(200)
-      .json({ message: "Succesfully updated password" });
+        res
+          .status(200)
+          .json({ message: "Succesfully updated password" });
       }
     }
   } catch (error) {

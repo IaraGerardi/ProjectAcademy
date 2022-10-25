@@ -4,41 +4,35 @@ const path = require("path");
 
 // Storage - Definimos donde y bajo que nombre se guarda
 const storage = multer.diskStorage({
-  // Configuraciones. Como almaneca las imagenes
   destination: (req, file, cb) => {
-    // Es un callback que dice donde va a guardar el archivo
-    cb(null, path.join(__dirname, "../../front/src/img-back/orientados"));
+    cb(null, path.join(__dirname, "../../src/img-back/orientados"));
   },
   filename: (req, file, cb) => {
-    const unique = `${Date.now()}-${Math.round(Math.random() * 1e5)}`; // toma la fecha del día y le agrega un numero random
+    const unique = `${Date.now()}-${Math.round(Math.random() * 1e5)}`;
     cb(null, `${file.fieldname}-${unique}${path.extname(file.originalname)}`); // Fieldname:Nombre de la columna usada en DB/originalname: Nombre del file/ extname: Formato del archivo
   }, // null define que no nos va a pasar error en caso de que lo haya
 });
 
-// Definimos los limites de peso y formatos. Devolvemos errores si algo no está bien.
 const upload = multer({
   storage,
   limits: {
     fileSize: 10485760, // 10 Mb
   },
-  // eslint-disable-next-line consistent-return
   fileFilter: (req, file, cb) => {
     const filetypes = /jpeg|jpg|png|gif/;
     const mimetype = filetypes.test(file.mimetype); // .test() nos comprueba si coinciden los valores que damos como parametros con el del archivo a subir
-    const extname = filetypes.test(path.extname(file.originalname)); // A lo de arriba le sumamos path.extname(f.o) Toma el nombre original del archivo y captura la extensión de este para comprobar coincidencias
+    const extname = filetypes.test(path.extname(file.originalname)); // path.extname(file.originalname) Toma el nombre original del archivo y captura la extensión de este para comprobar coincidencias
     if (mimetype && extname) {
-      // Si dan true ambas, los errores serán "null" y "true" para que continue
       return cb(null, true);
     }
-    cb("Error: Verifique el formato que desea subir"); // Sino sucede el if de arriba enviamo un error
+    cb({ msg: 'Error' , info: 'Verifique el formato del archivo(jpg/png/gif/jpeg)' }); // Sino sucede el if de arriba enviamos un error
   },
 }).single("photoProfile"); // Permite subir 1 sola foto(req.file en vez de req.files[0]). Además pasamos el nombre del input utilizado
 
 const photoProfileCheck = (req, res, next) => {
-  // eslint-disable-next-line consistent-return
-  upload(req, res, (err) => {
-    if (err) {
-      return res.json(err);
+  upload(req, res, (error) => {
+    if (error) {
+      return res.status(400).json({ msg: 'Error' , info: error.info || 'El archivo es demasiado pesado' });
     }
     next(); // Una vez que todo salió bien, continua con el resto de código(Ej: crearOrientador)
   });

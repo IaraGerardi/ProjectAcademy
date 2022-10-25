@@ -12,14 +12,13 @@ const validateResult = (req, res, next) => {
       fs.unlinkSync(
         path.join(
           __dirname,
-          `../../front/src/img-back/orientados/${req.file.filename}`
+          "..", "..","front", "src", "img-back", "orientados", req.file.filename
         )
       );
     }
-    throw validationResult(req);
+    res.status(400).json({msg: 'Form errors', info: validationResult(req)})
   } catch (error) {
-    res.status(403);
-    res.json(error);
+    res.status(400).json({ message: 'Something went wrong' });
   }
 };
 

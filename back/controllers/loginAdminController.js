@@ -5,33 +5,17 @@ const adminLogin = async (req, res) => {
   try {
     const { emailLog } = req.body;
     const { passwordLog } = req.body;
-    if (!emailLog && !passwordLog) {
+    if (!emailLog || !passwordLog) {
       res.status(403).json({
-        message: "Ingrese un email y contraseña",
-      });
-    } else if (!emailLog) {
-      res.status(403).json({
-        message: "Ingrese un email",
-        params: "emailLog",
-      });
-    } else if (!passwordLog) {
-      res.status(403).json({
-        message: "Ingrese una contraseña",
-        params: "passwordLog",
+        message: "Ingrese email y contraseña",
       });
     } else {
       const admin = await ModelAdmin.scope("withPassword").findOne({
         where: { email: emailLog },
       });
-      if (admin == null) {
+      if (!admin || !(passwordLog == admin.password)) {
         res.status(403).json({
-          message: "Email incorrecto",
-          params: "emailLog",
-        });
-      } else if (passwordLog !== admin.password) {
-        res.status(403).json({
-          message: "Contraseña incorrecta",
-          params: "passwordLog",
+          message: "Datos incorrectos",
         });
       } else {
         const loggedAdmin = await ModelAdmin.findOne({
@@ -48,20 +32,20 @@ const adminLogin = async (req, res) => {
         };
         res.cookie("jwt", token, cookiesOptions);
         res.status(200).json({
-          message: "Succesful Login",
-          admin: loggedAdmin,
+          message: "Successful Login",
+          info: loggedAdmin,
         });
       }
     }
   } catch (error) {
     console.log(error);
-    res.status(400).json({ message: error.message });
+    res.status(400).json({ message: 'Something went wrong' });
   }
 };
 
 const logout = (req, res) => {
   try {
-    res.status(200).clearCookie("jwt").json({ message: "Cookie cleared" });
+    res.status(200).clearCookie("jwt").json({ message: "Cookie cleared"});
   } catch (error) {
     console.log(error);
     res.status(400).json({ message: 'Something went wrong' });
