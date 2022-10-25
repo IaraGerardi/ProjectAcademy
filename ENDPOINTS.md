@@ -1,7 +1,8 @@
 ## ENDPOINTS
 
 Login:<br>
-http://localhost:8000/admin/login //Log in for admin (POST)<br>
+http://localhost:8000/admins/login //Log in for admin (POST)<br>
+http://localhost:8000/oriented/login //Log in for oriented (POST)<br>
 http://localhost:8000/logout //Destroys cookie and unlog the client. (GET)<br>
 
 Admin:<br>
@@ -16,7 +17,7 @@ http://localhost:8000/oriented //Gets all oriented students (GET)<br>
 http://localhost:8000/oriented/paginated //Gets all oriented students paginated (GET)<br>
 http://localhost:8000/oriented/:id //Gets oriented on :id (GET)<br>
 http://localhost:8000/oriented/:id/counselor //Oriented selected on :id and his counselor (GET)<br>
-http://localhost:8000/oriented/create //Create an Oriented Student (POST)<br>
+http://localhost:8000/oriented //Create an Oriented Student (POST)<br>
 http://localhost:8000/oriented/:id/counselorToOriented // Assigns or modifies the counselor of an oriented student on :id (PUT)<br>
 
 News: <br>
