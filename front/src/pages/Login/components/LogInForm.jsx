@@ -11,7 +11,7 @@ import BeatLoader from "react-spinners/BeatLoader";
 function FormLogIn() {
 
     const navigate = useNavigate();
-    const URI = `${process.env.REACT_APP_BASE_URL}/admin/login`;
+    const URI = `${process.env.REACT_APP_BASE_URL}/admins/login`;
     const [store, dispatch] = useContext(StoreContext);
 
     const [loader, setLoader] = useState(false);
