@@ -36,25 +36,28 @@ const createEvent = async (req, res) => {
     res.status(200).json({ message: "Event created succesfully" });
   } catch (error) {
     console.log(error);
-    res.status(400).json({ message: error.message });
+    res.status(400).json({ message: 'Somthing went wrong' });
   }
 };
 
 // Metodo para eliminar Event
 const deleteEvent = async (req, res) => {
   try {
-    await ModelEvent.destroy({
+    const eventDelete = await ModelEvent.destroy({
       where: { id: req.params.id },
     });
     await ModelOrientedEvent.destroy({
       where: { EventId: req.params.id },
     });
-    res.status(200).json({
-      message: "Event deleted succesfully",
-    });
+    eventDelete < 1 ?
+      res.status(400).json({ message: 'Event not found' })
+      :
+      res.status(200).json({
+        message: "Event deleted succesfully",
+      });
   } catch (error) {
     console.log(error);
-    res.status(400).json({ message: error.message });
+    res.status(400).json({ message: 'Something went wrong' });
   }
 };
 
@@ -84,7 +87,7 @@ const getEvents = async (req, res) => {
     res.status(200).json(event);
   } catch (error) {
     console.log(error);
-    res.status(400).json({ message: error.message });
+    res.status(400).json({ message: 'Something went wrong' });
   }
 };
 

@@ -82,10 +82,11 @@ const orientedById = async (req, res) => {
         id: req.params.id,
       },
     });
+    throw !oriented ? Error : 
     res.status(200).json(oriented);
   } catch (error) {
     console.log(error);
-    res.status(400).json({ message: error.message });
+    res.status(400).json({ message: 'Error' });
   }
 };
 

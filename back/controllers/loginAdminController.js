@@ -1,7 +1,7 @@
 const jwt = require("jsonwebtoken");
 const { admins: ModelAdmin } = require("../database/models/index");
 
-exports.adminLogin = async (req, res) => {
+const adminLogin = async (req, res) => {
   try {
     const { emailLog } = req.body;
     const { passwordLog } = req.body;
@@ -59,11 +59,16 @@ exports.adminLogin = async (req, res) => {
   }
 };
 
-exports.logout = (req, res) => {
+const logout = (req, res) => {
   try {
     res.status(200).clearCookie("jwt").json({ message: "Cookie cleared" });
   } catch (error) {
     console.log(error);
-    res.status(400).json({ message: error.message });
+    res.status(400).json({ message: 'Something went wrong' });
   }
 };
+
+module.exports = {
+  adminLogin,
+  logout
+}

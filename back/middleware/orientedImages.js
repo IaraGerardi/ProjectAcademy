@@ -7,7 +7,7 @@ const storage = multer.diskStorage({
   // Configuraciones. Como almaneca las imagenes
   destination: (req, file, cb) => {
     // Es un callback que dice donde va a guardar el archivo
-    cb(null, path.join(__dirname, "../../src/img-back/orientados"));
+    cb(null, path.join(__dirname, "../../front/src/img-back/orientados"));
   },
   filename: (req, file, cb) => {
     const unique = `${Date.now()}-${Math.round(Math.random() * 1e5)}`; // toma la fecha del día y le agrega un numero random
@@ -40,7 +40,6 @@ const photoProfileCheck = (req, res, next) => {
     if (err) {
       return res.json(err);
     }
-    /* res.json('La imagen fue subida exitosamente'); */ // Si todo sale bien.
     next(); // Una vez que todo salió bien, continua con el resto de código(Ej: crearOrientador)
   });
 };

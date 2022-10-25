@@ -2,11 +2,14 @@ const { admins: ModelAdmin } = require("../database/models/index");
 
 const getAllAdmins = async (req, res) => {
   try {
-    const profilesAdmin = await ModelAdmin.findAll({});
-    res.status(200).json(profilesAdmin);
+    const profilesAdmin = await ModelAdmin.findAll();
+    !profilesAdmin ?
+      res.status(204).json({ message: 'Admins not found' })
+      :
+      res.status(200).json({ message: 'Succefully', info: profilesAdmin });
   } catch (error) {
     console.log(error);
-    res.status(400).json({ message: error.message });
+    res.status(400).json({ message: 'Somthing went wrong' });
   }
 };
 
@@ -15,10 +18,13 @@ const getAdmin = async (req, res) => {
     const profileAdmin = await ModelAdmin.findOne({
       where: { id: req.params.id },
     });
-    res.status(200).json(profileAdmin);
+    !profileAdmin ?
+      res.status(204).json({ message: 'Profile not found' })
+      :
+      res.status(200).json({ message: 'Succefully', info: profileAdmin });
   } catch (error) {
     console.log(error);
-    res.status(400).json({ message: error.message });
+    res.status(400).json({ message: 'Somthing went wrong' });
   }
 };
 
