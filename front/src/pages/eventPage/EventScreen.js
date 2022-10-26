@@ -64,7 +64,7 @@ export const EventScreen = () => {
                 type="text"
                 defaultValue={""}
                 onChange={(e) => handleSearch(e.target.value)}
-                className="search-oriented-event"
+                className="search-oriented"
                 placeholder="Buscar orientado por nombre y apellido"
               />
               <img className="logo-search" src={searchBar} alt="logo buscador" />
