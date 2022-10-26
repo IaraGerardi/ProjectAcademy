@@ -1,6 +1,7 @@
 const { check } = require("express-validator");
 const { orienteds: ModelOriented } = require("../database/models/index");
 const { validateResult } = require("../helpers/validateHelper");
+const path = require('path');
 
 // Express-Validator para formulario CREAR ORIENTADO
 const validateCreate = [
@@ -29,11 +30,8 @@ const validateCreate = [
     .isEmail()
     .withMessage("Ingrese email valido")
     .custom(async (value) =>
-      ModelOriented.findOne({ where: { email: value } }) // Busca en la base de datos si el Email ya esta ingresado
-        // eslint-disable-next-line consistent-return
-        .then((email) => {
+      ModelOriented.findOne({ where: { email: value } }).then((email) => {
           if (email) {
-            // eslint-disable-next-line prefer-promise-reject-errors
             return Promise.reject("Este email ya está siendo utilizado");
           }
         })
@@ -64,7 +62,6 @@ const validateCreate = [
       // eslint-disable-next-line consistent-return
       ModelOriented.findOne({ where: { dni: value } }).then((dni) => {
         if (dni) {
-          // eslint-disable-next-line prefer-promise-reject-errors
           return Promise.reject("Este DNI ya está siendo utilizado");
         }
       })
@@ -82,13 +79,23 @@ const validateCreate = [
   check("why")
     .notEmpty()
     .withMessage("Escriba un breve descripcion de porque se acerca a nosotros"),
-  check("photoProfile") // se fija si existe
-    .custom((value, { req }) => {
-      // eslint-disable-next-line no-param-reassign
-      value = req.file;
-      return !!value;
+  check("photoProfile")
+    .custom((value, {req}) => {
+      return !!req.file;
     })
-    .withMessage("El campo foto está vacío"), // VER SI ANDA ESTO. VALIDACION DE FOTO
+    .withMessage("El campo foto está vacío")
+    .custom((value, {req}) =>{
+      const sizePhoto = 10485760 //10 mb
+      return req.file.size < sizePhoto
+    })
+    .withMessage("El archivo supera el limite de 10 MB")
+    .custom((value, { req }) => {
+      const filetypes = /jpeg|jpg|png|gif/;
+      const mimetype = filetypes.test(req.file.mimetype);
+      const extname = filetypes.test(path.extname(req.file.originalname));
+      return mimetype & extname
+    })
+    .withMessage('El archivo debe ser jpg/png/gif/jpeg'),
   (req, res, next) => {
     validateResult(req, res, next);
     /* Esta accion está en un helper
