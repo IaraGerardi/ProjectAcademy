@@ -87,6 +87,21 @@
 
 @media (max-width: 800px) {
 
+
+    .text-new-user {
+      font-size: 1em;
+        font-weight: 700;
+        line-height: 32px;
+        font-family: sans-serif 'Rubik';
+        color: #2E384D;
+        height: 35px;
+        border-bottom: 10px solid #E9F9F8;
+        margin-bottom: 20px;
+        margin-left: 90px;
+    
+    }
+
+
     .btn-enter-orientaded {
         width: 144px;
         height: 40px;
@@ -138,13 +153,3 @@
 }
 
 
-
-/* @media (max-width: 610px) {
-    .cont-enter-oriented {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-    }
-} */

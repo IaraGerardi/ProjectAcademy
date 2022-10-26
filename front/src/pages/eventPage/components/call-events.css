@@ -282,7 +282,6 @@
 
 
 
-
 @media (max-width: 590px) {
 
     .container-events {
@@ -334,19 +333,20 @@
     .event-mobile {
         margin-bottom: 80px;
         display: block;
-        width: 450px;
+        width: 84vw;
         display: flex;
         flex-direction: column;
         align-items: center;
     }
 
 
+
     .container-events-responsive {
 
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
-        align-items: center;
+        justify-content: center;
+        align-items: flex-start;
         height: 295px;
         width: 50%;
         border-top: solid 1px rgb(221, 218, 218);
@@ -385,7 +385,7 @@
 
     .title-events-responsive {
         margin-top: 6px;
-        width: 200px;
+        width: 100%;
         height: 40px;
         font-family: sans-serif;
         padding-left: 8px;
@@ -401,10 +401,10 @@
     }
 
     .event-date-responsive {
-        font-size: 13px;
+        font-size: 11px;
         font-weight: 500;
         margin-left: 10px;
-        width: 170px;
+        width: 100%;
     }
 
 
