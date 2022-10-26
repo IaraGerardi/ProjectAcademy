@@ -4,6 +4,7 @@ import HeaderInicio from '../sidebar-header/components/HeaderInicio'
 import { Sidebar } from '../sidebar-header/components/Sidebar.js'
 import CallEvents from './components/CallEvents'
 import useGet from "../../hooks/useGet"
+import searchBar from "../sidebar-header/icons/logo-buscador.svg"
 
 import "../StudentsScreen/oriented.css"
 
@@ -63,24 +64,12 @@ export const EventScreen = () => {
                 type="text"
                 defaultValue={""}
                 onChange={(e) => handleSearch(e.target.value)}
-                className="search-oriented"
+                className="search-oriented-event"
                 placeholder="Buscar orientado por nombre y apellido"
               />
+              <img className="logo-search" src={searchBar} alt="logo buscador" />
             </div>
           </div>
-
-          {/* <div className="container-search">
-                <div className="cont-search-oriented">
-                    <input
-                        className="search-oriented"
-                        type="text"
-                        placeholder="Buscar orientado por nombre y apellido"
-                        value={search}
-                        onChange={handleChange}
-                    />
-                    <img className="logo-search" src={searchBar} alt="logo buscador" />
-                </div> 
-            </div> */}
 
 
 

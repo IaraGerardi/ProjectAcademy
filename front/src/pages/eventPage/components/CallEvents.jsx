@@ -70,17 +70,17 @@ function CallEvents({ events }) {
                             <div key={eventMobile.id} className="container-events-responsive">
 
                                 <div>
-                                    <p className="title-events-responsive"><strong className="event-title-responsive">Fecha</strong></p>
+                                    <p className="title-events-responsive"><strong className="event-strong-responsive">Fecha</strong></p>
                                     <p className="event-date-responsive">{eventMobile.date}</p>
-                                    <p className="title-events-responsive"><strong className="event-title-responsive">Horario</strong></p>
+                                    <p className="title-events-responsive"><strong className="event-strong-responsive">Horario</strong></p>
                                     <p className="event-date-responsive">{`${eventMobile.time}hs`}</p>
                                 </div>
                                 <div>
 
-                                    <p className="title-events-responsive"><strong className="event-title-responsive">Evento</strong></p>
+                                    <p className="title-events-responsive"><strong className="event-strong-responsive">Evento</strong></p>
                                     <p className="event-date-responsive">{eventMobile.name}</p>
-                                    <p className="title-events-responsive"><strong className="event-title-responsive">Participantes</strong></p>
-                                    <p className="event-date-responsive">{eventMobile.counselor?.name} {eventMobile.counselor?.lastname}</p>
+                                    <p className="title-events-responsive"><strong className="event-strong-responsive">Participantes</strong></p>
+                                    <p className="event-date-responsive">{eventMobile.orienteds[0]?.name} {eventMobile.orienteds[0]?.lastname}</p>
                                 </div>
                             </div>
 
@@ -111,10 +111,11 @@ function CallEvents({ events }) {
                             {eventList.map((event) => {
                                 return (
                                     <tr key={event.id}>
+
                                         <td className="events"><p className="event-date">{event.date}</p></td>
                                         <td className="events"><p className="event-date">{`${event.time}hs`}</p> </td>
                                         <td className="events"><p className="event-date">{event.name}</p></td>
-                                        <td className="events"><p className="event-date">{event.counselor?.name} {event.counselor?.lastname}</p></td>
+                                        <td className="events"><p className="event-date">{event.orienteds[0]?.name} {event.orienteds[0]?.lastname}</p></td>
                                         <td className="events left"><img onClick={() => deleteEvent(event.id)} className="icon-delete" src={Deleted} alt="Icon trash" /></td>
 
                                     </tr>
