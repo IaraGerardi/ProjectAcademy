@@ -15,7 +15,7 @@ function UserAdmin() {
         const res = await axios.get(`${process.env.REACT_APP_BASE_URL}/oriented`, {
           withCredentials: true,
         });
-        setNewusers(res.data.slice(0, 6));
+        setNewusers(res.data.slice(0, 9));
         setLoadingOriented(false);
         
       } catch (error) {

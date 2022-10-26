@@ -71,7 +71,7 @@ function SliderOfficial() {
           <div className="texttreecv">
             <div className="Butoneffectone">
               <a target="_blank" href={data.link}>
-                Ver más
+                <u>Ver más</u>
               </a>
             </div>
           </div>
