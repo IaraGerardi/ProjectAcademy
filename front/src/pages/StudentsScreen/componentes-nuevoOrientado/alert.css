@@ -9,7 +9,9 @@
     width: 61%;
     height: 56px;
     border-radius: 8px;
-    margin-top: 20px;
+    position: relative;
+    bottom: 0px;
+    left: 405px;
 }
 
 
@@ -61,8 +63,11 @@
     width: 62%;
     height: 96px;
     border-radius: 8px;
-
+    position: relative;
+    bottom:270px;
+    left: 105px;
 }
+
 
 
 .msg-alert-event {
@@ -97,7 +102,7 @@
         font-size: 12px;
         font-family: sans-serif;
     }
-    
+
 
 }
 
@@ -162,7 +167,7 @@
         font-size: 9px;
         font-family: sans-serif;
     }
-    
+
 
 
     .msg-alert {

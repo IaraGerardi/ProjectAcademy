@@ -158,7 +158,7 @@ function Assign() {
 
                     <div>
                         <span className="text-gray">MAIL</span>
-                        <p>{counselor.email}</p>
+                        <p className="text-email">{counselor.email}</p>
                     </div>
 
                 </div>
