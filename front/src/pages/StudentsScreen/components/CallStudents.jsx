@@ -100,10 +100,10 @@ function CallStudents() {
                                                 />
                                                 <div>
 
-                                                    <h4>
+                                                    <h4 className="text-user">
                                                         {usuario.name} {usuario.lastname}
                                                     </h4>
-                                                    <p>{usuario.school}</p>
+                                                    <p className="text-user">{usuario.school}</p>
                                                 </div>
 
                                             </div>

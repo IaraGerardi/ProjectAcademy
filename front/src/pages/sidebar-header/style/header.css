@@ -110,3 +110,16 @@
   }
 
 }
+
+
+@media (max-width: 580px) {
+
+  .p-header {
+    margin-left: 40px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 32px;
+    font-family: sans-serif 'Rubik';
+  }
+}
