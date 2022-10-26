@@ -74,7 +74,7 @@ const createOriented = async (req, res) => {
     !user ?
       res.status(204).json({
         message: "Something went wrong",
-        info: user,
+        info: user.id,
       })
       :
       res.status(200).json({
