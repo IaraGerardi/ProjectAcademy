@@ -79,7 +79,7 @@ function FormOrientado() {
       return null;
     }
 
-    if (property !== "dni" || property !== "email") {
+    if (property !== "dni" && property !== "email") {
       return verifyMessages[property];
     }
 
@@ -90,7 +90,7 @@ function FormOrientado() {
     }
 
   }
-  console.log(backMessages)
+
   const showAllVerifications = () => {
     let mutableObj = {};
     Object.keys(verifications).forEach((i) => {
@@ -129,7 +129,7 @@ function FormOrientado() {
             'Content-Type': 'multipart/form-data'
           }
         })
-      console.log(response)
+
       if (response.status == 200) {
         setActive(!active)
         setTimeout(() => {
@@ -137,11 +137,12 @@ function FormOrientado() {
         }, "4000")
       }
     } catch (err) {
-      console.log(err)
-      for (let i = 0; i < err.response.data.errors.length; i++) {
+      const errors = err.response.data.info.errors
+
+      for (let i = 0; i < errors.length; i++) {
         setBackMessages(prevBackMessages => ({
           ...prevBackMessages,
-          [err.response.data.errors[i].param]: err.response.data.errors[i].msg,
+          [errors[i].param]: errors[i].msg,
         }))
       }
     }
@@ -297,12 +298,12 @@ function FormOrientado() {
                 />
                 {!(activeVerify.program) ? null : verifyMessages.program &&
                   (verifyMessages.program !== null && verifyMessages.program !== true) ?
-                  <div className="flex ml-2.5 items-center relative bottom-2">
+                  <div className="flex items-center relative bottom-2">
                     <Icon
-                      classname="w-3.5 h-3.5 m-1.5 text-sm fill-red-600"
+                      classname="w-3.5 h-3.5 my-1.5 fill-red-600"
                       type="exclamationMark"
                       width="24" height="24" />
-                    <span className="text-red-600 text-sm">{verifyMessages.program}</span>
+                    <span className="text-red-600 ml-1.5 text-xs">{verifyMessages.program}</span>
                   </div>
                   : null
                 }
