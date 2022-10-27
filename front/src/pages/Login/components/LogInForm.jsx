@@ -17,7 +17,7 @@ function FormLogIn() {
     const [loader, setLoader] = useState(false);
     const [form, setForm] = useState({ emailLog: null, passwordLog: null });
     const [activeVerify, setActiveVerify] = useState({});
-    const [backMessages, setBackMessages] = useState({ emailLog: null, passwordLog: null, });
+    const [backMessages, setBackMessages] = useState(null);
 
     const formValues = [{ inputValue: form.emailLog }, { inputValue: form.passwordLog }];
     const { handleVerifyForm, verifyMessages, isVerified } = useVerify(formValues, verifications);
@@ -43,15 +43,8 @@ function FormLogIn() {
         return () => clearTimeout(timer);
     }
 
-
-    const handleSetNull = (obj) => {
-        Object.keys(obj).forEach((index) => {
-            obj[index] = null;
-        });
-    }
-
     useEffect(() => {
-        handleSetNull(backMessages);
+        setBackMessages(null);
         handleVerifyForm();
     }, [form])
 
@@ -60,11 +53,7 @@ function FormLogIn() {
             return null;
         }
 
-        if (isVerified !== true) {
-            return verifyMessages[property];
-        } else {
-            return backMessages[property];
-        }
+        return verifyMessages[property];
     }
 
     const handleSubmit = async (e) => {
@@ -74,23 +63,18 @@ function FormLogIn() {
         }
         try {
             const response = await axios.post(`${URI}`, form, { withCredentials: true })
-            if (response.data.message === "Succesful Login") {
-                localStorage.setItem("usuario", JSON.stringify(response.data.admin));
-                dispatch({ type: types.authLogin })
-                navigate('/inicio');
-            }
+            localStorage.setItem("usuario", JSON.stringify(response.data.info));
+            dispatch({ type: types.authLogin })
+            navigate('/inicio');
         } catch (err) {
-            setBackMessages(prevBackMessages => ({
-                ...prevBackMessages,
-                [err.response.data.params]: err.response.data.message,
-            }))
+            setBackMessages(err.response.data.message)
         } finally {
             setLoader(false)
         }
     }
 
     return (
-        <form className="flex flex-col" onSubmit={handleSubmit}>
+        <form className="flex flex-col h-[325px]" onSubmit={handleSubmit}>
             <FormInput
                 type="email"
                 id="emailLog"
@@ -122,6 +106,8 @@ function FormLogIn() {
                 onClick={() => { setLoader(true) }}
                 className={`${isVerified ? null : "opacity-60"}
                 w-44 cursor-pointer border-none text-white text-base font-medium bg-celesteValtech`} />
+            {backMessages !== null &&
+                <span className="w-80 px-8 text-red-600">{backMessages}</span>}
 
             {loader &&
                 <div className='w-screen h-screen flex items-center absolute top-0 left-0 justify-center bg-slate-600 bg-opacity-10'>
