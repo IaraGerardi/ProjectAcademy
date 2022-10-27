@@ -37,12 +37,12 @@ export const EventForm = () => {
 
   const ShowData = async () => {
     const res = await axios.get(`${process.env.REACT_APP_BASE_URL}/counselor`, { withCredentials: true })
-    setCounselorEvent(res.data)
+    setCounselorEvent(res.data.info)
   }
   
   const ShowDataStudents = async () => {
     const resp = await axios.get(`${process.env.REACT_APP_BASE_URL}/oriented`, { withCredentials: true })
-    setOrientedEvent(resp.data)
+    setOrientedEvent(resp.data.info)
   }
 
   useEffect(() => {
@@ -172,8 +172,8 @@ export const EventForm = () => {
         <div className='lg:mt-5 lg:m-8'>
 
           <div className='m-2 md:mt-5 md:ml-5 lg:pl-10'>
-            <h2 className="lg:text-2xl md:text-xl font-medium text-slate-700">Crear un evento</h2>
-            <h4 className='lg:text-lg md:text-base text-slate-700 text-sm'>Puedes crear un primer encuentro entre Orientadores y Orientados.</h4>
+            <h2 className="lg:text-2xl md:text-xl font-medium text-slate-700 pl-5 lg:pl-0">Crear un evento</h2>
+            <h4 className='lg:text-lg md:text-base text-slate-700 text-sm pl-5 lg:pl-0'>Puedes crear un primer encuentro entre Orientadores y Orientados.</h4>
 
             <form
               onSubmit={handleSubmit}
