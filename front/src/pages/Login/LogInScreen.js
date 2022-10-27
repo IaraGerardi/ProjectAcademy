@@ -8,7 +8,7 @@ function LogIn() {
     return (
         <div className="loginAdmin flex">
             <div className="imagesContainer flex flex-col justify-center items-center">
-                <Link className="w-52 h-12" to="/">
+                <Link className="w-52 h-12 z-10" to="/">
                     <img
                         src={Logo}
                         alt="v_camp"

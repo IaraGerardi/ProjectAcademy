@@ -67,12 +67,9 @@ const getEvents = async (req, res) => {
     const event = await ModelEvent.findAll({
       include: [
         {
-          model: ModelCounselor,
-        },
-        {
           model: ModelOriented,
-          attributes: ["name", "lastname", "photoProfile"],
-        },
+          attributes: ["id", "name", "lastname", "photoProfile"]
+        }
       ],
       attributes: [
         "id",
@@ -82,7 +79,8 @@ const getEvents = async (req, res) => {
         "duration",
         "description",
         "createdAt",
-      ],
+        "counselorId"
+      ]
     });
     res.status(200).json(event);
   } catch (error) {

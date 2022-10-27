@@ -1,4 +1,4 @@
-const { admin } = require("./seed");
+const { admin } = require("../seed");
 
 module.exports = {
   async up(queryInterface) {

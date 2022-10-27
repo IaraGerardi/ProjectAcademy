@@ -12,7 +12,7 @@ module.exports = (sequelize) => {
       sequelize,
       freezeTableName: true,
       modelName: "oriented_event",
-      timestamps: true,
+      timestamps: false, // Breaks everything
       paranoid: true,
     }
   );

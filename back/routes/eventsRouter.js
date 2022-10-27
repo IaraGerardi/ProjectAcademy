@@ -15,6 +15,6 @@ const { eventValidator } = require("../validations/createEvent");
 // Ruta eventos
 eventsRouter.get("/", isAuthenticated, getEvents); // trae todos los eventos
 eventsRouter.post("/create", isAuthenticated, eventValidator, createEvent); // crear eventos
-eventsRouter.delete("/:id/delete", isAuthenticated, deleteEvent); // eliminar eventos
+eventsRouter.delete("/:id", isAuthenticated, deleteEvent); // eliminar eventos
 
 module.exports = eventsRouter;

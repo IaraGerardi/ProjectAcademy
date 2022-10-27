@@ -36,8 +36,9 @@ function CallEvents({ events }) {
 
     //eliminar un evento
     const deleteEvent = async (id) => {
-        await axios.delete(`${process.env.REACT_APP_BASE_URL}/events/${id}/delete`, { withCredentials: true })
+        await axios.delete(`${process.env.REACT_APP_BASE_URL}/events/${id}`, { withCredentials: true })
         window.location.reload(false);
+    
     }
 
     return (
@@ -61,14 +62,49 @@ function CallEvents({ events }) {
                 </div>
 
 
+                {eventList.map((eventMobile) => {
+                    return (
+
+
+                        <div className="event-mobile">
+
+                            <div key={eventMobile.id} className="container-events-responsive">
+
+                                <div>
+                                    <p className="title-events-responsive"><strong className="event-strong-responsive">Fecha</strong></p>
+                                    <p className="event-date-responsive">{eventMobile.date}</p>
+                                    <p className="title-events-responsive"><strong className="event-strong-responsive">Horario</strong></p>
+                                    <p className="event-date-responsive">{`${eventMobile.time}hs`}</p>
+                                </div>
+                                <div>
+
+                                    <p className="title-events-responsive"><strong className="event-strong-responsive">Evento</strong></p>
+                                    <p className="event-date-responsive">{eventMobile.name}</p>
+                                    <p className="title-events-responsive"><strong className="event-strong-responsive">Participantes</strong></p>
+                                    <p className="event-date-responsive">{eventMobile.orienteds[0]?.name} {eventMobile.orienteds[0]?.lastname}</p>
+                                </div>
+                            </div>
+
+                            <div className="delete-responsive" onClick={() => deleteEvent(eventMobile.id)}>
+                                <div className="text-delete">Eliminar Evento</div>
+                            </div>
+
+                        </div>
+
+
+                    )
+
+                })}
+
+
                 <div className="container-events">
                     <table >
                         <thead>
                             <tr className="title-table">
-                                <td className="title-events"><strong>Fecha</strong></td>
-                                <td className="title-events"><strong>Horario</strong></td>
-                                <td className="title-events"><strong>Eventos</strong></td>
-                                <td className="title-events"><strong>Participantes</strong></td>
+                                <td className="title-events"><strong className="event-title">Fecha</strong></td>
+                                <td className="title-events"><strong className="event-title">Horario</strong></td>
+                                <td className="title-events"><strong className="event-title">Evento</strong></td>
+                                <td className="title-events"><strong className="event-title">Participantes</strong></td>
                             </tr>
                         </thead>
 
@@ -76,10 +112,11 @@ function CallEvents({ events }) {
                             {eventList.map((event) => {
                                 return (
                                     <tr key={event.id}>
-                                        <td className="events">{event.date}</td>
-                                        <td className="events">{event.time}</td>
-                                        <td className="events">{event.name}</td>
-                                        <td className="events">{event.counselor?.name} {event.counselor?.lastname}</td>
+
+                                        <td className="events"><p className="event-date">{event.date}</p></td>
+                                        <td className="events"><p className="event-date">{`${event.time}hs`}</p> </td>
+                                        <td className="events"><p className="event-date">{event.name}</p></td>
+                                        <td className="events"><p className="event-date">{event.orienteds[0]?.name} {event.orienteds[0]?.lastname}</p></td>
                                         <td className="events left"><img onClick={() => deleteEvent(event.id)} className="icon-delete" src={Deleted} alt="Icon trash" /></td>
 
                                     </tr>
@@ -87,7 +124,7 @@ function CallEvents({ events }) {
                             })}
                         </tbody>
                     </table>
-                  
+
 
 
                 </div>

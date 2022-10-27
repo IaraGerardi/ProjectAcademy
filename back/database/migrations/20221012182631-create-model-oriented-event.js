@@ -14,24 +14,12 @@ module.exports = {
       EventId: {
         type: Sequelize.INTEGER,
         references: {
-          model: "Events",
+          model: "events",
           key: "id",
         },
         onDelete: "CASCADE",
         onUpdate: "CASCADE",
-      },
-      createdAt: {
-        allowNull: false,
-        type: Sequelize.DATE,
-      },
-      updatedAt: {
-        allowNull: false,
-        type: Sequelize.DATE,
-      },
-      deletedAt: {
-        allowNull: false,
-        type: Sequelize.DATE,
-      },
+      }
     });
   },
   async down(queryInterface) {

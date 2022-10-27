@@ -19,7 +19,7 @@ import Affirmation from "../img/affirmation.svg"
 import Delete from "../img/delete.svg"
 
 function FormOrientado() {
-  const URI = `${process.env.REACT_APP_BASE_URL}/oriented/create`;
+  const URI = `${process.env.REACT_APP_BASE_URL}/oriented`;
 
   const [name, setName] = useState("");
   const [lastname, setLastname] = useState("");
@@ -108,8 +108,8 @@ function FormOrientado() {
         }
       })
       .then((response) => {
-        if (response.data.message == 'Successfully created new Oriented') {
-
+        console.log(response)
+        if (response.status == 200) {
           setActive(!active)
           setTimeout(() => {
             navegate(`/orientados/StudentInfo/${response.data.id}`)
@@ -136,7 +136,7 @@ function FormOrientado() {
 
     })
   }
-
+  
   const handleProgramChange = (e) => {
     setProgram(e.value);
   };
@@ -281,7 +281,7 @@ function FormOrientado() {
             </div>
           </div>
         </div>
-        <div className="container-personalInfo  text-slate-700 flex flex-col h-max md:h-96 lg:h-96 gap-3">
+        <div className="container-personalInfo  text-slate-700 flex flex-col h-max md:h-full lg:h-full gap-3">
           {" "}
           <h2 className=" text-lg  md:text-xl  lg:text-2xl font-medium ">02.Datos personales</h2>
           <div className=" cajaInputsDatosP  flex  flex-col md:flex-row md:gap-5 lg:flex-row lg:gap-5  ">

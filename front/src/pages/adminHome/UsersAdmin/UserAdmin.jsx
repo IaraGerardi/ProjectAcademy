@@ -15,7 +15,7 @@ function UserAdmin() {
         const res = await axios.get(`${process.env.REACT_APP_BASE_URL}/oriented`, {
           withCredentials: true,
         });
-        setNewusers(res.data.slice(0, 6));
+        setNewusers(res.data.slice(-9));
         setLoadingOriented(false);
         
       } catch (error) {
@@ -61,24 +61,17 @@ function UserAdmin() {
                 </div>
               </div>
 
-              {usersapi.OrientadoreId != null ? (
+              {usersapi.counselorId ? (
                 <div className="iconcd">
-                  <Icon
-                    classname="h-8"
-                    type="userIcon"
-                    width="17"
-                    height="24"
-                  />
+                <Icon
+                  classname="h-8"
+                  type="assignUser"
+                  width="17"
+                  height="24"
+                />
                 </div>
               ) : (
-                <div className="iconcd">
-                  <Icon
-                    classname="h-8"
-                    type="assignUser"
-                    width="17"
-                    height="24"
-                  />
-                </div>
+                null
               )}
             </Link>
           ))}

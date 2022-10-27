@@ -5,7 +5,9 @@ const path = require("path");
 // Storage - Definimos donde y bajo que nombre se guarda
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, path.join(__dirname, "../../front/src/img-back/orientados"));
+    // Es un callback que dice donde va a guardar el archivo
+    cb(null, path.join(__dirname, '..','..','front','src','img-back','orientados'));
+
   },
   filename: (req, file, cb) => {
     const unique = `${Date.now()}-${Math.round(Math.random() * 1e5)}`;

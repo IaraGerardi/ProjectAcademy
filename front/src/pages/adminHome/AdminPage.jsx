@@ -24,32 +24,31 @@ function AdminPage() {
               <div className="h-30 w-full">
                 <div className="boxMainAdminHome mt-2">
                   <div className=" h-3/5">
-                    <div className="contentsone h-1/6  items-center">
+                    <div className="contentsone h-1/6  items-center mt-8">
                       <div className="contentstwo flex items-center w-9/12 ml-20 justify-between h-full">
                         <div className="text-1xl text-center font-semibold mt-4 ml-2">
-                          <div>Nuevos orientados</div>
+                          <div className="colorstextcv">Nuevos orientados</div>
                           <div className="newsorientedcv bg-cyan-400 h-1 mt-2 w-48"></div>
                         </div>
 
-                        <div>
-                          <Link className="w-44 h-10 bg-celesteValtech rounded-lg text-base text-white text-center p-2 font-medium" to="/orientados/nuevo">
+                        <div className="butons_edit">
+                          <Link className="" to="/orientados/nuevo">
                               Ingresar orientado
-                  
                           </Link>
                         </div>
                       </div>
                     </div>
 
-                    <div className="Admindblock mt-3">
+                    <div className="Admindblock mt-5">
                       <UserAdmin />
                     </div>
 
                     <div className="items-center mt-1">
                       <div className="flex items-center w-9/10 ml-20 justify-between h-auto ">
                         <div className="orientedcd">
-                          <div>
+                          <div className="colorstextcv">
                             <Link className="navegar" to="/orientados/newUsers">
-                              Ver más orientados
+                              <u>Ver más orientados</u>
                             </Link>
                           </div>
                         </div>
@@ -59,8 +58,8 @@ function AdminPage() {
                     <div className=" h-3/1 items-center mt-4">
                       <div className="flex  w-8/12 textnovedade justify-between h-auto ">
                         <div>
-                          <div>
-                            <h1 className="boxnoticesone text-3xl text-bold">
+                          <div className="colorstextcv2">
+                            <h1 className="boxnoticesone text-2xl text-bold mt-6">
                               Novedades
                             </h1>
                           </div>
@@ -87,3 +86,4 @@ function AdminPage() {
 }
 
 export default AdminPage;
+

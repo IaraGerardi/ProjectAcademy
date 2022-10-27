@@ -1,0 +1,155 @@
+.text-new-user {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 32px;
+    font-family: sans-serif 'Rubik';
+    color: #2E384D;
+    height: 35px;
+    border-bottom: 10px solid #E9F9F8;
+    margin-bottom: 20px;
+    margin-left: 90px;
+
+}
+
+
+
+.button-add-oriented {
+    border-radius: 8px ;
+    font-weight: 500;
+    padding: 8px;
+    text-align: center;
+    color: white;
+    width: 176px;
+    height: 40px;
+    margin-right: 230px;
+    background-color: rgb(11 164 160 );
+
+}
+
+
+.cont-enter-oriented {
+    display: flex;
+    justify-content: space-between;
+    margin: 40px 0px;
+    width: 100%;
+}
+
+.btn-enter-orientaded {
+    width: 184px;
+    height: 40px;
+    border-radius: 8px;
+    background-color: #0BA4A0;
+    color: white;
+    border: none;
+    font-weight: 600;
+    font-size: 13px;
+    transition: 500ms;
+}
+
+.btn-enter-orientaded:hover {
+    transition: 500ms;
+    background-color: #20c0bb;
+    cursor: pointer;
+
+}
+
+
+@media (max-width: 980px) {
+    .text-new-user {
+        font-size: 24px;
+        font-weight: 700;
+        line-height: 32px;
+        font-family: sans-serif 'Rubik';
+        color: #2E384D;
+        height: 35px;
+        border-bottom: 10px solid #E9F9F8;
+        margin-bottom: 20px;
+        margin-left: 70px;
+
+    }
+
+    .button-add-oriented {
+        border-radius: 8px ;
+        font-weight: 500;
+        padding: 8px;
+        text-align: center;
+        color: white;
+        width: 176px;
+        height: 40px;
+        margin-right: 90px;
+        background-color: rgb(11 164 160 );
+    
+    }
+
+
+}
+
+
+@media (max-width: 800px) {
+
+
+    .text-new-user {
+      font-size: 1em;
+        font-weight: 700;
+        line-height: 32px;
+        font-family: sans-serif 'Rubik';
+        color: #2E384D;
+        height: 35px;
+        border-bottom: 10px solid #E9F9F8;
+        margin-bottom: 20px;
+        margin-left: 90px;
+    
+    }
+
+
+    .btn-enter-orientaded {
+        width: 144px;
+        height: 40px;
+        border-radius: 8px;
+        background-color: #0BA4A0;
+        color: white;
+        border: none;
+        font-weight: 600;
+        font-size: 13px;
+        transition: 500ms;
+    }
+
+
+    .cont-enter-oriented {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+
+    .text-new-user {
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 32px;
+        font-family: sans-serif 'Rubik';
+        color: #2E384D;
+        height: 35px;
+        border-bottom: 10px solid #E9F9F8;
+        margin: 20px 0px;
+    }
+
+
+    .button-add-oriented {
+        border-radius: 8px ;
+        font-weight: 500;
+        padding: 8px;
+        text-align: center;
+        color: white;
+        width: 176px;
+        height: 40px;
+        background-color: rgb(11 164 160 );
+        margin: 0px;
+    
+    }
+
+
+
+}
+
+

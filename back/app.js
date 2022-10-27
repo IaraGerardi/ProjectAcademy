@@ -16,7 +16,7 @@ const {
 const db = require("./database/models");
 
 // seteamos el path del .env
-dotenv.config({ path: "../.env" });
+dotenv.config({ path: ".env" });
 // el puerto se coloca en las variables de entorno sino se utilizara 8000
 const PORT = process.env.PORT || "8000";
 // Para poder utilizar cors
