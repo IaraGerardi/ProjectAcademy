@@ -22,7 +22,7 @@ const upload = multer({
 const photoProfileCheck = (req, res, next) => {
   upload(req, res, (error) => {
     if (error) {
-      return res.status(400).json({ msg: "Image couldn't be uploaded" });
+      return res.status(400).json({ message: "Image couldn't be uploaded" });
     }
     next(); 
     });

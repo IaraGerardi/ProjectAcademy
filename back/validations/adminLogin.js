@@ -13,9 +13,10 @@ const adminLogValidator = [
                 where: { email: value },
             });
             if(!admin || !(passwordLog == admin.password)){
-                return Promise.reject("Hay datos incorrectos");
+                return Promise.reject("Email o Password incorrectos");
             }
         }),
+    /* ------Inpunt passwordLog------- */
     check('passwordLog')
         .notEmpty().withMessage('El campo password está vacío'),
     (req, res, next) => {
@@ -23,4 +24,4 @@ const adminLogValidator = [
     }
 ]
 
-module.exports = adminLogValidator
+module.exports = adminLogValidator;

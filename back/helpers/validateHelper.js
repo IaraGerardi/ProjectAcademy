@@ -17,8 +17,9 @@ const validateResult = (req, res, next) => {
         )
       );
     }
-    res.status(400).json({msg: 'Form errors', info: validationResult(req)})
+    res.status(400).json({message: 'Form errors', info: validationResult(req)})
   } catch (error) {
+    console.error(error)
     res.status(400).json({ message: 'Something went wrong' });
   }
 };

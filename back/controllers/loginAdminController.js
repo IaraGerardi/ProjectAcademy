@@ -3,27 +3,8 @@ const { admins: ModelAdmin } = require("../database/models/index");
 
 const adminLogin = async (req, res) => {
   try {
-<<<<<<< HEAD
     const { emailLog } = req.body
         const admin = await ModelAdmin.findOne({
-=======
-    const { emailLog } = req.body;
-    const { passwordLog } = req.body;
-    if (!emailLog || !passwordLog) {
-      res.status(403).json({
-        message: "Ingrese email y contraseña",
-      });
-    } else {
-      const admin = await ModelAdmin.scope("withPassword").findOne({
-        where: { email: emailLog },
-      });
-      if (!admin || !(passwordLog == admin.password)) {
-        res.status(403).json({
-          message: "Datos incorrectos",
-        });
-      } else {
-        const loggedAdmin = await ModelAdmin.findOne({
->>>>>>> develop
           where: { email: emailLog },
         });
         const { id } = admin;
@@ -38,15 +19,9 @@ const adminLogin = async (req, res) => {
         };
         res.cookie("jwt", token, cookiesOptions);
         res.status(200).json({
-<<<<<<< HEAD
           message: "Succesful Login",
           info: admin,
-=======
-          message: "Successful Login",
-          info: loggedAdmin,
->>>>>>> develop
         });
-      
   } catch (error) {
     console.log(error);
     res.status(400).json({ message: 'Something went wrong' });
