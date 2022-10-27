@@ -61,8 +61,8 @@
 }
 
 .boxnoticesone {
-  height: 40px;
-  width: 170px;
+  height: 30px;
+  width: 140px;
   border-bottom: 18px solid #e9f9f8;
 }
 
@@ -96,6 +96,27 @@
   font-weight: 600;
   font-size: 13px;
   transition: 500ms;
+}
+
+.butons_edit{
+  margin-top: 10px;
+  color: white;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 160px;
+  height: 40px;
+  background-color :#0BA4A0;
+}
+
+.colorstextcv{
+  color: #2E384D;
+}
+
+.colorstextcv2{
+  color: #2E384D;
+  font-family: 'Rubik';
 }
 
 @media (max-width: 600px) {
