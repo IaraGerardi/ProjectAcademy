@@ -6,35 +6,19 @@ exports.orientedLogin = async (req, res) => {
   try {
     const { emailLog } = req.body;
     const { passwordLog } = req.body;
-    if (!emailLog && !passwordLog) {
-      res.json({
-        message: "Enter email and password",
+    if (!emailLog || !passwordLog) {
+      res.status(403).json({
+        message: "Incorrect data",
       });
-    } else if (!emailLog) {
-      res.json({
-        message: "Enter a email",
-        params: "emailLog",
-      });
-    } else if (!passwordLog) {
-      res.json({
-        message: "Enter a password",
-        params: "passwordLog",
-      });
-    } else {
+    }else {
       const oriented = await ModelOriented.scope("withPassword").findOne({
         where: { email: emailLog },
       });
-      if (oriented == null) {
+      if (!oriented || !await bcryptjs.compare(passwordLog, oriented.password)) {
         res.json({
-          message: "Incorrect email",
-          params: "emailLog",
+          message: "Incorrect data",
         });
-      } else if (!await bcryptjs.compare(passwordLog, oriented.password)) {
-        res.json({
-          message: "Incorrect Password",
-          params: "passwordLog",
-        });
-      } else {
+      }else {
         const loggedOriented = await ModelOriented.findOne({
           where: { email: emailLog },
         });
@@ -49,13 +33,13 @@ exports.orientedLogin = async (req, res) => {
         };
         res.cookie("jwt", token, cookiesOptions);
         res.status(200).json({
-          message: "Succesful Login",
-          oriented: loggedOriented,
+          message: "Successful Login",
+          info: loggedOriented,
         });
       }
     }
   } catch (error) {
     console.log(error);
-    res.status(400).json({ message: error.message });
+    res.status(400).json({ message: 'Something went wrong' });
   }
 };
