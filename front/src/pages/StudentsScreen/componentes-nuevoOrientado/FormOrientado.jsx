@@ -208,7 +208,7 @@ function FormOrientado() {
   return (
     <div className="cotainerForm mt-10 mb-10 mx-6 w-auto">
       <form
-        className=" flex flex-col gap-4"
+        className=" flex flex-col gap-4 w-56 md:w-full lg:w-full"
         onSubmit={handleSubmit}
         encType="multipart/form-data"
       >
@@ -253,7 +253,7 @@ function FormOrientado() {
           </div>
 
           <div className="cajaInputsDatosP flex flex-col gap-0 md:min-w-3/4 md:flex-row md:gap-5 lg:flex-row lg:gap-10 lg:w-4/5 lg:h-48 ">
-            <div className=" w-72 flex flex-col ">
+            <div className=" w-56  md:w-72 lg:w-72 flex flex-col ">
               <InputLabel
                 labelName="Nombre"
                 inputType="text"
@@ -273,7 +273,7 @@ function FormOrientado() {
                 verifyInput={handleErrorMessage("lastname")}
               />
             </div>
-            <div className=" w-72">
+            <div className=" w-56  md:w-72 lg:w-72">
               <InputLabel
                 labelName="Email"
                 inputType="email"
@@ -283,7 +283,7 @@ function FormOrientado() {
                 propsOnchange={(e) => { handleTimer(e); setEmail(e.target.value) }}
                 verifyInput={handleErrorMessage("email")}
               />
-              <div className=" w-72 h-24 flex flex-col gap-2">
+              <div className=" w-56 md:w-72 lg:-72 h-24 flex flex-col gap-2">
                 <label htmlFor="" className="font-medium text-slate-600 mt-1">
                   Programa
                 </label>
@@ -293,7 +293,7 @@ function FormOrientado() {
                   options={options}
                   onChange={(e) => { handleProgramChange(e); }}
                   styles={customStyles}
-                  className={`w-64 h-8 rounded-lg`}
+                  className={`w-56 md:w-64 lg:w-64 h-8 rounded-lg`}
                 />
                 {!(activeVerify.program) ? null : verifyMessages.program &&
                   (verifyMessages.program !== null && verifyMessages.program !== true) ?
@@ -314,7 +314,7 @@ function FormOrientado() {
           {" "}
           <h2 className=" text-lg  md:text-xl  lg:text-2xl font-medium ">02.Datos personales</h2>
           <div className=" cajaInputsDatosP  flex  flex-col md:flex-row md:gap-5 lg:flex-row lg:gap-5  ">
-            <div>
+            <div >
               <InputLabel
                 labelName="Telefono"
                 inputType="phone"
@@ -359,10 +359,10 @@ function FormOrientado() {
           <FormInput
             onHandleChange={(e) => { handleTimer(e); setWhy(e.target.value) }}
             labelClass="font-medium text-slate-600"
-            containerClass="containerInputLabel flex flex-col gap-2 h-36 w-72 md:w-full md:min-w-full lg:max-w-11/12"
+            containerClass="containerInputLabel flex flex-col gap-2 h-36 w-full md:w-full md:min-w-full lg:max-w-11/12"
             col="45"
             rows="4"
-            inputClass="rounded-lg border  pl-3 pt-2 w-64 md:w-[570px] lg:w-[570px] md:max-w-6/12  placeholder:pl-1  resize-none"
+            inputClass="rounded-lg border  pl-3 pt-2 w-56 md:w-[570px] lg:w-[570px] md:max-w-6/12  placeholder:pl-1  resize-none"
             id="why" type="textarea" label="¿Porque se acercó a nuestra institución?" placeholder="Escribe un comentario."
             verifyInput={handleErrorMessage("why")} />
           <h2 className="text-lg  md:text-xl  lg:text-2xl font-medium text-slate-700">03.Crear usuario y contraseña</h2>

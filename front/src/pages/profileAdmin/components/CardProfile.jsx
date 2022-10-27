@@ -22,7 +22,8 @@ function CardProfile() {
             const getAdminProfile= async()=>{
                 try{
                     const resAdmin = await axios.get(`${URI}/${parsed.id}`,{withCredentials:true})//trae uri y le agrega /gdsaiukyhds y lo guarda
-                    setAdmin(resAdmin.data); 
+                    setAdmin(resAdmin.data.info);
+                 
                     setLoadingProfile(false)
 
                 }catch(error){// en caso de fallar 
