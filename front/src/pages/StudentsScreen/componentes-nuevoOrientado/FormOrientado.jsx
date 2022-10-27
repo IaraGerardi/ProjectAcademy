@@ -137,10 +137,11 @@ function FormOrientado() {
         }, "4000")
       }
     } catch (err) {
-      for (let i = 0; i < response.data.errors.length; i++) {
+      console.log(err)
+      for (let i = 0; i < err.response.data.errors.length; i++) {
         setBackMessages(prevBackMessages => ({
           ...prevBackMessages,
-          [response.data.errors[i].param]: response.data.errors[i].msg,
+          [err.response.data.errors[i].param]: err.response.data.errors[i].msg,
         }))
       }
     }

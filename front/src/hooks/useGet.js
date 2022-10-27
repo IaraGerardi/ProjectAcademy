@@ -9,7 +9,7 @@ function useGet(URI) {
     useEffect(() => {
         const handleGetData = async (URI) => {
             try {
-                const response = await axios.get(`${URI}`, { withCredentials: true }) //trae uri y le agrega /gdsaiukyhds y lo guarda
+                const response = await axios.get(`${URI}`, { withCredentials: true })
                 setData(response.data)
                 setIsPending(false)
                 setError({ err: false })
