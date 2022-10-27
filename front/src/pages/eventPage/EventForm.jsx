@@ -171,20 +171,20 @@ export const EventForm = () => {
 
         <div className='lg:mt-5 lg:m-8'>
 
-          <div className='m-2 md:mt-5 md:ml-5'>
-            <h2 className="lg:text-2xl font-medium text-slate-700">Crear un evento</h2>
-            <h4 className='lg:text-lg text-slate-700 text-sm'>Puedes crear un primer encuentro entre Orientadores y Orientados.</h4>
+          <div className='m-2 md:mt-5 md:ml-5 lg:pl-10'>
+            <h2 className="lg:text-2xl md:text-xl font-medium text-slate-700">Crear un evento</h2>
+            <h4 className='lg:text-lg md:text-base text-slate-700 text-sm'>Puedes crear un primer encuentro entre Orientadores y Orientados.</h4>
 
             <form
               onSubmit={handleSubmit}
-              className='mt-5 flex flex-col lg:m-0 lg:mr-20 md:mr-20'>
+              className='mt-5 flex flex-col lg:m-0 lg: md:mr-20 lg:max-w-max md:max-w-max'>
 
-              <h2 className="lg:text-base font-medium text-slate-700 lg:pt-3">01. Información sobre el evento</h2>
+              <h2 className="lg:text-base font-medium text-slate-700 lg:pt-3 ">01. Información sobre el evento</h2>
 
-              <div className='flex flex-col lg:flex-row md:flex-wrap lg:py-2 pl-3 pt-2 '>
+              <div className='flex flex-col lg:flex-row md:flex-wrap lg:py-2 pl-3 pt-2'>
                 <FormInput
                   onHandleChange={(e) => { setName(e.target.value); handleTimer(e); }}
-                  inputClass="w-56 md:w-80 lg:w-80 text-sm p-2 rounded-lg border shadow-sm border-slate-300
+                  inputClass="w-56 md:w-80 lg:w-[298px] text-sm p-2 rounded-lg border shadow-sm border-slate-300
                   placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block focus:ring-1"
                   labelClass="text-sm font-medium text-slate-600"
                   containerClass="flex flex-col px-2 h-20"
@@ -205,7 +205,7 @@ export const EventForm = () => {
                     options={counselorEvent.map(elem => ({ name: "valueCounselor", label: `${elem.name} ${elem.lastname}`, value: elem.id }))}
                     onChange={handlerSelectOne}
                     styles={customStylesEvent}
-                    className='w-56 md:w-80 lg:w-80'
+                    className='w-56 md:w-80 lg:w-[298px]'
                   />
                   {!(activeVerify.valueCounselor) ? null : verifyMessages.valueCounselor &&
                     verifyMessages.valueCounselor !== null && verifyMessages.valueCounselor !== true ?
@@ -231,7 +231,7 @@ export const EventForm = () => {
                     isMulti
                     components={animatedComponents}
                     styles={customStylesEvent}
-                    className='w-56 md:w-80 lg:w-80'
+                    className='w-56 md:w-80 lg:w-[298px]'
                   />
                   {!(activeVerify.oriented) ? null : verifyMessages.oriented &&
                     verifyMessages.oriented !== null && verifyMessages.oriented !== true ?
@@ -248,14 +248,14 @@ export const EventForm = () => {
 
               </div>
 
-              <div className='border-y-2 pb-6 pt-6  mt-4 '>
+              <div className='border-y-2 md:flex-wrap pb-6 pt-6  mt-4 '>
                 <h2 className="lg:text-base font-medium text-slate-700 mb-4">02. Días y Horarios disponibles </h2>
 
                 <div className='flex flex-col lg:flex-row md:flex-wrap lg:py-3 pl-3 pt-2 '>
                   {/* Agregarle altura al input en si */}
                   <FormInput
                     onHandleChange={(e) => { setDateEvent(e.target.value); handleTimer(e); }}
-                    inputClass="text-sm w-56 md:w-80 lg:w-80 p-2 rounded-lg border shadow-sm
+                    inputClass="text-sm w-56 md:w-80 lg:w-[298px] p-2 rounded-lg border shadow-sm
                     border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block 
                     focus:ring-1 h-10"
                     labelClass="text-sm font-medium text-slate-600"
@@ -276,7 +276,7 @@ export const EventForm = () => {
                       options={optionsHours}
                       onChange={handleHours}
                       styles={customStylesEvent}
-                      className="w-56 md:w-80 lg:w-80 "
+                      className="w-56 md:w-80 lg:w-[298px] "
                     />
                     {!(activeVerify.eventTime) ? null : verifyMessages.eventTime &&
                       verifyMessages.eventTime !== null && verifyMessages.eventTime !== true ?
@@ -299,7 +299,7 @@ export const EventForm = () => {
                       options={timeOptArray}
                       onChange={handleDuration}
                       styles={customStylesEvent}
-                      className="w-56 md:w-80 lg:w-80 "
+                      className="w-56 md:w-80 lg:w-[298px] "
                     />
                     {!(activeVerify.duration) ? null : verifyMessages.duration &&
                       verifyMessages.duration !== null && verifyMessages.duration !== true ?
@@ -323,10 +323,10 @@ export const EventForm = () => {
                 <div className='flex flex-col pl-4 '>
                   <FormInput
                     onHandleChange={(e) => { setDescriptionEvent(e.target.value); handleTimer(e); }}
-                    inputClass="md:w-80 lg:w-[660px] h-20 rounded-lg border border-slate-300 placeholder:pl-2 shadow-sm
+                    inputClass="md:w-80 lg:w-[620px] h-20 rounded-lg border border-slate-300 placeholder:pl-2 shadow-sm
                     placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block focus:ring-1 resize-none"
                     labelClass="text-sm font-medium text-slate-600 "
-                    containerClass="flex flex-col w-56 md:w-80 lg:w-[660px] h-36"
+                    containerClass="flex flex-col w-56 md:w-80 lg:w-[620px] h-36"
                     errorClass="mt-[5px]"
                     id="eventComments"
                     type="textarea"
