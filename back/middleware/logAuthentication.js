@@ -3,7 +3,7 @@ const { promisify } = require("util");
 const { admins: ModelAdmin } = require("../database/models/index");
 
 // eslint-disable-next-line consistent-return
-exports.isAuthenticated = async (req, res, next) => {
+const isAuthenticated = async (req, res, next) => {
   console.log(`el req de cookie jwt: ${req.cookies.jwt}`);
   if (req.cookies.jwt) {
     try {
@@ -25,6 +25,11 @@ exports.isAuthenticated = async (req, res, next) => {
       return next();
     }
   } else {
-    res.status(403).json({ logged: "Not logged" });
+    res.status(403).json({ message: "Not logged" });
   }
 };
+
+
+module.exports = {
+  isAuthenticated
+}
