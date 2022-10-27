@@ -109,7 +109,7 @@ function FormOrientado() {
     try {
       const formData = new FormData()
       formData.append('photoProfile', photoProfile)
-      await axios.post(URI, {
+      const response = await axios.post(URI, {
         name: name,
         password: password,
         lastname: lastname,
