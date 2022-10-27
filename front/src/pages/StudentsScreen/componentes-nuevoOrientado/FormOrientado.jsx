@@ -37,7 +37,7 @@ function FormOrientado() {
 
   const [active, setActive] = useState(false);
   const [activeVerify, setActiveVerify] = useState({});
-  const [backMessages, setBackMessages] = useState({ emailLog: null, passwordLog: null, });
+  const [backMessages, setBackMessages] = useState({ email: null, dni: null, });
 
   const navegate = useNavigate();
 
@@ -74,48 +74,76 @@ function FormOrientado() {
   }, [name, lastname, email, program, phone, age, school, address, why, dni, password, confirmPassword])
 
   const handleErrorMessage = (property) => {
+
     if (!(activeVerify[property]) || !(verifyMessages[property])) {
       return null;
     }
-    return verifyMessages[property];
+
+    if (property !== "dni" || property !== "email") {
+      return verifyMessages[property];
+    }
+
+    if (verifyMessages[property] !== true) {
+      return verifyMessages[property];
+    } else {
+      return backMessages[property];
+    }
+
+  }
+  console.log(backMessages)
+  const showAllVerifications = () => {
+    let mutableObj = {};
+    Object.keys(verifications).forEach((i) => {
+      mutableObj[verifications[i].id] = true;
+    });
+    setActiveVerify(mutableObj)
   }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!isVerified) {
+      showAllVerifications();
       return;
     }
-    const formData = new FormData()
-    formData.append('photoProfile', photoProfile)
-    await axios.post(URI, {
-      name: name,
-      password: password,
-      lastname: lastname,
-      email: email,
-      phone: phone,
-      program: program,
-      photoProfile: photoProfile,
-      dni: dni,
-      age: age,
-      school: school,
-      address: address,
-      why: why
-    },
-      {
-        withCredentials: true,
-        headers: {
-          'Content-Type': 'multipart/form-data'
-        }
-      })
-      .then((response) => {
-        console.log(response)
-        if (response.status == 200) {
-          setActive(!active)
-          setTimeout(() => {
-            navegate(`/orientados/StudentInfo/${response.data.id}`)
-          }, "4000")
-        }
-      })
+
+    try {
+      const formData = new FormData()
+      formData.append('photoProfile', photoProfile)
+      await axios.post(URI, {
+        name: name,
+        password: password,
+        lastname: lastname,
+        email: email,
+        phone: phone,
+        program: program,
+        photoProfile: photoProfile,
+        dni: dni,
+        age: age,
+        school: school,
+        address: address,
+        why: why
+      },
+        {
+          withCredentials: true,
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+        })
+      console.log(response)
+      if (response.status == 200) {
+        setActive(!active)
+        setTimeout(() => {
+          navegate(`/orientados/StudentInfo/${response.data.id}`)
+        }, "4000")
+      }
+    } catch (err) {
+      for (let i = 0; i < response.data.errors.length; i++) {
+        setBackMessages(prevBackMessages => ({
+          ...prevBackMessages,
+          [response.data.errors[i].param]: response.data.errors[i].msg,
+        }))
+      }
+    }
   };
 
   const options = [
@@ -136,7 +164,7 @@ function FormOrientado() {
 
     })
   }
-  
+
   const handleProgramChange = (e) => {
     setProgram(e.value);
   };
@@ -368,8 +396,7 @@ function FormOrientado() {
 
         </div>
         <div className="mt-2">
-          <button type="submit" disabled={!isVerified}
-            className={`w-44 h-10 bg-celesteValtech rounded-lg text-base text-white font-medium ${(!isVerified) ? "opacity-50" : null}`}>
+          <button type="submit" className={`w-44 h-10 bg-celesteValtech rounded-lg text-base text-white font-medium`}>
             Ingresar Orientado
           </button>
           <button className=" w-32 text-sm underline" onClick={handleCancelForm}>Cancelar ingreso</button>
