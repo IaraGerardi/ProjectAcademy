@@ -3,40 +3,25 @@ const { admins: ModelAdmin } = require("../database/models/index");
 
 const adminLogin = async (req, res) => {
   try {
-    const { emailLog } = req.body;
-    const { passwordLog } = req.body;
-    if (!emailLog || !passwordLog) {
-      res.status(403).json({
-        message: "Ingrese email y contraseña",
-      });
-    } else {
-      const admin = await ModelAdmin.scope("withPassword").findOne({
-        where: { email: emailLog },
-      });
-      if (!admin || !(passwordLog == admin.password)) {
-        res.status(403).json({
-          message: "Datos incorrectos",
-        });
-      } else {
-        const loggedAdmin = await ModelAdmin.findOne({
+    const { emailLog } = req.body
+        const admin = await ModelAdmin.findOne({
           where: { email: emailLog },
         });
         const { id } = admin;
+        const timeExpire = 24 * 60 * 60 * 1000 // 24 horas
         const token = jwt.sign({ id: id }, process.env.JWT_SECRET, {
-          expiresIn: 24 * 60 * 60 * 1000,
+          expiresIn: timeExpire
         });
-        console.log(`token: ${token} for user : ${admin.user}`);
+        console.log(`token: ${token} for: ${admin.name} ${admin.lastname}`);
         const cookiesOptions = {
-          expires: new Date(Date.now() + 24 * 60 * 60 * 1000), // La cookie expira en 24 horas
+          expires: new Date(Date.now() + timeExpire), 
           httpOnly: true,
         };
         res.cookie("jwt", token, cookiesOptions);
         res.status(200).json({
-          message: "Successful Login",
-          info: loggedAdmin,
+          message: "Succesful Login",
+          info: admin,
         });
-      }
-    }
   } catch (error) {
     console.log(error);
     res.status(400).json({ message: 'Something went wrong' });

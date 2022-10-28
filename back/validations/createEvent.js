@@ -32,10 +32,7 @@ const eventValidator = [
     .matches(regExpTime)
     .withMessage("Ingrese horas correctas")
     .custom((value) => {
-      if (value > "23:59") {
-        return false;
-      }
-      return true;
+      return value < "23:59"
     })
     .withMessage("Revise el horario del evento"),
   /* ------Inpunt durationEvent------- */
@@ -45,10 +42,7 @@ const eventValidator = [
     .matches(regExpDuration)
     .withMessage("Revise la duración del evento")
     .custom((value) => {
-      if (value > "08:00:00") {
-        return false;
-      }
-      return true;
+      return value < "08:00:00"
     })
     .withMessage("Revise la duración del evento"),
   /* ------Inpunt OrientadoreId------- */
