@@ -32,7 +32,7 @@ function Assign() {
         const getOriented = async () => {
             try {
                 const res = await axios.get(`${process.env.REACT_APP_BASE_URL}/oriented/paginated?page=0&size=1000`, { withCredentials: true });
-                setOriented(res.data.categories); /* LLama Orientados */
+                setOriented(res.data.info.categories); /* LLama Orientados */
             } catch (error) {
                 console.log(error);
             }
@@ -45,7 +45,7 @@ function Assign() {
         const getCounselor = async () => {
             try {
                 const res = await axios.get(`${process.env.REACT_APP_BASE_URL}/counselor`, { withCredentials: true });
-                setCounselor(res.data); /* LLama Orientadores */
+                setCounselor(res.data.info); /* LLama Orientadores */
 
             } catch (error) {
                 console.log(error);
