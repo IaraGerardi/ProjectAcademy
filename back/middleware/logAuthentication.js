@@ -14,7 +14,7 @@ const isAuthenticated = async (req, res, next) => {
     });
   } catch (error) {
     console.error(error);
-    res.status(400).json({ message: 'Something went wrong' });
+    res.status(400).json({ message: 'Not logged' });
   }
 };
 
