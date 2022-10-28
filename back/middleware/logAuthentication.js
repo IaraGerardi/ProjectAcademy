@@ -7,6 +7,7 @@ const isAuthenticated = async (req, res, next) => {
     const token = infoToken.split(' ') 
 
     jwt.verify(token[1], process.env.JWT_SECRET, (error, decoded) => {
+      req.decoded = decoded
       !error ? 
         next()
         :
