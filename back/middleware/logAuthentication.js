@@ -1,34 +1,22 @@
 const jwt = require("jsonwebtoken");
-const { promisify } = require("util");
-const { admins: ModelAdmin } = require("../database/models/index");
 
 // eslint-disable-next-line consistent-return
 const isAuthenticated = async (req, res, next) => {
-  console.log(`el req de cookie jwt: ${req.cookies.jwt}`);
-  if (req.cookies.jwt) {
-    try {
-      const decoded = await promisify(jwt.verify)(
-        req.cookies.jwt,
-        process.env.JWT_SECRET
-      );
-      const admin = await ModelAdmin.findAll({
-        where: { id: decoded.id },
-      });
-      if (!admin) {
-        return next();
-      }
-      // eslint-disable-next-line prefer-destructuring
-      req.admin = admin[0];
-      return next();
-    } catch (error) {
-      console.log(error);
-      return next();
-    }
-  } else {
-    res.status(403).json({ message: "Not logged" });
+  try {
+    const infoToken = req.headers['authorization'] //|| req.headers['x-access-token']
+    const token = infoToken.split(' ') 
+
+    jwt.verify(token[1], process.env.JWT_SECRET, (error, decoded) => {
+      !error ? 
+        next()
+        :
+        res.json({ message: 'Access denied, invalid token' })
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(400).json({ message: 'Something went wrong' });
   }
 };
-
 
 module.exports = {
   isAuthenticated

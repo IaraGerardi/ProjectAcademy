@@ -7,23 +7,27 @@ const adminLogin = async (req, res) => {
         const admin = await ModelAdmin.findOne({
           where: { email: emailLog },
         });
-        const { id } = admin;
+        console.log(req.headers.authorization);
+        const payload = {
+          id: admin.id
+        }
         const timeExpire = 24 * 60 * 60 * 1000 // 24 horas
-        const token = jwt.sign({ id: id }, process.env.JWT_SECRET, {
+        const token = jwt.sign(payload, process.env.JWT_SECRET, {
           expiresIn: timeExpire
         });
-        console.log(`token: ${token} for: ${admin.name} ${admin.lastname}`);
+        /* console.log(`token: ${token} for: ${admin.name} ${admin.lastname}`);
         const cookiesOptions = {
           expires: new Date(Date.now() + timeExpire), 
           httpOnly: true,
         };
-        res.cookie("jwt", token, cookiesOptions);
+        res.cookie("jwt", token, cookiesOptions); */
         res.status(200).json({
           message: "Succesful Login",
           info: admin,
+          token
         });
   } catch (error) {
-    console.log(error);
+    console.error(error);
     res.status(400).json({ message: 'Something went wrong' });
   }
 };
@@ -32,7 +36,7 @@ const logout = (req, res) => {
   try {
     res.status(200).clearCookie("jwt").json({ message: "Cookie cleared"});
   } catch (error) {
-    console.log(error);
+    console.error(error);
     res.status(400).json({ message: 'Something went wrong' });
   }
 };
