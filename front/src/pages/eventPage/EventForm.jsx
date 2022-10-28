@@ -177,14 +177,14 @@ export const EventForm = () => {
 
             <form
               onSubmit={handleSubmit}
-              className='mt-5 flex flex-col lg:m-0 lg: md:mr-20 lg:max-w-max md:max-w-max'>
+              className='mt-5 flex flex-col lg:m-0 lg: md:mr-20 lg:max-w-max'>
 
               <h2 className="lg:text-base font-medium text-slate-700 lg:pt-3 ">01. Información sobre el evento</h2>
 
               <div className='flex flex-col lg:flex-row md:flex-wrap lg:py-2 pl-3 pt-2'>
                 <FormInput
                   onHandleChange={(e) => { setName(e.target.value); handleTimer(e); }}
-                  inputClass="w-56 md:w-80 lg:w-[298px] text-sm p-2 rounded-lg border shadow-sm border-slate-300
+                  inputClass=" w-56 md:w-80 lg:w-[298px] text-sm p-2 rounded-lg border shadow-sm border-slate-300
                   placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block focus:ring-1"
                   labelClass="text-sm font-medium text-slate-600"
                   containerClass="flex flex-col px-2 h-20"
@@ -248,7 +248,7 @@ export const EventForm = () => {
 
               </div>
 
-              <div className='border-y-2 md:flex-wrap pb-6 pt-6  mt-4 '>
+              <div className='border-y-2 md:flex-wrap lg:pb-0 md:pb-5 pb-4 pt-6  mt-4 lg:mt-0'>
                 <h2 className="lg:text-base font-medium text-slate-700 mb-4">02. Días y Horarios disponibles </h2>
 
                 <div className='flex flex-col lg:flex-row md:flex-wrap lg:py-3 pl-3 pt-2 '>
@@ -326,7 +326,7 @@ export const EventForm = () => {
                     inputClass="md:w-80 lg:w-[620px] h-20 rounded-lg border border-slate-300 placeholder:pl-2 shadow-sm
                     placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block focus:ring-1 resize-none"
                     labelClass="text-sm font-medium text-slate-600 "
-                    containerClass="flex flex-col w-56 md:w-80 lg:w-[620px] h-36"
+                    containerClass="flex flex-col w-56 md:w-80 lg:w-[620px] h-30"
                     errorClass="mt-[5px]"
                     id="eventComments"
                     type="textarea"
@@ -338,7 +338,7 @@ export const EventForm = () => {
               </div>
 
               <button type="submit"
-                className={`w-44 h-10 ml-9 md:ml-3 lg:ml-3 bg-celesteValtech rounded-lg text-base text-white font-medium`}>
+                className={`w-44 h-10 lg:mt-0 ml-9 md:ml-4 lg:ml-4 bg-celesteValtech rounded-lg text-base text-white font-medium`}>
                 Agendar evento
               </button>
 
