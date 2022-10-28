@@ -25,17 +25,27 @@ const createEvent = async (req, res) => {
       description: descriptionEvent,
       counselorId: counselorEvent.value,
     });
-    const orientedtoEvent = [];
+    const orientedIn = orientedEvent.map(currentValue =>{
+      return currentValue.value
+    })
+    const orientedInEvent = await ModelOriented.findAll({
+      where: {
+        id: orientedIn
+      }
+    })
+    await event.addOriented(orientedInEvent, { through: ModelOrientedEvent })
+
+    /* const orientedtoEvent = [];
     for (let i = 0; i < orientedEvent.length; i += 1) {
       orientedtoEvent.unshift({
         eventId: event.id,
         orientedId: orientedEvent[i].value,
       });
     }
-    await ModelOrientedEvent.bulkCreate(orientedtoEvent);
-    res.status(200).json({ message: "Event created succesfully" });
+    await ModelOrientedEvent.bulkCreate(orientedtoEvent); */
+    res.json({ message: "Event created" });
   } catch (error) {
-    console.log(error);
+    console.error(error);
     res.status(400).json({ message: 'Somthing went wrong' });
   }
 };
@@ -46,17 +56,14 @@ const deleteEvent = async (req, res) => {
     const eventDelete = await ModelEvent.destroy({
       where: { id: req.params.id },
     });
-    await ModelOrientedEvent.destroy({
-      where: { EventId: req.params.id },
-    });
     eventDelete < 1 ?
       res.status(400).json({ message: 'Event not found' })
       :
-      res.status(200).json({
+      res.json({
         message: "Event deleted succesfully",
       });
   } catch (error) {
-    console.log(error);
+    console.error(error);
     res.status(400).json({ message: 'Something went wrong' });
   }
 };
@@ -71,20 +78,44 @@ const getEvents = async (req, res) => {
           attributes: ["id", "name", "lastname", "photoProfile"]
         }
       ],
-      attributes: [
-        "id",
-        "name",
-        "date",
-        "time",
-        "duration",
-        "description",
-        "createdAt",
-        "counselorId"
-      ]
+      attributes: {
+        exclude: ["deletedAt"]
+      }
     });
-    res.status(200).json(event);
+    !event ?
+    res.status(400).json({message: 'Events not found'})
+    :
+    res.json({message: 'Successful', info: event});
   } catch (error) {
-    console.log(error);
+    console.error(error);
+    res.status(400).json({ message: 'Something went wrong' });
+  }
+};
+
+// Obtiene un solo evento, junto con el orientador y los orientados que asistiran
+const getEventById = async (req, res) => {
+  try {
+    console.log("estamo aca")
+    const event = await ModelEvent.findOne({
+      include: [
+        {
+          model: ModelOriented,
+          attributes: ["id", "name", "lastname", "photoProfile"]
+        }
+      ],
+      attributes: {
+        exclude: ["deletedAt","updatedAt"],
+      },
+      where: {
+        id: req.params.id
+      }
+    });
+    !event ?
+    res.status(400).json({message: 'Events not found'})
+    :
+    res.json({message: 'Successful', info: event});
+  } catch (error) {
+    console.error(error);
     res.status(400).json({ message: 'Something went wrong' });
   }
 };
@@ -93,4 +124,5 @@ module.exports = {
   createEvent,
   deleteEvent,
   getEvents,
+  getEventById
 };

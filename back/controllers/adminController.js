@@ -4,11 +4,11 @@ const getAllAdmins = async (req, res) => {
   try {
     const profilesAdmin = await ModelAdmin.findAll();
     !profilesAdmin ?
-      res.status(204).json({ message: 'Admins not found' })
+      res.status(400).json({ message: 'Profiles not found' })
       :
-      res.status(200).json({ message: 'Successful', info: profilesAdmin });
+      res.json({ message: 'Successful', info: profilesAdmin });
   } catch (error) {
-    console.log(error);
+    console.error(error);
     res.status(400).json({ message: 'Somthing went wrong' });
   }
 };
@@ -19,11 +19,11 @@ const getAdmin = async (req, res) => {
       where: { id: req.params.id },
     });
     !profileAdmin ?
-      res.status(204).json({ message: 'Profile not found' })
+      res.status(400).json({ message: 'Profile not found' })
       :
-      res.status(200).json({ message: 'Successful', info: profileAdmin });
+      res.json({ message: 'Successful', info: profileAdmin });
   } catch (error) {
-    console.log(error);
+    console.error(error);
     res.status(400).json({ message: 'Somthing went wrong' });
   }
 };

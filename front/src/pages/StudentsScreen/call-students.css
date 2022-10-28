@@ -6,7 +6,6 @@
 .box-students {
     width: 300px;
     height: 100px;
-    display: inline-block;
     margin-block-end: 10px;
     margin-inline-end: 27px;
     border-radius: 10px;
@@ -182,9 +181,7 @@
     .box-students {
         width: 247px;
         height: 100px;
-        display: inline-block;
-        margin-block-end: 10px;
-        margin-inline-end: 27px;
+       margin-left: 20px;
         border-radius: 10px;
         border: 2px solid rgb(176, 176, 176);
         cursor: pointer;

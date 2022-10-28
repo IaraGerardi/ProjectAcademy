@@ -10,9 +10,9 @@ const getAllOriented = async (req, res) => {
     const oriented = await ModelOriented.findAll({
       attributes: ["id", "name", "lastname", "photoProfile", "counselorId"],
     });
-    res.status(200).json({ message: 'Successful', info: oriented });
+    res.json({ message: 'Successful', info: oriented });
   } catch (error) {
-    console.log(error);
+    console.error(error);
     res.status(400).json({ message: 'Something went wrong' });
   }
 };
@@ -37,9 +37,9 @@ const getAllOrientedPaginated = async (req, res) => {
     const { count, rows } = await ModelOriented.findAndCountAll(options);
 
     !count || !rows ?
-      res.status(204).json({ message: 'Oriented not found' })
+      res.status(400).json({ message: 'Oriented not found' })
       :
-      res.status(200).json({
+      res.json({
         message: 'Successful',
         info: {
           total: count,
@@ -47,7 +47,7 @@ const getAllOrientedPaginated = async (req, res) => {
         }
       });
   } catch (error) {
-    console.log(error);
+    console.error(error);
     res.status(400).json({ message: 'Something went wrong' });
   }
 };
