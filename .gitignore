@@ -1,6 +1,6 @@
 ### env ###
 /.env
-/front/.env
+/back/.env
 
 ## dependencies ##
 /back/node_modules
