@@ -2,7 +2,7 @@
   display: flex;
 }
 
-.boxtwo {
+.box-two {
   border: 1px solid #dadeeb;
   width: 312px;
   height: 96px;
@@ -11,52 +11,35 @@
   display: flex;
   align-items: center;
   flex-direction: row;
-  justify-content: space-between;
-}
-.boxtwo:hover{
-  background-color: rgb(244, 244, 244);
+  justify-content: space-between;}
 
-}
-
-.boxflex {
-  display: flex;
-  width: 100%;
-}
+.box-two:hover {
+  background-color: rgb(244, 244, 244);}
 
 li {
   list-style: none;
 }
 
-.ImgUsers {
+.img-users {
   margin-left: 10px;
   width: 60px;
   height: 60px;
   background-color: antiquewhite;
+  border-radius: 100px;
 }
 
-.ulUserAdmin {
-  width: 90%;
+.ul-users-admin-cv {
+  width: auto;
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  margin-left: 40px;
-}
-
-.boxBtnHome {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-}
-
-.iconcd {
+  flex-wrap: wrap;}
+  
+.icon-cd {
   margin-bottom: 50px;
   padding: 5px;
   margin-right: 15px;
 }
 
-.padmin {
+.p-admin {
   line-height: 0px;
   display: flex;
   flex-direction: column;
@@ -64,7 +47,7 @@ li {
   margin-top: 7px;
 }
 
-.pname {
+.p-name {
   margin-left: 5px;
   line-height: 24px;
   font-size: 16px;
@@ -73,47 +56,25 @@ li {
   font-weight: bold;
 }
 
-.pschools {
+.p-schools {
   margin-left: 5px;
   font-size: 14px;
   color: #8798ad;
 }
 
-@media (max-width: 600px) {
-  .boxtwo {
-    width: 100vh;
-  }
-  .ulUserAdmin {
+@media (max-width: 1550px) {
+  .ul-users-admin-cv {
     justify-content: center;
+  }
+  .box-users-cv {
+    height: auto;
   }
 }
 
-@media (max-width: 320px) {
-  .boxtwo {
+@media (max-width: 511px) {
+  .ul-users-admin-cv {
+    justify-content: center;
+  }
+  .box-two {
     width: 100%;
-  }
-  .ulUserAdmin {
-    width: 100%;
-  }
-}
-
-@media (max-width: 610px) {
-  .ulUserAdmin {
-    justify-content: center;
-  }
-}
-
-@media (max-width: 768px) {
-  .ulUserAdmin {
-    justify-content: center;
-  }
-  .boxtwo {
-    width: 100%;
-  }
-}
-
-@media (max-width: 376px) {
-  .ulUserAdmin {
-    justify-content: center;
-  }
-}
+  }}
