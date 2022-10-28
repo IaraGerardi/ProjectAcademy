@@ -10,7 +10,7 @@ function useGet(URI) {
         const handleGetData = async (URI) => {
             try {
                 const response = await axios.get(`${URI}`, { withCredentials: true })
-                setData(response.data)
+                setData(response.data.info)
                 setIsPending(false)
                 setError({ err: false })
             } catch (err) {
