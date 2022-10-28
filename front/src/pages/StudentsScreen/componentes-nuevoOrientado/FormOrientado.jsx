@@ -129,11 +129,11 @@ function FormOrientado() {
             'Content-Type': 'multipart/form-data'
           }
         })
-
+      console.log(response.data, response.data.info)
       if (response.status == 200) {
         setActive(!active)
         setTimeout(() => {
-          navegate(`/orientados/StudentInfo/${response.data.id}`)
+          navegate(`/orientados/StudentInfo/${response.data.info}`)
         }, "4000")
       }
     } catch (err) {
