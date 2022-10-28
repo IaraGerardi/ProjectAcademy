@@ -138,7 +138,6 @@ function StudentInfo() {
           <img className="iconDelete-alert" src={Delete} onClick={() => setActive(!active)} alt="icon de eliminar" />
         </div>
 
-
       }
 
     </div>

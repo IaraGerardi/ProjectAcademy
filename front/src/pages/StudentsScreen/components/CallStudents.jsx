@@ -5,6 +5,7 @@ import searchBar from "../../sidebar-header/icons/logo-buscador.svg"
 import { Link } from "react-router-dom";
 import BeatLoader from "react-spinners/BeatLoader";
 import "../oriented.css"
+import IconOriented from "../img/oriented.svg"
 
 function CallStudents() {
 
@@ -94,17 +95,26 @@ function CallStudents() {
                                             <div className="content-students">
 
                                                 <img
-                                                    className="ImgUsers"
+                                                    className="img-user"
                                                     src={require(`../../../img-back/orientados/${usuario.photoProfile}`)}
                                                     alt="Foto perfil orientado"
                                                 />
                                                 <div>
 
-                                                    <h4 className="text-user">
+                                                    <h4 className="text-user name-user">
                                                         {usuario.name} {usuario.lastname}
                                                     </h4>
-                                                    <p className="text-user">{usuario.school}</p>
+                                                    <p className="text-user school-user">{usuario.school}</p>
                                                 </div>
+
+                                                {usuario.counselorId ? (
+                                                    <div className="cont-icon-oriented">
+                                                        <img className="icon-oriented" src={IconOriented} alt="icono de orientador" />
+
+                                                    </div>
+                                                ) : (
+                                                    null
+                                                )}
 
                                             </div>
                                         </Link>

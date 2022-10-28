@@ -206,7 +206,22 @@ hr {
 
 
 
-@media (max-width: 653px) {
+@media (max-width: 695px) {
+
+
+
+
+    .cont-student {
+        width: 70vw;
+        height: 422px;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        -webkit-box-shadow: 5px 5px 17px -2px rgba(181, 181, 181, 0.895);
+        -moz-box-shadow: 5px 5px 17px -2px rgba(181, 181, 181, 0.895);
+        box-shadow: 5px 5px 17px -2px rgba(181, 181, 181, 0.895);
+    }
 
 
 
@@ -252,4 +267,12 @@ hr {
     }
 
 
+}
+
+
+
+@media (max-width: 500px) {
+    .text-referent{
+        font-size: 18px;
+    }
 }

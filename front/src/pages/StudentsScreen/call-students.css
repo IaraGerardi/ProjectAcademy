@@ -28,19 +28,40 @@
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    padding: 0px 55px 0px 0px;
 
 }
 
-.ImgUsers {
+.img-user {
     border-radius: 100%;
+    height: 60px;
+    width: 60px;
 }
 
 .cont-users {
     margin: 50px 90px;
 }
 
+.name-user{
+    margin-left: 5px;
+    line-height: 24px;
+    font-size: 16px;
+    color: #2E384D;
+    font-family: 'Rubik';
+    font-weight: bold;
+}
 
+
+.school-user{
+    margin-left: 5px;
+    font-size: 14px;
+    color: #8798ad;
+}
+
+
+.icon-oriented{
+    height: 20px;
+    margin: 0px 0px 50px 20px;
+}
 
 .cont-search-oriented {
     width: 59%;
@@ -85,6 +106,7 @@
 .list-student {
     display: flex;
     flex-wrap: wrap;
+    width: 90vw;
 }
 
 @media (max-width: 980px) {
@@ -181,21 +203,27 @@
     .box-students {
         width: 247px;
         height: 100px;
-       margin-left: 20px;
+        margin-left: 20px;
         border-radius: 10px;
         border: 2px solid rgb(176, 176, 176);
         cursor: pointer;
         transition: 500ms;
     }
 
-    .ImgUsers {
+    .img-user {
         border-radius: 100%;
         height: 50px;
         width: 50px;
     }
 
-  .text-user{
-    font-size: 13px;
-  }
+    .text-user {
+        font-size: 13px;
+    }
+
+    .icon-oriented{
+        height: 15px;
+        margin: 0px 0px 50px 20px;
+    }
     
+
 }
