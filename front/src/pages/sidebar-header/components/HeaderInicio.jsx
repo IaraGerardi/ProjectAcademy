@@ -20,16 +20,14 @@ function HeaderInicio({ propNamePage }) {
     const [infoAdmin, setInfoAdmin] = useState([]);
     const [active, setActive] = useState(false);
     /*   const navigate = useNavigate() */
-    const usuario = localStorage.getItem('usuario')
-    const parseado = JSON.parse(usuario)
+    const usuariols = localStorage.getItem('usuario')
+    const usuario = JSON.parse(usuariols)
 
     useEffect(() => {
         const getAdmin = async () => {
             try {
                 const resInfoAdmin = await axios.get(`${process.env.REACT_APP_BASE_URL}/admins/${usuario.id}`, { withCredentials: true });
-                setInfoAdmin(resInfoAdmin.data);
-                // console.log(usuario);
-                // console.log(parseado)
+                setInfoAdmin(resInfoAdmin.data.info);
             } catch (error) {
                 console.log(error);
             }
@@ -49,7 +47,7 @@ function HeaderInicio({ propNamePage }) {
             dispatch({ type: types.authLogout })
             /*  navigate('/login') */
         } catch (error) {
-            console.log(error);
+            // console.log(error);
         }
     };
 
@@ -62,10 +60,10 @@ function HeaderInicio({ propNamePage }) {
 
             <div className='boxMainHeader '>
                 <p className='p-header'>
-                    {propNamePage === "Bienvenido/a" ? `${propNamePage} ${parseado.name}` : propNamePage}</p>
+                    {propNamePage === "Bienvenido/a" ? `${propNamePage} ${usuario.name}` : propNamePage}</p>
 
                 <div>
-                    <img className="img-header cursor-pointer" src={require(`../../../img-back/admins/${parseado.avatar}`)} onClick={() => setActive(!active)} alt={parseado.name} />
+                    <img className="img-header cursor-pointer" src={require(`../../../img-back/admins/${usuario.avatar}`)} onClick={() => setActive(!active)} alt={usuario.name} />
 
                     <div className={`sesion ${active ? 'mostrar-sesion' : 'ocultar-sesion'}`}>
                         <Link to="/profile" className="p-2"><img className="logo-profile" src={LogoPerfil} alt='icon-profile' /> Mi perfil</Link>

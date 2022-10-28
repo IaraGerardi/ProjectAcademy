@@ -14,7 +14,7 @@ function SliderOfficial() {
       const url = `${process.env.REACT_APP_BASE_URL}/news`;
       const result = await axios.get(url, { withCredentials: true });
 
-      setNotice(result.data);
+      setNotice(result.data.info);
     };
     informationNotice();
   }, []);
