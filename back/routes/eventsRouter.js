@@ -6,6 +6,7 @@ const eventsRouter = express.Router();
 const {
   createEvent,
   getEvents,
+  getEventById,
   deleteEvent,
 } = require("../controllers/eventController");
 // Middlewares
@@ -14,7 +15,8 @@ const { eventValidator } = require("../validations/createEvent");
 
 // Ruta eventos
 eventsRouter.get("/", isAuthenticated, getEvents); // trae todos los eventos
-eventsRouter.post("/create", isAuthenticated, eventValidator, createEvent); // crear eventos
+eventsRouter.get("/:id", isAuthenticated, getEventById); // trae todos los eventos
+eventsRouter.post("/", isAuthenticated, eventValidator, createEvent); // crear eventos
 eventsRouter.delete("/:id", isAuthenticated, deleteEvent); // eliminar eventos
 
 module.exports = eventsRouter;

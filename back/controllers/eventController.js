@@ -92,8 +92,37 @@ const getEvents = async (req, res) => {
   }
 };
 
+// Obtiene un solo evento, junto con el orientador y los orientados que asistiran
+const getEventById = async (req, res) => {
+  try {
+    console.log("estamo aca")
+    const event = await ModelEvent.findOne({
+      include: [
+        {
+          model: ModelOriented,
+          attributes: ["id", "name", "lastname", "photoProfile"]
+        }
+      ],
+      attributes: {
+        exclude: ["deletedAt","updatedAt"],
+      },
+      where: {
+        id: req.params.id
+      }
+    });
+    !event ?
+    res.status(400).json({message: 'Events not found'})
+    :
+    res.json({message: 'Successful', info: event});
+  } catch (error) {
+    console.error(error);
+    res.status(400).json({ message: 'Something went wrong' });
+  }
+};
+
 module.exports = {
   createEvent,
   deleteEvent,
   getEvents,
+  getEventById
 };

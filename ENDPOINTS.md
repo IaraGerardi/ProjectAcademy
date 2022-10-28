@@ -18,12 +18,13 @@ http://localhost:8000/oriented/paginated //Gets all oriented students paginated 
 http://localhost:8000/oriented/:id //Gets oriented on :id (GET)<br>
 http://localhost:8000/oriented/:id/counselor //Oriented selected on :id and his counselor (GET)<br>
 http://localhost:8000/oriented //Create an Oriented Student (POST)<br>
-http://localhost:8000/oriented/:id/counselorToOriented // Assigns or modifies the counselor of an oriented student on :id (PUT)<br>
+http://localhost:8000/oriented/:id // Assigns or modifies the counselor of an oriented student on :id (PUT)<br>
 
 News: <br>
 http://localhost:8000/news //Gets all the news (GET)<br>
 
 Events: <br>
 http://localhost:8000/events //Gets all the events (GET)<br>
-http://localhost:8000/events/create //Creates an event (POST)<br>
+http://localhost:8000/events/:id //Gets event selected in :id the events (GET)<br>
+http://localhost:8000/events //Creates an event (POST)<br>
 http://localhost:8000/events/:id //Deletes an event selected in :id (DELETE)<br>
