@@ -9,7 +9,7 @@
   color: rgb(0, 0, 0) !important;
 }
 
-.card {
+.card{
   border: 1px solid #dadeeb;
   border-radius: 8px;
   overflow: hidden;
@@ -26,7 +26,7 @@
   background-color: rgb(244, 244, 244);
 }
 
-.textonecv {
+.text-one-cv {
   margin-top: 3px;
   margin-left: 5px;
   color: #2E384D;
@@ -36,7 +36,7 @@
   font-family: 'Rubik';
 }
 
-.texttwocv {
+.text-two-cv {
   margin-left: 5px;
   color: #8798AD;
   width: 80%;
@@ -44,22 +44,21 @@
   height: 100px;
 }
 
-.texttreecv {
+.text-tree-cv {
   margin-left: 5px;
   width: 80%;
   overflow: hidden;
   height: auto;
   margin-left: 5px;
-  
 }
 
-.sliderone {
+.slider-one {
   margin-top: 30px;
   width: 100%;
   height: 200px;
 }
 
-.Butoneffectone {
+.button-effect-one {
   color: #2E384D;
   height: 22px;
   width: 70px;
@@ -67,9 +66,6 @@
 }
 
 @media (max-width: 600px) {
-  .sliderone {
-    margin-left: -60px;
-  }
   .slick-prev:before,
   .slick-next:before {
     display: none !important;

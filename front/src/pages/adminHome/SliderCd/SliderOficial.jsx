@@ -7,7 +7,7 @@ import axios from "axios";
 
 function SliderOfficial() {
   const [notice, setNotice] = useState([]);
- 
+
 
   useEffect(() => {
     const informationNotice = async () => {
@@ -19,7 +19,6 @@ function SliderOfficial() {
     informationNotice();
   }, []);
 
-  //
   const settings = {
     dots: true,
     infinite: true,
@@ -57,20 +56,20 @@ function SliderOfficial() {
   };
 
   return (
-    <Slider className="sliderone" {...settings}>
+    <Slider className="slider-one" {...settings}>
       {notice.map((data) => (
         <div key={data.id} className="card">
-          <div className="textonecv text-2xl font-bold">
+          <div className="text-one-cv text-2xl font-bold">
             <h2>{data.titulo}</h2>
           </div>
 
-          <div className="texttwocv">
+          <div className="text-two-cv">
             <p>{data.content}</p>
           </div>
 
-          <div className="texttreecv">
-            <div className="Butoneffectone">
-              <a target="_blank" href={data.link}>
+          <div className="text-tree-cv">
+            <div className="button-effect-one">
+              <a target="_blank" rel="noreferrer" href={data.link}>
                 <u>Ver más</u>
               </a>
             </div>

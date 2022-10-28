@@ -17,16 +17,16 @@ function UserAdmin() {
         });
         setNewusers(res.data.slice(-9));
         setLoadingOriented(false);
-        
+
       } catch (error) {
-        console.log(error);
+
       }
     };
     getUserOriented();
   }, []);
 
   return (
-    <div className="box-center flex justify-center">
+    <div className="flex ">
       {loadingOriented ? (
         <div className="flex justify-center mt-7">
           {" "}
@@ -39,36 +39,36 @@ function UserAdmin() {
           />
         </div>
       ) : (
-        <ul className="ulUserAdmin">
+        <ul className="ul-users-admin-cv">
           {newusers.map((usersapi) => (
             <Link
               to={`/orientados/StudentInfo/${usersapi.id}`}
-              className="boxtwo"
+              className="box-two"
               key={usersapi.name}
             >
               <div className="flex">
                 <img
-                  className="ImgUsers"
+                  className="img-users"
                   src={require(`../../../img-back/orientados/${usersapi.photoProfile}`)}
                   alt="default"
                 />
 
-                <div className="padmin">
-                  <p className="pname">
+                <div className="p-admin">
+                  <p className="p-name">
                     {usersapi.name} {usersapi.lastname}
                   </p>
-                  <p className="pschools">{usersapi.lastname}</p>
+                  <p className="p-schools">{usersapi.lastname}</p>
                 </div>
               </div>
 
               {usersapi.counselorId ? (
-                <div className="iconcd">
-                <Icon
-                  classname="h-8"
-                  type="assignUser"
-                  width="17"
-                  height="24"
-                />
+                <div className="icon-cd">
+                  <Icon
+                    classname="h-8"
+                    type="assignUser"
+                    width="17"
+                    height="24"
+                  />
                 </div>
               ) : (
                 null
@@ -82,3 +82,4 @@ function UserAdmin() {
 }
 
 export default UserAdmin;
+

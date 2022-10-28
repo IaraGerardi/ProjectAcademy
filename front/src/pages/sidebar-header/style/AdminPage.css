@@ -1,120 +1,8 @@
-.contentcd {
-  height: 100vh;
-  display: flex;
-}
-
-.contentcdmenu {
-  width: 250px;
-  height: 100vh;
-}
-
-.contentcdheaderone {
-  background-color: rgb(240, 240, 240);
-  width: 100%;
-  height: 120px;
-}
-
-.sectionFlex {
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-}
-
-.titlecdboton {
-  display: flex;
-  align-items: center;
-  height: 80px;
-}
-
-.seccionnoio {
-  width: 80%;
-  display: flex;
-  justify-content: space-between;
-  margin-left: 60px;
-}
-
-.sectioncdusers {
-  height: 250px;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
-
-.sectioncdusersinicio {
-  width: 100%;
-}
-
-/* carrusel */
-
-.sectioncdnovedad {
-  width: 100%;
-  height: 45vh;
-  display: flex;
-}
-
-.sectionflex {
-  margin: 10px;
-  width: 80%;
-  height: auto;
-  margin-left: 60px;
-  display: flex;
-}
-
-.boxnoticesone {
-  height: 30px;
-  width: 140px;
-  border-bottom: 18px solid #e9f9f8;
-}
-
-.novedades {
-  margin-left: 160px;
-}
-
-.orientedcd {
-  margin-left: 10px;
-  height: 23px;
-  border-bottom: 10px solid #ffeb33;
-}
-.textnovedade {
-  margin-left: 90px;
-}
-
-.BoxNovedadescd {
-  height: 35px;
-  width: 160px;
-
-  border-bottom: 10px solid rgb(206, 244, 255);
-}
-
-.btn-enter-orientaded {
-  width: 184px;
-  height: 40px;
-  border-radius: 8px;
-  background-color: #0BA4A0;
-  color: white;
-  border: none;
-  font-weight: 600;
-  font-size: 13px;
-  transition: 500ms;
-}
-
-.butons_edit{
-  margin-top: 10px;
-  color: white;
-  border-radius: 8px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 160px;
-  height: 40px;
-  background-color :#0BA4A0;
-}
-
-.colorstextcv{
+.colors-text-cv {
   color: #2E384D;
 }
 
-.colorstextcv2{
+.colors-text-cv2 {
   color: #2E384D;
   font-family: 'Rubik';
 }
@@ -123,51 +11,126 @@
   .box-center {
     margin-left: -35px;
   }
-  .contentsone {
+
+  .contents-one {
     display: flex;
-    margin-right: 100px;
+    margin-right: 125px;
   }
-  .contentstwo {
+
+  .contents-two {
     display: flex;
     flex-direction: column;
   }
-  .admintbloque {
-    display: flex;
-    margin-right: 100px;
-  }
 
-  .butonsingresedoriented {
-    margin-top: 10px;
-    margin-left: 7px;
-  }
-  .BoxNovedadescd {
-    margin-left: -33px;
-    width: 160%;
-  }
-  .orientedcd {
+  .oriented-cd {
     margin-left: -25px;
   }
-  .newsorientedcv {
+
+  .news-oriented-cv {
     width: 160px;
   }
-  .Adminbloque {
-    overflow: hidden;
-    width: 100%;
-    display: flex;
-  }
-  .contentslider {
+
+  .content-slider {
     width: 90%;
   }
-  .boxMainSlider {
+
+  .box-main-slider {
     margin-left: -10px;
     width: 100%;
     height: 240px;
     overflow: hidden;
   }
+
   .slick-list {
     width: 100%;
   }
-  .textnovedade {
-    margin-left: 50px;
+}
+
+@media (max-width: 320px) {
+  .box-content-ib {
+    display: flex;
+    flex-direction: column;
   }
 }
+
+@media (max-width: 320px) {
+  .flex-query-cv {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 426px) {
+  .flex-query-cv {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .box-users-cv {
+    margin-top: 60px;
+  }
+
+  .Buttons-one-cv {
+    margin-top: 10px;
+  }
+}
+
+.content-slider-one {
+  height: auto;
+}
+
+.box-content-ib {
+  width: auto;
+}
+
+.Buttons-one-cv {
+  color: rgb(255, 255, 255);
+  width: 150px;
+  height: 40px;
+  background-color: #0BA4A0;
+  border-radius: 10px;
+}
+.box-line-oriented {
+  background-color: #0BA4A0;
+  width: 100%;
+  height: 5px;
+  margin-top: 5px;
+}
+
+.box-line-oriented-two {
+  background-color: #FFEB33;
+  width: 140px;
+  height: 10px;
+  margin-top: -12px;
+}
+
+.box-line-oriented-tree {
+  background-color: #E9F9F8;
+  width: 160px;
+  height: 15px;
+  margin-top: -16px;
+}
+
+.content-center-cv {
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.box-notice-cv {
+  color: #2E384D;
+  font-family: 'Rubik';
+}
+
+.box-novedade-cv {
+  color: #2E384D;
+  font-family: 'Rubik';
+}
+
+.box-new-oriented-cv {
+  color: #2E384D;
+  font-weight: 500;
+}
+
