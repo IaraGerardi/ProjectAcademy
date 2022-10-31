@@ -67,7 +67,7 @@ function FormLogIn() {
             dispatch({ type: types.authLogin })
             navigate('/inicio');
         } catch (err) {
-            setBackMessages(err.response.data.message)
+            setBackMessages("Email y/o contraseña incorrectos")
         } finally {
             setLoader(false)
         }
@@ -107,7 +107,7 @@ function FormLogIn() {
                 className={`${isVerified ? null : "opacity-60"}
                 w-44 cursor-pointer border-none text-white text-base font-medium bg-celesteValtech`} />
             {backMessages !== null &&
-                <span className="w-80 px-8 text-red-600">{backMessages}</span>}
+                <span className="w-56 mx-2.5 text-red-600 text-xs">{backMessages}</span>}
 
             {loader &&
                 <div className='w-screen h-screen flex items-center absolute top-0 left-0 justify-center bg-slate-600 bg-opacity-10'>
