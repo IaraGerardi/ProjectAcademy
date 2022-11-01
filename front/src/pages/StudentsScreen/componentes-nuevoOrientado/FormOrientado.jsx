@@ -132,9 +132,7 @@ function FormOrientado() {
       console.log(response.data, response.data.info)
       if (response.status == 200) {
         setActive(!active)
-        setTimeout(() => {
-          navegate(`/orientados/StudentInfo/${response.data.info}`)
-        }, "4000")
+        navegate(`/orientados/StudentInfo/${response.data.info}`)
       }
     } catch (err) {
       const errors = err.response.data.info.errors

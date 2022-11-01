@@ -330,21 +330,21 @@ const oriented = [
 
 const news = [
   {
-    titulo: "Mr. Average",
+    titulo: "¿Usás inteligentemente tu tiempo?",
     content:
-      "ut massa quis augue luctus tincidunt nulla mollis molestie lorem quisque ut erat curabitur gravida nisi at nibh in hac habitasse platea dictumst aliquam augue quam sollicitudin vitae consectetuer eget",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     link: "https://weebly.com/odio/curabitur/convallis.png?rhoncus=dis&mauris=parturient&enim=montes&leo=nascetur&rhoncus=ridiculus&sed=mus&vestibulum=vivamus&sit=vestibulum&amet=sagittis&cursus=sapien&id=cum&turpis=sociis&integer=natoque&aliquet=penatibus&massa=et",
   },
   {
-    titulo: "Unfinished Life, An",
+    titulo: "¿Estás todavía con dudas sobre qué carrera seguir?",
     content:
-      "consectetuer adipiscing elit proin interdum mauris non ligula pellentesque ultrices phasellus id sapien in sapien iaculis congue vivamus metus arcu adipiscing molestie hendrerit at vulputate vitae nisl aenean lectus",
-    link: "https://jiathis.com/donec/quis/orci/eget.png?aliquam=curabitur&quis=in&turpis=libero&eget=ut&elit=massa&sodales=volutpat&scelerisque=convallis&mauris=morbi&sit=odio&amet=odio&eros=elementum&suspendisse=eu&accumsan=interdum&tortor=eu&quis=tincidunt&turpis=in&sed=leo&ante=maecenas&vivamus=pulvinar&tortor=lobortis&duis=est&mattis=phasellus&egestas=sit&metus=amet&aenean=erat&fermentum=nulla&donec=tempus&ut=vivamus",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      link: "https://biglobe.ne.jp/ipsum/dolor/sit/amet/consectetuer.png?id=pellentesque&mauris=volutpat&vulputate=dui&elementum=maecenas&nullam=tristique&varius=est&nulla=et&facilisi=tempus&cras=semper&non=est&velit=quam&nec=pharetra&nisi=magna&vulputate=ac&nonummy=consequat&maecenas=metus&tincidunt=sapien&lacus=ut&at=nunc&velit=vestibulum&vivamus=ante&vel=ipsum&nulla=primis&eget=in&eros=faucibus&elementum=orci&pellentesque=luctus",
   },
   {
-    titulo: "Creature from the Haunted Sea",
+    titulo: "¿Qué querés aportar?",
     content:
-      "vel augue vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae donec pharetra magna vestibulum aliquet ultrices erat tortor sollicitudin mi sit",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     link: "https://biglobe.ne.jp/ipsum/dolor/sit/amet/consectetuer.png?id=pellentesque&mauris=volutpat&vulputate=dui&elementum=maecenas&nullam=tristique&varius=est&nulla=et&facilisi=tempus&cras=semper&non=est&velit=quam&nec=pharetra&nisi=magna&vulputate=ac&nonummy=consequat&maecenas=metus&tincidunt=sapien&lacus=ut&at=nunc&velit=vestibulum&vivamus=ante&vel=ipsum&nulla=primis&eget=in&eros=faucibus&elementum=orci&pellentesque=luctus",
   },
   {

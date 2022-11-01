@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 
 import HomeScreen from './pages/Home/HomeScreen';
 import Assign from './pages/Assign/Assign';
+import Modify from './pages/modify/Modify';
 import Orientados from './pages/StudentsScreen/StudentsScreen';
 import AdminPage from './pages/adminHome/AdminPage';
 import { Error } from './pages/Home/components/error/Error'
@@ -36,6 +37,7 @@ function App() {
         </Route>
 
         <Route path='orientados/:id' element={<Assign />} />
+        <Route path='modificar/:id' element={<Modify />} />
         <Route path='eventos' element={<EventScreen />} />
         <Route path='eventos/form' element={<EventForm />} />
 

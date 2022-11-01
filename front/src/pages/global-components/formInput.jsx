@@ -15,6 +15,7 @@ function FormInput(props) {
                     name={id}
                     cols={col}
                     rows={rows}
+                    autocomplete="off"
                     placeholder={placeholder}
                     onChange={onHandleChange}
                     className={`${inputClass} rounded-lg border placeholder:pl-2 "border-slate-300"`}
@@ -24,6 +25,7 @@ function FormInput(props) {
                     name={id}
                     type={type}
                     value={value}
+                    autocomplete="off"
                     onChange={onHandleChange}
                     placeholder={placeholder}
                     className={`${inputClass} 
