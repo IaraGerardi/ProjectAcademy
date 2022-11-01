@@ -1,12 +1,17 @@
-//Requerimos express, router y traemos los metodos de loginAdminController.js
-const express = require ("express");
-const routerLogin = express.Router();
-const { adminLogin, logout } = require('../controllers/loginAdminController.js')
+// Requerimos express, router y traemos los metodos de loginAdminController.js
+const express = require("express");
 
-//Metodo de log in
-routerLogin.post('/login', adminLogin)
-//Metodo de log out
-routerLogin.get('/logout', logout)
+const loginRouter = express.Router();
+const { adminLogin, logout } = require("../controllers/loginAdminController");
+const { orientedLogin } = require("../controllers/loginOrientedController");
+const adminLogValidator = require("../validations/adminLogin");
 
-//Exportamos routerLogin y lo utilizamos en app.js
-module.exports = routerLogin;
+// Metodo de log in (admin)
+loginRouter.post("/admins/login",adminLogValidator, adminLogin);
+// Metodo de log in (oriented)
+loginRouter.post("/oriented/login", orientedLogin);
+// Metodo de log out
+loginRouter.get("/logout", logout);
+
+// Exportamos loginRouter y lo utilizamos en app.js
+module.exports = loginRouter;

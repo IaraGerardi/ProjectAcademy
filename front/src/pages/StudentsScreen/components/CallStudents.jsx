@@ -1,123 +1,132 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import "../call-students.css"
-import buscador from "../../sidebar-header/icons/logo-buscador.svg"
+import searchBar from "../../sidebar-header/icons/logo-buscador.svg"
 import { Link } from "react-router-dom";
 import BeatLoader from "react-spinners/BeatLoader";
-import "../orientados.css"
+import "../oriented.css"
+import IconOriented from "../img/oriented.svg"
 
 function CallStudents() {
 
 
-    const [orientados, setOrientados] = useState([]);
-    const [tablaOrientados, setTablaOrientados] = useState([]);
-    const [loadingCallStudents,setLoadingCallStudents]=useState(true)
+    const [oriented, setOriented] = useState([]);
+    const [tableOriented, setTableOriented] = useState([]);
+    const [loadingCallStudents, setLoadingCallStudents] = useState(true)
 
-    const [busqueda, setBusqueda] = useState("");
+    const [search, setSearch] = useState("");
     //LE PASO UN ESTADO VACIO AL INPUT SEARCH
 
 
 
     useEffect(() => {
         {/*Pedido a la Api*/ }
-        const getOrientados = async () => {
+        const getoriented = async () => {
             try {
-                const res = await axios.get(`http://localhost:8000/admin/pruebaorientados?page=0&size=1000&order=DESC`,{withCredentials: true}
+                const res = await axios.get(`${process.env.REACT_APP_BASE_URL}/oriented/paginated?page=0&size=1000&order=ASC`, { withCredentials: true }
                 ); // EN LA URI PONGO PAGE 0 Y UN SIZE DE 1000 QUE SIRVE PARA TRAER POR EL MOMENTO MIL USUARIOS
-                setOrientados(res.data.categories);
-                setTablaOrientados(res.data.categories)
+                setOriented(res.data.info.categories);
+                setTableOriented(res.data.info.categories)
                 setLoadingCallStudents(false)
             } catch (error) {
                 console.log(error);
             }
         };
-
-        getOrientados();
+        getoriented();
     }, []);
 
 
 
 
     const handleChange = e => {
-        setBusqueda(e.target.value);
-        filtrar(e.target.value);
+        setSearch(e.target.value);
+        filter(e.target.value);
     }
 
 
-    const filtrar = (terminoBusqueda) => {
+    const filter = (searchTerm) => {
         {/*Filtra el nombre o apellido del orientado*/ }
-        var resultadosBusqueda = tablaOrientados.filter((elemento) => {
-            if (elemento.name.toString().toLowerCase().includes(terminoBusqueda.toLowerCase())
-                || elemento.lastname.toString().toLowerCase().includes(terminoBusqueda.toLowerCase())
+        var searchResult = tableOriented.filter((element) => {
+            if (element.name.toString().toLowerCase().includes(searchTerm.toLowerCase())
+                || element.lastname.toString().toLowerCase().includes(searchTerm.toLowerCase())
             ) {
-                return elemento;
+                return element;
             }
         })
-        setOrientados(resultadosBusqueda);
+        setOriented(searchResult);
     }
 
     return (
         <>
             <div className="container-search">
-                <div className="cont-search-orientado">
+                <div className="cont-search-oriented">
                     <input
-                        className="search-orientado"
+                        className="search-oriented"
                         type="text"
                         placeholder="Buscar orientado por nombre y apellido"
-                        value={busqueda}
+                        value={search}
                         onChange={handleChange}
                     />
-                    <img className="logo-buscador" src={buscador} alt="logo buscador" />
+                    <img className="logo-search" src={searchBar} alt="logo buscador" />
                 </div> {/*Input Buscador*/}
             </div>
 
             <div className="cont-students flex justify-center">
-   {
-                loadingCallStudents ?
-                <div className='flex justify-center mt-7'> <BeatLoader
-                color="#1EC5BB"
-                cssOverride={{}}
-            
-                margin={5}
-                size={10}
-                speedMultiplier={1}
-            /></div>
-            :
-            <ul className="list-student"> {/*Llamado a la Api*/}
-                                {orientados?.length === 0 && <p>No se encontró la búsqueda.</p>}
-                                {orientados?.map((usuario) => {
-                                    return (
+                {
+                    loadingCallStudents ?
+                        <div className='flex justify-center mt-7'> <BeatLoader
+                            color="#1EC5BB"
+                            cssOverride={{}}
+
+                            margin={5}
+                            size={10}
+                            speedMultiplier={1}
+                        /></div>
+                        :
+                        <ul className="list-student"> {/*Llamado a la Api*/}
+                            {oriented?.length === 0 && <p>No se encontró la búsqueda.</p>}
+                            {oriented?.map((usuario) => {
+                                return (
 
 
 
-                                        <li className="box-students" key={usuario.id} >
-                                            <Link to={`/orientados/StudentInfo/${usuario.id}`}>
-                                                <div className="content-students">
+                                    <li className="box-students" key={usuario.id} >
+                                        <Link to={`/orientados/StudentInfo/${usuario.id}`}>
+                                            <div className="content-students">
 
-                                                    <img
-                                                        className="ImgUsers"
-                                                        src={require(`../../../img-back/orientados/${usuario.photoProfile}`)}
-                                                        alt="Foto perfil orientado"
-                                                    />
-                                                    <div>
+                                                <img
+                                                    className="img-user"
+                                                    src={require(`../../../img-back/orientados/${usuario.photoProfile}`)}
+                                                    alt="Foto perfil orientado"
+                                                />
+                                                <div>
 
-                                                        <h4>
-                                                            {usuario.name} {usuario.lastname}
-                                                        </h4>
-                                                        <p>{usuario.school}</p>
-                                                    </div>
-
+                                                    <h4 className="text-user name-user">
+                                                        {usuario.name} {usuario.lastname}
+                                                    </h4>
+                                                    <p className="text-user school-user">{usuario.school}</p>
                                                 </div>
-                                            </Link>
-                                        </li>
 
-                                    );
-                                })}
-                            </ul >
+                                                {usuario.counselorId ? (
+                                                    <div className="cont-icon-oriented">
+                                                        <img className="icon-oriented" src={IconOriented} alt="icono de orientador" />
+
+                                                    </div>
+                                                ) : (
+                                                    null
+                                                )}
+
+                                            </div>
+                                        </Link>
+                                    </li>
+
+                                );
+                            })}
+                        </ul >
 
 
-            }
-                
+                }
+
             </div >
         </>
     );

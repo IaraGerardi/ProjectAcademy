@@ -1,0 +1,13 @@
+
+.cont-page{
+    margin-top: 50px;
+    margin-left: 50px;
+}
+
+
+@media (max-width: 589px) {
+    .cont-page{
+        margin-top: 50px;
+        margin-left: 0px;
+    }
+}

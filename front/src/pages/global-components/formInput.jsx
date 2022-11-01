@@ -2,32 +2,42 @@ import Icon from "./Svg-icon";
 
 function FormInput(props) {
 
-    const { id, type, value, label, placeholder } = props
-    const { inputClass, labelClass, containerClass } = props
-    const { verifyInput, onHandleChange } = props
+    const { verifyInput, redBorder, onHandleChange } = props
+    const { id, type, value, label, placeholder, col, rows } = props
+    const { inputClass, labelClass, containerClass, errorClass } = props
 
     return (
-        <div className={`flex flex-col h-28 ${containerClass}`}>
+        <div className={`flex flex-col  ${containerClass}`}>
             <label className={labelClass} htmlFor={id}>{label}</label>
             {type === "textarea" ?
                 <textarea
-                    className={`${inputClass} rounded-lg border w-3/4 lg:w-2/4 placeholder:pl-2
-                    ${verifyInput !== null && verifyInput !== true ? "border-red-600" : "border-slate-300"}`}
-                    rows="4" cols="40" id={id} name={id} onChange={onHandleChange} placeholder={placeholder}
+                    id={id}
+                    name={id}
+                    cols={col}
+                    rows={rows}
+                    placeholder={placeholder}
+                    onChange={onHandleChange}
+                    className={`${inputClass} rounded-lg border placeholder:pl-2 "border-slate-300"`}
                 />
                 : <input
-                    value={value} id={id} name={id} type={type} onChange={onHandleChange} placeholder={placeholder}
-                    className={`${inputClass} h-24
-                    ${verifyInput !== null && verifyInput !== true ? "border border-solid border-red-600" : "border border-slate-300"}`}
+                    id={id}
+                    name={id}
+                    type={type}
+                    value={value}
+                    onChange={onHandleChange}
+                    placeholder={placeholder}
+                    className={`${inputClass} 
+                    ${redBorder && verifyInput !== null && verifyInput !== true ?
+                            "border border-solid border-red-600" : "border border-slate-300"}`}
                 />
             }
             {verifyInput !== null && verifyInput !== true ?
-                <div className="flex items-center relative bottom-3 ml-2.5">
+                <div className={`flex items-center relative bottom-3 py-2 ${errorClass}`}>
                     <Icon
-                        classname="w-2.5 h-2.5 m-1.5 fill-red-600"
+                        width="24" height="24"
                         type="exclamationMark"
-                        width="24" height="24" />
-                    <span className="text-red-600 text-xs">{verifyInput}</span>
+                        classname="w-3.5 h-3.5 mr-1 fill-red-600" />
+                    <span className="text-red-600 text-xs ">{verifyInput}</span>
                 </div>
                 : null
             }

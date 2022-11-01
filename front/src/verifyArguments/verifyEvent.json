@@ -1,27 +1,34 @@
 [
     {
-        "id": "hours",
-        "type": "time",
-        "noSpaces": true
+        "id": "eventName",
+        "type": "name",
+        "minLength": 2,
+        "maxLength": 500
+    },
+    {
+        "id": "valueCounselor",
+        "type": "select"
+    },
+    {
+        "id": "oriented",
+        "type": "select"
+    },
+    {
+        "id": "eventDate",
+        "type": "date"
+    },
+    {
+        "id": "eventTime",
+        "type": "select"
     },
     {
         "id": "duration",
-        "type": "time",
-        "noSpaces": true
+        "type": "select"
     },
     {
-        "id": "name",
-        "type": "name",
-        "maxLength": 200
-    },
-    {
-        "id": "date",
-        "type": "date",
-        "noSpaces": true
-    },
-    {
-        "id": "comment",
+        "id": "eventComments",
         "type": "textarea",
+        "minLength": 2,
         "maxLength": 500
     }
 ]

@@ -1,8 +1,8 @@
 module.exports = {
-    database: {
-        username: "root",
-        password: "",
-        database: "project_academy",
-        host: "localhost"
-    }
-}
+  database: {
+    username: "root",
+    password: "",
+    database: "project_academy",
+    host: "localhost",
+  },
+};

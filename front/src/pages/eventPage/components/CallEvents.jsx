@@ -36,12 +36,12 @@ function CallEvents({ events }) {
 
     //eliminar un evento
     const deleteEvent = async (id) => {
-        await axios.delete(`http://localhost:8000/admin/${id}/deleteEvent/`, { withCredentials: true })
+        await axios.delete(`${process.env.REACT_APP_BASE_URL}/events/${id}`, { withCredentials: true })
         window.location.reload(false);
+    
     }
 
     return (
-
         <>
             {/* TABLA DE EVENTOS */}
             <div className="table-events">
@@ -62,14 +62,49 @@ function CallEvents({ events }) {
                 </div>
 
 
+                {eventList.map((eventMobile) => {
+                    return (
+
+
+                        <div className="event-mobile">
+
+                            <div key={eventMobile.id} className="container-events-responsive">
+
+                                <div>
+                                    <p className="title-events-responsive"><strong className="event-strong-responsive">Fecha</strong></p>
+                                    <p className="event-date-responsive">{eventMobile.date}</p>
+                                    <p className="title-events-responsive"><strong className="event-strong-responsive">Horario</strong></p>
+                                    <p className="event-date-responsive">{`${eventMobile.time.slice(0,5)}hs`}</p>
+                                </div>
+                                <div>
+
+                                    <p className="title-events-responsive"><strong className="event-strong-responsive">Evento</strong></p>
+                                    <p className="event-date-responsive">{eventMobile.name}</p>
+                                    <p className="title-events-responsive"><strong className="event-strong-responsive">Participantes</strong></p>
+                                    <p className="event-date-responsive">{eventMobile.orienteds[0]?.name} {eventMobile.orienteds[0]?.lastname}</p>
+                                </div>
+                            </div>
+
+                            <div className="delete-responsive" onClick={() => deleteEvent(eventMobile.id)}>
+                                <div className="text-delete">Eliminar Evento</div>
+                            </div>
+
+                        </div>
+
+
+                    )
+
+                })}
+
+
                 <div className="container-events">
                     <table >
                         <thead>
                             <tr className="title-table">
-                                <td className="title-events"><strong>Fecha</strong></td>
-                                <td className="title-events"><strong>Horario</strong></td>
-                                <td className="title-events"><strong>Eventos</strong></td>
-                                <td className="title-events"><strong>Participantes</strong></td>
+                                <td className="title-events"><strong className="event-title">Fecha</strong></td>
+                                <td className="title-events"><strong className="event-title">Horario</strong></td>
+                                <td className="title-events"><strong className="event-title">Evento</strong></td>
+                                <td className="title-events"><strong className="event-title">Participantes</strong></td>
                             </tr>
                         </thead>
 
@@ -77,34 +112,69 @@ function CallEvents({ events }) {
                             {eventList.map((event) => {
                                 return (
                                     <tr key={event.id}>
-                                        <td className="events">{event.date}</td>
-                                        <td className="events">{event.time}</td>
-                                        <td className="events">{event.name}</td>
-                                        <td className="events">{event.Orientados[0].name} {event.Orientados[0].lastname}</td>
-                                        <td className="events left"><img onClick={() => deleteEvent(event.id)} className="icon-delete" src={Deleted} alt="icon de tacho de basura" /></td>
+
+                                        <td className="events"><p className="event-date">{event.date}</p></td>
+                                        <td className="events"><p className="event-date">{`${event.time.slice(0,5)}hs`}</p> </td>
+                                        <td className="events"><p className="event-date">{event.name}</p></td>
+                                        <td className="events"><p className="event-date">{event.orienteds[0]?.name} {event.orienteds[0]?.lastname}</p></td>
+                                        <td className="events left"><img onClick={() => deleteEvent(event.id)} className="icon-delete" src={Deleted} alt="Icon trash" /></td>
+
                                     </tr>
                                 )
                             })}
                         </tbody>
                     </table>
 
+
+
                 </div>
 
+                {events.map((eventAlert) => {
+                    return (
+                        <div key={eventAlert.id}>
+                            {
+                                (Date.parse(new Date()) - Date.parse(eventAlert.createdAt) < 10000 || active)
+                                && <div className={`alert-event ${!active ? 'show-alert' : 'hidden-alert-event'}`}>
+                                    <div className="cont-logo-event">
+                                        <img src={Affirmation} alt="Icon Affirmation" />
+                                    </div>
 
-                <div className={`alert-event ${!active ? 'mostrar-alert' : 'ocultar-alert-event'}`}>
-                    <div className="cont-logo-event">
-                        <img src={Affirmation} alt="icon de afirmacion" />
-                    </div>
+                                    <div>
+                                        <p className="msg-alert-event">Encuentro agendado</p>
+                                        <span className="msg-alert-counselor-events">El encuentro está agendado en la fecha que sugeriste, el orientado podrá confirmarlo o elegir otra fecha. Te notificaremos la confirmación o modificación</span>
+                                    </div>
 
-                    <div>
-                        <p className="msg-alert-event">Encuentro agendado</p>
-                        <span className="msg-alert-orientador">El encuentro está agendado en la fecha que sugeriste, el orientado podrá confirmarlo o elegir otra fecha. Te notificaremos la confirmación o modificación</span>
+                                    <div className="cont-logo-event">
+                                        <img className="iconDelete-alert" src={Delete} onClick={() => setActive(!active)} alt="Icon Delete" />
+                                    </div>
+                                </div>
+
+                            }
+                        </div>
+                    )
+
+
+                })}
+
+                {/* 
+                {
+                    (Date.parse(new Date()) - Date.parse('2022-10-13T17:28:30') < 2000 || active)
+                    && <div className={`alert-event ${!active ? 'show-alert' : 'hidden-alert-event'}`}>
+                        <div className="cont-logo-event">
+                            <img src={Affirmation} alt="icon de afirmacion" />
+                        </div>
+
+                        <div>
+                            <p className="msg-alert-event">Encuentro agendado</p>
+                            <span className="msg-alert-orientador">El encuentro está agendado en la fecha que sugeriste, el orientado podrá confirmarlo o elegir otra fecha. Te notificaremos la confirmación o modificación</span>
+                        </div>
+
+                        <div className="cont-logo-event">
+                            <img className="iconDelete-alert" src={Delete} onClick={() => setActive(!active)} alt="icon de eliminar" />
+                        </div>
                     </div>
-                    
-                    <div className="cont-logo-event">
-                        <img className="iconDelete-alert" src={Delete} onClick={() => setActive(!active)} alt="icon de eliminar" />
-                    </div>
-                </div>
+                } */}
+
 
 
             </div>

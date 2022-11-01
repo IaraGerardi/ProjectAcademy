@@ -19,10 +19,8 @@ import Affirmation from "../img/affirmation.svg"
 import Delete from "../img/delete.svg"
 
 function FormOrientado() {
-  let timer = "";
-  const URI = "http://localhost:8000/admin/create";
+  const URI = `${process.env.REACT_APP_BASE_URL}/oriented`;
 
-  // ESTADOS DEL FORMULARIO DE SUS RESPECTIVOS INPUT
   const [name, setName] = useState("");
   const [lastname, setLastname] = useState("");
   const [email, setEmail] = useState("");
@@ -39,12 +37,10 @@ function FormOrientado() {
 
   const [active, setActive] = useState(false);
   const [activeVerify, setActiveVerify] = useState({});
-  const [backMessages, setBackMessages] = useState({ emailLog: null, passwordLog: null, });
-  
+  const [backMessages, setBackMessages] = useState({ email: null, dni: null, });
+
   const navegate = useNavigate();
 
-
-  // Argumentos para la verificacion del formulario
   let formValues = [
     { inputValue: name }, { inputValue: lastname }, { inputValue: email }, { inputValue: program }, { inputValue: phone },
     { inputValue: age }, { inputValue: school }, { inputValue: address }, { inputValue: why }, { inputValue: dni },
@@ -63,12 +59,12 @@ function FormOrientado() {
     if (activeVerify[e.target.name] === true) {
       return;
     }
-    timer = setTimeout(() => {
+    let timer = setTimeout(() => {
       setActiveVerify({
         ...activeVerify,
         [e.target.name]: true
       })
-    }, 2000)
+    }, 8000)
     return () => clearTimeout(timer);
   }
 
@@ -77,50 +73,88 @@ function FormOrientado() {
     handleVerifyForm();
   }, [name, lastname, email, program, phone, age, school, address, why, dni, password, confirmPassword])
 
+  const handleErrorMessage = (property) => {
+
+    if (!(activeVerify[property]) || !(verifyMessages[property])) {
+      return null;
+    }
+
+    if (property !== "dni" && property !== "email") {
+      return verifyMessages[property];
+    }
+
+    if (verifyMessages[property] !== true) {
+      return verifyMessages[property];
+    } else {
+      return backMessages[property];
+    }
+
+  }
+
+  const showAllVerifications = () => {
+    let mutableObj = {};
+    Object.keys(verifications).forEach((i) => {
+      mutableObj[verifications[i].id] = true;
+    });
+    setActiveVerify(mutableObj)
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!isVerified) {
+      showAllVerifications();
       return;
     }
-    const formData = new FormData()
-    formData.append('photoProfile', photoProfile)
-    await axios.post(URI, {
-      name: name,
-      password: password,
-      lastname: lastname,
-      email: email,
-      phone: phone,
-      program: program,
-      photoProfile: photoProfile,
-      dni: dni,
-      age: age,
-      school: school,
-      address: address,
-      why: why
-    },
-      {
-        headers: {
-          'Content-Type': 'multipart/form-data'
-        }
-      })
-      .then((response) => {
-        if (response.status == 200) {
-          setActive(!active)
-          setTimeout(() => {
-            navegate(`/orientados/StudentInfo/${response.data.id}`)
-          }, "4000")
-        }
-      })
+
+    try {
+      const formData = new FormData()
+      formData.append('photoProfile', photoProfile)
+      const response = await axios.post(URI, {
+        name: name,
+        password: password,
+        lastname: lastname,
+        email: email,
+        phone: phone,
+        program: program,
+        photoProfile: photoProfile,
+        dni: dni,
+        age: age,
+        school: school,
+        address: address,
+        why: why
+      },
+        {
+          withCredentials: true,
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+        })
+      console.log(response.data, response.data.info)
+      if (response.status == 200) {
+        setActive(!active)
+        setTimeout(() => {
+          navegate(`/orientados/StudentInfo/${response.data.info}`)
+        }, "4000")
+      }
+    } catch (err) {
+      const errors = err.response.data.info.errors
+
+      for (let i = 0; i < errors.length; i++) {
+        setBackMessages(prevBackMessages => ({
+          ...prevBackMessages,
+          [errors[i].param]: errors[i].msg,
+        }))
+      }
+    }
   };
 
-  // Opciones del select
   const options = [
     { value: "Orientación vocacional", label: "Orientación vocacional" },
     { value: "Reorientación vocacional", label: "Reorientación vocacional" },
     { value: "Taller de matemáticas", label: "Taller de matemáticas" },
     { value: "Métodos de estudio", label: "Métodos de estudio" },
   ];
-  //estilos react-select
+
   const customStyles = {
     control: base => ({
       ...base,
@@ -129,11 +163,10 @@ function FormOrientado() {
       fontSize: "15px",
       height: 32,
       minHeight: 32,
-      marginTop: '8px',
+
     })
   }
 
-  // handle onChange event of the dropdown
   const handleProgramChange = (e) => {
     setProgram(e.value);
   };
@@ -158,7 +191,6 @@ function FormOrientado() {
     }
   };
 
-  /* previsualizacion de img */
   const [preview, setPreview] = useState();
   const fileInputRef = useRef();
 
@@ -175,21 +207,15 @@ function FormOrientado() {
   }, [photoProfile]);
 
   return (
-    <div className="cotainerForm ml-8 mt-10 mb-10 w-auto">
+    <div className="cotainerForm mt-10 mb-10 mx-6 w-auto">
       <form
-        className=" flex flex-col gap-4"
+        className=" flex flex-col gap-4 w-56 md:w-full lg:w-full"
         onSubmit={handleSubmit}
         encType="multipart/form-data"
       >
         <h2 className="text-lg  md:text-xl  lg:text-2xl font-medium text-slate-700">01.Informacion básica 1</h2>
-        {/* abre formulario de alta de orientado , tiene 4 divs hijos */}
-        <div className="container-basicInfo flex  flex-col gap-5 lg:flex-row  lg:gap-12 md:w-full lg:h-40">
+        <div className="container-basicInfo flex  flex-col gap-5 lg:flex-row  lg:gap-5 md:w-full lg:h-48">
 
-          {/* div1 info basica */}
-
-          {/*  a cada uno de los InputLabel recibe los 4 props  */}
-
-          {/* previsualizacion img */}
           <div>
             {preview ? (
               <img
@@ -227,8 +253,8 @@ function FormOrientado() {
             />
           </div>
 
-          <div className="cajaInputsDatosP flex flex-col md: min-w-3/4 md:flex-row md:gap-5 lg:flex-row lg:gap-5 bg-red-200 lg:w-4/5 lg:h-56 ">
-            <div className=" w-64">
+          <div className="cajaInputsDatosP flex flex-col gap-0 md:min-w-3/4 md:flex-row md:gap-5 lg:flex-row lg:gap-10 lg:w-4/5 lg:h-48 ">
+            <div className=" w-56  md:w-72 lg:w-72 flex flex-col ">
               <InputLabel
                 labelName="Nombre"
                 inputType="text"
@@ -236,7 +262,7 @@ function FormOrientado() {
                 placeholderName="Ingresar nombre"
                 propInputValue={name}
                 propsOnchange={(e) => { handleTimer(e); handleNameChange(e) }}
-                verifyInput={!(activeVerify.name) ? null : verifyMessages.name ? verifyMessages.name : null}
+                verifyInput={handleErrorMessage("name")}
               />
               <InputLabel
                 labelName="Apellido"
@@ -245,10 +271,10 @@ function FormOrientado() {
                 placeholderName="Ingresar Apellido"
                 propInputValue={lastname}
                 propsOnchange={(e) => { handleTimer(e); handleNameChange(e); }}
-                verifyInput={!(activeVerify.lastname) ? null : verifyMessages.lastname ? verifyMessages.lastname : null}
+                verifyInput={handleErrorMessage("lastname")}
               />
             </div>
-            <div className=" w-64">
+            <div className=" w-56  md:w-72 lg:w-72">
               <InputLabel
                 labelName="Email"
                 inputType="email"
@@ -256,47 +282,40 @@ function FormOrientado() {
                 placeholderName="Ingresar email"
                 propInputValue={email}
                 propsOnchange={(e) => { handleTimer(e); setEmail(e.target.value) }}
-                verifyInput={!(activeVerify.email) ? null : verifyMessages.email ? verifyMessages.email :
-                  // verifyMessages.email === true ? backMessages.email : 
-                  null}
+                verifyInput={handleErrorMessage("email")}
               />
-              {/*------ select input ------------- */}
-              <div className="h-28 flex flex-col mt-3">
-                <label htmlFor="" className="font-medium text-slate-600">
+              <div className=" w-56 md:w-72 lg:-72 h-24 flex flex-col gap-2">
+                <label htmlFor="" className="font-medium text-slate-600 mt-1">
                   Programa
                 </label>
                 <Select
                   placeholder="Select Option"
-                  value={options.filter((obj) => obj.value === program)} // set selected value
-                  options={options} // set list of the data
-                  onChange={(e) => { handleProgramChange(e); }} // assign onChange function
-                  styles={customStyles}//style para react select
-                  className={`w-64 h-8 rounded-lg
-                        ${verifyMessages.program && verifyMessages.program !== null ? "border-red-600" : null}`}
+                  value={options.filter((obj) => obj.value === program)}
+                  options={options}
+                  onChange={(e) => { handleProgramChange(e); }}
+                  styles={customStyles}
+                  className={`w-56 md:w-64 lg:w-64 h-8 rounded-lg`}
                 />
                 {!(activeVerify.program) ? null : verifyMessages.program &&
                   (verifyMessages.program !== null && verifyMessages.program !== true) ?
-                  <div className="flex ml-2.5 items-center relative bottom-2">
+                  <div className="flex items-center relative bottom-2">
                     <Icon
-                      classname="w-3.5 h-3.5 m-1.5 text-sm fill-red-600"
+                      classname="w-3.5 h-3.5 my-1.5 fill-red-600"
                       type="exclamationMark"
                       width="24" height="24" />
-                    <span className="text-red-600 text-sm">{verifyMessages.program}</span>
+                    <span className="text-red-600 ml-1.5 text-xs">{verifyMessages.program}</span>
                   </div>
                   : null
                 }
-                {/* agregar verificaciones del programa*/}
               </div>
             </div>
           </div>
         </div>
-        <div className="container-personalInfo  text-slate-700 flex flex-col bg-slate-500 h-max md:h-96 lg:h-96 gap-3">
+        <div className="container-personalInfo  text-slate-700 flex flex-col h-max md:h-full lg:h-full gap-3">
           {" "}
-          {/* div2 datos personales */}
           <h2 className=" text-lg  md:text-xl  lg:text-2xl font-medium ">02.Datos personales</h2>
-          {/*  a cada uno de los InputLabel recibe los 4 props  */}
           <div className=" cajaInputsDatosP  flex  flex-col md:flex-row md:gap-5 lg:flex-row lg:gap-5  ">
-            <div>
+            <div >
               <InputLabel
                 labelName="Telefono"
                 inputType="phone"
@@ -304,7 +323,7 @@ function FormOrientado() {
                 placeholderName="Ingresar telefono"
                 propInputValue={phone}
                 propsOnchange={(e) => { handleTimer(e); setPhone(e.target.value) }}
-                verifyInput={!(activeVerify.tel) ? null : verifyMessages.tel ? verifyMessages.tel : null}
+                verifyInput={handleErrorMessage("tel")}
               />
               <InputLabel
                 labelName="Colegio"
@@ -313,7 +332,7 @@ function FormOrientado() {
                 placeholderName="Ingresar colegio"
                 propInputValue={school}
                 propsOnchange={(e) => { handleTimer(e); setSchool(e.target.value) }}
-                verifyInput={!(activeVerify.school) ? null : verifyMessages.school ? verifyMessages.school : null}
+                verifyInput={handleErrorMessage("school")}
               />
             </div>
             <div>
@@ -324,7 +343,7 @@ function FormOrientado() {
                 placeholderName="Ingresar edad"
                 propInputValue={age}
                 propsOnchange={(e) => { handleTimer(e); setAge(e.target.value) }}
-                verifyInput={!(activeVerify.age) ? null : verifyMessages.age ? verifyMessages.age : null}
+                verifyInput={handleErrorMessage("age")}
               />
 
               <InputLabel
@@ -334,25 +353,20 @@ function FormOrientado() {
                 placeholderName="Ingresar domicilio"
                 propInputValue={address}
                 propsOnchange={(e) => { handleTimer(e); setAddress(e.target.value) }}
-                verifyInput={!(activeVerify.address) ? null : verifyMessages.address ? verifyMessages.address : null}
+                verifyInput={handleErrorMessage("address")}
               />
             </div>
           </div>
           <FormInput
             onHandleChange={(e) => { handleTimer(e); setWhy(e.target.value) }}
             labelClass="font-medium text-slate-600"
-            containerClass="containerInputLabel flex flex-col gap-2 h-32 "
-            inputClass="rounded-lg border w-60 pl-3 pt-2 md:w-2/4 lg:w-2/4 placeholder:pl-1  resize-none"
+            containerClass="containerInputLabel flex flex-col gap-2 h-36 w-full md:w-full md:min-w-full lg:max-w-11/12"
+            col="45"
+            rows="4"
+            inputClass="rounded-lg border  pl-3 pt-2 w-56 md:w-[570px] lg:w-[570px] md:max-w-6/12  placeholder:pl-1  resize-none"
             id="why" type="textarea" label="¿Porque se acercó a nuestra institución?" placeholder="Escribe un comentario."
-            verifyInput={!(activeVerify.why) ? null
-              : verifyMessages.why && verifyMessages.why !== true ? verifyMessages.why
-                : backMessages.why ? backMessages.why : null} />
-        </div>
-        <div className="container-crateUsernamePassword">
-          {" "}
-          {/* div3 crear usuario y contraseña */}
+            verifyInput={handleErrorMessage("why")} />
           <h2 className="text-lg  md:text-xl  lg:text-2xl font-medium text-slate-700">03.Crear usuario y contraseña</h2>
-          {/*  a cada uno de los InputLabel recibe los 4 props  */}
 
           <InputLabel
             labelName="Usuario"
@@ -361,9 +375,7 @@ function FormOrientado() {
             placeholderName="Ingresar DNI del orientado"
             propInputValue={dni}
             propsOnchange={(e) => { handleTimer(e); setDni(e.target.value) }}
-            verifyInput={!(activeVerify.dni) ? null : verifyMessages.dni ? verifyMessages.dni :
-              // verifyMessages.dni === true ? backMessages.dni : 
-              null}
+            verifyInput={handleErrorMessage("dni")}
           />
           <InputLabel
             labelName="Nueva contraseña"
@@ -372,7 +384,7 @@ function FormOrientado() {
             placeholderName="ingresar contraseña"
             propInputValue={password}
             propsOnchange={(e) => { handleTimer(e); setPassword(e.target.value) }}
-            verifyInput={!(activeVerify.password) ? null : verifyMessages.password ? verifyMessages.password : null}
+            verifyInput={handleErrorMessage("password")}
           />
           <InputLabel
             labelName="Repetir contraseña"
@@ -381,24 +393,15 @@ function FormOrientado() {
             placeholderName="Repetir contraseña"
             propInputValue={confirmPassword}
             propsOnchange={(e) => { handleTimer(e); setConfirmPassword(e.target.value) }}
-            verifyInput={!(activeVerify.passwordrepeat) ? null : verifyMessages.passwordrepeat ? verifyMessages.passwordrepeat : null}
+            verifyInput={handleErrorMessage("passwordrepeat")}
           />
 
         </div>
-        <div className="mt-10">
-          {/* div4 botones form */}
-          <button type="submit" disabled={!isVerified}
-            className={`w-44 h-10 bg-celesteValtech rounded-lg text-base text-white font-medium ${(!isVerified) ? "opacity-50" : null}`}>
+        <div className="mt-2">
+          <button type="submit" className={`w-44 h-10 bg-celesteValtech rounded-lg text-base text-white font-medium`}>
             Ingresar Orientado
           </button>
           <button className=" w-32 text-sm underline" onClick={handleCancelForm}>Cancelar ingreso</button>
-        </div>
-
-
-        <div className={`alert ${active ? 'mostrar-alert' : 'ocultar-alert'}`}>
-          <img src={Affirmation} alt="icon de afirmacion" />
-          <p className="msg-alert">El Orientado fué ingresado con éxito.</p>
-          <img className="iconDelete-alert" src={Delete} onClick={() => setActive(!active)} alt="icon de eliminar" />
         </div>
 
       </form>
