@@ -66,11 +66,8 @@
 }
 
 @media (max-width: 600px) {
-  .slick-prev:before,
-  .slick-next:before {
-    display: none !important;
-  }
-  ::before {
+  .slick-dots{
     display: none;
+    opacity: 0.1;
   }
 }
