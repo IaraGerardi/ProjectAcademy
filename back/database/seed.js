@@ -425,16 +425,16 @@ const admin = [
 
 const events = [
   {
-    name: "NombreEvent",
-    date: "2022-10-10",
+    name: "Clase SQL",
+    date: "2022-12-10",
     time: "11:45",
     duration: "00:30",
     description: "Meet de Prueba",
     counselorId: 1,
   },
   {
-    name: "Event Almuerzo",
-    date: "2022-10-11",
+    name: "Evento Almuerzo",
+    date: "2022-12-11",
     time: "13:30",
     duration: "01:30",
     description: "Encuentro Pizza nueva pala",
@@ -442,7 +442,7 @@ const events = [
   },
   {
     name: "Orientación vocacional",
-    date: "2022-10-11",
+    date: "2022-12-11",
     time: "15:30",
     duration: "01:00",
     description: null,
@@ -450,7 +450,7 @@ const events = [
   },
   {
     name: "Clase JavaScript",
-    date: "2022-10-11",
+    date: "2022-12-11",
     time: "15:30",
     duration: "02:00",
     description: "Programacion orientada a objetos",
@@ -458,15 +458,15 @@ const events = [
   },
   {
     name: "Inteligencia emocional",
-    date: "2022-11-05",
+    date: "2022-12-05",
     time: "12:00",
     duration: "01:15",
     description: "Manejo de emociones",
     counselorId: 5,
   },
   {
-    name: "Otro event",
-    date: "2022-11-05",
+    name: "Dinamica grupal",
+    date: "2022-12-05",
     time: "16:00",
     duration: "00:45",
     description: null,
@@ -474,7 +474,7 @@ const events = [
   },
   {
     name: "Metodos de estudio",
-    date: "2022-11-05",
+    date: "2022-12-05",
     time: "13:00",
     duration: "01:45",
     description: null,
@@ -482,12 +482,20 @@ const events = [
   },
   {
     name: "Taller de matematicas",
-    date: "2022-11-05",
+    date: "2022-12-05",
     time: "13:00",
     duration: "02:30",
     description: "Llegó la hora de conocer Pizza pala",
     counselorId: 8,
   },
+  {
+    name: "Taller de ingles",
+    date: "2022-12-08",
+    time: "13:00",
+    duration: "02:30",
+    description: null,
+    counselorId: 1,
+  }
 ];
 
 const oriented_event = [
@@ -586,6 +594,18 @@ const oriented_event = [
   {
     OrientedId: 9,
     EventId: 8,
+  },
+  {
+    OrientedId: 7,
+    EventId: 9,
+  },
+  {
+    OrientedId: 5,
+    EventId: 9,
+  },
+  {
+    OrientedId: 9,
+    EventId: 9,
   },
 ];
 
