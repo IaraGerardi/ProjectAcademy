@@ -14,9 +14,8 @@ import FormInput from "../../global-components/formInput";
 import img from '../img/orientadoDefault-removebg-preview.png'
 import './upload.css'
 import "./alert.css"
-// SVG
-import Affirmation from "../img/affirmation.svg"
-import Delete from "../img/delete.svg"
+
+
 
 function FormOrientado() {
   const URI = `${process.env.REACT_APP_BASE_URL}/oriented`;
@@ -130,7 +129,7 @@ function FormOrientado() {
           }
         })
       console.log(response.data, response.data.info)
-      if (response.status == 200) {
+      if (response.status === 200) {
         setActive(!active)
         navegate(`/orientados/StudentInfo/${response.data.info}`)
       }
@@ -205,7 +204,7 @@ function FormOrientado() {
   }, [photoProfile]);
 
   return (
-    <div className="cotainerForm mt-10 mb-10 mx-6 w-auto">
+    <div className="cotainerForm mt-12 mb-10  ml-10 mr-4 md:ml-14 lg:ml-24 lg:mr-4 w-auto">
       <form
         className=" flex flex-col gap-4 w-56 md:w-full lg:w-full"
         onSubmit={handleSubmit}

@@ -1,13 +1,12 @@
 import Icon from "../../global-components/Svg-icon";
 
-function InputLabel({ labelName, placeholderName, inputType, propInputName, propInputValue, propsOnchange, verifyInput }) { 
+function InputLabel({ labelName, placeholderName, inputType, propInputName, propInputValue, propsOnchange, verifyInput }) {
   return (
     <div className="containerInputLabel flex flex-col gap-2 w-56 md:w-64  h-24  lg:w-72">
 
-      <label htmlFor="" className="font-medium text-slate-600 mt-1">{labelName}</label> 
+      <label htmlFor="" className="font-medium text-slate-600 mt-1">{labelName}</label>
       <input type={inputType} name={propInputName} onChange={propsOnchange} value={propInputValue} placeholder={placeholderName}
-      autocomplete="off" className={`w-56 md:w-64 lg:w-64 h-8 p-2 rounded-lg border border-slate-300`} />
-
+        autoComplete="off"
         className={`w-56 md:w-64 lg:w-64 h-8 p-2 rounded-lg border border-slate-300 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500`} />
 
       {verifyInput !== null && verifyInput !== true ?
