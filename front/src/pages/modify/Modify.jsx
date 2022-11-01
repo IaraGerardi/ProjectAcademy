@@ -4,23 +4,22 @@ import { Sidebar } from "../sidebar-header/components/Sidebar";
 import HeaderInicio from "../sidebar-header/components/HeaderInicio"
 //IMPORTACION DE ESTADOS, RUTAS Y AXIOS
 import { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import axios from "axios";
-import Select from "react-select";
 //IMPORTACION DE SVG
 import Affirmation from "../StudentsScreen/img/affirmation.svg"
 import Delete from "../StudentsScreen/img/delete.svg"
 //IMPORTACION DE ESTILOS
-import "./assign.css"
+import "../Assign/assign.css"
 import "../StudentsScreen/componentes-nuevoOrientado/alert.css"
 
-function Assign() {
+function Modify() {
     const [oriented, setOriented] = useState([]);
     const [counselor, setCounselor] = useState([]);
     const [valueCounselor, setValueCounselor] = useState();
     const [active, setActive] = useState(false);
     const { id } = useParams();
-    const navegate = useNavigate();
+
 
     // `${process.env.REACT_APP_BASE_URL}/oriented/paginated?page=0&size=1000&order=DESC`
 
@@ -66,18 +65,14 @@ function Assign() {
         setValueCounselor(value);
     }
 
-
-
     const handleSubmit = async (e) => {
         e.preventDefault();
         await axios.put(UriAsiggned, { counselor: valueCounselor }, { withCredentials: true })
             .then((response) => {
 
                 if (response.status === 200) {
-                    // window.location.reload();
-                    navegate(`/modificar/${id}`);
+                    window.location.reload();
                 }
-
 
             })
     }
@@ -199,45 +194,25 @@ function Assign() {
 
                             <span className="referent">Referente</span>
 
-                            {/*Input selector*/}
+                            <>
+                                <ul> {selectCounselor[oriented[id - 1]?.counselorId - 1]} </ul>
 
-                            < form onSubmit={handleSubmit} >
-                                {/* Al select le paso como opciones un array llamado options que declaro afuera del return,
-                                tiene una funcion onChange que cambia valorOrientador, y en base a ese estado recorre options
-                                y define como valor el indice de options en el que la propiedad value coincida con el valor actual
-                                del estado valorOrientador*/}
-                                <Select
-                                    name="counselor"
-                                    options={options}
-                                    inputId="counselor"
-                                    onChange={handleSelectChange}
-                                    placeholder="Select Option" className="selector-teacher"
-                                    // styles={customStyles}
-                                    value={options.filter((obj) => obj.value === valueCounselor)}
-                                    defaultValue={{ label: "Seleccionar Orientador", value: "default" }}
-                                />
 
-                                <ul>
-                                    {/*LLama a la card del orientador y le pasa el valor del id -1*/}
-                                    {selectCounselor[valueCounselor - 1]}
-                                </ul>
-
-                                {/*Botón para enviar orientador*/}
-
-                                {/* <Link to={`/modificar/${id}`}
+                                <Link to={`/orientados/${id}`}
                                     type="submit"
                                     className="text-center h-10 mt-10 p-2 bg-celesteValtech rounded-lg text-base text-white font-medium cursor-pointer" >
-                                    Asignar Orientador/a
-                                </Link> */}
-                                {/* 
-                                <Link to={`/modificar/${id}`}> */}
-                                < input
-                                    type="submit"
-                                    value={`Asignar Orientador/a`}
-                                    className="text-center h-10 mt-10 p-2 bg-celesteValtech rounded-lg text-base text-white font-medium cursor-pointer"
-                                />
-                                {/* </Link> */}
-                            </form>
+                                  Modificar orientador/a
+                                </Link>
+
+                                {/* <input
+                                    readOnly={true}
+                                    value="Modificar orientador/a"
+                                    className="text-center h-10 mt-10 p-2 bg-celesteValtech rounded-lg text-base text-white font-medium cursor-pointer "
+                                /> */}
+
+                            </>
+
+
 
                             {oriented.map((orientedAlert) => {
                                 const alertCall = orientedAlert
@@ -272,4 +247,4 @@ function Assign() {
     )
 }
 
-export default Assign;
+export default Modify;
