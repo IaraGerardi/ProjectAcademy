@@ -8,6 +8,8 @@ function InputLabel({ labelName, placeholderName, inputType, propInputName, prop
       <input type={inputType} name={propInputName} onChange={propsOnchange} value={propInputValue} placeholder={placeholderName}
       autocomplete="off" className={`w-56 md:w-64 lg:w-64 h-8 p-2 rounded-lg border border-slate-300`} />
 
+        className={`w-56 md:w-64 lg:w-64 h-8 p-2 rounded-lg border border-slate-300 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500`} />
+
       {verifyInput !== null && verifyInput !== true ?
         <div className="flex items-center relative bottom-2 py-1">
           <Icon

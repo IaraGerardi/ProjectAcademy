@@ -89,7 +89,7 @@
 
 
 
-@media (max-width: 1265px) {
+@media (max-width: 1050px) {
 
     .msg-alert {
         font-size: 13px;
@@ -101,8 +101,57 @@
         font-family: sans-serif;
     }
 
+    .alert {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        background-color: #2E384D;
+        color: white;
+        font-weight: 500;
+        font-size: 16px;
+        width: 61%;
+        height: 56px;
+        border-radius: 8px;
+        position: fixed;
+        bottom: 0px;
+        left: 205px;
+    }
 
+    .hidden-alert {
+        display: none;
+    }
 }
+
+
+@media (max-width: 980px) {
+    .alert-event {
+        margin-bottom: 20px;
+        margin-top: 10px;
+        display: flex;
+        justify-content: space-around;
+        align-items: flex-start;
+        background-color: #2E384D;
+        color: white;
+        font-weight: 500;
+        font-size: 6px;
+        width: 62%;
+        height: 96px;
+        border-radius: 8px;
+        position: fixed;
+        bottom:0px;
+        left: 200px;
+        
+    }
+
+    .hidden-alert-event {
+        display: none;
+    }
+
+    .hidden-alert {
+        display: none;
+    }
+}
+
 
 
 @media (max-width: 869px) {
@@ -140,7 +189,9 @@
         font-family: sans-serif;
     }
 
-
+.hidden-alert {
+    display: none;
+}
 }
 
 
@@ -156,8 +207,15 @@
         font-weight: 500;
         font-size: 16px;
         width: 61%;
-        height: 36px;
+        height: 76px;
         border-radius: 8px;
+        position: fixed;
+        bottom: 0px;
+        left: 100px;
+    }
+
+    .hidden-alert {
+        display: none;
     }
 
 
@@ -182,8 +240,8 @@
         width: 10px;
     }
 
-    .msg-alert-orientador {
-        font-size: 8px;
+    .msg-alert-counselor {
+        font-size: 10px;
         font-family: sans-serif;
     }
 
@@ -195,4 +253,32 @@
     }
 
 
+    .alert-event {
+        margin-bottom: 20px;
+        margin-top: 10px;
+        display: flex;
+        justify-content: space-around;
+        align-items: flex-start;
+        background-color: #2E384D;
+        color: white;
+        font-weight: 500;
+        font-size: 6px;
+        width: 62%;
+        height: 96px;
+        border-radius: 8px;
+        position: fixed;
+        bottom:0px;
+        left: 100px;
+        
+    }
+    
+    .hidden-alert-event {
+        display: none;
+    }
+
+
+
 }
+
+
+
