@@ -117,6 +117,9 @@
         left: 205px;
     }
 
+    .hidden-alert {
+        display: none;
+    }
 }
 
 
@@ -141,6 +144,10 @@
     }
 
     .hidden-alert-event {
+        display: none;
+    }
+
+    .hidden-alert {
         display: none;
     }
 }
@@ -182,7 +189,9 @@
         font-family: sans-serif;
     }
 
-
+.hidden-alert {
+    display: none;
+}
 }
 
 
@@ -205,7 +214,9 @@
         left: 100px;
     }
 
-    
+    .hidden-alert {
+        display: none;
+    }
 
 
     .msg-alert-counselor-events {
