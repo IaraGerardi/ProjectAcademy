@@ -18,10 +18,9 @@ function AdminPage() {
                 <div className="mt-2">
                   <div className=" h-3/5">
 
-
                     {/*1 seccion principal nuevos orientados + boton */}
-                    <div className=" w-full h-20 flex items-center justify-center " >
-                      <div className="flex-query-cv box-content-ib-two w-9/12 h-10 flex justify-between items-center">
+                    <div className=" w-full h-20 flex items-center mt-5" >
+                      <div className="flex-query-cv box-content-ib-two w-9/12 h-10 flex justify-between ml-20 items-center">
                         <div className="content-center-cv flex justify-center ml-1">
                           <div className="box-new-oriented-cv">Nuevos Orientados
                           </div>
@@ -37,23 +36,30 @@ function AdminPage() {
                     {/* seccion principal nuevos orientados + boton */}
 
                     {/*2 seccion users */}
-                    <div className="box-users-cv w-full h-auto flex items-center justify-center" >
-                      <div className="box-content-ib-cv w-9/12 h-full ">
+                    <div className="box-users-cv w-full h-auto flex items-center" >
+                      <div className="box-content-ib-cv w-9/12 h-full ml-20 flex-query-cv ">
                         <UserAdmin />
                       </div>
                     </div>
                     {/* seccion users */}
 
-
                     {/*3 seccion medio ver mas y novedades */}
-                    <div className="w-full h-10 flex items-center justify-center " >
-                      <div className="box-content-ib-two w-9/12 h-16 ml-4">
-                        <div className="mt-4 box-novedade-cv"><Link to="/orientados/newUsers"><u>Ver más orientados</u></Link></div>
+                    <div className="w-full h-10 flex items-center" >
+                      <div className="box-content-ib-two w-9/12 h-16 ml-20 flex-query-cv">
+                      {/* <div className="box-line-oriented-two"></div> */}
+                        <div className="mt-3 box-plus-oriented"><Link to="/orientados/newUsers"><u>Ver más orientados</u></Link></div>
                         <div className="box-line-oriented-two"></div>
+                        
+                      
                       </div>
+
+                      
+
+                      {/* vermas */}
+               
                     </div>
-                    <div className="w-full h-10 flex items-center justify-center" >
-                      <div className="box-content-ib-two w-9/12 ml-4">
+                    <div className="w-full h-10 flex items-center" >
+                      <div className="box-content-ib-two w-9/12 ml-20 flex-query-cv">
                         <div className="box-notice-cv text-3xl mt-10">Novedades</div>
                         <div className="box-line-oriented-tree"></div>
                       </div>
@@ -61,8 +67,8 @@ function AdminPage() {
                     {/* seccion medio ver mas y novedades */}
 
                     {/*4 slider */}
-                    <div className="content-slider-one-cv w-full flex items-center justify-center" >
-                      <div className="box-content-ib-two w-9/12">
+                    <div className="content-slider-one-cv w-full flex items-center" >
+                      <div className="box-content-ib-two w-9/12 ml-20 flex-query-cv mt-3">
                         <SliderOfficial />
                       </div>
                     </div>
@@ -80,4 +86,3 @@ function AdminPage() {
 }
 
 export default AdminPage;
-

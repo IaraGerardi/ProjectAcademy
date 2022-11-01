@@ -11,10 +11,12 @@
   display: flex;
   align-items: center;
   flex-direction: row;
-  justify-content: space-between;}
+  justify-content: space-between;
+}
 
 .box-two:hover {
-  background-color: rgb(244, 244, 244);}
+  background-color: rgb(244, 244, 244);
+}
 
 li {
   list-style: none;
@@ -31,8 +33,9 @@ li {
 .ul-users-admin-cv {
   width: auto;
   display: flex;
-  flex-wrap: wrap;}
-  
+  flex-wrap: wrap;
+}
+
 .icon-cd {
   margin-bottom: 50px;
   padding: 5px;
@@ -66,6 +69,7 @@ li {
   .ul-users-admin-cv {
     justify-content: center;
   }
+
   .box-users-cv {
     height: auto;
   }
@@ -75,6 +79,8 @@ li {
   .ul-users-admin-cv {
     justify-content: center;
   }
+
   .box-two {
     width: 100%;
-  }}
+  }
+}
