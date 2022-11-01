@@ -120,7 +120,7 @@ function StudentInfo() {
         </div>
       </div>
 
-      {orientedInfo.OrientadoreId === null ?
+      {orientedInfo.counselorId === null ?
         <button className=" w-36 h-8 lg:w-44 lg:h-10 mt-10 p-2 bg-celesteValtech rounded-lg text-sm lg:text-base text-white font-medium "
           onClick={handleAssign}> Asignar Orientador/a </button>
         : <button className="w-36 h-9 lg:w-44 lg:h-10 mt-10 p-2 bg-celesteValtech rounded-lg text-sm lg:text-base text-white font-medium "
