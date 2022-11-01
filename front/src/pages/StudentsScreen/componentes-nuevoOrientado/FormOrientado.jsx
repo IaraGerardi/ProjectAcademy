@@ -44,7 +44,7 @@ function FormOrientado() {
   let formValues = [
     { inputValue: name }, { inputValue: lastname }, { inputValue: email }, { inputValue: program }, { inputValue: phone },
     { inputValue: age }, { inputValue: school }, { inputValue: address }, { inputValue: why }, { inputValue: dni },
-    { inputValue: password }, { inputValue: confirmPassword }, { inputValue: photoProfile.name ? photoProfile.name : photoProfile }
+    { inputValue: password }, { inputValue: confirmPassword }
   ]
 
   let { handleVerifyForm, verifyMessages, isVerified } = useVerify(formValues, verifications);

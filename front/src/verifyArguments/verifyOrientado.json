@@ -72,9 +72,5 @@
         "type": "confirmPassword",
         "minLength": 8,
         "noSpaces": true
-    },
-    {
-        "id": "photoProfile",
-        "type": "photoFile"
     }
 ]
