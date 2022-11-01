@@ -28,7 +28,7 @@ export const EventForm = () => {
 
   const navegate = useNavigate();
   const animatedComponents = makeAnimated();
-  const URI = `${process.env.REACT_APP_BASE_URL}/events/create`;
+  const URI = `${process.env.REACT_APP_BASE_URL}/events`;
 
   const [activeVerify, setActiveVerify] = useState({});
   const formValues = [{ inputValue: nameEvent }, { inputValue: valueCounselor }, { inputValue: valueOriented }, { inputValue: dateEvent },

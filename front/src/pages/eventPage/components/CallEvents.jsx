@@ -74,7 +74,7 @@ function CallEvents({ events }) {
                                     <p className="title-events-responsive"><strong className="event-strong-responsive">Fecha</strong></p>
                                     <p className="event-date-responsive">{eventMobile.date}</p>
                                     <p className="title-events-responsive"><strong className="event-strong-responsive">Horario</strong></p>
-                                    <p className="event-date-responsive">{`${eventMobile.time}hs`}</p>
+                                    <p className="event-date-responsive">{`${eventMobile.time.slice(0,5)}hs`}</p>
                                 </div>
                                 <div>
 
@@ -114,7 +114,7 @@ function CallEvents({ events }) {
                                     <tr key={event.id}>
 
                                         <td className="events"><p className="event-date">{event.date}</p></td>
-                                        <td className="events"><p className="event-date">{`${event.time}hs`}</p> </td>
+                                        <td className="events"><p className="event-date">{`${event.time.slice(0,5)}hs`}</p> </td>
                                         <td className="events"><p className="event-date">{event.name}</p></td>
                                         <td className="events"><p className="event-date">{event.orienteds[0]?.name} {event.orienteds[0]?.lastname}</p></td>
                                         <td className="events left"><img onClick={() => deleteEvent(event.id)} className="icon-delete" src={Deleted} alt="Icon trash" /></td>

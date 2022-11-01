@@ -490,10 +490,110 @@ const events = [
   },
 ];
 
+const oriented_event = [
+  {
+    OrientedId: 1,
+    EventId: 1,
+  },
+  {
+    OrientedId: 2,
+    EventId: 1,
+  },
+  {
+    OrientedId: 3,
+    EventId: 1,
+  },
+  {
+    OrientedId: 1,
+    EventId: 2,
+  },
+  {
+    OrientedId: 2,
+    EventId: 2,
+  },
+  {
+    OrientedId: 3,
+    EventId: 2,
+  },
+  {
+    OrientedId: 1,
+    EventId: 3,
+  },
+  {
+    OrientedId: 2,
+    EventId: 3,
+  },
+  {
+    OrientedId: 3,
+    EventId: 3,
+  },
+  {
+    OrientedId: 1,
+    EventId: 4,
+  },
+  {
+    OrientedId: 2,
+    EventId: 4,
+  },
+  {
+    OrientedId: 3,
+    EventId: 4,
+  },
+  {
+    OrientedId: 1,
+    EventId: 5,
+  },
+  {
+    OrientedId: 2,
+    EventId: 5,
+  },
+  {
+    OrientedId: 3,
+    EventId: 5,
+  },
+  {
+    OrientedId: 1,
+    EventId: 6,
+  },
+  {
+    OrientedId: 3,
+    EventId: 6,
+  },
+  {
+    OrientedId: 3,
+    EventId: 6,
+  },
+  {
+    OrientedId: 1,
+    EventId: 7,
+  },
+  {
+    OrientedId: 2,
+    EventId: 7,
+  },
+  {
+    OrientedId: 3,
+    EventId: 7,
+  },
+  {
+    OrientedId: 1,
+    EventId: 8,
+  },
+  {
+    OrientedId: 2,
+    EventId: 8,
+  },
+  {
+    OrientedId: 3,
+    EventId: 8,
+  },
+];
+
 module.exports = {
   admin,
   counselors,
   events,
   news,
   oriented,
+  oriented_event
 };
