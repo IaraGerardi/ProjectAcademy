@@ -2,9 +2,39 @@
   color: #2E384D;
 }
 
+.content-center-cv {
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.box-new-oriented-cv {
+  color: #2E384D;
+  font-weight: 500;
+}
+
+.box-line-oriented {
+  background-color: #0BA4A0;
+  width: 97%;
+  height: 5px;
+  margin-top: 10px;
+}
+
+
 .colors-text-cv2 {
   color: #2E384D;
   font-family: 'Rubik';
+}
+
+.Buttons-one-cv {
+  color: rgb(255, 255, 255);
+  width: 184px;
+  height: 40px;
+  background-color: #0BA4A0;
+  border-radius: 8px;
+  font-family: 'Rubik';
+  font-weight: 500;
 }
 
 .content-slider-one {
@@ -14,21 +44,6 @@
 .box-content-ib {
   width: auto;
 }
-
-/* .Buttons-one-cv {
-  color: rgb(255, 255, 255);
-  width: 150px;
-  height: 40px;
-  background-color: #0BA4A0;
-  border-radius: 10px;
-} */
-
-/* .box-line-oriented {
-  background-color: #0BA4A0;
-  width: 100%;
-  height: 5px;
-  margin-top: 15px;
-} */
 
 .box-line-oriented-two {
   background-color: #FFEB33;
@@ -61,11 +76,6 @@
   font-family: 'Rubik';
 }
 
-.box-new-oriented-cv {
-  color: #2E384D;
-  font-weight: 500;
-}
-
 .colors-text-cv {
   color: #2E384D;
 }
@@ -81,30 +91,6 @@
 
 .box-content-ib {
   width: auto;
-}
-
-.Buttons-one-cv {
-  color: rgb(255, 255, 255);
-  width: 184px;
-  height: 40px;
-  background-color: #0BA4A0;
-  border-radius: 8px;
-  font-family: 'Rubik';
-  font-weight: 500;
-}
-
-.box-line-oriented {
-  background-color: #0BA4A0;
-  width: 97%;
-  height: 5px;
-  margin-top: 10px;
-}
-
-.content-center-cv {
-  width: 20%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
 .box-new-oriented-cv {
@@ -145,13 +131,7 @@
   margin-top: -16px;
   margin-left: 6px;
 }
-.box-line-10{
-  margin-left: 6px;
-  width: 100px;
-  height: 10px;
-  background-color: rgb(168, 171, 1);
-  margin-top: -10px;
-}
+
 
 @media (max-width: 320px) {
   .box-content-ib {
@@ -275,13 +255,6 @@
   }
 }
 
-/* @media (max-width: 496px) {
-  .box-content-ib {
-    display: flex;
-    flex-direction: column;
-  }
-} */
-
 @media (max-width: 494px) {
   .flex-query-cv {
     display: flex;
@@ -290,7 +263,6 @@
   }
   .box-line-oriented-two{
     z-index: 0;
-    /* background-color: red; */
   }
   .box-plus-oriented{
     z-index: 1;

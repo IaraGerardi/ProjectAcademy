@@ -17,7 +17,7 @@ function InputLabel({ labelName, placeholderName, inputType, propInputName, prop
 
       <label htmlFor="" className="font-medium text-slate-600 mt-1">{labelName}</label> {/* prop1 para pasar el nombre al label  el cual estara arriba del input*/}
       <input type={inputType} name={propInputName} onChange={propsOnchange} value={propInputValue} placeholder={placeholderName}
-        className={`w-56 md:w-64 lg:w-64 h-8 p-2 rounded-lg border border-slate-300`} />
+        className={`w-56 md:w-64 lg:w-64 h-8 p-2 rounded-lg border border-slate-300 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500`} />
 
       {/* Si el input no tiene ningun error no se muestra nada, 
       si hay algun error se renderiza el div con el mensaje de error y un icono */}

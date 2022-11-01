@@ -19,8 +19,8 @@ function AdminPage() {
                   <div className=" h-3/5">
 
                     {/*1 seccion principal nuevos orientados + boton */}
-                    <div className=" w-full h-20 flex items-center mt-5" >
-                      <div className="flex-query-cv box-content-ib-two w-9/12 h-10 flex justify-between ml-20 items-center">
+                    <div className="w-full h-20 flex items-center mt-5" >
+                      <div className="flex-query-cv w-9/12 h-10 flex justify-between ml-20 items-center">
                         <div className="content-center-cv flex justify-center ml-1">
                           <div className="box-new-oriented-cv">Nuevos Orientados
                           </div>
@@ -46,17 +46,9 @@ function AdminPage() {
                     {/*3 seccion medio ver mas y novedades */}
                     <div className="w-full h-10 flex items-center" >
                       <div className="box-content-ib-two w-9/12 h-16 ml-20 flex-query-cv">
-                      {/* <div className="box-line-oriented-two"></div> */}
                         <div className="mt-3 box-plus-oriented"><Link to="/orientados/newUsers"><u>Ver más orientados</u></Link></div>
                         <div className="box-line-oriented-two"></div>
-                        
-                      
                       </div>
-
-                      
-
-                      {/* vermas */}
-               
                     </div>
                     <div className="w-full h-10 flex items-center" >
                       <div className="box-content-ib-two w-9/12 ml-20 flex-query-cv">
