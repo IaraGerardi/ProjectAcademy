@@ -28,7 +28,7 @@ export const EventForm = () => {
 
   const navegate = useNavigate();
   const animatedComponents = makeAnimated();
-  const URI = `${process.env.REACT_APP_BASE_URL}/events/create`;
+  const URI = `${process.env.REACT_APP_BASE_URL}/events`;
 
   const [activeVerify, setActiveVerify] = useState({});
   const formValues = [{ inputValue: nameEvent }, { inputValue: valueCounselor }, { inputValue: valueOriented }, { inputValue: dateEvent },
@@ -39,7 +39,7 @@ export const EventForm = () => {
     const res = await axios.get(`${process.env.REACT_APP_BASE_URL}/counselor`, { withCredentials: true })
     setCounselorEvent(res.data.info)
   }
-  
+
   const ShowDataStudents = async () => {
     const resp = await axios.get(`${process.env.REACT_APP_BASE_URL}/oriented`, { withCredentials: true })
     setOrientedEvent(resp.data.info)
@@ -103,9 +103,7 @@ export const EventForm = () => {
       .then((response) => {
         if (response.status === 200) {
           setActive(!active)
-          setTimeout(() => {
-            navegate('/eventos')
-          }, "2000")
+          navegate('/eventos')
         }
       })
   }

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import "./UserAdmin.css";
-import Icon from "../../global-components/Svg-icon";
+import iconuserstwo from "../UsersAdmin/assets/orientedtwocv.svg"
 import BeatLoader from "react-spinners/BeatLoader";
 import { Link } from "react-router-dom";
 
@@ -26,7 +26,7 @@ function UserAdmin() {
   }, []);
 
   return (
-    <div className="flex ">
+    <div className="flex">
       {loadingOriented ? (
         <div className="flex justify-center mt-7">
           {" "}
@@ -63,12 +63,7 @@ function UserAdmin() {
 
               {usersapi.counselorId ? (
                 <div className="icon-cd">
-                  <Icon
-                    classname="h-8"
-                    type="assignUser"
-                    width="17"
-                    height="24"
-                  />
+                  <img className="icon-users-cv" src={iconuserstwo} alt="icon users card" />
                 </div>
               ) : (
                 null
@@ -82,4 +77,3 @@ function UserAdmin() {
 }
 
 export default UserAdmin;
-

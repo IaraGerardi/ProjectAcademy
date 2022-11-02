@@ -57,11 +57,14 @@ function StudentInfo() {
     navigate(`/orientados/${orientedInfo.id}`)
   }
 
+  const handleModify = () => {
+    navigate(`/modificar/${orientedInfo.id}`)
+  }
 
 
 
   return (
-    <div className="cotainerForm ml-6 mr-2 md:mx-6 lg:mx-6 my-8 md:my-10 lg:my-10">
+    <div className="cotainerForm ml-10 mr-2 md:mx-14 lg:mr-6 lg:ml-24 my-8 md:my-10 lg:my-10">
       <h2 className="text-lg md:text-xl lg:text-2xl font-medium text-slate-700">01.Informacion básica </h2>
       <div className="container-basicInfo h-68 md:h-48 lg:h-48 flex  flex-col md:flex-row lg:flex-row gap-0 md:gap-16 ld:gap-16">{/* div1 info basica */}
         <img src={require(`../../../img-back/orientados/${image}`)} alt="" className='w-24 h-24 md:w-28 md:h-28  mt-3 ml-0 md:mt-8 md:ml-4 rounded-full object-cover' />
@@ -117,11 +120,11 @@ function StudentInfo() {
         </div>
       </div>
 
-      {orientedInfo.OrientadoreId === null ?
+      {orientedInfo.counselorId === null ?
         <button className=" w-36 h-8 lg:w-44 lg:h-10 mt-10 p-2 bg-celesteValtech rounded-lg text-sm lg:text-base text-white font-medium "
           onClick={handleAssign}> Asignar Orientador/a </button>
         : <button className="w-36 h-9 lg:w-44 lg:h-10 mt-10 p-2 bg-celesteValtech rounded-lg text-sm lg:text-base text-white font-medium "
-          onClick={handleAssign}> Ver Orientador/a </button>
+          onClick={handleModify}> Ver Orientador/a </button>
       }
 
       {/* {viewAlert} */}
