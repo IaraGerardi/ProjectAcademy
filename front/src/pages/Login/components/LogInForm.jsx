@@ -79,6 +79,7 @@ function FormLogIn() {
                 type="email"
                 id="emailLog"
                 label="Email"
+                autofill={true}
                 redBorder={true}
                 errorClass="mx-2.5"
                 labelClass="p-2 items-center"
@@ -90,6 +91,7 @@ function FormLogIn() {
             <FormInput
                 type="password"
                 id="passwordLog"
+                autofill={true}
                 redBorder={true}
                 label="Contraseña"
                 errorClass="mx-2.5"
