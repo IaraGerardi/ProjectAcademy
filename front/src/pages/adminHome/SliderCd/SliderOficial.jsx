@@ -5,9 +5,10 @@ import "slick-carousel/slick/slick-theme.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
+import nextimg from "../SliderCd/assets/nextimg.png";
+
 function SliderOfficial() {
   const [notice, setNotice] = useState([]);
-
 
   useEffect(() => {
     const informationNotice = async () => {
@@ -39,7 +40,7 @@ function SliderOfficial() {
       {
         breakpoint: 600,
         settings: {
-          slidesToShow: 2,
+          slidesToShow: 1,
           slidesToScroll: 2,
           initialSlide: 2,
         },
@@ -59,20 +60,31 @@ function SliderOfficial() {
     <Slider className="slider-one" {...settings}>
       {notice.map((data) => (
         <div key={data.id} className="card">
-          <div className="text-one-cv text-2xl font-bold">
-            <h2>{data.titulo}</h2>
-          </div>
+          <div className="content-card-cd">
 
-          <div className="text-two-cv">
-            <p>{data.content}</p>
-          </div>
+            <div className="title-content">{data.titulo}</div>
 
-          <div className="text-tree-cv">
-            <div className="button-effect-one">
-              <a target="_blank" rel="noreferrer" href={data.link}>
-                <u>Ver más</u>
-              </a>
+            <div className="data-content">
+              <div>{data.content}</div>
+
+              <div className="flex">
+
+                <div>
+                  <div className="mt-3 box-plus-oriented-cd">
+                    <a target="_blank" rel="noreferrer" href={data.link}>
+                      <u>Ver más</u>
+                    </a>
+                  </div>
+                  <div className="box-line-oriented-two-cd"></div>
+                </div>
+
+                <div>
+                  <img className="img-next" src={nextimg} alt="imagen next" />
+                </div>
+                
+              </div>
             </div>
+          
           </div>
         </div>
       ))}
@@ -81,4 +93,3 @@ function SliderOfficial() {
 }
 
 export default SliderOfficial;
-

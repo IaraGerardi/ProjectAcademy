@@ -16,22 +16,20 @@ function AdminPage() {
             <div className="h-screen flex">
               <div className="h-30 w-full">
                 <div className="mt-2">
-                  <div className=" h-3/5">
+                  <div className="h-3/5">
 
                     {/*1 seccion principal nuevos orientados + boton */}
                     <div className="w-full h-20 flex items-center mt-5" >
+
                       <div className="flex-query-cv w-9/12 h-10 flex justify-between ml-20 items-center">
                         <div className="content-center-cv flex justify-center ml-1">
                           <div className="box-new-oriented-cv">Nuevos Orientados
                           </div>
                           <div className="box-line-oriented"></div>
                         </div>
-                        <div>
-                          <button className="Buttons-one-cv">
-                            <Link to="/orientados/nuevo">Ingresar Orientado</Link>
-                          </button>
-                        </div>
+                        <div className="cont-bu"><Link className="button-add-oriented-two" to="/orientados/nuevo">Ingresar orientado</Link></div>
                       </div>
+
                     </div>
                     {/* seccion principal nuevos orientados + boton */}
 
@@ -50,6 +48,7 @@ function AdminPage() {
                         <div className="box-line-oriented-two"></div>
                       </div>
                     </div>
+
                     <div className="w-full h-10 flex items-center" >
                       <div className="box-content-ib-two w-9/12 ml-20 flex-query-cv">
                         <div className="box-notice-cv text-3xl mt-10">Novedades</div>
@@ -59,7 +58,7 @@ function AdminPage() {
                     {/* seccion medio ver mas y novedades */}
 
                     {/*4 slider */}
-                    <div className="content-slider-one-cv w-full flex items-center" >
+                    <div className="content-slider-one-cv w-full flex items-center h-full" >
                       <div className="box-content-ib-two w-9/12 ml-20 flex-query-cv mt-3">
                         <SliderOfficial />
                       </div>
