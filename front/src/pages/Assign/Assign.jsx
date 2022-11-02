@@ -70,16 +70,21 @@ function Assign() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        await axios.put(UriAsiggned, { counselor: valueCounselor }, { withCredentials: true })
-            .then((response) => {
+        console.log(valueCounselor + "error")
+        if (valueCounselor === undefined) {
+            window.location.reload();
+        } else {
 
-                if (response.status === 200) {
-                    // window.location.reload();
+            await axios.put(UriAsiggned, { counselor: valueCounselor }, { withCredentials: true })
+
+                .then((response) => {
+                    console.log(response)
                     navegate(`/modificar/${id}`);
-                }
 
 
-            })
+                })
+        }
+
     }
 
     const selectOriented = oriented?.map((oriented) => { /*Recorre la api y retorna la card del orientado*/
