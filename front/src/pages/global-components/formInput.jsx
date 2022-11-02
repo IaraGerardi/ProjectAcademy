@@ -3,8 +3,9 @@ import Icon from "./Svg-icon";
 function FormInput(props) {
 
     const { verifyInput, redBorder, onHandleChange } = props
-    const { id, type, value, label, placeholder, col, rows } = props
     const { inputClass, labelClass, containerClass, errorClass } = props
+    const { id, type, value, label, placeholder, col, rows, autofill } = props
+
 
     return (
         <div className={`flex flex-col  ${containerClass}`}>
@@ -15,7 +16,7 @@ function FormInput(props) {
                     name={id}
                     cols={col}
                     rows={rows}
-                    autoComplete="off"
+                    autoComplete={autofill ? "on" : "off"}
                     placeholder={placeholder}
                     onChange={onHandleChange}
                     className={`${inputClass} rounded-lg border placeholder:pl-2 "border-slate-300"`}
@@ -25,7 +26,7 @@ function FormInput(props) {
                     name={id}
                     type={type}
                     value={value}
-                    autoComplete="off"
+                    autoComplete={autofill ? "on" : "off"}
                     onChange={onHandleChange}
                     placeholder={placeholder}
                     className={`${inputClass} 
