@@ -10,7 +10,10 @@ import "./eventStyle.css"
 import "../StudentsScreen/oriented.css"
 
 export const EventScreen = () => {
-  const [eventsList, setEventsList] = useState([])
+
+  const [offset, setOffset] = useState(0);
+  const [limit, setLimit] = useState(8);
+  const [eventsList, setEventsList] = useState([]);
 
   const URIevents = `${process.env.REACT_APP_BASE_URL}/events`;
   const URIoriented = `${process.env.REACT_APP_BASE_URL}/oriented`;
@@ -24,28 +27,32 @@ export const EventScreen = () => {
 
   const handleSearch = (searchName) => {
 
-    const filteredOrientedList = oriented.filter((oriented) => {
+    const filteredOrientedID = oriented.filter((oriented) => {
       const fullName = `${oriented.name} ${oriented.lastname}`.toLowerCase()
       return (fullName.includes(searchName.toLowerCase()));
+    }).map((oriented) => { return oriented.id })
+
+    const eventOriented = events.map((event) => {
+      return [event, event.orienteds.map((oriented) => {
+        return oriented.id
+      })]
     })
 
-    const counselorArray = filteredOrientedList.map((oriented) => {
-      return oriented.counselorId;
-    })
+    const filteredEvents = eventOriented.filter((elem) => {
+      return elem[1].some(item => filteredOrientedID.includes(item))
+    }).map((elem) => { return elem[0] })
 
-    const filteredEvents = events.filter((event) => {
-      return (counselorArray.includes(event.counselor.id));
-    })
     setEventsList(filteredEvents);
+    setOffset(0);
+    setLimit(8);
   }
 
 
   return (
+    <div className="container-P w-full flex">
+      <Sidebar />
 
-    <div className="container-P w-full flex"> {/*  containedor padre tamaño igual a app */}
-      <Sidebar /> {/* hijo 1 izquierdo sticky */}
-
-      <div className="container-derecho header-sa">{/*  hijo2 derecho  column */}
+      <div className="container-derecho header-sa">
         <HeaderInicio propNamePage="Eventos" />
 
         <div className="cont-page">
@@ -53,11 +60,8 @@ export const EventScreen = () => {
             <p className="text-new-user">Todos los eventos</p>
             <Link className='button-add-oriented' to='/eventos/form'>
               Agendar evento
-
             </Link>
-
-          </div> {/*Texto y Boton que redirije a la Página de Crear Eventos.*/}
-
+          </div>
 
           <div className="container-search-event">
             <div className="cont-search-oriented-event">
@@ -72,16 +76,10 @@ export const EventScreen = () => {
             </div>
           </div>
 
-
-
-          {/* Paso los eventos como props para que se actualice cuando el estado cambie por el buscador */}
-          <CallEvents events={eventsList} />
+          <CallEvents events={eventsList} offset={offset} limit={limit} setLimit={setLimit} setOffset={setOffset} />
 
         </div>
-
       </div>
-
     </div>
-
   )
 }
