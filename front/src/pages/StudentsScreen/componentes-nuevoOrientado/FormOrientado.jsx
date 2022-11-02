@@ -360,7 +360,7 @@ function FormOrientado() {
             containerClass="containerInputLabel flex flex-col gap-2 h-36 w-full md:w-full md:min-w-full lg:max-w-11/12"
             col="45"
             rows="4"
-            inputClass="rounded-lg border  pl-3 pt-2 w-56 md:w-[570px] lg:w-[570px] md:max-w-6/12  placeholder:pl-1  resize-none"
+            inputClass="rounded-lg border  pl-3 pt-2 w-56 md:w-[570px] lg:w-[570px] md:max-w-6/12  placeholder:pl-1  resize-none  focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
             id="why" type="textarea" label="¿Porque se acercó a nuestra institución?" placeholder="Escribe un comentario."
             verifyInput={handleErrorMessage("why")} />
           <h2 className="text-lg  md:text-xl  lg:text-2xl font-medium text-slate-700">03.Crear usuario y contraseña</h2>
