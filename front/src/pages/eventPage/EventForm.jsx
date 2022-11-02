@@ -177,11 +177,11 @@ export const EventForm = () => {
 
             <form
               onSubmit={handleSubmit}
-              className='mt-5 flex flex-col lg:m-0 lg: md:mr-20 lg:max-w-max'>
+              className='mt-5 flex flex-col lg:m-0 md:mr-20  lg:max-w-max '>
 
-              <h2 className="lg:text-base font-medium text-slate-700 lg:pt-3 ">01. Información sobre el evento</h2>
+              <h2 className="lg:text-base font-medium text-slate-700 lg:pt-3 ml-5 lg:ml-0">01. Información sobre el evento</h2>
 
-              <div className='flex flex-col lg:flex-row md:flex-wrap lg:py-2 pl-3 pt-2'>
+              <div className='flex flex-col lg:flex-row md:flex-wrap lg:py-2 pl-3 pt-2 '>
                 <FormInput
                   onHandleChange={(e) => { setName(e.target.value); handleTimer(e); }}
                   inputClass=" w-56 md:w-80 lg:w-[298px] text-sm p-2 rounded-lg border shadow-sm border-slate-300
@@ -249,7 +249,7 @@ export const EventForm = () => {
               </div>
 
               <div className='border-y-2 md:flex-wrap lg:pb-0 md:pb-5 pb-4 pt-6  mt-4 lg:mt-0'>
-                <h2 className="lg:text-base font-medium text-slate-700 mb-4">02. Días y Horarios disponibles </h2>
+                <h2 className="lg:text-base font-medium text-slate-700 mb-4 ml-5 lg:ml-0">02. Días y Horarios disponibles </h2>
 
                 <div className='flex flex-col lg:flex-row md:flex-wrap lg:py-3 pl-3 pt-2 '>
                   {/* Agregarle altura al input en si */}
@@ -319,7 +319,7 @@ export const EventForm = () => {
               </div>
 
               <div className="containerInputLabel flex flex-col gap-2 py-3 ">
-                <h2 className="lg:text-base font-medium text-slate-700">03. Detalle </h2>
+                <h2 className="lg:text-base font-medium text-slate-700 ml-5 lg:ml-0">03. Detalle </h2>
                 <div className='flex flex-col pl-4 '>
                   <FormInput
                     onHandleChange={(e) => { setDescriptionEvent(e.target.value); handleTimer(e); }}
