@@ -31,7 +31,8 @@ function FormInput(props) {
                     placeholder={placeholder}
                     className={`${inputClass} 
                     ${redBorder && verifyInput !== null && verifyInput !== true ?
-                            "border border-solid border-red-600" : "border border-slate-300"}`}
+                            "border border-solid border-red-600" : "border border-slate-300"}
+                            focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500`}
                 />
             }
             {verifyInput !== null && verifyInput !== true ?
