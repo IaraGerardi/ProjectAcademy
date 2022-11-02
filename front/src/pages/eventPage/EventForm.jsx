@@ -167,15 +167,15 @@ export const EventForm = () => {
       <div className="container-derecho header-sa">
         <HeaderInicio propNamePage="Eventos" />
 
-        <div className='lg:mt-5 lg:m-8'>
+        <div className='lg:mt-6 lg:m-0 md:ml-5'>
 
-          <div className='m-2 md:mt-5 md:ml-5 lg:pl-10'>
+          <div className='m-2 md:mt-5 md:ml-5 lg:pl-[70px]'>
             <h2 className="lg:text-2xl md:text-xl font-medium text-slate-700 pl-5 lg:pl-0">Crear un evento</h2>
             <h4 className='lg:text-lg md:text-base text-slate-700 text-sm pl-5 lg:pl-0'>Puedes crear un primer encuentro entre Orientadores y Orientados.</h4>
 
             <form
               onSubmit={handleSubmit}
-              className='mt-5 flex flex-col lg:m-0 md:mr-20  lg:max-w-max '>
+              className='mt-5 flex flex-col lg:m-0 md:mr-20  lg:max-w-max'>
 
               <h2 className="lg:text-base font-medium text-slate-700 lg:pt-3 ml-5 lg:ml-0">01. Información sobre el evento</h2>
 
