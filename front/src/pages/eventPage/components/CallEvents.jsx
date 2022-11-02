@@ -8,53 +8,39 @@ import Deleted from "./img/delete.svg"
 import Affirmation from "../../StudentsScreen/img/affirmation.svg"
 import Delete from "../../StudentsScreen/img/delete.svg"
 
-import "./call-events.css" //IMPORTACION DE CSS
+import "./call-events.css"
 
-function CallEvents({ events }) {
-    // Recibe eventos como prop
-
-    const [offset, setOffset] = useState(0);
-    const [limit, setLimit] = useState(8);
-    const [eventList, setEventList] = useState(events);
+function CallEvents({ events, offset, limit, setOffset, setLimit }) {
 
     const [active, setActive] = useState(false);
+    const [eventList, setEventList] = useState(events);
 
-    // Cambio minimo y maximo de eventos que se muestran
     const prevPage = () => { setOffset(offset - 8); setLimit(limit - 8); }
     const nextPage = () => { setOffset(offset + 8); setLimit(limit + 8); }
 
     useEffect(() => {
         const changeEventPages = () => {
-            // Hago un slice de la lista de eventos
             const slicedEvents = events.slice(offset, limit);
-            // Define ese array como la lista de eventos
             setEventList(slicedEvents)
         }
         changeEventPages()
     }, [offset, limit, events])
 
-
-    //eliminar un evento
     const deleteEvent = async (id) => {
         await axios.delete(`${process.env.REACT_APP_BASE_URL}/events/${id}`, { withCredentials: true })
         window.location.reload(false);
-    
+
     }
 
     return (
         <>
-            {/* TABLA DE EVENTOS */}
             <div className="table-events">
                 <div className="pagination">
                     <div className="cont-pagination">
                         <div>{offset}-{limit}  de 100</div>
                         <div className="cont-btn-pagination">
-                            {/*BOTONES DE LA PAGINACION*/}
-                            {/* Si el valor del que empieza el paginado es menor a cero deshabilito el boton*/}
                             <img onClick={offset > 0 ? prevPage : null}
                                 className={`btn-row ${offset > 0 ? null : "opacity-50"}`} src={RowLeft} alt="" />
-                            {/* Si el limite del paginado es mas alto que la cantidad de eventos que hay para mostrar
-                            deshabilito el boton*/}
                             <img onClick={limit < events.length ? nextPage : null}
                                 className={`btn-row ${(limit < events.length) ? null : "opacity-50"}`} src={RowRight} alt="" />
                         </div>
@@ -74,7 +60,7 @@ function CallEvents({ events }) {
                                     <p className="title-events-responsive"><strong className="event-strong-responsive">Fecha</strong></p>
                                     <p className="event-date-responsive">{eventMobile.date}</p>
                                     <p className="title-events-responsive"><strong className="event-strong-responsive">Horario</strong></p>
-                                    <p className="event-date-responsive">{`${eventMobile.time.slice(0,5)}hs`}</p>
+                                    <p className="event-date-responsive">{`${eventMobile.time.slice(0, 5)}hs`}</p>
                                 </div>
                                 <div>
 
@@ -108,13 +94,13 @@ function CallEvents({ events }) {
                             </tr>
                         </thead>
 
-                        <tbody>{/*RECORRO LA API Y MUESTRO LOS DATOS */}
+                        <tbody>
                             {eventList.map((event) => {
                                 return (
                                     <tr key={event.id}>
 
                                         <td className="events"><p className="event-date">{event.date}</p></td>
-                                        <td className="events"><p className="event-date">{`${event.time.slice(0,5)}hs`}</p> </td>
+                                        <td className="events"><p className="event-date">{`${event.time.slice(0, 5)}hs`}</p> </td>
                                         <td className="events"><p className="event-date">{event.name}</p></td>
                                         <td className="events"><p className="event-date">{event.orienteds[0]?.name} {event.orienteds[0]?.lastname}</p></td>
                                         <td className="events left"><img onClick={() => deleteEvent(event.id)} className="icon-delete" src={Deleted} alt="Icon trash" /></td>
