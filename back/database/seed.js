@@ -425,16 +425,16 @@ const admin = [
 
 const events = [
   {
-    name: "NombreEvent",
-    date: "2022-10-10",
+    name: "Clase SQL",
+    date: "2022-12-10",
     time: "11:45",
     duration: "00:30",
     description: "Meet de Prueba",
     counselorId: 1,
   },
   {
-    name: "Event Almuerzo",
-    date: "2022-10-11",
+    name: "Evento Almuerzo",
+    date: "2022-12-11",
     time: "13:30",
     duration: "01:30",
     description: "Encuentro Pizza nueva pala",
@@ -442,7 +442,7 @@ const events = [
   },
   {
     name: "Orientación vocacional",
-    date: "2022-10-11",
+    date: "2022-12-11",
     time: "15:30",
     duration: "01:00",
     description: null,
@@ -450,7 +450,7 @@ const events = [
   },
   {
     name: "Clase JavaScript",
-    date: "2022-10-11",
+    date: "2022-12-11",
     time: "15:30",
     duration: "02:00",
     description: "Programacion orientada a objetos",
@@ -458,15 +458,15 @@ const events = [
   },
   {
     name: "Inteligencia emocional",
-    date: "2022-11-05",
+    date: "2022-12-05",
     time: "12:00",
     duration: "01:15",
     description: "Manejo de emociones",
     counselorId: 5,
   },
   {
-    name: "Otro event",
-    date: "2022-11-05",
+    name: "Dinamica grupal",
+    date: "2022-12-05",
     time: "16:00",
     duration: "00:45",
     description: null,
@@ -474,7 +474,7 @@ const events = [
   },
   {
     name: "Metodos de estudio",
-    date: "2022-11-05",
+    date: "2022-12-05",
     time: "13:00",
     duration: "01:45",
     description: null,
@@ -482,17 +482,25 @@ const events = [
   },
   {
     name: "Taller de matematicas",
-    date: "2022-11-05",
+    date: "2022-12-05",
     time: "13:00",
     duration: "02:30",
     description: "Llegó la hora de conocer Pizza pala",
     counselorId: 8,
   },
+  {
+    name: "Taller de ingles",
+    date: "2022-12-08",
+    time: "13:00",
+    duration: "02:30",
+    description: null,
+    counselorId: 1,
+  }
 ];
 
 const oriented_event = [
   {
-    OrientedId: 1,
+    OrientedId: 3,
     EventId: 1,
   },
   {
@@ -500,7 +508,7 @@ const oriented_event = [
     EventId: 1,
   },
   {
-    OrientedId: 3,
+    OrientedId: 4,
     EventId: 1,
   },
   {
@@ -516,7 +524,7 @@ const oriented_event = [
     EventId: 2,
   },
   {
-    OrientedId: 1,
+    OrientedId: 5,
     EventId: 3,
   },
   {
@@ -524,15 +532,15 @@ const oriented_event = [
     EventId: 3,
   },
   {
-    OrientedId: 3,
+    OrientedId: 6,
     EventId: 3,
   },
   {
-    OrientedId: 1,
+    OrientedId: 7,
     EventId: 4,
   },
   {
-    OrientedId: 2,
+    OrientedId: 8,
     EventId: 4,
   },
   {
@@ -540,7 +548,7 @@ const oriented_event = [
     EventId: 4,
   },
   {
-    OrientedId: 1,
+    OrientedId: 9,
     EventId: 5,
   },
   {
@@ -548,44 +556,56 @@ const oriented_event = [
     EventId: 5,
   },
   {
-    OrientedId: 3,
+    OrientedId: 1,
     EventId: 5,
   },
   {
-    OrientedId: 1,
+    OrientedId: 12,
     EventId: 6,
   },
   {
-    OrientedId: 3,
+    OrientedId: 13,
     EventId: 6,
   },
   {
-    OrientedId: 3,
+    OrientedId: 14,
     EventId: 6,
   },
   {
-    OrientedId: 1,
+    OrientedId: 16,
     EventId: 7,
   },
   {
-    OrientedId: 2,
+    OrientedId: 17,
     EventId: 7,
   },
   {
-    OrientedId: 3,
+    OrientedId: 18,
     EventId: 7,
   },
   {
-    OrientedId: 1,
+    OrientedId: 15,
     EventId: 8,
   },
   {
-    OrientedId: 2,
+    OrientedId: 11,
     EventId: 8,
   },
   {
-    OrientedId: 3,
+    OrientedId: 9,
     EventId: 8,
+  },
+  {
+    OrientedId: 7,
+    EventId: 9,
+  },
+  {
+    OrientedId: 5,
+    EventId: 9,
+  },
+  {
+    OrientedId: 9,
+    EventId: 9,
   },
 ];
 
