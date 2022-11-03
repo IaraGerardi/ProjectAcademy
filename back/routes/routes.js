@@ -4,6 +4,7 @@ const counselorRouter = require("./counselorRouter");
 const eventsRouter = require("./eventsRouter");
 const orientedRouter = require("./orientedRouter");
 const newsRouter = require("./newsRouter");
+const imagesRouter = require("../routes/imagesRouter")
 
 module.exports = {
   adminRouter,
@@ -12,4 +13,5 @@ module.exports = {
   eventsRouter,
   orientedRouter,
   newsRouter,
+  imagesRouter
 };

@@ -12,6 +12,7 @@ const {
   eventsRouter,
   orientedRouter,
   newsRouter,
+  imagesRouter
 } = require("./routes/routes");
 const db = require("./database/models");
 
@@ -42,6 +43,7 @@ app.use("/counselor", counselorRouter);
 app.use("/oriented", orientedRouter);
 app.use("/news", newsRouter);
 app.use("/events", eventsRouter);
+app.use("/images", imagesRouter)
 
 // verificacion de conexion a la base de datos
 const dbStatus = async () => {

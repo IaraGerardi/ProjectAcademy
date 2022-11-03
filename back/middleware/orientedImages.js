@@ -6,7 +6,7 @@ const path = require("path");
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     // Es un callback que dice donde va a guardar el archivo
-    cb(null, path.join(__dirname, '..','..','front','src','img-back','orientados'));
+    cb(null, path.join(__dirname, '..','public','img','oriented'));
 
   },
   filename: (req, file, cb) => {

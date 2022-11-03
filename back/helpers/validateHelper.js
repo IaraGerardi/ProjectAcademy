@@ -12,7 +12,7 @@ const validateResult = (req, res, next) => {
       fs.unlinkSync(
         path.join(
           __dirname,
-          '..','..','front','src','img-back','orientados',req.file.filename
+          '..','public','img','oriented',req.file.filename
 
         )
       );
