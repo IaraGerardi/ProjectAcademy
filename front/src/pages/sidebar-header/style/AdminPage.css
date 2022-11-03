@@ -274,6 +274,10 @@
     flex-direction: column;
     margin-left: 40px;
   }
+  .button-add-oriented-two{
+  margin-top: 15px;
+
+  }
 
   .box-line-oriented-two {
     z-index: 0;
