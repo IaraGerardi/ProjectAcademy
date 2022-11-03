@@ -27,7 +27,7 @@ export function Banner() {
                 <div onClick={itemLess} className="arrow cursor-pointer">
                     <Icon classname="w-5 h-5" type="leftArrow" width="24" height="24" />
                 </div>
-                <div className="flex flex-row relative top-40 z-20">
+                <div className="flex flex-row relative top-36 z-20">
                     <button className={activeItemStyle(0)} onClick={()=> {setItem(0)}}/>
                     <button className={activeItemStyle(1)} onClick={()=> {setItem(1)}}/>
                     <button className={activeItemStyle(2)} onClick={()=> {setItem(2)}}/>
