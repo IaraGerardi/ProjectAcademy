@@ -28,3 +28,6 @@ http://localhost:8000/events //Gets all the events (GET)<br>
 http://localhost:8000/events/:id //Gets event selected in :id the events (GET)<br>
 http://localhost:8000/events //Creates an event (POST)<br>
 http://localhost:8000/events/:id //Deletes an event selected in :id (DELETE)<br>
+
+Images: <br>
+http://localhost:8000/images/:fileid //Gets the image of an oriented, fileid is the name of the oriented image (GET) <br>
