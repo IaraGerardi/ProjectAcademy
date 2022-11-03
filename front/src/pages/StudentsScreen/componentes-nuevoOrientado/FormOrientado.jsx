@@ -10,7 +10,7 @@ import Select from "react-select";
 import Icon from "../../global-components/Svg-icon";
 import FormInput from "../../global-components/formInput";
 // CSS
-/* import '../call-students.css'; */
+
 import img from '../img/orientadoDefault-removebg-preview.png'
 import './upload.css'
 import "./alert.css"
@@ -309,7 +309,7 @@ function FormOrientado() {
           </div>
         </div>
         <div className="container-personalInfo  text-slate-700 flex flex-col h-max md:h-full lg:h-full gap-3">
-          {" "}
+          
           <h2 className=" text-lg  md:text-xl  lg:text-2xl font-medium ">02.Datos personales</h2>
           <div className=" cajaInputsDatosP  flex  flex-col md:flex-row md:gap-5 lg:flex-row lg:gap-5  ">
             <div >

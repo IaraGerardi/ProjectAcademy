@@ -2,17 +2,18 @@
 import { useEffect, useState } from 'react'
 import BeatLoader from "react-spinners/BeatLoader";
 import axios from 'axios';
+import { useNavigate } from "react-router-dom";
 
 
 
 function CardProfile() {
-
+   const navigate= useNavigate();
 
 
     const user = localStorage.getItem('usuario')//base de datos pequeña del navegador y .getItem trae un elemento del local storage
     const parsed = JSON.parse(user)// pasando el item a json
 
-    const [admin, setAdmin] = useState([]);//estado donde voy a guardar el objeto del admin  y luego obtener sus datos a traves de la notacion de puntos
+    const [admin, setAdmin] = useState([]);
     const [loadingProfile, setLoadingProfile] = useState(true);
     const URI = `${process.env.REACT_APP_BASE_URL}/admins`;
 
@@ -21,13 +22,16 @@ function CardProfile() {
 
         const getAdminProfile = async () => {
             try {
-                const resAdmin = await axios.get(`${URI}/${parsed.id}`, { withCredentials: true })//trae uri y le agrega /gdsaiukyhds y lo guarda
+                const resAdmin = await axios.get(`${URI}/${parsed.id}`, { withCredentials: true })
                 setAdmin(resAdmin.data.info);
 
                 setLoadingProfile(false)
 
-            } catch (error) {// en caso de fallar 
-                console.log(error)
+            } catch (err) {
+                if (err.response.data.message === 'Not logged') {
+                    localStorage.removeItem("usuario")
+                    navigate('/LogIn')
+                }
             }
         }
 
@@ -35,11 +39,11 @@ function CardProfile() {
 
         getAdminProfile();
 
-    }, [URI, parsed.id])   //parametros que el useffect tiene que recibir.
+    }, [URI, parsed.id,navigate])   
 
 
 
-    return ( // hay etiquetas que tienen clses de tailwind las dejo ahi para que si nos ponemos de acuerdo podamos usarlo.
+    return ( 
         <div className="containerCardProfile">
 
             <p className='pProfile ml-10 mt-8  font-medium text-slate-600'>Mi perfil</p>

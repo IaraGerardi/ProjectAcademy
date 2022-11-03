@@ -10,19 +10,13 @@ function ProfileAdminScreen() {
   return (
 
 
-    <div className="container-P w-full flex"> {/*  containedor padre tamaño igual a app */}
+    <div className="container-P w-full flex"> 
 
-      <Sidebar /> {/* hijo 1 izquierdo sticky */}
-
-      <div className="container-derecho header-sa">{/*  hijo2 derecho  column */}
+      <Sidebar /> 
+      <div className="container-derecho header-sa">
         <HeaderInicio propNamePage="Bienvenido/a" />
 
-
         <CardProfile />
-
-
-
-
 
       </div>
 
