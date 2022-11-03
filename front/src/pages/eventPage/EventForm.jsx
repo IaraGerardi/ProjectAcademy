@@ -35,10 +35,20 @@ export const EventForm = () => {
   { inputValue: timeEvent }, { inputValue: durationEvent }, { inputValue: descriptionEvent }];
   const { handleVerifyForm, verifyMessages, isVerified } = useVerify(formValues, verifications);
 
-  const ShowData = async () => {
-    const res = await axios.get(`${process.env.REACT_APP_BASE_URL}/counselor`, { withCredentials: true })
-    setCounselorEvent(res.data.info)
-  }
+  useEffect(() => {
+    const ShowData = async () => {
+      try {
+        const res = await axios.get(`${process.env.REACT_APP_BASE_URL}/counselor`, { withCredentials: true })
+        setCounselorEvent(res.data.info)
+      } catch (err) {
+        if (err.response.data.message === 'Not logged') {
+          localStorage.removeItem("usuario")
+          navegate('/LogIn')
+      }
+      }
+    }
+    ShowData();
+  }, [navegate])
 
   const ShowDataStudents = async () => {
     const resp = await axios.get(`${process.env.REACT_APP_BASE_URL}/oriented`, { withCredentials: true })
@@ -46,7 +56,6 @@ export const EventForm = () => {
   }
 
   useEffect(() => {
-    ShowData();
     ShowDataStudents();
   }, [])
 
