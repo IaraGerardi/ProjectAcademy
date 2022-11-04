@@ -112,9 +112,12 @@ function FormLogIn() {
                 <span className="w-56 mx-2.5 text-red-600 text-xs">{backMessages}</span>}
 
             {loader &&
-                <div className='w-screen h-screen flex items-center absolute top-0 left-0 justify-center bg-slate-600 bg-opacity-10'>
-                    <BeatLoader size={10} margin={5} color="#1EC5BB" cssOverride={{}} speedMultiplier={1} />
-                </div>}
+                <>
+                    <div className="w-full h-full flex absolute top-0 left-0" />
+                    <div className='w-64 md:w-80 flex mx-2.5 items-center justify-center relative'>
+                        <BeatLoader size={10} margin={5} color="#1EC5BB" cssOverride={{}} speedMultiplier={1} />
+                    </div>
+                </>}
         </form>
     );
 }
