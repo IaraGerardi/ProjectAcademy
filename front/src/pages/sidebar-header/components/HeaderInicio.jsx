@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { Link/* , useNavigate */ } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 
 import LogoPerfil from "../icons/logo-perfil.svg"
 import cerrarSesion from "../icons/logo-cerrar.svg"
@@ -15,11 +15,9 @@ import StoreContext from "../../../store/StoreProvider";
 function HeaderInicio({ propNamePage }) {
     const [store, dispatch] = useContext(StoreContext)
 
-
-
     const [infoAdmin, setInfoAdmin] = useState([]);
     const [active, setActive] = useState(false);
-    /*   const navigate = useNavigate() */
+    const navigate = useNavigate()
     const usuariols = localStorage.getItem('usuario')
     const usuario = JSON.parse(usuariols)
 
@@ -28,7 +26,7 @@ function HeaderInicio({ propNamePage }) {
             try {
                 const resInfoAdmin = await axios.get(`${process.env.REACT_APP_BASE_URL}/admins/${usuario.id}`, { withCredentials: true });
                 setInfoAdmin(resInfoAdmin.data.info);
-            } catch (error) {
+            } catch (err) {
                 if (err.response.data.message === 'Not logged') {
                     localStorage.removeItem("usuario")
                     navigate('/LogIn')
