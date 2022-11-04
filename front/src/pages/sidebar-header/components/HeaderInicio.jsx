@@ -29,7 +29,10 @@ function HeaderInicio({ propNamePage }) {
                 const resInfoAdmin = await axios.get(`${process.env.REACT_APP_BASE_URL}/admins/${usuario.id}`, { withCredentials: true });
                 setInfoAdmin(resInfoAdmin.data.info);
             } catch (error) {
-                console.log(error);
+                if (err.response.data.message === 'Not logged') {
+                    localStorage.removeItem("usuario")
+                    navigate('/LogIn')
+                }
             }
         };
         getAdmin();
