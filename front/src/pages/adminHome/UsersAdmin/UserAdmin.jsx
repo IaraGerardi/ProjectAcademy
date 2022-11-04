@@ -47,12 +47,12 @@ function UserAdmin() {
               key={usersapi.name}
             >
               <div className="flex">
-                <img
+              <img className="img-users" alt="imagen" src={`http://localhost:8000/images/${usersapi.photoProfile}`}/>
+                {/* <img
                   className="img-users"
-                  src={require(`../../../img-back/orientados/${usersapi.photoProfile}`)}
+                  src={require(`http://localhost:8000/images/${usersapi.photoProfile}`)}
                   alt="default"
-                />
-
+                /> */}
                 <div className="p-admin">
                   <p className="p-name">
                     {usersapi.name} {usersapi.lastname}
