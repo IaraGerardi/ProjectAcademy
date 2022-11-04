@@ -26,7 +26,7 @@ This project was made using the follow technologies (last version):
 2. delete the ".example" on .env.example file
 3. database migration: <br>
 4. open MySql and create an schema called 'project_academy'<br>
-5. go to directory ../ProjectAcademy/back/database <br>
+5. go to directory ../ProjectAcademy/back <br>
 6. run ```npm i -g sequelize-cli``` <br>
 7. run ```sequelize db:migrate``` <br>
 8. run ```sequelize db:seed:all``` <br>
