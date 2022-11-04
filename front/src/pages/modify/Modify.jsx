@@ -88,7 +88,7 @@ function Modify() {
                     <div className="cont-image-profile">
                         <img
                             className="image-profile-student"
-                            src={require(`../../img-back/orientados/${oriented.photoProfile}`)}
+                            src={require(`http://localhost:8000/images/${usersapi.photoProfile}`)}
                             alt="Foto perfil orientado"
                         />
                     </div>

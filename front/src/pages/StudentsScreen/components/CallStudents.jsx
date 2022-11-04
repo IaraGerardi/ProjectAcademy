@@ -96,7 +96,7 @@ function CallStudents() {
 
                                                 <img
                                                     className="img-user"
-                                                    src={require(`../../../img-back/orientados/${usuario.photoProfile}`)}
+                                                    src={require(`http://localhost:8000/images/${usersapi.photoProfile}`)}
                                                     alt="Foto perfil orientado"
                                                 />
                                                 <div>
