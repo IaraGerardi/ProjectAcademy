@@ -82,11 +82,11 @@ function FormLogIn() {
                 autofill={true}
                 redBorder={true}
                 errorClass="mx-2.5"
-                labelClass="p-2 items-center"
+                labelClass="p-2.5 items-center"
                 onHandleChange={handleChange}
                 placeholder="Ingresa tu email"
-                inputClass="w-80 focus:outline"
-                containerClass="flex flex-col w-96 h-28"
+                inputClass="w-64 md:w-80 focus:outline"
+                containerClass="flex flex-col w-72 md:w-96 h-28"
                 verifyInput={handleErrorMessage("emailLog")} />
             <FormInput
                 type="password"
@@ -96,10 +96,10 @@ function FormLogIn() {
                 label="Contraseña"
                 errorClass="mx-2.5"
                 onHandleChange={handleChange}
-                inputClass="w-80 focus:outline"
+                inputClass="w-64 md:w-80 focus:outline"
                 labelClass="p-2.5 items-center"
                 placeholder="Ingresa tu contraseña"
-                containerClass="flex flex-col w-96 h-28"
+                containerClass="flex flex-col w-72 md:w-96 h-28"
                 verifyInput={handleErrorMessage("passwordLog")} />
             <input
                 type="submit"
