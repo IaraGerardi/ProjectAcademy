@@ -45,10 +45,13 @@ function CallStudents() {
 
 
     const filter = (searchTerm) => {
+
         {/*Filtra el nombre o apellido del orientado*/ }
         var searchResult = tableOriented.filter((element) => {
-            if (element.name.toString().toLowerCase().includes(searchTerm.toLowerCase())
-                || element.lastname.toString().toLowerCase().includes(searchTerm.toLowerCase())
+            const nombreCompleto = `${element.name} ${element.lastname}`.toLowerCase()
+            console.log(nombreCompleto)
+            if (nombreCompleto.includes(searchTerm.toLowerCase())
+
             ) {
                 return element;
             }

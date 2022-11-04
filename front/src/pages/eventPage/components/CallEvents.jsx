@@ -111,8 +111,6 @@ function CallEvents({ events, offset, limit, setOffset, setLimit }) {
                         </tbody>
                     </table>
 
-
-
                 </div>
 
                 {events.map((eventAlert) => {
@@ -141,26 +139,6 @@ function CallEvents({ events, offset, limit, setOffset, setLimit }) {
 
 
                 })}
-
-                {/* 
-                {
-                    (Date.parse(new Date()) - Date.parse('2022-10-13T17:28:30') < 2000 || active)
-                    && <div className={`alert-event ${!active ? 'show-alert' : 'hidden-alert-event'}`}>
-                        <div className="cont-logo-event">
-                            <img src={Affirmation} alt="icon de afirmacion" />
-                        </div>
-
-                        <div>
-                            <p className="msg-alert-event">Encuentro agendado</p>
-                            <span className="msg-alert-orientador">El encuentro está agendado en la fecha que sugeriste, el orientado podrá confirmarlo o elegir otra fecha. Te notificaremos la confirmación o modificación</span>
-                        </div>
-
-                        <div className="cont-logo-event">
-                            <img className="iconDelete-alert" src={Delete} onClick={() => setActive(!active)} alt="icon de eliminar" />
-                        </div>
-                    </div>
-                } */}
-
 
 
             </div>
