@@ -89,3 +89,9 @@ li {
     width: 100%;
   }
 }
+
+.spinner-cd{
+  margin-left: auto;
+  margin-right: auto;
+  margin-top:300px;
+}

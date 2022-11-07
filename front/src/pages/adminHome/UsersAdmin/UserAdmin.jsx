@@ -28,7 +28,7 @@ function UserAdmin() {
   return (
     <div className="flex">
       {loadingOriented ? (
-        <div className="flex justify-center mt-7">
+        <div className="spinner-cd">
           {" "}
           <BeatLoader
             color="#1EC5BB"

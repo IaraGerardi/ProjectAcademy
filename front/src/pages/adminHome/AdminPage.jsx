@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 function AdminPage() {
   return (
-    <div className="w-full flex">
+    <div className="w-full flex menu-sticky">
       <Sidebar />
       <div className="container-derecho header-sa">
         <HeaderInicio propNamePage="Bienvenido/a" />
