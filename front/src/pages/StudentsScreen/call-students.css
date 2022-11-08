@@ -106,7 +106,7 @@
 .list-student {
     display: flex;
     flex-wrap: wrap;
-    width: 90vw;
+    width: 85vw;
 }
 
 @media (max-width: 980px) {
