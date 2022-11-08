@@ -67,7 +67,7 @@ function SliderOfficial() {
             <div className="data-content">
               <div>{data.content}</div>
 
-              <div className="flex">
+              <div className="box-watch">
 
                 <div>
                   <div className="mt-3 box-plus-oriented-cd">

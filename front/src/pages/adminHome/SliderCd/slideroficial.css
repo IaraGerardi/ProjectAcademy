@@ -90,4 +90,11 @@
     font-size: 15px;
     height: auto;
   }
+  .box-watch{
+    justify-content: center;
+  }
+}
+
+.box-watch{
+  display: flex;
 }

@@ -43,14 +43,14 @@ function AdminPage() {
 
                     {/*3 seccion medio ver mas y novedades */}
                     <div className="w-full h-10 flex items-center" >
-                      <div className="box-content-ib-two w-9/12 h-16 ml-20 flex-query-cv">
+                      <div className="box-content-ib-two-cd w-9/12 h-16 ml-20 flex-query-cv">
                         <div className="mt-3 box-plus-oriented"><Link to="/orientados/newUsers"><u>Ver más orientados</u></Link></div>
                         <div className="box-line-oriented-two"></div>
                       </div>
                     </div>
 
                     <div className="w-full h-10 flex items-center" >
-                      <div className="box-content-ib-two w-9/12 ml-20 flex-query-cv">
+                      <div className="box-content-ib-cd w-9/12 ml-20 flex-query-cv">
                         <div className="box-notice-cv text-3xl mt-10">Novedades</div>
                         <div className="box-line-oriented-tree"></div>
                       </div>
