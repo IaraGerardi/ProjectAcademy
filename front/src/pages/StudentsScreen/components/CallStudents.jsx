@@ -86,47 +86,34 @@ function CallStudents() {
                             speedMultiplier={1}
                         /></div>
                         :
-                        <ul className="list-student"> {/*Llamado a la Api*/}
-                            {oriented?.length === 0 && <p>No se encontró la búsqueda.</p>}
-                            {oriented?.map((usuario) => {
-                                return (
+                        <ul className="container-oriented">
+                            {oriented.map((usersapi) => (
+                                <Link
+                                    to={`/orientados/StudentInfo/${usersapi.id}`}
+                                    className="box-oriented"
+                                    key={usersapi.name}
+                                >
+                                    <div className="flex">
+                                        <img className="img-users" alt="imagen" src={`http://localhost:8000/images/${usersapi.photoProfile}`} />
+                        
+                                        <div className="container-text-oriented">
+                                            <p className="text-name">
+                                                {usersapi.name} {usersapi.lastname}
+                                            </p>
+                                            <p className="text-schools">{usersapi.lastname}</p>
+                                        </div>
+                                    </div>
 
-
-
-                                    <li className="box-students" key={usuario.id} >
-                                        <Link to={`/orientados/StudentInfo/${usuario.id}`}>
-                                            <div className="content-students">
-
-                                                <img
-                                                    className="img-user"
-                                                    src={`http://localhost:8000/images/${usuario.photoProfile}`}
-                                                    alt="Foto perfil orientado"
-                                                />
-                                                <div>
-
-                                                    <h4 className="text-user name-user">
-                                                        {usuario.name} {usuario.lastname}
-                                                    </h4>
-                                                    <p className="text-user school-user">{usuario.school}</p>
-                                                </div>
-
-                                                {usuario.counselorId ? (
-                                                    <div className="cont-icon-oriented">
-                                                        <img className="icon-oriented" src={IconOriented} alt="icono de orientador" />
-
-                                                    </div>
-                                                ) : (
-                                                    null
-                                                )}
-
-                                            </div>
-                                        </Link>
-                                    </li>
-
-                                );
-                            })}
-                        </ul >
-
+                                    {usersapi.counselorId ? (
+                                        <div className="cont-icon-oriented">
+                                            <img className="icon-oriented" src={IconOriented} alt="icon users card" />
+                                        </div>
+                                    ) : (
+                                        null
+                                    )}
+                                </Link>
+                            ))}
+                        </ul>
 
                 }
 

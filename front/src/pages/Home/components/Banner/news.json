@@ -1,19 +1,19 @@
 [
     {
         "id": 1,
-        "title":"Title with a call to action example 1",
+        "title":"Promovemos tu valor personal.",
         "redirect":"/products/2",
         "bgImage":"https://images.unsplash.com/photo-1630673559640-000a51b4dd28?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
     },
     {
         "id": 2,
-        "title":"Title with a call to action example 2",
+        "title":"Promovemos tu valor personal.",
         "redirect":"/products/12",
         "bgImage":"https://images.unsplash.com/photo-1563986768817-257bf91c5753?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1210&q=80"
     },
     {
         "id": 3,
-        "title":"Title with a call to action example 3",
+        "title":"Promovemos tu valor personal.",
         "redirect":"/products/5",
         "bgImage": "https://images.unsplash.com/photo-1554774853-b415df9eeb92?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
     }

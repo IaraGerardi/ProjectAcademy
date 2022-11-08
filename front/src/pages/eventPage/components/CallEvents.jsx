@@ -129,7 +129,7 @@ function CallEvents({ events, offset, limit, setOffset, setLimit }) {
                                     </div>
 
                                     <div className="cont-logo-event">
-                                        <img className="iconDelete-alert" src={Delete} onClick={() => setActive(!active)} alt="Icon Delete" />
+                                        <img className="iconDelete-alert-event" src={Delete} onClick={() => setActive(!active)} alt="Icon Delete" />
                                     </div>
                                 </div>
 
