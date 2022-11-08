@@ -81,7 +81,7 @@ function CardProfile() {
                             </div>
 
                             <div className="linkedInAdminProfile">
-                                <span className='text-slate-400'>LIKED IN</span>
+                                <span className='text-slate-400'>LINKEDIN</span>
                                 <p>{admin.linkedin}</p>
                             </div>
 
