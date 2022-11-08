@@ -221,7 +221,7 @@ function Modify() {
                                         <div>
                                             {
                                                 (Date.parse(new Date()) - Date.parse(`${orientedAlert.updatedAt}`) < 2000 || active) && <div className={`alert ${!active ? 'show-alert' : 'hidden-alert'}`}>
-                                                    <img src={Affirmation} alt="icon de afirmacion" />
+                                                    <img src={Affirmation} className="iconChek-alert" alt="icon de afirmacion" />
                                                     <div>
                                                         <p className="msg-alert">El Orientado fué asignado a su referente.</p>
                                                         <span className="msg-alert-counselor">Recibirá una notificación para que contacte al Orientador.</span>

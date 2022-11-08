@@ -217,7 +217,8 @@ function Assign() {
                                     options={options}
                                     inputId="counselor"
                                     onChange={handleSelectChange}
-                                    placeholder="Select Option" className="selector-teacher"
+                                    placeholder="Select Option" 
+                                    className="selector-teacher"
                                     // styles={customStyles}
                                     value={options.filter((obj) => obj.value === valueCounselor)}
                                     defaultValue={{ label: "Seleccionar Orientador", value: "default" }}
